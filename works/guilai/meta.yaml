@@ -37,7 +37,7 @@ scroll:
   noteFontSize: 9.4
 faces:
   song:
-    font: source-han-serif
+    font: zhuque-fangsong
     label: 宋體
   jing:
     font: fahua-wenkai
