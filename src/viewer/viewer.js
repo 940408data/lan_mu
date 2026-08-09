@@ -31,6 +31,12 @@ mode.onclick=e=>{
   }
   e.currentTarget.textContent=orig?'原貌':'摹本';e.currentTarget.setAttribute('aria-pressed',orig);};
 about.onclick=e=>{const o=panel.classList.toggle('on');e.currentTarget.setAttribute('aria-expanded',o);};
+/* 下載菜單：開合、選後收、點外部收 */
+const dlWrap=dl.parentElement;
+dl.onclick=e=>{e.stopPropagation();const o=dlWrap.classList.toggle('on');dl.setAttribute('aria-expanded',o);};
+document.querySelectorAll('.dl-item').forEach(a=>a.addEventListener('click',()=>{
+  dlWrap.classList.remove('on');dl.setAttribute('aria-expanded','false');}));
+document.addEventListener('click',e=>{if(!e.target.closest('.dl')){dlWrap.classList.remove('on');dl.setAttribute('aria-expanded','false');}});
 document.querySelectorAll('.seg-b').forEach(b=>b.onclick=()=>{
   paper.classList.remove('f-song','f-jing','f-xing');
   paper.classList.add(b.dataset.face);
@@ -50,7 +56,8 @@ viewer.addEventListener('scroll',upd,{passive:true});
 viewer.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){viewer.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});
 addEventListener('resize',upd);
 addEventListener('keydown',e=>{
-  if(e.key==='Escape'){panel.classList.remove('on');about.setAttribute('aria-expanded','false');}
+  if(e.key==='Escape'){panel.classList.remove('on');about.setAttribute('aria-expanded','false');
+    dlWrap.classList.remove('on');dl.setAttribute('aria-expanded','false');}
   if(e.key==='ArrowLeft')viewer.scrollBy({left:-460,behavior:'smooth'});
   if(e.key==='ArrowRight')viewer.scrollBy({left:460,behavior:'smooth'});
 });

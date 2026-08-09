@@ -116,6 +116,15 @@ function renderHtml(tree, opts = {}) {
     return `<button class="btn seg-b${i === 0 ? ' on' : ''}" data-face="f-${role}" type="button">${esc(label)}</button>`;
   }).join('\n      ');
 
+  // 下載菜單：按 export.faces 逐版列出長圖 JPG（與出圖產物同名）
+  const exp = meta.export || {};
+  const expBase = exp.base || `${meta.id}-scroll`;
+  const dlItems = Object.entries(exp.faces || { song: 'Song', jing: 'Jing', xing: 'Xingkai' }).map(([role, tag]) => {
+    const label = (meta.faces[role] && meta.faces[role].label) || role;
+    const file = `${expBase}-${tag}.jpg`;
+    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} JPG</a>`;
+  }).join('\n      ');
+
   const columnsHtml = tree.columns.map(columnHtml).join('\n');
   const first = tree.columns[0];
   const hudInit = `${esc(first.sec)} · 第 <b>${String(first.line).padStart(3, '0')}</b> 行 · ${first.count}字`;
@@ -148,6 +157,12 @@ ${VIEWER_CSS()}
     <span class="seg" role="group" aria-label="字體">
       ${faceButtons}
     </span>
+    <div class="dl">
+      <button class="btn" id="dl" type="button" aria-haspopup="true" aria-expanded="false">下載</button>
+      <div class="dl-menu" role="menu" aria-label="下載長圖">
+      ${dlItems}
+      </div>
+    </div>
     <button class="btn txt on" id="mode" type="button" aria-pressed="false">摹本</button>
     <button class="btn txt" id="rule" type="button" aria-pressed="false">界行</button>
     <button class="btn ico" id="minus" type="button" aria-label="縮小">−</button>

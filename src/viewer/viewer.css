@@ -155,6 +155,15 @@ button{font:inherit;color:inherit}
 .seg .btn:last-child{border-right:0}
 .seg .btn.on{background:linear-gradient(180deg,#793325,#5c261b);color:#ffe9c9}
 
+/* 下載菜單 */
+.dl{position:relative}
+.dl-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:190px;display:none;
+  background:#241f19;border:1px solid #574d3f;box-shadow:0 14px 40px rgba(0,0,0,.55);padding:6px;z-index:40}
+.dl.on .dl-menu{display:block}
+.dl-item{display:block;padding:10px 14px;font-size:14px;letter-spacing:.06em;color:#e5dcca;
+  text-decoration:none;white-space:nowrap;border-radius:2px}
+.dl-item:hover,.dl-item:focus-visible{background:#322b22;color:#ffe9c9;outline:none}
+
 .viewer{position:relative;height:calc(100vh - 76px);overflow:auto;cursor:grab;
   background:radial-gradient(120% 140% at 50% 40%,#1c1915,#0f0e0c);
   scrollbar-color:#6d6252 #1c1a16;scrollbar-width:thin}
