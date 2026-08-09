@@ -13,7 +13,7 @@ function upd(){
 }
 function setZoom(z){
   const max=Math.max(1,viewer.scrollWidth-viewer.clientWidth),fr=max-viewer.scrollLeft;
-  const old=zoom; zoom=Math.min(1.6,Math.max(.55,z));
+  const old=zoom; zoom=Math.min(1.6,Math.max(.45,z));
   document.documentElement.style.setProperty('--zoom',zoom.toFixed(3));
   requestAnimationFrame(()=>{
     const nm=Math.max(1,viewer.scrollWidth-viewer.clientWidth);
@@ -56,7 +56,8 @@ addEventListener('keydown',e=>{
 });
 const WRAPH=__WRAP_H__;
 function fit(){
-  const z=Math.min(1.25,Math.max(.45,(viewer.clientHeight-26)/WRAPH));
+  // 与 .stage min-height（wrapH*zoom+24）同参：fit 后卷高恰好铺满视口，上下仅留呼吸边
+  const z=Math.min(1.6,Math.max(.45,(viewer.clientHeight-24)/WRAPH));
   zoom=z; document.documentElement.style.setProperty('--zoom',z.toFixed(3));
 }
 requestAnimationFrame(()=>{fit();requestAnimationFrame(()=>{toStart();upd();});});

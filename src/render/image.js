@@ -39,8 +39,17 @@ async function renderImages(tree, htmlPath, outDir) {
     // 出图模式：注入 B 级 fontLocal 字体的 file:// url，使未安装该字体的出图机也能渲染
     const exportCss = resolveExportFaces(tree.meta, loadRegistry());
     if (exportCss) await page.addStyleTag({ content: exportCss });
-    // 固定 zoom=1，保证整卷像素尺寸精确（12282×868 × scale）
-    await page.evaluate(() => document.documentElement.style.setProperty('--zoom', '1'));
+    // 等查看器首帧 fit() 跑完再锁 zoom=1：load 比 networkidle 早，会与 fit 竞态，
+    // 致 --zoom 被覆写为 fit 值、截图窗口按放大矩形裁切（卷尾裁切、右侧溢白）
+    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    await page.evaluate(() => {
+      // 固定 zoom=1，保证整卷像素尺寸精确（12282×868 × scale）
+      document.documentElement.style.setProperty('--zoom', '1');
+      const v = document.getElementById('viewer');
+      v.scrollLeft = 0; v.scrollTop = 0;
+      // 固定定位的卷况/进度条不入出图
+      document.querySelectorAll('.hud,.bar').forEach((e) => (e.style.display = 'none'));
+    });
 
     // .wrap 元素的精确版面矩形（CSS px），作为分片 clip 基准
     const rect = await page.locator('.wrap').boundingBox();
