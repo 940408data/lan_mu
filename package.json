@@ -1,0 +1,24 @@
+{
+  "name": "lan-mu",
+  "version": "0.1.0",
+  "private": true,
+  "description": "兰亩 · 古籍书画数字复刻：一次校录，多态呈现（Web 交互卷 / JPG 长图 / PDF）",
+  "type": "commonjs",
+  "scripts": {
+    "new": "node tools/cli.js new",
+    "validate": "node tools/cli.js validate",
+    "verify": "node tools/verify-replica.js",
+    "build": "node tools/cli.js build",
+    "font:register": "node tools/cli.js font:register",
+    "dev": "node tools/serve.js"
+  },
+  "dependencies": {
+    "fontkit": "^2.0.4",
+    "jpeg-js": "^0.4.4",
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.49.0",
+    "pngjs": "^7.0.0",
+    "subset-font": "^2.5.0",
+    "yaml": "^2.6.0"
+  }
+}

@@ -1,0 +1,213 @@
+/* 兰亩 · 手卷查看器样式（:root 变量与 @font-face 由 render/html.js 按作品生成注入） */
+.paper{
+  position:absolute; width:var(--paper-w); height:var(--paper-h); overflow:hidden;
+  background:
+    radial-gradient(120% 160% at 12% 8%, rgba(255,250,232,.30), transparent 46%),
+    radial-gradient(140% 180% at 74% 96%, rgba(120,88,44,.16), transparent 52%),
+    repeating-linear-gradient(90deg, rgba(96,74,44,.055) 0 .6px, transparent .6px 2.4px),
+    repeating-linear-gradient(0deg, rgba(96,74,44,.030) 0 1px, transparent 1px 96px),
+    linear-gradient(178deg,#eee5cd 0%, #e2d6b7 38%, #dccfae 66%, #e7dcc0 100%);
+  box-shadow:0 22px 54px rgba(0,0,0,.5), 0 0 0 1px rgba(255,248,228,.18);
+}
+.paper::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:9;
+  box-shadow:inset 0 20px 34px rgba(103,76,40,.13), inset 0 -18px 30px rgba(90,63,32,.13),
+             inset 90px 0 90px rgba(112,80,38,.07), inset -90px 0 90px rgba(112,80,38,.07);
+}
+.tex,.seals{position:absolute; inset:0; width:100%; height:100%;}
+.tex{z-index:1; mix-blend-mode:multiply;}
+.seals{z-index:6;}
+.lan{fill:#2c2419;}
+.seal-mark text{font-family:var(--f-jing); font-weight:600;}
+
+.ribbon{
+  position:absolute; top:var(--top); right:var(--lead); height:var(--text-h);
+  display:flex; flex-direction:row-reverse; align-items:flex-start; z-index:4;
+}
+.col{
+  position:relative; width:var(--pitch); flex:0 0 var(--pitch); height:var(--text-h);
+  writing-mode:vertical-rl; text-orientation:upright; font-style:normal;
+  font-family:var(--face); font-weight:400; font-size:var(--glyph); line-height:1;
+  letter-spacing:calc(var(--ch) - var(--glyph)); color:var(--ink);
+  padding-right:7px; outline:none;
+}
+.col > .t{display:block; white-space:nowrap; font-style:normal;}
+.col > .t > i{font-style:normal;}
+.k0{opacity:1}.k1{opacity:.93}.k2{opacity:.86}.k3{opacity:.79}.k4{opacity:.72}.k5{opacity:.65}
+.j0{position:relative;left:0;top:0}
+.j1{position:relative;left:.4px;top:-.3px}
+.j2{position:relative;left:-.35px;top:.3px}
+.j3{position:relative;left:.25px;top:.45px}
+.j4{position:relative;left:-.45px;top:-.2px}
+.j5{position:relative;left:.15px;top:-.45px}
+.j6{position:relative;left:-.2px;top:.5px}
+.j7{position:relative;left:.45px;top:.2px}
+
+.title{font-size:26px; font-weight:600; letter-spacing:calc(var(--ch) - 26px + 3px);}
+.score-title{font-size:27px; font-weight:600;}
+.colophon{font-size:25px; font-weight:600;}
+.catalog{font-size:22px; letter-spacing:calc(var(--ch) - 22px);}
+.intro{font-size:23.5px;}
+
+.note{
+  position:absolute; left:2px; top:var(--nt); height:var(--nh);
+  writing-mode:vertical-rl; text-orientation:upright; white-space:normal;
+  font:400 var(--nfs)/1.35 var(--face); font-style:normal;
+  letter-spacing:.6px; color:var(--note); opacity:.88; z-index:5;
+}
+.paper.rule .col{ border-left:1px solid rgba(104,78,44,.16); }
+
+/* ── 三體：宋體（刊本）· 寫經體（唐人寫經）· 行楷（筆意流走）── */
+.paper{--face:var(--f-song)}
+.paper.f-song{--face:var(--f-song)}
+.paper.f-jing{--face:var(--f-jing)}
+.paper.f-xing{--face:var(--f-xing)}
+.paper.f-jing .col{font-weight:400}
+.paper.f-xing .col{font-weight:400}
+.paper.f-jing .t i,.paper.f-xing .t i{display:inline-block}
+.paper.f-jing .h0{transform:rotate(.9deg) scale(1.012)}
+.paper.f-jing .h1{transform:rotate(-.7deg) scale(.99)}
+.paper.f-jing .h2{transform:rotate(1.4deg) scale(1.004)}
+.paper.f-jing .h3{transform:rotate(-1.2deg) scale(1.02)}
+.paper.f-jing .h4{transform:rotate(.4deg) scale(.984)}
+.paper.f-jing .h5{transform:rotate(-.4deg) scale(1.008)}
+.paper.f-jing .h6{transform:rotate(1.1deg) scale(.994)}
+.paper.f-jing .h7{transform:rotate(-1.5deg) scale(1.016)}
+.paper.f-jing .h8{transform:rotate(.2deg) scale(1.0)}
+.paper.f-jing .h9{transform:rotate(-.9deg) scale(.988)}
+.paper.f-xing .h0{transform:rotate(2.2deg) skewX(-2.5deg) scale(1.03)}
+.paper.f-xing .h1{transform:rotate(-1.8deg) skewX(-3.5deg) scale(.97)}
+.paper.f-xing .h2{transform:rotate(3.0deg) skewX(-2deg) scale(1.01)}
+.paper.f-xing .h3{transform:rotate(-2.6deg) skewX(-4deg) scale(1.045)}
+.paper.f-xing .h4{transform:rotate(1.2deg) skewX(-3deg) scale(.955)}
+.paper.f-xing .h5{transform:rotate(-.8deg) skewX(-2.2deg) scale(1.02)}
+.paper.f-xing .h6{transform:rotate(2.6deg) skewX(-4.2deg) scale(.985)}
+.paper.f-xing .h7{transform:rotate(-3.2deg) skewX(-2.8deg) scale(1.035)}
+.paper.f-xing .h8{transform:rotate(.6deg) skewX(-3.2deg) scale(1.0)}
+.paper.f-xing .h9{transform:rotate(-2.0deg) skewX(-2.6deg) scale(.965)}
+
+/* 毛筆字面本身已具提按粗細：濃淡一律取消，亞像素位移一律歸零，
+   否則同一字面會因光柵化落點不同而顯出深淺，即所謂「忽濃忽淡」。 */
+.paper.f-xing .k0,.paper.f-xing .k1,.paper.f-xing .k2,
+.paper.f-xing .k3,.paper.f-xing .k4,.paper.f-xing .k5{opacity:1}
+.paper.f-jing .k0,.paper.f-jing .k1,.paper.f-jing .k2,
+.paper.f-jing .k3,.paper.f-jing .k4,.paper.f-jing .k5{opacity:1}
+.paper.f-xing .j0,.paper.f-xing .j1,.paper.f-xing .j2,.paper.f-xing .j3,
+.paper.f-xing .j4,.paper.f-xing .j5,.paper.f-xing .j6,.paper.f-xing .j7,
+.paper.f-jing .j0,.paper.f-jing .j1,.paper.f-jing .j2,.paper.f-jing .j3,
+.paper.f-jing .j4,.paper.f-jing .j5,.paper.f-jing .j6,.paper.f-jing .j7{
+  position:static;left:auto;top:auto}
+.paper.f-xing .t i,.paper.f-jing .t i{
+  text-rendering:geometricPrecision;
+  -webkit-font-smoothing:antialiased;
+  transform-origin:50% 50%;
+  will-change:auto}
+/* 欹側取整數角度，令每字經同一條光柵化路徑，粗細方能齊一 */
+.paper.f-xing .h0{transform:rotate(2deg) skewX(-2deg)}
+.paper.f-xing .h1{transform:rotate(-1deg) skewX(-2deg)}
+.paper.f-xing .h2{transform:rotate(2deg) skewX(-3deg)}
+.paper.f-xing .h3{transform:rotate(-2deg) skewX(-3deg)}
+.paper.f-xing .h4{transform:rotate(1deg) skewX(-2deg)}
+.paper.f-xing .h5{transform:rotate(-1deg) skewX(-3deg)}
+.paper.f-xing .h6{transform:rotate(2deg) skewX(-2deg)}
+.paper.f-xing .h7{transform:rotate(-2deg) skewX(-2deg)}
+.paper.f-xing .h8{transform:rotate(1deg) skewX(-3deg)}
+.paper.f-xing .h9{transform:rotate(-1deg) skewX(-2deg)}
+.paper.f-jing .h0{transform:rotate(1deg)}
+.paper.f-jing .h1{transform:rotate(-1deg)}
+.paper.f-jing .h2{transform:rotate(1deg)}
+.paper.f-jing .h3{transform:rotate(-1deg)}
+.paper.f-jing .h4{transform:rotate(0deg)}
+.paper.f-jing .h5{transform:rotate(-1deg)}
+.paper.f-jing .h6{transform:rotate(1deg)}
+.paper.f-jing .h7{transform:rotate(-1deg)}
+.paper.f-jing .h8{transform:rotate(0deg)}
+.paper.f-jing .h9{transform:rotate(-1deg)}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#14120f;color:#e9e2d4}
+body{overflow:hidden;font-family:var(--ui)}
+button{font:inherit;color:inherit}
+
+.topbar{
+  height:66px;display:flex;align-items:center;gap:16px;padding:0 20px;
+  background:linear-gradient(180deg,#1b1814,#141210);
+  border-bottom:1px solid rgba(224,210,182,.13);position:relative;z-index:20;
+}
+.mark{
+  width:32px;height:40px;flex:0 0 auto;display:grid;place-items:center;writing-mode:vertical-rl;
+  font:600 12px/1 var(--kai);letter-spacing:2px;color:#c04435;border:1.5px solid #9d3126;border-radius:2px;
+}
+.tt h1{margin:0;font:500 20px/1.25 var(--kai);letter-spacing:.10em;color:#f2ecdd}
+.tt p{margin:4px 0 0;font-size:10.5px;letter-spacing:.20em;color:#9c917d}
+.facts{display:flex;gap:10px;margin-right:auto;flex-wrap:wrap}
+.fact{border-left:1px solid #443d33;padding-left:10px;color:#a99e8a;font-size:10.5px;white-space:nowrap}
+.fact b{display:block;color:#ece3d0;font-size:13px;font-weight:600;letter-spacing:.02em}
+.tools{display:flex;gap:6px;align-items:center}
+.btn{min-height:34px;padding:0 11px;border:1px solid #4a4339;border-radius:2px;background:#1f1c18;
+  cursor:pointer;font-size:12px;letter-spacing:.06em;transition:.15s}
+.btn:hover,.btn:focus-visible,.btn.on{border-color:#8d8069;background:#2a251f;outline:none}
+.btn.ico{width:34px;padding:0;font-size:16px}
+.seg{display:flex;border:1px solid #4a4339;border-radius:2px;overflow:hidden}
+.seg .btn{border:0;border-radius:0;border-right:1px solid #4a4339;font-family:var(--f-jing)}
+.seg .btn:last-child{border-right:0}
+.seg .btn.on{background:#3a332a;color:#f4ecd9}
+
+.viewer{position:relative;height:calc(100vh - 66px);overflow:auto hidden;cursor:grab;
+  background:radial-gradient(120% 140% at 50% 40%,#1c1915,#0f0e0c);
+  scrollbar-color:#6d6252 #1c1a16;scrollbar-width:thin}
+.viewer.drag{cursor:grabbing;user-select:none}
+.stage{width:calc(var(--wrap-w) * var(--zoom));height:100%;min-height:calc(var(--wrap-h) + 40px);position:relative}
+.wrap{width:var(--wrap-w);height:var(--wrap-h);position:absolute;left:0;top:50%;
+  transform:translateY(-50%) scale(var(--zoom));transform-origin:left center}
+.silk{position:absolute;inset:0 var(--roll);
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 5px),
+    repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 4px),
+    linear-gradient(180deg,#4d5a58,#3c4746 42%,#43504e);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.4)}
+.silk::before{content:"";position:absolute;inset:calc(var(--silk) - 7px) calc(var(--ends) - 7px);
+  border:1px solid rgba(196,168,110,.42)}
+.paper{left:calc(var(--roll) + var(--ends));top:var(--silk)}
+.roller{position:absolute;top:-6px;bottom:-6px;width:var(--roll);
+  background:linear-gradient(90deg,#2d2117,#5a4530 30%,#7a5f40 52%,#3d2d1e);
+  border-radius:3px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.roller.l{left:0} .roller.r{right:0}
+
+.scan{display:none;position:absolute;inset:0;z-index:11;background:#16130f}
+.scan img{width:100%;height:100%;object-fit:fill;display:block}
+.paper.orig .scan{display:block}
+
+.hud{position:fixed;left:20px;bottom:20px;z-index:18;padding:8px 12px;
+  background:rgba(22,20,17,.9);border:1px solid rgba(214,199,170,.22);
+  color:#d5cdbc;font-size:11px;letter-spacing:.05em;pointer-events:none}
+.hud b{color:#f0e8d6;font-weight:600}
+.bar{position:fixed;right:20px;bottom:22px;z-index:18;width:210px;height:4px;background:#2e2a23;border-radius:6px;overflow:hidden}
+.bar span{display:block;height:100%;width:10%;background:#a3957a;border-radius:6px}
+.panel{position:fixed;right:16px;top:78px;z-index:30;width:min(400px,calc(100vw - 32px));
+  max-height:calc(100vh - 110px);overflow:auto;padding:20px;background:#1d1a16;
+  border:1px solid #4e463b;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none}
+.panel.on{display:block}
+.panel h2{margin:0 0 4px;font:500 19px/1.3 var(--kai);color:#f0e9da}
+.panel h3{margin:16px 0 6px;font:500 13px/1.4 var(--kai);color:#cbbfa6;letter-spacing:.08em}
+.panel p{margin:8px 0;font-size:12px;line-height:1.85;color:#c9c0af}
+.panel table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.panel th,.panel td{padding:6px 2px;border-bottom:1px solid #3a342c;text-align:left;font-weight:400;color:#b3a894}
+.panel td{text-align:right;color:#eee6d4}
+.panel a{color:#c8b48d}
+@media(max-width:860px){
+  .topbar{height:58px;padding:0 10px;gap:8px}
+  .mark,.facts,.tt p,.btn.txt{display:none}
+  .tt h1{font-size:16px} .viewer{height:calc(100vh - 58px)}
+  .bar{width:120px;right:12px} .hud{left:12px;bottom:12px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* ── 列印（PDF 輸出）：隱去界面，長卷鋪平為單頁 ── */
+@media print{
+  html,body{height:auto;overflow:visible;background:#14120f}
+  .topbar,.hud,.bar,.panel{display:none!important}
+  .viewer{height:auto;overflow:visible;cursor:default;background:none}
+  .stage{width:var(--wrap-w);height:var(--wrap-h);min-height:0}
+  .wrap{position:static;transform:none}
+}

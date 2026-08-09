@@ -1,0 +1,46 @@
+fonts:
+  source-han-serif:
+    name: 思源宋體
+    family: Source Han Serif TC
+    author: Adobe / Google
+    license: A
+    licenseName: SIL Open Font License 1.1
+    source: https://github.com/adobe-fonts/source-han-serif
+    file: src/fonts/src/source-han-serif/SourceHanSerifTC-Regular.otf
+    allowEmbed: true
+    status: 就绪
+    note: 下载后置于 file 路径，运行 npm run build 自动子集化
+  fahua-wenkai:
+    name: 法华文楷（标准版）
+    family: FahwaWenkai-Standard
+    familyLocal: 法华文楷标准版
+    author: 法华文楷字体作者（见来源页作者声明）
+    license: B
+    licenseName: 作者声明免费商用（不可修改字体及制作衍生版本、不可嵌入式用途）
+    source: https://www.100font.com/thread-1714.htm
+    file: src/fonts/src/fahua-wenkai/FahwaWenkai-Standard.ttf
+    allowEmbed: false
+    status: 待下载
+    note: 本机安装后可用于 JPG/PDF 出图与 local() 引用；嵌入分发须先取得作者书面确认
+  lxgw-wenkai-tc:
+    name: 霞鹜文楷 TC
+    family: LXGW WenKai TC
+    author: lxgw / 霞鹜文楷社区
+    license: A
+    licenseName: SIL Open Font License 1.1
+    source: https://github.com/lxgw/LxgwWenkaiTC
+    file: src/fonts/src/lxgw-wenkai-tc/LXGWWenKaiTC-Regular.ttf
+    allowEmbed: true
+    status: 就绪
+    note: 繁体字形完备（25764 glyphs），用作 xing 角色 A 级嵌入分发默认
+  ac-gyosyo:
+    name: 英椎行书
+    family: acgyosyo
+    author: ac-fonti（日本）
+    license: B
+    licenseName: 作者声明免费商用（不可嵌入式用途、不可再配布）
+    source: https://www.ziti.net.cn/mianfeiziti/1236.html
+    file: src/fonts/src/ac-gyosyo/acgyosyo.ttf
+    allowEmbed: false
+    status: 就绪
+    note: 日式行书 15563 glyphs，本机安装后用于行楷版出图（local() 引用），不进 dist
