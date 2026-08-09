@@ -1,0 +1,66 @@
+id: guilai
+title: 歸去來兮辭
+subtitle: 陶淵明 · 數字復刻
+docTitle: 歸去來兮辭 — 數字復刻
+export:
+  base: Guilai-Scroll
+  faces:
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+mark: 蘭木
+ariaLabel: 歸去來兮辭 橫卷，自右向左讀
+category: 書
+era: 東晉
+layout: scroll
+seed: 40501
+expect:
+  lines: 31
+  chars: 339
+  notes: 0
+scroll:
+  ch: 28
+  pitch: 46
+  glyph: 23
+  textH: 364    # 13 × 28（最長列十三字）
+  top: 68
+  paperW: 2336  # 400 + 31×46 + 510
+  paperH: 500   # 364 + 2×68
+  lead: 400
+  tail: 510
+  silk: 44
+  ends: 96
+  roll: 24
+  wrapW: 2576   # 2336 + 2×96 + 2×24
+  wrapH: 588    # 500 + 2×44
+  noteFontSize: 9.4
+faces:
+  song:
+    font: source-han-serif
+    label: 宋體
+  jing:
+    font: fahua-wenkai
+    label: 寫經體
+  xing:
+    font: lxgw-wenkai-tc
+    fontLocal: ac-gyosyo
+    label: 行楷
+fallbackStacks:
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
+  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+sources:
+  - label: 維基文庫底本
+    url: https://zh.wikisource.org/zh-hant/歸去來兮辭
+aboutHtml: |-
+  <h2>關於這卷</h2>
+    <p>《歸去來兮辭》，東晉義熙元年（405），陶淵明任彭澤令八十餘日，不願為五斗米折腰，自免去職，歸隱柴桑，臨行作此辭。全文三百三十九字，辭前有序（此卷不錄）。歐陽修嘗言：「晉無文章，惟陶淵明《歸去來兮辭》一篇而已。」</p>
+    <h3>復刻取捨</h3>
+    <p>本卷以蘭木手卷引擎重排：行文依維基文庫底本。與幽蘭、蘭亭之勻整不同，此卷<b>依骈對斷句、參差成行</b>，凡三十一行，短者三字（已矣乎）、長者十三字，行氣隨文意起伏。字距 28、行距 46，墨色按「蘸墨—行筆—墨盡」的節奏逐字微調濃淡。無夾注。</p>
+    <p>點綴取田園意度：卷首折枝一支、拖尾補蘭一叢，卷中兩處自天頭地腳淡淡探入一葉；引首鈐「歸去來兮」白文印與「田園」朱文印，拖尾鈐「松菊猶存」一印，暗合「三徑就荒，松菊猶存」之句。皆極淡，遠觀若無，近察方見。</p>
+    <h3>三體</h3>
+    <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，如唐人寫經；<b>行楷</b>筆勢流走，最得辭中蕭散之致。三體共用同一版心格律，行數字數不變。若你的系統未裝相應中文字體，會自動退回可用的最近字體。</p>
+    <h3>操作</h3>
+    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · Esc 關閉本板</p>
+    <p><a href="https://zh.wikisource.org/zh-hant/歸去來兮辭" target="_blank" rel="noreferrer">維基文庫釋文</a></p>
