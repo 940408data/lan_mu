@@ -1,0 +1,67 @@
+id: xinjing
+title: 般若波羅蜜多心經
+subtitle: 玄奘譯 · 數字復刻
+docTitle: 般若波羅蜜多心經 — 數字復刻
+export:
+  base: Xinjing-Scroll
+  faces:
+    song: Song
+    jing: Jing
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+mark: 蘭木
+ariaLabel: 般若波羅蜜多心經 橫卷，自右向左讀
+category: 經
+era: 唐
+layout: scroll
+seed: 64923
+expect:
+  lines: 28
+  chars: 268
+  notes: 0
+scroll:
+  ch: 28
+  pitch: 46
+  glyph: 23
+  textH: 392    # 14 × 28（最長列十四字）
+  top: 68
+  paperW: 2198  # 400 + 28×46 + 510
+  paperH: 528   # 392 + 2×68
+  lead: 400
+  tail: 510
+  silk: 44
+  ends: 96
+  roll: 24
+  wrapW: 2438   # 2198 + 2×96 + 2×24
+  wrapH: 616    # 528 + 2×44
+  noteFontSize: 9.4
+faces:
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  jing:
+    font: fahua-wenkai
+    label: 寫經體
+  xing:
+    font: lxgw-wenkai-tc
+    fontLocal: ac-gyosyo
+    label: 行楷
+fallbackStacks:
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
+  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+sources:
+  - label: 維基文庫底本
+    url: https://zh.wikisource.org/zh-hant/般若波羅蜜多心經
+aboutHtml: |-
+  <h2>關於這卷</h2>
+    <p>《般若波羅蜜多心經》，唐貞觀二十三年（649）玄奘三藏譯於終南山翠微宮，全文二百六十字，為般若部之心髓，漢地傳誦最廣之佛經。</p>
+    <h3>復刻取捨</h3>
+    <p>本卷以蘭木手卷引擎重排：經題一列居首，經文依文意斷句、參差成行，凡二十七列，短者四字（不增不減、真實不虛）、長者十四字，行氣隨經義起伏。字距 28、行距 46，墨色按「蘸墨—行筆—墨盡」的節奏逐字微調濃淡。無夾注。</p>
+    <p>點綴取蘭木意度：卷首折枝一支、拖尾補蘭一叢，卷中兩處自天頭地腳淡淡探入一葉；引首鈐「觀自在」朱文印，拖尾鈐「心無罣礙」朱文印與「般若」白文印。皆極淡，遠觀若無，近察方見。</p>
+    <h3>三體</h3>
+    <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，如唐人寫經，最合此卷本色；<b>行楷</b>筆勢流走。三體共用同一版心格律，行數字數不變。若你的系統未裝相應中文字體，會自動退回可用的最近字體。</p>
+    <h3>操作</h3>
+    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · 「下載」存長圖 · Esc 關閉本板</p>
+    <p><a href="https://zh.wikisource.org/zh-hant/般若波羅蜜多心經" target="_blank" rel="noreferrer">維基文庫釋文</a></p>

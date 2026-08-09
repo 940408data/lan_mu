@@ -1,0 +1,55 @@
+seals:
+  # 引首：觀自在（朱文豎三）
+  - x: 2080
+    y: 110
+    rotate: -1.1
+    w: 30
+    h: 82
+    style: 朱文
+    fontSize: 14
+    chars:
+      - ch: 觀
+        x: 15
+        y: 16
+      - ch: 自
+        x: 15
+        y: 41
+      - ch: 在
+        x: 15
+        y: 66
+  # 拖尾：心無罣礙（朱文四）
+  - x: 180
+    y: 200
+    rotate: 0.9
+    w: 56
+    h: 56
+    style: 朱文
+    fontSize: 15
+    chars:
+      - ch: 心
+        x: 40
+        y: 16
+      - ch: 無
+        x: 40
+        y: 40
+      - ch: 罣
+        x: 16
+        y: 16
+      - ch: 礙
+        x: 16
+        y: 40
+  # 拖尾：般若（白文豎二）
+  - x: 96
+    y: 356
+    rotate: 1.2
+    w: 30
+    h: 56
+    style: 白文
+    fontSize: 14
+    chars:
+      - ch: 般
+        x: 15
+        y: 16
+      - ch: 若
+        x: 15
+        y: 40
