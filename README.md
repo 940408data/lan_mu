@@ -44,7 +44,7 @@ npm run new <id>  # 新建作品脚手架
 
 角色（faces）配置见 `works/<id>/meta.yaml`，支持 `font`（主）+ `fontLocal`（B 级兜底）双轨。字体源文件置于 `src/fonts/src/<id>/`（不入仓库，按 `fonts.yaml` 中 `source` 自行下载）。
 
-当前幽兰用字：宋体（source-han-serif，A）、寫經體（fahua-wenkai，A，待补文件）、行楷（lxgw-wenkai-tc，A + 英椎行书 ac-gyosyo，B 双轨）。
+当前用字：宋体（zhuque-fangsong 朱雀仿宋，A，改刻自民国活字「南宋」；此前为思源宋体 source-han-serif）、寫經體（fahua-wenkai，B，待补文件）、行楷（lxgw-wenkai-tc，A + 英椎行书 ac-gyosyo，B 双轨）。
 
 ## 出图方案
 

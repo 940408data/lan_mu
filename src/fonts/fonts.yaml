@@ -22,6 +22,17 @@ fonts:
     allowEmbed: false
     status: 待下载
     note: 本机安装后可用于 JPG/PDF 出图与 local() 引用；嵌入分发须先取得作者书面确认
+  zhuque-fangsong:
+    name: 朱雀仿宋
+    family: Zhuque Fangsong (technical preview)
+    author: 璇璣造字 TrionesType
+    license: A
+    licenseName: SIL Open Font License 1.1
+    source: https://github.com/TrionesType/zhuque
+    file: src/fonts/src/zhuque-fangsong/ZhuqueFangsong-Regular.ttf
+    allowEmbed: true
+    status: 就绪
+    note: v0.212 预覽測試版，改刻自民國活字「南宋」；13805 glyphs，幽蘭夾注僻字搯唈璅淥缺失（自動回退）
   lxgw-wenkai-tc:
     name: 霞鹜文楷 TC
     family: LXGW WenKai TC
