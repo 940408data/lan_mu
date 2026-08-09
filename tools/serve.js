@@ -1,4 +1,4 @@
-/** 预览服务器：托管 dist/works/youlan + 本机增强
+/** 预览服务器：托管 dist/（全部作品）+ 本机增强
  *  B 级字体（英椎行书等）经 /b-fonts/ HTTP 路由注入预览 HTML，
  *  使本机预览可见真行书（dist HTML 本身不含此注入，B 级不泄漏）。
  *  注：file:// 字体在 http:// origin 被 Chromium 阻止，故走 HTTP 同源路由。 */
@@ -6,8 +6,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
+const { listWorks } = require('../src/core/load');
 
-const ROOT = path.join(__dirname, '..', 'dist', 'works', 'youlan');
+const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
   '.html': 'text/html;charset=utf-8', '.css': 'text/css', '.js': 'application/javascript',
   '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf', '.otf': 'font/otf',
@@ -41,7 +42,13 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-  if (p === '/') p = '/index.html';
+  if (p === '/') {
+    // 作品入口页
+    const links = listWorks().map((id) => `<li><a href="/works/${id}/index.html">${id}</a></li>`).join('');
+    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end(`<!doctype html><meta charset="utf-8"><title>蘭木 · 作品列表</title><body style="font:16px/2 serif;padding:2em"><h2>蘭木 · 作品列表</h2><ul>${links}</ul></body>`);
+    return;
+  }
   const f = path.join(ROOT, p);
   if (!f.startsWith(ROOT)) { res.writeHead(403); res.end('forbidden'); return; }
   fs.readFile(f, (err, buf) => {
@@ -53,4 +60,12 @@ const server = http.createServer((req, res) => {
     res.end(buf);
   });
 });
-server.listen(8125, () => console.log('serve http://localhost:8125/ (B-fonts: ' + Object.keys(bRoutes).join(',') + ')'));
+// 端口自动顺延（旧进程未退出时换下一个端口）
+const tryListen = (port) => {
+  server.once('error', (e) => {
+    if (e.code === 'EADDRINUSE') { console.warn(`端口 ${port} 被占用，改用 ${port + 1}`); tryListen(port + 1); }
+    else throw e;
+  });
+  server.listen(port, () => console.log(`serve http://localhost:${port}/ (B-fonts: ${Object.keys(bRoutes).join(',')})`));
+};
+tryListen(Number(process.argv[2]) || 8125);

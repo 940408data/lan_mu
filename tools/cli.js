@@ -1,5 +1,5 @@
 /**
- * 兰亩 CLI：new / validate / build / font:register / font:subset
+ * 兰木 CLI：new / validate / build / font:register / font:subset
  * 用法：
  *   node tools/cli.js build [--work=youlan] [--only=html,jpg,pdf]
  *   node tools/cli.js validate [--work=youlan]
@@ -110,7 +110,7 @@ function cmdNew(id, title) {
     id,
     title: title || '未題名',
     subtitle: '數字復刻',
-    mark: '蘭畝',
+    mark: '蘭木',
     ariaLabel: `${title || id} 橫卷，自右向左讀`,
     category: '經', // 經 / 史 / 禮樂 / 書 / 畫
     era: '',
@@ -184,7 +184,7 @@ function cmdFontRegister(id) {
     else if (cmd === 'new') cmdNew(flags._ && flags._[0], flags.title);
     else if (cmd === 'font:register') cmdFontRegister(flags._ && flags._[0]);
     else {
-      console.log('兰亩 CLI 命令: build / validate / new / font:register');
+      console.log('兰木 CLI 命令: build / validate / new / font:register');
       process.exit(cmd ? 1 : 0);
     }
   } catch (e) {

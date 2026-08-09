@@ -1,8 +1,10 @@
-# 兰亩（lan_mu）
+# 兰木（lan_mu）
 
-古代书籍、书法、绘画的现代数字复刻。「一次校录，多态呈现」——同一份结构化数据，产出 Web 交互卷、JPG/PNG 长图与 PDF 三种形态。
+兰，是幽兰之兰，也是兰亭之兰；木，是桐木之木。兰木致力于书法、古籍、音乐的现代数字文创。「一次校录，多态呈现」——同一份结构化数据，产出 Web 交互卷、JPG/PNG 长图与 PDF 三种形态。
 
 首个复刻对象：**《碣石調 · 幽蘭第五》**唐人写本（东京国立博物馆 TB-1393），现存唯一古琴文字谱，全卷 242 行、4758 字。
+
+第二部：**《蘭亭集序》**（神龙本字序，27 行 × 12 字，324 字）——纯数据接入，引擎零改动，验证了模板通用性。
 
 ## 架构
 
@@ -10,9 +12,10 @@
 
 ```
 works/        内容数据层（每部作品一个目录，纯 YAML + 资产）
-  └─ youlan/  meta.yaml（元信息/版式/导出参数）
-              text.yaml（正文 + marks 笔墨编码 + 夹注）
-              seals.yaml（印章）ornaments.yaml（纸面装饰）assets/（扫描图等）
+  ├─ youlan/  meta.yaml（元信息/版式/导出参数）
+  │           text.yaml（正文 + marks 笔墨编码 + 夹注）
+  │           seals.yaml（印章）ornaments.yaml（纸面装饰）assets/（扫描图等）
+  └─ lanting/ 同构四件套；无 marks（按 seed 确定性生成）、无夹注/扫描图
 src/core/     版面引擎：load.js 读入 → typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
 src/fonts/    字体管线：fonts.yaml 登记册 / fonts.js 解析注入 / subset.js 子集化
 src/render/   渲染器：html.js（交互卷）/ image.js（JPG+PNG）/ pdf.js / browser.js
@@ -26,7 +29,7 @@ dist/         产物（gitignore，npm run build 生成）
 npm install
 npm run build     # 全量构建：字体子集 → HTML → 出图（JPG+PNG）→ PDF
 npm run verify    # 复刻保真验收：242 列逐字符比对、印章/纸面 svg 一致性
-npm run dev       # 本地预览服务器（含 B 级字体的本机注入）
+npm run dev       # 本地预览服务器（含 B 级字体的本机注入；首页为作品列表，端口被占自动顺延）
 npm run validate  # 数据校验
 npm run new <id>  # 新建作品脚手架
 ```
@@ -50,6 +53,10 @@ Playwright 无头 Chromium 打开 dist HTML，按字体角色逐版截图。整�
 ## 确定性
 
 版面由 `meta.yaml` 的 `seed` 与数据文件完全决定；构建产物逐字节可复现，`verify` 通过即视为复刻保真。
+
+## 模板通用性
+
+新作品仅需 `npm run new <id>` 后填四个 YAML（meta / text / seals / ornaments），引擎、字体管线、出图、预览全部复用：marks 可省略（按 seed 确定性生成），夹注/扫描图/纸纹/点缀均为可选。已知边界：`typeset.js` 的「谱文行」统计按幽兰分区名（谱题/文字谱/尾题）计数，其他作品该项为 0，不影响构建。
 
 ## 已知经验
 

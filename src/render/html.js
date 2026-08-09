@@ -58,10 +58,13 @@ function factsHtml(tree) {
   const { stats, meta } = tree;
   const items = [
     [stats.lines, '全卷行'],
-    [stats.scoreLines, '譜文行'],
+  ];
+  // 譜文行仅在作品确有譜文分区（如幽兰）时展示
+  if (stats.scoreLines) items.push([stats.scoreLines, '譜文行']);
+  items.push(
     [stats.chars.toLocaleString('en-US'), '摹錄字'],
     [stats.notes, '處夾注'],
-  ];
+  );
   if (meta.physical && meta.physical.lengthCm) items.push([meta.physical.lengthCm, '厘米']);
   return items.map(([v, l]) => `<span class="fact"><b>${v}</b>${l}</span>`).join('\n    ');
 }

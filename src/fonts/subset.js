@@ -37,9 +37,12 @@ async function buildSubsets(work, registry, distWorkDir) {
   const built = [];
   const warnings = [];
   const chars = collectChars(work);
-  // 子集字符集 = 作品用字 + 界面常用字（标题/按钮/说明面板内可能出现）
-  const uiExtra = '碣石調幽蘭第五唐人寫本文字譜數字復刻宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
-  const text = [...new Set(chars.join('') + uiExtra)].join('');
+  // 子集字符集 = 作品用字 + 本作品元信息用字 + 界面通用字（按钮/说明面板固定文案）
+  const m = work.meta;
+  const metaChars = [m.title, m.subtitle, m.mark, m.docTitle, m.ariaLabel,
+    ...Object.values(m.faces || {}).map((f) => f.label)].filter(Boolean).join('');
+  const uiExtra = '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
+  const text = [...new Set(chars.join('') + metaChars + uiExtra)].join('');
 
   const usedFontIds = new Set(
     Object.values(work.meta.faces || {})

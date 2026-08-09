@@ -1,4 +1,4 @@
-/* 兰亩 · 手卷查看器运行时（WRAP_H 由 render/html.js 注入） */
+/* 兰木 · 手卷查看器运行时（WRAP_H 由 render/html.js 注入） */
 (function(){
 const viewer=document.getElementById('viewer'),paper=document.getElementById('paper'),
       hud=document.getElementById('hud'),prog=document.getElementById('prog'),

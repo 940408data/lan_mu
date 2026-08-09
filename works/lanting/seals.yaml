@@ -1,0 +1,55 @@
+seals:
+  - x: 1860
+    y: 90
+    rotate: -1.2
+    w: 56
+    h: 56
+    style: 白文
+    fontSize: 15
+    chars:
+      - ch: 蘭
+        x: 40
+        y: 16
+      - ch: 亭
+        x: 40
+        y: 40
+      - ch: 雅
+        x: 16
+        y: 16
+      - ch: 集
+        x: 16
+        y: 40
+  - x: 1980
+    y: 310
+    rotate: 1.1
+    w: 30
+    h: 56
+    style: 朱文
+    fontSize: 14
+    chars:
+      - ch: 永
+        x: 15
+        y: 16
+      - ch: 和
+        x: 15
+        y: 40
+  - x: 175
+    y: 150
+    rotate: 0.9
+    w: 56
+    h: 56
+    style: 朱文
+    fontSize: 15
+    chars:
+      - ch: 曲
+        x: 40
+        y: 16
+      - ch: 水
+        x: 40
+        y: 40
+      - ch: 流
+        x: 16
+        y: 16
+      - ch: 觴
+        x: 16
+        y: 40

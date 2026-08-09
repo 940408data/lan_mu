@@ -2,7 +2,7 @@
   "name": "lan-mu",
   "version": "0.1.0",
   "private": true,
-  "description": "兰亩 · 古籍书画数字复刻：一次校录，多态呈现（Web 交互卷 / JPG 长图 / PDF）",
+  "description": "兰木 · 书法、古籍、音乐的现代数字文创：一次校录，多态呈现（Web 交互卷 / JPG 长图 / PDF）",
   "type": "commonjs",
   "scripts": {
     "new": "node tools/cli.js new",
