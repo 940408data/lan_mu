@@ -16,7 +16,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 function glyphsHtml(glyphs) {
   let out = '';
   for (const g of glyphs) {
-    out += g.ch === '　' ? '　' : `<i class="k${g.k} j${g.j} h${g.h}">${esc(g.ch)}</i>`;
+    out += g.ch === '　' ? '<i class="sp">　</i>' : `<i class="k${g.k} j${g.j} h${g.h}">${esc(g.ch)}</i>`;
   }
   return out;
 }

@@ -6,6 +6,7 @@ export:
   base: Guilai-Scroll
   faces:
     song: Song
+    jing: Jing
     xing: Xingkai
   scale: 1.6
   quality: 88

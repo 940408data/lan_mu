@@ -17,8 +17,11 @@ const o = fs.readFileSync(OLD, 'utf8');
 const n = fs.readFileSync(NEW, 'utf8');
 let fail = 0;
 
+// 渲染细节归一化：全角空格字盒包裹（<i class="sp">）不影响内容保真
+const norm = (h) => h.replace(/<i class="sp">　<\/i>/g, '　');
+
 // 1. 正文列逐行对比
-const colLines = (h) => h.split('\n').filter((l) => l.startsWith('<i class="col '));
+const colLines = (h) => norm(h).split('\n').filter((l) => l.startsWith('<i class="col '));
 const oc = colLines(o), nc = colLines(n);
 const colDiff = oc.reduce((s, l, i) => s + (l === nc[i] ? 0 : 1), 0) + Math.abs(oc.length - nc.length);
 console.log(`正文列: ${nc.length}/${oc.length}，差异 ${colDiff}`);

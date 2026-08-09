@@ -28,11 +28,13 @@
   position:relative; width:var(--pitch); flex:0 0 var(--pitch); height:var(--text-h);
   writing-mode:vertical-rl; text-orientation:upright; font-style:normal;
   font-family:var(--face); font-weight:400; font-size:var(--glyph); line-height:1;
-  letter-spacing:calc(var(--ch) - var(--glyph)); color:var(--ink);
+  --ls:calc(var(--ch) - var(--glyph)); letter-spacing:var(--ls); color:var(--ink);
   padding-right:7px; outline:none;
 }
 .col > .t{display:block; white-space:nowrap; font-style:normal;}
-.col > .t > i{font-style:normal;}
+/* 逐字固定内联尺寸：竖排字距不依赖字体垂直度量（回退楷体等无 vmtx 字体时合成进距偏大，导致末字出界）。
+   letter-spacing 不作用于 inline-block，故字距并入字盒高度（1em + --ls）。 */
+.col > .t > i{font-style:normal; display:inline-block; height:calc(1em + var(--ls));}
 .k0{opacity:1}.k1{opacity:.93}.k2{opacity:.86}.k3{opacity:.79}.k4{opacity:.72}.k5{opacity:.65}
 .j0{position:relative;left:0;top:0}
 .j1{position:relative;left:.4px;top:-.3px}
@@ -43,10 +45,10 @@
 .j6{position:relative;left:-.2px;top:.5px}
 .j7{position:relative;left:.45px;top:.2px}
 
-.title{font-size:26px; font-weight:600; letter-spacing:calc(var(--ch) - 26px + 3px);}
+.title{font-size:26px; font-weight:600; --ls:calc(var(--ch) - 26px + 3px); letter-spacing:var(--ls);}
 .score-title{font-size:27px; font-weight:600;}
 .colophon{font-size:25px; font-weight:600;}
-.catalog{font-size:22px; letter-spacing:calc(var(--ch) - 22px);}
+.catalog{font-size:22px; --ls:calc(var(--ch) - 22px); letter-spacing:var(--ls);}
 .intro{font-size:23.5px;}
 
 .note{

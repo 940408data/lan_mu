@@ -33,7 +33,9 @@ async function renderImages(tree, htmlPath, outDir) {
       deviceScaleFactor: scale,
     });
     await page.goto('file://' + htmlPath.replace(/\\/g, '/'));
-    await page.waitForLoadState('networkidle');
+    // 不用 networkidle：幽兰扫描图按需加载、大卷资源多，networkidle 易超时；load + fonts.ready 已足够
+    await page.waitForLoadState('load', { timeout: 60000 });
+    await page.evaluate(() => document.fonts.ready);
     // 出图模式：注入 B 级 fontLocal 字体的 file:// url，使未安装该字体的出图机也能渲染
     const exportCss = resolveExportFaces(tree.meta, loadRegistry());
     if (exportCss) await page.addStyleTag({ content: exportCss });
