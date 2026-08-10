@@ -4,6 +4,8 @@ services:
     image: lan-mu:latest
     container_name: lan-mu
     restart: unless-stopped
+    tmpfs:
+      - /tmp
     ports:
       - "${PORT:-8080}:8080"
     healthcheck:
