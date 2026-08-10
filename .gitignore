@@ -6,3 +6,4 @@ tools/_*
 .qoder/
 # 旧单文件时代的遗留产物（已由 dist 出图取代）
 /Youlan-Scroll-*.jpg
+.qwen/
