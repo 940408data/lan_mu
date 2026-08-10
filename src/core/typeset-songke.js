@@ -9,14 +9,34 @@
  * 以免短經長注、碎列參差，失宋版整餳之格。
  * 分卷：區塊所在 section 可帶 volume（版心卷次題名）。新卷必起於新葉，
  * 故卷界處補空列至葉界（一葉 = 兩半葉），卷內葉次更始，版心題本卷卷次。
- *  - 標點不入字格，附前一字右下作朱筆圈點（圈為句、點為讀）；括號類刪而不占位
+ *  - 標點不入字格，附前一字右下作朱筆點（統一一式，角度輕重因字而變，仿手批氣韻）；括號類刪而不占位
+ *  - 注文三版：疏朗（雙行二十字）、雅正（二十二字）、宋槧（二十五字），
+ *    各排一套列陣，前端可遞轉；meta.expect 以宋槧（宋版舊觀）為校錄基準
  * 格制以 UNIT 為列高總量：大字每字 UNIT/bigPerCol，小字每字 UNIT/subPerCol。
  */
 const UNIT = 400;
 const DEFAULTS = { bigPerCol: 16, subPerCol: 25, colsPerHalf: 8 };
 
-const MARK = { '。': 'j', '！': 'j', '？': 'j', '，': 'd', '、': 'd', '；': 'd', '：': 'd' };
+/* 注文三版：sub 為雙行每行字數 */
+const SUB_VARIANTS = [
+  { key: 'shulang', name: '疏朗', sub: 20 },
+  { key: 'yazheng', name: '雅正', sub: 22 },
+  { key: 'songqian', name: '宋槧', sub: 25 },
+];
+
+const MARK = { '。': 1, '！': 1, '？': 1, '，': 1, '、': 1, '；': 1, '：': 1 };
 const DROP = /[「」『』（）〈〉—·]/;
+
+/* mulberry32：種子定序偽隨緣，朱點氣韻所由出 */
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
 /** 文本 → 字格序列 [{c, m}]：標點併入前字為 m，括號類刪去 */
 function tokens(s) {
@@ -72,17 +92,8 @@ function typesetSongke(work) {
   const conf = { ...DEFAULTS, ...sk };
   const colsPerLeaf = conf.colsPerHalf * 2;
   const blocks = [];
-  const volumes = []; // [{ title, startCol, startLeaf }] 分卷紀錄
-  const emptyCol = () => ({ big: [], subs: [[], []] });
-  let cols = [];
+  const secList = []; // [{ volume?, blocks }] 卷界與區塊，供三版各自重排
   for (const sec of sections) {
-    if (sec.volume) {
-      // 新卷必起於新葉：補空列至葉界
-      if (cols.length) {
-        while (cols.length % colsPerLeaf) cols.push(emptyCol());
-      }
-      volumes.push({ title: String(sec.volume), startCol: cols.length, startLeaf: cols.length / colsPerLeaf });
-    }
     const secBlocks = [];
     for (const b of sec.blocks || []) {
       if (b.type !== 'j' && b.type !== 'z') {
@@ -92,10 +103,13 @@ function typesetSongke(work) {
       blocks.push(block);
       secBlocks.push(block);
     }
-    cols = cols.concat(layout(secBlocks, conf));
+    secList.push({ volume: sec.volume, blocks: secBlocks });
   }
   if (!blocks.length) throw new Error(`作品 ${work.id} 無文本區塊（text.yaml）`);
-  const columns = cols;
+
+  /* 朱點變化碼：以 seed 定序，切版、重構皆不移 */
+  const rnd = mulberry32(meta.seed || 7);
+  for (const b of blocks) for (const t of b.tokens) if (t.m) t.v = (rnd() * 16) | 0;
 
   let jChars = 0;
   let zChars = 0;
@@ -103,16 +117,43 @@ function typesetSongke(work) {
     const n = b.tokens.length;
     if (b.type === 'j') jChars += n; else zChars += n;
   }
-  const halves = Math.ceil(columns.length / conf.colsPerHalf);
-  const stats = {
-    chars: jChars + zChars,
-    jChars,
-    zChars,
-    columns: columns.length,
-    halves,
-    leaves: Math.ceil(halves / 2),
+
+  /* 每版各排一套列陣：列數既異，卷界補列與版心葉次亦須分算 */
+  const buildVariant = ({ key, name, sub }) => {
+    const vconf = { ...conf, subPerCol: sub };
+    const volumes = []; // [{ title, startCol, startLeaf }] 分卷紀錄
+    const emptyCol = () => ({ big: [], subs: [[], []] });
+    let cols = [];
+    for (const sec of secList) {
+      if (sec.volume) {
+        // 新卷必起於新葉：補空列至葉界
+        if (cols.length) {
+          while (cols.length % colsPerLeaf) cols.push(emptyCol());
+        }
+        volumes.push({ title: String(sec.volume), startCol: cols.length, startLeaf: cols.length / colsPerLeaf });
+      }
+      cols = cols.concat(layout(sec.blocks, vconf));
+    }
+    const halves = Math.ceil(cols.length / conf.colsPerHalf);
+    return {
+      key,
+      name,
+      sub,
+      columns: cols,
+      volumes,
+      stats: {
+        chars: jChars + zChars,
+        jChars,
+        zChars,
+        columns: cols.length,
+        halves,
+        leaves: Math.ceil(halves / 2),
+      },
+    };
   };
-  return { columns, blocks, conf, volumes, stats };
+  const variants = SUB_VARIANTS.map(buildVariant);
+  const base = variants.find((v) => v.sub === conf.subPerCol) || variants[variants.length - 1];
+  return { blocks, conf, variants, columns: base.columns, volumes: base.volumes, stats: base.stats };
 }
 
-module.exports = { typesetSongke, tokens, UNIT };
+module.exports = { typesetSongke, tokens, UNIT, SUB_VARIANTS };

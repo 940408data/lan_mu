@@ -4,6 +4,33 @@
   const SK = window.SONGKE;
   const COLS_PER_HALF = SK.colsPerHalf || 8;
 
+  /* 注文三版樣式：subw 注列寬比、size 小字字徑比、stroke/shadow 筆畫重量（防小字發虛） */
+  const VSTYLE = {
+    20: { subw: .46, size: .78, stroke: .25, shadow: '0 0 .7px rgba(48,38,26,.5)' },
+    22: { subw: .48, size: .80, stroke: .15, shadow: '0 0 .55px rgba(48,38,26,.45)' },
+    25: { subw: .50, size: .835, stroke: 0, shadow: '0 0 .4px rgba(48,38,26,.36)' },
+  };
+
+  /* 朱點十六式：以變化碼查角度、點徑、長寬、墨濃，仿手批氣韻 */
+  const JV = (() => {
+    let a = 20260810;
+    const rnd = () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    return Array.from({ length: 16 }, () => {
+      const w = .135 * (.9 + rnd() * .2);
+      return {
+        rot: (-30 + rnd() * 22).toFixed(1),
+        w: w.toFixed(3),
+        h: (w * (1.35 + rnd() * .35)).toFixed(3),
+        o: (.7 + rnd() * .2).toFixed(2),
+      };
+    });
+  })();
+
   /* ── 繁簡 ── */
   const conv = (s) => (state.simp ? String(s).replace(/./g, (c) => T2S[c] || c) : String(s));
 
@@ -24,12 +51,13 @@
   const FISH = '<svg viewBox="0 0 40 22" preserveAspectRatio="none" aria-hidden="true">' +
     '<path d="M0 0 H40 L34.5 22 L20 12.2 L5.5 22 Z" fill="rgba(36,28,20,.88)"/></svg>';
 
-  const state = { simp: false, zhu: 0, jie: true, face: 0, single: false, leaf: 0 };
+  const state = { simp: false, zhu: 0, jie: true, face: 0, single: false, leaf: 0, variant: 0 };
   const $ = (id) => document.getElementById(id);
+  const curV = () => SK.variants[state.variant];
 
-  /* 分卷：某葉所屬卷與卷內葉次（卷界已由構建期補齊至葉界） */
+  /* 分卷：某葉所屬卷與卷內葉次（卷界已由構建期按各版補齊至葉界） */
   function leafVol(L) {
-    const vs = SK.volumes || [];
+    const vs = curV().volumes || [];
     if (!vs.length) return { title: SK.banxinTitle, no: L + 1 };
     let v = vs[0];
     for (const x of vs) { if (x.startLeaf <= L) v = x; }
@@ -38,10 +66,16 @@
 
   /* ── 排版渲染 ── */
   function cellHTML(tk, cls, top) {
-    return `<span class="cell ${cls}" style="top:${top}">${conv(tk[0])}` +
-      (tk[1] ? `<i class="mk m${tk[1]}"></i>` : '') + `</span>`;
+    let mk = '';
+    if (tk[1]) {
+      const j = JV[tk[2] || 0];
+      const uv = cls.charAt(0) === 'b' ? '--u' : '--su';
+      mk = `<i class="mk" style="width:calc(var(${uv})*${j.w});height:calc(var(${uv})*${j.h});` +
+        `transform:rotate(${j.rot}deg);opacity:${j.o}"></i>`;
+    }
+    return `<span class="cell ${cls}" style="top:${top}">${conv(tk[0])}${mk}</span>`;
   }
-  function halfHTML(cols) {
+  function halfHTML(cols, side) {
     const body = cols.map((c) => {
       const n = c.b.length; let h = '';
       for (let i = 0; i < n; i++) h += cellHTML(c.b[i], 'b', `calc(var(--u)*${i})`);
@@ -52,7 +86,7 @@
       }
       return `<div class="col">${h}</div>`;
     }).join('');
-    return `<div class="half"><div class="frame"><div class="textarea">${body}</div></div></div>`;
+    return `<div class="half ${side}"><div class="frame"><div class="textarea">${body}</div></div></div>`;
   }
   function banxinHTML(L) {
     const grp = (s, cls) => `<div class="bg">` + [...s].map((ch) => `<div class="bc ${cls || ''}">${ch}</div>`).join('') + `</div>`;
@@ -77,8 +111,9 @@
   }
 
   function render() {
+    const cols = curV().cols;
     const halves = [];
-    for (let i = 0; i < SK.cols.length; i += COLS_PER_HALF) halves.push(SK.cols.slice(i, i + COLS_PER_HALF));
+    for (let i = 0; i < cols.length; i += COLS_PER_HALF) halves.push(cols.slice(i, i + COLS_PER_HALF));
     const leaves = Math.ceil(halves.length / 2);
     state.leaf = Math.min(state.leaf, leaves - 1);
 
@@ -89,7 +124,7 @@
       const vol = leafVol(L);
       html += `<div class="leafwrap${L === state.leaf ? ' on' : ''}" data-l="${L}">
       <div class="leaf">
-        <div class="sheet">${halfHTML(right)}${banxinHTML(L)}${halfHTML(left)}</div>
+        <div class="sheet">${halfHTML(right, 'hr')}${banxinHTML(L)}${halfHTML(left, 'hl')}</div>
         ${sealsHTML(L)}
       </div>
       <div class="folio">${conv('第')}${numCn(vol.no)}${conv('葉')}　${conv('前半')}${numCn(L * 2 + 1)}　${conv('後半')}${numCn(L * 2 + 2)}</div>
@@ -101,6 +136,14 @@
   /* ── 狀態同步 ── */
   function sync() {
     const book = $('book');
+    const V = curV();
+    const st = VSTYLE[V.sub] || VSTYLE[25];
+    const rs = document.documentElement.style;
+    rs.setProperty('--sub-n', String(V.sub));
+    rs.setProperty('--sub-w', `calc(var(--col-w) * ${st.subw})`);
+    rs.setProperty('--small-size', `calc(var(--su) * ${st.size})`);
+    rs.setProperty('--sub-stroke', st.stroke + 'px');
+    rs.setProperty('--sub-shadow', st.shadow);
     book.classList.toggle('ruled', state.jie);
     const zm = ZHU[state.zhu];
     book.classList.toggle('dj', !!zm.j);
@@ -110,13 +153,16 @@
     document.documentElement.lang = state.simp ? 'zh-Hans' : 'zh-Hant';
 
     $('mhTitle').textContent = conv(SK.title);
-    $('mhSub').textContent = conv(SK.spec);
+    $('mhSub').textContent = conv(V.spec);
     $('btnZh').textContent = state.simp ? conv('簡體') : '繁體';
     $('btnDu').textContent = conv(zm.n);
     $('btnJie').textContent = conv('界行');
     const sel = $('faceSel');
     [...sel.options].forEach((o, i) => { o.textContent = conv(SK.faces[i].label); });
     sel.value = String(state.face);
+    const zsel = $('zhuwenSel');
+    [...zsel.options].forEach((o, i) => { o.textContent = conv(SK.variants[i].name); });
+    zsel.value = String(state.variant);
     $('btnMode').textContent = conv(state.single ? '通葉披覽' : '單葉披覽');
     $('btnPrev').textContent = conv('前葉');
     $('btnNext').textContent = conv('後葉');
@@ -133,7 +179,7 @@
   }
 
   function go(d) {
-    const leaves = Math.ceil(SK.cols.length / COLS_PER_HALF / 2);
+    const leaves = Math.ceil(curV().cols.length / COLS_PER_HALF / 2);
     state.leaf = Math.min(leaves - 1, Math.max(0, state.leaf + d));
     if (!state.single) {
       const el = document.querySelector('.leafwrap[data-l="' + state.leaf + '"]');
@@ -152,6 +198,13 @@
     $('faceSel').appendChild(o);
   });
   $('faceSel').onchange = (e) => { state.face = +e.target.value; sync(); };
+  SK.variants.forEach((v, i) => {
+    const o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = v.name;
+    $('zhuwenSel').appendChild(o);
+  });
+  $('zhuwenSel').onchange = (e) => { state.variant = +e.target.value; render(); sync(); };
   $('btnMode').onclick = () => { state.single = !state.single; sync(); };
   $('btnPrev').onclick = () => go(-1);
   $('btnNext').onclick = () => go(1);

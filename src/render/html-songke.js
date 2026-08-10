@@ -13,10 +13,16 @@ const SONGKE_JS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'so
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/* 列陣編碼：token → [字, 圈點標記(0|j|d)]，壓縮內嵌體積 */
+/* 列陣編碼：token → [字, 朱點有無(0|1), 朱點變化碼(0–15)]，壓縮內嵌體積 */
 function encodeCol(c) {
-  const tk = (t) => [t.c, t.m || 0];
+  const tk = (t) => [t.c, t.m || 0, t.v || 0];
   return { b: c.big.map(tk), s: [c.subs[0].map(tk), c.subs[1].map(tk)] };
+}
+
+/* 注文雙行字數 → 中文數目（二十 / 二十二 / 二十五），供各版 spec 文案 */
+function cnSub(n) {
+  const d = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  return (n >= 20 ? '二' : d[Math.floor(n / 10)]) + '十' + (n % 10 ? d[n % 10] : '');
 }
 
 /* 構建期生成繁→簡逐字映射（僅收錄本作用字 + 界面文案） */
@@ -28,7 +34,7 @@ function buildT2S(tree) {
   for (const ch of (m.title || '') + (m.subtitle || '') + (m.songke && m.songke.colophon || '') + (m.songke && m.songke.spec || '')) chars.add(ch);
   for (const v of tree.volumes || []) for (const ch of v.title) chars.add(ch);
   for (const f of Object.values(m.faces || {})) for (const ch of (f.label || '')) chars.add(ch);
-  for (const ch of '繁體簡體界行楷體宋體英雄行楷經注並朱惟施白文無點單葉披覽通前後字號第半下載') chars.add(ch);
+  for (const ch of '繁體簡體界行楷體宋體英雄行楷經注並朱惟施白文無點單葉披覽通前後字號第半下載疏朗逸正宋槧版式二十二') chars.add(ch);
   const map = {};
   for (const ch of chars) {
     const s = conv(ch);
@@ -61,11 +67,16 @@ function renderSongkeHtml(tree, opts = {}) {
 
   const payload = {
     colsPerHalf: tree.conf.colsPerHalf,
-    cols: tree.columns.map(encodeCol),
+    variants: tree.variants.map((v) => ({
+      key: v.key,
+      name: v.name,
+      sub: v.sub,
+      spec: (sk.spec || '').replace(/注文雙行[一二三四五六七八九十]+字/, `注文雙行${cnSub(v.sub)}字`),
+      cols: v.columns.map(encodeCol),
+      volumes: v.volumes,
+    })),
     title: meta.title,
-    spec: sk.spec || '',
     banxinTitle: sk.banxinTitle || meta.title,
-    volumes: tree.volumes || [],
     gong: sk.gong || [],
     seals: tree.seals || [],
     faces: Object.entries(meta.faces || {}).map(([role, f]) => ({ role, label: f.label || role })),
@@ -106,6 +117,7 @@ ${SONGKE_CSS()}
   <button id="btnDu" aria-pressed="true"></button>
   <button id="btnJie" aria-pressed="true"></button>
   <select id="faceSel" aria-label="字面"></select>
+  <select id="zhuwenSel" aria-label="注文版式"></select>
   <span class="sep"></span>
   <button id="btnMode" aria-pressed="false"></button>
   <button id="btnPrev"></button>

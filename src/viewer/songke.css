@@ -4,13 +4,16 @@
   --u: 26px;                                   /* 大字格：一格一字 */
   --col-h: calc(var(--u) * 16);                /* 半葉高：十六字 */
   --col-w: calc(var(--u) * 1.40);              /* 行寬，稍寬則行氣疏朗 */
-  --su:    calc(var(--col-h) / 25);            /* 小字格：注文二十五字 */
-  --sub-w: calc(var(--col-w) / 2);
-  --bx:    calc(var(--su) * 1.18);             /* 版心字格 */
+  --sub-n: 20;                                 /* 注文版式：雙行字數（疏朗20/雅正22/宋槧25） */
+  --su:    calc(var(--col-h) / var(--sub-n));  /* 小字格 */
+  --sub-w: calc(var(--col-w) * .46);           /* 注列寬：雙行外緣錨定，中縫留隙 */
+  --bx:    calc(var(--col-h) / 25 * 1.18);     /* 版心字格：定於宋槧基準，不隨注文版式伸縮 */
   --banxin-w: calc(var(--col-w) * 0.95);
 
   --big-size:   calc(var(--u) * .855);         /* 字身小於字格，四圍留白 */
-  --small-size: calc(var(--su) * .835);
+  --small-size: calc(var(--su) * .78);
+  --sub-stroke: .25px;                         /* 小字筆畫加重，防發虛 */
+  --sub-shadow: 0 0 .7px rgba(48,38,26,.5);
 
   --paper:  #e8dec8;
   --paper2: #dccfb1;
@@ -103,9 +106,11 @@ body{
 }
 .sheet{position:relative;z-index:1;display:flex;flex-direction:row-reverse;align-items:stretch}
 
-/* 匡郭：左右雙邊（外粗內細），上下單邊 */
-.half{border-left:2.4px solid var(--ink);border-right:2.4px solid var(--ink);padding:0 3.4px}
-.frame{border:1.2px solid var(--ink);
+/* 匡郭：左右雙邊（外粗內細），上下單邊；外框減細降濃，中縫側線尤輕，免與正文墨色相爭 */
+.half{padding:0 3.4px}
+.half.hr{border-right:2.1px solid rgba(36,28,20,.92);border-left:1.5px solid rgba(36,28,20,.62)}
+.half.hl{border-left:2.1px solid rgba(36,28,20,.92);border-right:1.5px solid rgba(36,28,20,.62)}
+.frame{border:1.2px solid rgba(36,28,20,.85);
   padding:calc(var(--u)*.34) calc(var(--u)*.16)}
 .textarea{
   width:calc(var(--col-w)*8);height:var(--col-h);
@@ -123,31 +128,23 @@ body{
 .b{left:0;width:var(--col-w);height:var(--u);line-height:var(--col-w);
    font-size:var(--big-size);color:var(--ink);text-shadow:0 0 .45px rgba(36,28,20,.5)}
 .s{width:var(--sub-w);height:var(--su);line-height:var(--sub-w);
-   font-size:var(--small-size);color:var(--ink2);text-shadow:0 0 .4px rgba(48,38,26,.36)}
+   font-size:var(--small-size);color:var(--ink2);
+   -webkit-text-stroke:var(--sub-stroke) var(--ink2);text-shadow:var(--sub-shadow)}
 .s.r{right:0}
 .s.l{left:0}
-/* 朱筆句讀：附字之右下，不占字位。圈為句，點為讀 */
-.mk{position:absolute;display:none;pointer-events:none;mix-blend-mode:multiply;opacity:.82}
+/* 朱筆句讀：一式朱點，附字之右下，不占字位；角度點徑墨濃因字而變，仿手批氣韻 */
+.mk{position:absolute;display:none;pointer-events:none;mix-blend-mode:multiply;
+    border-radius:50%;background:var(--zhu)}
 .dj .b .mk{display:block}
 .dz .s .mk{display:block}
-.b .mj{width:calc(var(--u)*.30);height:calc(var(--u)*.30);border-radius:50%;
-       border:calc(var(--u)*.055) solid var(--zhu);
-       right:calc(var(--u)*-.02);bottom:calc(var(--u)*.03)}
-.b .md{width:calc(var(--u)*.13);height:calc(var(--u)*.21);border-radius:50%;
-       background:var(--zhu);transform:rotate(-18deg);
-       right:calc(var(--u)*.055);bottom:calc(var(--u)*.06)}
-.s .mj{width:calc(var(--su)*.30);height:calc(var(--su)*.30);border-radius:50%;
-       border:calc(var(--su)*.07) solid var(--zhu);
-       right:calc(var(--su)*-.07);bottom:calc(var(--su)*.02)}
-.s .md{width:calc(var(--su)*.13);height:calc(var(--su)*.21);border-radius:50%;
-       background:var(--zhu);transform:rotate(-18deg);
-       right:calc(var(--su)*.01);bottom:calc(var(--su)*.05)}
+.b .mk{right:calc(var(--u)*.04);bottom:calc(var(--u)*.05)}
+.s .mk{right:calc(var(--su)*.02);bottom:calc(var(--su)*.04)}
 
-/* 版心：居中，上下白口，單黑魚尾 */
+/* 版心：居中，上下白口，單黑魚尾；中縫底暈減淡，免似裝訂槽 */
 .banxin{
   width:var(--banxin-w);display:flex;flex-direction:column;align-items:center;
-  background:linear-gradient(90deg,rgba(120,88,44,.10) 0%,rgba(120,88,44,.02) 26%,
-             rgba(120,88,44,0) 50%,rgba(120,88,44,.02) 74%,rgba(120,88,44,.10) 100%);
+  background:linear-gradient(90deg,rgba(120,88,44,.05) 0%,rgba(120,88,44,.01) 26%,
+             rgba(120,88,44,0) 50%,rgba(120,88,44,.01) 74%,rgba(120,88,44,.05) 100%);
 }
 .banxin .kou{flex:0 0 auto;height:calc(var(--col-h)*.055)}
 .banxin svg{display:block;width:44%;height:calc(var(--col-h)*.032)}

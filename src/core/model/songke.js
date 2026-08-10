@@ -8,9 +8,9 @@ const { typesetSongke } = require('../typeset-songke');
 function buildSongke(work) {
   const { meta } = work;
   if (meta.layout !== 'songke') throw new Error(`作品 ${work.id} 的版式不是 songke: ${meta.layout}`);
-  const { columns, blocks, conf, volumes, stats } = typesetSongke(work);
+  const { columns, blocks, conf, volumes, stats, variants } = typesetSongke(work);
 
-  // 數據量校驗（meta.expect 為校錄基準）
+  // 數據量校驗（meta.expect 為校錄基準，以宋槧二十五字版為準）
   if (meta.expect) {
     for (const k of Object.keys(meta.expect)) {
       if (stats[k] !== meta.expect[k]) {
@@ -36,6 +36,7 @@ function buildSongke(work) {
     blocks,
     columns,
     volumes,
+    variants,
     leaves,
     faces: meta.faces,
     fallbackStacks: meta.fallbackStacks,
