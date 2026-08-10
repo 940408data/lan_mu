@@ -24,7 +24,7 @@ src/core/     版面引擎：load.js 读入 → 版式模型分派（meta.layout
   ├─ model/scroll.js  手卷引擎（书法）：typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
   └─ model/songke.js  宋版善刻引擎（古籍）：typeset-songke.js 经注分栏 → 半叶/书叶配对
 src/fonts/    字体管线：fonts.yaml 登记册 / fonts.js 解析注入 / subset.js 子集化
-src/render/   渲染器：html.js / image.js / pdf.js（手卷）+ html-songke.js / image-songke.js / pdf-songke.js（宋版）+ browser.js
+src/render/   渲染器：html.js / image.js / pdf.js（手卷）+ html-songke.js / pdf-songke.js（宋版，每字面一版 PDF，不出长图）+ browser.js
 src/viewer/   查看器：viewer.css/js（手卷）+ songke.css/js（书叶）
 tools/        cli.js（构建入口）/ verify-replica.js（保真验收）/ serve.js（本地预览）
 dist/         产物（gitignore，npm run build 生成）
@@ -34,7 +34,7 @@ dist/         产物（gitignore，npm run build 生成）
 
 ```powershell
 npm install
-npm run build     # 全量构建：字体子集 → HTML → 出图（JPG+PNG）→ PDF
+npm run build     # 全量构建：字体子集 → HTML → 出图（手卷 JPG+PNG；宋版略过，径出每字面一版 PDF）→ PDF
 npm run verify    # 复刻保真验收：242 列逐字符比对、印章/纸面 svg 一致性
 npm run dev       # 本地预览服务器（含 B 级字体的本机注入；首页为作品列表，端口被占自动顺延）
 npm run validate  # 数据校验

@@ -86,10 +86,11 @@ function renderSongkeHtml(tree, opts = {}) {
   const docTitle = meta.docTitle || `${meta.title} — ${meta.subtitle || ''}`;
   const exp = meta.export || {};
   const expBase = exp.base || `${meta.id}-songke`;
+  // 下載菜單：每字面一版 PDF（不再生成/提供 JPG、PNG 長圖）
   const dlItems = Object.entries(exp.faces || { kai: 'Kai', song: 'Song' }).map(([role, tag]) => {
     const label = (meta.faces[role] && meta.faces[role].label) || role;
-    const file = `${expBase}-${tag}.jpg`;
-    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} JPG</a>`;
+    const file = `${expBase}-${tag}.pdf`;
+    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} PDF</a>`;
   }).join('');
 
   const html = `<!DOCTYPE html>
@@ -126,7 +127,7 @@ ${SONGKE_CSS()}
   <span class="sep"></span>
   <div class="dl">
     <button class="btn" id="dl" type="button" aria-haspopup="true">下載</button>
-    <div class="dl-menu" id="dlMenu" role="menu" aria-label="下載長圖">
+    <div class="dl-menu" id="dlMenu" role="menu" aria-label="下載 PDF">
     ${dlItems}
     </div>
   </div>

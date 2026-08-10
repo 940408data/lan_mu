@@ -1,6 +1,6 @@
 /**
- * 宋版善刻 PDF 渲染器：一葉一頁的多頁 PDF。
- * 逐葉高清截图（默认字面）后以 pdf-lib 逐页嵌入，页尺寸按 CSS 像素折算为点（96dpi→72dpi）。
+ * 宋版善刻 PDF 渲染器：一葉一頁的多頁 PDF，每字面一版（楷/宋/行楷等）。
+ * 逐葉高清截图后以 pdf-lib 逐页嵌入，页尺寸按 CSS 像素折算为点（96dpi→72dpi）。
  */
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
@@ -11,14 +11,14 @@ const { loadRegistry, resolveExportFaces } = require('../fonts/fonts');
  * @param {object} tree     songke LayoutTree
  * @param {string} htmlPath 作品 HTML 绝对路径
  * @param {string} outDir   输出目录
- * @returns {Promise<string>} PDF 路径
+ * @returns {Promise<string[]>} 每字面一份 PDF 的路径列表
  */
 async function renderSongkePdf(tree, htmlPath, outDir) {
   const exp = tree.meta.export || {};
   const base = exp.base || `${tree.meta.id}-songke`;
+  const faces = exp.faces || { kai: 'Kai', song: 'Song' };
   const scale = 2; // 固定 2×：印刷级清晰度与体积折中
   const exportU = exp.u || 26;
-  const role = exp.pdfFace || Object.keys(exp.faces || { kai: 'Kai' })[0];
 
   const browser = await launchBrowser();
   try {
@@ -31,31 +31,36 @@ async function renderSongkePdf(tree, htmlPath, outDir) {
     await page.evaluate(() => document.fonts.ready);
     const exportCss = resolveExportFaces(tree.meta, loadRegistry());
     if (exportCss) await page.addStyleTag({ content: exportCss });
-    await page.evaluate((args) => {
+    await page.evaluate((u) => {
       document.getElementById('book').classList.remove('single');
-      document.documentElement.style.setProperty('--u', args.u + 'px');
+      document.documentElement.style.setProperty('--u', u + 'px');
       document.querySelector('.bar').style.display = 'none';
-      document.documentElement.style.setProperty('--face', `var(--${args.role})`);
-    }, { u: exportU, role });
-    await page.evaluate(() => document.fonts.ready);
-    await page.waitForTimeout(1000);
+    }, exportU);
 
-    const loc = page.locator('.leafwrap');
-    const n = await loc.count();
-    const pdfDoc = await PDFDocument.create();
-    pdfDoc.setTitle(tree.meta.docTitle || tree.meta.title);
-    for (let i = 0; i < n; i++) {
-      const buf = await loc.nth(i).screenshot({ type: 'png' });
-      const img = await pdfDoc.embedPng(buf);
-      // 设备像素 → CSS 像素 → 点（72dpi）
-      const w = (img.width / scale) * 0.75;
-      const h = (img.height / scale) * 0.75;
-      const p = pdfDoc.addPage([w, h]);
-      p.drawImage(img, { x: 0, y: 0, width: w, height: h });
+    const outputs = [];
+    for (const [role, tag] of Object.entries(faces)) {
+      await page.evaluate((r) => document.documentElement.style.setProperty('--face', `var(--${r})`), role);
+      await page.evaluate(() => document.fonts.ready);
+      await page.waitForTimeout(1000);
+
+      const loc = page.locator('.leafwrap');
+      const n = await loc.count();
+      const pdfDoc = await PDFDocument.create();
+      pdfDoc.setTitle(tree.meta.docTitle || tree.meta.title);
+      for (let i = 0; i < n; i++) {
+        const buf = await loc.nth(i).screenshot({ type: 'png' });
+        const img = await pdfDoc.embedPng(buf);
+        // 设备像素 → CSS 像素 → 点（72dpi）
+        const w = (img.width / scale) * 0.75;
+        const h = (img.height / scale) * 0.75;
+        const p = pdfDoc.addPage([w, h]);
+        p.drawImage(img, { x: 0, y: 0, width: w, height: h });
+      }
+      const out = path.join(outDir, `${base}-${tag}.pdf`);
+      require('fs').writeFileSync(out, await pdfDoc.save());
+      outputs.push(out);
     }
-    const out = path.join(outDir, `${base}.pdf`);
-    require('fs').writeFileSync(out, await pdfDoc.save());
-    return out;
+    return outputs;
   } finally {
     await browser.close();
   }
