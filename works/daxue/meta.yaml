@@ -1,0 +1,55 @@
+id: daxue
+title: 大學章句
+subtitle: 宋刻本式樣 · 朱熹章句
+docTitle: 大學章句 — 宋版善刻
+mark: 蘭木
+ariaLabel: 大學章句，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+seed: 11205
+expect:
+  chars: 5546
+  jChars: 1733
+  zChars: 3813
+  columns: 242
+  halves: 31
+  leaves: 16
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 大學
+  gong:
+    - 牛山
+  spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
+  colophon: |-
+    依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子章句小字雙行；一列惟純經或純注，遇章別行，遇注另起列。<br>此卷錄《大學章句》全帙：經一章、傳十章（含格物致知補傳），至「讀者不可以其近而忽之也」而止；朱子之序另成一卷。<br>句讀依宋本朱筆圈點之法，附於字之右下，圈為句、點為讀，不占字位。<br>文本以朱熹《四書章句集注》通行本為據，校錄重排，與宋本原刻容有出入。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Daxue-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 朱熹《四書章句集注》
+    url: https://zh.wikisource.org/zh-hant/大學章句
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《大學章句》為朱熹《四書章句集注》之一。朱子更定舊本次序，分經一章、傳十章；右傳第五章原闕，朱子取程子之意補之。此卷錄全帙，自經一章至傳之十章，終於「讀者不可以其近而忽之也」，以宋刻本版式數字重刻；朱子《大學章句序》另成一卷。</p>

@@ -23,6 +23,21 @@ function setZoom(z){
 minus.onclick=()=>setZoom(zoom-.14); plus.onclick=()=>setZoom(zoom+.14);
 rule.onclick=e=>{const a=paper.classList.toggle('rule');e.currentTarget.classList.toggle('on',a);
   e.currentTarget.setAttribute('aria-pressed',a);};
+/* 簡繁轉換：依構建期內嵌 T2S 映射逐字切換，原文存 dataset.t 可還原 */
+simp.onclick=()=>{
+  const on=!simp.classList.contains('on');
+  simp.classList.toggle('on',on); simp.setAttribute('aria-pressed',on);
+  simp.textContent=on?'繁體':'簡體';
+  const conv=(el)=>{
+    if(el.dataset.t==null)el.dataset.t=el.textContent;
+    el.textContent=on?[...el.dataset.t].map((c)=>T2S[c]||c).join(''):el.dataset.t;
+  };
+  document.querySelectorAll('.ribbon .t i,.note,.tt h1,.tt p').forEach(conv);
+};
+/* 句讀施朱：紙面加 .du 顯朱點 */
+const duBtn=document.getElementById('duBtn');
+if(duBtn)duBtn.onclick=e=>{const a=paper.classList.toggle('du');e.currentTarget.classList.toggle('on',a);
+  e.currentTarget.setAttribute('aria-pressed',a);};
 mode.onclick=e=>{
   orig=!orig;paper.classList.toggle('orig',orig);
   if(orig){ /* 原卷扫描图按需加载，避免阻塞首屏 */

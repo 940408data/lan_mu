@@ -1,0 +1,56 @@
+id: lunyu
+title: 論語集注
+subtitle: 宋刻本式樣 · 卷之一 · 學而第一 · 為政第二
+docTitle: 論語集注卷之一 — 宋版善刻
+mark: 蘭木
+ariaLabel: 論語集注卷之一，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+seed: 11086
+expect:
+  chars: 6751
+  jChars: 1093
+  zChars: 5658
+  columns: 215
+  halves: 27
+  leaves: 14
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 論語卷一
+  gong:
+    - 牛山
+  spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
+  colophon: |-
+    依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子集注小字雙行；一列惟純經或純注，遇章別行，遇注另起列。<br>版心上下留白口，上鐫單黑魚尾，次書名卷次、葉次，末署刻工姓名。<br>句讀依宋本朱筆圈點之法，附於字之右下，圈為句、點為讀，不占字位；<br>可於經注並朱、惟經施朱、惟注施朱、白文無點四式間遞轉。<br>文本錄自朱熹《論語集注》卷之一：「學而第一」凡十六章、「為政第二」凡二十四章。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Lunyu-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 朱熹《四書章句集注》
+    url: https://zh.wikisource.org/zh-hant/論語集注
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《論語集注》為朱熹《四書章句集注》之一，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。</p>
+  <p>卷之一收「學而第一」十六章、「為政第二」二十四章，經注全帙；篇內章次、注文分合悉依通行本。</p>

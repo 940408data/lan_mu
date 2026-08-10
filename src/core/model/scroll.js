@@ -4,6 +4,7 @@
  */
 const { typeset } = require('../typeset');
 const { mountSeals, mountOrchids } = require('../mount');
+const { buildSongke } = require('./songke');
 
 function buildScroll(work) {
   const { meta } = work;
@@ -34,7 +35,7 @@ function buildScroll(work) {
   };
 }
 
-const MODELS = { scroll: buildScroll };
+const MODELS = { scroll: buildScroll, songke: buildSongke };
 
 /** 按作品 meta.layout 选择版式模型构建 LayoutTree */
 function buildLayout(work) {

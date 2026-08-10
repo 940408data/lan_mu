@@ -2,6 +2,9 @@ node_modules/
 dist/
 src/fonts/src/
 _inspect*.txt
+tools/_*
+# 临时脚本/截图等双下划线前缀产物
+/__*
 .qoder/
 # 旧单文件时代的遗留产物（已由 dist 出图取代）
 /Youlan-Scroll-*.jpg

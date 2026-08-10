@@ -30,7 +30,29 @@ function typeset(work) {
       }
       let mi = 0;
       const glyphs = chars.map((ch) =>
-        ch === '\u3000' ? { ch } : { ch, ...marks[mi++] });
+        ch === '　' ? { ch } : { ch, ...marks[mi++] });
+      // 句讀（施朱）：col.du 為斷讀段字符串列表——各段須為 text 的連續前綴片段，
+      // 構建期前綴接龍校驗（錯即報行號），偏移自動累加，杜絕心算計數；
+      // 兼容舊的 1-based 數字列表。
+      if (col.du && col.du.length) {
+        let offs;
+        if (typeof col.du[0] === 'string') {
+          offs = [];
+          let cur = 0;
+          for (const seg of col.du) {
+            if (!col.text.startsWith(seg, cur)) {
+              throw new Error(`第 ${col.line} 行句讀段「${seg}」與經文不接（起於第 ${cur + 1} 字）`);
+            }
+            cur += [...seg].length;
+            offs.push(cur);
+          }
+        } else {
+          offs = col.du;
+        }
+        const duSet = new Set(offs);
+        let ord = 0;
+        for (const g of glyphs) if (g.ch !== '　') g.du = duSet.has(++ord) ? 1 : 0;
+      }
       const note = col.note
         ? {
             at: col.note.at,

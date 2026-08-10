@@ -6,6 +6,10 @@
 
 第二部：**《蘭亭集序》**（神龙本字序，27 行 × 12 字，324 字）——纯数据接入，引擎零改动，验证了模板通用性。
 
+第三部：**《歸去來兮辭》**（依骈对断句、参差成行，31 列 339 字）；第四部：**《般若波羅蜜多心經》**（玄奘译，经文 260 字）。后两部同为纯数据接入。
+
+第五、六、七部：**《論語集注》卷之一**（朱熹，學而第一十六章 + 為政第二二十四章）、**《大學章句》**（朱熹，經一章 + 傳十章全帙，含格物致知補傳）与**《大學章句序》**（朱熹自序，純大字無注，獨立成卷）——接入**宋版善刻引擎**：专事古籍刻本式排版（半叶八行、经文大字单行、注文小字双行，一列惟纯经或纯注、遇章别行、遇注另起列，版心鱼尾、朱笔圈点），字面可下拉选择楷体/宋体（朱雀仿宋）/英雄行楷三式，与专事书法的手卷引擎并列为双引擎。
+
 ## 架构
 
 四层结构，数据与表现彻底分离：
@@ -16,9 +20,12 @@ works/        内容数据层（每部作品一个目录，纯 YAML + 资产）
   │           text.yaml（正文 + marks 笔墨编码 + 夹注）
   │           seals.yaml（印章）ornaments.yaml（纸面装饰）assets/（扫描图等）
   └─ lanting/ 同构四件套；无 marks（按 seed 确定性生成）、无夹注/扫描图
-src/core/     版面引擎：load.js 读入 → typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
+src/core/     版面引擎：load.js 读入 → 版式模型分派（meta.layout）
+  ├─ model/scroll.js  手卷引擎（书法）：typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
+  └─ model/songke.js  宋版善刻引擎（古籍）：typeset-songke.js 经注分栏 → 半叶/书叶配对
 src/fonts/    字体管线：fonts.yaml 登记册 / fonts.js 解析注入 / subset.js 子集化
-src/render/   渲染器：html.js（交互卷）/ image.js（JPG+PNG）/ pdf.js / browser.js
+src/render/   渲染器：html.js / image.js / pdf.js（手卷）+ html-songke.js / image-songke.js / pdf-songke.js（宋版）+ browser.js
+src/viewer/   查看器：viewer.css/js（手卷）+ songke.css/js（书叶）
 tools/        cli.js（构建入口）/ verify-replica.js（保真验收）/ serve.js（本地预览）
 dist/         产物（gitignore，npm run build 生成）
 ```
@@ -33,6 +40,49 @@ npm run dev       # 本地预览服务器（含 B 级字体的本机注入；首
 npm run validate  # 数据校验
 npm run new <id>  # 新建作品脚手架
 ```
+
+## 部署与启动
+
+### 环境依赖
+
+- Node.js ≥ 18（开发于 v20）+ npm；依赖见 `package.json`（fontkit/subset-font 子集化、playwright 出图、opencc-js 繁简映射、pdf-lib 等）
+- 出图（JPG/PNG/PDF）需无头 Chromium：优先 Playwright 自带（`npx playwright install chromium`），缺失时自动回落系统 Chrome/Edge（`src/render/browser.js`）
+- 以上仅**构建期**需要；`dist/` 为纯静态产物，运行期零依赖
+
+### 字体准备（仅首次）
+
+- A 级字体源文件（ttf/otf）置于 `src/fonts/src/<id>/`（不入仓库；下载址见 `src/fonts/fonts.yaml` 的 `source`），如 zhuque-fangsong、lxgw-wenkai-tc；构建时自动子集化为 woff2 随页嵌入
+- B 级字体（fahua-wenkai 写经体、ac-gyosyo 英椎行书）授权禁嵌入：本机出图/预览需置同名文件或系统已安装该字体；缺失时自动回退系统楷体等，不阻断构建
+
+### 构建
+
+```powershell
+npm install
+npm run build                            # 全部作品：子集 → HTML → 三体 JPG/PNG → PDF
+npm run build -- --work=xinjing          # 单部作品
+npm run build -- --work=lanting --only=html   # 仅 HTML（改数据/样式后快速重建）
+npm run validate                         # 数据校验（行数/字数/印/兰 与 expect 基准）
+npm run verify                           # 幽兰复刻保真验收
+```
+
+注意：`works/*.yaml` 与引擎（viewer/css/html.js）的改动**须重建**才在预览/出图生效——`dist/` 是构建产物，预览读的是它。
+
+### 本地启动
+
+```powershell
+npm run dev                 # 即 node tools/serve.js，默认 8125，被占自动顺延
+node tools/serve.js 8127    # 指定端口
+```
+
+- 首页 `http://localhost:<port>/` 为作品列表；单卷 `/works/<id>/index.html`
+- serve.js 另以 `/b-fonts/` HTTP 路由向本机预览注入 B 级字体（dist 不含此注入，B 级不外泄）；静态部署无此增强
+- 残留进程清端口（Windows）：`netstat -ano | findstr 812` 查 PID，`Stop-Process -Id <PID> -Force`
+
+### 静态部署
+
+- `dist/` 整体即站点根目录（HTML + fonts/woff2 + 三体 JPG/PNG + PDF），可直投 nginx / GitHub Pages / 对象存储等任意静态托管，无需服务端运行时
+- 保持 `/works/<id>/` 目录结构不变（页内字体、扫描图、下载菜单均相对同级路径）
+- 与本地预览的唯一差异：B 级字体无 `/b-fonts/` 注入，访客端视其系统安装情况回退；A 级子集、三體切换、句讀/簡體、長圖下載、PDF 均不受影响
 
 ## 字体三级授权管线
 

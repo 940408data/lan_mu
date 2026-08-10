@@ -4,6 +4,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const OpenCC = require('opencc-js');
 const { loadRegistry, resolveFace } = require('../fonts/fonts');
 
 const VIEWER_CSS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'viewer.css'), 'utf8');
@@ -16,9 +17,26 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 function glyphsHtml(glyphs) {
   let out = '';
   for (const g of glyphs) {
-    out += g.ch === '　' ? '<i class="sp">　</i>' : `<i class="k${g.k} j${g.j} h${g.h}">${esc(g.ch)}</i>`;
+    out += g.ch === '　' ? '<i class="sp">　</i>' : `<i class="k${g.k} j${g.j} h${g.h}${g.du ? ' du' : ''}">${esc(g.ch)}</i>`;
   }
   return out;
+}
+
+/** 構建期生成繁→簡逐字映射（僅收錄本作用字，內嵌 HTML 供運行時切換） */
+function buildT2S(tree, meta) {
+  const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
+  const chars = new Set();
+  for (const c of tree.columns) {
+    for (const g of c.glyphs) if (g.ch && g.ch !== '　') chars.add(g.ch);
+    if (c.note) for (const ch of c.note.text) chars.add(ch);
+  }
+  for (const ch of meta.title + meta.subtitle) chars.add(ch);
+  const map = {};
+  for (const ch of chars) {
+    const s = conv(ch);
+    if (s !== ch) map[ch] = s;
+  }
+  return map;
 }
 
 function columnHtml(col) {
@@ -165,6 +183,8 @@ ${VIEWER_CSS()}
     </div>
     <button class="btn txt on" id="mode" type="button" aria-pressed="false">摹本</button>
     <button class="btn txt" id="rule" type="button" aria-pressed="false">界行</button>
+    <button class="btn txt" id="simp" type="button" aria-pressed="false">簡體</button>
+    ${tree.columns.some((c) => c.glyphs.some((g) => g.du)) ? '<button class="btn txt" id="duBtn" type="button" aria-pressed="false">句讀</button>' : ''}
     <button class="btn ico" id="minus" type="button" aria-label="縮小">−</button>
     <button class="btn ico" id="plus" type="button" aria-label="放大">＋</button>
     <button class="btn ico" id="about" type="button" aria-label="卷軸說明" aria-expanded="false">ⓘ</button>
@@ -196,6 +216,7 @@ ${meta.aboutHtml}
 </aside>
 
 <script>
+const T2S=${JSON.stringify(buildT2S(tree, meta))};
 ${VIEWER_JS().replace('__WRAP_H__', String(dims.wrapH))}
 </script>
 </body></html>`;

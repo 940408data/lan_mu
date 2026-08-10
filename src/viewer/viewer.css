@@ -35,6 +35,22 @@
 /* 逐字固定内联尺寸：竖排字距不依赖字体垂直度量（回退楷体等无 vmtx 字体时合成进距偏大，导致末字出界）。
    letter-spacing 不作用于 inline-block，故字距并入字盒高度（1em + --ls）。 */
 .col > .t > i{font-style:normal; display:inline-block; height:calc(1em + var(--ls));}
+/* 句讀施朱：斷讀字右側鈐朱點（豎排讀序之右），.paper.du 時顯。
+   仿頓號筆意：左上尖鋒入筆、右下按腹成「丶」式 teardrop；
+   並隨墨色同款 h0–h9 逐字微變角度/大小/濃淡/落點，如手施朱。 */
+.t i.du{position:relative}
+.paper.f-xing .t i.du,.paper.f-jing .t i.du{position:relative}
+.paper.du .t i.du::after{content:"";position:absolute;right:-9px;bottom:1px;width:4px;height:6.5px;
+  background:var(--cinnabar);border-radius:0 60% 55% 65%;transform:rotate(6deg);opacity:.85}
+.paper.du .t i.du.h1::after{transform:rotate(-7deg) scale(.92);opacity:.78}
+.paper.du .t i.du.h2::after{transform:rotate(12deg) translate(.5px,.5px) scale(1.06);opacity:.88}
+.paper.du .t i.du.h3::after{transform:rotate(-3deg) scale(.96);opacity:.8}
+.paper.du .t i.du.h4::after{transform:rotate(9deg) translate(-.5px,0) scale(1.02);opacity:.75}
+.paper.du .t i.du.h5::after{transform:rotate(-10deg) scale(.9);opacity:.86}
+.paper.du .t i.du.h6::after{transform:rotate(4deg) translate(0,.5px) scale(1.08);opacity:.8}
+.paper.du .t i.du.h7::after{transform:rotate(-6deg) scale(.94);opacity:.88}
+.paper.du .t i.du.h8::after{transform:rotate(10deg) translate(.5px,-.5px) scale(1);opacity:.77}
+.paper.du .t i.du.h9::after{transform:rotate(-2deg) scale(1.04);opacity:.83}
 .k0{opacity:1}.k1{opacity:.93}.k2{opacity:.86}.k3{opacity:.79}.k4{opacity:.72}.k5{opacity:.65}
 .j0{position:relative;left:0;top:0}
 .j1{position:relative;left:.4px;top:-.3px}
