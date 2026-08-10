@@ -9,16 +9,23 @@ const fontkit = require('fontkit');
 const subsetFont = require('subset-font');
 const { fontFileOf } = require('./fonts');
 
-/** 收集作品全部用字（正文 + 夹注 + 印章 + 界面所需少量字符） */
+/** 收集作品全部用字：手卷（正文 + 夹注 + 印章）或宋版善刻（經/注區塊）+ 界面通用字 */
 function collectChars(work) {
   const set = new Set();
   for (const sec of work.sections) {
-    for (const col of sec.columns) {
-      for (const ch of col.text) set.add(ch);
-      if (col.note) for (const ch of col.note.text) set.add(ch);
+    if (sec.columns) {
+      for (const col of sec.columns) {
+        for (const ch of col.text) set.add(ch);
+        if (col.note) for (const ch of col.note.text) set.add(ch);
+      }
+    } else if (sec.blocks) {
+      for (const b of sec.blocks) for (const ch of b.text) set.add(ch);
     }
   }
-  for (const s of work.seals || []) for (const c of s.chars) set.add(c.ch);
+  for (const s of work.seals || []) {
+    for (const c of s.chars) set.add(typeof c === 'string' ? c : c.ch); // 宋版善刻印章 chars 為字符串
+  }
+  set.delete(undefined);
   return [...set];
 }
 
@@ -41,8 +48,11 @@ async function buildSubsets(work, registry, distWorkDir) {
   const m = work.meta;
   const metaChars = [m.title, m.subtitle, m.mark, m.docTitle, m.ariaLabel,
     ...Object.values(m.faces || {}).map((f) => f.label)].filter(Boolean).join('');
-  const uiExtra = '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
-  const text = [...new Set(chars.join('') + metaChars + uiExtra)].join('');
+  const uiExtra = work.meta.layout === 'songke'
+    ? '繁體簡體界行楷體宋體經注並朱惟施白文無點單葉披覽通前後字號第半下載卷之一二三'
+    : '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
+  const colophonChars = work.meta.songke ? ((work.meta.songke.colophon || '') + (work.meta.songke.spec || '') + (work.meta.songke.banxinTitle || '') + ((work.meta.songke.gong || []).join('')) + (work.sections || []).map((s) => s.volume || '').join('')) : '';
+  const text = [...new Set(chars.join('') + metaChars + uiExtra + colophonChars)].join('');
 
   const usedFontIds = new Set(
     Object.values(work.meta.faces || {})

@@ -42,7 +42,11 @@ function cmdValidate(workId) {
       const work = loadWork(id);
       const tree = buildLayout(work); // 内含 expect 基准校验
       const s = tree.stats;
-      console.log(`✓ ${id}：${s.lines} 行 / ${s.chars} 字 / ${s.notes} 处夹注 / 印章 ${tree.seals.length} 枚 / 兰花 ${tree.orchids.length} 处`);
+      if (tree.kind === 'songke') {
+        console.log(`✓ ${id}（宋版善刻）：${s.leaves} 葉 / ${s.halves} 半葉 / ${s.columns} 行 / 經字 ${s.jChars} · 注字 ${s.zChars} / 印章 ${tree.seals.length} 枚`);
+      } else {
+        console.log(`✓ ${id}：${s.lines} 行 / ${s.chars} 字 / ${s.notes} 处夹注 / 印章 ${tree.seals.length} 枚 / 兰花 ${tree.orchids.length} 处`);
+      }
     } catch (e) {
       console.error(`✗ ${id}：${e.message}`);
       fail++;
@@ -71,14 +75,17 @@ async function cmdBuild(workId, only) {
     for (const b of sub.built) console.log('  字体子集:', b);
     for (const w of sub.warnings) console.warn('  [字体]', w);
 
-    // 2) HTML
-    const { html, warnings } = renderHtml(tree, { distWorkDir: outDir });
+    // 2) HTML（按版式分派渲染器）
+    const songke = tree.kind === 'songke';
+    const { html, warnings } = songke
+      ? require('../src/render/html-songke').renderSongkeHtml(tree, { distWorkDir: outDir })
+      : renderHtml(tree, { distWorkDir: outDir });
     for (const w of warnings) console.warn('  [字体]', w);
     const htmlPath = path.join(outDir, 'index.html');
     fs.writeFileSync(htmlPath, html);
     console.log('  HTML:', htmlPath, `(${Math.round(html.length / 1024)}KB)`);
 
-    // 3) 扫描图
+    // 3) 扫描图（仅手卷引擎）
     if (work.scan) {
       fs.copyFileSync(work.scan, path.join(outDir, 'scan.jpg'));
       console.log('  扫描图: scan.jpg（按需加载）');
@@ -86,13 +93,15 @@ async function cmdBuild(workId, only) {
 
     // 4) JPG / PDF
     if (outputs.includes('jpg')) {
-      const { renderImages } = require('../src/render/image');
-      const jpgs = await renderImages(tree, htmlPath, outDir);
+      const jpgs = songke
+        ? await require('../src/render/image-songke').renderSongkeImages(tree, htmlPath, outDir)
+        : await require('../src/render/image').renderImages(tree, htmlPath, outDir);
       for (const j of jpgs) console.log('  JPG:', j);
     }
     if (outputs.includes('pdf')) {
-      const { renderPdf } = require('../src/render/pdf');
-      const pdf = await renderPdf(tree, htmlPath, outDir);
+      const pdf = songke
+        ? await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir)
+        : await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
       console.log('  PDF:', pdf);
     }
   }

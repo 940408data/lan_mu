@@ -87,23 +87,29 @@ function resolveFace(role, meta, registry, distWorkDir) {
 }
 
 /**
- * 出图模式（JPG/PDF）追加注入：B 级 fontLocal 字体以 file:// 加载本地源文件，
+ * 出图模式（JPG/PDF）追加注入：B 级字体以 file:// 加载本地源文件，
  * 使未安装该字体的出图机也能渲染（不进 dist，仅本机渲染用）。
+ * 覆盖两类：各角色主字体（font）与本机出图字体（fontLocal），同为 B 级禁嵌入者。
  */
 function resolveExportFaces(meta, registry) {
   const faces = meta.faces || {};
   let css = '';
-  for (const role of ['song', 'jing', 'xing']) {
-    const fc = faces[role];
-    if (!fc || !fc.fontLocal) continue;
-    const le = registry[fc.fontLocal];
-    if (!le || le.license !== 'B' || le.allowEmbed) continue;
+  const seen = new Set();
+  const inject = (fontId) => {
+    if (!fontId || seen.has(fontId)) return;
+    seen.add(fontId);
+    const le = registry[fontId];
+    if (!le || le.license !== 'B' || le.allowEmbed) return;
     const lf = fontFileOf(le);
-    if (!lf) continue;
+    if (!lf) return;
     const fileUrl = 'file://' + lf.replace(/\\/g, '/');
     const locals = [`local("${le.family}")`];
     if (le.familyLocal) locals.push(`local("${le.familyLocal}")`);
     css += `@font-face{font-family:"${le.family}";src:${locals.join(',')},url("${fileUrl}") format("truetype");font-display:swap;}`;
+  };
+  for (const fc of Object.values(faces)) {
+    inject(fc.font);
+    inject(fc.fontLocal);
   }
   return css;
 }

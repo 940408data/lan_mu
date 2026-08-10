@@ -1,0 +1,179 @@
+/* 宋版善刻查看器：書葉式樣。
+   --kai / --song 由構建期注入（A 級子集 / 回退鏈），--face 為當前字面。 */
+:root{
+  --u: 26px;                                   /* 大字格：一格一字 */
+  --col-h: calc(var(--u) * 16);                /* 半葉高：十六字 */
+  --col-w: calc(var(--u) * 1.40);              /* 行寬，稍寬則行氣疏朗 */
+  --su:    calc(var(--col-h) / 25);            /* 小字格：注文二十五字 */
+  --sub-w: calc(var(--col-w) / 2);
+  --bx:    calc(var(--su) * 1.18);             /* 版心字格 */
+  --banxin-w: calc(var(--col-w) * 0.95);
+
+  --big-size:   calc(var(--u) * .855);         /* 字身小於字格，四圍留白 */
+  --small-size: calc(var(--su) * .835);
+
+  --paper:  #e8dec8;
+  --paper2: #dccfb1;
+  --ink:    #241c14;
+  --ink2:   #382d20;
+  --rule:   rgba(62,46,30,.28);
+  --seal:   #a63125;
+  --zhu:    #b8402c;
+  --face: var(--kai);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(120% 90% at 50% -5%, #4c4235 0%, #332c23 55%, #221d18 100%);
+  color:#d9cdb4;font-family:var(--song);
+  -webkit-font-smoothing:antialiased;padding:0 0 3.5rem;
+}
+
+.masthead{text-align:center;padding:2.4rem 1rem 1.2rem}
+.masthead .zhu{
+  display:inline-block;font-family:var(--kai);font-size:1.85rem;
+  letter-spacing:.42em;text-indent:.42em;color:#e9ddc1;
+  border-bottom:1px solid rgba(216,198,160,.32);padding-bottom:.45rem;
+}
+.masthead .ke{
+  margin:.8rem 0 0;font-family:var(--kai);font-size:.76rem;
+  letter-spacing:.26em;text-indent:.26em;color:rgba(214,198,166,.6);
+}
+
+.bar{
+  max-width:940px;margin:0 auto 1.9rem;display:flex;flex-wrap:wrap;
+  gap:.45rem .8rem;align-items:center;justify-content:center;padding:.65rem 1rem;
+  border-top:1px solid rgba(216,198,160,.16);border-bottom:1px solid rgba(216,198,160,.16);
+}
+.bar button,.bar label,.bar .lbl{
+  font-family:var(--kai);font-size:.8rem;letter-spacing:.12em;color:rgba(224,208,178,.8);
+}
+.bar button{
+  background:none;border:1px solid rgba(216,198,160,.28);color:rgba(228,214,186,.9);
+  padding:.2rem .75rem;border-radius:1px;cursor:pointer;transition:background .2s,border-color .2s;
+}
+.bar button:hover{background:rgba(216,198,160,.1);border-color:rgba(216,198,160,.5)}
+.bar button[aria-pressed="true"]{background:rgba(216,198,160,.17);border-color:rgba(216,198,160,.58);color:#f3e8d0}
+.bar select{
+  appearance:none;-webkit-appearance:none;background:rgba(216,198,160,.1);
+  border:1px solid rgba(216,198,160,.4);color:#f3e8d0;
+  font-family:var(--kai);font-size:.8rem;letter-spacing:.12em;
+  padding:.2rem 1.6rem .2rem .75rem;border-radius:1px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23d8c6a0'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .5rem center;
+}
+.bar select:hover{border-color:rgba(216,198,160,.58)}
+.bar select option{background:#221d18;color:#e8d6ba}
+.bar input[type=range]{width:92px;accent-color:#bfa87c}
+.bar .sep{width:1px;height:1.05rem;background:rgba(216,198,160,.2)}
+.bar :focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
+
+/* 下載菜單 */
+.bar .dl{position:relative;display:inline-block}
+.bar .dl-menu{
+  display:none;position:absolute;top:calc(100% + .4rem);right:0;z-index:9;
+  min-width:9.5rem;padding:.4rem;background:#2c261d;border:1px solid rgba(216,198,160,.32);
+  box-shadow:0 10px 28px -10px rgba(0,0,0,.8);flex-direction:column;gap:.1rem;
+}
+.bar .dl-menu.open{display:flex}
+.bar .dl-item{
+  font-family:var(--kai);font-size:.78rem;letter-spacing:.1em;color:rgba(228,214,186,.9);
+  text-decoration:none;padding:.32rem .6rem;white-space:nowrap;
+}
+.bar .dl-item:hover{background:rgba(216,198,160,.14)}
+
+/* ───── 書葉 ───── */
+.book{display:flex;flex-direction:column;align-items:center;gap:2.4rem;padding:0 .8rem;overflow-x:auto}
+.leafwrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.leaf{
+  position:relative;
+  background:linear-gradient(102deg,var(--paper) 0%,var(--paper2) 44%,var(--paper) 72%,#d7c9a9 100%);
+  padding:calc(var(--u)*1.1) calc(var(--u)*.9) calc(var(--u)*1.2);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,
+             0 18px 42px -20px rgba(0,0,0,.8), 0 2px 6px rgba(0,0,0,.32);
+  overflow:hidden;
+}
+.leaf::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.085;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+.leaf::after{
+  content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;
+  background:radial-gradient(118% 108% at 50% 45%, rgba(0,0,0,0) 50%, rgba(92,64,28,.15) 80%, rgba(70,45,18,.30) 100%);
+}
+.sheet{position:relative;z-index:1;display:flex;flex-direction:row-reverse;align-items:stretch}
+
+/* 匡郭：左右雙邊（外粗內細），上下單邊 */
+.half{border-left:2.4px solid var(--ink);border-right:2.4px solid var(--ink);padding:0 3.4px}
+.frame{border:1.2px solid var(--ink);
+  padding:calc(var(--u)*.34) calc(var(--u)*.16)}
+.textarea{
+  width:calc(var(--col-w)*8);height:var(--col-h);
+  display:flex;flex-direction:row-reverse;align-items:flex-start;
+}
+.ruled .textarea{
+  background-image:repeating-linear-gradient(to right,
+    transparent 0, transparent calc(var(--col-w) - .6px),
+    var(--rule) calc(var(--col-w) - .6px), var(--rule) var(--col-w));
+}
+.col{position:relative;width:var(--col-w);height:var(--col-h);flex:0 0 auto;overflow:hidden}
+/* 一字一格：字格由絕對定位釘死，經注永不相犯 */
+.cell{position:absolute;writing-mode:vertical-rl;white-space:nowrap;
+      text-align:center;font-family:var(--face)}
+.b{left:0;width:var(--col-w);height:var(--u);line-height:var(--col-w);
+   font-size:var(--big-size);color:var(--ink);text-shadow:0 0 .45px rgba(36,28,20,.5)}
+.s{width:var(--sub-w);height:var(--su);line-height:var(--sub-w);
+   font-size:var(--small-size);color:var(--ink2);text-shadow:0 0 .4px rgba(48,38,26,.36)}
+.s.r{right:0}
+.s.l{left:0}
+/* 朱筆句讀：附字之右下，不占字位。圈為句，點為讀 */
+.mk{position:absolute;display:none;pointer-events:none;mix-blend-mode:multiply;opacity:.82}
+.dj .b .mk{display:block}
+.dz .s .mk{display:block}
+.b .mj{width:calc(var(--u)*.30);height:calc(var(--u)*.30);border-radius:50%;
+       border:calc(var(--u)*.055) solid var(--zhu);
+       right:calc(var(--u)*-.02);bottom:calc(var(--u)*.03)}
+.b .md{width:calc(var(--u)*.13);height:calc(var(--u)*.21);border-radius:50%;
+       background:var(--zhu);transform:rotate(-18deg);
+       right:calc(var(--u)*.055);bottom:calc(var(--u)*.06)}
+.s .mj{width:calc(var(--su)*.30);height:calc(var(--su)*.30);border-radius:50%;
+       border:calc(var(--su)*.07) solid var(--zhu);
+       right:calc(var(--su)*-.07);bottom:calc(var(--su)*.02)}
+.s .md{width:calc(var(--su)*.13);height:calc(var(--su)*.21);border-radius:50%;
+       background:var(--zhu);transform:rotate(-18deg);
+       right:calc(var(--su)*.01);bottom:calc(var(--su)*.05)}
+
+/* 版心：居中，上下白口，單黑魚尾 */
+.banxin{
+  width:var(--banxin-w);display:flex;flex-direction:column;align-items:center;
+  background:linear-gradient(90deg,rgba(120,88,44,.10) 0%,rgba(120,88,44,.02) 26%,
+             rgba(120,88,44,0) 50%,rgba(120,88,44,.02) 74%,rgba(120,88,44,.10) 100%);
+}
+.banxin .kou{flex:0 0 auto;height:calc(var(--col-h)*.055)}
+.banxin svg{display:block;width:44%;height:calc(var(--col-h)*.032)}
+.banxin .bg{flex:0 0 auto;display:flex;flex-direction:column;width:100%}
+.banxin .bc{
+  flex:0 0 auto;width:100%;height:var(--bx);
+  writing-mode:vertical-rl;text-align:center;line-height:var(--banxin-w);
+  font-family:var(--face);font-size:calc(var(--bx)*.86);color:var(--ink);
+}
+.banxin .bc.gong{font-size:calc(var(--bx)*.72);color:rgba(36,28,20,.66)}
+.banxin .fill{flex:1 1 auto;min-height:calc(var(--col-h)*.03)}
+
+/* 鈐印 */
+.seal{position:absolute;z-index:3;color:var(--seal);border:2px solid var(--seal);
+      font-family:var(--song);font-weight:600;display:grid;opacity:.8;mix-blend-mode:multiply}
+.seal span{display:grid;place-items:center;line-height:1}
+.seal.s4{grid-template-columns:1fr 1fr;grid-auto-flow:column;direction:rtl}
+.seal.s2{grid-template-columns:1fr}
+
+.folio{font-family:var(--kai);font-size:.73rem;letter-spacing:.3em;text-indent:.3em;color:rgba(214,198,166,.48)}
+.book.single .leafwrap{display:none}
+.book.single .leafwrap.on{display:flex}
+
+.colophon{max-width:660px;margin:3rem auto 0;padding:0 1.4rem;font-family:var(--kai);
+  font-size:.79rem;line-height:2.1;letter-spacing:.05em;color:rgba(214,198,166,.48);text-align:center}
+.colophon b{font-weight:400;color:rgba(226,212,182,.7)}
+
+@media (max-width:820px){:root{--u:15px}.masthead .zhu{font-size:1.35rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

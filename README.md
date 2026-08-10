@@ -8,6 +8,8 @@
 
 第三部：**《歸去來兮辭》**（依骈对断句、参差成行，31 列 339 字）；第四部：**《般若波羅蜜多心經》**（玄奘译，经文 260 字）。后两部同为纯数据接入。
 
+第五、六、七部：**《論語集注》卷之一**（朱熹，學而第一十六章 + 為政第二二十四章）、**《大學章句》**（朱熹，經一章 + 傳十章全帙，含格物致知補傳）与**《大學章句序》**（朱熹自序，純大字無注，獨立成卷）——接入**宋版善刻引擎**：专事古籍刻本式排版（半叶八行、经文大字单行、注文小字双行，一列惟纯经或纯注、遇章别行、遇注另起列，版心鱼尾、朱笔圈点），字面可下拉选择楷体/宋体（朱雀仿宋）/英雄行楷三式，与专事书法的手卷引擎并列为双引擎。
+
 ## 架构
 
 四层结构，数据与表现彻底分离：
@@ -18,9 +20,12 @@ works/        内容数据层（每部作品一个目录，纯 YAML + 资产）
   │           text.yaml（正文 + marks 笔墨编码 + 夹注）
   │           seals.yaml（印章）ornaments.yaml（纸面装饰）assets/（扫描图等）
   └─ lanting/ 同构四件套；无 marks（按 seed 确定性生成）、无夹注/扫描图
-src/core/     版面引擎：load.js 读入 → typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
+src/core/     版面引擎：load.js 读入 → 版式模型分派（meta.layout）
+  ├─ model/scroll.js  手卷引擎（书法）：typeset.js 排版 → calligraphy.js 笔墨 → mount.js 装裱
+  └─ model/songke.js  宋版善刻引擎（古籍）：typeset-songke.js 经注分栏 → 半叶/书叶配对
 src/fonts/    字体管线：fonts.yaml 登记册 / fonts.js 解析注入 / subset.js 子集化
-src/render/   渲染器：html.js（交互卷）/ image.js（JPG+PNG）/ pdf.js / browser.js
+src/render/   渲染器：html.js / image.js / pdf.js（手卷）+ html-songke.js / image-songke.js / pdf-songke.js（宋版）+ browser.js
+src/viewer/   查看器：viewer.css/js（手卷）+ songke.css/js（书叶）
 tools/        cli.js（构建入口）/ verify-replica.js（保真验收）/ serve.js（本地预览）
 dist/         产物（gitignore，npm run build 生成）
 ```
