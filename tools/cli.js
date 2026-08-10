@@ -93,16 +93,21 @@ async function cmdBuild(workId, only) {
 
     // 4) JPG / PDF
     if (outputs.includes('jpg')) {
-      const jpgs = songke
-        ? await require('../src/render/image-songke').renderSongkeImages(tree, htmlPath, outDir)
-        : await require('../src/render/image').renderImages(tree, htmlPath, outDir);
-      for (const j of jpgs) console.log('  JPG:', j);
+      if (songke) {
+        console.log('  JPG: 宋版善刻不再生成圖像長圖，已略過（改用每字面一版 PDF）');
+      } else {
+        const jpgs = await require('../src/render/image').renderImages(tree, htmlPath, outDir);
+        for (const j of jpgs) console.log('  JPG:', j);
+      }
     }
     if (outputs.includes('pdf')) {
-      const pdf = songke
-        ? await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir)
-        : await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
-      console.log('  PDF:', pdf);
+      if (songke) {
+        const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir);
+        for (const p of pdfs) console.log('  PDF:', p);
+      } else {
+        const pdf = await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
+        console.log('  PDF:', pdf);
+      }
     }
   }
   console.log('\n构建完成');
