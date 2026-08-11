@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# pre-commit 质量门 · 兰木项目
+# 1) 始终：全作品数据校验（validate）
+# 2) 条件：改动触及引擎/幽兰/字体/样式 → 幽兰复刻保真（build html → verify）
+# 绕过：git commit --no-verify（仅在环境异常时）
+
+set -euo pipefail
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+if [ -z "$staged" ]; then
+  exit 0
+fi
+
+echo "▸ pre-commit：全作品数据校验（validate）"
+if ! node tools/cli.js validate; then
+  echo "✗ validate 未通过，提交已阻止。" >&2
+  echo "  数据校验失败请先修正；确需绕过用 git commit --no-verify。" >&2
+  exit 1
+fi
+
+# 触及引擎/幽兰/字体/样式 → 加跑逐字节保真校验
+if printf '%s\n' "$staged" | grep -qE '^(src/(core|render|fonts|viewer)/|works/youlan/|css/)'; then
+  echo "▸ 检测到引擎/幽兰/字体/样式改动，复刻保真校验（build html → verify）"
+  if ! node tools/cli.js build --work=youlan --only=html; then
+    echo "✗ 幽兰 html 构建失败，提交已阻止。" >&2
+    exit 1
+  fi
+  if ! node tools/verify-replica.js; then
+    echo "✗ 幽兰复刻验收未通过（dist 与 Youlan-Scroll.html 不一致），提交已阻止。" >&2
+    echo "  此为逐字节保真守门。若属预期改动，更新 Youlan-Scroll.html 基准后重试；" >&2
+    echo "  或临时用 git commit --no-verify 绕过。" >&2
+    exit 1
+  fi
+fi
+
+echo "✓ pre-commit 通过"
