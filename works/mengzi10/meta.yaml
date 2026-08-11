@@ -9,9 +9,9 @@ era: 宋
 layout: songke
 seed: 11890
 expect:
-  chars: 6230
+  chars: 6206
   jChars: 2472
-  zChars: 3758
+  zChars: 3734
   columns: 235
   halves: 30
   leaves: 15
