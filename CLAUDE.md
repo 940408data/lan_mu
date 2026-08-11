@@ -85,3 +85,5 @@ Playwright 无头 Chromium 打开 dist HTML 按字体角色逐版截图；缺失
 - **校录完成后**填 `meta.expect` 作为校验基准；`npm run validate` 会在实得值 ≠ 基准时报错。
 - 改版式几何/字体后跑 `npm run build -- --work=<id> --only=html` 快速验证，再全量 build 出图。
 - 主分支为 `dev`（非 main/master）；PR 目标分支用 `dev`。
+- **分支/提交规范见 `CONTRIBUTING.md`**：分支名 `<type>/<kebab-desc>`（`content/`校录、`engine/`引擎排版、`infra/`基建、`fix/`修复），提交信息 `<type>(<scope>): <中文描述>`；Tag 仅在内容里程碑按需打（暂不引 semver）。
+- **pre-commit hook**（`.githooks/`，`npm install` 经 `prepare` 自动配置 `core.hooksPath`）：提交前自动跑 `validate`，改动触及 `src/core|render|fonts|viewer/`、`works/youlan/`、`css/` 时加跑幽兰 `verify`（逐字节保真守门）。绕过用 `git commit --no-verify`。
