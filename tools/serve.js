@@ -6,7 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
-const { listWorks } = require('../src/core/load');
+const { listWorks, loadWork } = require('../src/core/load');
 
 const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
@@ -43,8 +43,16 @@ const server = http.createServer((req, res) => {
     return;
   }
   if (p === '/') {
-    // 作品入口页
-    const links = listWorks().map((id) => `<li><a href="/works/${id}/index.html">${id}</a></li>`).join('');
+    // 作品入口页（draft 卷次标注「需點校」）
+    const links = listWorks().map((id) => {
+      let t = id, tag = '';
+      try {
+        const w = loadWork(id);
+        t = (w.meta && w.meta.title) || id;
+        if (w.meta && w.meta.stage === 'draft') tag = ' <span style="color:#a55;font-size:.85em">【需點校】</span>';
+      } catch (e) { /* 元数据缺失时仅列 id */ }
+      return `<li><a href="/works/${id}/index.html">${t}</a>${tag}</li>`;
+    }).join('');
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
     res.end(`<!doctype html><meta charset="utf-8"><title>蘭木 · 作品列表</title><body style="font:16px/2 serif;padding:2em"><h2>蘭木 · 作品列表</h2><ul>${links}</ul></body>`);
     return;

@@ -1,0 +1,60 @@
+id: zunshengbajian-qiju
+title: 遵生八箋·起居安樂
+subtitle: 刻本式樣 · 卷七 起居安樂箋 · 點校中
+docTitle: 遵生八箋卷七 起居安樂箋 — 宋版善刻
+mark: 蘭木
+ariaLabel: 遵生八箋卷七起居安樂箋，刻本版式，自右向左讀
+category: 子
+era: 明
+layout: songke
+seed: 31878
+expect: null
+stage: draft
+draftNotice:
+  title: 本卷正在點校，正文暫未公開
+  text: 本卷文本尚經細校，依「寧缺毋濫」之則，點校完成前僅示書葉版式與卷首題序，正文不予公開。
+  extLinks:
+    - label: 中國哲學書電子化計劃《遵生八箋》
+      url: https://ctext.org/wiki.pl?if=gb&res=277199
+    - label: 維基文庫《遵生八牋》（四庫全書本）卷一
+      url: https://zh.wikisource.org/wiki/遵生八牋_(四庫全書本)/卷01
+  group: 點校群第一階段僅招募三十人，寧缺毋濫；群內可共同參與點校，並分享校錄資料與底本資源。
+  contact: （聯絡方式待補）
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 遵生八箋卷七
+  gong:
+    - 牛山
+  spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
+  colophon: 依<b>刻本</b>版式排比：一版兩個半葉，中縫為版心。大字單行，一列遇節別行。<br>版心上下留白口，上鐫單黑魚尾，次書名卷次、葉次，末署刻工姓名。<br>《遵生八箋》明高濂撰，分八目：清修妙論、四時調攝、起居安樂、延年卻病、飲饌服食、燕閒清賞、靈秘丹藥、塵外遐舉；此帙擬收卷一「清修妙論箋上」。<br>本卷正在點校，正文俟點校藏事而後公開。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: ZunshengQiju-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 高濂《遵生八箋》（底本俟點校群公議，暫參文淵閣四庫全書本）
+  - label: 對校本：中國哲學書電子化計劃
+    url: https://ctext.org/wiki.pl?if=gb&res=277199
+aboutHtml: |-
+  <h2>關於此箋</h2>
+  <p>《遵生八箋》明高濂撰，萬曆十九年初刊，分八目十九卷。此帙為「起居安樂箋」導覽，點校中，先示導語與摘句。</p>
