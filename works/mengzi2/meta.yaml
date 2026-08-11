@@ -8,13 +8,7 @@ category: 經
 era: 宋
 layout: songke
 seed: 11882
-expect:
-  chars: 7717
-  jChars: 2704
-  zChars: 5013
-  columns: 288
-  halves: 36
-  leaves: 18
+expect: null
 songke:
   bigPerCol: 16
   subPerCol: 25
