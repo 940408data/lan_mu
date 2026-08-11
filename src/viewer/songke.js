@@ -79,10 +79,11 @@
     const body = cols.map((c) => {
       const n = c.b.length; let h = '';
       for (let i = 0; i < n; i++) h += cellHTML(c.b[i], 'b', `calc(var(--u)*${i})`);
+      const g = c.g || 0; /* 經注合欄：注起始行號（與純注列網格對齊） */
       for (let k = 0; k < 2; k++) {
         const t = c.s[k] || [];
         for (let j = 0; j < t.length; j++)
-          h += cellHTML(t[j], 's ' + (k ? 'l' : 'r'), `calc(var(--u)*${n} + var(--su)*${j})`);
+          h += cellHTML(t[j], 's ' + (k ? 'l' : 'r'), `calc(var(--su)*${g + j})`);
       }
       return `<div class="col">${h}</div>`;
     }).join('');

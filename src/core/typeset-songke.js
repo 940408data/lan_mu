@@ -1,12 +1,13 @@
 /**
  * 宋版善刻排版：經文大字單行、注文小字雙行，一字一格。
- * 宋刻成法，每列三式，不得混淆：
+ * 宋刻成法，每列三式：
  *  - 純經列：一行大字，至多 bigPerCol 字；一列不得有兩列經
- *  - 純注列：注文雙行小字（右行先、左行次），每行至多 subPerCol 字；
- *    一列惟兩行注，不得四行注，亦不附經末之下
+ *  - 注列：注文雙行小字（右行先、左行次），每行至多 subPerCol 字；
+ *    雙行並進均齊——右行左行字數完全相同或僅差一字（右行得多一字）
  *  - 空白列
- * 經文（j）遇章別行，每章另起一列；注文（z）遇注接寫，然必另起新列作雙行，
- * 以免短經長注、碎列參差，失宋版整餳之格。
+ * 經文（j）遇章別行，每章另起一列；注文（z）隨經而下，不必另起新列：
+ * 注起始位置與純注列網格對齊——大字占 n 個，注從 ceil(n×bigH/smallH) 行開始，
+ * 本列每行餘容不足 minNoteFit 字則新起列。
  * 分卷：區塊所在 section 可帶 volume（版心卷次題名）。新卷必起於新葉，
  * 故卷界處補空列至葉界（一葉 = 兩半葉），卷內葉次更始，版心題本卷卷次。
  *  - 標點不入字格，附前一字右下作朱筆點（統一一式，角度輕重因字而變，仿手批氣韻）；括號類刪而不占位
@@ -15,7 +16,7 @@
  * 格制以 UNIT 為列高總量：大字每字 UNIT/bigPerCol，小字每字 UNIT/subPerCol。
  */
 const UNIT = 400;
-const DEFAULTS = { bigPerCol: 16, subPerCol: 25, colsPerHalf: 8 };
+const DEFAULTS = { bigPerCol: 16, subPerCol: 25, colsPerHalf: 8, minNoteFit: 2 };
 
 /* 注文三版：sub 為雙行每行字數 */
 const SUB_VARIANTS = [
@@ -50,34 +51,60 @@ function tokens(s) {
 }
 
 /**
- * 區塊序列 → 列（行）數組。每列 { big:[tokens], subs:[[右行],[左行]] }
- * 經列純經、注列純注，互不共列。
+ * 區塊序列 → 列（行）數組。每列 { big:[tokens], subs:[[右行],[左行]], g }
+ * g 為注起始行號（0-based），即注從第 g 行小字位置開始（純注列 g=0，合欄列 g>0）。
+ * 注起始位置與純注列網格對齊：大字占 n 個，注從 ceil(n×bigH/smallH) 行開始。
+ * 注列雙行均齊：注盡於一列者右 ⌈L/2⌉ 左 ⌊L/2⌋，跨列者滿列 C/C、末列均分，
+ * 故任一注列兩行字數相同或僅差一字。
  */
 function layout(blocks, conf) {
   const cols = [];
-  let cur = null;
-  const newCol = () => { cur = { big: [], subs: [[], []] }; cols.push(cur); };
+  const newCol = (g = 0) => { const c = { big: [], subs: [[], []], g }; cols.push(c); return c; };
+  const bigH = UNIT / conf.bigPerCol;
+  const smallH = UNIT / conf.subPerCol;
+  let prevType = null;
   for (const b of blocks) {
     const t = b.tokens;
     if (!t.length) continue;
-    let i = 0;
     if (b.type === 'j') {
+      let i = 0;
       while (i < t.length) {
-        newCol();
+        const c = newCol();
         const take = Math.min(conf.bigPerCol, t.length - i);
-        cur.big = t.slice(i, i + take);
+        c.big = t.slice(i, i + take);
         i += take;
       }
     } else {
+      /* 定錨：前塊為經且末列餘容足，則注隨經下；否則新起列 */
+      let col = null;
+      let cap = conf.subPerCol;
+      if (prevType === 'j' && cols.length) {
+        const last = cols[cols.length - 1];
+        /* 注起始行號：大字所占高度按小字網格向上取整 */
+        const g = Math.ceil(last.big.length * bigH / smallH);
+        const c = conf.subPerCol - g;
+        if (c >= conf.minNoteFit) { col = last; col.g = g; cap = c; }
+      }
+      let i = 0;
       while (i < t.length) {
-        newCol();
-        for (let k = 0; k < 2 && i < t.length; k++) {
-          const take = Math.min(conf.subPerCol, t.length - i);
-          cur.subs[k] = t.slice(i, i + take);
-          i += take;
+        if (!col) { col = newCol(); cap = conf.subPerCol; }
+        const rest = t.length - i;
+        if (rest <= 2 * cap) {
+          /* 注盡於本列：雙行均分 */
+          const r = Math.ceil(rest / 2);
+          col.subs[0] = t.slice(i, i + r);
+          col.subs[1] = t.slice(i + r, i + rest);
+          i += rest;
+        } else {
+          /* 本列滿填，餘字轉入新列 */
+          col.subs[0] = t.slice(i, i + cap);
+          col.subs[1] = t.slice(i + cap, i + 2 * cap);
+          i += 2 * cap;
         }
+        col = null;
       }
     }
+    prevType = b.type;
   }
   return cols;
 }
@@ -122,7 +149,7 @@ function typesetSongke(work) {
   const buildVariant = ({ key, name, sub }) => {
     const vconf = { ...conf, subPerCol: sub };
     const volumes = []; // [{ title, startCol, startLeaf }] 分卷紀錄
-    const emptyCol = () => ({ big: [], subs: [[], []] });
+    const emptyCol = () => ({ big: [], subs: [[], []], g: 0 });
     let cols = [];
     for (const sec of secList) {
       if (sec.volume) {

@@ -13,10 +13,13 @@ const SONGKE_JS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'so
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/* 列陣編碼：token → [字, 朱點有無(0|1), 朱點變化碼(0–15)]，壓縮內嵌體積 */
+/* 列陣編碼：token → [字, 朱點有無(0|1), 朱點變化碼(0–15)]，壓縮內嵌體積；
+   g 為經注合欄時注起始處所空小字符數（純注列省略） */
 function encodeCol(c) {
   const tk = (t) => [t.c, t.m || 0, t.v || 0];
-  return { b: c.big.map(tk), s: [c.subs[0].map(tk), c.subs[1].map(tk)] };
+  const o = { b: c.big.map(tk), s: [c.subs[0].map(tk), c.subs[1].map(tk)] };
+  if (c.g) o.g = c.g;
+  return o;
 }
 
 /* 注文雙行字數 → 中文數目（二十 / 二十二 / 二十五），供各版 spec 文案 */
