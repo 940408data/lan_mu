@@ -1,0 +1,57 @@
+id: mengzi9
+title: 孟子集注卷九
+subtitle: 宋刻本式樣 · 卷之九 · 萬章章句上
+docTitle: 孟子集注卷之九 — 宋版善刻
+mark: 蘭木
+ariaLabel: 孟子集注卷之九，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+seed: 11889
+expect:
+  chars: 6493
+  jChars: 2694
+  zChars: 3799
+  columns: 250
+  halves: 32
+  leaves: 16
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 孟子卷九
+  gong:
+    - 牛山
+  spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
+  colophon: |-
+    依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子集注小字雙行；一列惟純經或純注，遇章別行，遇注另起列。<br>版心上下留白口，上鐫單黑魚尾，次書名卷次、葉次，末署刻工姓名。<br>句讀依宋本朱筆圈點之法，附於字之右下，圈為句、點為讀，不占字位；<br>可於經注並朱、惟經施朱、惟注施朱、白文無點四式間遞轉。<br>文本錄自朱熹《孟子集注》卷之九：「萬章章句上」凡九章。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Mengzi9-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 朱熹《四書章句集注》（本地《四書章句集注》電子本，input_data/四书章句集注.CHM）
+  - label: 對校本：識典古籍《四書章句集注》
+    url: https://www.shidianguji.com/book/HY0004
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《孟子集注》為朱熹《四書章句集注》之一，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。</p>
+  <p>卷之九收「萬章章句上」九章，經注全帙；底本為本地《四書章句集注》電子本，識典古籍本對校，校錄重排，與宋本原刻容有出入。</p>
