@@ -209,12 +209,15 @@
   $('btnPrev').onclick = () => go(-1);
   $('btnNext').onclick = () => go(1);
   $('zoom').oninput = (e) => document.documentElement.style.setProperty('--u', e.target.value + 'px');
-  $('dl').onclick = () => $('dlMenu').classList.toggle('open');
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dl')) $('dlMenu').classList.remove('open');
-  });
+  /* 下載菜單：draft（需點校）卷次無下載按鈕，此處護空 */
+  if ($('dl')) {
+    $('dl').onclick = () => $('dlMenu').classList.toggle('open');
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dl')) $('dlMenu').classList.remove('open');
+    });
+  }
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') $('dlMenu').classList.remove('open');
+    if (e.key === 'Escape' && $('dlMenu')) $('dlMenu').classList.remove('open');
     if (e.key === 'ArrowLeft') go(1);
     if (e.key === 'ArrowRight') go(-1);
   });

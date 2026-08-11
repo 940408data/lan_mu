@@ -7,6 +7,19 @@ ariaLabel: 論語集注卷之七，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+stage: draft
+draftNotice:
+  title: 本卷正在點校，正文暫未公開
+  text: 本卷文本為機器轉錄初稿，尚未完成人工細校。依「寧缺毋濫」之則，點校完成前僅示書葉版式與卷首題序，正文不予公開。
+  extLinks:
+    - label: 中國孔子網《論語集注》
+      url: http://www.chinakongzi.org/kzsf/lsjd/lyjz/
+    - label: 中國哲學書電子化計劃《四書章句集注》
+      url: https://ctext.org/si-shu-zhang-ju-ji-zhu/zhs
+    - label: 維基文庫《論語》
+      url: https://zh.wikisource.org/wiki/論語
+  group: 點校群第一階段僅招募三十人，寧缺毋濫；群內可共同參與點校，並分享校錄資料與底本資源。
+  contact: （聯絡方式待補）
 seed: 47291
 expect: null
 songke:
