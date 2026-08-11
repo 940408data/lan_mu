@@ -53,6 +53,11 @@ function renderSongkeHtml(tree, opts = {}) {
   const sk = meta.songke || {};
   const registry = loadRegistry();
   const distWorkDir = opts.distWorkDir || path.join(__dirname, '..', '..', 'dist', 'works', meta.id);
+  // 分級發布：stage==='draft' 的卷次未完成點校。
+  // 默認模式：數據含全帙正文 → 僅展示首葉書影（payload 截斷，防源碼洩露），不出 PDF；
+  // teaser 模式（draftNotice.display==='teaser'）：數據本身即為安全導覽內容（序全文 + 每章導語/最小摘句），全文渲染。
+  const draft = meta.stage === 'draft';
+  const draftTruncate = draft && ((meta.draftNotice || {}).display !== 'teaser');
 
   // 字面字體棧：依 meta.faces 各角色（楷/宋/行楷等）逐一解析
   const warnings = [];
@@ -72,7 +77,7 @@ function renderSongkeHtml(tree, opts = {}) {
       name: v.name,
       sub: v.sub,
       spec: (sk.spec || '').replace(/注文雙行[一二三四五六七八九十]+字/, `注文雙行${cnSub(v.sub)}字`),
-      cols: v.columns.map(encodeCol),
+      cols: (draftTruncate ? v.columns.slice(0, tree.conf.colsPerHalf * 2) : v.columns).map(encodeCol),
       volumes: v.volumes,
     })),
     title: meta.title,
@@ -86,12 +91,35 @@ function renderSongkeHtml(tree, opts = {}) {
   const docTitle = meta.docTitle || `${meta.title} — ${meta.subtitle || ''}`;
   const exp = meta.export || {};
   const expBase = exp.base || `${meta.id}-songke`;
-  // 下載菜單：每字面一版 PDF（不再生成/提供 JPG、PNG 長圖）
+  // 下載菜單：每字面一版 PDF（不再生成/提供 JPG、PNG 長圖）；點校未完成（draft）的卷次不提供下載
   const dlItems = Object.entries(exp.faces || { kai: 'Kai', song: 'Song' }).map(([role, tag]) => {
     const label = (meta.faces[role] && meta.faces[role].label) || role;
     const file = `${expBase}-${tag}.pdf`;
     return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} PDF</a>`;
   }).join('');
+
+  // 點校提示卡：僅 draft 卷渲染（正文未公開聲明 + 外部公開站鏈接 + 點校群招募）
+  const dn = meta.draftNotice || {};
+  const extItems = (dn.extLinks || []).map((l) =>
+    `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join('');
+  const draftCard = draft ? `<section class="draft-card" id="draftCard">
+  <p class="dc-badge">需點校</p>
+  <h2 class="dc-title">${esc(dn.title || '本卷正在點校，正文暫未公開')}</h2>
+  <p class="dc-text">${esc(dn.text || '本卷文本尚經細校，依「寧缺毋濫」之則，點校藏事前僅示書葉版式與卷首題序。')}</p>
+  ${extItems ? `<p class="dc-sub">同文可先於以下公開站瀏覽：</p><ul class="dc-links">${extItems}</ul>` : ''}
+  ${dn.group ? `<p class="dc-group">${esc(dn.group)}</p>` : ''}
+  ${dn.contact ? `<p class="dc-contact">參與點校：${esc(dn.contact)}</p>` : ''}
+</section>` : '';
+  const draftCss = draft ? `
+.draft-card{max-width:42rem;margin:2.2rem auto 0;padding:1.6rem 1.8rem;border:1px solid rgba(216,198,160,.28);background:rgba(44,38,29,.72);color:rgba(228,214,186,.92);font-family:var(--kai);line-height:1.9}
+.draft-card .dc-badge{display:inline-block;padding:.1rem .7rem;border:1px solid rgba(196,60,44,.75);color:#e8b4a0;font-size:.8rem;letter-spacing:.35em}
+.draft-card .dc-title{margin:.7rem 0 .4rem;font-size:1.15rem;letter-spacing:.12em;color:#e5d3ae}
+.draft-card .dc-text{margin:0 0 .8rem;font-size:.92rem}
+.draft-card .dc-sub{margin:.2rem 0;font-size:.88rem;color:rgba(228,214,186,.72)}
+.draft-card .dc-links{margin:.2rem 0 .8rem;padding-left:1.2em;font-size:.9rem}
+.draft-card .dc-links a{color:#d8b98a;text-decoration:none;border-bottom:1px dotted rgba(216,185,138,.5)}
+.draft-card .dc-group,.draft-card .dc-contact{margin:.3rem 0 0;font-size:.88rem;color:rgba(228,214,186,.8)}
+` : '';
 
   const html = `<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -104,6 +132,7 @@ function renderSongkeHtml(tree, opts = {}) {
 :root{${Object.entries(stacks).map(([role, s]) => `--${role}:${s || 'serif'};`).join('')}}
 ${faceCss}
 ${SONGKE_CSS()}
+${draftCss}
 </style>
 </head>
 <body>
@@ -125,18 +154,19 @@ ${SONGKE_CSS()}
   <span class="lbl" id="folioNow"></span>
   <button id="btnNext"></button>
   <span class="sep"></span>
-  <div class="dl">
+  ${draft ? '' : `<div class="dl">
     <button class="btn" id="dl" type="button" aria-haspopup="true">下載</button>
     <div class="dl-menu" id="dlMenu" role="menu" aria-label="下載 PDF">
     ${dlItems}
     </div>
   </div>
-  <span class="sep"></span>
+  <span class="sep"></span>`}
   <label for="zoom" id="lblZoom"></label>
   <input id="zoom" type="range" min="14" max="36" step="1" value="26">
 </div>
 
 <div id="book" class="book ruled" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
+${draftCard}
 <p class="colophon" id="colophon"></p>
 
 <script>

@@ -91,22 +91,26 @@ async function cmdBuild(workId, only) {
       console.log('  扫描图: scan.jpg（按需加载）');
     }
 
-    // 4) JPG / PDF
-    if (outputs.includes('jpg')) {
-      if (songke) {
-        console.log('  JPG: 宋版善刻不再生成圖像長圖，已略過（改用每字面一版 PDF）');
-      } else {
-        const jpgs = await require('../src/render/image').renderImages(tree, htmlPath, outDir);
-        for (const j of jpgs) console.log('  JPG:', j);
+    // 4) JPG / PDF（draft 卷次未完成點校：正文不公開，不生成任何含正文的產物）
+    if (tree.meta.stage === 'draft') {
+      console.log('  [點校] 本卷標記為 draft（需點校）：僅出書葉版式頁，不生成 PDF/圖像');
+    } else {
+      if (outputs.includes('jpg')) {
+        if (songke) {
+          console.log('  JPG: 宋版善刻不再生成圖像長圖，已略過（改用每字面一版 PDF）');
+        } else {
+          const jpgs = await require('../src/render/image').renderImages(tree, htmlPath, outDir);
+          for (const j of jpgs) console.log('  JPG:', j);
+        }
       }
-    }
-    if (outputs.includes('pdf')) {
-      if (songke) {
-        const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir);
-        for (const p of pdfs) console.log('  PDF:', p);
-      } else {
-        const pdf = await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
-        console.log('  PDF:', pdf);
+      if (outputs.includes('pdf')) {
+        if (songke) {
+          const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir);
+          for (const p of pdfs) console.log('  PDF:', p);
+        } else {
+          const pdf = await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
+          console.log('  PDF:', pdf);
+        }
       }
     }
   }
