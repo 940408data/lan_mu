@@ -10,7 +10,8 @@
     "verify": "node tools/verify-replica.js",
     "build": "node tools/cli.js build",
     "font:register": "node tools/cli.js font:register",
-    "dev": "node tools/serve.js"
+    "dev": "node tools/serve.js",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
     "fontkit": "^2.0.4",
