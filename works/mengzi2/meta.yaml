@@ -9,12 +9,12 @@ era: 宋
 layout: songke
 seed: 11882
 expect:
-  chars: 6860
+  chars: 7717
   jChars: 2704
-  zChars: 4156
-  columns: 270
-  halves: 34
-  leaves: 17
+  zChars: 5013
+  columns: 288
+  halves: 36
+  leaves: 18
 songke:
   bigPerCol: 16
   subPerCol: 25
