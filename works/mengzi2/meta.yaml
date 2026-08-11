@@ -10,11 +10,11 @@ layout: songke
 seed: 11882
 expect:
   chars: 7717
-  jChars: 2704
-  zChars: 5013
-  columns: 288
-  halves: 36
-  leaves: 18
+  jChars: 2770
+  zChars: 4947
+  columns: 291
+  halves: 37
+  leaves: 19
 songke:
   bigPerCol: 16
   subPerCol: 25
