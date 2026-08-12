@@ -64,9 +64,9 @@ function topnav() {
 }
 
 /* 書影：真書（鏈目錄/作品頁）與虛擬典籍（鏈「敬請期待」）共用 */
-/* 點校圖標：精校✓朱、初校◐墨、AI整理✦灰（currentColor 隨 .ico-<類> 切色） */
+/* 點校圖標：精校●饱和实心圆、初校◐半圆、AI整理✦灰（currentColor 隨 .ico-<類> 切色；精校/初校同墨色，以飽和度區分） */
 function icoSvg(col) {
-  if (col === '精校') return '<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M3.6 6.1l1.8 1.8 3.2-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  if (col === '精校') return '<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3.8" fill="currentColor"/></svg>';
   if (col === '初校') return '<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M6 1.2a4.8 4.8 0 0 0 0 9.6z" fill="currentColor" opacity=".45"/></svg>';
   return '<svg viewBox="0 0 12 12"><path d="M6 1l1.4 3 3.2.4-2.3 2.2.6 3.2L6 8.6 3.1 9.8l.6-3.2L1.4 4.4l3.2-.4z" fill="currentColor"/></svg>';
 }

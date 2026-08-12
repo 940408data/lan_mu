@@ -136,9 +136,9 @@ body{
 .slot .n .ico{display:inline-flex;align-items:center;gap:.18em;font-family:var(--song);font-style:normal;font-size:.6rem;letter-spacing:.04em}
 .slot .n .ico svg{width:11px;height:11px;flex:0 0 auto}
 .slot .n .ico em{font-style:normal}
-.slot .n .ico-精校{color:var(--seal)}
-.slot .n .ico-初校{color:rgba(226,210,182,.85)}
-.slot .n .ico-AI整理{color:rgba(214,198,166,.6)}
+.slot .n .ico-精校{color:rgba(226,210,182,.5)}
+.slot .n .ico-初校{color:rgba(226,210,182,.5)}
+.slot .n .ico-AI整理{color:rgba(214,198,166,.35)}
 .slot .bi{display:block;margin-top:.18rem;font-family:var(--song);font-size:.6rem;letter-spacing:.06em;color:rgba(214,198,166,.55);text-align:center}
 .slot .dz{
   margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
