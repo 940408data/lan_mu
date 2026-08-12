@@ -1,0 +1,29 @@
+seals:
+  - x: 1078    # paperW(1278) − 200
+    y: 100
+    rotate: -1.2
+    w: 30
+    h: 56
+    style: 朱文
+    fontSize: 14
+    chars:
+      - ch: 幽
+        x: 15
+        y: 16
+      - ch: 居
+        x: 15
+        y: 40
+  - x: 180
+    y: 330
+    rotate: 1.1
+    w: 30
+    h: 56
+    style: 白文
+    fontSize: 14
+    chars:
+      - ch: 陶
+        x: 15
+        y: 16
+      - ch: 潛
+        x: 15
+        y: 40
