@@ -1,0 +1,83 @@
+/** 站點聚合：works/ → 書級視圖（供首頁「藏書」與書目頁「目錄葉」生成）。
+ *  歸屬依據各卷 meta.book 塊（id/title/order/entry）；無 book 者視為單卷書，首頁直達作品頁。 */
+const { listWorks, loadWork } = require('../core/load');
+
+/* 部類次序（經子書禮樂；未列入者殿後，按 id 字典序） */
+const CAT_ORDER = ['經', '子', '書', '禮樂'];
+/* 部內書序：四書之序（學庸論孟）；未列入者按 id 字典序 */
+const BOOK_ORDER = ['daxue', 'zhongyong', 'lunyu', 'mengzi'];
+
+const DIG = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+/** 中文數碼（卷次/葉次可逾十） */
+function numCn(n) {
+  if (n <= 0) return '';
+  if (n < 10) return DIG[n];
+  if (n < 20) return '十' + (n % 10 ? DIG[n % 10] : '');
+  return DIG[Math.floor(n / 10)] + '十' + (n % 10 ? DIG[n % 10] : '');
+}
+
+/**
+ * @returns {{books:Array, warnings:string[], catOrder:string[]}}
+ * book: {id,title,category,caption,href,draft,standalone?,layout?,gong?,volumes:[{workId,title,order,entry,draft,href,gong}]}
+ */
+function aggregateSite() {
+  const warnings = [];
+  const byBook = new Map();
+  for (const workId of listWorks()) {
+    let w;
+    try { w = loadWork(workId); } catch (e) { warnings.push(`裝載失敗 ${workId}: ${e.message}`); continue; }
+    const m = w.meta || {};
+    const draft = m.stage === 'draft';
+    const bk = m.book;
+    if (!bk || !bk.id) {
+      // 單卷書（手卷等）：首頁直達作品頁
+      byBook.set(workId, {
+        id: workId, title: m.title || workId, category: m.category || '',
+        standalone: true, layout: m.layout, draft,
+        href: `/works/${workId}/index.html`,
+        caption: m.layout === 'scroll' ? '手卷單幅' : '單卷',
+        volumes: [{ workId, title: m.title, order: 1, draft, href: `/works/${workId}/index.html`, entry: null }],
+      });
+      continue;
+    }
+    let b = byBook.get(bk.id);
+    if (!b) {
+      b = { id: bk.id, title: bk.title || workId, category: m.category || '', volumes: [] };
+      byBook.set(bk.id, b);
+    } else if (bk.title && b.title !== bk.title) {
+      warnings.push(`書「${bk.id}」卷 ${workId} 書名不一致：${bk.title} ≠ ${b.title}`);
+    }
+    b.volumes.push({
+      workId, title: m.title, order: typeof bk.order === 'number' ? bk.order : 999,
+      entry: bk.entry || null, draft, href: `/works/${workId}/index.html`,
+      gong: (m.songke && m.songke.gong) || [],
+    });
+    if (!bk.entry) warnings.push(`卷 ${workId} 缺 book.entry，目錄大字列以卷題代`);
+  }
+
+  const books = [];
+  for (const b of byBook.values()) {
+    b.volumes.sort((x, y) => x.order - y.order || x.workId.localeCompare(y.workId));
+    const seen = new Set();
+    for (const v of b.volumes) {
+      const k = String(v.order);
+      if (seen.has(k)) warnings.push(`書「${b.id}」卷次重複：${v.order}（${v.workId}）`);
+      seen.add(k);
+    }
+    b.draft = b.volumes.every((v) => v.draft); // 全帙皆 draft 方於首頁標「需點校」
+    if (!b.standalone) {
+      const zheng = b.volumes.filter((v) => v.order >= 1).length;
+      const hasXu = b.volumes.some((v) => v.order < 1);
+      b.caption = (zheng === 1 ? '單卷' : `凡${numCn(zheng)}卷`) + (hasXu ? '並序' : '');
+      b.href = `/books/${b.id}/index.html`;
+      b.gong = (b.volumes.find((v) => v.gong && v.gong.length) || {}).gong || [];
+    }
+    books.push(b);
+  }
+  const catIx = (c) => { const i = CAT_ORDER.indexOf(c); return i < 0 ? CAT_ORDER.length : i; };
+  const bkIx = (id) => { const i = BOOK_ORDER.indexOf(id); return i < 0 ? 999 : i; };
+  books.sort((a, b) => catIx(a.category) - catIx(b.category) || bkIx(a.id) - bkIx(b.id) || a.id.localeCompare(b.id));
+  return { books, warnings, catOrder: CAT_ORDER };
+}
+
+module.exports = { aggregateSite, numCn };

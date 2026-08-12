@@ -37,7 +37,7 @@ function buildT2S(tree) {
   for (const ch of (m.title || '') + (m.subtitle || '') + (m.songke && m.songke.colophon || '') + (m.songke && m.songke.spec || '')) chars.add(ch);
   for (const v of tree.volumes || []) for (const ch of v.title) chars.add(ch);
   for (const f of Object.values(m.faces || {})) for (const ch of (f.label || '')) chars.add(ch);
-  for (const ch of '繁體簡體界行楷體宋體英雄行楷經注並朱惟施白文無點單葉披覽通前後字號第半下載疏朗逸正宋槧版式二十二') chars.add(ch);
+  for (const ch of '繁體簡體界行楷體宋體英雄行楷經注並朱惟施白文無點單葉披覽通前後字號第半下載疏朗逸正宋槧版式二十二目錄藏書') chars.add(ch);
   const map = {};
   for (const ch of chars) {
     const s = conv(ch);
@@ -89,7 +89,13 @@ function renderSongkeHtml(tree, opts = {}) {
     seals: tree.seals || [],
     faces: Object.entries(meta.faces || {}).map(([role, f]) => ({ role, label: f.label || role })),
     colophon: sk.colophon || '',
+    navLabel: meta.book && meta.book.id ? '目錄' : '藏書',
   };
+
+  // 回鏈：屬書之卷 → 本書目錄葉；單卷 → 藏書首頁
+  const navHref = meta.book && meta.book.id
+    ? `../../books/${meta.book.id}/index.html`
+    : '../../index.html';
 
   const docTitle = meta.docTitle || `${meta.title} — ${meta.subtitle || ''}`;
   const exp = meta.export || {};
@@ -146,6 +152,8 @@ ${draftCss}
 </div>
 
 <div class="bar">
+  <a class="btn nav" id="navToc" href="${navHref}"></a>
+  <span class="sep"></span>
   <button id="btnZh" aria-pressed="false"></button>
   <button id="btnDu" aria-pressed="true"></button>
   <button id="btnJie" aria-pressed="true"></button>

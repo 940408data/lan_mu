@@ -48,9 +48,15 @@ body{
   gap:.45rem .8rem;align-items:center;justify-content:center;padding:.65rem 1rem;
   border-top:1px solid rgba(216,198,160,.16);border-bottom:1px solid rgba(216,198,160,.16);
 }
-.bar button,.bar label,.bar .lbl{
+.bar button,.bar label,.bar .lbl,.bar a.btn{
   font-family:var(--kai);font-size:.8rem;letter-spacing:.12em;color:rgba(224,208,178,.8);
 }
+.bar a.btn{
+  display:inline-block;text-decoration:none;color:rgba(228,214,186,.9);
+  border:1px solid rgba(216,198,160,.28);padding:.2rem .75rem;border-radius:1px;
+  transition:background .2s,border-color .2s;
+}
+.bar a.btn:hover{background:rgba(216,198,160,.1);border-color:rgba(216,198,160,.5)}
 .bar button{
   background:none;border:1px solid rgba(216,198,160,.28);color:rgba(228,214,186,.9);
   padding:.2rem .75rem;border-radius:1px;cursor:pointer;transition:background .2s,border-color .2s;

@@ -7,6 +7,13 @@ ariaLabel: 長物志卷三水石，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 3
+  entry:
+    big: 卷三
+    sub: 水石
 seed: 30524
 expect: null
 stage: draft

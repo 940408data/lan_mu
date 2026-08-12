@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷十一飲饌服食箋，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 11
+  entry:
+    big: 卷十一
+    sub: 飲饌服食箋
 seed: 31880
 expect: null
 stage: draft

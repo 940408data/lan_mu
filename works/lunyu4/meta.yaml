@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之四，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 4
+  entry:
+    big: 卷之四
+    sub: 述而第七　泰伯第八
 seed: 11534
 expect: null
 songke:

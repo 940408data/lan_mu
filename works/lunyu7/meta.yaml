@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之七，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 7
+  entry:
+    big: 卷之七
+    sub: 子路第十三　憲問第十四
 stage: draft
 draftNotice:
   title: 本卷正在點校，正文暫未公開

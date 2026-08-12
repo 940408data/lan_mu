@@ -37,12 +37,22 @@ node tools/gen-index.js          # 构建后生成 dist/index.html 静态首页�
 
 ### 构建管线（tools/cli.js cmdBuild）
 
-每作品顺序：① 字体子集（`src/fonts/subset.js`，仅 A 级）→ ② HTML（按 songke 标志选渲染器）→ ③ 扫描图（仅手卷 `work.scan`）→ ④ JPG（手卷；宋版跳过）→ ⑤ PDF。产物写 `dist/works/<id>/`。
+每作品顺序：① 字体子集（`src/fonts/subset.js`，仅 A 级）→ ② HTML（按 songke 标志选渲染器）→ ③ 扫描图（仅手卷 `work.scan`）→ ④ JPG（手卷；宋版跳过）→ ⑤ PDF。产物写 `dist/works/<id>/`。**全量构建（不带 `--work`）末尾自动生成站点页**（见下节）。
+
+### 站点页（src/site/）：首页「藏书」+ 书目页「目录叶」
+
+作品页之外的两级站点页，视觉与宋刻同源（暗案底/纸墨/朱记）：
+
+- **首页** `dist/index.html` — 只列「书」不列卷：顶部检索框（书名/卷次/篇名即输即显，繁简双轨——简体串构建期 opencc 预转入索引）+ 部类速达锚点；书为瓷青封面线装书影（左上签条题名、左缘订线、右下朱印）立于座上，按 `meta.category` 分部（經/子/書/禮樂）；多卷书 → 目录页，单卷（手卷等无 `book` 块者）→ 直达作品页。
+- **目录页** `dist/books/<bookId>/index.html` — 宋刻目录叶：半叶八行、版心鱼尾刻工，每卷一条（大字卷次列 + 双行小字篇名列，序类无篇名者单列），整条即链接，自动分叶；draft 卷于大字列末缀朱色「需點校」。
+- **书目归属**：各卷 `meta.book` 块（`id`/`title`/`order`/`entry{big,sub}`），`src/site/aggregate.js` 聚合校验；`order` 用原书卷次，序说/读法类以 0.1/0.2 置前。
+- **双轨生成**：`tools/serve.js` 对 `/` 与 `/books/<id>/` 动态渲染（dev 免重建）；`tools/gen-index.js` 与全量 build 末尾产出静态文件（生产）。
+- **站点小字库**：`src/site/build.js` 以站点全部用字子集化 A 级楷/宋 → `dist/assets/fonts/`；源字体缺失时页面自动落系统回退栈（dev 不构子集亦可预览）。
 
 ### 数据模型（works/&lt;id&gt;/）
 
 每个作品一个目录，四件套 YAML + `assets/`：
-- `meta.yaml` — 元信息、版式参数（scroll 几何 / songke 版式）、`seed`（确定性种子）、`expect`（校验基准，可 null）、`faces`（字体角色，支持 `font` 主 + `fontLocal` B 级兜底双轨）、`fallbackStacks`（系统字体回退栈）、`aboutHtml`。
+- `meta.yaml` — 元信息、版式参数（scroll 几何 / songke 版式）、`seed`（确定性种子）、`expect`（校验基准，可 null）、`faces`（字体角色，支持 `font` 主 + `fontLocal` B 级兜底双轨）、`fallbackStacks`（系统字体回退栈）、`aboutHtml`。属书之卷另有 `book` 块（书目归属，见「站点页」节）。
 - `text.yaml` — 正文。**两种结构随引擎而异**：
   - 手卷：`sections[].columns[]`，每列 `line`/`class`/`text`，可选 `marks`（逐字 3 位数字 k/j/h 紧凑串）、`note`（夹注，含 `at` 起始偏移）、`du`（句读段，须为 text 连续前缀片段，构建期前缀接龙校验）。
   - 宋版：`sections[].blocks[]`，每块 `{type: j|z, text}`。

@@ -155,6 +155,7 @@
 
     $('mhTitle').textContent = conv(SK.title);
     $('mhSub').textContent = conv(V.spec);
+    $('navToc').textContent = conv(SK.navLabel || '目錄');
     $('btnZh').textContent = state.simp ? conv('簡體') : '繁體';
     $('btnDu').textContent = conv(zm.n);
     $('btnJie').textContent = conv('界行');

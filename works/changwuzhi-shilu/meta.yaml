@@ -7,6 +7,13 @@ ariaLabel: 長物志卷一室廬，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 1
+  entry:
+    big: 卷一
+    sub: 室廬
 seed: 30522
 expect: null
 stage: draft

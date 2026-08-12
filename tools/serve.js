@@ -6,7 +6,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
-const { listWorks, loadWork } = require('../src/core/load');
+const { aggregateSite } = require('../src/site/aggregate');
+const { siteFaces, renderIndex, renderToc } = require('../src/site/render');
 
 const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
@@ -42,19 +43,22 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+  // 站點頁（首頁「藏書」/ 書目「目錄葉」）動態生成：改 YAML 免重建即預覽；
+  // 字體引用 /assets/fonts/ 小字庫（未構建時 404 落系統回退鏈，不礙預覽）
   if (p === '/') {
-    // 作品入口页（draft 卷次标注「需點校」）
-    const links = listWorks().map((id) => {
-      let t = id, tag = '';
-      try {
-        const w = loadWork(id);
-        t = (w.meta && w.meta.title) || id;
-        if (w.meta && w.meta.stage === 'draft') tag = ' <span style="color:#a55;font-size:.85em">【需點校】</span>';
-      } catch (e) { /* 元数据缺失时仅列 id */ }
-      return `<li><a href="/works/${id}/index.html">${t}</a>${tag}</li>`;
-    }).join('');
+    const site = aggregateSite();
+    for (const w of site.warnings) console.warn('[站點]', w);
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
-    res.end(`<!doctype html><meta charset="utf-8"><title>蘭木 · 作品列表</title><body style="font:16px/2 serif;padding:2em"><h2>蘭木 · 作品列表</h2><ul>${links}</ul></body>`);
+    res.end(renderIndex(site, siteFaces()));
+    return;
+  }
+  const bm = p.match(/^\/books\/([a-z0-9-]+)(?:\/index\.html)?\/?$/);
+  if (bm) {
+    const site = aggregateSite();
+    const book = site.books.find((b) => b.id === bm[1] && !b.standalone);
+    if (!book) { res.writeHead(404); res.end('not found: ' + p); return; }
+    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end(renderToc(book, siteFaces()));
     return;
   }
   const f = path.join(ROOT, p);

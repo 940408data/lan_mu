@@ -7,6 +7,13 @@ ariaLabel: 孟子集注卷之七，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: mengzi
+  title: 孟子集注
+  order: 7
+  entry:
+    big: 卷之七
+    sub: 離婁章句上
 seed: 11887
 expect:
   chars: 7732

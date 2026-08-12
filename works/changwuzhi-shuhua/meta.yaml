@@ -7,6 +7,13 @@ ariaLabel: 長物志卷五書畫，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 5
+  entry:
+    big: 卷五
+    sub: 書畫
 seed: 30526
 expect: null
 stage: draft

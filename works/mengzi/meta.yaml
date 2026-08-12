@@ -7,6 +7,13 @@ ariaLabel: 孟子集注卷之一，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: mengzi
+  title: 孟子集注
+  order: 1
+  entry:
+    big: 卷之一
+    sub: 梁惠王章句上
 seed: 11881
 expect:
   chars: 6832

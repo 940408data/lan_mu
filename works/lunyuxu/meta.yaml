@@ -7,6 +7,13 @@ ariaLabel: 論語集注序說，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 0.1
+  entry:
+    big: 序說
+    sub: 史記孔子行狀
 seed: 47291
 expect: null
 songke:

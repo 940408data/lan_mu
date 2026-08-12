@@ -7,6 +7,13 @@ ariaLabel: 長物志卷二花木，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 2
+  entry:
+    big: 卷二
+    sub: 花木
 seed: 30523
 expect: null
 stage: draft

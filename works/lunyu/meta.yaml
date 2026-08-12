@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之一，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 1
+  entry:
+    big: 卷之一
+    sub: 學而第一　為政第二
 seed: 11086
 expect:
   chars: 6751

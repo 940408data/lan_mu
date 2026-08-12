@@ -7,6 +7,13 @@ ariaLabel: 孟子集注卷之六，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: mengzi
+  title: 孟子集注
+  order: 6
+  entry:
+    big: 卷之六
+    sub: 滕文公章句下
 seed: 11886
 expect:
   chars: 6206

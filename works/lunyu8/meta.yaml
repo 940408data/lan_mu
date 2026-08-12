@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之八，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 8
+  entry:
+    big: 卷之八
+    sub: 衛靈公第十五　季氏第十六
 stage: draft
 draftNotice:
   title: 本卷正在點校，正文暫未公開

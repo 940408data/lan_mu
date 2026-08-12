@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷十四燕閒清賞箋，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 14
+  entry:
+    big: 卷十四
+    sub: 燕閒清賞箋
 seed: 31881
 expect: null
 stage: draft

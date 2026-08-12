@@ -7,6 +7,13 @@ ariaLabel: 孟子集注卷之十，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: mengzi
+  title: 孟子集注
+  order: 10
+  entry:
+    big: 卷之十
+    sub: 萬章章句下
 seed: 11890
 expect:
   chars: 6206
