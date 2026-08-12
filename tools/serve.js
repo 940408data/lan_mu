@@ -7,7 +7,10 @@ const fs = require('fs');
 const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
 const { aggregateSite } = require('../src/site/aggregate');
-const { siteFaces, renderIndex, renderToc } = require('../src/site/render');
+const {
+  siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
+} = require('../src/site/render');
+const { TOPICS } = require('../src/site/home');
 
 const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
@@ -43,13 +46,23 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-  // 站點頁（首頁「藏書」/ 書目「目錄葉」）動態生成：改 YAML 免重建即預覽；
+  // 站點頁動態生成：改 YAML/配置免重建即預覽；
   // 字體引用 /assets/fonts/ 小字庫（未構建時 404 落系統回退鏈，不礙預覽）
+  const html = (s) => { res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' }); res.end(s); };
   if (p === '/') {
     const site = aggregateSite();
     for (const w of site.warnings) console.warn('[站點]', w);
-    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
-    res.end(renderIndex(site, siteFaces()));
+    html(renderHome(site, siteFaces()));
+    return;
+  }
+  if (p === '/shuku/' || p === '/shuku/index.html') { html(renderShuku(aggregateSite(), siteFaces())); return; }
+  if (p === '/coming-soon/' || p === '/coming-soon/index.html') { html(renderComingSoon(siteFaces())); return; }
+  if (p === '/jiaoshu/' || p === '/jiaoshu/index.html') { html(renderJiaoshu(siteFaces())); return; }
+  const tm = p.match(/^\/topics\/([a-z0-9-]+)(?:\/index\.html)?\/?$/);
+  if (tm) {
+    const topic = TOPICS.find((t) => t.id === tm[1]);
+    if (!topic) { res.writeHead(404); res.end('not found: ' + p); return; }
+    html(renderTopic(topic, aggregateSite(), siteFaces()));
     return;
   }
   const bm = p.match(/^\/books\/([a-z0-9-]+)(?:\/index\.html)?\/?$/);
