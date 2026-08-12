@@ -35,8 +35,8 @@ const TOPICS = [
 const BOOK_META = {
   daxue:      { collation: '精校', diben: '當塗郡本' },
   zhongyong:  { collation: '精校', diben: '當塗郡本' },
-  lunyu:      { collation: '精校', diben: '當塗郡本' },
-  mengzi:     { collation: '精校', diben: '當塗郡本' },
+  lunyu:      { collation: '初校', diben: '當塗郡本' },
+  mengzi:     { collation: '初校', diben: '當塗郡本' },
   xinjing:    { collation: '初校', diben: '乾隆本' },
   lanting:    { collation: '精校', diben: '神龍本' },
   chibifu:    { collation: 'AI整理', diben: '四庫本' },
