@@ -1,0 +1,67 @@
+id: huxinting
+title: 湖心亭看雪
+subtitle: 張岱 · 數字復刻
+docTitle: 湖心亭看雪 — 數字復刻
+export:
+  base: Huxinting-Scroll
+  faces:
+    song: Song
+    jing: Jing
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+mark: 蘭木
+ariaLabel: 湖心亭看雪 橫卷，自右向左讀
+category: 書
+era: 明
+layout: scroll
+seed: 73065
+expect:
+  lines: 15
+  chars: 157
+  notes: 0
+scroll:
+  ch: 28
+  pitch: 46
+  glyph: 23
+  textH: 364    # 13 × 28（最長列十三字）
+  top: 68
+  paperW: 1600  # 400 + 15×46 + 510
+  paperH: 500   # 364 + 2×68
+  lead: 400
+  tail: 510
+  silk: 44
+  ends: 96
+  roll: 24
+  wrapW: 1840   # 1600 + 2×96 + 2×24
+  wrapH: 588    # 500 + 2×44
+  noteFontSize: 9.4
+faces:
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  jing:
+    font: fahua-wenkai
+    label: 寫經體
+  xing:
+    font: lxgw-wenkai-tc
+    fontLocal: ac-gyosyo
+    label: 行楷
+fallbackStacks:
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
+  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+sources:
+  - label: 維基文庫底本
+    url: https://zh.wikisource.org/zh-hant/湖心亭看雪
+aboutHtml: |-
+  <h2>關於這卷</h2>
+    <p>《湖心亭看雪》，明張岱作，出《陶庵夢憶》卷三。崇禎五年（1632）十二月，大雪三日，西湖人鳥聲俱絕，張岱獨往湖心亭看雪，遇金陵二客對坐飲酒，強飲三大白而別。全文一百五十七字，寫雪夜空靈之境與「癡」之胸次，為晚明小品名作。</p>
+    <h3>復刻取捨</h3>
+    <p>本卷以蘭木手卷引擎重排：行文依維基文庫底本。依骈對斷句、參差成行，凡十五行，短者八字、長者十三字，行氣隨文意起伏。墨色按蘸墨—行筆—墨盡的節奏逐字微調濃淡（種子確定性生成，無手書 marks）。無夾注。</p>
+    <p>點綴：引首鈐「看雪」朱文閒章一枚、卷末鈐「張岱」白文名章一枚，極淡，遠觀若無，近察方見。</p>
+    <h3>三體</h3>
+    <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，如唐人寫經；<b>行楷</b>筆勢流走。三體共用同一版心格律，行數字數不變。若系統未裝相應中文字體，自動退回可用的最近字體。</p>
+    <h3>操作</h3>
+    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · 「下載」存長圖 · 「簡體」繁簡互換 · 「句讀」施朱點讀 · Esc 關閉本板</p>
+    <p><a href="https://zh.wikisource.org/zh-hant/湖心亭看雪" target="_blank" rel="noreferrer">維基文庫釋文</a></p>
