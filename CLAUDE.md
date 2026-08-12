@@ -43,7 +43,7 @@ node tools/gen-index.js          # 构建后生成 dist/index.html 静态首页�
 
 作品页之外的两级站点页，视觉与宋刻同源（暗案底/纸墨/朱记）：
 
-- **首页** `dist/index.html` — 只列「书」不列卷：按 `meta.category` 分部（經/子/書/禮樂），书为竖式签条；多卷书 → 目录页，单卷（手卷等无 `book` 块者）→ 直达作品页。
+- **首页** `dist/index.html` — 只列「书」不列卷：顶部检索框（书名/卷次/篇名即输即显，繁简双轨——简体串构建期 opencc 预转入索引）+ 部类速达锚点；书为瓷青封面线装书影（左上签条题名、左缘订线、右下朱印）立于座上，按 `meta.category` 分部（經/子/書/禮樂）；多卷书 → 目录页，单卷（手卷等无 `book` 块者）→ 直达作品页。
 - **目录页** `dist/books/<bookId>/index.html` — 宋刻目录叶：半叶八行、版心鱼尾刻工，每卷一条（大字卷次列 + 双行小字篇名列，序类无篇名者单列），整条即链接，自动分叶；draft 卷于大字列末缀朱色「需點校」。
 - **书目归属**：各卷 `meta.book` 块（`id`/`title`/`order`/`entry{big,sub}`），`src/site/aggregate.js` 聚合校验；`order` 用原书卷次，序说/读法类以 0.1/0.2 置前。
 - **双轨生成**：`tools/serve.js` 对 `/` 与 `/books/<id>/` 动态渲染（dev 免重建）；`tools/gen-index.js` 与全量 build 末尾产出静态文件（生产）。

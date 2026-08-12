@@ -49,27 +49,91 @@ body{
 }
 
 /* ───── 首頁：藏書 ───── */
-.cabinet{max-width:980px;margin:0 auto;padding:.4rem 1.2rem 0;display:flex;flex-direction:column;gap:2.7rem}
+/* 檢索：即輸入即顯，繁簡雙軌（索引由構建期預轉） */
+.seek{position:relative;max-width:34rem;margin:.4rem auto 0;display:flex;gap:.5rem;padding:0 1rem}
+.seek input{
+  flex:1;min-width:0;background:rgba(216,198,160,.07);border:1px solid rgba(216,198,160,.3);
+  border-radius:1px;color:#f3e8d0;font-family:var(--kai);font-size:.92rem;letter-spacing:.1em;
+  padding:.52rem .9rem;outline:none;transition:border-color .2s,background .2s;
+}
+.seek input:focus{border-color:rgba(216,198,160,.55);background:rgba(216,198,160,.1)}
+.seek input::placeholder{color:rgba(214,198,166,.4)}
+.seek button{
+  background:rgba(166,49,37,.2);border:1px solid rgba(166,49,37,.55);color:#e2ab9b;
+  font-family:var(--kai);font-size:.85rem;letter-spacing:.2em;text-indent:.2em;
+  padding:.52rem 1.05rem;border-radius:1px;cursor:pointer;transition:background .2s,border-color .2s;
+}
+.seek button:hover{background:rgba(166,49,37,.32);border-color:rgba(166,49,37,.8)}
+.seek-list{
+  display:none;position:absolute;left:1rem;right:1rem;top:calc(100% + .35rem);z-index:9;
+  margin:0;padding:.3rem;list-style:none;background:#2c261d;border:1px solid rgba(216,198,160,.32);
+  box-shadow:0 10px 28px -10px rgba(0,0,0,.8);
+}
+.seek-list li a{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.42rem .6rem;text-decoration:none}
+.seek-list li.on a,.seek-list li a:hover{background:rgba(216,198,160,.12)}
+.seek-list .rt{font-family:var(--kai);font-size:.86rem;letter-spacing:.08em;color:rgba(238,224,196,.95)}
+.seek-list .rs{font-family:var(--kai);font-size:.76rem;letter-spacing:.06em;color:rgba(214,198,166,.55);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seek-list .dzi{font-style:normal;font-size:.7rem;letter-spacing:.12em;color:#dfa08c;margin-left:.5em}
+
+/* 部類速達 */
+.catnav{display:flex;justify-content:center;align-items:center;gap:1.1rem;margin:1.6rem 0 .2rem;font-family:var(--kai)}
+.catnav a{
+  color:rgba(224,208,178,.72);text-decoration:none;font-size:.85rem;letter-spacing:.3em;
+  text-indent:.3em;padding:.2rem .3rem;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
+}
+.catnav a:hover{color:#f3e8d0;border-bottom-color:rgba(216,198,160,.5)}
+.catnav i{color:rgba(216,198,160,.25);font-style:normal}
+
+.cabinet{max-width:1060px;margin:0 auto;padding:1rem 1.2rem 0;display:flex;flex-direction:column;gap:2.7rem}
 .cat h2{margin:0 0 1.1rem;display:flex;align-items:center;gap:.9rem}
 .cat h2 span{font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;color:rgba(224,208,178,.78)}
 .cat h2::after{content:"";flex:1;height:1px;background:rgba(216,198,160,.16)}
-.shelf{display:flex;flex-wrap:wrap;gap:1.6rem 1.4rem;padding-left:.15rem}
-.spine{display:flex;flex-direction:column;align-items:center;gap:.6rem;text-decoration:none}
-.spine .tag{
-  writing-mode:vertical-rl;min-height:11rem;min-width:2.4rem;padding:.72rem 0;
-  display:flex;align-items:center;
-  background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 58%,#e4d8bd 100%);
-  color:#2b2119;font-family:var(--kai);font-size:1.05rem;letter-spacing:.3em;
-  border:1px solid rgba(36,28,20,.5);border-radius:1px;
-  box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 10px 22px -12px rgba(0,0,0,.75);
-  transition:filter .22s ease,box-shadow .22s ease;
+.cat{scroll-margin-top:1.2rem}
+.shelf{display:flex;flex-wrap:wrap;gap:1.7rem 1.3rem;padding-left:.15rem}
+
+/* 書影：瓷青封面線裝書，立於座上——左上簽條題名，右下朱印，左緣訂線四孔 */
+.slot{display:flex;flex-direction:column;align-items:center;text-decoration:none}
+.tome{
+  position:relative;width:8rem;height:11.2rem;border-radius:1px;
+  background:linear-gradient(112deg,#46545f 0%,#3a4852 52%,#333f47 100%);
+  border:1px solid rgba(18,14,10,.6);
+  box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 14px 24px -13px rgba(0,0,0,.85);
+  transition:transform .22s ease,box-shadow .22s ease;
 }
-.spine .tag.tl{font-size:.9rem;letter-spacing:.22em}       /* 題名逾五字者收小 */
-.spine:hover .tag{filter:brightness(1.055);box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 14px 26px -12px rgba(0,0,0,.8)}
-.spine:focus-visible{outline:1px solid #d9c79a;outline-offset:3px}
-.spine .n{font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;color:rgba(214,198,166,.55);text-align:center}
-.spine .dz{
-  font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
+.tome::before{content:"";position:absolute;top:0;bottom:0;left:.66rem;width:4px;
+  background:linear-gradient(to right,
+    rgba(216,198,160,.38) 0,rgba(216,198,160,.38) 1px,transparent 1px,
+    transparent 3px,rgba(216,198,160,.2) 3px,rgba(216,198,160,.2) 4px,transparent 4px)}
+.tome::after{content:"";position:absolute;top:0;bottom:0;left:.48rem;width:.36rem;
+  background-image:
+    radial-gradient(circle at 50% 12%,rgba(232,222,200,.7) 0 1.6px,transparent 2.1px),
+    radial-gradient(circle at 50% 38%,rgba(232,222,200,.7) 0 1.6px,transparent 2.1px),
+    radial-gradient(circle at 50% 62%,rgba(232,222,200,.7) 0 1.6px,transparent 2.1px),
+    radial-gradient(circle at 50% 88%,rgba(232,222,200,.7) 0 1.6px,transparent 2.1px)}
+.tome .tag{
+  position:absolute;top:.85rem;left:1.3rem;writing-mode:vertical-rl;
+  background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 60%,#e4d8bd 100%);
+  color:#2b2119;font-family:var(--kai);font-size:.95rem;letter-spacing:.24em;
+  padding:.55rem .16rem .55rem .28rem;min-width:1.72rem;text-align:center;
+  border:1px solid rgba(36,28,20,.4);box-shadow:0 1px 3px rgba(0,0,0,.4);
+}
+.tome .tag.tl{font-size:.8rem;letter-spacing:.18em}       /* 題名逾五字者收小 */
+.tome .seal2{
+  position:absolute;right:.62rem;bottom:.62rem;writing-mode:vertical-rl;
+  border:1.3px solid var(--seal);color:var(--seal);border-radius:1px;opacity:.72;
+  font-family:var(--song);font-weight:600;font-size:.52rem;letter-spacing:.06em;
+  padding:.22em .12em .22em .2em;
+}
+.slot:hover .tome{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.09) inset,0 20px 30px -14px rgba(0,0,0,.9)}
+.slot:focus-visible{outline:1px solid #d9c79a;outline-offset:3px}
+.plinth{
+  width:9.1rem;height:.5rem;margin-top:-1px;border:1px solid rgba(18,14,10,.55);border-radius:1px;
+  background:linear-gradient(180deg,#54493a 0%,#3a3227 55%,#2b251c 100%);
+  box-shadow:0 6px 12px -6px rgba(0,0,0,.7);
+}
+.slot .n{margin-top:.65rem;font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;color:rgba(214,198,166,.55);text-align:center}
+.slot .dz{
+  margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
   border:1px solid rgba(196,60,44,.6);border-radius:1px;padding:.14em .42em .14em .62em;
 }
 .foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.4)}
@@ -168,7 +232,11 @@ a.tentry:focus-visible{outline:1.5px solid rgba(166,49,37,.7);outline-offset:-1.
   :root{--u:15px}
   .masthead .zhu{font-size:1.35rem}
   .masthead .yin{font-size:.5rem;vertical-align:.7em}
-  .spine .tag{min-height:9rem;min-width:2.1rem;font-size:.95rem}
-  .spine .tag.tl{font-size:.8rem}
+  .tome{width:6.6rem;height:9.4rem}
+  .tome .tag{font-size:.82rem;left:1.1rem}
+  .tome .tag.tl{font-size:.7rem}
+  .plinth{width:7.4rem}
+  .seek-list .rs{display:none}
 }
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}

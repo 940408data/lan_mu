@@ -3,6 +3,7 @@
  *  子集缺失時 @font-face 404 自動落回退鏈，dev 預覽不構子集亦可讀。 */
 const fs = require('fs');
 const path = require('path');
+const OpenCC = require('opencc-js');
 const { loadRegistry, fontFileOf } = require('../fonts/fonts');
 const { numCn } = require('./aggregate');
 
@@ -56,6 +57,50 @@ ${SITE_CSS()}
 }
 
 /* ───── 首頁：藏書 ───── */
+/* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴） */
+function searchIndex(site) {
+  const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
+  return site.books.map((b) => ({
+    t: b.title, t2: conv(b.title), cap: b.caption, href: b.href, draft: !!b.draft,
+    vols: b.standalone ? [] : b.volumes.map((v) => {
+      const big = (v.entry && v.entry.big) || v.title;
+      const sub = (v.entry && v.entry.sub) || '';
+      return { b: big, s: sub, b2: conv(big), s2: conv(sub), href: v.href, draft: v.draft };
+    }),
+  }));
+}
+
+/* 檢索交互：即輸入即顯，↑↓ 選取、Enter 入首選、Esc 收合 */
+const SEEK_JS = `(function(){
+var D=window.SITE_INDEX||[],inp=document.getElementById('seekIn'),list=document.getElementById('seekList'),go=document.getElementById('seekGo');
+var cur=[],sel=-1;
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function find(q){var out=[],vol=[],i,j,b,v;
+  for(i=0;i<D.length;i++){b=D[i];
+    if(b.t.indexOf(q)>-1||b.t2.indexOf(q)>-1)out.push({t:b.t,s:b.cap+' · 目錄',href:b.href,draft:b.draft});
+    for(j=0;j<b.vols.length;j++){v=b.vols[j];
+      if(v.b.indexOf(q)>-1||v.s.indexOf(q)>-1||v.b2.indexOf(q)>-1||v.s2.indexOf(q)>-1)
+        vol.push({t:b.t+' · '+v.b,s:v.s,href:v.href,draft:v.draft});}}
+  return out.concat(vol).slice(0,9);}
+function render(){
+  if(!cur.length){list.style.display='none';list.innerHTML='';return;}
+  list.innerHTML=cur.map(function(r,i){
+    return '<li role="option" class="'+(i===sel?'on':'')+'" data-i="'+i+'"><a href="'+r.href+'">'+
+      '<span class="rt">'+esc(r.t)+(r.draft?'<em class="dzi">需點校</em>':'')+'</span>'+
+      '<span class="rs">'+esc(r.s)+'</span></a></li>';}).join('');
+  list.style.display='block';}
+function close(){cur=[];sel=-1;render();}
+inp.addEventListener('input',function(){var q=inp.value.trim();if(!q){close();return;}cur=find(q);sel=cur.length?0:-1;render();});
+inp.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){close();inp.blur();}
+  else if(e.key==='ArrowDown'&&cur.length){sel=(sel+1)%cur.length;render();e.preventDefault();}
+  else if(e.key==='ArrowUp'&&cur.length){sel=(sel-1+cur.length)%cur.length;render();e.preventDefault();}
+  else if(e.key==='Enter'&&cur.length){location.href=cur[sel<0?0:sel].href;}});
+go.addEventListener('click',function(){if(cur.length)location.href=cur[sel<0?0:sel].href;});
+list.addEventListener('mousedown',function(e){var li=e.target.closest('li');if(li)e.preventDefault();});
+document.addEventListener('click',function(e){if(!e.target.closest('.seek'))close();});
+})();`;
+
 function renderIndex(site, faces) {
   const byCat = new Map();
   for (const b of site.books) {
@@ -67,18 +112,20 @@ function renderIndex(site, faces) {
     const ia = site.catOrder.indexOf(a), ib = site.catOrder.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
   });
-  const sections = cats.map((c) => {
-    const spines = byCat.get(c).map((b) => {
+  const catnav = cats.map((c, i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
+  const sections = cats.map((c, i) => {
+    const tomes = byCat.get(c).map((b) => {
       const long = [...b.title].length >= 6 ? ' tl' : '';
-      return `    <a class="spine" href="${b.href}">
-      <span class="tag${long}">${esc(b.title)}</span>
+      return `    <a class="slot" href="${b.href}">
+      <span class="tome"><span class="tag${long}">${esc(b.title)}</span><span class="seal2">蘭木</span></span>
+      <span class="plinth"></span>
       <span class="n">${esc(b.caption)}</span>
       ${b.draft ? '<span class="dz">需點校</span>\n' : ''}</a>`;
     }).join('\n');
-    return `  <section class="cat">
+    return `  <section class="cat" id="cat-${i}">
   <h2><span>${esc(c)}</span></h2>
   <div class="shelf">
-${spines}
+${tomes}
   </div>
   </section>`;
   }).join('\n');
@@ -90,12 +137,22 @@ ${spines}
   <p class="ke">一次校錄 · 多態呈現</p>
 </div>
 
+<div class="seek">
+  <input id="seekIn" type="search" placeholder="檢書名 · 篇名" autocomplete="off" aria-label="檢索書名篇名">
+  <button id="seekGo" type="button">檢索</button>
+  <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
+</div>
+
+<nav class="catnav" aria-label="部類">${catnav}</nav>
+
 <main class="cabinet">
 ${sections}
 </main>
 
 <p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創</p>
 
+<script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
+<script>${SEEK_JS}</script>
 </body></html>`;
 }
 
