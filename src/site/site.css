@@ -125,14 +125,21 @@ body{
   font-family:var(--song);font-weight:600;font-size:.52rem;letter-spacing:.06em;
   padding:.22em .12em .22em .2em;
 }
-.slot:hover .tome{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.09) inset,0 20px 30px -14px rgba(0,0,0,.9)}
+.slot:hover .tome{transform:translateY(-4px) scale(1.06);box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 22px 34px -14px rgba(0,0,0,.92)}
 .slot:focus-visible{outline:1px solid #d9c79a;outline-offset:3px}
 .plinth{
   width:9.1rem;height:.5rem;margin-top:-1px;border:1px solid rgba(18,14,10,.55);border-radius:1px;
   background:linear-gradient(180deg,#54493a 0%,#3a3227 55%,#2b251c 100%);
   box-shadow:0 6px 12px -6px rgba(0,0,0,.7);
 }
-.slot .n{margin-top:.65rem;font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;color:rgba(214,198,166,.55);text-align:center}
+.slot .n{margin-top:.65rem;display:flex;align-items:center;justify-content:center;gap:.42em;font-family:var(--kai);font-size:.8rem;letter-spacing:.1em;color:rgba(228,212,182,.92);text-align:center}
+.slot .n .ico{display:inline-flex;align-items:center;gap:.18em;font-family:var(--song);font-style:normal;font-size:.6rem;letter-spacing:.04em}
+.slot .n .ico svg{width:11px;height:11px;flex:0 0 auto}
+.slot .n .ico em{font-style:normal}
+.slot .n .ico-精校{color:var(--seal)}
+.slot .n .ico-初校{color:rgba(226,210,182,.85)}
+.slot .n .ico-AI整理{color:rgba(214,198,166,.6)}
+.slot .bi{display:block;margin-top:.18rem;font-family:var(--song);font-size:.6rem;letter-spacing:.06em;color:rgba(214,198,166,.55);text-align:center}
 .slot .dz{
   margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
   border:1px solid rgba(196,60,44,.6);border-radius:1px;padding:.14em .42em .14em .62em;
@@ -145,14 +152,14 @@ body{
   max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:1.6rem;
   padding:.85rem 1.2rem;border-bottom:1px solid rgba(216,198,160,.14);
 }
-.topnav .mk{font-family:var(--kai);font-size:1rem;letter-spacing:.32em;color:#e9ddc1;text-decoration:none}
+.topnav .mk{font-family:var(--kai);font-size:1.1rem;letter-spacing:.32em;color:#f3e7cd;text-decoration:none}
 .topnav .sp{flex:1}
 .topnav .item{
-  font-family:var(--kai);font-size:.8rem;letter-spacing:.14em;color:rgba(224,208,178,.72);
+  font-family:var(--kai);font-size:.92rem;letter-spacing:.12em;color:rgba(224,208,178,.85);
   text-decoration:none;padding:.15rem .1rem;border-bottom:1px solid transparent;
   transition:color .2s,border-color .2s;
 }
-.topnav .item:hover{color:#f3e8d0;border-bottom-color:rgba(216,198,160,.5)}
+.topnav .item:hover{color:#f6ead2;border-bottom-color:rgba(216,198,160,.6)}
 
 /* ───── 部類頁簽（一次一部，不放全帙） ───── */
 .tabs{display:flex;justify-content:center;gap:2.2rem;margin:1.9rem 0 0;padding:0 1rem}

@@ -24,10 +24,25 @@ const TOPICS = [
   },
   {
     id: 'sishi-youshang', title: '四時幽賞',
-    desc: '暮春蘭亭修禊，夏日廬山讀書 —— 古人四時之樂',
-    books: ['lanting'], virtual: ['陶潛讀山海經'], // TODO: 四時幽賞另兩部（秋/冬）虛擬典籍題名待用戶定後補——現僅 1 部，需求為「其他三部」
+    desc: '暮春蘭亭，秋夜赤壁，雪夜湖心，讀山海經 —— 古人四時之樂',
+    books: ['lanting', 'chibifu', 'dushanjing', 'huxinting'],
+    virtual: [],
   },
 ];
+
+/* 書卡詳情：點校類別 + 底本（集中配置；缺省 collation='AI整理'，無 diben 不顯底本行）。
+ * bookId = songke 的 book.id（多卷聚合）或 scroll 單卷 work id。 */
+const BOOK_META = {
+  daxue:      { collation: '精校', diben: '當塗郡本' },
+  zhongyong:  { collation: '精校', diben: '當塗郡本' },
+  lunyu:      { collation: '精校', diben: '當塗郡本' },
+  mengzi:     { collation: '精校', diben: '當塗郡本' },
+  xinjing:    { collation: '初校', diben: '乾隆本' },
+  lanting:    { collation: '精校', diben: '神龍本' },
+  chibifu:    { collation: 'AI整理', diben: '四庫本' },
+  dushanjing: { collation: 'AI整理', diben: '四庫本' },
+  huxinting:  { collation: 'AI整理' },
+};
 
 /* 固定文案（校書官招募 / 敬請期待頁），構建期一併入小字庫 */
 const COPY = {
@@ -45,4 +60,4 @@ const COPY = {
   topicHead: '專題推薦',
 };
 
-module.exports = { NAV, TABS, TOPICS, COPY };
+module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };
