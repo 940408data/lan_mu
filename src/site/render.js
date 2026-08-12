@@ -6,6 +6,7 @@ const path = require('path');
 const OpenCC = require('opencc-js');
 const { loadRegistry, fontFileOf } = require('../fonts/fonts');
 const { numCn } = require('./aggregate');
+const { NAV, TABS, TOPICS, COPY } = require('./home');
 
 const SITE_CSS = () => fs.readFileSync(path.join(__dirname, 'site.css'), 'utf8');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -56,18 +57,50 @@ ${SITE_CSS()}
 </head>`;
 }
 
-/* ───── 首頁：藏書 ───── */
-/* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴） */
+/* ───── 共用：頂部導航 / 書影 ───── */
+function topnav() {
+  const items = NAV.map((n) => `<a class="item" href="${n.href}">${esc(n.label)}</a>`).join('');
+  return `<nav class="topnav"><a class="mk" href="/index.html">蘭木</a><span class="sp"></span>${items}</nav>`;
+}
+
+/* 書影：真書（鏈目錄/作品頁）與虛擬典籍（鏈「敬請期待」）共用 */
+function tomeHtml(title, href, caption, opts = {}) {
+  const long = [...title].length >= 6 ? ' tl' : '';
+  return `    <a class="slot${opts.virt ? ' virt' : ''}" href="${href}">
+      <span class="tome"><span class="tag${long}">${esc(title)}</span><span class="seal2">蘭木</span></span>
+      <span class="plinth"></span>
+      <span class="n">${esc(caption)}</span>
+      ${opts.draft ? '<span class="dz">需點校</span>\n' : ''}</a>`;
+}
+const bookTome = (b) => tomeHtml(b.title, b.href, b.caption, { draft: b.draft });
+const virtTome = (title) => tomeHtml(title, `/coming-soon/?t=${encodeURIComponent(title)}`, COPY.soon.title, { virt: true });
+
+const masthead = (title, ke) => `<div class="masthead">
+  <div class="zhu">${esc(title)}</div>
+  <p class="ke">${esc(ke)}</p>
+</div>`;
+const backHome = `<p class="back"><a href="/index.html">${COPY.back}</a></p>`;
+const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>`;
+
+/* ───── 首頁：門戶（檢索 + 部類頁簽 + 專題推薦） ───── */
+/* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
+   虛擬典籍亦入索引，命中即示「敬請期待」 */
 function searchIndex(site) {
   const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
-  return site.books.map((b) => ({
-    t: b.title, t2: conv(b.title), cap: b.caption, href: b.href, draft: !!b.draft,
+  const real = site.books.map((b) => ({
+    t: b.title, t2: conv(b.title), sub: `${b.caption} · 目錄`, href: b.href, draft: !!b.draft,
     vols: b.standalone ? [] : b.volumes.map((v) => {
       const big = (v.entry && v.entry.big) || v.title;
       const sub = (v.entry && v.entry.sub) || '';
       return { b: big, s: sub, b2: conv(big), s2: conv(sub), href: v.href, draft: v.draft };
     }),
   }));
+  for (const t of TABS) {
+    for (const title of t.virtual || []) {
+      real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false, vols: [] });
+    }
+  }
+  return real;
 }
 
 /* 檢索交互：即輸入即顯，↑↓ 選取、Enter 入首選、Esc 收合 */
@@ -77,7 +110,7 @@ var cur=[],sel=-1;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function find(q){var out=[],vol=[],i,j,b,v;
   for(i=0;i<D.length;i++){b=D[i];
-    if(b.t.indexOf(q)>-1||b.t2.indexOf(q)>-1)out.push({t:b.t,s:b.cap+' · 目錄',href:b.href,draft:b.draft});
+    if(b.t.indexOf(q)>-1||b.t2.indexOf(q)>-1)out.push({t:b.t,s:b.sub,href:b.href,draft:b.draft});
     for(j=0;j<b.vols.length;j++){v=b.vols[j];
       if(v.b.indexOf(q)>-1||v.s.indexOf(q)>-1||v.b2.indexOf(q)>-1||v.s2.indexOf(q)>-1)
         vol.push({t:b.t+' · '+v.b,s:v.s,href:v.href,draft:v.draft});}}
@@ -101,27 +134,96 @@ list.addEventListener('mousedown',function(e){var li=e.target.closest('li');if(l
 document.addEventListener('click',function(e){if(!e.target.closest('.seek'))close();});
 })();`;
 
-function renderIndex(site, faces) {
+/* 部類頁簽切換：無 JS 時僅見首部（儒家經典），與「不放全帙」一致 */
+const TAB_JS = `(function(){
+var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.tabpanel');
+function show(n){for(var i=0;i<tabs.length;i++){var on=i===n;
+tabs[i].classList.toggle('on',on);tabs[i].setAttribute('aria-selected',on?'true':'false');
+panels[i].style.display=on?'block':'none';}}
+for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
+})();`;
+
+/* 書目分組（書庫全帙用） */
+function groupByCat(site) {
   const byCat = new Map();
   for (const b of site.books) {
     const c = b.category || '其他';
     if (!byCat.has(c)) byCat.set(c, []);
     byCat.get(c).push(b);
   }
-  const cats = [...byCat.keys()].sort((a, b) => {
+  return [...byCat.keys()].sort((a, b) => {
     const ia = site.catOrder.indexOf(a), ib = site.catOrder.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
-  });
-  const catnav = cats.map((c, i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
-  const sections = cats.map((c, i) => {
-    const tomes = byCat.get(c).map((b) => {
-      const long = [...b.title].length >= 6 ? ' tl' : '';
-      return `    <a class="slot" href="${b.href}">
-      <span class="tome"><span class="tag${long}">${esc(b.title)}</span><span class="seal2">蘭木</span></span>
-      <span class="plinth"></span>
-      <span class="n">${esc(b.caption)}</span>
-      ${b.draft ? '<span class="dz">需點校</span>\n' : ''}</a>`;
-    }).join('\n');
+  }).map((c) => [c, byCat.get(c)]);
+}
+
+const seekHtml = `<div class="seek">
+  <input id="seekIn" type="search" placeholder="檢書名 · 篇名" autocomplete="off" aria-label="檢索書名篇名">
+  <button id="seekGo" type="button">檢索</button>
+  <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
+</div>`;
+
+/* 首頁：門戶 */
+function renderHome(site, faces) {
+  const byId = new Map(site.books.map((b) => [b.id, b]));
+  const tabBtns = TABS.map((t, i) =>
+    `<button role="tab" id="tab-${i}" aria-controls="tp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.key)}</button>`).join('');
+  const panels = TABS.map((t, i) => {
+    const tomes = [
+      ...(t.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome),
+      ...(t.virtual || []).map(virtTome),
+    ].join('\n');
+    return `  <div class="tabpanel" id="tp-${i}" role="tabpanel" aria-labelledby="tab-${i}"${i ? ' style="display:none"' : ''}>
+  <div class="shelf">
+${tomes}
+  </div>
+  </div>`;
+  }).join('\n');
+  const topics = TOPICS.map((t) => {
+    const n = (t.books || []).length + (t.virtual || []).length;
+    return `    <a class="topic" href="/topics/${t.id}/index.html">
+      <span class="tt">${esc(t.title)}</span>
+      <span class="td"><span class="tdd">${esc(t.desc)}</span><span class="tn">凡${numCn(n)}種</span></span>
+    </a>`;
+  }).join('\n');
+  return `${head('蘭木 · 藏書', faces)}
+<body class="idx">
+
+${topnav()}
+
+<div class="masthead">
+  <div class="zhu">蘭　木<span class="yin">蘭木</span></div>
+  <p class="ke">聲微志遠，此弄宜緩</p>
+</div>
+
+${seekHtml}
+
+<div class="tabs" role="tablist" aria-label="部類">${tabBtns}</div>
+<div class="tabwrap">
+${panels}
+</div>
+
+<section class="topics">
+  <h2><span>${COPY.topicHead}</span></h2>
+  <div class="tgrid">
+${topics}
+  </div>
+</section>
+
+${FOOT}
+
+<script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
+<script>${SEEK_JS}</script>
+<script>${TAB_JS}</script>
+</body></html>`;
+}
+
+/* 書庫：全帙一覽（舊首頁內容） */
+function renderShuku(site, faces) {
+  const cats = groupByCat(site);
+  const catnav = cats.map(([c], i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
+  const sections = cats.map(([c, books], i) => {
+    const tomes = books.map(bookTome).join('\n');
     return `  <section class="cat" id="cat-${i}">
   <h2><span>${esc(c)}</span></h2>
   <div class="shelf">
@@ -129,19 +231,11 @@ ${tomes}
   </div>
   </section>`;
   }).join('\n');
-  return `${head('蘭木 · 藏書', faces)}
+  return `${head('書庫 · 蘭木藏書', faces)}
 <body class="idx">
 
-<div class="masthead">
-  <div class="zhu">蘭　木<span class="yin">蘭木</span></div>
-  <p class="ke">聲微志遠，此弄宜緩</p>
-</div>
-
-<div class="seek">
-  <input id="seekIn" type="search" placeholder="檢書名 · 篇名" autocomplete="off" aria-label="檢索書名篇名">
-  <button id="seekGo" type="button">檢索</button>
-  <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
-</div>
+${topnav()}
+${masthead('書　庫', '全帙一覽')}
 
 <nav class="catnav" aria-label="部類">${catnav}</nav>
 
@@ -149,10 +243,78 @@ ${tomes}
 ${sections}
 </main>
 
-<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>
+${FOOT}
 
-<script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
-<script>${SEEK_JS}</script>
+</body></html>`;
+}
+
+/* 專題頁：專題內書影（真書 + 虛擬典籍） */
+function renderTopic(topic, site, faces) {
+  const byId = new Map(site.books.map((b) => [b.id, b]));
+  const tomes = [
+    ...(topic.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome),
+    ...(topic.virtual || []).map(virtTome),
+  ].join('\n');
+  return `${head(`${topic.title} · ${COPY.topicLabel} — 蘭木藏書`, faces)}
+<body class="idx">
+
+${topnav()}
+${masthead(topic.title, COPY.topicLabel)}
+
+<p class="tintro">${esc(topic.desc)}</p>
+
+<main class="cabinet">
+  <div class="shelf center">
+${tomes}
+  </div>
+</main>
+
+${backHome}
+${FOOT}
+
+</body></html>`;
+}
+
+/* 敬請期待：虛擬典籍落點（?t=書名 由腳本換題） */
+function renderComingSoon(faces) {
+  return `${head('敬請期待 — 蘭木藏書', faces)}
+<body class="idx">
+
+${topnav()}
+
+<div class="masthead">
+  <div class="zhu" id="soonT">${COPY.soon.title}</div>
+  <p class="ke" id="soonS">${COPY.soon.sub}</p>
+</div>
+
+${backHome}
+${FOOT}
+
+<script>(function(){var m=location.search.match(/[?&]t=([^&]+)/);if(!m)return;
+var t=decodeURIComponent(m[1]).slice(0,24);
+document.getElementById('soonT').textContent=t;
+document.getElementById('soonS').textContent='${COPY.soon.sub} · ${COPY.soon.title}';
+document.title=t+' — ${COPY.soon.title}';})();</script>
+</body></html>`;
+}
+
+/* 我是校書官：點校招募 */
+function renderJiaoshu(faces) {
+  const lines = COPY.jiaoshu.lines.map((s, i) =>
+    `  <p${i === COPY.jiaoshu.lines.length - 1 ? ' class="dim"' : ''}>${esc(s)}</p>`).join('\n');
+  return `${head(`${COPY.jiaoshu.title} — 蘭木藏書`, faces)}
+<body class="idx">
+
+${topnav()}
+${masthead(COPY.jiaoshu.title, COPY.jiaoshu.sub)}
+
+<div class="recruit">
+${lines}
+</div>
+
+${backHome}
+${FOOT}
+
 </body></html>`;
 }
 
@@ -245,4 +407,4 @@ ${leavesHtml}
 </body></html>`;
 }
 
-module.exports = { siteFaces, renderIndex, renderToc, SITE_FONTS, FALLBACK };
+module.exports = { siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc, SITE_FONTS, FALLBACK };
