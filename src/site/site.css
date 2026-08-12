@@ -53,14 +53,14 @@ body{
 /* 檢索：即輸入即顯，繁簡雙軌（索引由構建期預轉） */
 .seek{position:relative;max-width:34rem;margin:.4rem auto 0;display:flex;gap:.5rem;padding:0 1rem}
 .seek input{
-  flex:1;min-width:0;background:rgba(216,198,160,.07);border:1px solid rgba(216,198,160,.3);
+  flex:1;min-width:0;background:rgba(216,198,160,.10);border:1px solid rgba(216,198,160,.3);
   border-radius:1px;color:#f3e8d0;font-family:var(--kai);font-size:.92rem;letter-spacing:.1em;
   padding:.52rem .9rem;outline:none;transition:border-color .2s,background .2s;
 }
-.seek input:focus{border-color:rgba(216,198,160,.55);background:rgba(216,198,160,.1)}
-.seek input::placeholder{color:rgba(214,198,166,.4)}
+.seek input:focus{border-color:rgba(216,198,160,.55);background:rgba(216,198,160,.14)}
+.seek input::placeholder{color:rgba(214,198,166,.5)}
 .seek button{
-  background:rgba(166,49,37,.2);border:1px solid rgba(166,49,37,.55);color:#e2ab9b;
+  background:rgba(166,49,37,.2);border:1px solid rgba(166,49,37,.65);color:#e2ab9b;
   font-family:var(--kai);font-size:.85rem;letter-spacing:.2em;text-indent:.2em;
   padding:.52rem 1.05rem;border-radius:1px;cursor:pointer;transition:background .2s,border-color .2s;
 }
@@ -96,7 +96,7 @@ body{
 .slot{display:flex;flex-direction:column;align-items:center;text-decoration:none}
 .tome{
   position:relative;width:8rem;height:11.2rem;border-radius:1px;
-  background:linear-gradient(112deg,#46545f 0%,#3a4852 52%,#333f47 100%);
+  background:linear-gradient(112deg,#3f4c58 0%,#33404c 52%,#2c3743 100%);
   border:1px solid rgba(18,14,10,.6);
   box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 14px 24px -13px rgba(0,0,0,.85);
   transition:transform .22s ease,box-shadow .22s ease;
@@ -137,8 +137,8 @@ body{
   margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
   border:1px solid rgba(196,60,44,.6);border-radius:1px;padding:.14em .42em .14em .62em;
 }
-.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.4);line-height:2.2}
-.foot2{font-size:.68rem;color:rgba(214,198,166,.3)}
+.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.5);line-height:2.2}
+.foot2{font-size:.68rem;color:rgba(214,198,166,.42)}
 
 /* ───── 頂部導航 ───── */
 .topnav{
@@ -157,13 +157,13 @@ body{
 /* ───── 部類頁簽（一次一部，不放全帙） ───── */
 .tabs{display:flex;justify-content:center;gap:2.2rem;margin:1.9rem 0 0;padding:0 1rem}
 .tabs button{
-  background:none;border:0;border-bottom:1px solid transparent;border-radius:0;
+  background:none;border:0;border-bottom:2px solid transparent;border-radius:0;
   font-family:var(--kai);font-size:1rem;letter-spacing:.34em;text-indent:.34em;
   color:rgba(214,198,166,.55);padding:.35rem .2rem;cursor:pointer;
   transition:color .2s,border-color .2s;
 }
 .tabs button:hover{color:rgba(238,224,196,.85)}
-.tabs button.on{color:#f3e8d0;border-bottom-color:var(--zhu)}
+.tabs button.on{color:#f3e8d0;font-weight:600;border-bottom-color:var(--zhu)}
 .tabs button:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
 .tabwrap{max-width:1060px;margin:0 auto;padding:0 1.2rem}
 .tabpanel{margin-top:1.7rem}
@@ -171,6 +171,15 @@ body{
 
 /* 虛擬典籍：色稍斂，誌「敬請期待」 */
 .virt .tome{filter:saturate(.72) brightness(.94)}
+
+/* 書影微差：靛藍灰系等差遞增（深→淺），色差均勻，不破典藏統一；尺寸/間距悉依基線 */
+.shelf .slot:nth-child(4n+2) .tome{background:linear-gradient(112deg,#45525d 0%,#394651 52%,#323d48 100%)}
+.shelf .slot:nth-child(4n+3) .tome{background:linear-gradient(112deg,#4b5863 0%,#3f4c57 52%,#38424d 100%)}
+.shelf .slot:nth-child(4n+4) .tome{background:linear-gradient(112deg,#515e69 0%,#45525d 52%,#3e4853 100%)}
+.shelf .slot:nth-child(4n+2) .tome .tag{min-width:1.82rem}
+.shelf .slot:nth-child(4n+3) .tome .tag{min-width:1.64rem}
+.shelf .slot:nth-child(4n+3) .tome .seal2{right:.5rem;bottom:.7rem}
+.shelf .slot:nth-child(4n+4) .tome .seal2{right:.74rem;bottom:.54rem}
 
 /* ───── 專題推薦 ───── */
 .topics{max-width:1060px;margin:0 auto;padding:0 1.2rem}
