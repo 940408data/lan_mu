@@ -1,0 +1,29 @@
+seals:
+  - x: 2964
+    y: 100
+    rotate: -1.2
+    w: 30
+    h: 56
+    style: 朱文
+    fontSize: 14
+    chars:
+      - ch: 赤
+        x: 15
+        y: 16
+      - ch: 壁
+        x: 15
+        y: 40
+  - x: 180
+    y: 330
+    rotate: 1.1
+    w: 30
+    h: 56
+    style: 白文
+    fontSize: 14
+    chars:
+      - ch: 蘇
+        x: 15
+        y: 16
+      - ch: 軾
+        x: 15
+        y: 40
