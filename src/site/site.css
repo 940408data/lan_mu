@@ -24,6 +24,7 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+html{background:#221d18}
 body{
   background:radial-gradient(120% 90% at 50% -5%, #4c4235 0%, #332c23 55%, #221d18 100%);
   color:#d9cdb4;font-family:var(--song);
@@ -136,7 +137,8 @@ body{
   margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
   border:1px solid rgba(196,60,44,.6);border-radius:1px;padding:.14em .42em .14em .62em;
 }
-.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.4)}
+.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.4);line-height:2.2}
+.foot2{font-size:.68rem;color:rgba(214,198,166,.3)}
 
 /* ───── 目錄葉：書葉原語（與 songke.css 同式） ───── */
 .book{display:flex;flex-direction:column;align-items:center;gap:2.4rem;padding:0 .8rem;overflow-x:auto}

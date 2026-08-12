@@ -8,7 +8,7 @@ const { aggregateSite } = require('./aggregate');
 const { siteFaces, renderIndex, renderToc } = require('./render');
 
 /* 站點固定文案用字（頁面框架/落款/導航），與數據用字一併入子集 */
-const UI_CHARS = '蘭木藏書目錄一次校錄多態呈現書法古籍音樂之現代數字文創凡卷並序單手幅需點校回經史子集禮樂畫第葉前後半右其他檢索名篇·—　';
+const UI_CHARS = '蘭木藏書目錄一次校錄多態呈現書法古籍音樂之現代數字文創凡卷並序單手幅需點校回經史子集禮樂畫第葉前後半右其他檢索名篇聲微志遠此弄宜緩，·—　';
 
 async function buildSitePages(distRoot) {
   const site = aggregateSite();

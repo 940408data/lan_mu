@@ -134,7 +134,7 @@ ${tomes}
 
 <div class="masthead">
   <div class="zhu">蘭　木<span class="yin">蘭木</span></div>
-  <p class="ke">一次校錄 · 多態呈現</p>
+  <p class="ke">聲微志遠，此弄宜緩</p>
 </div>
 
 <div class="seek">
@@ -149,7 +149,7 @@ ${tomes}
 ${sections}
 </main>
 
-<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創</p>
+<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>
 
 <script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
 <script>${SEEK_JS}</script>
