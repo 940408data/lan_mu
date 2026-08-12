@@ -1,6 +1,7 @@
 /** 站點聚合：works/ → 書級視圖（供首頁「藏書」與書目頁「目錄葉」生成）。
  *  歸屬依據各卷 meta.book 塊（id/title/order/entry）；無 book 者視為單卷書，首頁直達作品頁。 */
 const { listWorks, loadWork } = require('../core/load');
+const { BOOK_META } = require('./home');
 
 /* 部類次序（經子書禮樂；未列入者殿後，按 id 字典序） */
 const CAT_ORDER = ['經', '子', '書', '禮樂'];
@@ -72,6 +73,9 @@ function aggregateSite() {
       b.href = `/books/${b.id}/index.html`;
       b.gong = (b.volumes.find((v) => v.gong && v.gong.length) || {}).gong || [];
     }
+    const bm = Object.assign({ collation: 'AI整理' }, BOOK_META[b.id] || {});
+    b.collation = bm.collation;
+    if (bm.diben) b.diben = bm.diben;
     books.push(b);
   }
   const catIx = (c) => { const i = CAT_ORDER.indexOf(c); return i < 0 ? CAT_ORDER.length : i; };
