@@ -7,6 +7,13 @@ ariaLabel: 長物志序，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 0.1
+  entry:
+    big: 序
+    sub: 沈春澤
 seed: 30521
 expect: null
 stage: draft

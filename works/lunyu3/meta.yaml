@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之三，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 3
+  entry:
+    big: 卷之三
+    sub: 公冶長第五　雍也第六
 seed: 11463
 expect: null
 songke:

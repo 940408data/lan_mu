@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷三四時調攝箋，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 3
+  entry:
+    big: 卷三
+    sub: 四時調攝箋
 seed: 31877
 expect: null
 stage: draft

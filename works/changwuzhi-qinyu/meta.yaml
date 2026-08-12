@@ -7,6 +7,13 @@ ariaLabel: 長物志卷四禽魚，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: changwuzhi
+  title: 長物志
+  order: 4
+  entry:
+    big: 卷四
+    sub: 禽魚
 seed: 30525
 expect: null
 stage: draft

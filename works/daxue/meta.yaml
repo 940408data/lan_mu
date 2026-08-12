@@ -7,6 +7,13 @@ ariaLabel: 大學章句，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: daxue
+  title: 大學章句
+  order: 1
+  entry:
+    big: 大學
+    sub: 章句
 seed: 11205
 expect:
   chars: 5546

@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之九，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 9
+  entry:
+    big: 卷之九
+    sub: 陽貨第十七　微子第十八
 seed: 92715
 expect: null
 songke:

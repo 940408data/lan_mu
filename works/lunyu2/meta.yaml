@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之二，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 2
+  entry:
+    big: 卷之二
+    sub: 八佾第三　里仁第四
 seed: 11402
 expect: null
 songke:

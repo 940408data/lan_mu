@@ -114,6 +114,11 @@ async function cmdBuild(workId, only) {
       }
     }
   }
+  // 全量構建末尾生成站點頁（首頁「藏書」+ 各書「目錄葉」+ 站點小字庫）
+  if (!workId) {
+    console.log('\n══ 站點 ══');
+    await require('../src/site/build').buildSitePages(path.join(ROOT, 'dist'));
+  }
   console.log('\n构建完成');
 }
 

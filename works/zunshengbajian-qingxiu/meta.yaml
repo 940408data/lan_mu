@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷一清修妙論箋上，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 1
+  entry:
+    big: 卷一
+    sub: 清修妙論箋
 seed: 31876
 expect: null
 stage: draft

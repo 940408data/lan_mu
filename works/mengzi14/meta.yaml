@@ -7,6 +7,13 @@ ariaLabel: 孟子集注卷之十四，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: mengzi
+  title: 孟子集注
+  order: 14
+  entry:
+    big: 卷之十四
+    sub: 盡心章句下
 seed: 11894
 expect:
   chars: 7545

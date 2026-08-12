@@ -7,6 +7,13 @@ ariaLabel: 論語集注卷之五，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 5
+  entry:
+    big: 卷之五
+    sub: 子罕第九　鄉黨第十
 seed: 22807
 expect: null
 songke:

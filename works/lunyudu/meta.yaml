@@ -7,6 +7,13 @@ ariaLabel: 讀論語孟子法，宋刻本版式，自右向左讀
 category: 經
 era: 宋
 layout: songke
+book:
+  id: lunyu
+  title: 論語集注
+  order: 0.2
+  entry:
+    big: 讀法
+    sub: 讀論語孟子法
 seed: 61583
 expect: null
 songke:

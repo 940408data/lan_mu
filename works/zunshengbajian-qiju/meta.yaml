@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷七起居安樂箋，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 7
+  entry:
+    big: 卷七
+    sub: 起居安樂箋
 seed: 31878
 expect: null
 stage: draft

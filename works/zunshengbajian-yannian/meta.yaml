@@ -7,6 +7,13 @@ ariaLabel: 遵生八箋卷九延年卻病箋，刻本版式，自右向左讀
 category: 子
 era: 明
 layout: songke
+book:
+  id: zunshengbajian
+  title: 遵生八箋
+  order: 9
+  entry:
+    big: 卷九
+    sub: 延年卻病箋
 seed: 31879
 expect: null
 stage: draft
