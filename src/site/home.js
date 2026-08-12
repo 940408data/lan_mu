@@ -15,18 +15,19 @@ const TABS = [
   { key: '道家', books: [], virtual: ['道德經', '南華經', '沖虛經'] },
 ];
 
-/* 專題推薦：卡片點入專題頁（/topics/<id>/） */
+/* 專題推薦：卡片點入專題頁（/topics/<id>/）。
+ * 順序即首頁展示序：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質。 */
 const TOPICS = [
-  {
-    id: 'sishu', title: '四書',
-    desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，經注相隨，宋刻重排',
-    books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'],
-  },
   {
     id: 'sishi-youshang', title: '四時幽賞',
     desc: '暮春蘭亭，秋夜赤壁，雪夜湖心，讀山海經 —— 古人四時之樂',
     books: ['lanting', 'chibifu', 'dushanjing', 'huxinting'],
     virtual: [],
+  },
+  {
+    id: 'sishu', title: '四書',
+    desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，經注相隨，宋刻重排',
+    books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'],
   },
 ];
 
