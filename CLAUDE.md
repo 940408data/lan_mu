@@ -98,3 +98,12 @@ Playwright 无头 Chromium 打开 dist HTML 按字体角色逐版截图；缺失
 - 主分支为 `dev`（非 main/master）；PR 目标分支用 `dev`。
 - **分支/提交规范见 `CONTRIBUTING.md`**：分支名 `<type>/<kebab-desc>`（`content/`校录、`engine/`引擎排版、`infra/`基建、`fix/`修复），提交信息 `<type>(<scope>): <中文描述>`；Tag 仅在内容里程碑按需打（暂不引 semver）。
 - **pre-commit hook**（`.githooks/`，`npm install` 经 `prepare` 自动配置 `core.hooksPath`）：提交前自动跑 `validate`，改动触及 `src/core|render|fonts|viewer/`、`works/youlan/`、`css/` 时加跑幽兰 `verify`（逐字节保真守门）。绕过用 `git commit --no-verify`。
+
+## 多 worktree + 多 agent 协作
+
+多任务并行采用「每任务一 worktree（`.claude/worktrees/<语义名>`）+ worktree 内建分支 + 每 worktree 一个 agent 会话」。两条硬性规范：
+
+- **分支命名带语义**：agent 临时分支用 `<type>/<语义名>`（如 `engine/portal-song`），**禁用** `worktree-agent-<hash>` 等无语义名；合并/丢弃后立即 `git branch -d/-D` 回收本地分支。
+- **worktree 路径统一**：开发用 `.claude/worktrees/<语义名>`；审核预览用 `.preview-wt/<语义名>`，审核完即删，不长期保留。
+
+完整实践记录、清理流程、命令速查与其余规范（退出回收 / 探索收敛 / 删除前三查）见 `docs/多worktree多agent协作实践与规范.md`。
