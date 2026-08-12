@@ -12,8 +12,8 @@ expect:
   chars: 7732
   jChars: 2412
   zChars: 5320
-  columns: 287
-  halves: 36
+  columns: 275
+  halves: 35
   leaves: 18
 songke:
   bigPerCol: 16
