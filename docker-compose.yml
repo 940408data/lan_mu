@@ -6,6 +6,9 @@ services:
     restart: unless-stopped
     tmpfs:
       - /tmp
+    volumes:
+      # 宿主 dist 作为重媒体（pdf/jpg/png）只读源——不烘进镜像
+      - ./dist:/media:ro
     ports:
       - "${PORT:-8080}:8080"
     healthcheck:
