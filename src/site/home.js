@@ -1,5 +1,5 @@
-/** 首頁門戶配置：頂部導航 / 部類頁簽（三藏頁）/ 專題推薦 / 靜態文案。
- *  編選性內容（非 works 數據）：虛擬典籍僅具題名，點入「敬請期待」。 */
+/** 首頁門戶配置：頂部導航 / 部類頁簽（經史子集頁 /sanzang/）/ 專題推薦 / 靜態文案。
+ *  跨選性內容（非 works 數據）：虛擬典籍僅具題名，點入「敬請期待」。 */
 
 const NAV = [
   { label: '幽蘭第五', href: '/works/youlan/index.html' },
@@ -7,12 +7,13 @@ const NAV = [
   { label: '我是校書官', href: '/jiaoshu/' },
 ];
 
-/* 部類頁簽（三藏頁 /sanzang/，即 0327 版首頁遷存）：books 為聚合書 id（真書），
+/* 部類頁簽（經史子集頁 /sanzang/，即 0327 版首頁遷存）：books 為聚合書 id（真書），
  * virtual 為虛擬典籍（敬請期待）。仿識典式編選：一次一部，不放全帙；全帙在「書庫」。 */
 const TABS = [
-  { key: '儒家經典', books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'] },
-  { key: '佛家', books: ['xinjing'], virtual: ['金剛經', '維摩詰經', '妙法蓮華經'] },
-  { key: '道家', books: [], virtual: ['道德經', '南華經', '沖虛經'] },
+  { key: '經選', books: [], virtual: ['詩經', '尚書', '周易', '春秋'] },
+  { key: '史選', books: [], virtual: ['史記', '漢書', '後漢書', '三國志'] },
+  { key: '子選', books: ['changwuzhi', 'zunshengbajian'], virtual: ['神奇秘譜', '閒情偶寄'] },
+  { key: '集選', books: [], virtual: ['李太白文集', '杜工部集', '王右丞集'] },
 ];
 
 /* 專題：首頁主/次視覺板塊與專題頁（/topics/<id>/）共用此配置。
@@ -61,8 +62,8 @@ const COPY = {
   back: '回蘭木藏書',
   topicLabel: '專題',
   topicHead: '專題推薦',
-  enterSanzang: '三藏',
-  sanzangSub: '儒釋道編選',
+  enterSanzang: '古典',
+  sanzangSub: '經史子集選編',
 };
 
 module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };

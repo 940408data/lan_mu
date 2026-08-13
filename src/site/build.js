@@ -28,7 +28,7 @@ function collectSiteChars(site) {
   for (const n of NAV) add(n.label);
   for (const t of TABS) { add(t.key); (t.virtual || []).forEach(add); }
   for (const t of TOPICS) { add(t.title); add(t.desc); (t.virtual || []).forEach(add); Object.values(t.marks || {}).forEach(add); }
-  add(COPY.soon.title); add(COPY.soon.sub); add(COPY.back); add(COPY.topicLabel); add(COPY.topicHead); add(COPY.enterShuku); add(COPY.shukuSub);
+  add(COPY.soon.title); add(COPY.soon.sub); add(COPY.back); add(COPY.topicLabel); add(COPY.topicHead); add(COPY.enterSanzang); add(COPY.sanzangSub); add(COPY.enterShuku); add(COPY.shukuSub);
   add(COPY.jiaoshu.title); add(COPY.jiaoshu.sub); COPY.jiaoshu.lines.forEach(add);
   return [...chars].join('');
 }
