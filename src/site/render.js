@@ -6,7 +6,7 @@ const path = require('path');
 const OpenCC = require('opencc-js');
 const { loadRegistry, fontFileOf } = require('../fonts/fonts');
 const { numCn } = require('./aggregate');
-const { NAV, TABS, TOPICS, COPY } = require('./home');
+const { NAV, VIRTUAL, TOPICS, COPY } = require('./home');
 
 const SITE_CSS = () => fs.readFileSync(path.join(__dirname, 'site.css'), 'utf8');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -93,7 +93,7 @@ const masthead = (title, ke) => `<div class="masthead">
 const backHome = `<p class="back"><a href="/index.html">${COPY.back}</a></p>`;
 const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>`;
 
-/* ───── 首頁：門戶（檢索 + 部類頁簽 + 專題推薦） ───── */
+/* ───── 首頁：門戶（檢索 + 簽條切換主視覺 + 專題推薦） ───── */
 /* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
    虛擬典籍亦入索引，命中即示「敬請期待」 */
 function searchIndex(site) {
@@ -106,8 +106,8 @@ function searchIndex(site) {
       return { b: big, s: sub, b2: conv(big), s2: conv(sub), href: v.href, draft: v.draft };
     }),
   }));
-  for (const t of TABS) {
-    for (const title of t.virtual || []) {
+  for (const v of VIRTUAL) {
+    for (const title of v.titles) {
       real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false, vols: [] });
     }
   }
@@ -145,12 +145,17 @@ list.addEventListener('mousedown',function(e){var li=e.target.closest('li');if(l
 document.addEventListener('click',function(e){if(!e.target.closest('.seek'))close();});
 })();`;
 
-/* 部類頁簽切換：無 JS 時僅見首部（儒家經典），與「不放全帙」一致 */
+/* 簽條切換：左欄兩支簽條（四時/四書）切右欄面板。
+   無 JS 時兩面板上下直陳全可見（漸進增強退路）。
+   JS 啟動時加 .js 類，CSS 僅隱藏非選中面板。 */
 const TAB_JS = `(function(){
-var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.tabpanel');
+var root=document.documentElement;
+root.classList.add('js');
+var tabs=document.querySelectorAll('.qiantiao button'),panels=document.querySelectorAll('.qpanel');
 function show(n){for(var i=0;i<tabs.length;i++){var on=i===n;
 tabs[i].classList.toggle('on',on);tabs[i].setAttribute('aria-selected',on?'true':'false');
-panels[i].style.display=on?'block':'none';}}
+panels[i].classList.toggle('hide',!on);}}
+show(0);
 for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
 })();`;
 
@@ -174,77 +179,94 @@ const seekHtml = `<div class="seek">
   <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
 </div>`;
 
-/* 板塊頭：題名（鏈專題頁）+ 細線 + 「專題 →」小鏈 + 題辭 */
-function secHead(title, href, desc) {
-  return `  <h2><a class="t" href="${href}">${esc(title)}</a><i class="ln"></i><a class="go" href="${href}">${COPY.topicLabel} →</a></h2>
-  <p class="sd">${esc(desc)}</p>`;
-}
-
-/* 四書條目：豎排宋版形制——大字題名 + 小字底本 + 點校圖標，鏈宋刻目錄葉 */
-function sjEntry(b) {
-  const col = b.collation;
-  const colHtml = col ? `<i class="ico ico-${col}">${icoSvg(col)}<em>${esc(col)}</em></i>` : '';
-  return `    <a class="sj" href="${b.href}">
-      <span class="sjt">${esc(b.title)}${b.draft ? '<i class="dzj">需點校</i>' : ''}</span>
-      <span class="sjs">${esc(b.diben || '')}${colHtml}</span>
+/* 卷影屏：單扇——取 dist/assets/topics/<id>.jpg，缺圖落佔位。
+ * 整扇即 <a> 鏈作品頁；扇下綴季節朱字 + 題名小字。 */
+function panelFan(b, mark, panels) {
+  const href = b.href;
+  const title = b.title;
+  const hasImg = panels && panels[b.id];
+  const src = hasImg ? `/assets/topics/${b.id}.jpg` : '';
+  const inner = hasImg
+    ? `<img src="${src}" alt="${esc(title)}" loading="lazy">`
+    : `<span class="ph-t">${esc(title)}</span><span class="ph-s">${esc(mark || '')}</span>`;
+  return `    <a class="fan${hasImg ? '' : ' ph'}" href="${href}">
+      ${inner}
+      <span class="fan-cap"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(title)}</em></span>
     </a>`;
 }
 
-/* 首頁：門戶（檢索 + 四時主視覺 + 四書次視覺 + 部類頁簽）——先文後質 */
-function renderHome(site, faces) {
+/* 首頁：門戶（簽條切換主視覺 + 專題推薦 + 入書庫） */
+function renderHome(site, faces, panels) {
   const byId = new Map(site.books.map((b) => [b.id, b]));
   const [wen, zhi] = TOPICS;
-  const tabBtns = TABS.map((t, i) =>
-    `<button role="tab" id="tab-${i}" aria-controls="tp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.key)}</button>`).join('');
-  const panels = TABS.map((t, i) => {
-    const tomes = [
-      ...(t.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome),
-      ...(t.virtual || []).map(virtTome),
-    ].join('\n');
-    return `  <div class="tabpanel" id="tp-${i}" role="tabpanel" aria-labelledby="tab-${i}"${i ? ' style="display:none"' : ''}>
-  <div class="shelf">
-${tomes}
+
+  /* 左欄簽條（兩支，豎排） */
+  const qTabs = [
+    { label: wen.title, aria: '四時幽賞' },
+    { label: zhi.title, aria: '四書涵泳' },
+  ].map((t, i) =>
+    `<button role="tab" id="qt-${i}" aria-controls="qp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.label)}</button>`
+  ).join('');
+
+  /* 右欄·四時：四扇卷影屏（春夏秋冬） */
+  const fans = (wen.books || []).map((id) => {
+    const b = byId.get(id);
+    if (!b) return '';
+    return panelFan(b, wen.marks && wen.marks[id], panels);
+  }).join('\n');
+  const panelSishi = `<div class="qpanel" id="qp-0" role="tabpanel" aria-labelledby="qt-0">
+  <div class="fans">
+${fans}
   </div>
   </div>`;
+
+  /* 右欄·四書：瓷青書影四部（鏈 /books/<id>/） */
+  const sishuTomes = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome).join('\n');
+  const panelSishu = `<div class="qpanel" id="qp-1" role="tabpanel" aria-labelledby="qt-1">
+  <div class="shelf center">
+${sishuTomes}
+  </div>
+  </div>`;
+
+  /* 專題推薦卡：v0 樣式，兩卡鏈 /topics/ */
+  const topics = TOPICS.map((t) => {
+    const n = (t.books || []).length + (t.virtual || []).length;
+    return `    <a class="topic" href="/topics/${t.id}/index.html">
+      <span class="tt">${esc(t.title)}</span>
+      <span class="td"><span class="tdd">${esc(t.desc)}</span><span class="tn">凡${numCn(n)}種</span></span>
+    </a>`;
   }).join('\n');
-  /* 四時幽賞（文 · 主視覺）：手卷書影直陳，冠季節朱字，直鏈作品頁 */
-  const heroTomes = (wen.books || []).map((id) => byId.get(id)).filter(Boolean)
-    .map((b) => tomeHtml(b.title, b.href, b.caption, {
-      draft: b.draft, collation: b.collation, diben: b.diben,
-      season: wen.marks && wen.marks[b.id],
-    })).join('\n');
-  /* 四書涵泳（質 · 次視覺）：豎排宋版條目，鏈宋刻目錄葉 */
-  const sishu = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(sjEntry).join('\n');
+
   return `${head('蘭木 · 藏書', faces)}
 <body class="idx">
 
 ${topnav()}
 
 <div class="masthead">
-  <div class="zhu">蘭　木<span class="yin">蘭木</span></div>
+  <div class="zhu">蘭 木<span class="yin">蘭木</span></div>
   <p class="ke">聲微志遠，此弄宜緩</p>
 </div>
 
 ${seekHtml}
 
-<section class="sec hero">
-${secHead(wen.title, `/topics/${wen.id}/index.html`, wen.desc)}
-  <div class="shelf center">
-${heroTomes}
+<section class="qianmod">
+  <div class="qiantiao" role="tablist" aria-label="主視覺">
+    ${qTabs}
+  </div>
+  <div class="qianbody">
+${panelSishi}
+${panelSishu}
   </div>
 </section>
 
-<section class="sec sishu">
-${secHead(zhi.title, `/topics/${zhi.id}/index.html`, zhi.desc)}
-  <div class="sstrip">
-${sishu}
+<section class="topics">
+  <h2><span>${esc(COPY.topicHead)}</span></h2>
+  <div class="tgrid">
+${topics}
   </div>
 </section>
 
-<div class="tabs" role="tablist" aria-label="部類">${tabBtns}</div>
-<div class="tabwrap">
-${panels}
-</div>
+<p class="shukulink"><a href="/shuku/">${esc(COPY.enterShuku)} <i>·</i> ${esc(COPY.shukuSub)} →</a></p>
 
 ${FOOT}
 
@@ -254,15 +276,22 @@ ${FOOT}
 </body></html>`;
 }
 
-/* 書庫：全帙一覽（舊首頁內容） */
+/* 書庫：全帙一覽（含虛擬部類 section） */
 function renderShuku(site, faces) {
   const cats = groupByCat(site);
-  const catnav = cats.map(([c], i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
-  const sections = cats.map(([c, books], i) => {
-    const tomes = books.map(bookTome).join('\n');
+  const allCats = [...cats.map(([c, b]) => ({ key: c, books: b, virt: null }))];
+  /* 追加虛擬部類 */
+  for (const v of VIRTUAL) {
+    allCats.push({ key: v.category, books: [], virt: v.titles });
+  }
+  const catnav = allCats.map((c, i) => `<a href="#cat-${i}">${esc(c.key)}</a>`).join('<i>·</i>');
+  const sections = allCats.map((c, i) => {
+    const tomes = c.virt
+      ? c.virt.map(virtTome).join('\n')
+      : c.books.map(bookTome).join('\n');
     return `  <section class="cat" id="cat-${i}">
-  <h2><span>${esc(c)}</span></h2>
-  <div class="shelf">
+  <h2><span>${esc(c.key)}</span></h2>
+  <div class="shelf${c.virt ? '' : ''}">
 ${tomes}
   </div>
   </section>`;
@@ -271,7 +300,7 @@ ${tomes}
 <body class="idx">
 
 ${topnav()}
-${masthead('書　庫', '全帙一覽')}
+${masthead('書 庫', '全帙一覽')}
 
 <nav class="catnav" aria-label="部類">${catnav}</nav>
 
@@ -375,10 +404,10 @@ function tocCols(book) {
 
 function colHtml(c) {
   if (c.type === 'title') return `<div class="tcol tb">${esc(c.text)}</div>`;
-  const lines = c.sub ? c.sub.split('　').filter(Boolean) : [];
+  const lines = c.sub ? c.sub.split(' ').filter(Boolean) : [];
   const r = lines[0] || '';
-  const l = lines.slice(1).join('　');
-  const aria = c.big + (r ? `　${r}` : '') + (l ? `　${l}` : '') + (c.draft ? '（需點校）' : '');
+  const l = lines.slice(1).join(' ');
+  const aria = c.big + (r ? ` ${r}` : '') + (l ? ` ${l}` : '') + (c.draft ? '（需點校）' : '');
   const big = `<span class="tcol tb">${esc(c.big)}${c.draft ? '<i class="dzm">需點校</i>' : ''}</span>`;
   if (!r) // 無篇名者（序）：僅大字單列，占一列
     return `<a class="tentry" href="${c.href}" aria-label="${esc(aria)}">${big}</a>`;
@@ -423,14 +452,14 @@ function renderToc(book, faces) {
   <div class="leaf">
     <div class="sheet">${halfHtml(r, 'hr')}${banxinHtml(book, i + 1)}${halfHtml(l, 'hl')}</div>
   </div>
-  <div class="folio">第${numCn(i + 1)}葉　前半${numCn(i * 2 + 1)}　後半${numCn(i * 2 + 2)}</div>
+  <div class="folio">第${numCn(i + 1)}葉 前半${numCn(i * 2 + 1)} 後半${numCn(i * 2 + 2)}</div>
   </div>`).join('\n');
   return `${head(`${book.title}目錄 — 蘭木藏書`, faces)}
 <body class="toc">
 
 <div class="masthead">
   <div class="zhu">${esc(book.title)}</div>
-  <p class="ke">目　錄</p>
+  <p class="ke">目 錄</p>
 </div>
 
 <div class="book ruled" aria-label="${esc(book.title)}目錄，自右向左讀">

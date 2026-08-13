@@ -1,4 +1,4 @@
-/** 首頁門戶配置：頂部導航 / 部類頁簽 / 專題推薦 / 靜態文案。
+/** 首頁門戶配置：頂部導航 / 虛擬典籍 / 專題推薦 / 靜態文案。
  *  編選性內容（非 works 數據）：虛擬典籍僅具題名，點入「敬請期待」。 */
 
 const NAV = [
@@ -7,12 +7,11 @@ const NAV = [
   { label: '我是校書官', href: '/jiaoshu/' },
 ];
 
-/* 部類頁簽：books 為聚合書 id（真書），virtual 為虛擬典籍（敬請期待）。
- * 仿識典式編選：一次一部，不放全帙；全帙在「書庫」。 */
-const TABS = [
-  { key: '儒家經典', books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'] },
-  { key: '佛家', books: ['xinjing'], virtual: ['金剛經', '維摩詰經', '妙法蓮華經'] },
-  { key: '道家', books: [], virtual: ['道德經', '南華經', '沖虛經'] },
+/* 虛擬典籍：僅具題名，點入「敬請期待」。歸部映射供書庫虛擬部類 section。
+ * 原 TABS（部類頁簽）已從首頁移除（v2）；全帙入口在底部「入書庫」鏈。 */
+const VIRTUAL = [
+  { category: '佛家', titles: ['金剛經', '維摩詰經', '妙法蓮華經'] },
+  { category: '道家', titles: ['道德經', '南華經', '沖虛經'] },
 ];
 
 /* 專題：首頁主/次視覺板塊與專題頁（/topics/<id>/）共用此配置。
@@ -60,6 +59,9 @@ const COPY = {
   },
   back: '回蘭木藏書',
   topicLabel: '專題',
+  topicHead: '專題推薦',
+  enterShuku: '入書庫',
+  shukuSub: '全帙一覽',
 };
 
-module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };
+module.exports = { NAV, VIRTUAL, TOPICS, COPY, BOOK_META };
