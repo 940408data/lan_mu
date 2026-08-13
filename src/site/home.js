@@ -1,4 +1,4 @@
-/** 首頁門戶配置：頂部導航 / 部類頁簽 / 專題推薦 / 靜態文案。
+/** 首頁門戶配置：頂部導航 / 部類頁簽（三藏頁）/ 專題推薦 / 靜態文案。
  *  編選性內容（非 works 數據）：虛擬典籍僅具題名，點入「敬請期待」。 */
 
 const NAV = [
@@ -7,8 +7,8 @@ const NAV = [
   { label: '我是校書官', href: '/jiaoshu/' },
 ];
 
-/* 部類頁簽：books 為聚合書 id（真書），virtual 為虛擬典籍（敬請期待）。
- * 仿識典式編選：一次一部，不放全帙；全帙在「書庫」。 */
+/* 部類頁簽（三藏頁 /sanzang/，即 0327 版首頁遷存）：books 為聚合書 id（真書），
+ * virtual 為虛擬典籍（敬請期待）。仿識典式編選：一次一部，不放全帙；全帙在「書庫」。 */
 const TABS = [
   { key: '儒家經典', books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'] },
   { key: '佛家', books: ['xinjing'], virtual: ['金剛經', '維摩詰經', '妙法蓮華經'] },
@@ -60,6 +60,9 @@ const COPY = {
   },
   back: '回蘭木藏書',
   topicLabel: '專題',
+  topicHead: '專題推薦',
+  enterSanzang: '三藏',
+  sanzangSub: '儒釋道編選',
 };
 
 module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };

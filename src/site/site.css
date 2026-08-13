@@ -188,39 +188,88 @@ body{
 .shelf .slot:nth-child(4n+3) .tome .seal2{right:.5rem;bottom:.7rem}
 .shelf .slot:nth-child(4n+4) .tome .seal2{right:.74rem;bottom:.54rem}
 
-/* ───── 首頁板塊：四時幽賞（文 · 主視覺）/ 四書涵泳（質 · 次視覺） ───── */
-.sec{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
-.sec h2{margin:0;display:flex;align-items:center;gap:.9rem}
-.sec h2 .t{
-  font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;
-  color:rgba(224,208,178,.78);text-decoration:none;transition:color .2s;
-}
-.sec h2 .t:hover{color:#f3e8d0}
-.sec h2 .ln{flex:1;height:1px;background:rgba(216,198,160,.16)}
-.sec h2 .go{
-  font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;
-  color:rgba(214,198,166,.5);text-decoration:none;transition:color .2s;
-}
-.sec h2 .go:hover{color:rgba(238,224,196,.85)}
-.sec .sd{margin:.7rem 0 0;font-family:var(--kai);font-size:.8rem;letter-spacing:.12em;color:rgba(214,198,166,.55);line-height:2}
-.sec .shelf,.sec .sstrip{margin-top:1.6rem}
+/* ───── 首頁主視覺：文質頁簽（四時卷影屏 / 四書書影），原部類頁簽位 ───── */
+/* 漸進增強：無 JS 時兩面板上下直陳皆可見；JS 啟動後僅隱非選中面板 */
+.js .hpanel{animation:qfade .28s ease}
+.js .hpanel.hide{display:none}
+@keyframes qfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* 四時書影：冠季節朱字（全頁唯一新增色彩點） */
-.season{font-family:var(--kai);font-size:.9rem;letter-spacing:.1em;color:var(--zhu);margin-bottom:.6rem}
+/* 四時卷影屏：四扇 flex 等分，每扇 16rem 高、object-fit cover */
+.fans{display:flex;gap:.7rem;height:16rem}
+.fan{
+  flex:1;min-width:0;position:relative;display:block;overflow:hidden;
+  border:1px solid rgba(18,14,10,.55);border-radius:1px;
+  box-shadow:0 6px 18px -10px rgba(0,0,0,.7);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+  text-decoration:none;background:#2a231b;
+}
+.fan img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.94);transition:filter .25s;
+}
+.fan:hover{transform:translateY(-3px);box-shadow:0 12px 26px -12px rgba(0,0,0,.85)}
+.fan:hover img{filter:brightness(1.04)}
+.fan:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
+.fan-cap{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.45rem .5rem;
+  background:linear-gradient(to top,rgba(18,14,10,.78) 0%,rgba(18,14,10,0) 100%);
+}
+.fan-cap .fan-m{
+  font-family:var(--kai);font-style:normal;font-size:.92rem;
+  letter-spacing:.08em;color:var(--zhu);
+}
+.fan-cap .fan-n{
+  font-family:var(--kai);font-style:normal;font-size:.74rem;
+  letter-spacing:.12em;color:rgba(238,224,196,.92);
+}
+/* 缺圖佔位：瓷青漸變 + 豎排題名 + 季字 */
+.fan.ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;
+  background:linear-gradient(150deg,#3f4c58 0%,#2c3743 100%);
+}
+.fan.ph .ph-t{
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:1.02rem;
+  letter-spacing:.32em;color:rgba(232,222,200,.82);
+}
+.fan.ph .ph-s{
+  font-family:var(--kai);font-size:1.6rem;color:var(--zhu);opacity:.85;
+}
 
-/* 四書條目：豎排宋版形制，與目錄葉同語言——題名大字列右、底本小字列左 */
-.sstrip{display:flex;justify-content:center}
-.sj{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:.6rem;text-decoration:none;padding:.5rem 1.5rem;border-radius:1px;transition:background .2s}
-.sj + .sj{border-left:1px solid rgba(216,198,160,.14)}
-.sj:hover{background:rgba(216,198,160,.05)}
-.sj:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
-.sjt{writing-mode:vertical-rl;font-family:var(--kai);font-size:1.12rem;letter-spacing:.24em;color:#e9ddc1}
-.sjs{writing-mode:vertical-rl;font-family:var(--song);font-size:.68rem;letter-spacing:.12em;color:rgba(214,198,166,.55);padding-top:.2rem}
-.sjs .ico{display:inline-flex;align-items:center;gap:.14em;font-style:normal}
-.sjs .ico svg{width:9px;height:9px}
-.sjs .ico em{font-style:normal}
-.sjs .ico-精校,.sjs .ico-初校{color:rgba(226,210,182,.55)}
-.sjs .ico-AI整理{color:rgba(214,198,166,.35)}
+/* 專題推薦（v0 樣式撈回） */
+.topics{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
+.topics h2{margin:0 0 1.1rem;display:flex;align-items:center;gap:.9rem}
+.topics h2 span{font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;color:rgba(224,208,178,.78)}
+.topics h2::after{content:"";flex:1;height:1px;background:rgba(216,198,160,.16)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.topic{
+  display:flex;gap:1.1rem;align-items:stretch;text-decoration:none;border-radius:1px;
+  border:1px solid rgba(216,198,160,.22);background:rgba(216,198,160,.03);
+  padding:1.15rem 1.3rem;transition:border-color .2s,background .2s;
+}
+.topic:hover{border-color:rgba(216,198,160,.45);background:rgba(216,198,160,.07)}
+.topic:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
+.topic .tt{
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:1.22rem;letter-spacing:.3em;
+  color:#e9ddc1;border-right:1px solid rgba(216,198,160,.18);padding-right:1rem;
+}
+.topic .td{display:flex;flex-direction:column;justify-content:center;gap:.55rem;min-width:0}
+.topic .tdd{font-family:var(--kai);font-size:.85rem;letter-spacing:.1em;color:rgba(224,208,178,.8);line-height:1.9}
+.topic .tn{font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;color:rgba(214,198,166,.5)}
+
+/* 入書庫鏈 */
+.shukulink{
+  text-align:center;margin:2.4rem auto 0;padding:0 1rem;
+}
+.shukulink a{
+  display:inline-block;font-family:var(--kai);font-size:.92rem;letter-spacing:.28em;
+  color:rgba(224,208,178,.78);text-decoration:none;padding:.45rem 1rem;
+  border:1px solid rgba(216,198,160,.22);border-radius:1px;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.shukulink a:hover{border-color:rgba(216,198,160,.55);color:#f3e8d0;background:rgba(216,198,160,.05)}
+.shukulink i{font-style:normal;color:rgba(216,198,160,.35);margin:0 .1em}
 .dzj{font-style:normal;color:#dfa08c;font-size:.62rem;letter-spacing:.1em}
 
 /* ───── 專題頁引 / 招募頁 ───── */
@@ -334,9 +383,8 @@ a.tentry:focus-visible{outline:1.5px solid rgba(166,49,37,.7);outline-offset:-1.
   .tome .tag.tl{font-size:.7rem}
   .plinth{width:7.4rem}
   .seek-list .rs{display:none}
-  .sec{margin-top:2.2rem}
-  .sj{padding:.4rem .9rem;gap:.45rem}
-  .sjt{font-size:1rem}
+  .fans{height:12rem;flex-wrap:wrap}
+  .fan{flex:1 1 calc(50% - .4rem);min-width:calc(50% - .4rem)}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}

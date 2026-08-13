@@ -8,9 +8,10 @@ const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
 const { aggregateSite } = require('../src/site/aggregate');
 const {
-  siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
+  siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
 } = require('../src/site/render');
 const { TOPICS } = require('../src/site/home');
+const { SCROLLS } = require('../src/site/panels');
 
 const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
@@ -52,9 +53,19 @@ const server = http.createServer((req, res) => {
   if (p === '/') {
     const site = aggregateSite();
     for (const w of site.warnings) console.warn('[站點]', w);
-    html(renderHome(site, siteFaces()));
+    /* 檢測卷影产物：有則傳入渲染，無則渲染側自動落佔位 */
+    const panels = {};
+    const sishi = TOPICS.find((t) => t.id === 'sishi-youshang');
+    if (sishi) {
+      for (const id of sishi.books) {
+        const fp = path.join(ROOT, 'assets', 'topics', `${id}.jpg`);
+        if (fs.existsSync(fp)) panels[id] = fp;
+      }
+    }
+    html(renderHome(site, siteFaces(), panels));
     return;
   }
+  if (p === '/sanzang/' || p === '/sanzang/index.html') { html(renderSanzang(aggregateSite(), siteFaces())); return; }
   if (p === '/shuku/' || p === '/shuku/index.html') { html(renderShuku(aggregateSite(), siteFaces())); return; }
   if (p === '/coming-soon/' || p === '/coming-soon/index.html') { html(renderComingSoon(siteFaces())); return; }
   if (p === '/jiaoshu/' || p === '/jiaoshu/index.html') { html(renderJiaoshu(siteFaces())); return; }
