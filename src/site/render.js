@@ -75,9 +75,10 @@ function tomeHtml(title, href, caption, opts = {}) {
   const col = opts.collation;
   const colHtml = col ? `<i class="ico ico-${col}">${icoSvg(col)}<em>${esc(col)}</em></i>` : '';
   const biHtml = opts.diben ? `\n      <span class="bi">${esc(opts.diben)}</span>` : '';
+  const snHtml = opts.season ? `<span class="season">${esc(opts.season)}</span>\n      ` : '';
   const nHtml = opts.virt ? esc(caption) : `${esc(title)}${colHtml}`;
   return `    <a class="slot${opts.virt ? ' virt' : ''}" href="${href}">
-      <span class="tome"><span class="tag${long}">${esc(title)}</span><span class="seal2">蘭木</span></span>
+      ${snHtml}<span class="tome"><span class="tag${long}">${esc(title)}</span><span class="seal2">蘭木</span></span>
       <span class="plinth"></span>
       <span class="n">${nHtml}</span>${biHtml}
       ${opts.draft ? '<span class="dz">需點校</span>\n' : ''}</a>`;
@@ -173,9 +174,26 @@ const seekHtml = `<div class="seek">
   <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
 </div>`;
 
-/* 首頁：門戶 */
+/* 板塊頭：題名（鏈專題頁）+ 細線 + 「專題 →」小鏈 + 題辭 */
+function secHead(title, href, desc) {
+  return `  <h2><a class="t" href="${href}">${esc(title)}</a><i class="ln"></i><a class="go" href="${href}">${COPY.topicLabel} →</a></h2>
+  <p class="sd">${esc(desc)}</p>`;
+}
+
+/* 四書條目：豎排宋版形制——大字題名 + 小字底本 + 點校圖標，鏈宋刻目錄葉 */
+function sjEntry(b) {
+  const col = b.collation;
+  const colHtml = col ? `<i class="ico ico-${col}">${icoSvg(col)}<em>${esc(col)}</em></i>` : '';
+  return `    <a class="sj" href="${b.href}">
+      <span class="sjt">${esc(b.title)}${b.draft ? '<i class="dzj">需點校</i>' : ''}</span>
+      <span class="sjs">${esc(b.diben || '')}${colHtml}</span>
+    </a>`;
+}
+
+/* 首頁：門戶（檢索 + 四時主視覺 + 四書次視覺 + 部類頁簽）——先文後質 */
 function renderHome(site, faces) {
   const byId = new Map(site.books.map((b) => [b.id, b]));
+  const [wen, zhi] = TOPICS;
   const tabBtns = TABS.map((t, i) =>
     `<button role="tab" id="tab-${i}" aria-controls="tp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.key)}</button>`).join('');
   const panels = TABS.map((t, i) => {
@@ -189,13 +207,14 @@ ${tomes}
   </div>
   </div>`;
   }).join('\n');
-  const topics = TOPICS.map((t) => {
-    const n = (t.books || []).length + (t.virtual || []).length;
-    return `    <a class="topic" href="/topics/${t.id}/index.html">
-      <span class="tt">${esc(t.title)}</span>
-      <span class="td"><span class="tdd">${esc(t.desc)}</span><span class="tn">凡${numCn(n)}種</span></span>
-    </a>`;
-  }).join('\n');
+  /* 四時幽賞（文 · 主視覺）：手卷書影直陳，冠季節朱字，直鏈作品頁 */
+  const heroTomes = (wen.books || []).map((id) => byId.get(id)).filter(Boolean)
+    .map((b) => tomeHtml(b.title, b.href, b.caption, {
+      draft: b.draft, collation: b.collation, diben: b.diben,
+      season: wen.marks && wen.marks[b.id],
+    })).join('\n');
+  /* 四書涵泳（質 · 次視覺）：豎排宋版條目，鏈宋刻目錄葉 */
+  const sishu = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(sjEntry).join('\n');
   return `${head('蘭木 · 藏書', faces)}
 <body class="idx">
 
@@ -208,17 +227,24 @@ ${topnav()}
 
 ${seekHtml}
 
+<section class="sec hero">
+${secHead(wen.title, `/topics/${wen.id}/index.html`, wen.desc)}
+  <div class="shelf center">
+${heroTomes}
+  </div>
+</section>
+
+<section class="sec sishu">
+${secHead(zhi.title, `/topics/${zhi.id}/index.html`, zhi.desc)}
+  <div class="sstrip">
+${sishu}
+  </div>
+</section>
+
 <div class="tabs" role="tablist" aria-label="部類">${tabBtns}</div>
 <div class="tabwrap">
 ${panels}
 </div>
-
-<section class="topics">
-  <h2><span>${COPY.topicHead}</span></h2>
-  <div class="tgrid">
-${topics}
-  </div>
-</section>
 
 ${FOOT}
 

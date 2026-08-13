@@ -15,17 +15,19 @@ const TABS = [
   { key: '道家', books: [], virtual: ['道德經', '南華經', '沖虛經'] },
 ];
 
-/* 專題推薦：卡片點入專題頁（/topics/<id>/）。
- * 順序即首頁展示序：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質。 */
+/* 專題：首頁主/次視覺板塊與專題頁（/topics/<id>/）共用此配置。
+ * 順序即首頁展示序：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質。
+ * marks：四時各部季節冠字（春蘭亭/夏山海/秋赤壁/冬湖心），首頁書影上方綴之。 */
 const TOPICS = [
   {
     id: 'sishi-youshang', title: '四時幽賞',
-    desc: '暮春蘭亭，秋夜赤壁，雪夜湖心，讀山海經 —— 古人四時之樂',
-    books: ['lanting', 'chibifu', 'dushanjing', 'huxinting'],
+    desc: '暮春蘭亭，仲夏山海，秋夜赤壁，雪夜湖心 —— 古人四時之樂',
+    books: ['lanting', 'dushanjing', 'chibifu', 'huxinting'],
+    marks: { lanting: '春', dushanjing: '夏', chibifu: '秋', huxinting: '冬' },
     virtual: [],
   },
   {
-    id: 'sishu', title: '四書',
+    id: 'sishu', title: '四書涵泳',
     desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，經注相隨，宋刻重排',
     books: ['daxue', 'zhongyong', 'lunyu', 'mengzi'],
   },
@@ -58,7 +60,6 @@ const COPY = {
   },
   back: '回蘭木藏書',
   topicLabel: '專題',
-  topicHead: '專題推薦',
 };
 
 module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };
