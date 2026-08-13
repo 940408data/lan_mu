@@ -206,7 +206,7 @@ body{
 .sec .shelf,.sec .sstrip{margin-top:1.6rem}
 
 /* 四時書影：冠季節朱字（全頁唯一新增色彩點） */
-.season{font-family:var(--kai);font-size:.85rem;letter-spacing:.1em;color:rgba(184,64,44,.8);margin-bottom:.6rem}
+.season{font-family:var(--kai);font-size:.9rem;letter-spacing:.1em;color:var(--zhu);margin-bottom:.6rem}
 
 /* 四書條目：豎排宋版形制，與目錄葉同語言——題名大字列右、底本小字列左 */
 .sstrip{display:flex;justify-content:center}
