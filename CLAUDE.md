@@ -95,6 +95,7 @@ Playwright 无头 Chromium 打开 dist HTML 按字体角色逐版截图；缺失
 - **校录完成后**填 `meta.expect` 作为校验基准；`npm run validate` 会在实得值 ≠ 基准时报错。**`expect` 仅用于 `validate`（测试/验证），不影响 build/渲染/产物/功能**——`npm run build` 从 `text.yaml`+`seed` 经引擎渲染，不读 `expect`；dist、前端服务、出图、PDF 全与之无关。
 - **`expect` 是静态回归锚点，不自动跟随引擎**。引擎改版式（如注文均齐/经注合栏，`src/core/typeset-songke.js`）会让**布局字段**（columns/halves/leaves）变 → `expect` 须重同步；**文字量**（chars/jChars/zChars）由 `text.yaml` 决定、不随引擎变。故**改引擎后应跑 `validate`，把受影响作品的 `expect` 按新实得重填**（可脚本批量：置 null → validate 取实得 → 回填），否则回归检查报红。这是静态基准设计的固有代价（换得意外回归检测能力）。
 - 改版式几何/字体后跑 `npm run build -- --work=<id> --only=html` 快速验证，再全量 build 出图。
+- **截图目检避坑**（站点/查看器 UI 改动后）：脚本须能解析仓库依赖（放 /tmp 则 `NODE_PATH=$PWD/node_modules node ...`）；浏览器用 `chromium.launch({channel:'chrome'})` 落系统 Chrome（bundled headless shell 版本常与安装不符，`src/render/browser.js` 同此回退）；固定视口 + 元素级截图（`page.$('.sel').screenshot()`），勿 fullPage；PNG/dist/字体勿 Read 进上下文（6MiB 请求体上限，详 `src/site/PORTAL.md` §5.1/5.3）。耗时大头=Chrome 冷启动 + `networkidle` 等字体（稳态 3–5s 正常），`waitUntil:'load'` + 元素级截图可压缩。
 - 主分支为 `dev`（非 main/master）；PR 目标分支用 `dev`。
 - **分支/提交规范见 `CONTRIBUTING.md`**：分支名 `<type>/<kebab-desc>`（`content/`校录、`engine/`引擎排版、`infra/`基建、`fix/`修复），提交信息 `<type>(<scope>): <中文描述>`；Tag 仅在内容里程碑按需打（暂不引 semver）。
 - **pre-commit hook**（`.githooks/`，`npm install` 经 `prepare` 自动配置 `core.hooksPath`）：提交前自动跑 `validate`，改动触及 `src/core|render|fonts|viewer/`、`works/youlan/`、`css/` 时加跑幽兰 `verify`（逐字节保真守门）。绕过用 `git commit --no-verify`。
