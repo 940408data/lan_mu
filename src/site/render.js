@@ -157,7 +157,7 @@ show(0);
 for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
 })();`;
 
-/* 三藏頁部類頁簽（0327 版行為）：無 JS 時僅見首部（儒家經典），與「不放全帙」一致 */
+/* 經史子集頁部類頁簽（0327 版行為）：無 JS 時僅見首部（經選），與「不放全帙」一致 */
 const SANZANG_TAB_JS = `(function(){
 var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.tabpanel');
 function show(n){for(var i=0;i<tabs.length;i++){var on=i===n;
@@ -275,8 +275,8 @@ ${FOOT}
 </body></html>`;
 }
 
-/* 三藏頁（/sanzang/）：0327 版首頁原樣遷存（tag「三藏首頁」）——
- * 檢索 + 儒釋道部類頁簽 + 專題推薦。不廢棄，作首頁底端「藏」之入口。 */
+/* 經史子集頁（/sanzang/）：0327 版首頁原樣遷存（tag「三藏首頁」）——
+ * 檢索 + 經史子集部類頁簽 + 專題推薦。不廢棄，作首頁底端「古典」之入口。 */
 function renderSanzang(site, faces) {
   const byId = new Map(site.books.map((b) => [b.id, b]));
   const tabBtns = TABS.map((t, i) =>
@@ -292,7 +292,7 @@ ${tomes}
   </div>
   </div>`;
   }).join('\n');
-  return `${head('三藏 · 蘭木藏書', faces)}
+  return `${head('經史子集 · 蘭木藏書', faces)}
 <body class="idx">
 
 ${topnav()}
@@ -316,7 +316,7 @@ ${FOOT}
 </body></html>`;
 }
 
-/* 書庫：全帙一覽（真書；虛擬典籍在三藏頁部類頁簽） */
+/* 書庫：全帙一覽（真書；虛擬典籍在經史子集頁部類頁簽） */
 function renderShuku(site, faces) {
   const cats = groupByCat(site);
   const catnav = cats.map(([c], i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
