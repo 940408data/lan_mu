@@ -237,6 +237,22 @@ body{
   font-family:var(--kai);font-size:1.6rem;color:var(--zhu);opacity:.85;
 }
 
+/* 簡筆四景：紙面墨線小品（春蘭／夏荷／秋月／冬雪亭），純 SVG 無圖 */
+.fan-jb{cursor:pointer}
+.fan-jb .jb{
+  display:block;position:absolute;inset:0;
+  background:linear-gradient(165deg,#e8dec8 0%,#dccfb1 58%,#d3c4a4 100%);
+}
+.fan-jb .jb svg{display:block;width:100%;height:100%}
+.fan-jb:hover .jb{
+  filter:brightness(1.03);
+}
+.fan-jb .fan-cap{
+  background:linear-gradient(to top,rgba(18,14,10,.32) 0%,rgba(18,14,10,0) 100%);
+}
+.fan-jb .fan-cap .fan-m{color:#c0472f}
+.fan-jb .fan-cap .fan-n{color:rgba(56,45,32,.78)}
+
 /* 專題推薦（v0 樣式撈回） */
 .topics{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
 .topics h2{margin:0 0 1.1rem;display:flex;align-items:center;gap:.9rem}

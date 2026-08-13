@@ -92,6 +92,55 @@ const masthead = (title, ke) => `<div class="masthead">
 const backHome = `<p class="back"><a href="/index.html">${COPY.back}</a></p>`;
 const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>`;
 
+/* ───── 簡筆四景 SVG：紙面小品，墨線繪四季（遷自 sishi-lab V2，精修）───── */
+const JB_INK = 'rgba(56,45,32,.78)';
+/* viewBox 100×110 與扇面 ~250×256 等比，slice 幾乎不裁 */
+const JB_OPEN = `<svg viewBox="0 0 100 110" preserveAspectRatio="xMidYMid slice" aria-hidden="true">`;
+const _jb = (body, extra = '') =>
+  `${JB_OPEN}<g fill="none" stroke="${JB_INK}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${body}</g>${extra}</svg>`;
+
+const BRUSH_JB = {
+  /* 春 · 蘭：三葉弧展如行書撇捺，筆意流暢，朱蕊二點綴葉尖 */
+  lanting: _jb(
+    '<path d="M 45 104 C 40 80, 24 56, 6 40"/>' +
+    '<path d="M 50 104 C 56 78, 76 52, 94 36"/>' +
+    '<path d="M 48 104 C 46 84, 40 62, 26 36"/>',
+    '<g fill="#a63125" stroke="none">' +
+    '<circle cx="5" cy="38" r="2.6"/>' +
+    '<circle cx="94" cy="34" r="2.0"/></g>'),
+
+  /* 夏 · 荷：蓋葉貝塞爾弧緣，四脈輻射，右側小苞 */
+  dushanjing: _jb(
+    '<path d="M 50 70 V 104"/>' +
+    '<path d="M 8 36 C 14 14, 32 6, 50 8 C 68 6, 86 14, 92 36 C 80 46, 64 48, 50 46 C 36 48, 20 46, 8 36 Z"/>' +
+    '<path d="M 50 28 L 26 34 M 50 28 L 74 34 M 50 28 L 36 44 M 50 28 L 64 44"/>' +
+    '<path d="M 72 22 C 70 14, 74 6, 78 4 C 82 8, 82 18, 78 24"/>',
+    '<circle cx="76" cy="12" r="1.6" fill="#a63125" opacity=".6" stroke="none"/>'),
+
+  /* 秋 · 江月：霜月一輪（淡暈），赤壁一弧（濃墨偏左），水紋三道，孤舟一葉 */
+  chibifu: _jb(
+    '<path d="M 28 26 C 24 40, 28 58, 44 68" stroke-width="4.0" opacity=".45"/>' +
+    '<path d="M 6 66 Q 28 60 50 66 T 96 66"/>' +
+    '<path d="M 4 76 Q 30 70 52 76 T 98 76"/>' +
+    '<path d="M 14 86 Q 38 80 62 86"/>',
+    '<circle cx="68" cy="28" r="12" fill="rgba(232,222,200,.10)" stroke="none"/>' +
+    `<circle cx="68" cy="28" r="12" fill="none" stroke="${JB_INK}" stroke-width="1.6"/>` +
+    '<path d="M 54 54 L 76 54 L 72 62 L 58 62 Z" fill="rgba(56,45,32,.50)" stroke="none"/>'),
+
+  /* 冬 · 雪亭：湖心亭飛簷弧頂 + 雙柱 + 基臺，長堤一痕，雪點紛揚 */
+  huxinting: _jb(
+    '<path d="M 12 44 Q 50 20 88 44"/>' +
+    '<path d="M 36 44 V 64 M 64 44 V 64"/>' +
+    '<path d="M 26 64 H 74"/>',
+    '<path d="M 4 88 Q 50 86 96 88" stroke-width="2.0" opacity=".50"/>' +
+    '<g fill="rgba(250,244,228,.95)" stroke="none">' +
+    '<circle cx="16" cy="16" r="1.6"/><circle cx="38" cy="8" r="1.4"/>' +
+    '<circle cx="62" cy="14" r="1.6"/><circle cx="82" cy="24" r="1.3"/>' +
+    '<circle cx="24" cy="30" r="1.2"/><circle cx="50" cy="22" r="1.4"/>' +
+    '<circle cx="74" cy="34" r="1.1"/><circle cx="10" cy="38" r="1.0"/>' +
+    '<circle cx="88" cy="48" r="1.2"/><circle cx="44" cy="6" r="1.1"/></g>'),
+};
+
 /* ───── 首頁：門戶（檢索 + 簽條切換主視覺 + 專題推薦） ───── */
 /* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
    虛擬典籍亦入索引，命中即示「敬請期待」 */
@@ -186,19 +235,14 @@ const seekHtml = `<div class="seek">
   <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
 </div>`;
 
-/* 卷影屏：單扇——取 dist/assets/topics/<id>.jpg，缺圖落佔位。
- * 整扇即 <a> 鏈作品頁；扇下綴季節朱字 + 題名小字。 */
-function panelFan(b, mark, panels) {
-  const href = b.href;
-  const title = b.title;
-  const hasImg = panels && panels[b.id];
-  const src = hasImg ? `/assets/topics/${b.id}.jpg` : '';
-  const inner = hasImg
-    ? `<img src="${src}" alt="${esc(title)}" loading="lazy">`
-    : `<span class="ph-t">${esc(title)}</span><span class="ph-s">${esc(mark || '')}</span>`;
-  return `    <a class="fan${hasImg ? '' : ' ph'}" href="${href}">
-      ${inner}
-      <span class="fan-cap"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(title)}</em></span>
+/* 卷影屏：單扇——簡筆四景（紙面墨線小品，春蘭夏荷秋月冬雪）。
+ *  panelFan 忽略 panels 參數（不再裁手卷 PNG，改純 SVG 繪製）。
+ *  整扇即 <a> 鏈作品頁；扇下綴季節朱字 + 題名小字。 */
+function panelFan(b, mark) {
+  const svg = BRUSH_JB[b.id] || '';
+  return `    <a class="fan fan-jb" href="${b.href}">
+      <span class="jb">${svg}</span>
+      <span class="fan-cap"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(b.title)}</em></span>
     </a>`;
 }
 
@@ -238,7 +282,7 @@ function renderHome(site, faces, panels) {
   const fans = (wen.books || []).map((id) => {
     const b = byId.get(id);
     if (!b) return '';
-    return panelFan(b, wen.marks && wen.marks[id], panels);
+    return panelFan(b, wen.marks && wen.marks[id]);
   }).join('\n');
 
   /* 四書面板：瓷青書影四部（鏈 /books/<id>/） */
