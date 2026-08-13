@@ -7,3 +7,9 @@ _inspect*.txt
 tools/_*
 /Youlan-Scroll-*.jpg
 *.md
+
+# 重媒体走运行期挂载（volumes: ./dist:/media），不进构建上下文/镜像
+dist/**/*.pdf
+dist/**/*.png
+dist/**/*.jpg
+dist/**/*.jpeg
