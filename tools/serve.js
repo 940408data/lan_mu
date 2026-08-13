@@ -8,7 +8,7 @@ const path = require('path');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
 const { aggregateSite } = require('../src/site/aggregate');
 const {
-  siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
+  siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
 } = require('../src/site/render');
 const { TOPICS } = require('../src/site/home');
 const { SCROLLS } = require('../src/site/panels');
@@ -65,6 +65,7 @@ const server = http.createServer((req, res) => {
     html(renderHome(site, siteFaces(), panels));
     return;
   }
+  if (p === '/sanzang/' || p === '/sanzang/index.html') { html(renderSanzang(aggregateSite(), siteFaces())); return; }
   if (p === '/shuku/' || p === '/shuku/index.html') { html(renderShuku(aggregateSite(), siteFaces())); return; }
   if (p === '/coming-soon/' || p === '/coming-soon/index.html') { html(renderComingSoon(siteFaces())); return; }
   if (p === '/jiaoshu/' || p === '/jiaoshu/index.html') { html(renderJiaoshu(siteFaces())); return; }

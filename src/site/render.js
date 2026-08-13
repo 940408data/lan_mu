@@ -6,7 +6,7 @@ const path = require('path');
 const OpenCC = require('opencc-js');
 const { loadRegistry, fontFileOf } = require('../fonts/fonts');
 const { numCn } = require('./aggregate');
-const { NAV, VIRTUAL, TOPICS, COPY } = require('./home');
+const { NAV, TABS, TOPICS, COPY } = require('./home');
 
 const SITE_CSS = () => fs.readFileSync(path.join(__dirname, 'site.css'), 'utf8');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -75,10 +75,9 @@ function tomeHtml(title, href, caption, opts = {}) {
   const col = opts.collation;
   const colHtml = col ? `<i class="ico ico-${col}">${icoSvg(col)}<em>${esc(col)}</em></i>` : '';
   const biHtml = opts.diben ? `\n      <span class="bi">${esc(opts.diben)}</span>` : '';
-  const snHtml = opts.season ? `<span class="season">${esc(opts.season)}</span>\n      ` : '';
   const nHtml = opts.virt ? esc(caption) : `${esc(title)}${colHtml}`;
   return `    <a class="slot${opts.virt ? ' virt' : ''}" href="${href}">
-      ${snHtml}<span class="tome"><span class="tag${long}">${esc(title)}</span><span class="seal2">蘭木</span></span>
+      <span class="tome"><span class="tag${long}">${esc(title)}</span><span class="seal2">蘭木</span></span>
       <span class="plinth"></span>
       <span class="n">${nHtml}</span>${biHtml}
       ${opts.draft ? '<span class="dz">需點校</span>\n' : ''}</a>`;
@@ -106,8 +105,8 @@ function searchIndex(site) {
       return { b: big, s: sub, b2: conv(big), s2: conv(sub), href: v.href, draft: v.draft };
     }),
   }));
-  for (const v of VIRTUAL) {
-    for (const title of v.titles) {
+  for (const t of TABS) {
+    for (const title of t.virtual || []) {
       real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false, vols: [] });
     }
   }
@@ -145,17 +144,25 @@ list.addEventListener('mousedown',function(e){var li=e.target.closest('li');if(l
 document.addEventListener('click',function(e){if(!e.target.closest('.seek'))close();});
 })();`;
 
-/* 簽條切換：左欄兩支簽條（四時/四書）切右欄面板。
-   無 JS 時兩面板上下直陳全可見（漸進增強退路）。
-   JS 啟動時加 .js 類，CSS 僅隱藏非選中面板。 */
+/* 首頁文質頁簽：四時/四書切換（原部類頁簽位）。
+   無 JS 時兩面板上下直陳全可見（漸進增強退路）——JS 啟動加 .js 類，僅隱非選中面板。 */
 const TAB_JS = `(function(){
 var root=document.documentElement;
 root.classList.add('js');
-var tabs=document.querySelectorAll('.qiantiao button'),panels=document.querySelectorAll('.qpanel');
+var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.hpanel');
 function show(n){for(var i=0;i<tabs.length;i++){var on=i===n;
 tabs[i].classList.toggle('on',on);tabs[i].setAttribute('aria-selected',on?'true':'false');
 panels[i].classList.toggle('hide',!on);}}
 show(0);
+for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
+})();`;
+
+/* 三藏頁部類頁簽（0327 版行為）：無 JS 時僅見首部（儒家經典），與「不放全帙」一致 */
+const SANZANG_TAB_JS = `(function(){
+var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.tabpanel');
+function show(n){for(var i=0;i<tabs.length;i++){var on=i===n;
+tabs[i].classList.toggle('on',on);tabs[i].setAttribute('aria-selected',on?'true':'false');
+panels[i].style.display=on?'block':'none';}}
 for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
 })();`;
 
@@ -195,40 +202,13 @@ function panelFan(b, mark, panels) {
     </a>`;
 }
 
-/* 首頁：門戶（簽條切換主視覺 + 專題推薦 + 入書庫） */
-function renderHome(site, faces, panels) {
-  const byId = new Map(site.books.map((b) => [b.id, b]));
-  const [wen, zhi] = TOPICS;
+/* 共用：蘭木卷首（首頁與三藏頁同式）與專題推薦卡區 */
+const HOME_MASTHEAD = `<div class="masthead">
+  <div class="zhu">蘭 木<span class="yin">蘭木</span></div>
+  <p class="ke">聲微志遠，此弄宜緩</p>
+</div>`;
 
-  /* 左欄簽條（兩支，豎排） */
-  const qTabs = [
-    { label: wen.title, aria: '四時幽賞' },
-    { label: zhi.title, aria: '四書涵泳' },
-  ].map((t, i) =>
-    `<button role="tab" id="qt-${i}" aria-controls="qp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.label)}</button>`
-  ).join('');
-
-  /* 右欄·四時：四扇卷影屏（春夏秋冬） */
-  const fans = (wen.books || []).map((id) => {
-    const b = byId.get(id);
-    if (!b) return '';
-    return panelFan(b, wen.marks && wen.marks[id], panels);
-  }).join('\n');
-  const panelSishi = `<div class="qpanel" id="qp-0" role="tabpanel" aria-labelledby="qt-0">
-  <div class="fans">
-${fans}
-  </div>
-  </div>`;
-
-  /* 右欄·四書：瓷青書影四部（鏈 /books/<id>/） */
-  const sishuTomes = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome).join('\n');
-  const panelSishu = `<div class="qpanel" id="qp-1" role="tabpanel" aria-labelledby="qt-1">
-  <div class="shelf center">
-${sishuTomes}
-  </div>
-  </div>`;
-
-  /* 專題推薦卡：v0 樣式，兩卡鏈 /topics/ */
+function topicsSec() {
   const topics = TOPICS.map((t) => {
     const n = (t.books || []).length + (t.virtual || []).length;
     return `    <a class="topic" href="/topics/${t.id}/index.html">
@@ -236,37 +216,62 @@ ${sishuTomes}
       <span class="td"><span class="tdd">${esc(t.desc)}</span><span class="tn">凡${numCn(n)}種</span></span>
     </a>`;
   }).join('\n');
+  return `<section class="topics">
+  <h2><span>${esc(COPY.topicHead)}</span></h2>
+  <div class="tgrid">
+${topics}
+  </div>
+</section>`;
+}
+
+/* 首頁：門戶（檢索 + 文質頁簽主視覺 + 專題推薦 + 三藏入口） */
+function renderHome(site, faces, panels) {
+  const byId = new Map(site.books.map((b) => [b.id, b]));
+  const [wen, zhi] = TOPICS;
+
+  /* 文質頁簽（原部類頁簽位）：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質 */
+  const qTabs = [wen.title, zhi.title].map((label, i) =>
+    `<button role="tab" id="tab-${i}" aria-controls="tp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(label)}</button>`
+  ).join('');
+
+  /* 四時面板：四扇卷影屏（春夏秋冬） */
+  const fans = (wen.books || []).map((id) => {
+    const b = byId.get(id);
+    if (!b) return '';
+    return panelFan(b, wen.marks && wen.marks[id], panels);
+  }).join('\n');
+
+  /* 四書面板：瓷青書影四部（鏈 /books/<id>/） */
+  const sishuTomes = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome).join('\n');
+
+  const twoPanels = `  <div class="tabpanel hpanel" id="tp-0" role="tabpanel" aria-labelledby="tab-0">
+  <div class="fans">
+${fans}
+  </div>
+  </div>
+  <div class="tabpanel hpanel" id="tp-1" role="tabpanel" aria-labelledby="tab-1">
+  <div class="shelf center">
+${sishuTomes}
+  </div>
+  </div>`;
 
   return `${head('蘭木 · 藏書', faces)}
 <body class="idx">
 
 ${topnav()}
 
-<div class="masthead">
-  <div class="zhu">蘭 木<span class="yin">蘭木</span></div>
-  <p class="ke">聲微志遠，此弄宜緩</p>
-</div>
+${HOME_MASTHEAD}
 
 ${seekHtml}
 
-<section class="qianmod">
-  <div class="qiantiao" role="tablist" aria-label="主視覺">
-    ${qTabs}
-  </div>
-  <div class="qianbody">
-${panelSishi}
-${panelSishu}
-  </div>
-</section>
+<div class="tabs" role="tablist" aria-label="文質">${qTabs}</div>
+<div class="tabwrap">
+${twoPanels}
+</div>
 
-<section class="topics">
-  <h2><span>${esc(COPY.topicHead)}</span></h2>
-  <div class="tgrid">
-${topics}
-  </div>
-</section>
+${topicsSec()}
 
-<p class="shukulink"><a href="/shuku/">${esc(COPY.enterShuku)} <i>·</i> ${esc(COPY.shukuSub)} →</a></p>
+<p class="shukulink"><a href="/sanzang/">${esc(COPY.enterSanzang)} <i>·</i> ${esc(COPY.sanzangSub)} →</a></p>
 
 ${FOOT}
 
@@ -276,22 +281,56 @@ ${FOOT}
 </body></html>`;
 }
 
-/* 書庫：全帙一覽（含虛擬部類 section） */
+/* 三藏頁（/sanzang/）：0327 版首頁原樣遷存（tag「三藏首頁」）——
+ * 檢索 + 儒釋道部類頁簽 + 專題推薦。不廢棄，作首頁底端「藏」之入口。 */
+function renderSanzang(site, faces) {
+  const byId = new Map(site.books.map((b) => [b.id, b]));
+  const tabBtns = TABS.map((t, i) =>
+    `<button role="tab" id="tab-${i}" aria-controls="tp-${i}" aria-selected="${i === 0}"${i === 0 ? ' class="on"' : ''}>${esc(t.key)}</button>`).join('');
+  const panels = TABS.map((t, i) => {
+    const tomes = [
+      ...(t.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome),
+      ...(t.virtual || []).map(virtTome),
+    ].join('\n');
+    return `  <div class="tabpanel" id="tp-${i}" role="tabpanel" aria-labelledby="tab-${i}"${i ? ' style="display:none"' : ''}>
+  <div class="shelf">
+${tomes}
+  </div>
+  </div>`;
+  }).join('\n');
+  return `${head('三藏 · 蘭木藏書', faces)}
+<body class="idx">
+
+${topnav()}
+
+${HOME_MASTHEAD}
+
+${seekHtml}
+
+<div class="tabs" role="tablist" aria-label="部類">${tabBtns}</div>
+<div class="tabwrap">
+${panels}
+</div>
+
+${topicsSec()}
+
+${FOOT}
+
+<script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
+<script>${SEEK_JS}</script>
+<script>${SANZANG_TAB_JS}</script>
+</body></html>`;
+}
+
+/* 書庫：全帙一覽（真書；虛擬典籍在三藏頁部類頁簽） */
 function renderShuku(site, faces) {
   const cats = groupByCat(site);
-  const allCats = [...cats.map(([c, b]) => ({ key: c, books: b, virt: null }))];
-  /* 追加虛擬部類 */
-  for (const v of VIRTUAL) {
-    allCats.push({ key: v.category, books: [], virt: v.titles });
-  }
-  const catnav = allCats.map((c, i) => `<a href="#cat-${i}">${esc(c.key)}</a>`).join('<i>·</i>');
-  const sections = allCats.map((c, i) => {
-    const tomes = c.virt
-      ? c.virt.map(virtTome).join('\n')
-      : c.books.map(bookTome).join('\n');
+  const catnav = cats.map(([c], i) => `<a href="#cat-${i}">${esc(c)}</a>`).join('<i>·</i>');
+  const sections = cats.map(([c, books], i) => {
+    const tomes = books.map(bookTome).join('\n');
     return `  <section class="cat" id="cat-${i}">
-  <h2><span>${esc(c.key)}</span></h2>
-  <div class="shelf${c.virt ? '' : ''}">
+  <h2><span>${esc(c)}</span></h2>
+  <div class="shelf">
 ${tomes}
   </div>
   </section>`;
@@ -472,4 +511,4 @@ ${leavesHtml}
 </body></html>`;
 }
 
-module.exports = { siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc, SITE_FONTS, FALLBACK };
+module.exports = { siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc, SITE_FONTS, FALLBACK };

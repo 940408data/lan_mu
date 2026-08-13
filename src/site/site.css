@@ -188,34 +188,10 @@ body{
 .shelf .slot:nth-child(4n+3) .tome .seal2{right:.5rem;bottom:.7rem}
 .shelf .slot:nth-child(4n+4) .tome .seal2{right:.74rem;bottom:.54rem}
 
-/* ───── 首頁主視覺：簽條切換（A 案——左欄簽條 + 右欄面板） ───── */
-.qianmod{
-  max-width:1060px;margin:2.2rem auto 0;padding:0 1.2rem;
-  display:flex;gap:1.4rem;align-items:stretch;min-height:18rem;
-}
-/* 左欄簽條（豎排，楷體，寬字距） */
-.qiantiao{
-  display:flex;flex-direction:column;gap:.6rem;flex:0 0 auto;padding:.4rem 0;
-}
-.qiantiao button{
-  writing-mode:vertical-rl;background:none;border:0;
-  border-left:2.5px solid transparent;border-radius:0;
-  font-family:var(--kai);font-size:1.08rem;letter-spacing:.42em;text-indent:.42em;
-  color:rgba(214,198,166,.52);padding:.9rem .42rem;cursor:pointer;
-  transition:color .22s,border-color .22s;text-align:center;
-}
-.qiantiao button:hover{color:rgba(238,224,196,.85)}
-.qiantiao button.on{
-  color:#f3e8d0;border-left-color:var(--zhu);
-  text-shadow:0 0 8px rgba(184,64,44,.18);
-}
-.qiantiao button:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
-
-/* 右欄內容區 */
-.qianbody{flex:1;min-width:0;position:relative}
-/* 漸進增強：無 JS 時兩面板皆可見；JS 啟動後僅 .hide 面板隱藏 */
-.js .qpanel{animation:qfade .28s ease}
-.js .qpanel.hide{display:none}
+/* ───── 首頁主視覺：文質頁簽（四時卷影屏 / 四書書影），原部類頁簽位 ───── */
+/* 漸進增強：無 JS 時兩面板上下直陳皆可見；JS 啟動後僅隱非選中面板 */
+.js .hpanel{animation:qfade .28s ease}
+.js .hpanel.hide{display:none}
 @keyframes qfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
 /* 四時卷影屏：四扇 flex 等分，每扇 16rem 高、object-fit cover */
@@ -294,40 +270,6 @@ body{
 }
 .shukulink a:hover{border-color:rgba(216,198,160,.55);color:#f3e8d0;background:rgba(216,198,160,.05)}
 .shukulink i{font-style:normal;color:rgba(216,198,160,.35);margin:0 .1em}
-
-/* 舊首頁板塊樣式（保留兼容；v2 首頁未用） */
-.sec{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
-.sec h2{margin:0;display:flex;align-items:center;gap:.9rem}
-.sec h2 .t{
-  font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;
-  color:rgba(224,208,178,.78);text-decoration:none;transition:color .2s;
-}
-.sec h2 .t:hover{color:#f3e8d0}
-.sec h2 .ln{flex:1;height:1px;background:rgba(216,198,160,.16)}
-.sec h2 .go{
-  font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;
-  color:rgba(214,198,166,.5);text-decoration:none;transition:color .2s;
-}
-.sec h2 .go:hover{color:rgba(238,224,196,.85)}
-.sec .sd{margin:.7rem 0 0;font-family:var(--kai);font-size:.8rem;letter-spacing:.12em;color:rgba(214,198,166,.55);line-height:2}
-.sec .shelf,.sec .sstrip{margin-top:1.6rem}
-
-/* 四時書影：冠季節朱字（全頁唯一新增色彩點） */
-.season{font-family:var(--kai);font-size:.9rem;letter-spacing:.1em;color:var(--zhu);margin-bottom:.6rem}
-
-/* 四書條目：豎排宋版形制，與目錄葉同語言——題名大字列右、底本小字列左 */
-.sstrip{display:flex;justify-content:center}
-.sj{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:.6rem;text-decoration:none;padding:.5rem 1.5rem;border-radius:1px;transition:background .2s}
-.sj + .sj{border-left:1px solid rgba(216,198,160,.14)}
-.sj:hover{background:rgba(216,198,160,.05)}
-.sj:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
-.sjt{writing-mode:vertical-rl;font-family:var(--kai);font-size:1.12rem;letter-spacing:.24em;color:#e9ddc1}
-.sjs{writing-mode:vertical-rl;font-family:var(--song);font-size:.68rem;letter-spacing:.12em;color:rgba(214,198,166,.55);padding-top:.2rem}
-.sjs .ico{display:inline-flex;align-items:center;gap:.14em;font-style:normal}
-.sjs .ico svg{width:9px;height:9px}
-.sjs .ico em{font-style:normal}
-.sjs .ico-精校,.sjs .ico-初校{color:rgba(226,210,182,.55)}
-.sjs .ico-AI整理{color:rgba(214,198,166,.35)}
 .dzj{font-style:normal;color:#dfa08c;font-size:.62rem;letter-spacing:.1em}
 
 /* ───── 專題頁引 / 招募頁 ───── */
@@ -441,15 +383,8 @@ a.tentry:focus-visible{outline:1.5px solid rgba(166,49,37,.7);outline-offset:-1.
   .tome .tag.tl{font-size:.7rem}
   .plinth{width:7.4rem}
   .seek-list .rs{display:none}
-  /* 簽條退為頂部橫排 */
-  .qianmod{flex-direction:column;gap:.6rem;min-height:0}
-  .qiantiao{flex-direction:row;justify-content:center;gap:1.6rem;padding:.2rem 0}
-  .qiantiao button{writing-mode:horizontal-tb;font-size:.95rem;letter-spacing:.28em;padding:.3rem .6rem;border-left:0;border-bottom:2.5px solid transparent}
-  .qiantiao button.on{border-left-color:transparent;border-bottom-color:var(--zhu)}
   .fans{height:12rem;flex-wrap:wrap}
   .fan{flex:1 1 calc(50% - .4rem);min-width:calc(50% - .4rem)}
-  .sj{padding:.4rem .9rem;gap:.45rem}
-  .sjt{font-size:1rem}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}

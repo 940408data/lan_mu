@@ -6,13 +6,13 @@ const path = require('path');
 const subsetFont = require('subset-font');
 const { aggregateSite } = require('./aggregate');
 const {
-  siteFaces, renderHome, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
+  siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
 } = require('./render');
-const { NAV, VIRTUAL, TOPICS, COPY } = require('./home');
+const { NAV, TABS, TOPICS, COPY } = require('./home');
 const { buildPanels } = require('./panels');
 
 /* 站點固定文案用字（頁面框架/落款/導航/簽條/專題/招募），與數據用字一併入子集 */
-const UI_CHARS = '蘭木藏書目錄一次校錄多態呈現書法古籍音樂之現代數字文創凡卷並序單手幅需點校回經史子集禮樂畫第葉前後半右其他檢索名篇聲微志遠此弄宜緩種全帙覽，·—→ 入專題推薦涵泳幽賞四時書';
+const UI_CHARS = '蘭木藏書目錄一次校錄多態呈現書法古籍音樂之現代數字文創凡卷並序單手幅需點校回經史子集禮樂畫第葉前後半右其他檢索名篇聲微志遠此弄宜緩種全帙覽，·—→ 入專題推薦涵泳幽賞四時書三釋編';
 
 function collectSiteChars(site) {
   const chars = new Set(UI_CHARS);
@@ -26,7 +26,7 @@ function collectSiteChars(site) {
     }
   }
   for (const n of NAV) add(n.label);
-  for (const v of VIRTUAL) { add(v.category); v.titles.forEach(add); }
+  for (const t of TABS) { add(t.key); (t.virtual || []).forEach(add); }
   for (const t of TOPICS) { add(t.title); add(t.desc); (t.virtual || []).forEach(add); Object.values(t.marks || {}).forEach(add); }
   add(COPY.soon.title); add(COPY.soon.sub); add(COPY.back); add(COPY.topicLabel); add(COPY.topicHead); add(COPY.enterShuku); add(COPY.shukuSub);
   add(COPY.jiaoshu.title); add(COPY.jiaoshu.sub); COPY.jiaoshu.lines.forEach(add);
@@ -60,6 +60,7 @@ async function buildSitePages(distRoot) {
     fs.writeFileSync(fp, html);
   };
   put('index.html', renderHome(site, faces, panelResults));
+  put('sanzang/index.html', renderSanzang(site, faces));
   put('shuku/index.html', renderShuku(site, faces));
   put('coming-soon/index.html', renderComingSoon(faces));
   put('jiaoshu/index.html', renderJiaoshu(faces));
@@ -70,7 +71,7 @@ async function buildSitePages(distRoot) {
     put(`books/${b.id}/index.html`, renderToc(b, faces));
     n++;
   }
-  console.log(`  站點: 首頁 + 書庫 + ${TOPICS.length} 專題 + ${n} 書目錄頁 + 招募/期待頁`);
+  console.log(`  站點: 首頁 + 三藏 + 書庫 + ${TOPICS.length} 專題 + ${n} 書目錄頁 + 招募/期待頁`);
   return site;
 }
 
