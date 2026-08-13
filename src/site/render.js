@@ -186,19 +186,13 @@ const seekHtml = `<div class="seek">
   <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
 </div>`;
 
-/* 卷影屏：單扇——取 dist/assets/topics/<id>.jpg，缺圖落佔位。
- * 整扇即 <a> 鏈作品頁；扇下綴季節朱字 + 題名小字。 */
-function panelFan(b, mark, panels) {
-  const href = b.href;
-  const title = b.title;
-  const hasImg = panels && panels[b.id];
-  const src = hasImg ? `/assets/topics/${b.id}.jpg` : '';
-  const inner = hasImg
-    ? `<img src="${src}" alt="${esc(title)}" loading="lazy">`
-    : `<span class="ph-t">${esc(title)}</span><span class="ph-s">${esc(mark || '')}</span>`;
-  return `    <a class="fan${hasImg ? '' : ' ph'}" href="${href}">
-      ${inner}
-      <span class="fan-cap"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(title)}</em></span>
+/* 四時卷影屏：立式畫板——四時圖像（128×179，no-red），尺寸/座同四書書影，
+ *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴季節朱字 + 題名。 */
+function panelFan(b, mark) {
+  return `    <a class="slot fan-jb" href="${b.href}">
+      <span class="tome jb-canvas"><img class="jb" src="/assets/topics/${b.id}.png" alt="${esc(b.title)}" loading="lazy"></span>
+      <span class="plinth"></span>
+      <span class="n"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(b.title)}</em></span>
     </a>`;
 }
 
@@ -238,14 +232,14 @@ function renderHome(site, faces, panels) {
   const fans = (wen.books || []).map((id) => {
     const b = byId.get(id);
     if (!b) return '';
-    return panelFan(b, wen.marks && wen.marks[id], panels);
+    return panelFan(b, wen.marks && wen.marks[id]);
   }).join('\n');
 
   /* 四書面板：瓷青書影四部（鏈 /books/<id>/） */
   const sishuTomes = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome).join('\n');
 
   const twoPanels = `  <div class="tabpanel hpanel" id="tp-0" role="tabpanel" aria-labelledby="tab-0">
-  <div class="fans">
+  <div class="shelf center">
 ${fans}
   </div>
   </div>

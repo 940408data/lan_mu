@@ -11,7 +11,6 @@ const {
   siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
 } = require('../src/site/render');
 const { TOPICS } = require('../src/site/home');
-const { SCROLLS } = require('../src/site/panels');
 
 const ROOT = path.join(__dirname, '..', 'dist');
 const MIME = {
@@ -58,7 +57,7 @@ const server = http.createServer((req, res) => {
     const sishi = TOPICS.find((t) => t.id === 'sishi-youshang');
     if (sishi) {
       for (const id of sishi.books) {
-        const fp = path.join(ROOT, 'assets', 'topics', `${id}.jpg`);
+        const fp = path.join(ROOT, 'assets', 'topics', `${id}.png`);
         if (fs.existsSync(fp)) panels[id] = fp;
       }
     }
@@ -96,6 +95,9 @@ const server = http.createServer((req, res) => {
     res.end(buf);
   });
 });
+// dev 預覽：拷卷影源資產到 dist（免構建可預覽圖）
+try { require('../src/site/panels').buildPanels(ROOT, ((TOPICS.find((t) => t.id === 'sishi-youshang')) || {}).books || []); } catch (e) {}
+
 // 端口自动顺延（旧进程未退出时换下一个端口）
 const tryListen = (port) => {
   server.once('error', (e) => {

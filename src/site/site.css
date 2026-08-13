@@ -194,48 +194,16 @@ body{
 .js .hpanel.hide{display:none}
 @keyframes qfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* 四時卷影屏：四扇 flex 等分，每扇 16rem 高、object-fit cover */
-.fans{display:flex;gap:.7rem;height:16rem}
-.fan{
-  flex:1;min-width:0;position:relative;display:block;overflow:hidden;
-  border:1px solid rgba(18,14,10,.55);border-radius:1px;
-  box-shadow:0 6px 18px -10px rgba(0,0,0,.7);
-  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
-  text-decoration:none;background:#2a231b;
-}
-.fan img{
-  display:block;width:100%;height:100%;object-fit:cover;
-  filter:brightness(.94);transition:filter .25s;
-}
-.fan:hover{transform:translateY(-3px);box-shadow:0 12px 26px -12px rgba(0,0,0,.85)}
-.fan:hover img{filter:brightness(1.04)}
-.fan:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
-.fan-cap{
-  position:absolute;left:0;right:0;bottom:0;
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:.45rem .5rem;
-  background:linear-gradient(to top,rgba(18,14,10,.78) 0%,rgba(18,14,10,0) 100%);
-}
-.fan-cap .fan-m{
-  font-family:var(--kai);font-style:normal;font-size:.92rem;
-  letter-spacing:.08em;color:var(--zhu);
-}
-.fan-cap .fan-n{
-  font-family:var(--kai);font-style:normal;font-size:.74rem;
-  letter-spacing:.12em;color:rgba(238,224,196,.92);
-}
-/* 缺圖佔位：瓷青漸變 + 豎排題名 + 季字 */
-.fan.ph{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;
-  background:linear-gradient(150deg,#3f4c58 0%,#2c3743 100%);
-}
-.fan.ph .ph-t{
-  writing-mode:vertical-rl;font-family:var(--kai);font-size:1.02rem;
-  letter-spacing:.32em;color:rgba(232,222,200,.82);
-}
-.fan.ph .ph-s{
-  font-family:var(--kai);font-size:1.6rem;color:var(--zhu);opacity:.85;
-}
+/* 四時卷影屏：立式畫板——四時圖像（128×179，no-red），尺寸/座同四書書影，
+   圖鋪滿瓷青畫板（.tome），畫異於書（無訂線/簽條/印）；座下季朱字 + 題名 */
+.fan-jb{cursor:pointer}
+.fan-jb .jb-canvas{overflow:hidden}
+.fan-jb .jb-canvas::before,
+.fan-jb .jb-canvas::after{display:none}   /* 畫板無訂線/孔 */
+.fan-jb .jb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.96);transition:filter .25s}
+.fan-jb:hover .jb{filter:brightness(1.04)}
+.fan-jb .n .fan-m{font-style:normal;font-size:.92rem;letter-spacing:.08em;color:var(--zhu)}
+.fan-jb .n .fan-n{font-style:normal}
 
 /* 專題推薦（v0 樣式撈回） */
 .topics{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
