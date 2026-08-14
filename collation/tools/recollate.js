@@ -56,25 +56,42 @@ function diffChars(a, b) {
   const { shanben } = loadWork(workId);
   const pdfDir = path.join(INPUT_DATA, workId, '当涂郡本_pdf');
   const ocrDir = path.join(INPUT_DATA, workId, '当涂郡本_ocr');
+  const conc = parseInt(flags.conc || '5', 10);
+  const pages = [];
+  for (let pg = pStart; pg <= (pEnd || pStart); pg++) pages.push(pg);
   const out = [];
-  for (let pg = pStart; pg <= (pEnd || pStart); pg++) {
-    const pdfPath = path.join(pdfDir, `page_${pad(pg)}.pdf`);
-    const oldPath = path.join(ocrDir, `page_${pad(pg)}.md`);
-    if (!fs.existsSync(pdfPath) || !fs.existsSync(oldPath)) { console.log(`page ${pg} 缺文件，跳过`); continue; }
-    const oldText = fs.readFileSync(oldPath, 'utf8');
-    const { b64 } = renderPage(pdfPath, 1, dpi);
-    const t0 = Date.now();
-    const r = await ocrPage(b64);
-    const visText = r.text || '';
-    const a = canon(oldText), b = canon(visText);
-    const { diffs, match, total } = diffChars(a, b);
-    const agree = total ? (match / total * 100).toFixed(1) : '0';
-    console.log(`page_${pad(pg)}: 一致率 ${agree}% (旧${a.length}字/视${b.length}字/异${diffs.length}) engine=${r.engine} ${((Date.now()-t0)/1000).toFixed(0)}s`);
-    if (diffs.length && diffs.length <= 30) diffs.forEach(d => console.log(`    差 @${d.pos}: 旧「${d.old}」视「${d.vis}」`));
-    out.push({ page: pg, agree: parseFloat(agree), nOld: a.length, nVis: b.length, nDiff: diffs.length, diffs, visText });
+  let idx = 0, done = 0;
+  async function worker() {
+    while (idx < pages.length) {
+      const pg = pages[idx++];
+      const pdfPath = path.join(pdfDir, `page_${pad(pg)}.pdf`);
+      const oldPath = path.join(ocrDir, `page_${pad(pg)}.md`);
+      if (!fs.existsSync(pdfPath) || !fs.existsSync(oldPath)) { console.log(`page ${pg} 缺文件，跳过`); continue; }
+      const oldText = fs.readFileSync(oldPath, 'utf8');
+      try {
+        const { b64 } = renderPage(pdfPath, 1, dpi);
+        const t0 = Date.now();
+        const r = await ocrPage(b64);
+        const visText = r.text || '';
+        const a = canon(oldText), b = canon(visText);
+        const { diffs, match, total } = diffChars(a, b);
+        const agree = total ? (match / total * 100).toFixed(1) : '0';
+        done++;
+        console.log(`page_${pad(pg)}: 一致率 ${agree}% (旧${a.length}/视${b.length}/异${diffs.length}) ${r.engine} ${((Date.now()-t0)/1000).toFixed(0)}s [${done}/${pages.length}]`);
+        out.push({ page: pg, agree: parseFloat(agree), nOld: a.length, nVis: b.length, nDiff: diffs.length, diffs, visText });
+      } catch (e) {
+        console.log(`page_${pad(pg)}: 失败 ${e.message}`);
+        out.push({ page: pg, error: String(e.message) });
+      }
+    }
   }
+  await Promise.all(Array.from({ length: conc }, worker));
+  out.sort((x, y) => x.page - y.page);
   const outPath = flags.out || path.join(__dirname, '..', 'data', workId, `recollate-${pStart}-${pEnd||pStart}.json`);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(out, null, 2));
+  const ok = out.filter(o => o.agree != null);
+  const avg = ok.length ? (ok.reduce((s, o) => s + o.agree, 0) / ok.length).toFixed(1) : '0';
+  console.log(`✓ ${ok.length}/${pages.length} 页，平均一致率 ${avg}%`);
   console.log('→', outPath);
 })().catch(e => { console.error('✗', e); process.exit(1); });
