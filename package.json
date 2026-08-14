@@ -11,6 +11,7 @@
     "build": "node tools/cli.js build",
     "font:register": "node tools/cli.js font:register",
     "dev": "node tools/serve.js",
+    "docs": "docsify serve docs --port 8130",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
@@ -22,5 +23,8 @@
     "pngjs": "^7.0.0",
     "subset-font": "^2.5.0",
     "yaml": "^2.6.0"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.4"
   }
 }

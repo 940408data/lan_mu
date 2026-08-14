@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>兰木 · 文档</title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+  <style>
+    :root { --base-font-size: 16px; }
+    body { font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif; }
+    .sidebar { background: #f7f4ef; border-right: 1px solid #e3ddd3; }
+    .sidebar-nav a { color: #5a4a3a; }
+    .sidebar-nav a:hover { color: #8b3a3a; }
+    .sidebar-nav > .active > a { color: #8b3a3a; border-right-color: #8b3a3a; }
+    .app-name a { color: #3a2a1a; font-weight: 600; }
+    h1, h2, h3, h4 { color: #2a1a0a; }
+    a { color: #8b3a3a; text-decoration: none; }
+    blockquote { border-left: 4px solid #c9a96a; background: #faf7f2; }
+    code { background: #f3efe8; color: #6a4a2a; }
+    pre { background: #2a221a; }
+    .search input { background: #faf7f2; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '兰木 · 文档',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      search: {
+        placeholder: '搜索文档',
+        noData: '无结果',
+        depth: 3,
+      },
+      auto2top: true,
+      coverpage: false,
+    };
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+</body>
+</html>
