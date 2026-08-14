@@ -59,6 +59,16 @@ async function callVision(model, b64, prompt, key, endpoint, thinking) {
 }
 
 /** 从模型输出取 JSON（对象或数组） */
+/** 多 key 轮询（DASHSCOPE_API_KEY 支持逗号分隔多个，供并行分摊限流） */
+let _keyIdx = 0;
+function getKey(cfg) {
+  const raw = process.env[cfg.vision.keyEnv];
+  if (!raw) return null;
+  const keys = raw.split(',').map(s => s.trim()).filter(Boolean);
+  if (!keys.length) return null;
+  return keys[(_keyIdx++) % keys.length];
+}
+
 function pickJSON(text) {
   if (!text) return null;
   const fence = text.match(/```(?:json)?\s*([\s\S]*?)```/);
@@ -85,7 +95,7 @@ function getConf(obj) {
 /** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock。thinking 按 label 从配置读。 */
 async function review(b64, prompt, label) {
   const cfg = loadVisionConfig();
-  const key = process.env[cfg.vision.keyEnv];
+  const key = getKey(cfg);
   if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
   const models = cfg.vision.models;
   const thinking = (cfg.vision.thinking && label in cfg.vision.thinking) ? cfg.vision.thinking[label] : true;
@@ -141,7 +151,7 @@ function ocrPrompt() {
 async function ocrPage(b64) {
   // 纯 OCR 输出为纯文本（非 JSON），不走 review 的 JSON 判定路由；初校一次即可
   const cfg = loadVisionConfig();
-  const key = process.env[cfg.vision.keyEnv];
+  const key = getKey(cfg);
   if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
   const thinking = cfg.vision.thinking ? cfg.vision.thinking.ocr : false;
   const r = await callVision(cfg.vision.models.first, b64, ocrPrompt(), key, cfg.vision.endpoint, thinking);
