@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兰木 · PC 与移动端适配说明</title>
+<style>
+  /* 设计 token 与 src/site/site.css 同源：暗色书案底、纸色、墨色、朱记 */
+  :root{
+    --paper:#e8dec8; --paper2:#dccfb1;
+    --ink:#241c14; --ink2:#382d20;
+    --rule:rgba(62,46,30,.28);
+    --seal:#a63125; --zhu:#b8402c;
+    --text:#d9cdb4; --text-dim:rgba(217,205,180,.72);
+    --song:"Songti SC","STSong","SimSun",serif;
+    --kai:"Kaiti SC","STKaiti","KaiTi","Songti SC",serif;
+    --mono:"SF Mono","Menlo","Consolas","Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{background:#221d18;scroll-behavior:smooth}
+  body{
+    background:radial-gradient(120% 90% at 50% -5%, #4c4235 0%, #332c23 55%, #221d18 100%);
+    color:var(--text);font-family:var(--song);line-height:1.85;
+    padding:0 0 4rem;min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 1.4rem}
+  /* 题首 */
+  header{padding:3rem 0 1.6rem;border-bottom:1px solid var(--rule)}
+  header h1{margin:0;font-family:var(--kai);font-weight:600;
+    font-size:1.85rem;letter-spacing:.06em;color:#f3e8d0}
+  header .sub{margin:.6rem 0 0;font-family:var(--kai);font-size:.9rem;
+    letter-spacing:.12em;color:var(--text-dim)}
+  header .meta{margin:1rem 0 0;font-size:.76rem;letter-spacing:.08em;
+    color:rgba(214,198,166,.5)}
+  /* 目录 */
+  nav.toc{margin:1.4rem 0 .2rem;font-family:var(--kai);font-size:.82rem;
+    letter-spacing:.1em;color:var(--text-dim)}
+  nav.toc a{color:#c8b48d;text-decoration:none;margin-right:1.1rem;
+    border-bottom:1px solid transparent;padding-bottom:.1rem;transition:border-color .2s}
+  nav.toc a:hover{border-bottom-color:#c8b48d}
+  /* 节 */
+  section{padding:1.8rem 0 .4rem;border-bottom:1px solid rgba(62,46,30,.4)}
+  section:last-of-type{border-bottom:none}
+  h2{margin:0 0 1rem;font-family:var(--kai);font-weight:600;font-size:1.2rem;
+    letter-spacing:.08em;color:#e8dcc0;display:flex;align-items:baseline;gap:.6rem}
+  h2 .n{color:var(--seal);font-size:.95rem;letter-spacing:.05em}
+  h3{margin:1.3rem 0 .6rem;font-family:var(--kai);font-weight:600;font-size:1rem;
+    letter-spacing:.08em;color:#cbbfa6}
+  p{margin:.7rem 0}
+  /* 朱色强调标记，呼应「朱记」 */
+  .seal{color:var(--seal);font-family:var(--kai);font-weight:600}
+  .lead{font-size:.92rem;color:#ede0c4}
+  /* 代码/路径引用：纸色底 + 等宽 */
+  code,pre{font-family:var(--mono);font-size:.82rem}
+  code{background:rgba(232,222,200,.13);color:#ecd9aa;padding:.1em .4em;
+    border-radius:1px;border:1px solid rgba(216,198,160,.16)}
+  pre{background:#1c1a16;border:1px solid var(--rule);border-radius:2px;
+    padding:.9rem 1rem;overflow-x:auto;color:#c9bea4;line-height:1.6}
+  pre .c{color:#8a7e62}      /* 注释 */
+  pre .s{color:#d9a866}      /* 串 */
+  pre .k{color:#c8b48d}      /* 关键字/选择器 */
+  /* 表格 */
+  .tbl-wrap{overflow-x:auto;margin:.6rem 0 1rem}
+  table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:540px}
+  th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid rgba(62,46,30,.45);
+    vertical-align:top}
+  th{font-family:var(--kai);font-weight:600;color:#cbbfa6;letter-spacing:.06em;
+    background:rgba(60,50,38,.3);white-space:nowrap}
+  td code{white-space:nowrap}
+  /* 要点清单 */
+  ul.ops{list-style:none;padding:0;margin:.6rem 0}
+  ul.ops li{padding:.4rem 0 .4rem 1.6rem;position:relative;line-height:1.7}
+  ul.ops li::before{position:absolute;left:0;top:.4rem;font-family:var(--kai);
+    font-weight:600;font-size:1.05rem}
+  ul.ops.ok li::before{content:"✓";color:#7a9a6a}
+  ul.ops.no li::before{content:"⚠";color:#c79a4a}
+  ul.ops.do li::before{content:"▸";color:var(--seal)}
+  /* 规则卡 */
+  .card{background:rgba(28,26,22,.55);border:1px solid var(--rule);border-radius:2px;
+    padding:1rem 1.2rem;margin:1rem 0}
+  .card .h{font-family:var(--kai);font-weight:600;color:#cbbfa6;letter-spacing:.08em;
+    font-size:.9rem;margin-bottom:.4rem}
+  footer{padding:2rem 0 0;font-size:.76rem;letter-spacing:.06em;color:rgba(214,198,166,.45);
+    border-top:1px solid var(--rule)}
+  /* 文档自身即移动适配样本：窄屏断点 */
+  @media (max-width:640px){
+    header{padding:2rem 0 1.2rem}
+    header h1{font-size:1.45rem}
+    .wrap{padding:0 1rem}
+    nav.toc a{display:inline-block;margin:0 1rem .4rem 0}
+    h2{font-size:1.05rem}
+    table{font-size:.8rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>兰木 · PC 与移动端适配说明</h1>
+  <p class="sub">原生 HTML/CSS/JS，无前端框架；viewport + 流式单位 + @media 断点 + Pointer Events 四层自适应</p>
+  <p class="meta">文档基线：commit dev · 2026-08-14 · 适用 src/viewer、src/site、src/render</p>
+</header>
+
+<nav class="toc">
+  <a href="#s1">一·如何区分</a>
+  <a href="#s2">二·四层机制</a>
+  <a href="#s3">三·各断点改动</a>
+  <a href="#s4">四·优化指南</a>
+  <a href="#s5">附录·文件索引</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="n">一</span>如何区分 PC 与移动端</h2>
+  <p class="lead"><span class="seal">不在 JS 层做设备嗅探</span>——全仓无 <code>matchMedia</code> / <code>ontouchstart</code> / <code>maxTouchPoints</code> / <code>navigator.userAgent</code> 之类运行时判断。区分完全由 <strong>CSS <code>@media</code> 断点</strong>承担，共三处：</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>文件</th><th>断点</th><th>命中后的改动</th></tr>
+      <tr>
+        <td><code>src/viewer/viewer.css:226</code></td>
+        <td><code>max-width:860px</code></td>
+        <td>手卷查看器：顶栏压至 64px、隐藏次要信息（<code>.mark/.facts/.tt p/.btn.txt</code>）、进度条缩短、hud 内移</td>
+      </tr>
+      <tr>
+        <td><code>src/viewer/songke.css:181</code></td>
+        <td><code>max-width:820px</code></td>
+        <td>宋版查看器：<code>--u</code> 由 26px → 15px，整版字格等比缩小</td>
+      </tr>
+      <tr>
+        <td><code>src/site/site.css:345</code></td>
+        <td><code>max-width:820px</code></td>
+        <td>站点页：书影缩小、<code>.fan</code> 专题卡一列→两列、搜索结果省略副标</td>
+      </tr>
+    </table>
+  </div>
+
+  <p><code>viewport</code> meta 全局统一，见 <code>src/render/html.js:158</code>、<code>src/render/html-songke.js:137</code>、<code>src/site/render.js:49</code>：</p>
+  <pre><span class="c">&lt;!-- width=device-width + initial-scale=1，未禁缩放（无 user-scalable=no）--&gt;</span>
+<span class="k">&lt;meta</span> <span class="k">name</span>=<span class="s">"viewport"</span> <span class="k">content</span>=<span class="s">"width=device-width, initial-scale=1"</span><span class="k">&gt;</span></pre>
+  <p>手卷断点取 860（比别处 820 大），因顶栏按钮多、更早需要让位。移动端用户可双指自由缩放整页。</p>
+</section>
+
+<section id="s2">
+  <h2><span class="n">二</span>自适应的四层机制</h2>
+  <p>没有 React/Vue 等框架，是原生 HTML/CSS/JS + 构建期烘焙（<code>src/render/html.js</code> 烘焙进 HTML）。自适应靠四层显式机制，非框架魔法：</p>
+
+  <h3>① 流式单位（站点页为主）</h3>
+  <p><code>src/site/site.css</code> 大量用 <code>rem</code> + <code>max-width</code> 居中：<code>.cabinet</code> 限 1060px（<code>:88</code>）、<code>.seek</code> 限 34rem（<code>:54</code>）、书影 <code>.tome</code> 8rem×11.2rem（<code>:98</code>）。rem 随根字号、随断点缩放，<code>flex-wrap</code> 自动换行回流。</p>
+  <p>另有一处<strong>无断点自适应</strong>——<code>min()</code> 让 PC 下取 400px、窄屏自动留 32px 边距，无需媒体查询：</p>
+  <pre><span class="c">/* src/viewer/viewer.css:215 */</span>
+<span class="k">.panel</span>{width:min(400px,calc(100vw - 32px));max-height:calc(100vh - 110px)}</pre>
+
+  <h3>② 视口单位 + 数据驱动固定像素（查看器）</h3>
+  <p>手卷 <code>viewer.css</code> 用 <code>100vh</code>/<code>100vw</code> 撑视口（<code>.viewer height:calc(100vh - 76px)</code>，<code>:183</code>），但卷面几何 <code>--paper-w</code>/<code>--wrap-h</code> 是<strong>固定 px</strong>，由 <code>meta.yaml</code> 注入——这是「逐字节可复现保真」的硬约束，<code>npm run verify</code> 守门。</p>
+  <p>宋版 <code>songke.css</code> 则以一个根变量 <code>--u</code>（大字格）派生全部尺寸，移动端只需调 <code>--u</code> 一处，整版等比缩：</p>
+  <pre><span class="c">/* src/viewer/songke.css:3-11 */</span>
+<span class="k">--u</span>: 26px;                     <span class="c">/* 大字格：一格一字 */</span>
+<span class="k">--col-h</span>: calc(var(--u) * 16);   <span class="c">/* 半葉高：十六字 */</span>
+<span class="k">--col-w</span>: calc(var(--u) * 1.40);  <span class="c">/* 行宽 */</span>
+<span class="k">--su</span>:    calc(var(--col-h) / 25); <span class="c">/* 小字格 */</span></pre>
+
+  <h3>③ Pointer Events 统一输入（关键）</h3>
+  <p>手卷查看器 <code>src/viewer/viewer.js:66-71</code> 用 <strong>Pointer Events</strong>（<code>pointerdown</code>/<code>pointermove</code>/<code>pointerup</code> + <code>setPointerCapture</code>）做横向拖卷——<strong>鼠标、手指、触笔同一套代码</strong>，无须分别写 <code>mousedown</code>/<code>touchstart</code>。再补 <code>wheel</code>（PC 滚轮纵向→横向，<code>:71</code>）与键盘 <code>ArrowLeft/Right</code>（<code>:76-77</code>）。移动端无滚轮/键盘也无所谓，手指 pointer 拖动即可。</p>
+  <pre><span class="c">/* src/viewer/viewer.js:66-71 */</span>
+viewer.addEventListener(<span class="s">'pointerdown'</span>,e=&gt;{<span class="k">if</span>(e.button)<span class="k">return</span>;down=<span class="k">true</span>;sx=e.clientX;sl=viewer.scrollLeft;
+  viewer.setPointerCapture(e.pointerId);viewer.classList.add(<span class="s">'drag'</span>);});
+viewer.addEventListener(<span class="s">'pointermove'</span>,e=&gt;{<span class="k">if</span>(down)viewer.scrollLeft=sl-(e.clientX-sx);});
+viewer.addEventListener(<span class="s">'pointerup'</span>,()=&gt;{down=<span class="k">false</span>;viewer.classList.remove(<span class="s">'drag'</span>);});
+viewer.addEventListener(<span class="s">'wheel'</span>,e=&gt;{<span class="c">/* 纵滚轮转横向，PC 专属 */</span>
+  <span class="k">if</span>(Math.abs(e.deltaY)&gt;Math.abs(e.deltaX)){viewer.scrollLeft+=e.deltaY;e.preventDefault();}},
+  {passive:<span class="k">false</span>});</pre>
+  <p>宋版是翻页式（<code>btnPrev/btnNext</code> + <code>scrollIntoView</code>，<code>songke.js:211-212</code>），<code>click</code> 原生通用；键盘翻页（<code>songke.js:221-224</code>）是 PC 加分项。</p>
+
+  <h3>④ 打印态与无障碍</h3>
+  <p><code>@media print</code>（<code>viewer.css:235</code>）隐去界面、长卷铺平为单页——为 PDF 输出。另有 <code>prefers-reduced-motion</code> 三处（<code>viewer.css:232</code>、<code>songke.css:182</code>、<code>site.css:357-358</code>），关闭动画以照顾前庭敏感用户。</p>
+</section>
+
+<section id="s3">
+  <h2><span class="n">三</span>各断点的具体改动</h2>
+
+  <h3>手卷查看器 · viewer.css:226</h3>
+  <pre>@media(max-width:860px){
+  .topbar{height:64px;padding:0 10px;gap:8px}
+  .mark,.facts,.tt p,.btn.txt{<span class="k">display</span>:none}   <span class="c">/* 隐藏次要信息，为主操作让位 */</span>
+  .tt h1{font-size:16px} .viewer{height:calc(100vh - 64px)}
+  .bar{width:120px;right:12px} .hud{left:12px;bottom:12px;font-size:10px}
+}</pre>
+
+  <h3>宋版查看器 · songke.css:181</h3>
+  <pre>@media (max-width:820px){:root{<span class="k">--u</span>:15px}.masthead .zhu{font-size:1.35rem}}
+<span class="c">/* --u 26→15，--col-h/--col-w/--su 全部等比缩，单变量驱动整版 */</span></pre>
+
+  <h3>站点页 · site.css:345</h3>
+  <pre>@media (max-width:820px){
+  :root{--u:15px}
+  .tome{width:6.6rem;height:9.4rem}            <span class="c">/* 书影缩小 */</span>
+  .seek-list .rs{display:none}                 <span class="c">/* 搜索结果省略副标 */</span>
+  .fans{height:12rem;flex-wrap:wrap}
+  .fan{flex:1 1 calc(50% - .4rem);min-width:calc(50% - .4rem)}  <span class="c">/* 一列→两列 */</span>
+}</pre>
+</section>
+
+<section id="s4">
+  <h2><span class="n">四</span>移动端优化指南</h2>
+  <p class="lead">架构本就为「窄屏隔离」设计：在 <code>@media(max-width:820/860px)</code> 块内加规则只影响窄屏，宽屏（PC）不进断点、零影响。Viewer 的 Pointer Events 已统一输入。可以放心做。</p>
+
+  <div class="card">
+    <div class="h">✓ 安全边界（只碰这些，PC 不受影响）</div>
+    <ul class="ops ok">
+      <li>在 <code>@media(max-width:820px)</code> / <code>(max-width:860px)</code> 块内新增规则——只命中窄屏</li>
+      <li>调派生根变量：宋版缩放走 <code>--u</code>、手卷缩放走 <code>--zoom</code>（<code>viewer.js</code> 的 <code>fit()</code> 已按视口高度算 zoom，<code>:80-85</code>）</li>
+      <li>用 <code>min()</code>/<code>max()</code>/<code>clamp()</code> 做无断点自适应（仿 <code>.panel width:min(...)</code>）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="h">⚠ 红线（碰了会波及 PC 或破坏保真）</div>
+    <ul class="ops no">
+      <li>勿改断点<strong>之外</strong>的全局规则——宽屏会跟着变</li>
+      <li>勿动 <code>--paper-w</code> / <code>--wrap-h</code> 等手卷几何量——这是 <code>verify</code> 逐字节保真基准，动则幽兰回归报红</li>
+      <li>勿逐个改宋版派生量（<code>--col-h</code> 等），只改 <code>--u</code></li>
+      <li>勿加 <code>user-scalable=no</code> 禁缩放——剥夺无障碍放大</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="h">▸ 可行的优化方向（均在断点内实施）</div>
+    <ul class="ops do">
+      <li><strong>顶栏按钮组挤压</strong>：860px 下手卷顶栏按钮偏挤，可分组折叠为「⋯」溢出菜单</li>
+      <li><strong>横向拖卷惯性</strong>：移动端 pointerup 后加 momentum 滑行（现仅跟手，松手即停）</li>
+      <li><strong>.panel 抽屉化</strong>：窄屏把浮层「关于」面板改为底部抽屉，避免遮挡卷面</li>
+      <li><strong>双指捏合缩放</strong>：现只有按钮 ±（<code>viewer.js:23</code>），可加 <code>gesturechange</code>/<code>pointer</code> 双指识别直接改 <code>--zoom</code></li>
+      <li><strong>宋版手势翻页</strong>：现靠按钮 + 键盘，可加左右滑动手势调 <code>go(±1)</code></li>
+    </ul>
+  </div>
+
+  <p>改完务必：<code>npm run verify</code>（幽兰逐字节保真守门）＋截图目检。目检避坑见 <code>CLAUDE.md</code>——用系统 Chrome（<code>chromium.launch({channel:'chrome'})</code>）、元素级截图（<code>page.$('.sel').screenshot()</code>）、勿 fullPage、勿把 PNG/dist/字体读进上下文。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="n">附</span>关键文件索引</h2>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>文件</th><th>角色</th><th>要点行</th></tr>
+      <tr><td><code>src/viewer/viewer.js</code></td><td>手卷交互</td><td>Pointer 拖卷 <code>:66-71</code>、滚轮 <code>:71</code>、键盘 <code>:76-77</code>、缩放 <code>:23</code>/<code>fit()</code> <code>:80-85</code></td></tr>
+      <tr><td><code>src/viewer/viewer.css</code></td><td>手卷样式</td><td>移动断点 <code>:226</code>、打印 <code>:235</code>、<code>.panel min()</code> <code>:215</code></td></tr>
+      <tr><td><code>src/viewer/songke.js</code></td><td>宋版交互</td><td>翻页 <code>:211-212</code>、缩放 <code>:213</code>、键盘 <code>:221-224</code></td></tr>
+      <tr><td><code>src/viewer/songke.css</code></td><td>宋版样式</td><td><code>--u</code> <code>:4</code>、移动断点 <code>:181</code></td></tr>
+      <tr><td><code>src/site/site.css</code></td><td>站点样式</td><td>流式 rem、<code>.cabinet</code> <code>:88</code>、移动断点 <code>:345</code></td></tr>
+      <tr><td><code>src/render/html.js</code></td><td>手卷烘焙</td><td>viewport <code>:158</code></td></tr>
+      <tr><td><code>src/render/html-songke.js</code></td><td>宋版烘焙</td><td>viewport <code>:137</code></td></tr>
+      <tr><td><code>src/site/render.js</code></td><td>站点烘焙</td><td>viewport <code>:49</code></td></tr>
+      <tr><td><code>tools/serve.js</code></td><td>预览服务器</td><td>ROOT=dist <code>:15</code>，不服务 docs/</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  本文档自身即「移动适配」样本：带 viewport meta + <code>@media(max-width:640px)</code> 窄屏断点 + <code>prefers-reduced-motion</code>，窄屏可读。
+  视觉与 <code>src/site/site.css</code> 同源（暗案底 / 纸墨 / 朱记）。
+</footer>
+
+</div>
+</body>
+</html>
