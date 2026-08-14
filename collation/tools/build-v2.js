@@ -58,13 +58,18 @@ for (const p of recollate) {
   const a = canon(oldText), b = canon(p.visText);
   const ops = editOps(a, b);
   let clean = '';
+  let ai = 0;  // 跟踪在旧串 a 中的位置（=/sub/del 消耗 a）
   for (const op of ops) {
-    if (op.t === '=') { clean += op.old; stat.match++; }
-    else if (op.t === 'del') { clean += op.old; stat.del++; }              // 视觉缺字→采旧
+    if (op.t === '=') { clean += op.old; stat.match++; ai++; }
+    else if (op.t === 'del') { clean += op.old; stat.del++; ai++; }              // 视觉缺字→采旧
     else if (op.t === 'ins') { stat.ins++; }                                // 视觉多字→采旧(舍)
     else { // sub
       if (norm(op.old) === norm(op.vis)) { clean += op.old; stat.variant++; } // 异体→采旧(善本古字形)
-      else { clean += op.old; stat.subVerify++; pendingVerify.push({ page: p.page, old: op.old, vis: op.vis }); } // 真异→暂采旧+待覆校
+      else { // 真异→暂采旧+待覆校（带上下文供视觉定位）
+        clean += op.old; stat.subVerify++;
+        pendingVerify.push({ page: p.page, old: op.old, vis: op.vis, ai, ctx: a.slice(Math.max(0, ai - 8), ai + 9) });
+      }
+      ai++;
     }
   }
   pages.push({ n: p.page, text: clean });

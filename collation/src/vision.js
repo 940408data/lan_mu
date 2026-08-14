@@ -138,6 +138,15 @@ async function verifyChar(b64, context, ocrChar, altChar) {
   return review(b64, verifyCharPrompt(context, ocrChar, altChar), 'verify');
 }
 
+/** 第三层·批量：一页多个差异点一次问（省 API）。items:[{old,vis,ctx}] → [{i,char,conf,note}] */
+function verifyCharsPrompt(items) {
+  const list = items.map((it, i) => `${i + 1}. 上下文「${(it.ctx || '').slice(0, 18)}」，OCR作「${it.old}」，现代本作「${it.vis}」`).join('\n');
+  return `这是南宋当涂郡斋刊递修本一页古籍扫描，竖排自右向左。以下 ${items.length} 处 OCR 与现代点校本用字不一，请逐一对照扫描图，确认善本实际印的是哪个字：\n${list}\n只输出严格 JSON 数组（每项对一处）：[{"i":1,"char":"善本实字","conf":0.9,"note":"一句理由"}]，不要解释文字。`;
+}
+async function verifyChars(b64, items) {
+  return review(b64, verifyCharsPrompt(items), 'verify');
+}
+
 /** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */
 function ocrPrompt() {
   return `你是一位精通古籍识别的资深学者。请对图片中的古籍页面进行严格的原文照录：
@@ -159,4 +168,4 @@ async function ocrPage(b64) {
   return { engine: '初校(' + cfg.vision.models.first + ')', role: cfg.vision.roles.first, text: r.text, thinking };
 }
 
-module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, ocrPage, callVision };
+module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, callVision };
