@@ -14,12 +14,15 @@ const path = require('path');
 const { aggregate, OFFICER_NAME } = require('../src/officer');
 
 const workId = process.argv[2];
-if (!workId) { console.error('用法: node collation/tools/merge-live.js <书名>'); process.exit(1); }
+const opinionsArg = process.argv[3] || 'live-opinions.json';
+if (!workId) { console.error('用法: node collation/tools/merge-live.js <书名> [opinions文件]'); process.exit(1); }
 const dir = path.join(__dirname, '..', 'data', workId);
 const diffs = JSON.parse(fs.readFileSync(path.join(dir, 'diffs.json'), 'utf8'));
 const verdicts = JSON.parse(fs.readFileSync(path.join(dir, 'verdicts.json'), 'utf8'));
-const livePath = path.join(__dirname, 'live-opinions.json');
+const livePath = path.isAbsolute(opinionsArg) ? opinionsArg
+  : (opinionsArg.includes('/') ? path.resolve(opinionsArg) : path.join(__dirname, opinionsArg));
 const live = JSON.parse(fs.readFileSync(livePath, 'utf8'));
+console.log(`读 opinions: ${livePath}`);
 
 const vById = {}; diffs.forEach(v => vById[v.id] = v);
 let replaced = 0;
