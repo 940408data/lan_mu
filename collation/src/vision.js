@@ -35,13 +35,17 @@ function renderPage(pdfPath, pageN, dpi) {
   return { b64, file };
 }
 
-/** 调百炼兼容端点（多模态） */
-async function callVision(model, b64, prompt, key, endpoint) {
+/** 调百炼兼容端点（多模态）。对齐 /root/guji_ocr/ocr_dianjiao_original_only.py：
+ *  temperature:0.3、max_tokens:8192；enable_thinking 按任务开关（关思考快 5.7×，纯 OCR 用之）。 */
+async function callVision(model, b64, prompt, key, endpoint, thinking) {
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model,
+      temperature: 0.3,
+      max_tokens: 8192,
+      extra_body: { enable_thinking: thinking !== false },
       messages: [{ role: 'user', content: [
         { type: 'text', text: prompt },
         { type: 'image_url', image_url: { url: `data:image/png;base64,${b64}` } },
@@ -78,24 +82,25 @@ function getConf(obj) {
   return typeof obj.conf === 'number' ? obj.conf : null;
 }
 
-/** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock */
+/** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock。thinking 按 label 从配置读。 */
 async function review(b64, prompt, label) {
   const cfg = loadVisionConfig();
   const key = process.env[cfg.vision.keyEnv];
   if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
   const models = cfg.vision.models;
+  const thinking = (cfg.vision.thinking && label in cfg.vision.thinking) ? cfg.vision.thinking[label] : true;
   // 初校
-  let r = await callVision(models.first, b64, prompt, key, cfg.vision.endpoint);
+  let r = await callVision(models.first, b64, prompt, key, cfg.vision.endpoint, thinking);
   if (r.err) return { engine: '初校(' + models.first + ')', err: r.err };
   let obj = pickJSON(r.text), conf = getConf(obj);
   if (obj !== null && conf !== null && conf >= cfg.vision.threshold) {
-    return { engine: '初校(' + models.first + ')', obj, conf, role: cfg.vision.roles.first };
+    return { engine: '初校(' + models.first + ')', obj, conf, role: cfg.vision.roles.first, thinking };
   }
   // 覆校升级（初校置信低或解析失败）
-  r = await callVision(models.deep, b64, prompt, key, cfg.vision.endpoint);
+  r = await callVision(models.deep, b64, prompt, key, cfg.vision.endpoint, thinking);
   if (r.err) return { engine: '覆校(' + models.deep + ')', err: r.err, note: '初校后升级' };
   obj = pickJSON(r.text); conf = getConf(obj);
-  return { engine: '覆校(' + models.deep + ')', obj, conf, role: cfg.vision.roles.deep, note: '初校置信低，升级覆校' };
+  return { engine: '覆校(' + models.deep + ')', obj, conf, role: cfg.vision.roles.deep, thinking, note: '初校置信低，升级覆校' };
 }
 
 /** 第一层：经注大小学判定 */
@@ -123,4 +128,25 @@ async function verifyChar(b64, context, ocrChar, altChar) {
   return review(b64, verifyCharPrompt(context, ocrChar, altChar), 'verify');
 }
 
-module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, callVision };
+/** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */
+function ocrPrompt() {
+  return `你是一位精通古籍识别的资深学者。请对图片中的古籍页面进行严格的原文照录：
+1. 准确识别所有文字（正文、旁注、夹注、页眉页脚），保持繁体字形，绝不转简体。
+2. 原文有标点照录，无标点绝不添加；原样照录，不增不减。
+3. 保持原板式行款：每行写到哪里就换行到哪里；段落、缩进、空行一律照录。
+4. 模糊难辨的字在其后用〔？〕标注。
+5. 双行小注/夹注保持原格式照录；旁注照录原位置。
+仅输出原文，不要任何说明、标题或 markdown 围栏。`;
+}
+async function ocrPage(b64) {
+  // 纯 OCR 输出为纯文本（非 JSON），不走 review 的 JSON 判定路由；初校一次即可
+  const cfg = loadVisionConfig();
+  const key = process.env[cfg.vision.keyEnv];
+  if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
+  const thinking = cfg.vision.thinking ? cfg.vision.thinking.ocr : false;
+  const r = await callVision(cfg.vision.models.first, b64, ocrPrompt(), key, cfg.vision.endpoint, thinking);
+  if (r.err) return { engine: '初校(' + cfg.vision.models.first + ')', err: r.err };
+  return { engine: '初校(' + cfg.vision.models.first + ')', role: cfg.vision.roles.first, text: r.text, thinking };
+}
+
+module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, ocrPage, callVision };

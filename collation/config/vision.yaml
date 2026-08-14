@@ -12,5 +12,9 @@ vision:
     first: qwen3.7-plus     # 底层模型（可迭代为更强版）
     deep: qwen3.8-max       # 底层模型（可迭代为更强版）
   threshold: 0.7            # 初校置信 < 此值 → 升级覆校
+  thinking:                 # 按任务开关思考模式（对齐 guji_ocr 脚本：关思考快 5.7× 但版面判定变糙）
+    jz: true                # 经注判定：需看图推理版面大小字 → 开思考保精度
+    verify: true            # 单字辨形：需看图推理字形 → 开思考保精度
+    ocr: false              # 纯 OCR 原文照录：看图抄字不需推理 → 关思考保速度
   render:
     dpi: 150                # 善本页渲染分辨率（pdftoppm）
