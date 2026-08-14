@@ -24,12 +24,24 @@ const VARIANT_MAP = {
   顚: '顛', 鵶: '鴉', 訞: '妖', 捨: '舍', 註: '注', 詠: '咏',
   乆: '久', 巳: '已', 強: '强', 隂: '陰', 滛: '淫', 逺: '遠', 别: '別',
   况: '況', 僩: '僴', 刼: '劫', 眞: '真', 緡: '緜', 槩: '概', 沉: '沈',
+  // M1 扩充（实测冒出的善本古异体；仅用于对齐归一，不改正文，正文存善本原字）
+  顔: '顏', 徃: '往', 㑹: '會', 刪: '删', 舎: '舍', 宻: '密', 冝: '宜',
+  黙: '默', 逹: '達', 㓜: '幼', 恠: '怪', 祿: '禄', 賛: '贊', 冨: '富',
+  賔: '賓', 灾: '災', 胷: '胸', 冑: '胄', 頼: '賴', 乗: '乘', 鬪: '鬭',
+  彔: '录', 敍: '敘', 綫: '線', 羣: '群', 裏: '裡',
 };
 function normChar(ch) {
   if (VARIANT_MAP[ch]) return VARIANT_MAP[ch];
   // astral/多码元未映射字（如 CJK-Ext-B 𣎆 等）→ 占位单码元，保 sbNorm 与 sbToks 1:1（否则错位致全段误判异体）
   if (ch.length > 1) return '〓';
   return ch;
+}
+
+// ── 页中书题/鱼尾/篇名（独立成行的书名，剥出不参与对校，治"假夺"）──
+// 仅剥含「章句/集注」者；单独的「大學/中庸」不剥（避免误伤正文断行巧合）。
+function isBookTitle(line) {
+  const t = line.replace(/\s/g, '');
+  return t.length >= 2 && t.length <= 9 && /(章句|集注)/.test(t) && /^(宋本)?(大學|中庸|論語|孟子)/.test(t);
 }
 
 // ── 现代本内联校记识别（X本作/據X本/有「X」字/衍文/當作 等）→ 剥入校记，不作正文句 ──
@@ -41,12 +53,13 @@ const FOOTNOTE_REF = /\$\s*\^\s*\{?\s*[\d①-⑳]+\s*\}?\s*\$/g;  // $^{①}$ �
 const SUP = /\^\{[\d①-⑳]+\}/g;                                  // 残留 ^{①}
 const DOLLAR = /\$/g;
 
-/** 善本 → 逐字 token（带溯源），跳过封面，去空白 */
+/** 善本 → 逐字 token（带溯源），跳过封面与书题行，去空白 */
 function shanbenTokens(ed) {
   const toks = [];
   for (const pg of ed.pages) {
     if (pg.isCover) continue;
     pg.lines.forEach((line, li) => {
+      if (isBookTitle(line)) return;  // 剥页中/页首书题（鱼尾/篇名），不参与对校
       for (const ch of line) {
         if (/\s/.test(ch)) continue;
         toks.push({ ch, norm: normChar(ch), page: pg.n, line: li + 1 });
@@ -63,9 +76,10 @@ function xiandaiSentences(ed) {
   for (const pg of ed.pages) {
     let buf = pg.lines.join('\n');
     buf = buf.replace(FOOTNOTE_REF, '').replace(SUP, '').replace(DOLLAR, '');
-    // ①② 行首脚注文本 → 校记，剥离
+    // ①② 行首脚注文本 → 校记，剥离；页中书题/鱼尾 → 剥出（不作正文句）
     buf = buf.split('\n').map(ln => {
       if (/^[①-⑳]/.test(ln.trim())) { notes.push({ page: pg.n, text: ln.trim() }); return ''; }
+      if (isBookTitle(ln)) return '';  // 剥书题（v5 类假夺之源）
       return ln;
     }).join('\n');
     // 内联校记子句（「，…本作/據X本/有「X」字/衍文…」）→ 剥入校记，保正文纯净
@@ -139,7 +153,13 @@ function align(workId) {
   let segId = 0;
   for (const s of sents) {
     if (!s.norm) continue;
-    // 1) 精确命中（容小回溯跨句粘连）
+    // 0) 强锚吸附：遇朱子章句章节标记（右傳之X章/右經一章/右第X章），把 cursor 吸附到善本对应锚点，清跨章累积错位
+    const am = s.norm.match(/右傳之|右經一章|右第[一二三四五六七八九十百]+章/);
+    if (am) {
+      const anchorPos = sbNorm.indexOf(am[0], cursor);
+      if (anchorPos >= 0 && anchorPos - cursor < 500) cursor = anchorPos;
+    }
+    // 1) 精确命中（容小回溯跨句粘连；夺/衍失同步需此容忍）
     const from = Math.max(0, cursor - 32);
     const hit = sbNorm.indexOf(s.norm, from);
     if (hit >= 0 && hit <= cursor + s.norm.length + 12) {
