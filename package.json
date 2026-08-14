@@ -12,6 +12,8 @@
     "font:register": "node tools/cli.js font:register",
     "dev": "node tools/serve.js",
     "docs": "docsify serve docs --port 8130",
+    "collate": "node collation/run.js",
+    "collate:merge": "node collation/tools/merge-live.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {

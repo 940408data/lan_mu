@@ -1,0 +1,49 @@
+# 版本登记册 · collation/editions.yaml
+# 登记校勘所用各版本及其授权级别、用途。双本分流即法理分流（见 DESIGN.md §3）。
+#
+# level:
+#   A 公开  — 公有领域善本，可公开传播；善本点校本之底
+#   B 自用  — 现代整理本有著作权，仅供自修，不入 dist/不外传
+#   C 预留  — 付费/受限本
+
+editions:
+  - id: dangtu
+    role: shanben            # 善本底本
+    level: A                 # 公开
+    title: 当涂郡斋刊递修本（四书章句集注）
+    era: 南宋
+    holder: 中国国家图书馆
+    note: 有配抄；公开善本，公有领域。新加句读为原创点校，可公开传播。
+    ocrDir: 当涂郡本_ocr      # 相对 input_data/<书名>/
+    pdfDir: 当涂郡本_pdf
+    lang: chi_tra            # tesseract 繁体（补跑时用）
+    punctuated: false        # 无标点，需 P5 加句读
+
+  - id: ruzang
+    role: xiandai            # 现代对校本
+    level: B                 # 自用
+    title: 儒藏精华编第 110 册（经部四書類）
+    era: 现代
+    note: 现代点校本，有整理者著作权；供自修研读，不外传。现代本之底。
+    ocrDir: 儒藏本_ocr
+    pdfDir: 儒藏本_pdf
+    lang: chi_tra
+    punctuated: true         # 已有标点 + 脚注 + 校记
+
+# 作品清单（实证案例）
+works:
+  - id: 大学章句
+    title: 大學章句
+    shanben: dangtu
+    xiandai: ruzang
+    structure:                # 朱子章句结构（强锚）
+      - { type: 序, name: 大學章句序 }
+      - { type: 经, name: 經一章 }
+      - { type: 传, name: 傳首章至第十章 }
+  - id: 中庸章句
+    title: 中庸章句
+    shanben: dangtu
+    xiandai: ruzang
+    structure:
+      - { type: 序, name: 中庸章句序 }
+      - { type: 章, name: 第一章至第三十三章 }

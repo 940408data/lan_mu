@@ -1,0 +1,624 @@
+work: 大学章句
+count: 60
+flags:
+  - id: v10
+    kind: suspended
+    desc: 善「曰」/今「日」(真异文)
+    tentative: shanben
+    seg: 夫以學校之設，其廣如此，教之之術，其次第節目之詳又如此，而其所以爲教，則又皆本之人君躬行心得之餘，不待求之民生日用彝倫之外，是以當世之人無不學。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v16
+    kind: suspended
+    desc: 善「頽」/今「頹」(真异文)
+    tentative: shanben
+    seg: 及周之衰，賢聖之君不作，學校之政不修，教化陵夷，風俗頹敗。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v25
+    kind: suspended
+    desc: 善「以」/今「性」(真异文)
+    tentative: shanben
+    seg: 時則有若孔子之性下。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v26
+    kind: suspended
+    desc: 善「行」/今「下」(真异文)
+    tentative: shanben
+    seg: 時則有若孔子之性下。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v36
+    kind: suspended
+    desc: 善「丁」/今「子」(真异文)
+    tentative: shanben
+    seg: 於是河南程氏兩夫子出，而有以接乎孟氏之傳，實始尊信此篇而表章之，既又爲之次其簡編，發其歸趣，然後古者大學教人之法、聖經賢傳之指，粲然復明於世。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v49
+    kind: suspended
+    desc: 善「平」/今「乎」(真异文)
+    tentative: shanben
+    seg: 明德者，人之所得乎天，而虛靈不昧，以具衆理而應萬事者也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v51
+    kind: suspended
+    desc: 善「入」/今「人」(真异文)
+    tentative: shanben
+    seg: 但爲氣禀所拘，人欲所蔽，則有時而昏；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v55
+    kind: suspended
+    desc: 善「至」/今「止」(真异文)
+    tentative: shanben
+    seg: 言明明德、新民，皆當止於至善之地而不遷。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v67
+    kind: suspended
+    desc: 善「湯」/今「物」(真异文)
+    tentative: shanben
+    seg: 物之《盤銘》曰：「苟日新，日日新，又日新。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v76
+    kind: suspended
+    desc: 善「曰」/今「日」(真异文)
+    tentative: shanben
+    seg: 故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v78
+    kind: suspended
+    desc: 善「曰」/今「日」(真异文)
+    tentative: shanben
+    seg: 故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v79
+    kind: suspended
+    desc: 善「曰」/今「日」(真异文)
+    tentative: shanben
+    seg: 故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v82
+    kind: suspended
+    desc: 善「二」/今「一」(真异文)
+    tentative: xiandai
+    officers:
+      - 刘向:suspend
+      - 解缙:suspend
+      - 戴震:xiandai
+      - 纪昀:xiandai
+  - id: v103
+    kind: suspended
+    desc: 善「版」/今「綠」(真异文)
+    tentative: shanben
+    seg: 菉，《詩》作綠。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v128
+    kind: suspended
+    desc: 善「巳」/今「己」(真异文)
+    tentative: shanben
+    seg: 所不知而己所獨知之地也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v135
+    kind: suspended
+    desc: 善「巳」/今「己」(真异文)
+    tentative: shanben
+    seg: |-
+      然或己明而不
+      「銷」，亦通。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v144
+    kind: suspended
+    desc: 善「非」/今「銷」(真异文)
+    tentative: shanben
+    seg: |-
+      然或己明而不
+      「銷」，亦通。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v145
+    kind: suspended
+    desc: 善「已」/今「亦」(真异文)
+    tentative: shanben
+    seg: |-
+      然或己明而不
+      「銷」，亦通。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v146
+    kind: suspended
+    desc: 善「有」/今「通」(真异文)
+    tentative: shanben
+    seg: |-
+      然或己明而不
+      「銷」，亦通。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v148
+    kind: suspended
+    desc: 善「懥」/今「憶」(真异文)
+    tentative: shanben
+    seg: 憶，敕值反。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v162
+    kind: suspended
+    desc: 善「償」/今「債」(真异文)
+    tentative: shanben
+    seg: 債，音奮。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v163
+    kind: suspended
+    desc: 善「償」/今「債」(真异文)
+    tentative: shanben
+    seg: 債，覆敗也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v167
+    kind: suspended
+    desc: 善「身」/今「無」(真异文)
+    tentative: shanben
+    seg: 是故君子有諸己而后求諸人，無諸己而后非諸人。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v168
+    kind: suspended
+    desc: 善「不」/今「諸」(真异文)
+    tentative: shanben
+    seg: 是故君子有諸己而后求諸人，無諸己而后非諸人。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v169
+    kind: suspended
+    desc: 善「恕」/今「己」(真异文)
+    tentative: shanben
+    seg: 是故君子有諸己而后求諸人，無諸己而后非諸人。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v170
+    kind: suspended
+    desc: 善「能」/今「后」(真异文)
+    tentative: shanben
+    seg: 是故君子有諸己而后求諸人，無諸己而后非諸人。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v171
+    kind: suspended
+    desc: 善「喻」/今「非」(真异文)
+    tentative: shanben
+    seg: 是故君子有諸己而后求諸人，無諸己而后非諸人。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v173
+    kind: suspended
+    desc: 善「夭」/今「天」(真异文)
+    tentative: shanben
+    seg: 天，平聲。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v178
+    kind: suspended
+    desc: 善「㓜」/今「幼」(真异文)
+    tentative: shanben
+    seg: 孤者，幼而無父之稱。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v180
+    kind: suspended
+    desc: 善「母」/今「毋」(真异文)
+    tentative: shanben
+    seg: 所惡於上，毋以使下；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v185
+    kind: suspended
+    desc: 善「前」/今「下」(真异文)
+    tentative: shanben
+    seg: 所惡於下，毋以事上；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v186
+    kind: suspended
+    desc: 善「母」/今「毋」(真异文)
+    tentative: shanben
+    seg: 所惡於下，毋以事上；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v191
+    kind: suspended
+    desc: 善「於」/今「事」(真异文)
+    tentative: shanben
+    seg: 所惡於下，毋以事上；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v192
+    kind: suspended
+    desc: 善「後」/今「上」(真异文)
+    tentative: shanben
+    seg: 所惡於下，毋以事上；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v193
+    kind: suspended
+    desc: 善「右」/今「前」(真异文)
+    tentative: shanben
+    seg: 所惡於前，毋以先後；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v194
+    kind: suspended
+    desc: 善「母」/今「毋」(真异文)
+    tentative: shanben
+    seg: 所惡於前，毋以先後；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v199
+    kind: suspended
+    desc: 善「惡」/今「先」(真异文)
+    tentative: shanben
+    seg: 所惡於前，毋以先後；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v200
+    kind: suspended
+    desc: 善「於」/今「後」(真异文)
+    tentative: shanben
+    seg: 所惡於前，毋以先後；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v206
+    kind: suspended
+    desc: 善「母」/今「毋」(真异文)
+    tentative: shanben
+    seg: 所惡於左，毋以交於右：此之謂絜矩之道。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v219
+    kind: suspended
+    desc: 善「慘」/今「下」(真异文)
+    tentative: shanben
+    seg: 有國者不可以不慎，辟則爲天下僇矣。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v220
+    kind: suspended
+    desc: 善「與」/今「僇」(真异文)
+    tentative: shanben
+    seg: 有國者不可以不慎，辟則爲天下僇矣。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v221
+    kind: suspended
+    desc: 善「戮」/今「矣」(真异文)
+    tentative: shanben
+    seg: 有國者不可以不慎，辟則爲天下僇矣。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v227
+    kind: suspended
+    desc: 善「爭」/今「争」(真异文)
+    tentative: shanben
+    seg: 外本内末，争民施奪。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v228
+    kind: suspended
+    desc: 善「爭」/今「争」(真异文)
+    tentative: shanben
+    seg: 人君以德爲外，以財爲内，則是争鬭其民，而施之以劫奪之教也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v229
+    kind: suspended
+    desc: 善「鬪」/今「鬭」(真异文)
+    tentative: shanben
+    seg: 人君以德爲外，以財爲内，則是争鬭其民，而施之以劫奪之教也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v231
+    kind: suspended
+    desc: 善「爭」/今「争」(真异文)
+    tentative: shanben
+    seg: |-
+      蓋財者人之所同
+      欲，不能絜矩而欲專之，則民亦起而争奪矣。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v232
+    kind: suspended
+    desc: 善「爭」/今「争」(真异文)
+    tentative: shanben
+    seg: 外本内末故財聚，争民施奪故民散。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v233
+    kind: suspended
+    desc: 善「已」/今「己」(真异文)
+    tentative: shanben
+    seg: 人之有技，若己有之，人之彦聖，其心好之，不啻若自其口出，寔能容之，以能保我子孫黎民，尚亦有利哉。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v235
+    kind: suspended
+    desc: 善「媢」/今「媚」(真异文)
+    tentative: shanben
+    seg: 媚，忌也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v245
+    kind: suspended
+    desc: 善「逆」/今「迸」(真异文)
+    tentative: shanben
+    seg: |-
+      大
+      學
+      迸，讀爲屏，古字通用。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v246
+    kind: suspended
+    desc: 善「媢」/今「娼」(真异文)
+    tentative: shanben
+    seg: 言有此娼疾之人，妨賢而病國，則仁人必深惡而痛絕之。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v249
+    kind: suspended
+    desc: 善「蓄」/今「菑」(真异文)
+    tentative: shanben
+    seg: 菑，古灾字。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v252
+    kind: suspended
+    desc: 善「乗」/今「乘」(真异文)
+    tentative: shanben
+    seg: 孟獻子曰：「畜馬乘，不察於雞豚；
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v253
+    kind: suspended
+    desc: 善「乗」/今「乘」(真异文)
+    tentative: shanben
+    seg: 百乘之家，不畜聚斂之臣。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v261
+    kind: suspended
+    desc: 善「乗」/今「乘」(真异文)
+    tentative: shanben
+    seg: 乘、斂，並去聲。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v262
+    kind: suspended
+    desc: 善「乗」/今「乘」(真异文)
+    tentative: shanben
+    seg: 畜馬乘，士初試爲大夫者也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v263
+    kind: suspended
+    desc: 善「乗」/今「乘」(真异文)
+    tentative: shanben
+    seg: 百乘之家，有采地者也。
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v264
+    kind: suspended
+    desc: 善「兼」/今「夢」(真异文)
+    tentative: shanben
+    seg: |-
+      大學章句畢
+      從政郎提領江淮茶鹽所準備差遣劉夢高校正
+      大學
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v273
+    kind: suspended
+    desc: 善「語」/今「大」(真异文)
+    tentative: shanben
+    seg: |-
+      大學章句畢
+      從政郎提領江淮茶鹽所準備差遣劉夢高校正
+      大學
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend
+  - id: v274
+    kind: suspended
+    desc: 善「孟」/今「學」(真异文)
+    tentative: shanben
+    seg: |-
+      大學章句畢
+      從政郎提領江淮茶鹽所準備差遣劉夢高校正
+      大學
+    officers:
+      - 刘向:shanben
+      - 解缙:suspend
+      - 戴震:suspend
+      - 纪昀:suspend

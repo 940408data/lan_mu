@@ -1,0 +1,3361 @@
+[
+  {
+    "diffId": "v10",
+    "type": "真异文",
+    "shanben": "曰",
+    "xiandai": "日",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "曰",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「曰」现代本「日」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "夫以學校之設，其廣如此，教之之術，其次第節目之詳又如此，而其所以爲教，則又皆本之人君躬行心得之餘，不待求之民生日用彝倫之外，是以當世之人無不學。",
+      "page": 1
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v16",
+    "type": "真异文",
+    "shanben": "頽",
+    "xiandai": "頹",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "頽",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「頽」现代本「頹」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「頽」现代本「頹」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「頽」现代本「頹」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「頽」现代本「頹」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "及周之衰，賢聖之君不作，學校之政不修，教化陵夷，風俗頹敗。",
+      "page": 1
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v25",
+    "type": "真异文",
+    "shanben": "以",
+    "xiandai": "性",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "以",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「以」现代本「性」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「以」现代本「性」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「以」现代本「性」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「以」现代本「性」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "時則有若孔子之性下。",
+      "page": 1
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v26",
+    "type": "真异文",
+    "shanben": "行",
+    "xiandai": "下",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "行",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「行」现代本「下」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「行」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「行」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「行」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "時則有若孔子之性下。",
+      "page": 1
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v36",
+    "type": "真异文",
+    "shanben": "丁",
+    "xiandai": "子",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "丁",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「丁」现代本「子」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「丁」现代本「子」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「丁」现代本「子」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「丁」现代本「子」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "於是河南程氏兩夫子出，而有以接乎孟氏之傳，實始尊信此篇而表章之，既又爲之次其簡編，發其歸趣，然後古者大學教人之法、聖經賢傳之指，粲然復明於世。",
+      "page": 2
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v49",
+    "type": "真异文",
+    "shanben": "平",
+    "xiandai": "乎",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "平",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「平」现代本「乎」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「平」现代本「乎」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「平」现代本「乎」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「平」现代本「乎」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "明德者，人之所得乎天，而虛靈不昧，以具衆理而應萬事者也。",
+      "page": 3
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v51",
+    "type": "真异文",
+    "shanben": "入",
+    "xiandai": "人",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "入",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「入」现代本「人」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「入」现代本「人」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「入」现代本「人」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「入」现代本「人」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "但爲氣禀所拘，人欲所蔽，則有時而昏；",
+      "page": 3
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v55",
+    "type": "真异文",
+    "shanben": "至",
+    "xiandai": "止",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "至",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「至」现代本「止」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「至」现代本「止」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「至」现代本「止」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「至」现代本「止」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "言明明德、新民，皆當止於至善之地而不遷。",
+      "page": 3
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v62",
+    "type": "真异文",
+    "shanben": "脩",
+    "xiandai": "修",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "脩",
+        "reason": "「脩」为古字，「修」为后起今字。宋刻当涂郡本从「脩」，正合宋人守古本之例。《大学》经传「修身」古多作「脩身」，朱子《章句》承古本，作「脩」为是。南宋刻本用字保守，此字从善本不轻改。",
+        "confidence": 0.7,
+        "线索": "脩/修在古书多互训，《说文》脩从肉攸声、修从彡攸声，本为一字之分化；朱子所用从善本。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "shanben",
+        "candidate": "脩",
+        "reason": "善本南宋刊本作「脩」存古字之旧。「脩」古字、「修」今字，于「修身」一词经史通用。旁证：《论语·宪问》「脩己以敬》、《孟子·尽心下》「脩其身而天下平」，宋刊善本多作「脩」；《经典释文》于「脩」「修」两出，明其通用。善本存朱子当日书写之旧，现代本作「修」为后世标准化，不误而失古。",
+        "confidence": 0.65
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "shanben",
+        "candidate": "脩",
+        "reason": "脩（从肉攸声）本义干肉，修（从彡攸声）本义修饰。二字同从攸声，古音相近（同属幽部），先秦两汉经籍脩常通修为修治字，《礼记》《汉书》多用脩为修。此属通假，非真异文。善本存古字脩，义仍可通（皆所以脩身也=皆所以修身也），据戴震「古字通假，不当以今字臆改古本」之例，从善本存其旧。",
+        "confidence": 0.72
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "shanben",
+        "candidate": "脩",
+        "reason": "善本「正心以上皆所以脩身也」通例皆作「脩」（如「欲脩其身」「自脩也」等），与南宋当涂本原貌合。「脩」「修」义同而形异：「脩」从肉、攸声，古字；「修」从彡、攸声，后起通行字。朱子集注仍用古字「脩」，明以后刊本始渐改「修」。善本存古字，现代本从通行改字，义无殊而字有古今。从善本存古字「脩」。",
+        "confidence": 0.88
+      }
+    ],
+    "verdict": "resolved",
+    "adopt": "shanben",
+    "tentative": null,
+    "seg": "正心以上，皆所以修身也。",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v67",
+    "type": "真异文",
+    "shanben": "湯",
+    "xiandai": "物",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "湯",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「湯」现代本「物」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「湯」现代本「物」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「湯」现代本「物」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「湯」现代本「物」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "物之《盤銘》曰：「苟日新，日日新，又日新。",
+      "page": 5
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v76",
+    "type": "真异文",
+    "shanben": "曰",
+    "xiandai": "日",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "曰",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「曰」现代本「日」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。",
+      "page": 5
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v78",
+    "type": "真异文",
+    "shanben": "曰",
+    "xiandai": "日",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "曰",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「曰」现代本「日」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。",
+      "page": 5
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v79",
+    "type": "真异文",
+    "shanben": "曰",
+    "xiandai": "日",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "曰",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「曰」现代本「日」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「曰」现代本「日」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。",
+      "page": 5
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v82",
+    "type": "真异文",
+    "shanben": "二",
+    "xiandai": "一",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "suspend",
+        "candidate": "",
+        "reason": "「右传之X章」为朱子《大学章句》分章标识。朱子改定《大学》为经一章、传十章，各传有「右传之第X章」标识。一、二乃形近易讹之字（横画之差）。善本作「二」、现代本作「一」，必有一误。需本校：比勘全书「右传之一章」至「右传之第十章」之序列，视此句处第几传之位，始能定「一」「二」孰是。无全书序列为据，不敢专断。",
+        "confidence": 0.45,
+        "线索": "需查：《大学章句》全书传文章次之「右传之X章」系列；此句所属位置（传之首章？次章？）；当涂郡本各传标识是否统一。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": "一",
+        "reason": "「右传之一章」与「右传之二章」之异，涉及大学传分章。「正心以上，皆所以修身也」一句在善本南宋当涂郡斋刊递修本《四书章句集注》大学传中之具体位置及所属章节标记，缙未得径核原文，无以确断「一」「二」之孰是。暂拟从善本作「一」——善本较早，或存朱子原第之旧；然依缙所习知，大学传十章中「正心以上」所涉格物致知、诚意、正心诸节分属传之六、七章，于「一」「二」皆不相应，或善本与现代本（儒藏）所据分章系统本自不同。待查《四书章句集注》善本大学传原文及儒藏本大学传分章。",
+        "confidence": 0.55,
+        "线索": "待查《四书章句集注》善本（南宋当涂郡斋刊递修本）大学传原文「正心以上，皆所以修身也」所属章节标记；并查儒藏精华编大学传分章；对勘两本传之第一、二、六、七、八章之章节标记。"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "xiandai",
+        "candidate": "一",
+        "reason": "本校+理校得之：《大学》传文章法，程子所定凡十章，首章标「右传之一章」，次章标「右传之二章」，依次至第十章。若作「右传之二章」则与传文次章相牴牾，且与全篇分章体系不合。善本「二」于文理无据，当为「一」字刻讹（一二形近易误）。现代本「一」合本书本校，与传文章法次第一贯。此据理校+本校，非版本据。",
+        "confidence": 0.93
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "xiandai",
+        "candidate": "一",
+        "reason": "善本大学传十章次第为首章→二章→三章…十章（阙「一章」），现代本为首章→一章→三章…十章（阙「二章」）。两本均十章、结构同，唯首章后数字异。朱熹《大学章句》定本传十章，首章外余九章依次为一章至九章，现代本之首章→一章→三章……九章合此系统。善本以「二」代「一」，一二形近易误，传刻致讹之可能大。然善本系统自身亦一贯（首→二→三→…→十），或反映早期章次命名之另一体例，未可遽断为误。综核诸说：现代本与朱子定本之十章次第吻合，理据较强，暂从现代本「一」；善本「二」之异体存而不废。",
+        "confidence": 0.65,
+        "线索": "核宋刻元明递修本此处章次标记，考朱子门人黄榦、陈淳等所传本是否作「二章」；比较《大学》传分章之历史异说"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "xiandai",
+    "seg": "右傳之一章。",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v103",
+    "type": "真异文",
+    "shanben": "版",
+    "xiandai": "綠",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "版",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「版」现代本「綠」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「版」现代本「綠」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「版」现代本「綠」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「版」现代本「綠」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "菉，《詩》作綠。",
+      "page": 6
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v127",
+    "type": "真异文",
+    "shanben": "母",
+    "xiandai": "毋",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "xiandai",
+        "candidate": "毋",
+        "reason": "「毋者，禁止之辞」——注语以「毋」训禁止，正与「毋」之本义合（《说文》：「毋，止之也」）。善本误作「母」，乃「母」「毋」古籍最常见之形讹（一点之差，宋刻递修本中此类讹字多见）。本书《大学章句》前后文「毋自欺」「毋不敬」等皆当作「毋」，本校互证，此字必作「毋」。",
+        "confidence": 0.9,
+        "线索": "母/毋形讹古籍中甚夥；朱注他处「禁止之辞」皆用「毋」可互证。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "xiandai",
+        "candidate": "毋",
+        "reason": "「毋者，禁止之辞」乃经典训诂之成语，「毋」为禁止虚词，经史注疏随处见之。旁证：《论语·学而》「毋友不如己者」郑注、《礼记·曲礼》「毋不敬」诸释文皆以「毋」为禁止辞；《说文·毋部》：「毋，止之也。」若作「母」则为名词，「母者，禁止之辞」于义全不可通，乃「毋」「母」形近致讹之典型。现代本作「毋」是，善本作「母」误。",
+        "confidence": 0.92
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "xiandai",
+        "candidate": "毋",
+        "reason": "由字通词：此句「X者，禁止之辞」为训诂定义体，X当为被释字。毋本即禁止之词（《说文》：「毋，止之也」），母本为母亲字（《说文》：「母，牧也，从女象褢子形」）。虽古书母/毋常通用（同属明母鱼部，音近通假），然此处朱子明以「禁止之辞」释毋字，依经注互求之法，被释字即当用本字毋。善本「母」为古通假，现代本「毋」为本字正读，从本字本义。",
+        "confidence": 0.92
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "xiandai",
+        "candidate": "毋",
+        "reason": "善本正文「所谓诚其意者毋自欺也」固作「毋」（同现代本），而注「母者禁止之辞」独作「母」。刘向本校之法：母者，禁止之辞——「母」义为母亲，绝无「禁止」义；「毋」义为「不要、禁止」，与注义自洽。此为「母」「毋」形近致讹之显例（二字篆隶仅一画之别）。戴震理校：注以释经，经作「毋」，注当亦作「毋」，方合经注相应之例。综核诸说，现代本「毋」允当无疑，善本「母」为传刻形讹，定从现代本。",
+        "confidence": 0.95
+      }
+    ],
+    "verdict": "resolved",
+    "adopt": "xiandai",
+    "tentative": null,
+    "seg": "毋者，禁止之辭。",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v128",
+    "type": "真异文",
+    "shanben": "巳",
+    "xiandai": "己",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "巳",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「巳」现代本「己」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所不知而己所獨知之地也。",
+      "page": 9
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v135",
+    "type": "真异文",
+    "shanben": "巳",
+    "xiandai": "己",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "巳",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「巳」现代本「己」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「巳」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "然或己明而不\n「銷」，亦通。",
+      "page": 9
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v144",
+    "type": "真异文",
+    "shanben": "非",
+    "xiandai": "銷",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "非",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「非」现代本「銷」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「非」现代本「銷」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「非」现代本「銷」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「非」现代本「銷」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "然或己明而不\n「銷」，亦通。",
+      "page": 9
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v145",
+    "type": "真异文",
+    "shanben": "已",
+    "xiandai": "亦",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "已",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「已」现代本「亦」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「已」现代本「亦」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「已」现代本「亦」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「已」现代本「亦」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "然或己明而不\n「銷」，亦通。",
+      "page": 9
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v146",
+    "type": "真异文",
+    "shanben": "有",
+    "xiandai": "通",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "有",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「有」现代本「通」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「有」现代本「通」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「有」现代本「通」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「有」现代本「通」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "然或己明而不\n「銷」，亦通。",
+      "page": 9
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v148",
+    "type": "真异文",
+    "shanben": "懥",
+    "xiandai": "憶",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "懥",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「懥」现代本「憶」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「懥」现代本「憶」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「懥」现代本「憶」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「懥」现代本「憶」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "憶，敕值反。",
+      "page": 10
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v162",
+    "type": "真异文",
+    "shanben": "償",
+    "xiandai": "債",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "償",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「償」现代本「債」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "債，音奮。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v163",
+    "type": "真异文",
+    "shanben": "償",
+    "xiandai": "債",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "償",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「償」现代本「債」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「償」现代本「債」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "債，覆敗也。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v167",
+    "type": "真异文",
+    "shanben": "身",
+    "xiandai": "無",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "身",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「身」现代本「無」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「身」现代本「無」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「身」现代本「無」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「身」现代本「無」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v168",
+    "type": "真异文",
+    "shanben": "不",
+    "xiandai": "諸",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "不",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「不」现代本「諸」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「不」现代本「諸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「不」现代本「諸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「不」现代本「諸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v169",
+    "type": "真异文",
+    "shanben": "恕",
+    "xiandai": "己",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "恕",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「恕」现代本「己」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「恕」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「恕」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「恕」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v170",
+    "type": "真异文",
+    "shanben": "能",
+    "xiandai": "后",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "能",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「能」现代本「后」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「能」现代本「后」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「能」现代本「后」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「能」现代本「后」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v171",
+    "type": "真异文",
+    "shanben": "喻",
+    "xiandai": "非",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "喻",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「喻」现代本「非」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「喻」现代本「非」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「喻」现代本「非」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「喻」现代本「非」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+      "page": 11
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v173",
+    "type": "真异文",
+    "shanben": "夭",
+    "xiandai": "天",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "夭",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「夭」现代本「天」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「夭」现代本「天」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「夭」现代本「天」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「夭」现代本「天」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "天，平聲。",
+      "page": 12
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v178",
+    "type": "真异文",
+    "shanben": "㓜",
+    "xiandai": "幼",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "㓜",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「㓜」现代本「幼」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「㓜」现代本「幼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「㓜」现代本「幼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「㓜」现代本「幼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "孤者，幼而無父之稱。",
+      "page": 12
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v180",
+    "type": "真异文",
+    "shanben": "母",
+    "xiandai": "毋",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "母",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「母」现代本「毋」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於上，毋以使下；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v185",
+    "type": "真异文",
+    "shanben": "前",
+    "xiandai": "下",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "前",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「前」现代本「下」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「前」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「前」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「前」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於下，毋以事上；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v186",
+    "type": "真异文",
+    "shanben": "母",
+    "xiandai": "毋",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "母",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「母」现代本「毋」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於下，毋以事上；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v191",
+    "type": "真异文",
+    "shanben": "於",
+    "xiandai": "事",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "於",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「於」现代本「事」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「於」现代本「事」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「於」现代本「事」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「於」现代本「事」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於下，毋以事上；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v192",
+    "type": "真异文",
+    "shanben": "後",
+    "xiandai": "上",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "後",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「後」现代本「上」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「後」现代本「上」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「後」现代本「上」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「後」现代本「上」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於下，毋以事上；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v193",
+    "type": "真异文",
+    "shanben": "右",
+    "xiandai": "前",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "右",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「右」现代本「前」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「右」现代本「前」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「右」现代本「前」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「右」现代本「前」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於前，毋以先後；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v194",
+    "type": "真异文",
+    "shanben": "母",
+    "xiandai": "毋",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "母",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「母」现代本「毋」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於前，毋以先後；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v199",
+    "type": "真异文",
+    "shanben": "惡",
+    "xiandai": "先",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "惡",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「惡」现代本「先」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「惡」现代本「先」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「惡」现代本「先」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「惡」现代本「先」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於前，毋以先後；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v200",
+    "type": "真异文",
+    "shanben": "於",
+    "xiandai": "後",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "於",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「於」现代本「後」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「於」现代本「後」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「於」现代本「後」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「於」现代本「後」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於前，毋以先後；",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v206",
+    "type": "真异文",
+    "shanben": "母",
+    "xiandai": "毋",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "母",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「母」现代本「毋」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「母」现代本「毋」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "所惡於左，毋以交於右：此之謂絜矩之道。",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v219",
+    "type": "真异文",
+    "shanben": "慘",
+    "xiandai": "下",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "慘",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「慘」现代本「下」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「慘」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「慘」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「慘」现代本「下」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "有國者不可以不慎，辟則爲天下僇矣。",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v220",
+    "type": "真异文",
+    "shanben": "與",
+    "xiandai": "僇",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "與",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「與」现代本「僇」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「與」现代本「僇」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「與」现代本「僇」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「與」现代本「僇」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "有國者不可以不慎，辟則爲天下僇矣。",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v221",
+    "type": "真异文",
+    "shanben": "戮",
+    "xiandai": "矣",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "戮",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「戮」现代本「矣」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「戮」现代本「矣」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「戮」现代本「矣」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「戮」现代本「矣」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "有國者不可以不慎，辟則爲天下僇矣。",
+      "page": 13
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v222",
+    "type": "真异文",
+    "shanben": "慘",
+    "xiandai": "僇",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "suspend",
+        "candidate": "",
+        "reason": "注语「X，与戮同」是释正文某字之例。需先定《大学章句》正文用「僇」或「惨」：若正文作「僇」，则注语当为「僇，与戮同」（以本字自释）；若正文作「惨」，则注语释「惨」与「戮」通假，于训诂不合（惨从心㐱声，戮从戈翏声，音义俱远）。本校线索未足，需取《大学章句》原传与朱注对勘正文，方可定夺。",
+        "confidence": 0.4,
+        "线索": "需查：《大学》「辟则为天下僇矣」一句正文作何字；朱注原文「僇，与戮同」或「惨，与戮同」何者见于当涂郡本；《礼记·大学》郑注、陆释文异文。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "xiandai",
+        "candidate": "僇",
+        "reason": "此条注文「X，与戮同」明言正文所释之字与「戮」为异体，正文当从「僇」。旁证：《说文·戈部》：「戮，杀也；僇，戮或从翏」，以「僇」为「戮」之或体；《经典释文·礼记音义》「僇」与「戮」互见、《左传释文》亦然；《荀子·非相》「僇」杨倞注「与戮同」；《礼记·曲礼》诸本「僇」「戮」异文纷见。若作「惨」，《说文·心部》「惨，毒也」，与「戮」（杀）义无涉，亦无任何韵书、注疏以「惨」「戮」为异体。善本作「惨」当是「僇」之讹——二字偏旁结构相似（忄+参/忄+翏）。现代本作「僇」是，注文「僇，与戮同」合《说文》；善本作「惨」无征。",
+        "confidence": 0.85
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "xiandai",
+        "candidate": "僇",
+        "reason": "经注互求得之：此句「X，与戮同」为朱子释经之注，所释者即经文之X字。僇与戮为异体/通假（《说文》：「僇，痴行僇僇也」，经典借为戮义；《汉书》多用僇为戮），故「僇，与戮同」于义于音皆通。若作「惨，与戮同」则大谬——惨（《说文》：「惨，毒也」，清母侵部）与戮（来母觉部）音义俱绝不相通，惨、戮无由为同字。善本「惨」必为刻工形近而讹（惨右之㐱与僇右之翏偶讹），现代本「僇」与注语内证吻合。此据经注互求+理校。",
+        "confidence": 0.97
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "xiandai",
+        "candidate": "僇",
+        "reason": "善本正文「辟则为天下惨矣」作「惨」，注「惨与戮同」；现代本正文「辟则为天下僇矣」作「僇」，注「僇与戮同」。戴震理校：「惨」(cǎn)与「僇」(lù)共享声符「翏」，古音可通假。「惨」本义为悲痛、残酷，非杀辱义；「僇」本义为杀辱，与「戮」同义，「僇，与戮同」义顺。「惨」借为「僇」，义需注释方显，不如径用本字「僇」之显白。然善本「惨」保留古字通假之迹，刘向辨源之法亦当存之。综核诸说：正文取现代本「僇」之显白；善本「惨」为「僇」之声符通假，其古字面貌另存备考。",
+        "confidence": 0.72,
+        "线索": "查《经典释文》《集韵》「惨」「僇」通假例；核当涂本此正文实字是否确为「惨」或为「僇」之异体"
+      }
+    ],
+    "verdict": "resolved",
+    "adopt": "xiandai",
+    "tentative": null,
+    "seg": "僇，與戮同。",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v227",
+    "type": "真异文",
+    "shanben": "爭",
+    "xiandai": "争",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "爭",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「爭」现代本「争」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "外本内末，争民施奪。",
+      "page": 14
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v228",
+    "type": "真异文",
+    "shanben": "爭",
+    "xiandai": "争",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "爭",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「爭」现代本「争」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "人君以德爲外，以財爲内，則是争鬭其民，而施之以劫奪之教也。",
+      "page": 14
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v229",
+    "type": "真异文",
+    "shanben": "鬪",
+    "xiandai": "鬭",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "鬪",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「鬪」现代本「鬭」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「鬪」现代本「鬭」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「鬪」现代本「鬭」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「鬪」现代本「鬭」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "人君以德爲外，以財爲内，則是争鬭其民，而施之以劫奪之教也。",
+      "page": 14
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v231",
+    "type": "真异文",
+    "shanben": "爭",
+    "xiandai": "争",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "爭",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「爭」现代本「争」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "蓋財者人之所同\n欲，不能絜矩而欲專之，則民亦起而争奪矣。",
+      "page": 14
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v232",
+    "type": "真异文",
+    "shanben": "爭",
+    "xiandai": "争",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "爭",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「爭」现代本「争」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「爭」现代本「争」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "外本内末故財聚，争民施奪故民散。",
+      "page": 14
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v233",
+    "type": "真异文",
+    "shanben": "已",
+    "xiandai": "己",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "已",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「已」现代本「己」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「已」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「已」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「已」现代本「己」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "人之有技，若己有之，人之彦聖，其心好之，不啻若自其口出，寔能容之，以能保我子孫黎民，尚亦有利哉。",
+      "page": 15
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v234",
+    "type": "真异文",
+    "shanben": "媢",
+    "xiandai": "媚",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "音注「音冒」是关键本校证据。「媢」从女从冒，冒声，正读「冒」；「媚」从女从眉，美寄切，音「妹」，与「冒」音不合。据本书音义体例，正文必作「媢」，注家始为音「冒」。现代本作「媚」，盖因「媢」字罕用，传抄者据形近改作「媚」（《经典释文》体例可参）。善本存古字为是。",
+        "confidence": 0.88,
+        "线索": "《经典释文》音冒之字可考；《广韵》媢/媚分韵，音冒者必是媢。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "《大学》传十章原文「人之有技，媢疾以恶之」，作「媢」（妒忌义）。善本音注「媢，音冒」与《经典释文·大学》「媢，莫报反」之记载合。旁证：《集韵·去声·号韵》：「媢，莫报切，音冒，嫉也」；《类篇·女部》「媢」同切；朱子《大学章句》音注系统作「媢音冒」，与善本符。若作「媚」，《广韵》「眉祕切」（mì），非「冒」音；且《大学》传文用字本作「媢」，当从善本。",
+        "confidence": 0.75
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "由音韵定之：注「媚，音冒」为直音训读，被注字之音当与「冒」同。媢（《广韵》莫报切，去声号韵，明母幽部），音正读冒；媚（《广韵》糜笔切/眉祕切，去声至韵，明母脂部），音读寐，与「冒」绝不相侔。义亦别：媢义妒忌（《说文》：「媢，嫉也」），媚义谄悦。善本媢音冒，音义俱合注语；现代本媚音寐，与「音冒」之注自相矛盾。据音韵训诂铁据，善本媢为正。现代本媚当为后人因媚字习见而臆改，非朱子之旧。",
+        "confidence": 0.98
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "善本正文「人之有技媢疾以恶之」作「媢」，音注「媢音冒」、义注「媢忌也」皆一致作「媢」，正文、音、义三者自洽。戴震「由字通词」音韵为凭：「媢」《广韵》莫候切(mào)，与「音冒」恰合；「媚」《广韵》眉祕切(mèi)，无 mào 音，音注扞格。义注「忌也」：「媢」本义即嫉妒，与「忌也」恰合；「媚」义为谄媚、妖媚，无嫉妒义，义注亦不合。正文「媢疾」即妒嫉，义顺；若作「媚疾」则难通。善本正文、音注、义注三处一贯作「媢」；现代本系统性改正文、音注、义注三处为「媚」，改字后音义皆失。此非偶然传误，乃后人见「媢」字罕见、以常见之「媚」臆改之典型例。从善本，定为「媢」。",
+        "confidence": 0.9
+      }
+    ],
+    "verdict": "resolved",
+    "adopt": "shanben",
+    "tentative": null,
+    "seg": "媚，音冒。",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v235",
+    "type": "真异文",
+    "shanben": "媢",
+    "xiandai": "媚",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「媢」现代本「媚」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「媢」现代本「媚」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「媢」现代本「媚」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「媢」现代本「媚」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "媚，忌也。",
+      "page": 15
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v245",
+    "type": "真异文",
+    "shanben": "逆",
+    "xiandai": "迸",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "逆",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「逆」现代本「迸」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「逆」现代本「迸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「逆」现代本「迸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「逆」现代本「迸」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "大\n學\n迸，讀爲屏，古字通用。",
+      "page": 15
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v246",
+    "type": "真异文",
+    "shanben": "媢",
+    "xiandai": "娼",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "媢",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「媢」现代本「娼」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「媢」现代本「娼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「媢」现代本「娼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「媢」现代本「娼」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "言有此娼疾之人，妨賢而病國，則仁人必深惡而痛絕之。",
+      "page": 15
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v249",
+    "type": "真异文",
+    "shanben": "蓄",
+    "xiandai": "菑",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "蓄",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「蓄」现代本「菑」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「蓄」现代本「菑」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「蓄」现代本「菑」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「蓄」现代本「菑」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "菑，古灾字。",
+      "page": 15
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v251",
+    "type": "真异文",
+    "shanben": "呂",
+    "xiandai": "吕",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "呂",
+        "reason": "「呂」为古体，「吕」为今体（去中间两笔之省形），二字实为一字之新旧写法，无义别。善本从南宋刻，仍作古体「呂」；现代点校本从今体「吕」。此属异体同字，从善本存古体。",
+        "confidence": 0.9,
+        "线索": "《说文》呂象脊骨形；宋刻多从古文作呂，与「己/巳/巳」「曰/日」等同类。"
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "shanben",
+        "candidate": "呂",
+        "reason": "「呂」「吕」为同一字之异体，无文义差异。「呂氏曰」指呂祖谦之说，见于《四书章句集注》数处。旁证字形：古体「呂」中从丿（或作两口相连之形），《说文·呂部》：「呂，脊骨也，象形」，小篆从竖画连两口；今体「吕」省中连为撇。善本「呂」为古体，接近早期印刷面貌；现代本「吕」为今体。字既无别，当从善本存古。",
+        "confidence": 0.95
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "shanben",
+        "candidate": "呂",
+        "reason": "呂与吕为一字之新旧形体，非真异文。呂为小篆正体（二画连缀），吕为楷变通行体（二画分断，今简化字承之）。音义全同，专用于姓氏（吕氏，指吕祖谦）。善本呂存旧体，现代本吕为今体，二者俱可。据「存古不轻改」之例，从善本旧体呂。",
+        "confidence": 0.95
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "shanben",
+        "candidate": "呂",
+        "reason": "善本「呂氏曰」作「呂」，现代本作「吕」。「呂」为正体、「吕」为简化新字形，本无异义，仅新旧字形之别。善本为南宋刊本，自当作繁体正字「呂」。项目以善本为底本，存繁体原貌，从善本。此非异文之实质歧义，乃字形新旧之别。",
+        "confidence": 0.97
+      }
+    ],
+    "verdict": "resolved",
+    "adopt": "shanben",
+    "tentative": null,
+    "seg": "○吕氏曰：「國無遊民，則生者衆矣；",
+    "ctx": "",
+    "_live": true,
+    "engine": "agent"
+  },
+  {
+    "diffId": "v252",
+    "type": "真异文",
+    "shanben": "乗",
+    "xiandai": "乘",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "乗",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「乗」现代本「乘」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "孟獻子曰：「畜馬乘，不察於雞豚；",
+      "page": 16
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v253",
+    "type": "真异文",
+    "shanben": "乗",
+    "xiandai": "乘",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "乗",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「乗」现代本「乘」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "百乘之家，不畜聚斂之臣。",
+      "page": 16
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v261",
+    "type": "真异文",
+    "shanben": "乗",
+    "xiandai": "乘",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "乗",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「乗」现代本「乘」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "乘、斂，並去聲。",
+      "page": 16
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v262",
+    "type": "真异文",
+    "shanben": "乗",
+    "xiandai": "乘",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "乗",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「乗」现代本「乘」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "畜馬乘，士初試爲大夫者也。",
+      "page": 16
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v263",
+    "type": "真异文",
+    "shanben": "乗",
+    "xiandai": "乘",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "乗",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「乗」现代本「乘」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「乗」现代本「乘」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "百乘之家，有采地者也。",
+      "page": 16
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v264",
+    "type": "真异文",
+    "shanben": "兼",
+    "xiandai": "夢",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "兼",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「兼」现代本「夢」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「兼」现代本「夢」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「兼」现代本「夢」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「兼」现代本「夢」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "大學章句畢\n從政郎提領江淮茶鹽所準備差遣劉夢高校正\n大學",
+      "page": 17
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v273",
+    "type": "真异文",
+    "shanben": "語",
+    "xiandai": "大",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "語",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「語」现代本「大」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「語」现代本「大」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「語」现代本「大」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「語」现代本「大」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "大學章句畢\n從政郎提領江淮茶鹽所準備差遣劉夢高校正\n大學",
+      "page": 17
+    },
+    "ctx": ""
+  },
+  {
+    "diffId": "v274",
+    "type": "真异文",
+    "shanben": "孟",
+    "xiandai": "學",
+    "opinions": [
+      {
+        "officer": "liu-xiang",
+        "name": "刘向",
+        "adopt": "shanben",
+        "candidate": "孟",
+        "reason": "重古本源流：善本之字非有显据不轻改，姑从善本。善本「孟」现代本「學」。",
+        "confidence": 0.6,
+        "线索": null
+      },
+      {
+        "officer": "jie-xian",
+        "name": "解缙",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须参群籍所引此句作何字，无旁证则存疑。善本「孟」现代本「學」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "dai-zhen",
+        "name": "戴震",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "须验义理通否、音韵训诂；两可则不强断。善本「孟」现代本「學」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      },
+      {
+        "officer": "ji-yun",
+        "name": "纪昀",
+        "adopt": "suspend",
+        "candidate": null,
+        "reason": "诸说未齐，宜并陈存疑，俟旁证。善本「孟」现代本「學」。",
+        "confidence": 0.3,
+        "线索": "待考群籍/音韵/训诂"
+      }
+    ],
+    "verdict": "suspended",
+    "adopt": null,
+    "tentative": "shanben",
+    "seg": {
+      "xiandai": "大學章句畢\n從政郎提領江淮茶鹽所準備差遣劉夢高校正\n大學",
+      "page": 17
+    },
+    "ctx": ""
+  }
+]
