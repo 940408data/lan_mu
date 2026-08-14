@@ -19,6 +19,17 @@
 - 运维
   - [部署回退与镜像策略](/部署回退与镜像策略.md)
 
+- 校对数据
+  - [概览](/校对数据.md)
+  - 大學章句
+    - [校勘记](/collation-data/大学章句/output/校勘记.md)
+    - [善本点校本](/collation-data/大学章句/output/善本点校本.md)
+    - [现代本](/collation-data/大学章句/output/现代本.md)
+  - 中庸章句
+    - [校勘记](/collation-data/中庸章句/output/校勘记.md)
+    - [善本点校本](/collation-data/中庸章句/output/善本点校本.md)
+    - [现代本](/collation-data/中庸章句/output/现代本.md)
+
 - 评估备忘
   - [门户首页探索否决备忘](/门户首页探索否决备忘.md)
   - [项目复杂度与生产上线评估](/项目复杂度与生产上线评估.md)
