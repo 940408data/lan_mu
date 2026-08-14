@@ -99,7 +99,7 @@ function exportAll(result, workId) {
     shanben: (s.shanben.detail || []).filter(d => d.sb).map(d => d.sb.ch).join(''),
   })), null, 2));
   write(path.join(dir, 'diffs.json'), JSON.stringify(variants.map(v => ({
-    id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, note: v.note, seg: v.seg.xiandai, ctx: v.ctx,
+    id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos, note: v.note, seg: v.seg.xiandai, ctx: v.ctx, reconfirm: v.reconfirm,
   })), null, 2));
   write(path.join(dir, 'verdicts.json'), JSON.stringify(verdicts, null, 2));
 

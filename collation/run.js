@@ -46,7 +46,7 @@ if (!workId) { console.error('用法: node collation/run.js <书名> [--step=...
     const r = diff(workId);
     const d = outDir(workId);
     fs.writeFileSync(path.join(d, 'diffs.json'), JSON.stringify(r.variants.map(v => ({
-      id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, note: v.note, seg: v.seg.xiandai, ctx: v.ctx,
+      id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos, note: v.note, seg: v.seg.xiandai, ctx: v.ctx,
     })), null, 2));
     console.log(`✓ 异文 ${r.variants.length} 条`, r.summary);
     return;

@@ -1,0 +1,16 @@
+# 视觉模型角色配置 · collation/config/vision.yaml
+# 两角色名固定（初校/覆校），底层模型可迭代——后期换更强模型只改 models，角色不变。
+# key 走环境变量，不入仓库。
+
+vision:
+  keyEnv: DASHSCOPE_API_KEY                    # 百炼 key 经 env 注入
+  endpoint: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+  roles:
+    first: 初校        # 基本验证：快、广覆盖、低成本，默认先跑
+    deep: 覆校         # 升级详定：强、精、贵，初校置信度低时升级
+  models:
+    first: qwen3.7-plus     # 底层模型（可迭代为更强版）
+    deep: qwen3.8-max       # 底层模型（可迭代为更强版）
+  threshold: 0.7            # 初校置信 < 此值 → 升级覆校
+  render:
+    dpi: 150                # 善本页渲染分辨率（pdftoppm）

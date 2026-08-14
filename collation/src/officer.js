@@ -76,7 +76,7 @@ function aggregate(opinions, v) {
   let tentative = null;
   if (suspend) tentative = best || (counts.suspend >= 2 ? 'neither' : 'neither');
   return {
-    diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai,
+    diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos,
     opinions: valid.map(o => ({ officer: o.officer, name: OFFICER_NAME[o.officer], adopt: o.adopt, candidate: o.candidate, reason: o.reason, confidence: o.confidence, 线索: o.线索 })),
     verdict: resolved ? 'resolved' : 'suspended',
     adopt: resolved ? best : null,
