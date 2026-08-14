@@ -9,3 +9,5 @@ tools/_*
 # 旧单文件时代的遗留产物（已由 dist 出图取代）
 /Youlan-Scroll-*.jpg
 .qwen/
+# 校录源数据：四书章句集注 PDF/OCR/CHM 等原始素材（体量大，不入仓库）
+/input_data/
