@@ -1,0 +1,4610 @@
+[
+  {
+    "segId": 1,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "大學章句序\n《大學》之書，古之大學所以教人之法也。",
+    "page": 1,
+    "shanben": "大學章句序大學之書古之大學所以教人之法也"
+  },
+  {
+    "segId": 2,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋自天降生民，則既莫不與之以仁義禮智之性。",
+    "page": 1,
+    "shanben": "蓋自天降生民則旣莫不與之以仁義禮智之性"
+  },
+  {
+    "segId": 3,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然其氣質之禀或不能齊，是以不能皆有以知其性之所有而全之也。",
+    "page": 1,
+    "shanben": "然其氣質之稟或不能齊是以不能皆有以知其性之所有而全之也"
+  },
+  {
+    "segId": 4,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "一有聰明睿智能盡其性者出於其間，則天必命之以爲億兆之君師，使之治而教之，以復其性。",
+    "page": 1,
+    "shanben": "一有聰明睿智能盡其性者出於其閒則天必命之以爲億兆之君師使之治而教之以復其性"
+  },
+  {
+    "segId": 5,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此伏羲、神農、黃帝、堯、舜所以繼天立極，而司徒之職、典樂之官所由設也。",
+    "page": 1,
+    "shanben": "此伏羲神農黃帝堯舜所以繼天立極而司徒之職典樂之官所由設也"
+  },
+  {
+    "segId": 6,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "三代之隆，其法寖備，然後王宫、國都以及閭巷，莫不有學。",
+    "page": 1,
+    "shanben": "三代之隆其法寖備然後王宫國都以及閭巷莫不有學"
+  },
+  {
+    "segId": 7,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "人生八歲，則自王公以下，至於庶人之子弟，皆入小學，而教之以洒掃、應對、進退之節，禮樂、射御、書數之文。",
+    "page": 1,
+    "shanben": "人生八歲則自王公以下至於庶人之子弟皆入小學而教之以洒埽應對進退之節禮樂射御書數之文"
+  },
+  {
+    "segId": 8,
+    "score": 0.9090909090909091,
+    "orphan": false,
+    "xiandai": "大學章句序\n及其十有五年，則自天子之元子、衆子，以至公、卿、大夫、元士之適子，與凡民之俊秀，皆入大學，而教之以窮理、正心、修己、治人之道。",
+    "page": 1,
+    "shanben": "及其十有五年則自天子之元子衆子以至公卿大夫元士之適子與凡民之俊秀皆入大學而教之以窮理正心修己治人之道"
+  },
+  {
+    "segId": 9,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此又學校之教、大小之節所以分也。",
+    "page": 1,
+    "shanben": "此又學校之教大小之節所以分也"
+  },
+  {
+    "segId": 10,
+    "score": 0.9921875,
+    "orphan": false,
+    "xiandai": "夫以學校之設，其廣如此，教之之術，其次第節目之詳又如此，而其所以爲教，則又皆本之人君躬行心得之餘，不待求之民生日用彝倫之外，是以當世之人無不學。",
+    "page": 1,
+    "shanben": "夫以學校之設其廣如此教之之術其次第節目之詳又如此而其所以爲教則又皆本之人君躬行心得之餘不待求之民生曰用彞倫之外是以當丗之人無不學其學"
+  },
+  {
+    "segId": 11,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其學焉者，無不有以知其性分之所固有，職分之所當爲，而各俛焉以盡其力。",
+    "page": 1,
+    "shanben": "其學焉者無不有以知其性分之所固有職分之所當爲而各俛焉以盡其力"
+  },
+  {
+    "segId": 12,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此古昔盛時所以治隆於上，俗美於下，而非後世之所能及也！",
+    "page": 1,
+    "shanben": "此古昔盛時所以治隆於上俗美於下而非後丗之所能及也"
+  },
+  {
+    "segId": 13,
+    "score": 0.9791666666666666,
+    "orphan": false,
+    "xiandai": "及周之衰，賢聖之君不作，學校之政不修，教化陵夷，風俗頹敗。",
+    "page": 1,
+    "shanben": "及周之衰賢聖之君不作學校之政不修教化陵夷風俗頽敗"
+  },
+  {
+    "segId": 14,
+    "score": 0.8888888888888888,
+    "orphan": false,
+    "xiandai": "時則有若孔子之性下。",
+    "page": 1,
+    "shanben": "時則有若孔子之聖而不得君師之位以行"
+  },
+  {
+    "segId": 15,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "聖，而不得君師之位以行其政教，於是獨取先王之法，誦而傳之，以詔後世。",
+    "page": 2,
+    "shanben": "聖而不得君師之位以行其政教於是獨取先王之法誦而傳之以詔後丗"
+  },
+  {
+    "segId": 16,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "若《曲禮》《少儀》《内則》《弟子職》諸篇，固小學之支流餘裔，而此篇者，則因小學之成功，以著大學之明法，外有以極其規模之大，而內有以盡其節目之詳者也。",
+    "page": 2,
+    "shanben": "若曲禮少儀内則弟子職諸篇固小學之支流餘裔而此篇者則因小學之成功以著大學之明法外有以極其規模之大而内有以盡其節目之詳者也"
+  },
+  {
+    "segId": 17,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "三千之徒，蓋莫不聞其說，而曾氏之傳獨得其宗，於是作爲傳義，以發其意。",
+    "page": 2,
+    "shanben": "三千之徒蓋莫不聞其說而曽氏之傳獨得其宗於是作爲傳義以發其意"
+  },
+  {
+    "segId": 18,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "及孟子没而其傳泯焉，則其書雖存，而知者鮮矣！",
+    "page": 2,
+    "shanben": "及孟子没而其傳泯焉則其書雖存而知者鮮矣"
+  },
+  {
+    "segId": 19,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自是以來，俗儒記誦詞章之習，其功倍於小學而無用；",
+    "page": 2,
+    "shanben": "自是以來俗儒記誦詞章之習其功倍於小學而無用"
+  },
+  {
+    "segId": 20,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "異端虛無寂滅之教，其高過於大學而無實。",
+    "page": 2,
+    "shanben": "異端虛無寂滅之教其髙過於大學而無實"
+  },
+  {
+    "segId": 21,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其他權謀術數，一切以就功名之說，與夫百家衆技之流，所以惑世誣民、充塞仁義者，又紛然雜出乎其間。",
+    "page": 2,
+    "shanben": "其他權謀術數一切以就功名之說與夫百家衆技之流所以惑丗誣民充塞仁義者又紛然雜出乎其閒"
+  },
+  {
+    "segId": 22,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "使其君子不幸而不得聞大道之要，其小人不幸而不得蒙至治之澤，晦盲否塞，反覆沈痼，以及五季之衰，而壞亂極矣！",
+    "page": 2,
+    "shanben": "使其君子不幸而不得聞大道之要其小人不幸而不得蒙至治之澤晦盲否塞反覆沈痼以及五季之衰而壞亂極矣"
+  },
+  {
+    "segId": 23,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "天運循環，無往不復。",
+    "page": 2,
+    "shanben": "天運循環無往不復"
+  },
+  {
+    "segId": 24,
+    "score": 0.75,
+    "orphan": false,
+    "xiandai": "宋德隆盛，治教休明。",
+    "page": 2,
+    "shanben": "隆盛治教休明"
+  },
+  {
+    "segId": 25,
+    "score": 0.9761904761904762,
+    "orphan": false,
+    "xiandai": "於是河南程氏兩夫子出，而有以接乎孟氏之傳，實始尊信此篇而表章之，既又爲之次其簡編，發其歸趣，然後古者大學教人之法、聖經賢傳之指，粲然復明於世。",
+    "page": 2,
+    "shanben": "於是河南程氏兩丁出而有以接乎孟氏之傳實始尊信此篇而表章之旣又爲之次其簡編發其歸趣然後古者大學教人之法聖經賢傳之指粲然復明於丗"
+  },
+  {
+    "segId": 26,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "雖以熹之不敏，亦幸私淑而與有聞焉。",
+    "page": 2,
+    "shanben": "雖以熹之不敏亦幸私淑而與有聞焉"
+  },
+  {
+    "segId": 27,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "顧其爲書猶頗放失，是以忘其固陋，采而輯之，間亦竊附己意，補其闕略，以俟後之君子。",
+    "page": 2,
+    "shanben": "顧其爲書猶頗放失是以忘其固陋采而輯之閒亦竊附己意補其闕略以俟後之君子"
+  },
+  {
+    "segId": 28,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "極知僭踰，無所逃罪，然於國家化民成俗之意、學者修己治人之方，則未必無小補云。",
+    "page": 2,
+    "shanben": "極知僣踰無所逃罪然於國家化民成俗之意學者修己治人之方則未必無小補云"
+  },
+  {
+    "segId": 29,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "淳熙己酉二月甲子，新安朱熹序。",
+    "page": 2,
+    "shanben": "淳熙己酉二月甲子新安朱熹序"
+  },
+  {
+    "segId": 30,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "大\n學\n大，舊音泰，今讀如字。",
+    "page": 3,
+    "shanben": "大學朱熹章句大舊音泰今讀如字"
+  },
+  {
+    "segId": 31,
+    "score": 0.8260869565217391,
+    "orphan": false,
+    "xiandai": "朱熹章句\n子程子曰：《大學》，孔氏之遺書，而初學入德之門也。",
+    "page": 3,
+    "shanben": "子程子曰大學孔氏之遺書而初學入德之門也"
+  },
+  {
+    "segId": 32,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "於今可見古人爲學次第者，獨賴此篇之存，而《論》《孟》次之。",
+    "page": 3,
+    "shanben": "於今可見古人爲學次第者獨賴此篇之存而論孟次之"
+  },
+  {
+    "segId": 33,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "學者必由是而學焉，則庶乎其不差矣。",
+    "page": 3,
+    "shanben": "學者必由是而學焉則庶乎其不差矣"
+  },
+  {
+    "segId": 34,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "大學之道，在明明德，在親民，在止於至善。",
+    "page": 3,
+    "shanben": "大學之道在明明德在親民在止於至善"
+  },
+  {
+    "segId": 35,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "程子曰：「親。",
+    "page": 3,
+    "shanben": "程子曰親"
+  },
+  {
+    "segId": 36,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」○大學者，大人之學也。",
+    "page": 3,
+    "shanben": "大學者大人之學也"
+  },
+  {
+    "segId": 37,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "明，明之也。",
+    "page": 3,
+    "shanben": "明明之也"
+  },
+  {
+    "segId": 38,
+    "score": 0.9791666666666666,
+    "orphan": false,
+    "xiandai": "明德者，人之所得乎天，而虛靈不昧，以具衆理而應萬事者也。",
+    "page": 3,
+    "shanben": "明德者人之所得平天而虛靈不昧以具衆理而應萬事者也"
+  },
+  {
+    "segId": 39,
+    "score": 0.9666666666666667,
+    "orphan": false,
+    "xiandai": "但爲氣禀所拘，人欲所蔽，則有時而昏；",
+    "page": 3,
+    "shanben": "但爲氣稟所拘入欲所蔽則有時而昏"
+  },
+  {
+    "segId": 40,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然其本體之明，則有未嘗息者。",
+    "page": 3,
+    "shanben": "然其本體之明則有未嘗息者"
+  },
+  {
+    "segId": 41,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故學者當因其所發而遂明之，以復其初也。",
+    "page": 3,
+    "shanben": "故學者當因其所發而遂明之以復其初也"
+  },
+  {
+    "segId": 42,
+    "score": 0.8,
+    "orphan": false,
+    "xiandai": "新者，\n大\n學\n革其舊之謂也。",
+    "page": 3,
+    "shanben": "新者革其舊之謂也"
+  },
+  {
+    "segId": 43,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言既自明其明德，又當推以及人，使之亦有以去其舊染之污也。",
+    "page": 3,
+    "shanben": "言旣自明其明德又當推以及人使之亦有以去其舊染之污也"
+  },
+  {
+    "segId": 44,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "止者，必至於是而不遷之意。",
+    "page": 3,
+    "shanben": "止者必至於是而不遷之意"
+  },
+  {
+    "segId": 45,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "至善，則事理當然之極也。",
+    "page": 3,
+    "shanben": "至善則事理當然之極也"
+  },
+  {
+    "segId": 46,
+    "score": 0.9705882352941176,
+    "orphan": false,
+    "xiandai": "言明明德、新民，皆當止於至善之地而不遷。",
+    "page": 3,
+    "shanben": "言明明德新民皆當至於至善之地而不遷"
+  },
+  {
+    "segId": 47,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋必其有以盡夫天理之極，而無一毫人欲之私也。",
+    "page": 3,
+    "shanben": "蓋必其有以盡夫天理之極而無一毫人欲之私也"
+  },
+  {
+    "segId": 48,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此三者，大學之綱領也。",
+    "page": 3,
+    "shanben": "此三者大學之綱領也"
+  },
+  {
+    "segId": 49,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知止而后有定，定而后能靜，靜而后能安，安而后能慮，慮而后能得。",
+    "page": 3,
+    "shanben": "知止而后有定定而后能靜靜而后能安安而后能慮慮而后能得"
+  },
+  {
+    "segId": 50,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "後放此。",
+    "page": 3,
+    "shanben": "後放此"
+  },
+  {
+    "segId": 51,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○止者，所當止之地，即至善之所在也。",
+    "page": 3,
+    "shanben": "止者所當止之地即至善之所在也"
+  },
+  {
+    "segId": 52,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知之，則志有定向。",
+    "page": 3,
+    "shanben": "知之則志有定向"
+  },
+  {
+    "segId": 53,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "靜，謂心不妄動。",
+    "page": 3,
+    "shanben": "靜謂心不妄動"
+  },
+  {
+    "segId": 54,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "安，謂所處而安。",
+    "page": 3,
+    "shanben": "安謂所處而安"
+  },
+  {
+    "segId": 55,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "慮，謂處事精詳。",
+    "page": 3,
+    "shanben": "慮謂處事精詳"
+  },
+  {
+    "segId": 56,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "得，謂得其所止。",
+    "page": 3,
+    "shanben": "得謂得其所止"
+  },
+  {
+    "segId": 57,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "物有本末，事有終始，知所先後，則近道矣。",
+    "page": 3,
+    "shanben": "物有本末事有終始知所先後則近道矣"
+  },
+  {
+    "segId": 58,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "明德爲本，新民爲末。",
+    "page": 4,
+    "shanben": "明德爲本新民爲末"
+  },
+  {
+    "segId": 59,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知止爲始，能得爲終。",
+    "page": 4,
+    "shanben": "知止爲始能得爲終"
+  },
+  {
+    "segId": 60,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "本始所先，末終所後。",
+    "page": 4,
+    "shanben": "本始所先末終所後"
+  },
+  {
+    "segId": 61,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此結上文兩節之意。",
+    "page": 4,
+    "shanben": "此結上文兩節之意"
+  },
+  {
+    "segId": 62,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "古之欲明明德於天下者，先治其國；",
+    "page": 4,
+    "shanben": "古之欲明明德於天下者先治其國"
+  },
+  {
+    "segId": 63,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "欲治其國者，先齊其家；",
+    "page": 4,
+    "shanben": "欲治其國者先齊其家"
+  },
+  {
+    "segId": 64,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "欲齊其家者，先脩其身；",
+    "page": 4,
+    "shanben": "欲齊其家者先脩其身"
+  },
+  {
+    "segId": 65,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "欲脩其身者，先正其心；",
+    "page": 4,
+    "shanben": "欲脩其身者先正其心"
+  },
+  {
+    "segId": 66,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "欲正其心者，先誠其意；",
+    "page": 4,
+    "shanben": "欲正其心者先誠其意"
+  },
+  {
+    "segId": 67,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "欲誠其意者，先致其知；",
+    "page": 4,
+    "shanben": "欲誠其意者先致其知"
+  },
+  {
+    "segId": 68,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "致知在格物。",
+    "page": 4,
+    "shanben": "致知在格物"
+  },
+  {
+    "segId": 69,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "治，平聲。",
+    "page": 4,
+    "shanben": "治平聲"
+  },
+  {
+    "segId": 70,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "後放此。",
+    "page": 4,
+    "shanben": "後放此"
+  },
+  {
+    "segId": 71,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○明明德於天下者，使天下之人皆有以明其明德也。",
+    "page": 4,
+    "shanben": "明明德於天下者使天下之人皆有以明其明德也"
+  },
+  {
+    "segId": 72,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "心者，身之所主也。",
+    "page": 4,
+    "shanben": "心者身之所主也"
+  },
+  {
+    "segId": 73,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "誠，實也。",
+    "page": 4,
+    "shanben": "誠實也"
+  },
+  {
+    "segId": 74,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "意者，心之所發也。",
+    "page": 4,
+    "shanben": "意者心之所發也"
+  },
+  {
+    "segId": 75,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "實其心之所發，欲其一於善而無自欺也。",
+    "page": 4,
+    "shanben": "實其心之所發欲其一於善而無自欺也"
+  },
+  {
+    "segId": 76,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "致，推極也。",
+    "page": 4,
+    "shanben": "致推極也"
+  },
+  {
+    "segId": 77,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知，猶識也。",
+    "page": 4,
+    "shanben": "知猶識也"
+  },
+  {
+    "segId": 78,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "推極吾之知識，欲其所知無不盡也。",
+    "page": 4,
+    "shanben": "推極吾之知識欲其所知無不盡也"
+  },
+  {
+    "segId": 79,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "格，至也。",
+    "page": 4,
+    "shanben": "格至也"
+  },
+  {
+    "segId": 80,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "物，猶事也。",
+    "page": 4,
+    "shanben": "物猶事也"
+  },
+  {
+    "segId": 81,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "窮至事物之理，欲其極處無不到也。",
+    "page": 4,
+    "shanben": "窮至事物之理欲其極處無不到也"
+  },
+  {
+    "segId": 82,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此八者，《大學》之條目也。",
+    "page": 4,
+    "shanben": "此八者大學之條目也"
+  },
+  {
+    "segId": 83,
+    "score": 0.9069767441860465,
+    "orphan": false,
+    "xiandai": "物格而后知至，知至而后意誠，意誠而后心\n正，心正而后身脩，身脩而后家齊，家齊而后國治，國治而后天下平。",
+    "page": 4,
+    "shanben": "物格而后知至知至而后意誠意誠而后心正心正而后身脩身脩而后家齊國治國治而后天下平"
+  },
+  {
+    "segId": 84,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "治，去聲。",
+    "page": 4,
+    "shanben": "治去聲"
+  },
+  {
+    "segId": 85,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "後放此。",
+    "page": 4,
+    "shanben": "後放此"
+  },
+  {
+    "segId": 86,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○物格者，物理之極處無不到也。",
+    "page": 4,
+    "shanben": "物格者物理之極處無不到也"
+  },
+  {
+    "segId": 87,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知至者，吾心之所知無不盡也。",
+    "page": 4,
+    "shanben": "知至者吾心之所知無不盡也"
+  },
+  {
+    "segId": 88,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "知既盡，則意可得而實矣，意既實，則心可得而正矣。",
+    "page": 4,
+    "shanben": "知旣盡則意可得而實矣意旣實則心可得而正矣"
+  },
+  {
+    "segId": 89,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "脩身以上，明明德之事也。",
+    "page": 4,
+    "shanben": "脩身以上明明德之事也"
+  },
+  {
+    "segId": 90,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "齊家以下，新民之事也。",
+    "page": 4,
+    "shanben": "齊家以下新民之事也"
+  },
+  {
+    "segId": 91,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "物格知至，則知所止矣。",
+    "page": 4,
+    "shanben": "物格知至則知所止矣"
+  },
+  {
+    "segId": 92,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "意誠以下，則皆得所止之序也。",
+    "page": 4,
+    "shanben": "意誠以下則皆得所止之序也"
+  },
+  {
+    "segId": 93,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自天子以至於庶人，壹是皆以脩身爲本。",
+    "page": 4,
+    "shanben": "自天子以至於庶人壹是皆以脩身爲本"
+  },
+  {
+    "segId": 94,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "壹是，一切也。",
+    "page": 4,
+    "shanben": "壹是一切也"
+  },
+  {
+    "segId": 95,
+    "score": 0.95,
+    "orphan": false,
+    "xiandai": "正心以上，皆所以修身也。",
+    "page": 4,
+    "shanben": "正心以上皆所以脩身也"
+  },
+  {
+    "segId": 96,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "齊家以下，則舉此而錯之耳。",
+    "page": 4,
+    "shanben": "齊家以下則舉此而錯之耳"
+  },
+  {
+    "segId": 97,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其本亂而末治者，否矣。",
+    "page": 4,
+    "shanben": "其本亂而末治者否矣"
+  },
+  {
+    "segId": 98,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其所厚者薄，而其所薄者厚，未之有也。",
+    "page": 4,
+    "shanben": "其所厚者薄而其所薄者厚未之有也"
+  },
+  {
+    "segId": 99,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "本，謂身也。",
+    "page": 4,
+    "shanben": "本謂身也"
+  },
+  {
+    "segId": 100,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所厚，謂家也。",
+    "page": 4,
+    "shanben": "所厚謂家也"
+  },
+  {
+    "segId": 101,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此兩節結上文兩節之意。",
+    "page": 4,
+    "shanben": "此兩節結上文兩節之意"
+  },
+  {
+    "segId": 102,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右經一章，蓋孔子之言，而曾子述之。",
+    "page": 5,
+    "shanben": "右經一章蓋孔子之言而曾子述之"
+  },
+  {
+    "segId": 103,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "凡二百五字。",
+    "page": 5,
+    "shanben": "凡二百五字"
+  },
+  {
+    "segId": 104,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其傳十章，則曾子之意而門人記之也。",
+    "page": 5,
+    "shanben": "其傳十章則曾子之意而門人記之也"
+  },
+  {
+    "segId": 105,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "舊本頗有錯簡，今因程子所定，而更考經文，別爲序次如左。",
+    "page": 5,
+    "shanben": "舊本頗有錯簡今因程子所定而更考經文别爲序次如左"
+  },
+  {
+    "segId": 106,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "凡千五百四十六字。",
+    "page": 5,
+    "shanben": "凡千五百四十六字"
+  },
+  {
+    "segId": 107,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "凡傳文，雜引經傳，若無統紀，然文理接續，血脉貫通，深淺始終，至爲精密。",
+    "page": 5,
+    "shanben": "凡傳文雜引經傳若無統紀然文理接續血脉貫通深淺始終至爲精密"
+  },
+  {
+    "segId": 108,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "熟讀詳味，久當見之，今不盡釋也。",
+    "page": 5,
+    "shanben": "熟讀詳味乆當見之今不盡釋也"
+  },
+  {
+    "segId": 109,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《康誥》曰：「克明德。",
+    "page": 5,
+    "shanben": "康誥曰克明德"
+  },
+  {
+    "segId": 110,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《康誥》，《周書》。",
+    "page": 5,
+    "shanben": "康誥周書"
+  },
+  {
+    "segId": 111,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "克，能也。",
+    "page": 5,
+    "shanben": "克能也"
+  },
+  {
+    "segId": 112,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《大甲》曰：「顧諟天之明命。",
+    "page": 5,
+    "shanben": "大甲曰顧諟天之明命"
+  },
+  {
+    "segId": 113,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n大，讀作泰。",
+    "page": 5,
+    "shanben": "大讀作泰"
+  },
+  {
+    "segId": 114,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "諟，古是字。",
+    "page": 5,
+    "shanben": "諟古是字"
+  },
+  {
+    "segId": 115,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○《大甲》，《商書》。",
+    "page": 5,
+    "shanben": "大甲商書"
+  },
+  {
+    "segId": 116,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "顧，謂常目在之也。",
+    "page": 5,
+    "shanben": "顧謂常目在之也"
+  },
+  {
+    "segId": 117,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "諟，猶此也，或曰審也。",
+    "page": 5,
+    "shanben": "諟猶此也或曰審也"
+  },
+  {
+    "segId": 118,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "天之明命，即天之所以與我，而我之所以爲德者也。",
+    "page": 5,
+    "shanben": "天之明命即天之所以與我而我之所以爲德者也"
+  },
+  {
+    "segId": 119,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "常目在之，則無時不明矣。",
+    "page": 5,
+    "shanben": "常目在之則無時不明矣"
+  },
+  {
+    "segId": 120,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《帝典》曰：「克明峻德。",
+    "page": 5,
+    "shanben": "帝典曰克明峻德"
+  },
+  {
+    "segId": 121,
+    "score": 0.6666666666666666,
+    "orphan": false,
+    "xiandai": "大\n學\n峻，《書》作俊。",
+    "page": 5,
+    "shanben": "峻書作俊"
+  },
+  {
+    "segId": 122,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○《帝典》，《堯典》，《虞書》。",
+    "page": 5,
+    "shanben": "帝典堯典虞書"
+  },
+  {
+    "segId": 123,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "峻，大也。",
+    "page": 5,
+    "shanben": "峻大也"
+  },
+  {
+    "segId": 124,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "皆自明也。",
+    "page": 5,
+    "shanben": "皆自明也"
+  },
+  {
+    "segId": 125,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "結所引書，皆言自明己德之意。",
+    "page": 5,
+    "shanben": "結所引書皆言自明己德之意"
+  },
+  {
+    "segId": 126,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之首章。",
+    "page": 5,
+    "shanben": "右傳之首章"
+  },
+  {
+    "segId": 127,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋明明德。",
+    "page": 5,
+    "shanben": "釋明明德"
+  },
+  {
+    "segId": 128,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此通下三章至「止於信」，舊本誤在「没世不忘」之下。",
+    "page": 5,
+    "shanben": "此通下三章至止於信舊本誤在没世不忘之下"
+  },
+  {
+    "segId": 129,
+    "score": 0.9642857142857143,
+    "orphan": false,
+    "xiandai": "物之《盤銘》曰：「苟日新，日日新，又日新。",
+    "page": 5,
+    "shanben": "湯之盤銘曰苟日新日日新又日新銘曰苟曰新曰曰新"
+  },
+  {
+    "segId": 130,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」盤，沐浴之盤也。",
+    "page": 5,
+    "shanben": "盤沐浴之盤也"
+  },
+  {
+    "segId": 131,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "銘，名其器以自警之辭也。",
+    "page": 5,
+    "shanben": "銘名其器以自警之辭也"
+  },
+  {
+    "segId": 132,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "苟，誠也。",
+    "page": 5,
+    "shanben": "苟誠也"
+  },
+  {
+    "segId": 133,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "湯以人之洗濯其心以去惡，如沐浴其身以去垢。",
+    "page": 5,
+    "shanben": "湯以人之洗濯其心以去惡如沐浴其身以去垢"
+  },
+  {
+    "segId": 134,
+    "score": 0.953125,
+    "orphan": false,
+    "xiandai": "故銘其盤，言誠能一日有以滌其舊染之污而自新，則當因其已新者，而日日新之。",
+    "page": 5,
+    "shanben": "故銘其盤言誠能一曰有以滌其舊染之污而自新則當因其巳新者而曰曰新之"
+  },
+  {
+    "segId": 135,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "又日新之，不可略有間斷也。",
+    "page": 5,
+    "shanben": ""
+  },
+  {
+    "segId": 136,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《康誥》曰：「作新民。",
+    "page": 5,
+    "shanben": "康誥曰作新民"
+  },
+  {
+    "segId": 137,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "鼓之舞之之謂作。",
+    "page": 5,
+    "shanben": "鼓之舞之之謂作"
+  },
+  {
+    "segId": 138,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言振起其自新之民也。",
+    "page": 5,
+    "shanben": "言振起其自新之民也"
+  },
+  {
+    "segId": 139,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》曰：「周雖舊邦，其命惟新。",
+    "page": 6,
+    "shanben": "詩曰周雖舊邦其命惟新"
+  },
+  {
+    "segId": 140,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "《詩》，《大雅·文王》之篇。",
+    "page": 6,
+    "shanben": "詩大雅文王之篇"
+  },
+  {
+    "segId": 141,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言周國雖舊，至於文王，能新其德以及於民，而始受天命也。",
+    "page": 6,
+    "shanben": "言周國雖舊至於文王能新其德以及於民而始受天命也"
+  },
+  {
+    "segId": 142,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是故君子無所不用其極。",
+    "page": 6,
+    "shanben": "是故君子無所不用其極"
+  },
+  {
+    "segId": 143,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自新、新民，皆欲止於至善也。",
+    "page": 6,
+    "shanben": "自新新民皆欲止於至善也"
+  },
+  {
+    "segId": 144,
+    "score": 0.9,
+    "orphan": false,
+    "xiandai": "右傳之一章。",
+    "page": 6,
+    "shanben": "右傳之二章"
+  },
+  {
+    "segId": 145,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋新民。",
+    "page": 6,
+    "shanben": "釋新民"
+  },
+  {
+    "segId": 146,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「邦畿千里，惟民所止。",
+    "page": 6,
+    "shanben": "詩云邦畿千里惟民所止"
+  },
+  {
+    "segId": 147,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "」\n《詩》，《商頌·玄鳥》之篇。",
+    "page": 6,
+    "shanben": "詩商頌玄鳥之篇"
+  },
+  {
+    "segId": 148,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "邦畿，王者之都也。",
+    "page": 6,
+    "shanben": "邦畿王者之都也"
+  },
+  {
+    "segId": 149,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "止，居也，言物各有所當止之處也。",
+    "page": 6,
+    "shanben": "止居也言物各有所當止之處也"
+  },
+  {
+    "segId": 150,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「緡蠻黃鳥，止于丘隅。",
+    "page": 6,
+    "shanben": "詩云緡蠻黃鳥止于丘隅"
+  },
+  {
+    "segId": 151,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」子曰：「於止，知其所止，可以人而不如鳥乎！",
+    "page": 6,
+    "shanben": "子曰於止知其所止可以人而不如鳥乎"
+  },
+  {
+    "segId": 152,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n緡，《詩》作緜。",
+    "page": 6,
+    "shanben": "緡詩作綿詩小雅綿蠻之篇緡"
+  },
+  {
+    "segId": 153,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "○《詩》，《小雅·緜蠻》之篇。",
+    "page": 6,
+    "shanben": ""
+  },
+  {
+    "segId": 154,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "緡蠻，鳥聲。",
+    "page": 6,
+    "shanben": "緡蠻鳥聲"
+  },
+  {
+    "segId": 155,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "丘隅，岑蔚之處。",
+    "page": 6,
+    "shanben": "丘隅岑蔚之處"
+  },
+  {
+    "segId": 156,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "子曰以下，孔子說《詩》之辭，言人當知所當止之處也。",
+    "page": 6,
+    "shanben": "子曰以下孔子說詩之辭言人當知所當止之處也"
+  },
+  {
+    "segId": 157,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「穆穆文王，於緝熙敬止！",
+    "page": 6,
+    "shanben": "詩云穆穆文王於緝熙敬止"
+  },
+  {
+    "segId": 158,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」爲人君，止於仁；",
+    "page": 6,
+    "shanben": "爲人君止於仁"
+  },
+  {
+    "segId": 159,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "爲人臣，止於敬；",
+    "page": 6,
+    "shanben": "爲人臣止於敬"
+  },
+  {
+    "segId": 160,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "爲人子，止於孝；",
+    "page": 6,
+    "shanben": "爲人子止於孝"
+  },
+  {
+    "segId": 161,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "爲人父，止於慈；",
+    "page": 6,
+    "shanben": "爲人父止於慈"
+  },
+  {
+    "segId": 162,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "與國人交，止於信。",
+    "page": 6,
+    "shanben": "與國人交止於信"
+  },
+  {
+    "segId": 163,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "於緝之於，音烏。",
+    "page": 6,
+    "shanben": "於緝之於音烏"
+  },
+  {
+    "segId": 164,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》，《文王》之篇。",
+    "page": 6,
+    "shanben": "詩文王之篇"
+  },
+  {
+    "segId": 165,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "穆穆，深遠之意。",
+    "page": 6,
+    "shanben": "穆穆深逺之意"
+  },
+  {
+    "segId": 166,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "於，歎美辭。",
+    "page": 6,
+    "shanben": "於歎美辭"
+  },
+  {
+    "segId": 167,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "緝，繼續也。",
+    "page": 6,
+    "shanben": "緝繼續也"
+  },
+  {
+    "segId": 168,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "熙，光明也。",
+    "page": 6,
+    "shanben": "熙光明也"
+  },
+  {
+    "segId": 169,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "敬止，言其無不敬而安所止也。",
+    "page": 6,
+    "shanben": "敬止言其無不敬而安所止也"
+  },
+  {
+    "segId": 170,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "引此而言聖人之止，無非至善。",
+    "page": 6,
+    "shanben": "引此而言聖人之止無非至善"
+  },
+  {
+    "segId": 171,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "五者，乃其目之大者也。",
+    "page": 6,
+    "shanben": "五者乃其目之大者也"
+  },
+  {
+    "segId": 172,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "學者於此，究其精微之蘊，而又推類以盡其餘，則於天下之事，皆有以知其所止而無疑矣。",
+    "page": 6,
+    "shanben": "學者於此究其精微之蘊而又推類以盡其餘則於天下之事皆有以知其所止而無疑矣"
+  },
+  {
+    "segId": 173,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「瞻彼淇澳，菉竹猗猗。",
+    "page": 6,
+    "shanben": "詩云瞻彼淇澳菉竹猗猗"
+  },
+  {
+    "segId": 174,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有斐君子，如切如磋，如琢如磨。",
+    "page": 6,
+    "shanben": "有斐君子如切如磋如琢如磨"
+  },
+  {
+    "segId": 175,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "瑟兮僩兮，赫兮喧兮。",
+    "page": 6,
+    "shanben": "瑟兮僩兮赫兮喧兮"
+  },
+  {
+    "segId": 176,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有斐君子，終不可諠兮！",
+    "page": 6,
+    "shanben": "有斐君子終不可諠兮"
+  },
+  {
+    "segId": 177,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」如切如磋者，道學也。",
+    "page": 6,
+    "shanben": "如切如磋者道學也"
+  },
+  {
+    "segId": 178,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "如琢如磨者，自脩也。",
+    "page": 6,
+    "shanben": "如琢如磨者自脩也"
+  },
+  {
+    "segId": 179,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "瑟兮僩兮者，恂慄也。",
+    "page": 6,
+    "shanben": "瑟兮僩兮者恂慄也"
+  },
+  {
+    "segId": 180,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "赫兮喧兮者，威儀也。",
+    "page": 6,
+    "shanben": "赫兮喧兮者威儀也"
+  },
+  {
+    "segId": 181,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有斐君子，終不可諠兮者，道盛德至善，民之不能忘也。",
+    "page": 6,
+    "shanben": "有斐君子終不可諠兮者道盛德至善民之不能忘也"
+  },
+  {
+    "segId": 182,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "澳，於六反。",
+    "page": 6,
+    "shanben": "澳於六反"
+  },
+  {
+    "segId": 183,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "菉，《詩》作綠。",
+    "page": 6,
+    "shanben": "菉詩作緑猗叶韻音阿僩下版"
+  },
+  {
+    "segId": 184,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "猗，叶韻，音",
+    "page": 6,
+    "shanben": "猗叶韻音"
+  },
+  {
+    "segId": 185,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "阿。",
+    "page": 7,
+    "shanben": "阿"
+  },
+  {
+    "segId": 186,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "僩，下版反。",
+    "page": 7,
+    "shanben": "僩下版反"
+  },
+  {
+    "segId": 187,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "喧，《詩》作咺；",
+    "page": 7,
+    "shanben": "喧詩作咺"
+  },
+  {
+    "segId": 188,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "諠，《詩》作諼，並況晚反。",
+    "page": 7,
+    "shanben": "諠詩作諼並况晚反"
+  },
+  {
+    "segId": 189,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "恂，鄭氏讀作峻。",
+    "page": 7,
+    "shanben": "恂鄭氏讀作峻"
+  },
+  {
+    "segId": 190,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "○《詩》，《衛風·淇澳》之篇。",
+    "page": 7,
+    "shanben": "詩衛風淇澳之篇"
+  },
+  {
+    "segId": 191,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "淇，水名。",
+    "page": 7,
+    "shanben": "淇水名"
+  },
+  {
+    "segId": 192,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "澳，隈也。",
+    "page": 7,
+    "shanben": "澳隈也"
+  },
+  {
+    "segId": 193,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "猗猗，美盛貌。",
+    "page": 7,
+    "shanben": "猗猗美盛貌"
+  },
+  {
+    "segId": 194,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "興也。",
+    "page": 7,
+    "shanben": "興也"
+  },
+  {
+    "segId": 195,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "斐，文貌。",
+    "page": 7,
+    "shanben": "斐文貌"
+  },
+  {
+    "segId": 196,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "切以刀鋸，琢以椎鑿，皆裁物使成形質也。",
+    "page": 7,
+    "shanben": "切以刀鋸琢以椎鑿皆裁物使成形質也"
+  },
+  {
+    "segId": 197,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "磋以鑢錫，磨以沙石，皆治物使其滑澤也。",
+    "page": 7,
+    "shanben": "磋以鑢錫磨以沙石皆治物使其滑澤也"
+  },
+  {
+    "segId": 198,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "治骨角者，既切而復磋之。",
+    "page": 7,
+    "shanben": "治骨角者旣切而復磋之"
+  },
+  {
+    "segId": 199,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "治玉石者，既琢而復磨之。",
+    "page": 7,
+    "shanben": "治玉石者旣琢而復磨之"
+  },
+  {
+    "segId": 200,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "皆言其治之有緒，而益致其精也。",
+    "page": 7,
+    "shanben": "皆言其治之有緒而益致其精也"
+  },
+  {
+    "segId": 201,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "瑟，嚴密之貌。",
+    "page": 7,
+    "shanben": "瑟嚴密之貌"
+  },
+  {
+    "segId": 202,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "僴，武毅之貌。",
+    "page": 7,
+    "shanben": "僩武毅之貌"
+  },
+  {
+    "segId": 203,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "赫喧，宣著盛大之貌。",
+    "page": 7,
+    "shanben": "赫喧宣著盛大之貌"
+  },
+  {
+    "segId": 204,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "諠，忘也。",
+    "page": 7,
+    "shanben": "諠忘也"
+  },
+  {
+    "segId": 205,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道，言也。",
+    "page": 7,
+    "shanben": "道言也"
+  },
+  {
+    "segId": 206,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "學，謂講習討論之事。",
+    "page": 7,
+    "shanben": "學謂講習討論之事"
+  },
+  {
+    "segId": 207,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自脩者，省察克治之功。",
+    "page": 7,
+    "shanben": "自脩者省察克治之功"
+  },
+  {
+    "segId": 208,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "恂慄，戰懼也。",
+    "page": 7,
+    "shanben": "恂慄戰懼也"
+  },
+  {
+    "segId": 209,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "威，可畏也。",
+    "page": 7,
+    "shanben": "威可畏也"
+  },
+  {
+    "segId": 210,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "儀，可象也。",
+    "page": 7,
+    "shanben": "儀可象也"
+  },
+  {
+    "segId": 211,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "引《詩》而釋之，以明明明德者之止於至善。",
+    "page": 7,
+    "shanben": "引詩而釋之以明明明德者之止於至善"
+  },
+  {
+    "segId": 212,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道學、自脩，言其所以得之之由。",
+    "page": 7,
+    "shanben": "道學自脩言其所以得之之由"
+  },
+  {
+    "segId": 213,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "恂慄、威儀，言其德容表裏之盛。",
+    "page": 7,
+    "shanben": "恂慄威儀言其德容表裏之盛"
+  },
+  {
+    "segId": 214,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "卒乃指其實而歎美之也。",
+    "page": 7,
+    "shanben": "卒乃指其實而歎美之也"
+  },
+  {
+    "segId": 215,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「於戲，前王不忘！",
+    "page": 7,
+    "shanben": "詩云於戲前王不忘"
+  },
+  {
+    "segId": 216,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」君子賢其賢而\n親其親，小人樂其樂而利其利，此以没世不忘也。",
+    "page": 7,
+    "shanben": "君子賢其賢而親其親小人樂其樂而利其利此以没丗不忘也"
+  },
+  {
+    "segId": 217,
+    "score": 0.7142857142857143,
+    "orphan": false,
+    "xiandai": "大\n學\n於戲，音嗚呼。",
+    "page": 7,
+    "shanben": "於戲音嗚呼"
+  },
+  {
+    "segId": 218,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "樂，音洛。",
+    "page": 7,
+    "shanben": "樂音洛"
+  },
+  {
+    "segId": 219,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "《詩》，《周頌·烈文》之篇。",
+    "page": 7,
+    "shanben": "詩周頌烈文之篇"
+  },
+  {
+    "segId": 220,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "於戲，嘆辭。",
+    "page": 7,
+    "shanben": "於戲嘆辭"
+  },
+  {
+    "segId": 221,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "前王，謂文、武也。",
+    "page": 7,
+    "shanben": "前王謂文武也"
+  },
+  {
+    "segId": 222,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "君子，謂其後賢後王。",
+    "page": 7,
+    "shanben": "君子謂其後賢後王"
+  },
+  {
+    "segId": 223,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "小人，謂後民也。",
+    "page": 7,
+    "shanben": "小人謂後民也"
+  },
+  {
+    "segId": 224,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此言前王所以新民者止於至善，能使天下後世無一物不得其所，所以既没世而人思慕之，愈久而不忘也。",
+    "page": 7,
+    "shanben": "此言前王所以新民者止於至善能使天下後丗無一物不得其所所以旣没丗而人思慕之愈乆而不忘也"
+  },
+  {
+    "segId": 225,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此兩節咏歎淫泆，其味深長，當熟玩之。",
+    "page": 7,
+    "shanben": "此兩節詠歎滛泆其味深長當熟玩之"
+  },
+  {
+    "segId": 226,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之三章。",
+    "page": 7,
+    "shanben": "右傳之三章"
+  },
+  {
+    "segId": 227,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋止於至善。",
+    "page": 7,
+    "shanben": "釋止於至善"
+  },
+  {
+    "segId": 228,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此章内自引《淇澳》詩以下，舊本誤在「誠意」章下。",
+    "page": 7,
+    "shanben": "此章内自引淇澳詩以下舊本誤在誠意章下"
+  },
+  {
+    "segId": 229,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "子曰：「聽訟，吾猶人也，必也使無訟乎！",
+    "page": 7,
+    "shanben": "子曰聽訟吾猶人也必也使無訟乎"
+  },
+  {
+    "segId": 230,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "無情者不得盡其辭，大畏民志。",
+    "page": 8,
+    "shanben": "無情者不得盡其辭大畏民志"
+  },
+  {
+    "segId": 231,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂知本。",
+    "page": 8,
+    "shanben": "此謂知本"
+  },
+  {
+    "segId": 232,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "猶人，不異於人也。",
+    "page": 8,
+    "shanben": "猶人不異於人也"
+  },
+  {
+    "segId": 233,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "情，實也。",
+    "page": 8,
+    "shanben": "情實也"
+  },
+  {
+    "segId": 234,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "引夫子之言，而言聖人能使無實之人不敢盡其虛誕之辭。",
+    "page": 8,
+    "shanben": "引夫子之言而言聖人能使無實之人不敢盡其虛誕之辭"
+  },
+  {
+    "segId": 235,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋我之明德既明，自然有以畏服民之心志，故訟不待聽而自無也。",
+    "page": 8,
+    "shanben": "蓋我之明德旣明自然有以畏服民之心志故訟不待聽而自無也"
+  },
+  {
+    "segId": 236,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "觀於此言，可以知本末之先後矣。",
+    "page": 8,
+    "shanben": "觀於此言可以知本末之先後矣"
+  },
+  {
+    "segId": 237,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之四章。",
+    "page": 8,
+    "shanben": "右傳之四章"
+  },
+  {
+    "segId": 238,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋本末。",
+    "page": 8,
+    "shanben": "釋本末"
+  },
+  {
+    "segId": 239,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此章舊本誤在「止於信」下。",
+    "page": 8,
+    "shanben": "此章舊本誤在止於信下"
+  },
+  {
+    "segId": 240,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂知本。",
+    "page": 8,
+    "shanben": "此謂知本"
+  },
+  {
+    "segId": 241,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂知之至也。",
+    "page": 8,
+    "shanben": "此謂知之至也"
+  },
+  {
+    "segId": 242,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此句之上别有闕文，此特其結語耳。",
+    "page": 8,
+    "shanben": "此句之上别有闕文此特其結語耳"
+  },
+  {
+    "segId": 243,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之五章。",
+    "page": 8,
+    "shanben": "右傳之五章"
+  },
+  {
+    "segId": 244,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋釋格物、致知之義，而今亡矣。",
+    "page": 8,
+    "shanben": "蓋釋格物致知之義而今亡矣"
+  },
+  {
+    "segId": 245,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此章舊本通下章，誤在經文之下。",
+    "page": 8,
+    "shanben": "此章舊本通下章誤在經文之下"
+  },
+  {
+    "segId": 246,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "閒嘗竊取程子之意以補之曰：「所謂致\n知在格物者，言欲致吾之知，在即物而窮其理也。",
+    "page": 8,
+    "shanben": "閒嘗竊取程子之意以補之曰所謂致知在格物者言欲致吾之知在即物而窮其理也"
+  },
+  {
+    "segId": 247,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋人心之靈莫不有知，而天下之物莫不有理，惟於理有未窮，故其知有不盡也。",
+    "page": 8,
+    "shanben": "蓋人心之靈莫不有知而天下之物莫不有理惟於理有未窮故其知有不盡也"
+  },
+  {
+    "segId": 248,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是以《大學》始教，必使學者即凡天下之物，莫不因其已知之理而益窮之，以求至乎其極。",
+    "page": 8,
+    "shanben": "是以大學始教必使學者即凡天申方つと下之物莫不因其巳知之理而益窮之以求至乎其極"
+  },
+  {
+    "segId": 249,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "至於用力之久，而一旦豁然貫通焉，則衆物之表裏精粗無不到，而吾心之全體大用無不明矣。",
+    "page": 8,
+    "shanben": "至於用力之乆而一旦豁然貫通焉則衆物之表裏精粗無不到而吾心之全體大用無不明矣"
+  },
+  {
+    "segId": 250,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂物格，此謂知之至也。",
+    "page": 8,
+    "shanben": "此謂物格此謂知之至也"
+  },
+  {
+    "segId": 251,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所謂誠其意者，毋自欺也。",
+    "page": 8,
+    "shanben": "所謂誠其意者毋自欺也"
+  },
+  {
+    "segId": 252,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "如惡惡臭，如好好色，此之謂自謙。",
+    "page": 8,
+    "shanben": "如惡惡臭如好好色此之謂自謙"
+  },
+  {
+    "segId": 253,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故君子必慎其獨也！",
+    "page": 8,
+    "shanben": "故君子必慎其獨也"
+  },
+  {
+    "segId": 254,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "惡、好，上字皆去聲。",
+    "page": 8,
+    "shanben": "惡好上字皆去聲"
+  },
+  {
+    "segId": 255,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "謙，讀爲慊，苦劫反。",
+    "page": 8,
+    "shanben": "謙讀爲慊苦刼反"
+  },
+  {
+    "segId": 256,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○誠其意者，自脩之首也。",
+    "page": 8,
+    "shanben": "誠其意者自脩之首也"
+  },
+  {
+    "segId": 257,
+    "score": 0.9166666666666666,
+    "orphan": false,
+    "xiandai": "毋者，禁止之辭。",
+    "page": 8,
+    "shanben": "母者禁止之辭"
+  },
+  {
+    "segId": 258,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自欺云者，知爲善以去惡，而心之所發有未實也。",
+    "page": 8,
+    "shanben": "自欺云者知爲善以去惡而心之所發有未實也"
+  },
+  {
+    "segId": 259,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "慊，快也，足也。",
+    "page": 8,
+    "shanben": "慊快也足也"
+  },
+  {
+    "segId": 260,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "獨者，人",
+    "page": 8,
+    "shanben": "獨者人"
+  },
+  {
+    "segId": 261,
+    "score": 0.9545454545454546,
+    "orphan": false,
+    "xiandai": "所不知而己所獨知之地也。",
+    "page": 9,
+    "shanben": "所不知而巳所獨知之地也"
+  },
+  {
+    "segId": 262,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言欲自脩者知爲善以去其惡，則當實用其力，而禁止其自欺。",
+    "page": 9,
+    "shanben": "言欲自脩者知爲善以去其惡則當實用其力而禁止其自欺"
+  },
+  {
+    "segId": 263,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "使其惡惡則如惡惡臭，好善則如好好色，皆務決去，而求必得之，以自快足於己，不可徒苟且以徇外而爲人也。",
+    "page": 9,
+    "shanben": "使其惡惡則如惡惡臭好善則如好好色皆務決去而求必得之以自快足於己不可徒苟且以徇外而爲人也"
+  },
+  {
+    "segId": 264,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然其實與不實，蓋有他人所不及知而己獨知之者，故必謹之於此以審其幾焉。",
+    "page": 9,
+    "shanben": "然其實與不實蓋有他人所不及知而己獨知之者故必謹之於此以審其幾焉"
+  },
+  {
+    "segId": 265,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "小人閒居爲不善，無所不至，見君子而后厭然，揜其不善，而著其善。",
+    "page": 9,
+    "shanben": "小人閒居爲不善無所不至見君子而后厭然揜其不善而著其善"
+  },
+  {
+    "segId": 266,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "人之視己，如見其肺肝然，則何益矣。",
+    "page": 9,
+    "shanben": "人之視己如見其肺肝然則何益矣"
+  },
+  {
+    "segId": 267,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂誠於中、形於外，故君子必慎其獨也。",
+    "page": 9,
+    "shanben": "此謂誠於中形於外故君子必慎其獨也"
+  },
+  {
+    "segId": 268,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "閒，音閑。",
+    "page": 9,
+    "shanben": "閒音閑"
+  },
+  {
+    "segId": 269,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "厭，鄭氏讀爲黶。",
+    "page": 9,
+    "shanben": "厭鄭氏讀爲黶"
+  },
+  {
+    "segId": 270,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○閒居，獨處也。",
+    "page": 9,
+    "shanben": "閒居獨處也"
+  },
+  {
+    "segId": 271,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "厭然，銷沮閉藏之貌。",
+    "page": 9,
+    "shanben": "厭然銷沮閉藏之貌"
+  },
+  {
+    "segId": 272,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此言小人陰爲不善，而陽欲揜之，則是非不知善之當爲與惡之當去也，但不能實用其力以至此耳。",
+    "page": 9,
+    "shanben": "此言小人隂爲不善而陽欲揜之則是非不知善之當爲與惡之當去也但不能實用其力以至此耳"
+  },
+  {
+    "segId": 273,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然欲揜其惡而卒不可揜，欲詐爲善而卒不可詐，則亦何益之有哉！",
+    "page": 9,
+    "shanben": "然欲揜其惡而卒不可揜欲詐爲善而卒不可詐則亦何益之有哉"
+  },
+  {
+    "segId": 274,
+    "score": 0.8823529411764706,
+    "orphan": false,
+    "xiandai": "此君子所\n大\n學\n以重以爲戒，而必謹其獨也。",
+    "page": 9,
+    "shanben": "此君子所以重以爲戒而必謹其獨也"
+  },
+  {
+    "segId": 275,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "曾子曰：「十目所視，十手所指，其嚴乎！",
+    "page": 9,
+    "shanben": "曾子曰十目所視十手所指其嚴乎"
+  },
+  {
+    "segId": 276,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」引此以明上文之意。",
+    "page": 9,
+    "shanben": "引此以明上文之意"
+  },
+  {
+    "segId": 277,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言雖幽獨之中，而其善惡之不可揜如此，可畏之甚也。",
+    "page": 9,
+    "shanben": "言雖幽獨之中而其善惡之不可揜如此可畏之甚也"
+  },
+  {
+    "segId": 278,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "其意。",
+    "page": 9,
+    "shanben": ""
+  },
+  {
+    "segId": 279,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "富潤屋，德潤身，心廣體胖，故君子必誠\n胖，步丹反。",
+    "page": 9,
+    "shanben": "富潤屋德潤身心廣體胖故君子必誠其意胖步丹反"
+  },
+  {
+    "segId": 280,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○胖，安舒也。",
+    "page": 9,
+    "shanben": "胖安舒也"
+  },
+  {
+    "segId": 281,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言富則能潤屋矣，德則能潤身矣，故心無愧怍，則廣大寬平，而體常舒泰，德之潤身者然也。",
+    "page": 9,
+    "shanben": "言富則能潤屋矣德則能潤身矣故心無愧怍則廣大寬平而體常舒泰德之潤身者然也"
+  },
+  {
+    "segId": 282,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋善之實於中而形於外者如此，故又言此以結之。",
+    "page": 9,
+    "shanben": "蓋善之實於中而形於外者如此故又言此以結之"
+  },
+  {
+    "segId": 283,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之六章。",
+    "page": 9,
+    "shanben": "右傳之六章"
+  },
+  {
+    "segId": 284,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋誠意。",
+    "page": 9,
+    "shanben": "釋誠意"
+  },
+  {
+    "segId": 285,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "經曰：「欲誠其意，先致其知。",
+    "page": 9,
+    "shanben": "經曰欲誠其意先致其知"
+  },
+  {
+    "segId": 286,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」又曰：「知至而后意誠。",
+    "page": 9,
+    "shanben": "又曰知至而后意誠"
+  },
+  {
+    "segId": 287,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」蓋心體之明有所未盡，則其所發必有不能實用其力，而苟焉以自欺者。",
+    "page": 9,
+    "shanben": "蓋心體之明有所未盡則其所發必有不能實用其力而苟焉以自欺者"
+  },
+  {
+    "segId": 288,
+    "score": 0.7777777777777778,
+    "orphan": false,
+    "xiandai": "然或己明而不\n「銷」，亦通。",
+    "page": 9,
+    "shanben": "然或巳明而不謹乎此則其所明又非已有"
+  },
+  {
+    "segId": 289,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "謹乎此，則其所明又非己有，而無以爲進德之基。",
+    "page": 10,
+    "shanben": ""
+  },
+  {
+    "segId": 290,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故此章之指，必承上章而通考之，然後有以見其用力之始終，其序不可亂而功不可闕如此云。",
+    "page": 10,
+    "shanben": "故此章之指必承上章而通考之然後有以見其用力之始終其序不可亂而功不可闕如此云"
+  },
+  {
+    "segId": 291,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所謂脩身在正其心者：身有所忿懥，則不得其正；",
+    "page": 10,
+    "shanben": "所謂脩身在正其心者身有所忿懥則不得其正"
+  },
+  {
+    "segId": 292,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有所恐懼，則不得其正；",
+    "page": 10,
+    "shanben": "有所恐懼則不得其正"
+  },
+  {
+    "segId": 293,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有所好樂，則不得其正；",
+    "page": 10,
+    "shanben": "有所好樂則不得其正"
+  },
+  {
+    "segId": 294,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有所憂患，則不得其正。",
+    "page": 10,
+    "shanben": "有所憂患則不得其正"
+  },
+  {
+    "segId": 295,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "程子曰：「身有之身。",
+    "page": 10,
+    "shanben": "程子曰身有之身"
+  },
+  {
+    "segId": 296,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」忿，弗粉反。",
+    "page": 10,
+    "shanben": "忿弗粉反"
+  },
+  {
+    "segId": 297,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "憶，敕值反。",
+    "page": 10,
+    "shanben": "懥敕值反"
+  },
+  {
+    "segId": 298,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "好、樂，並去聲。",
+    "page": 10,
+    "shanben": "好樂並去聲"
+  },
+  {
+    "segId": 299,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○忿懥，怒也。",
+    "page": 10,
+    "shanben": "忿懥怒也"
+  },
+  {
+    "segId": 300,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋是四者，皆心之用，而人所不能無者。",
+    "page": 10,
+    "shanben": "蓋是四者皆心之用而人所不能無者"
+  },
+  {
+    "segId": 301,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然一有之而不能察，則欲動情勝，而其用之所行，或不能不失其正矣。",
+    "page": 10,
+    "shanben": "然一有之而不能察則欲動情勝而其用之所行或不能不失其正矣"
+  },
+  {
+    "segId": 302,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "心不在焉，視而不見，聽而不聞，食而不知其味。",
+    "page": 10,
+    "shanben": "心不在焉視而不見聽而不聞食而不知其味"
+  },
+  {
+    "segId": 303,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "心有不存，則無以檢其身，是以君子必察乎此而敬以直之，然後此心常存而身無不\n脩也。",
+    "page": 10,
+    "shanben": "心有不存則無以檢其身是以君子必察乎此而敬以直之然後此心常存而身無不脩也"
+  },
+  {
+    "segId": 304,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂脩身在正其心。",
+    "page": 10,
+    "shanben": "此謂脩身在正其心"
+  },
+  {
+    "segId": 305,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之七章。",
+    "page": 10,
+    "shanben": "右傳之七章"
+  },
+  {
+    "segId": 306,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋正心、脩身。",
+    "page": 10,
+    "shanben": "釋正心脩身"
+  },
+  {
+    "segId": 307,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此亦承上章以起下章。",
+    "page": 10,
+    "shanben": "此亦承上章以起下章"
+  },
+  {
+    "segId": 308,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓋意誠則真無惡而實有善矣，所以能存是心以檢其身。",
+    "page": 10,
+    "shanben": "蓋意誠則眞無惡而實有善矣所以能存是心以檢其身"
+  },
+  {
+    "segId": 309,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然或但知誠意，而不能密察此心之存否，則又無以直內而脩身也。",
+    "page": 10,
+    "shanben": "然或但知誠意而不能密察此心之存否則又無以直内而脩身也"
+  },
+  {
+    "segId": 310,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○自此以下，並以舊文爲正。",
+    "page": 10,
+    "shanben": "自此以下並以舊文爲正"
+  },
+  {
+    "segId": 311,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所謂齊其家在脩其身者：人之其所親愛而辟焉，之其所賤惡而辟焉，之其所畏敬而辟焉，之其所哀矜而辟焉，之其所敖惰而辟焉。",
+    "page": 10,
+    "shanben": "所謂齊其家在脩其身者人之其所親愛而辟焉之其所賤惡而辟焉之其所畏敬而辟焉之其所哀矜而辟焉之其所敖惰而辟焉"
+  },
+  {
+    "segId": 312,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故好而知其惡，惡而知其美者，天下鮮矣。",
+    "page": 10,
+    "shanben": "故好而知其惡惡而知其美者天下鮮矣"
+  },
+  {
+    "segId": 313,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "辟，讀爲僻。",
+    "page": 10,
+    "shanben": "辟讀爲僻"
+  },
+  {
+    "segId": 314,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "惡而之惡、敖、好，並去聲。",
+    "page": 10,
+    "shanben": "惡而之惡敖好並去聲"
+  },
+  {
+    "segId": 315,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "鮮，上聲。",
+    "page": 10,
+    "shanben": "鮮上聲"
+  },
+  {
+    "segId": 316,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○人，謂衆人。",
+    "page": 10,
+    "shanben": "人謂衆人"
+  },
+  {
+    "segId": 317,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "之，猶於也。",
+    "page": 10,
+    "shanben": "之猶於也"
+  },
+  {
+    "segId": 318,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "辟，猶偏也。",
+    "page": 10,
+    "shanben": "辟猶偏也"
+  },
+  {
+    "segId": 319,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "五者，然常人之情惟其所向而不加審焉，則必陷於",
+    "page": 10,
+    "shanben": "五者在人本有當然之則然常人之情惟其所向而不加審焉則必陷於"
+  },
+  {
+    "segId": 320,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "一偏而身不脩矣。",
+    "page": 11,
+    "shanben": "一偏而身不脩矣"
+  },
+  {
+    "segId": 321,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故諺有之曰：「人莫知其子之惡，莫知其苗之碩。",
+    "page": 11,
+    "shanben": "故諺有之曰人莫知其子之惡莫知其苗之碩"
+  },
+  {
+    "segId": 322,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n諺，音彦。",
+    "page": 11,
+    "shanben": "諺音彦"
+  },
+  {
+    "segId": 323,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "碩，叶韻，時若反。",
+    "page": 11,
+    "shanben": "碩叶韻時若反"
+  },
+  {
+    "segId": 324,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○諺，俗語也。",
+    "page": 11,
+    "shanben": "諺俗語也"
+  },
+  {
+    "segId": 325,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "溺愛者不明，貪得者無厭，是則偏之爲害，而家之所以不齊也。",
+    "page": 11,
+    "shanben": "溺愛者不明貪得者無厭是則偏之爲害而家之所以不齊也"
+  },
+  {
+    "segId": 326,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂身不脩不可以齊其家\n右傳之八章。",
+    "page": 11,
+    "shanben": "此謂身不脩不可以齊其家右傳之八章"
+  },
+  {
+    "segId": 327,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋脩身、齊家。",
+    "page": 11,
+    "shanben": "釋脩身齊家"
+  },
+  {
+    "segId": 328,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所謂治國必先齊其家者，其家不可教而能教人者，無之。",
+    "page": 11,
+    "shanben": "所謂治國必先齊其家者其家不可教而能教人者無之"
+  },
+  {
+    "segId": 329,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故君子不出家而成教於國：孝者，所以事君也；",
+    "page": 11,
+    "shanben": "故君子不出家而成教於國孝者所以事君也"
+  },
+  {
+    "segId": 330,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "弟者，所以事長也；",
+    "page": 11,
+    "shanben": "弟者所以事長也"
+  },
+  {
+    "segId": 331,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "慈者，所以使衆也。",
+    "page": 11,
+    "shanben": "慈者所以使衆也"
+  },
+  {
+    "segId": 332,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "弟，去聲。",
+    "page": 11,
+    "shanben": "弟去聲"
+  },
+  {
+    "segId": 333,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "長，上聲。",
+    "page": 11,
+    "shanben": "長上聲"
+  },
+  {
+    "segId": 334,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○身脩，則家可教矣；",
+    "page": 11,
+    "shanben": "身脩則家可教矣"
+  },
+  {
+    "segId": 335,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "孝、弟、慈，所以脩身而教於家者也；",
+    "page": 11,
+    "shanben": "孝弟慈所以脩身而教於家者也"
+  },
+  {
+    "segId": 336,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "然而國之所以事君、事長、使衆之道，不外乎此。",
+    "page": 11,
+    "shanben": "然而國之所以事君事長使衆之道不外乎此"
+  },
+  {
+    "segId": 337,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此所以家齊於上，而教成於下也。",
+    "page": 11,
+    "shanben": "此所以家齊於上而教成於下也"
+  },
+  {
+    "segId": 338,
+    "score": 0.7777777777777778,
+    "orphan": false,
+    "xiandai": "大\n學\n《康誥》曰：「如保赤子。",
+    "page": 11,
+    "shanben": "康誥曰如保赤子"
+  },
+  {
+    "segId": 339,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」心誠求之，雖不中，不遠矣。",
+    "page": 11,
+    "shanben": "心誠求之雖不中不遠矣"
+  },
+  {
+    "segId": 340,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "未有學養子而后嫁者也。",
+    "page": 11,
+    "shanben": "未有學養子而后嫁者也"
+  },
+  {
+    "segId": 341,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "中，去聲。",
+    "page": 11,
+    "shanben": "中去聲"
+  },
+  {
+    "segId": 342,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○此引《書》而釋之，又明立教之本不假强爲，在識其端而推廣之耳。",
+    "page": 11,
+    "shanben": "此引書而釋之又明立教之本不假強爲在識其端而推廣之耳"
+  },
+  {
+    "segId": 343,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "一家仁，一國興仁；",
+    "page": 11,
+    "shanben": "一家仁一國興仁"
+  },
+  {
+    "segId": 344,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "一家讓，一國興讓；",
+    "page": 11,
+    "shanben": "一家讓一國興讓"
+  },
+  {
+    "segId": 345,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "一人貪戾，一國作亂：其機如此。",
+    "page": 11,
+    "shanben": "一人貪戾一國作亂其機如此"
+  },
+  {
+    "segId": 346,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂一言僨事，一人定國。",
+    "page": 11,
+    "shanben": "此謂一言僨事一人定國"
+  },
+  {
+    "segId": 347,
+    "score": 0.8333333333333334,
+    "orphan": false,
+    "xiandai": "債，音奮。",
+    "page": 11,
+    "shanben": "償音奮"
+  },
+  {
+    "segId": 348,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○一人，謂君也。",
+    "page": 11,
+    "shanben": "一人謂君也"
+  },
+  {
+    "segId": 349,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "機，發動所由也。",
+    "page": 11,
+    "shanben": "機發動所由也"
+  },
+  {
+    "segId": 350,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "債，覆敗也。",
+    "page": 11,
+    "shanben": "償覆敗也"
+  },
+  {
+    "segId": 351,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此言教成於國之效。",
+    "page": 11,
+    "shanben": "此言教成於國之效"
+  },
+  {
+    "segId": 352,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "堯、舜帥天下以仁，而民從之；",
+    "page": 11,
+    "shanben": "堯舜帥天下以仁而民從之"
+  },
+  {
+    "segId": 353,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "桀、紂帥天下以暴，而民從之；",
+    "page": 11,
+    "shanben": "桀紂帥天下以暴而民從之"
+  },
+  {
+    "segId": 354,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其所令反其所好，而民不從。",
+    "page": 11,
+    "shanben": "其所令反其所好而民不從"
+  },
+  {
+    "segId": 355,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。",
+    "page": 11,
+    "shanben": "是故君子有諸己而后求諸人所藏乎身不恕而能喻諸人"
+  },
+  {
+    "segId": 356,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所藏乎身不恕，而能喻諸人者，未之有也。",
+    "page": 11,
+    "shanben": "所藏乎身不恕而能喻諸人者未之有也"
+  },
+  {
+    "segId": 357,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "「無諸己而后非諸人」，原脱。",
+    "page": 11,
+    "shanben": ""
+  },
+  {
+    "segId": 358,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "好，去聲。",
+    "page": 12,
+    "shanben": "好去聲"
+  },
+  {
+    "segId": 359,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○此又承上文一人定國而言。",
+    "page": 12,
+    "shanben": "此又承上文一人定國而言"
+  },
+  {
+    "segId": 360,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有善於己，然後可以責人之善；",
+    "page": 12,
+    "shanben": "有善於己然後可以責人之善"
+  },
+  {
+    "segId": 361,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "無惡於己，然後可以正人之惡。",
+    "page": 12,
+    "shanben": "無惡於己然後可以正人之惡"
+  },
+  {
+    "segId": 362,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "皆推己以及人，所謂恕也。",
+    "page": 12,
+    "shanben": "皆推己以及人所謂恕也"
+  },
+  {
+    "segId": 363,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "不如是，則所令反其所好，而民不從矣。",
+    "page": 12,
+    "shanben": "不如是則所令反其所好而民不從矣"
+  },
+  {
+    "segId": 364,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "喻，曉也。",
+    "page": 12,
+    "shanben": "喻曉也"
+  },
+  {
+    "segId": 365,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故治國在齊其家。",
+    "page": 12,
+    "shanben": "故治國在齊其家"
+  },
+  {
+    "segId": 366,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "通結上文。",
+    "page": 12,
+    "shanben": "通結上文"
+  },
+  {
+    "segId": 367,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「桃之夭夭，其葉蓁蓁；",
+    "page": 12,
+    "shanben": "詩云桃之夭夭其葉蓁蓁"
+  },
+  {
+    "segId": 368,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "之子于歸，宜其家人。",
+    "page": 12,
+    "shanben": "之子于歸宜其家人"
+  },
+  {
+    "segId": 369,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "宜其家人，而后可以教國人。",
+    "page": 12,
+    "shanben": "宜其家人而后可以教國人"
+  },
+  {
+    "segId": 370,
+    "score": 0.8333333333333334,
+    "orphan": false,
+    "xiandai": "天，平聲。",
+    "page": 12,
+    "shanben": "夭平聲"
+  },
+  {
+    "segId": 371,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓁，音臻。",
+    "page": 12,
+    "shanben": "蓁音臻"
+  },
+  {
+    "segId": 372,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "○《詩》，《周南·桃夭》之篇。",
+    "page": 12,
+    "shanben": "詩周南桃夭之篇"
+  },
+  {
+    "segId": 373,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "夭夭，少好貌。",
+    "page": 12,
+    "shanben": "夭夭少好貌"
+  },
+  {
+    "segId": 374,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "蓁蓁，美盛貌。",
+    "page": 12,
+    "shanben": "蓁蓁美盛貌"
+  },
+  {
+    "segId": 375,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "興也。",
+    "page": 12,
+    "shanben": "興也"
+  },
+  {
+    "segId": 376,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "之子，猶言是子，此指女子之嫁者而言也。",
+    "page": 12,
+    "shanben": "之子猶言是子此指女子之嫁者而言也"
+  },
+  {
+    "segId": 377,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "婦人謂嫁曰歸。",
+    "page": 12,
+    "shanben": "婦人謂嫁曰歸"
+  },
+  {
+    "segId": 378,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "宜，猶善也。",
+    "page": 12,
+    "shanben": "宜猶善也"
+  },
+  {
+    "segId": 379,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「宜兄宜弟。",
+    "page": 12,
+    "shanben": "詩云宜兄宜弟"
+  },
+  {
+    "segId": 380,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」宜兄宜弟，而后可以教國人。",
+    "page": 12,
+    "shanben": "宜兄宜弟而后可以教國人"
+  },
+  {
+    "segId": 381,
+    "score": 0.8571428571428571,
+    "orphan": false,
+    "xiandai": "《詩》，《小雅·蓼蕭》篇。",
+    "page": 12,
+    "shanben": "詩小雅蓼蕭篇"
+  },
+  {
+    "segId": 382,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「其儀不忒，正是四國。",
+    "page": 12,
+    "shanben": "詩云其儀不忒正是四國"
+  },
+  {
+    "segId": 383,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」其爲父子\n兄弟足法，而后民法之也。",
+    "page": 12,
+    "shanben": "其爲父子兄弟足法而后民法之也"
+  },
+  {
+    "segId": 384,
+    "score": 0.8571428571428571,
+    "orphan": false,
+    "xiandai": "《詩》，《曹風·鳲鳩》篇。",
+    "page": 12,
+    "shanben": "詩曹風鳲鳩篇"
+  },
+  {
+    "segId": 385,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "忒，差也。",
+    "page": 12,
+    "shanben": "忒差也"
+  },
+  {
+    "segId": 386,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂治國在齊其家。",
+    "page": 12,
+    "shanben": "此謂治國在齊其家"
+  },
+  {
+    "segId": 387,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此三引《詩》，皆以詠歎上文之事，而又結之如此。",
+    "page": 12,
+    "shanben": "此三引詩皆以咏歎上文之事而又結之如此"
+  },
+  {
+    "segId": 388,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其味深長，最宜潛玩。",
+    "page": 12,
+    "shanben": "其味深長最宜潛玩"
+  },
+  {
+    "segId": 389,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之九章。",
+    "page": 12,
+    "shanben": "右傳之九章"
+  },
+  {
+    "segId": 390,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋齊家、治國。",
+    "page": 12,
+    "shanben": "釋齊家治國"
+  },
+  {
+    "segId": 391,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所謂平天下在治其國者：上老老而民興孝，上長長而民興弟，上恤孤而民不倍，是以君子有絜矩之道也。",
+    "page": 12,
+    "shanben": "所謂平天下在治其國者上老老而民興孝上長長而民興弟上恤孤而民不倍是以君子有絜矩之道也"
+  },
+  {
+    "segId": 392,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "長，上聲。",
+    "page": 12,
+    "shanben": "長上聲"
+  },
+  {
+    "segId": 393,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "弟，去聲。",
+    "page": 12,
+    "shanben": "弟去聲"
+  },
+  {
+    "segId": 394,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "倍，與背同。",
+    "page": 12,
+    "shanben": "倍與背同"
+  },
+  {
+    "segId": 395,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "絜，胡結反。",
+    "page": 12,
+    "shanben": "絜胡結反"
+  },
+  {
+    "segId": 396,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○老老，所謂老吾老也。",
+    "page": 12,
+    "shanben": "老老所謂老吾老也"
+  },
+  {
+    "segId": 397,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "興，謂有所感發而興起也。",
+    "page": 12,
+    "shanben": "興謂有所感發而興起也"
+  },
+  {
+    "segId": 398,
+    "score": 0.9375,
+    "orphan": false,
+    "xiandai": "孤者，幼而無父之稱。",
+    "page": 12,
+    "shanben": "孤者㓜而無父之稱"
+  },
+  {
+    "segId": 399,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "絜，度也。",
+    "page": 12,
+    "shanben": "絜度也"
+  },
+  {
+    "segId": 400,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "矩，所以爲方也。",
+    "page": 12,
+    "shanben": "矩所以爲方也"
+  },
+  {
+    "segId": 401,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言此三者，上行下效，捷於影響，所謂家齊而國治也。",
+    "page": 12,
+    "shanben": "言此三者上行下效捷於影響所謂家齊而國治也"
+  },
+  {
+    "segId": 402,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "亦可以見人心之所同，而不可使有一夫之不獲矣。",
+    "page": 12,
+    "shanben": "亦可以見人心之所同而不可使有一夫之不獲矣"
+  },
+  {
+    "segId": 403,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是以君子必當因其所同，推以度",
+    "page": 12,
+    "shanben": "是以君子必當因其所同推以度"
+  },
+  {
+    "segId": 404,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "物，使彼我之間各得分願，則上下四旁均齊方正，而天下平矣。",
+    "page": 13,
+    "shanben": "物使彼我之閒各得分願則上下四旁均齊方正而天下平矣"
+  },
+  {
+    "segId": 405,
+    "score": 0.9375,
+    "orphan": false,
+    "xiandai": "所惡於上，毋以使下；",
+    "page": 13,
+    "shanben": "所惡於上母以使下所惡於下"
+  },
+  {
+    "segId": 406,
+    "score": 0.75,
+    "orphan": false,
+    "xiandai": "所惡於下，毋以事上；",
+    "page": 13,
+    "shanben": "所惡於前母以先後所惡於後"
+  },
+  {
+    "segId": 407,
+    "score": 0.75,
+    "orphan": false,
+    "xiandai": "所惡於前，毋以先後；",
+    "page": 13,
+    "shanben": "所惡於右母以交於左所惡於"
+  },
+  {
+    "segId": 408,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "所惡於後，毋以從前；",
+    "page": 13,
+    "shanben": ""
+  },
+  {
+    "segId": 409,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "所惡於右，毋以交於左；",
+    "page": 13,
+    "shanben": ""
+  },
+  {
+    "segId": 410,
+    "score": 0.78125,
+    "orphan": false,
+    "xiandai": "所惡於左，毋以交於右：此之謂絜矩之道。",
+    "page": 13,
+    "shanben": "左母以交於右此之謂絜矩之道"
+  },
+  {
+    "segId": 411,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "惡、先，並去聲。",
+    "page": 13,
+    "shanben": "惡先並去聲"
+  },
+  {
+    "segId": 412,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○此覆解上文「絜矩」二字之義。",
+    "page": 13,
+    "shanben": "此覆解上文絜矩二字之義"
+  },
+  {
+    "segId": 413,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "如不欲上之無禮於我，則必以此度下之心，而亦不敢以此無禮使之。",
+    "page": 13,
+    "shanben": "如不欲上之無禮於我則必以此度下之心而亦不敢以此無禮使之"
+  },
+  {
+    "segId": 414,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "不欲下之不忠於我，則必以此度上之心，而亦不敢以此不忠事之。",
+    "page": 13,
+    "shanben": "不欲下之不忠於我則必以此度上之心而亦不敢以此不忠事之"
+  },
+  {
+    "segId": 415,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "至於前後左右，無不皆然，則身之所處，上下四旁，長短廣狹，彼此如一，而無不方矣。",
+    "page": 13,
+    "shanben": "至於前後左右無不皆然則身之所處上下四旁長短廣狹彼此如一而無不方矣"
+  },
+  {
+    "segId": 416,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "彼同有是心而興起焉者，又豈有一夫之不獲哉？",
+    "page": 13,
+    "shanben": "彼同有是心而興起焉者又豈有一夫之不獲哉"
+  },
+  {
+    "segId": 417,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所操者約，而所及者廣，此平天下之要道也。",
+    "page": 13,
+    "shanben": "所操者約而所及者廣此平天下之要道也"
+  },
+  {
+    "segId": 418,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "故章内之意，皆自此而推之。",
+    "page": 13,
+    "shanben": "故章內之意皆自此而推之"
+  },
+  {
+    "segId": 419,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「樂只君子，民之父母。",
+    "page": 13,
+    "shanben": "詩云樂只君子民之父母"
+  },
+  {
+    "segId": 420,
+    "score": 0.9047619047619048,
+    "orphan": false,
+    "xiandai": "」民之所好大學\n好之，民之所惡惡之，此之謂民之父母。",
+    "page": 13,
+    "shanben": "民之所好好之民之所惡惡之此之謂民之父母"
+  },
+  {
+    "segId": 421,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "樂，音洛。",
+    "page": 13,
+    "shanben": "樂音洛"
+  },
+  {
+    "segId": 422,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "只，音紙。",
+    "page": 13,
+    "shanben": "只音紙"
+  },
+  {
+    "segId": 423,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "好、惡，並去聲。",
+    "page": 13,
+    "shanben": "好惡並去聲"
+  },
+  {
+    "segId": 424,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "下並同。",
+    "page": 13,
+    "shanben": "下並同"
+  },
+  {
+    "segId": 425,
+    "score": 0.9,
+    "orphan": false,
+    "xiandai": "《詩》，《小雅·南山有臺》之篇。",
+    "page": 13,
+    "shanben": "詩小雅南山有臺之篇"
+  },
+  {
+    "segId": 426,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "只，語助辭。",
+    "page": 13,
+    "shanben": "只語助辭"
+  },
+  {
+    "segId": 427,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言能絜矩而以民心爲己心，則是愛民如子，而民愛之如父母矣。",
+    "page": 13,
+    "shanben": "言能絜矩而以民心爲己心則是愛民如子而民愛之如父母矣"
+  },
+  {
+    "segId": 428,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「節彼南山，維石巖巖。",
+    "page": 13,
+    "shanben": "詩云節彼南山維石巖巖"
+  },
+  {
+    "segId": 429,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "赫赫師尹，民具爾瞻。",
+    "page": 13,
+    "shanben": "赫赫師尹民具爾瞻"
+  },
+  {
+    "segId": 430,
+    "score": 0.9,
+    "orphan": false,
+    "xiandai": "有國者不可以不慎，辟則爲天下僇矣。",
+    "page": 13,
+    "shanben": "有國者不可以不慎辟則爲天節讀爲截辟讀爲僻慘與戮"
+  },
+  {
+    "segId": 431,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "節，讀爲截。",
+    "page": 13,
+    "shanben": "節讀爲截"
+  },
+  {
+    "segId": 432,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "辟，讀爲僻。",
+    "page": 13,
+    "shanben": "辟讀爲僻"
+  },
+  {
+    "segId": 433,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "僇，與戮同。",
+    "page": 13,
+    "shanben": "慘與戮同"
+  },
+  {
+    "segId": 434,
+    "score": 0.8888888888888888,
+    "orphan": false,
+    "xiandai": "《詩》，《小雅·節南山》之篇。",
+    "page": 13,
+    "shanben": "詩小雅節南山之篇"
+  },
+  {
+    "segId": 435,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "節，截然高大貌。",
+    "page": 13,
+    "shanben": "節截然髙大貌"
+  },
+  {
+    "segId": 436,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "師尹，周太師尹氏也。",
+    "page": 13,
+    "shanben": "師尹周太師尹氏也"
+  },
+  {
+    "segId": 437,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "具，俱也。",
+    "page": 13,
+    "shanben": "具俱也"
+  },
+  {
+    "segId": 438,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "辟，偏也。",
+    "page": 13,
+    "shanben": "辟偏也"
+  },
+  {
+    "segId": 439,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言在上者人所瞻仰，不可不謹。",
+    "page": 13,
+    "shanben": "言在上者人所瞻仰不可不謹"
+  },
+  {
+    "segId": 440,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "若不能絜矩而好惡徇於一己之偏，則身弑國亡，爲天下之大戮矣。",
+    "page": 13,
+    "shanben": "若不能絜矩而好惡徇於一己之偏則身弑國亡爲天下之大戮矣"
+  },
+  {
+    "segId": 441,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《詩》云：「殷之未喪師，克配上帝。",
+    "page": 13,
+    "shanben": "詩云殷之未喪師克配上帝"
+  },
+  {
+    "segId": 442,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "儀監于殷，峻命不易。",
+    "page": 13,
+    "shanben": "儀監于殷命不易"
+  },
+  {
+    "segId": 443,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道得衆則得國，失衆則失國。",
+    "page": 13,
+    "shanben": "道得衆則得國失衆則失國"
+  },
+  {
+    "segId": 444,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "喪，去聲。",
+    "page": 13,
+    "shanben": "喪去聲"
+  },
+  {
+    "segId": 445,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "儀，《詩》作宜。",
+    "page": 13,
+    "shanben": "儀詩作宜"
+  },
+  {
+    "segId": 446,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "峻，《詩》作駿。",
+    "page": 13,
+    "shanben": "峻詩作駿"
+  },
+  {
+    "segId": 447,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "易，去聲。",
+    "page": 14,
+    "shanben": "易去聲"
+  },
+  {
+    "segId": 448,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○《詩》，《文王》篇。",
+    "page": 14,
+    "shanben": "詩文王篇"
+  },
+  {
+    "segId": 449,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "師，衆也。",
+    "page": 14,
+    "shanben": "師衆也"
+  },
+  {
+    "segId": 450,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "配，對也。",
+    "page": 14,
+    "shanben": "配對也"
+  },
+  {
+    "segId": 451,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "配上帝，言其爲天下君，而對乎上帝也。",
+    "page": 14,
+    "shanben": "配上帝言其爲天下君而對乎上帝也"
+  },
+  {
+    "segId": 452,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "監，視也。",
+    "page": 14,
+    "shanben": "監視也"
+  },
+  {
+    "segId": 453,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "峻，大也。",
+    "page": 14,
+    "shanben": "峻大也"
+  },
+  {
+    "segId": 454,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "不易，言難保也。",
+    "page": 14,
+    "shanben": "不易言難保也"
+  },
+  {
+    "segId": 455,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道，言也。",
+    "page": 14,
+    "shanben": "道言也"
+  },
+  {
+    "segId": 456,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "引《詩》而言此，以結上文兩節之意。",
+    "page": 14,
+    "shanben": "引詩而言此以結上文兩節之意"
+  },
+  {
+    "segId": 457,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有天下者，能存此心而不失，則所以絜矩而與民同欲者，自不能已矣。",
+    "page": 14,
+    "shanben": "有天下者能存此心而不失則所以絜矩而與民同欲者自不能巳矣"
+  },
+  {
+    "segId": 458,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是故君子先慎乎德。",
+    "page": 14,
+    "shanben": "是故君子先慎乎德"
+  },
+  {
+    "segId": 459,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有德此有人，有人此有土，有土此有財，有財此有用。",
+    "page": 14,
+    "shanben": "有德此有人有人此有土有土此有財有財此有用"
+  },
+  {
+    "segId": 460,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "先謹乎德，承上文不可不謹而言。",
+    "page": 14,
+    "shanben": "先謹乎德承上文不可不謹而言"
+  },
+  {
+    "segId": 461,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "德，即所謂明德。",
+    "page": 14,
+    "shanben": "德即所謂明德"
+  },
+  {
+    "segId": 462,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有人，謂得衆。",
+    "page": 14,
+    "shanben": "有人謂得衆"
+  },
+  {
+    "segId": 463,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有土，謂得國。",
+    "page": 14,
+    "shanben": "有土謂得國"
+  },
+  {
+    "segId": 464,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "有國，則不患無財用矣。",
+    "page": 14,
+    "shanben": "有國則不患無財用矣"
+  },
+  {
+    "segId": 465,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "德者，本也；",
+    "page": 14,
+    "shanben": "德者本也"
+  },
+  {
+    "segId": 466,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "財者，末也。",
+    "page": 14,
+    "shanben": "財者末也"
+  },
+  {
+    "segId": 467,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "本上文而言。",
+    "page": 14,
+    "shanben": "本上文而言"
+  },
+  {
+    "segId": 468,
+    "score": 0.9375,
+    "orphan": false,
+    "xiandai": "外本内末，争民施奪。",
+    "page": 14,
+    "shanben": "外本内末爭民施奪"
+  },
+  {
+    "segId": 469,
+    "score": 0.96,
+    "orphan": false,
+    "xiandai": "人君以德爲外，以財爲内，則是争鬭其民，而施之以劫奪之教也。",
+    "page": 14,
+    "shanben": "人君以德爲外以財爲内則是爭鬪其民而施之以刼奪之教也"
+  },
+  {
+    "segId": 470,
+    "score": 0.9791666666666666,
+    "orphan": false,
+    "xiandai": "蓋財者人之所同\n欲，不能絜矩而欲專之，則民亦起而争奪矣。",
+    "page": 14,
+    "shanben": "蓋財者人之所同欲不能絜矩而欲專之則民亦起而爭奪矣"
+  },
+  {
+    "segId": 471,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是故財聚則民散，財散則民聚。",
+    "page": 14,
+    "shanben": "是故財聚則民散財散則民聚"
+  },
+  {
+    "segId": 472,
+    "score": 0.9642857142857143,
+    "orphan": false,
+    "xiandai": "外本内末故財聚，争民施奪故民散。",
+    "page": 14,
+    "shanben": "外本内末故財聚爭民施奪故民散"
+  },
+  {
+    "segId": 473,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "反是，則有德而有人矣。",
+    "page": 14,
+    "shanben": "反是則有德而有人矣"
+  },
+  {
+    "segId": 474,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是故言悖而出者，亦悖而入；",
+    "page": 14,
+    "shanben": "是故言悖而出者亦悖而入"
+  },
+  {
+    "segId": 475,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "貨悖而入者，亦悖而出。",
+    "page": 14,
+    "shanben": "貨悖而入者亦悖而出"
+  },
+  {
+    "segId": 476,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "悖，布内反。",
+    "page": 14,
+    "shanben": "悖布内反"
+  },
+  {
+    "segId": 477,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○悖，逆也。",
+    "page": 14,
+    "shanben": "悖逆也"
+  },
+  {
+    "segId": 478,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此以言之出入，明貨之出入也。",
+    "page": 14,
+    "shanben": "此以言之出入明貨之出入也"
+  },
+  {
+    "segId": 479,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自先謹乎德以下至此，又因財貨以明能絜矩與不能者之得失也。",
+    "page": 14,
+    "shanben": "自先謹乎德以下至此又因財貨以明能絜矩與不能者之得失也"
+  },
+  {
+    "segId": 480,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《康誥》曰：「惟命不于常！",
+    "page": 14,
+    "shanben": "康誥曰惟命不于常"
+  },
+  {
+    "segId": 481,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」道善則得之，不善則失之矣。",
+    "page": 14,
+    "shanben": "道善則得之不善則失之矣"
+  },
+  {
+    "segId": 482,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道，言也。",
+    "page": 14,
+    "shanben": "道言也"
+  },
+  {
+    "segId": 483,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "因上文引《文王》詩之意而申言之，其丁寧反覆之意益深切矣。",
+    "page": 14,
+    "shanben": "因上文引文王詩之意而申言之其丁寧反覆之意益深切矣"
+  },
+  {
+    "segId": 484,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《楚書》曰：「楚國無以爲寶，惟善以爲寶。",
+    "page": 14,
+    "shanben": "楚書曰楚國無以爲寶惟善以爲寶"
+  },
+  {
+    "segId": 485,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n《楚書》，《楚語》。",
+    "page": 14,
+    "shanben": "楚書楚語"
+  },
+  {
+    "segId": 486,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言不寶金玉而寶善人也。",
+    "page": 14,
+    "shanben": "言不寶金玉而寶善人也"
+  },
+  {
+    "segId": 487,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "舅犯曰：「亡人無以爲寶，仁親以爲寶。",
+    "page": 15,
+    "shanben": "舅犯曰亡人無以爲寶仁親以爲寶"
+  },
+  {
+    "segId": 488,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n舅犯，晉文公舅狐偃，字子犯。",
+    "page": 15,
+    "shanben": "舅犯晉文公舅狐偃字子犯"
+  },
+  {
+    "segId": 489,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "亡人，文公時爲公子，出亡在外也。",
+    "page": 15,
+    "shanben": "亡人文公時爲公子出亡在外也"
+  },
+  {
+    "segId": 490,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "仁，愛也。",
+    "page": 15,
+    "shanben": "仁愛也"
+  },
+  {
+    "segId": 491,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "事見《檀弓》。",
+    "page": 15,
+    "shanben": "事見檀弓"
+  },
+  {
+    "segId": 492,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此兩節又明不外本而内末之意。",
+    "page": 15,
+    "shanben": "此兩節又明不外本而内末之意"
+  },
+  {
+    "segId": 493,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "《秦誓》曰：「若有一个臣，斷斷兮無他技，其心休休焉，其如有容焉。",
+    "page": 15,
+    "shanben": "秦誓曰若有一个臣斷斷兮無他技其心休休焉其如有容焉"
+  },
+  {
+    "segId": 494,
+    "score": 0.9875,
+    "orphan": false,
+    "xiandai": "人之有技，若己有之，人之彦聖，其心好之，不啻若自其口出，寔能容之，以能保我子孫黎民，尚亦有利哉。",
+    "page": 15,
+    "shanben": "人之有技若已有之人之彦聖其心好之不啻若自其口出寔能容之以能保我子孫黎民尚亦有利哉"
+  },
+  {
+    "segId": 495,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "人之有技，媢疾以惡之，人之彦聖，而違之俾不通，寔不能容，以不能保我子孫黎民，亦曰殆哉。",
+    "page": 15,
+    "shanben": "人之有技媢疾以惡之人之彦聖而違之俾不通寔不能容以不能保我子孫黎民亦曰殆哉"
+  },
+  {
+    "segId": 496,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」\n个，古賀反，《書》作介。",
+    "page": 15,
+    "shanben": "个古賀反書作介"
+  },
+  {
+    "segId": 497,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "斷，丁亂反。",
+    "page": 15,
+    "shanben": "斷丁亂反"
+  },
+  {
+    "segId": 498,
+    "score": 0.8333333333333334,
+    "orphan": false,
+    "xiandai": "媚，音冒。",
+    "page": 15,
+    "shanben": "媢音冒"
+  },
+  {
+    "segId": 499,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○《秦誓》，《周書》。",
+    "page": 15,
+    "shanben": "秦誓周書"
+  },
+  {
+    "segId": 500,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "斷斷，誠一之貌。",
+    "page": 15,
+    "shanben": "斷斷誠一之貌"
+  },
+  {
+    "segId": 501,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "彦，美士也。",
+    "page": 15,
+    "shanben": "彦美士也"
+  },
+  {
+    "segId": 502,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "聖，通明也。",
+    "page": 15,
+    "shanben": "聖通明也"
+  },
+  {
+    "segId": 503,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "尚，庶幾也。",
+    "page": 15,
+    "shanben": "尚庶幾也"
+  },
+  {
+    "segId": 504,
+    "score": 0.8333333333333334,
+    "orphan": false,
+    "xiandai": "媚，忌也。",
+    "page": 15,
+    "shanben": "媢忌也違拂戾也殆危也"
+  },
+  {
+    "segId": 505,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "違，拂戾也。",
+    "page": 15,
+    "shanben": "違拂戾也"
+  },
+  {
+    "segId": 506,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "殆，危也。",
+    "page": 15,
+    "shanben": "殆危也"
+  },
+  {
+    "segId": 507,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "唯仁人放流之，迸諸四夷，不與同中國。",
+    "page": 15,
+    "shanben": "唯仁人放流之迸諸四夷不與同中國"
+  },
+  {
+    "segId": 508,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂唯仁人爲能愛人，能惡人。",
+    "page": 15,
+    "shanben": "此謂唯仁人爲能愛人能惡人"
+  },
+  {
+    "segId": 509,
+    "score": 0.75,
+    "orphan": false,
+    "xiandai": "大\n學\n迸，讀爲屏，古字通用。",
+    "page": 15,
+    "shanben": "逆讀爲屏古字通用"
+  },
+  {
+    "segId": 510,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○迸，猶逐也。",
+    "page": 15,
+    "shanben": "迸猶逐也"
+  },
+  {
+    "segId": 511,
+    "score": 0.9772727272727273,
+    "orphan": false,
+    "xiandai": "言有此娼疾之人，妨賢而病國，則仁人必深惡而痛絕之。",
+    "page": 15,
+    "shanben": "言有此媢疾之人妨賢而病國則仁人必深惡而痛絕之"
+  },
+  {
+    "segId": 512,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "以其至公無私，故能得好惡之正如此也。",
+    "page": 15,
+    "shanben": "以其至公無私故能得好惡之正如此也"
+  },
+  {
+    "segId": 513,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "見賢而不能舉，舉而不能先，命也；",
+    "page": 15,
+    "shanben": "見賢而不能舉舉而不能先命也"
+  },
+  {
+    "segId": 514,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "見不善而不能退，退而不能遠，過也。",
+    "page": 15,
+    "shanben": "見不善而不能退退而不能遠過也"
+  },
+  {
+    "segId": 515,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "命，未詳孰是。",
+    "page": 15,
+    "shanben": ""
+  },
+  {
+    "segId": 516,
+    "score": 0,
+    "orphan": true,
+    "xiandai": "遠，去聲。",
+    "page": 15,
+    "shanben": ""
+  },
+  {
+    "segId": 517,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○若此者，知所愛惡矣，而未能盡愛惡之道，蓋君子而未仁者也。",
+    "page": 15,
+    "shanben": "若此者知所愛惡矣而未能盡愛惡之道蓋君子而未仁者也"
+  },
+  {
+    "segId": 518,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "好人之所惡，惡人之所好，是謂拂人之性，菑必逮夫身。",
+    "page": 15,
+    "shanben": "好人之所惡惡人之所好是謂拂人之性菑必逮夫身"
+  },
+  {
+    "segId": 519,
+    "score": 0.875,
+    "orphan": false,
+    "xiandai": "菑，古灾字。",
+    "page": 15,
+    "shanben": "蓄古灾字"
+  },
+  {
+    "segId": 520,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "夫，音扶。",
+    "page": 15,
+    "shanben": "夫音扶"
+  },
+  {
+    "segId": 521,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○拂，逆也。",
+    "page": 15,
+    "shanben": "拂逆也"
+  },
+  {
+    "segId": 522,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "好善而惡惡，人之性也。",
+    "page": 15,
+    "shanben": "好善而惡惡人之性也"
+  },
+  {
+    "segId": 523,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "至於拂人之性，則不仁之甚者也。",
+    "page": 15,
+    "shanben": "至於拂人之性則不仁之甚者也"
+  },
+  {
+    "segId": 524,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自《秦誓》至此，又皆以申言好惡公私之極，以明上文所引《南山有臺》、《節南山》之意。",
+    "page": 15,
+    "shanben": "自秦誓至此又皆以申言好惡公私之極以明上文所引南山有臺節南山之意"
+  },
+  {
+    "segId": 525,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "是故君子有大道，必忠信以得之，驕泰以",
+    "page": 15,
+    "shanben": "是故君子有大道必忠信以得之驕泰以"
+  },
+  {
+    "segId": 526,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "失之。",
+    "page": 16,
+    "shanben": "失之"
+  },
+  {
+    "segId": 527,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "君子，以位言之。",
+    "page": 16,
+    "shanben": "君子以位言之"
+  },
+  {
+    "segId": 528,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "道，謂居其位而脩己治人之術。",
+    "page": 16,
+    "shanben": "道謂居其位而脩己治人之術"
+  },
+  {
+    "segId": 529,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "發己自盡爲忠，循物無違謂信。",
+    "page": 16,
+    "shanben": "發己自盡爲忠循物無違謂信"
+  },
+  {
+    "segId": 530,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "驕者矜高，泰者侈肆。",
+    "page": 16,
+    "shanben": "驕者矜髙泰者侈肆"
+  },
+  {
+    "segId": 531,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此因上所引《文王》《康誥》之意而言。",
+    "page": 16,
+    "shanben": "此因上所引文王康誥之意而言"
+  },
+  {
+    "segId": 532,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "章内三言得失，而語益加切，蓋至此而天理存亡之幾決矣。",
+    "page": 16,
+    "shanben": "章内三言得失而語益加切蓋至此而天理存亡之幾決矣"
+  },
+  {
+    "segId": 533,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "生財有大道，生之者衆，食之者寡，爲之者疾，用之者舒，則財恒足矣。",
+    "page": 16,
+    "shanben": "生財有大道生之者衆食之者寡爲之者疾用之者舒則財恒足矣"
+  },
+  {
+    "segId": 534,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "恒，胡登反。",
+    "page": 16,
+    "shanben": "恒胡登反"
+  },
+  {
+    "segId": 535,
+    "score": 0.9583333333333334,
+    "orphan": false,
+    "xiandai": "○吕氏曰：「國無遊民，則生者衆矣；",
+    "page": 16,
+    "shanben": "呂氏曰國無遊民則生者衆矣"
+  },
+  {
+    "segId": 536,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "朝無幸位，則食者寡矣；",
+    "page": 16,
+    "shanben": "朝無幸位則食者寡矣"
+  },
+  {
+    "segId": 537,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "不奪農時，則爲之疾矣；",
+    "page": 16,
+    "shanben": "不奪農時則爲之疾矣"
+  },
+  {
+    "segId": 538,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "量入爲出，則用之舒矣。",
+    "page": 16,
+    "shanben": "量入爲出則用之舒矣"
+  },
+  {
+    "segId": 539,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "」愚按：此因有土有財而言，以明足國之道在乎務本而節用，非必外本内末而後財可聚也。",
+    "page": 16,
+    "shanben": "愚按此因有土有財而言以明足國之道在乎務本而節用非必外本内末而後財可聚也"
+  },
+  {
+    "segId": 540,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "自此以至終篇，皆一意也。",
+    "page": 16,
+    "shanben": "自此以至終篇皆一意也"
+  },
+  {
+    "segId": 541,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "仁者以財發身，不仁者以身發財。",
+    "page": 16,
+    "shanben": "仁者以財發身不仁者以身發財"
+  },
+  {
+    "segId": 542,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "發，猶起也。",
+    "page": 16,
+    "shanben": "發猶起也"
+  },
+  {
+    "segId": 543,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "仁者散財以得民，不仁者亡身以殖貨。",
+    "page": 16,
+    "shanben": "仁者散財以得民不仁者亡身以殖貨"
+  },
+  {
+    "segId": 544,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "未有上好仁而下不好義者也，未有好義其事不終者也，未有府庫財非其財者也。",
+    "page": 16,
+    "shanben": "未有上好仁而下不好義者也未有好義其事不終者也未有府庫財非其財者也"
+  },
+  {
+    "segId": 545,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "上好仁以愛其下，則下好義以忠其上。",
+    "page": 16,
+    "shanben": "上好仁以愛其下則下好義以忠其上"
+  },
+  {
+    "segId": 546,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "所以事必有終，而府庫之財無悖出之患也。",
+    "page": 16,
+    "shanben": "所以事必有終而府庫之財無悖出之患也"
+  },
+  {
+    "segId": 547,
+    "score": 0.9583333333333334,
+    "orphan": false,
+    "xiandai": "孟獻子曰：「畜馬乘，不察於雞豚；",
+    "page": 16,
+    "shanben": "孟獻子曰畜馬乗不察於雞豚"
+  },
+  {
+    "segId": 548,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "伐冰之家，不畜牛羊；",
+    "page": 16,
+    "shanben": "伐冰之家不畜牛羊"
+  },
+  {
+    "segId": 549,
+    "score": 0.95,
+    "orphan": false,
+    "xiandai": "百乘之家，不畜聚斂之臣。",
+    "page": 16,
+    "shanben": "百乗之家不畜聚斂之臣與其有聚斂之臣"
+  },
+  {
+    "segId": 550,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "與其有聚斂之臣，寧有盜臣。",
+    "page": 16,
+    "shanben": "與其有聚斂之臣寧有盜臣"
+  },
+  {
+    "segId": 551,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂國不以利爲利，以義爲利也。",
+    "page": 16,
+    "shanben": "此謂國不以利爲利以義爲利也"
+  },
+  {
+    "segId": 552,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "畜，許六反。",
+    "page": 16,
+    "shanben": "畜許六反"
+  },
+  {
+    "segId": 553,
+    "score": 0.9,
+    "orphan": false,
+    "xiandai": "乘、斂，並去聲。",
+    "page": 16,
+    "shanben": "乗斂並去聲"
+  },
+  {
+    "segId": 554,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○孟獻子，魯之賢大夫仲孫蔑也。",
+    "page": 16,
+    "shanben": "孟獻子魯之賢大夫仲孫蔑也"
+  },
+  {
+    "segId": 555,
+    "score": 0.9545454545454546,
+    "orphan": false,
+    "xiandai": "畜馬乘，士初試爲大夫者也。",
+    "page": 16,
+    "shanben": "畜馬乗士初試爲大夫者也"
+  },
+  {
+    "segId": 556,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "伐冰之家，卿大夫以上，喪祭用冰者也。",
+    "page": 16,
+    "shanben": "伐冰之家卿大夫以上喪祭用冰者也"
+  },
+  {
+    "segId": 557,
+    "score": 0.9444444444444444,
+    "orphan": false,
+    "xiandai": "百乘之家，有采地者也。",
+    "page": 16,
+    "shanben": "百乗之家有采地者也"
+  },
+  {
+    "segId": 558,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "君子寧亡己之財，而不忍傷民之力，故寧有盜臣，而不畜聚斂之臣。",
+    "page": 16,
+    "shanben": "君子寧亡己之財而不忍傷民之力故寧有盜臣而不畜聚斂之臣"
+  },
+  {
+    "segId": 559,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂以下，釋獻子之言也。",
+    "page": 16,
+    "shanben": "此謂以下釋獻子之言也"
+  },
+  {
+    "segId": 560,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "長國家而務財用者，必自小人矣。",
+    "page": 16,
+    "shanben": "長國家而務財用者必自小人矣"
+  },
+  {
+    "segId": 561,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "彼爲善之，小人之使爲國家，菑害並至。",
+    "page": 16,
+    "shanben": "彼爲善之小人之使爲國家菑害並至"
+  },
+  {
+    "segId": 562,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "雖有善者，",
+    "page": 16,
+    "shanben": "雖有善者"
+  },
+  {
+    "segId": 563,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "亦無如之何矣！",
+    "page": 17,
+    "shanben": "亦無如之何矣"
+  },
+  {
+    "segId": 564,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此謂國不以利爲利，以義爲利也。",
+    "page": 17,
+    "shanben": "此謂國不以利爲利以義爲利也"
+  },
+  {
+    "segId": 565,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "長，上聲。",
+    "page": 17,
+    "shanben": "長上聲"
+  },
+  {
+    "segId": 566,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "彼爲善之，此句上下，疑有闕文誤字。",
+    "page": 17,
+    "shanben": "彼爲善之此句上下疑有闕文誤字"
+  },
+  {
+    "segId": 567,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "○自，由也。",
+    "page": 17,
+    "shanben": "自由也"
+  },
+  {
+    "segId": 568,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "言由小人導之也。",
+    "page": 17,
+    "shanben": "言由小人導之也"
+  },
+  {
+    "segId": 569,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此一節，深明以利爲利之害，而重言以結之，其丁寧之意切矣。",
+    "page": 17,
+    "shanben": "此一節深明以利爲利之害而重言以結之其丁寧之意切矣"
+  },
+  {
+    "segId": 570,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "右傳之十章。",
+    "page": 17,
+    "shanben": "右傳之十章"
+  },
+  {
+    "segId": 571,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "釋治國、平天下。",
+    "page": 17,
+    "shanben": "釋治國平天下"
+  },
+  {
+    "segId": 572,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "此章之義，務在與民同好惡而不專其利，皆推廣絜矩之意也。",
+    "page": 17,
+    "shanben": "此章之義務在與民同好惡而不專其利皆推廣絜矩之意也"
+  },
+  {
+    "segId": 573,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "能如是，則親賢樂利各得其所，而天下平矣。",
+    "page": 17,
+    "shanben": "能如是則親賢樂利各得其所而天下平矣"
+  },
+  {
+    "segId": 574,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "凡傳十章：前四章統論綱領指趣，後六章細論條目功夫。",
+    "page": 17,
+    "shanben": "凡傳十章前四章統論綱領指趣後六章細論條目功夫"
+  },
+  {
+    "segId": 575,
+    "score": 1,
+    "orphan": false,
+    "xiandai": "其第五章乃明善之要，第六章乃誠身之本，在初學尤爲當務之急，讀者不可以其近而忽之也。",
+    "page": 17,
+    "shanben": "其第五章乃明善之要第六章乃誠身之本在初學尤爲當務之急讀者不可以其近而忽之也"
+  },
+  {
+    "segId": 576,
+    "score": 0.9423076923076923,
+    "orphan": false,
+    "xiandai": "大學章句畢\n從政郎提領江淮茶鹽所準備差遣劉夢高校正\n大學",
+    "page": 17,
+    "shanben": "大學章句畢從政郎提領江淮茶鹽所準備差遣劉兼高校正當塗郡齋舊有文公語孟"
+  }
+]
