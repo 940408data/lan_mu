@@ -16,12 +16,12 @@ book:
     sub: 章句
 seed: 50837
 expect:
-  chars: 14428
-  jChars: 5378
+  chars: 13396
+  jChars: 4346
   zChars: 9050
-  columns: 607
-  halves: 76
-  leaves: 38
+  columns: 565
+  halves: 71
+  leaves: 36
 songke:
   bigPerCol: 16
   subPerCol: 25
