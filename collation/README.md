@@ -27,6 +27,7 @@ P0 装载 → P1 OCR* → P1.5 清洗 → P2 AI初校 → P2.5 视觉复核 → 
 | P3 对齐 | `src/align.js` | 只消费 P1.5 正文流；句级锚点对齐（indexOf + 编辑距离兜底，异体归一） |
 | P4 对校 | `src/diff.js` | 字级异文 + 归类（异体/真异文/ocr疑/夺/衍） |
 | P5 校书官 | `src/officer.js` + `officers/` | 四官各陈意见 → 陈列 → resolved/suspended |
+| P5-b 全篇审查/句读 | `src/full-review.js` + `tools/review-full.js` + `tools/punctuate-llm.js` | 结构阻断、模型审查建议、受校验的标点操作 |
 | P6 双本出具 | `src/export.js` + `src/punctuate.js` | 善本点校本(公开) + 现代本(私有) + 校勘记 + 质量报告 |
 | P7 人工 | `flags.yaml` + `精校台.html` | 悬置疑问 + ocr疑 + 质量闸待办终裁回写 |
 
@@ -42,6 +43,11 @@ node collation/run.js 大学章句 --step=align      # 仅对齐
 node collation/run.js 大学章句 --step=diff        # 仅对校
 node collation/run.js 大学章句 --step=officer     # 校书官裁决
 node collation/run.js 大学章句 --step=export      # 用既有 verdicts.json 出具双本
+
+# P5-b：全篇审查（真实模型；不直接改正文）
+node collation/tools/review-full.js 大学章句 --llm --write
+node collation/tools/punctuate-llm.js 大学章句 --apply
+node collation/run.js 大学章句 --step=export
 
 # 真实 LLM（置 env 后自动启用，无则 mock）
 ANTHROPIC_API_KEY=... node collation/run.js 大学章句

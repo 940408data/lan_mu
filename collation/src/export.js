@@ -18,7 +18,7 @@ const { loadWork } = require('./io');
 const { buildShanbenPunctuated, buildXiandaiText } = require('./punctuate');
 const { loadVerifications } = require('./cluster');
 const review = require('./review');
-const { publicWorkDir, privateWorkDir, internalReadPath } = require('./paths');
+const { publicWorkDir, privateWorkDir, privatePath, internalReadPath } = require('./paths');
 const { buildQualityReport } = require('./quality');
 const { loadM2Base } = require('./base');
 
@@ -50,7 +50,19 @@ function exportAll(result, workId) {
   const privateDir = privateWorkDir(workId);
   const { shanben, xiandai } = loadWork(workId);
   const m2 = loadM2Base(workId);
-  const sb = buildShanbenPunctuated(result);
+  const baselineSb = buildShanbenPunctuated(result);
+  let sb = baselineSb;
+  const punctuationFile = privatePath(workId, 'punctuation-llm.json');
+  if (fs.existsSync(punctuationFile)) {
+    try {
+      const proposal = JSON.parse(fs.readFileSync(punctuationFile, 'utf8'));
+      if (proposal.sourceHash === baselineSb.sourceHash && proposal.approved && proposal.decisions) {
+        sb = buildShanbenPunctuated(result, { decisions: proposal.decisions });
+      }
+    } catch (e) {
+      // 标点建议损坏或 hash 不匹配时回退基础标点，不阻塞其他公开产物。
+    }
+  }
   if (!result.cleaned || !result.cleaned.xiandai) throw new Error('P6 出具必须由 P1.5 清洗结果驱动');
   const cleanBlockers = [
     ...(result.cleaned.shanben.quality?.blockers || []),
@@ -59,6 +71,23 @@ function exportAll(result, workId) {
   if (cleanBlockers.length) throw new Error(`P1.5 清洗质量闸未通过：${cleanBlockers.join('；')}`);
   const xd = buildXiandaiText(result.cleaned.xiandai);
   const qualityReport = buildQualityReport(result);
+  const fullReviewFile = privatePath(workId, 'full-review.json');
+  if (fs.existsSync(fullReviewFile)) {
+    try {
+      const fullReview = JSON.parse(fs.readFileSync(fullReviewFile, 'utf8'));
+      qualityReport.fullReview = {
+        schemaVersion: fullReview.schemaVersion,
+        status: fullReview.scores?.status || null,
+        contentScore: fullReview.scores?.content ?? null,
+        modelScore: fullReview.scores?.model ?? null,
+        modelConcernScore: fullReview.scores?.modelConcern ?? null,
+        findingCount: Array.isArray(fullReview.findings) ? fullReview.findings.length : 0,
+        blockerCount: Array.isArray(fullReview.findings) ? fullReview.findings.filter(x => x.severity === 'blocker').length : 0,
+        highCount: Array.isArray(fullReview.findings) ? fullReview.findings.filter(x => x.severity === 'high').length : 0,
+        source: fullReview.source || null,
+      };
+    } catch {}
+  }
   const variants = result.variants || [];
   const clusters = result.clusters || [];
   const verdicts = result.verdicts || [];
@@ -207,6 +236,8 @@ function exportAll(result, workId) {
     schemaVersion: 1,
     work: workId,
     status: qualityReport.status,
+    sourceHash: sb.sourceHash,
+    punctuation: { source: sb === baselineSb ? 'deterministic' : 'llm-approved' },
     orphanCount: sb.orphanCount,
     segments: sb.segments,
   }, null, 2));

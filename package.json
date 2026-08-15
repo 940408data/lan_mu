@@ -14,7 +14,9 @@
     "docs": "docsify serve docs --port 8130",
     "docs:sidebar": "node tools/gen-sidebar.js",
     "collate": "node collation/run.js",
-    "collate:test": "node collation/test/cleanup.test.js",
+    "collate:test": "node collation/test/cleanup.test.js && node collation/test/p5b.test.js",
+    "collate:review": "node collation/tools/review-full.js",
+    "collate:punctuate": "node collation/tools/punctuate-llm.js",
     "collate:quality": "node collation/tools/quality-report.js",
     "collate:merge": "node collation/tools/merge-live.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"

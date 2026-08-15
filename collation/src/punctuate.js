@@ -6,6 +6,10 @@
  */
 'use strict';
 
+const crypto = require('crypto');
+
+const PUNCTUATION = new Set('，。！？；：、「」『』（）《》〈〉【】“”‘’…—,.!?;:()[]'.split(''));
+
 function sentenceEnder(raw) {
   const m = raw.match(/([。！？；])/g);
   return m ? m[m.length - 1] : '';
@@ -17,8 +21,50 @@ function segShanbenText(seg) {
   return det.filter(d => d && d.sb).map(d => d.sb.ch).join('');
 }
 
+/** 去掉句读而不做 Unicode 归一；古异体字必须原样保留。 */
+function rawPunctuationText(text) {
+  return [...String(text || '')].filter(ch => !PUNCTUATION.has(ch) && !/\s/.test(ch)).join('');
+}
+
+function punctuationSourceHash(segments) {
+  const payload = (segments || []).map(s => ({ segId: s.segId, raw: s.raw != null ? s.raw : rawPunctuationText(s.text) }));
+  return crypto.createHash('sha256').update(JSON.stringify(payload), 'utf8').digest('hex');
+}
+
+function validatePunctuationMarks(raw, marks) {
+  if (!Array.isArray(marks)) return { ok: false, reason: 'marks 不是数组' };
+  const chars = [...String(raw || '')];
+  const positions = new Set();
+  for (const m of marks) {
+    if (!m || !Number.isInteger(m.at) || m.at < 0 || m.at > chars.length) return { ok: false, reason: 'at 越界' };
+    if (typeof m.char !== 'string' || [...m.char].length !== 1 || !PUNCTUATION.has(m.char)) return { ok: false, reason: '标点不在白名单' };
+    const k = `${m.at}:${m.char}`;
+    if (positions.has(k)) return { ok: false, reason: '重复标点操作' };
+    positions.add(k);
+  }
+  return { ok: true };
+}
+
+/** 按字符位置应用标点操作；输入 raw 不得包含标点。 */
+function applyPunctuationMarks(raw, marks) {
+  const chars = [...String(raw || '')];
+  const check = validatePunctuationMarks(raw, marks);
+  if (!check.ok) throw new Error(check.reason);
+  const byAt = new Map();
+  for (const m of marks) {
+    if (!byAt.has(m.at)) byAt.set(m.at, []);
+    byAt.get(m.at).push(m.char);
+  }
+  let out = '';
+  for (let i = 0; i <= chars.length; i++) {
+    if (byAt.has(i)) out += byAt.get(i).join('');
+    if (i < chars.length) out += chars[i];
+  }
+  return out;
+}
+
 /** 善本点校本：逐段善本字 + 句末标点 → 连续点校文本（按段分行） */
-function buildShanbenPunctuated(result) {
+function buildShanbenPunctuated(result, options = {}) {
   const lines = [];
   const segments = [];
   let resolved = 0;
@@ -39,11 +85,18 @@ function buildShanbenPunctuated(result) {
     });
     if (v.length) resolved += v.length;
     // 正文与流程性校记分层；裁定只进入校勘记，不再以内联“采某本”污染正文。
-    const text = txt + punct;
+    const baseline = txt + punct;
+    const decision = options.decisions && options.decisions[String(seg.segId)];
+    let text = baseline;
+    if (decision && Array.isArray(decision.marks)) {
+      const checked = validatePunctuationMarks(txt, decision.marks);
+      if (!checked.ok) throw new Error(`seg ${seg.segId} 标点建议无效：${checked.reason}`);
+      text = applyPunctuationMarks(txt, decision.marks);
+    }
     lines.push(text);
-    segments.push({ segId: seg.segId, page: seg.shanben.detail.find(d => d.sb)?.sb.page || null, text });
+    segments.push({ segId: seg.segId, page: seg.shanben.detail.find(d => d.sb)?.sb.page || null, raw: txt, baseline, text });
   }
-  return { text: lines.join('\n'), segments, resolvedCount: resolved, orphanCount };
+  return { text: lines.join('\n'), segments, resolvedCount: resolved, orphanCount, sourceHash: punctuationSourceHash(segments) };
 }
 
 /** 现代本正文只允许来自 P1.5 清洗正文流。 */
@@ -52,4 +105,14 @@ function buildXiandaiText(ed) {
   return ed.bodyText;
 }
 
-module.exports = { buildShanbenPunctuated, buildXiandaiText, sentenceEnder, segShanbenText };
+module.exports = {
+  buildShanbenPunctuated,
+  buildXiandaiText,
+  sentenceEnder,
+  segShanbenText,
+  rawPunctuationText,
+  punctuationSourceHash,
+  validatePunctuationMarks,
+  applyPunctuationMarks,
+  PUNCTUATION,
+};
