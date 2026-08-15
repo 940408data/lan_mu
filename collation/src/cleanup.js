@@ -20,6 +20,8 @@ const PAGE_NUMBER = /^(?:第?[一二三四五六七八九十百千〇零两兩\d
 const APPARATUS_EDITION = /(?:司禮監本|[吴吳]本|元甲本|仿元本|他本|諸本|各本)/;
 const APPARATUS_ACTION = /(?:本作|本有|本無|有「[^」]*」字|無「[^」]*」字|據.+(?:改|補)|原(?:作|脫|奪)|校改)/;
 const LATEX_LEFTOVER = /\$|\^\{\s*[\d①-⑳]+\s*\}/;
+// 现代整理本页末常附刊记/校正署名，不属于正文；需在对齐前整体剥离。
+const COLOPHON_LINE = /(?:章句畢$|從政郎.*校正)/;
 
 function hash(text) {
   return crypto.createHash('sha256').update(text || '', 'utf8').digest('hex');
@@ -106,6 +108,14 @@ function cleanPage(pg, ed, ctx) {
     const raw = lines[i];
     const lineNo = i + 1;
     const next = lines[i + 1];
+
+    // 仅在现代本页末识别刊记，避免正文中的普通“校正”语句被误删。
+    if (ed.role === 'xiandai' && i >= lines.length - 3 && COLOPHON_LINE.test(compact(raw))) {
+      addRegion(page, state, {
+        kind: 'colophon', text: raw, lineNo, confidence: 0.99, rule: 'tail-colophon',
+      });
+      continue;
+    }
 
     // 版心书题被 OCR 拆成“大”/“學”两行。
     if (next && compact(raw).length === 1 && compact(next).length === 1 && compact(raw + next) === ctx.core) {

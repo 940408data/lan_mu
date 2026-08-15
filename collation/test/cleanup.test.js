@@ -46,6 +46,17 @@ assert.strictEqual(cleaned.quality.publishable, true);
 assert.strictEqual(buildXiandaiText(cleaned), cleaned.bodyText, '现代本导出必须复用唯一清洗正文源');
 assert.throws(() => buildXiandaiText(modern), /缺少 P1.5 清洗正文流/);
 
+const colophon = cleanEdition({
+  id: 'fixture-colophon', role: 'xiandai', level: 'B',
+  pages: [{
+    n: 1, raw: 'colophon', isCover: false,
+    lines: ['正文。', '大學章句畢', '從政郎提領江淮茶鹽所準備差遣劉夢高校正', '大學'],
+  }],
+}, work);
+assert.strictEqual(colophon.stats.byKind.colophon, 2, '现代本页末刊记应整体分流');
+assert(!colophon.bodyText.includes('章句畢'), '现代本刊记不得进入正文');
+assert(!colophon.bodyText.includes('從政郎'), '现代本校正署名不得进入正文');
+
 const inline = splitInlineApparatus('正文，司禮監本有「矣」字。');
 assert.deepStrictEqual(inline, { body: '正文', note: '司禮監本有「矣」字。' });
 assert.strictEqual(splitInlineApparatus('程子曰：「親，當作新。」').note, '');

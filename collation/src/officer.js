@@ -159,6 +159,9 @@ async function adjudicate(workId, opts = {}) {
   // M2 换底本后，旧裁决即使内容键相同也不能继续沿用；无指纹的历史裁决同样作废。
   verdicts = verdicts.filter(v => v.baseSha256 === m2.sha256);
   verdicts = migrateVerdicts(verdicts, targets);
+  // 即使没有新目标需要请求，也要落盘迁移后的集合；否则被丢弃的旧条目
+  // 会残留在 verdicts.json，并在后续 export 中再次混入过期裁决。
+  fs.writeFileSync(outPath, JSON.stringify(verdicts, null, 2));
   const doneIds = new Set(verdicts.map(v => v.diffId));
   const todo = targets.filter(v => !doneIds.has(v.id));
   let idx = 0, done = 0;

@@ -26,16 +26,17 @@
       "stats": {
         "pages": 17,
         "regions": 189,
-        "bodyChars": 8524,
-        "excluded": 17,
+        "bodyChars": 8500,
+        "excluded": 19,
         "byKind": {
           "section_heading": 2,
           "footnote_ref": 1,
-          "body": 169,
+          "body": 167,
           "running_head": 8,
           "collation_note": 3,
           "footnote": 5,
-          "annotation": 1
+          "annotation": 1,
+          "colophon": 2
         }
       },
       "quality": {
@@ -54,9 +55,9 @@
     "verified": true
   },
   "alignment": {
-    "segments": 575,
+    "segments": 574,
     "exact": 538,
-    "fuzzy": 34,
+    "fuzzy": 33,
     "orphan": 3,
     "lowScore": 1,
     "orphanItems": [
