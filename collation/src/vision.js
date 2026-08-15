@@ -178,6 +178,21 @@ async function gridTranscribe(b64, layout) {
   return review(b64, gridTranscribePrompt(layout), 'layout');
 }
 
+/** 列级版面判定（轻量，判经注用）：只判每列起始（顶格/退格），文字取自已验证的干净底本。
+ *  比逐格转写快得多；判经注只需列起始。逐格转写(gridTranscribe)留作复原排版专项。 */
+function gridColumnsPrompt(layout) {
+  const { cols, rows } = layout || {};
+  return `这是一页古籍扫描（竖排自右向左），版面为 ${cols || 16} 列 × ${rows || 15} 行网格，每格一字。
+对每一列（自右向左 col 从 1 起），输出三项：
+- col：列号（自右 1 起）
+- start：该列文字从哪行开始——"顶格"（第1行/最上起，对应经文）/"退一格"/"退两格"（空格后起，对应注文）
+- text：该列全部汉字，自上而下连续照录（无字的空格不计）
+只输出严格 JSON 数组（每列一项）：[{"col":1,"start":"顶格","text":"……"},{"col":2,"start":"退一格","text":"……"},...]，不要解释文字。`;
+}
+async function gridColumns(b64, layout) {
+  return review(b64, gridColumnsPrompt(layout), 'layout');
+}
+
 /** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */
 function ocrPrompt() {
   return `你是一位精通古籍识别的资深学者。请对图片中的古籍页面进行严格的原文照录：
@@ -199,4 +214,4 @@ async function ocrPage(b64) {
   return { engine: '初校(' + cfg.vision.models.first + ')', role: cfg.vision.roles.first, text: r.text, thinking };
 }
 
-module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, layoutProbe, gridTranscribe, callVision };
+module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, layoutProbe, gridTranscribe, gridColumns, callVision };
