@@ -33,7 +33,9 @@ const cmap = {}; clusters.forEach(c => cmap[c.id] = c);
 
 const logPath = privatePath(workId, 'basefix-log.json');
 const log = fs.existsSync(logPath)
-  ? JSON.parse(fs.readFileSync(logPath, 'utf8')).filter(x => x.baseSha256 === m2.sha256)
+  ? JSON.parse(fs.readFileSync(logPath, 'utf8')).map(x => x.baseSha256
+    ? x
+    : { ...x, baseSha256: m2.sha256, provenance: 'legacy-migrated' })
   : [];
 
 let applied = 0, skipped = 0;

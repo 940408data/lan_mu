@@ -62,7 +62,8 @@ if (fs.existsSync(outPath)) {
         }));
         const j = cols.filter(c => c.type === 'j').length, z = cols.length - j;
         done[pg] = { n: pg, engine: r.engine, conf: r.conf, cols };
-        console.log(`page_${pad(pg)}: ${cols.length}列 经${j}/注${z} conf=${(r.conf || 0).toFixed(2)} (${r.engine}) [${cnt}/${queue.length}]`);
+        const conf = typeof r.conf === 'number' ? r.conf.toFixed(2) : 'n/a';
+        console.log(`page_${pad(pg)}: ${cols.length}列 经${j}/注${z} conf=${conf} (${r.engine}) [${cnt}/${queue.length}]`);
         fs.writeFileSync(outPath, JSON.stringify({ work: workId, base: { file: 'shanben-v2.json', sha256: m2.sha256, pendingVerify: m2.pendingCount }, layout, pages: Object.values(done).sort((a, b) => a.n - b.n) }, null, 2));
       } catch (e) { console.log(`page_${pad(pg)}: 失败 ${e.message}`); }
     }

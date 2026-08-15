@@ -94,7 +94,7 @@ function getConf(obj) {
 }
 
 /** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock。thinking 按 label 从配置读。 */
-async function review(b64, prompt, label) {
+async function review(b64, prompt, label, opts = {}) {
   const cfg = loadVisionConfig();
   const key = getKey(cfg);
   if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
@@ -104,7 +104,11 @@ async function review(b64, prompt, label) {
   let r = await callVision(models.first, b64, prompt, key, cfg.vision.endpoint, thinking);
   if (r.err) return { engine: '初校(' + models.first + ')', err: r.err };
   let obj = pickJSON(r.text), conf = getConf(obj);
-  if (obj !== null && conf !== null && conf >= cfg.vision.threshold) {
+  const firstAccepted = obj !== null && (
+    (conf !== null && conf >= cfg.vision.threshold) ||
+    (opts.allowNoConf && (!opts.validate || opts.validate(obj)))
+  );
+  if (firstAccepted) {
     return { engine: '初校(' + models.first + ')', obj, conf, role: cfg.vision.roles.first, thinking };
   }
   // 覆校升级（初校置信低或解析失败）
@@ -191,7 +195,14 @@ function gridColumnsPrompt(layout) {
 只输出严格 JSON 数组（每列一项）：[{"col":1,"start":"顶格","text":"……"},{"col":2,"start":"退一格","text":"……"},...]，不要解释文字。`;
 }
 async function gridColumns(b64, layout) {
-  return review(b64, gridColumnsPrompt(layout), 'layout');
+  // 列级网格提示词不要求模型重复输出整体 conf；只要 JSON 结构完整，
+  // 初校结果即可使用，避免每页无谓升级到昂贵覆校模型。
+  return review(b64, gridColumnsPrompt(layout), 'layout', {
+    allowNoConf: true,
+    validate: obj => Array.isArray(obj) && obj.length > 0 && obj.every(c =>
+      c && Number.isFinite(Number(c.col)) && (c.start === '顶格' || c.start === '退一格' || c.start === '退两格') && typeof c.text === 'string'
+    ),
+  });
 }
 
 /** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */

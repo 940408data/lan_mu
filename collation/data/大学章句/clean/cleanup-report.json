@@ -23,7 +23,7 @@
     "m2": {
       "source": "recollate-1-40.json",
       "sha256": "100dbdcc4b523d50d813bd2a08608725e7ef8a29e78fdf23137d7b4edd93b112",
-      "pendingVerify": 1
+      "pendingVerify": 0
     }
   },
   "xiandai": {
