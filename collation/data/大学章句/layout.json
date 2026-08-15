@@ -1,0 +1,16 @@
+{
+  "work": "大学章句",
+  "edition": "当涂郡斋刊递修本",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "顶格为经、退一格为注；整叶两半叶各 8 栏；朱色句读点；○ 分节；鱼尾书题在书口边缘",
+  "textPages": [6, 36],
+  "colophonFrom": 37,
+  "sampledPages": [8, 13, 20],
+  "probedBy": "layoutProbe(qwen3.7-plus)",
+  "note": "M0 版面抽样结论（2026-08 大学实证）；judge-grid 以此为默认网格"
+}

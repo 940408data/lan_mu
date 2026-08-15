@@ -2,8 +2,8 @@
 /**
  * collation · M2 收尾·覆校仲裁（tools/verify-v2.js）
  * 读 pending-verify.json（真疑难差异，带上下文），按页分组 → 每页渲染善本扫描 +
- * verifyChars 批量问"善本实印何字"（初校开思考，conf低升覆校）→ 回填 shanben-v2 →
- * shanben-v2-final.json（干净善本底本）+ verify-report.json。
+ * verifyChars 批量问"善本实印何字"（初校开思考，conf低升覆校）→ 直改回填 shanben-v2.json（终态唯一）
+ * + verify-report.json（留痕，含维持/改字/待人工）。
  *
  * 用法: node collation/tools/verify-v2.js <书名> [--conc=3] [--limit=N]
  */
@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderPage, verifyChars } = require('../src/vision');
-const { INPUT_DATA } = require('../src/io');
+const { INPUT_DATA, loadConfig } = require('../src/io');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -24,7 +24,8 @@ const v2 = JSON.parse(fs.readFileSync(path.join(dataDir, 'shanben-v2.json'), 'ut
 const limit = parseInt(flags.limit || '0', 10);
 const conc = parseInt(flags.conc || '3', 10);
 
-const pdfDir = path.join(INPUT_DATA, workId, '当涂郡本_pdf');
+const { editions, works } = loadConfig();
+const pdfDir = path.join(INPUT_DATA, workId, editions[works[workId].shanben].pdfDir);
 function pad(n) { return String(n).padStart(4, '0'); }
 
 // 按页分组
@@ -62,10 +63,11 @@ let queue = pageList.slice(0, limit || pageList.length);
     }
   }
   await Promise.all(Array.from({ length: conc }, worker));
-  fs.writeFileSync(path.join(dataDir, 'shanben-v2-final.json'), JSON.stringify(v2, null, 2));
+  // ③ 终态唯一：直改 shanben-v2.json（不再产出 -final 中间态；build-v2 重跑亦按 verify-report 应用，幂等）
+  fs.writeFileSync(path.join(dataDir, 'shanben-v2.json'), JSON.stringify(v2, null, 2));
   fs.writeFileSync(path.join(dataDir, 'verify-report.json'), JSON.stringify(report, null, 2));
   const changed = report.filter(x => x.changed).length;
   const deferred = report.filter(x => x.verdict === 'deferred' || x.verdict === 'error').length;
   console.log(`✓ 覆校 ${report.length} 处：改字 ${changed}（旧OCR误读，已回填善本实字）、维持旧 ${report.length - changed - deferred}、失败/待人工 ${deferred}`);
-  console.log('  → shanben-v2-final.json + verify-report.json');
+  console.log('  → shanben-v2.json（终态）+ verify-report.json');
 })().catch(e => { console.error('✗', e); process.exit(1); });

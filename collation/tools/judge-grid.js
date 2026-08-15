@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderPage, gridColumns } = require('../src/vision');
-const { INPUT_DATA } = require('../src/io');
+const { INPUT_DATA, loadConfig } = require('../src/io');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -19,10 +19,15 @@ for (const a of args) { const m = a.match(/^--([^=]+)(?:=(.*))?$/); if (m) flags
 const workId = pos[0];
 if (!workId || !flags.pages) { console.error('用法: node collation/tools/judge-grid.js <书名> --pages=8-36 [--conc=3]'); process.exit(1); }
 const conc = parseInt(flags.conc || '3', 10);
-const layout = { cols: parseInt(flags.cols || '16', 10), rows: parseInt(flags.rows || '15', 10) };
-const [pStart, pEnd] = String(flags.pages).split('-').map(Number);
 const dataDir = path.join(__dirname, '..', 'data', workId);
-const pdfDir = path.join(INPUT_DATA, workId, '当涂郡本_pdf');
+// ② 版面结构落盘：data/<书>/layout.json（M0 抽样结论）为默认网格，--cols/--rows 可覆盖
+const layoutFile = path.join(dataDir, 'layout.json');
+const savedLayout = fs.existsSync(layoutFile) ? JSON.parse(fs.readFileSync(layoutFile, 'utf8')) : {};
+const layout = { cols: parseInt(flags.cols || savedLayout.cols || '16', 10), rows: parseInt(flags.rows || savedLayout.rows || '15', 10) };
+const [pStart, pEnd] = String(flags.pages).split('-').map(Number);
+// 善本 pdfDir 自 editions.yaml 解析（通用，不写死）
+const { editions, works } = loadConfig();
+const pdfDir = path.join(INPUT_DATA, workId, editions[works[workId].shanben].pdfDir);
 const outPath = path.join(dataDir, 'grid.json');
 function pad(n) { return String(n).padStart(4, '0'); }
 

@@ -29,14 +29,14 @@ function buildShanbenPunctuated(result) {
     const txt = segShanbenText(seg);
     if (!txt) continue;
     const punct = sentenceEnder(seg.xiandai.raw);
-    // 附 resolved 校记（善本/现代本异文定论）
+    // 附 resolved / 人工裁定 校记（善本/现代本异文定论）
     const v = (result.verdicts || []).filter(x => {
       const segText = typeof x.seg === 'string' ? x.seg : (x.seg && x.seg.xiandai);
-      return segText === seg.xiandai.raw && x.verdict === 'resolved';
+      return segText === seg.xiandai.raw && (x.verdict === 'resolved' || x.verdict === 'human');
     });
     let note = '';
     if (v.length) {
-      note = v.map(x => `〔${x.shanben ? '善' : ''}${x.xiandai ? '今' : ''}异：采${x.adopt === 'shanben' ? '善本' : '现代本'}「${x.adopt === 'shanben' ? x.shanben : x.xiandai}」〕`).join('');
+      note = v.map(x => `〔${x.verdict === 'human' ? '人工裁定：' : ''}采${x.adopt === 'shanben' ? '善本' : x.adopt === 'xiandai' ? '现代本' : '兩存'}「${x.adopt === 'shanben' ? x.shanben : x.adopt === 'xiandai' ? x.xiandai : (x.shanben || '') + '/' + (x.xiandai || '')}」${x.humanNote ? '，' + x.humanNote : ''}〕`).join('');
       resolved++;
     }
     lines.push(txt + punct + note);

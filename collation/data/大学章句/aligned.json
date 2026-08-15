@@ -185,19 +185,19 @@
   },
   {
     "segId": 24,
-    "score": 0.75,
+    "score": 1,
     "orphan": false,
     "xiandai": "宋德隆盛，治教休明。",
     "page": 2,
-    "shanben": "隆盛治教休明"
+    "shanben": "宋德隆盛治教休明"
   },
   {
     "segId": 25,
-    "score": 0.9841269841269841,
+    "score": 1,
     "orphan": false,
     "xiandai": "於是河南程氏兩夫子出，而有以接乎孟氏之傳，實始尊信此篇而表章之，既又爲之次其簡編，發其歸趣，然後古者大學教人之法、聖經賢傳之指，粲然復明於世。",
     "page": 2,
-    "shanben": "於是河南程氏兩子出而有以接乎孟氏之傳實始尊信此篇而表章之旣又爲之次其簡編發其歸趣然後古者大學教人之法聖經賢傳之指粲然復明於丗"
+    "shanben": "於是河南程氏兩夫子出而有以接乎孟氏之傳實始尊信此篇而表章之旣又爲之次其簡編發其歸趣然後古者大學教人之法聖經賢傳之指粲然復明於丗"
   },
   {
     "segId": 26,
@@ -657,11 +657,11 @@
   },
   {
     "segId": 83,
-    "score": 0.9069767441860465,
+    "score": 1,
     "orphan": false,
     "xiandai": "物格而后知至，知至而后意誠，意誠而后心\n正，心正而后身脩，身脩而后家齊，家齊而后國治，國治而后天下平。",
     "page": 4,
-    "shanben": "物格而后知至知至而后意誠意誠而后心正心正而后身脩身脩而后家齊國治國治而后天下平"
+    "shanben": "物格而后知至知至而后意誠意誠而后心正心正而后身脩身脩而后家齊家齊而后國治國治而后天下平"
   },
   {
     "segId": 84,
@@ -1029,7 +1029,7 @@
     "orphan": false,
     "xiandai": "物之《盤銘》曰：「苟日新，日日新，又日新。",
     "page": 5,
-    "shanben": "湯之盤銘曰苟日新日日新又日新銘曰苟曰新曰曰新"
+    "shanben": "湯之盤銘曰苟日新日日新又日新"
   },
   {
     "segId": 130,
@@ -1981,7 +1981,7 @@
     "orphan": false,
     "xiandai": "是以《大學》始教，必使學者即凡天下之物，莫不因其已知之理而益窮之，以求至乎其極。",
     "page": 8,
-    "shanben": "是以大學始教必使學者即凡天申方つと下之物莫不因其巳知之理而益窮之以求至乎其極"
+    "shanben": "是以大學始教必使學者即凡天下之物莫不因其巳知之理而益窮之以求至乎其極"
   },
   {
     "segId": 249,
@@ -2081,7 +2081,7 @@
   },
   {
     "segId": 261,
-    "score": 0.9545454545454546,
+    "score": 1,
     "orphan": false,
     "xiandai": "所不知而己所獨知之地也。",
     "page": 9,
@@ -2297,7 +2297,7 @@
   },
   {
     "segId": 288,
-    "score": 0.7777777777777778,
+    "score": 0.8333333333333334,
     "orphan": false,
     "xiandai": "然或己明而不\n「銷」，亦通。",
     "page": 9,
@@ -2305,11 +2305,11 @@
   },
   {
     "segId": 289,
-    "score": 0,
-    "orphan": true,
+    "score": 1,
+    "orphan": false,
     "xiandai": "謹乎此，則其所明又非己有，而無以爲進德之基。",
     "page": 10,
-    "shanben": ""
+    "shanben": "謹乎此則其所明又非已有而無以爲進德之基"
   },
   {
     "segId": 290,
@@ -2529,11 +2529,11 @@
   },
   {
     "segId": 317,
-    "score": 0.875,
+    "score": 1,
     "orphan": false,
     "xiandai": "之，猶於也。",
     "page": 10,
-    "shanben": "之猶然也辟猶偏也"
+    "shanben": "之猶於也"
   },
   {
     "segId": 318,
@@ -3233,51 +3233,51 @@
   },
   {
     "segId": 405,
-    "score": 0.9375,
+    "score": 1,
     "orphan": false,
     "xiandai": "所惡於上，毋以使下；",
     "page": 13,
-    "shanben": "所惡於上母以使下所惡於下"
+    "shanben": "所惡於上母以使下"
   },
   {
     "segId": 406,
-    "score": 0.75,
+    "score": 1,
     "orphan": false,
     "xiandai": "所惡於下，毋以事上；",
     "page": 13,
-    "shanben": "所惡於前母以先後所惡於後"
+    "shanben": "所惡於下母以事上"
   },
   {
     "segId": 407,
-    "score": 0.75,
+    "score": 1,
     "orphan": false,
     "xiandai": "所惡於前，毋以先後；",
     "page": 13,
-    "shanben": "所惡於右母以交於左所惡於"
+    "shanben": "所惡於前母以先後"
   },
   {
     "segId": 408,
-    "score": 0,
-    "orphan": true,
+    "score": 1,
+    "orphan": false,
     "xiandai": "所惡於後，毋以從前；",
     "page": 13,
-    "shanben": ""
+    "shanben": "所惡於後母以從前"
   },
   {
     "segId": 409,
-    "score": 0,
-    "orphan": true,
+    "score": 1,
+    "orphan": false,
     "xiandai": "所惡於右，毋以交於左；",
     "page": 13,
-    "shanben": ""
+    "shanben": "所惡於右母以交於左"
   },
   {
     "segId": 410,
-    "score": 0.78125,
+    "score": 1,
     "orphan": false,
     "xiandai": "所惡於左，毋以交於右：此之謂絜矩之道。",
     "page": 13,
-    "shanben": "左母以交於右此之謂絜矩之道"
+    "shanben": "所惡於左母以交於右此之謂絜矩之道"
   },
   {
     "segId": 411,
@@ -3529,11 +3529,11 @@
   },
   {
     "segId": 442,
-    "score": 0.875,
+    "score": 1,
     "orphan": false,
     "xiandai": "儀監于殷，峻命不易。",
     "page": 13,
-    "shanben": "儀監于殷命不易"
+    "shanben": "儀監于殷峻命不易"
   },
   {
     "segId": 443,
