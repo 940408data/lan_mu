@@ -23,48 +23,45 @@ description: AI 古籍校勘通用流程——以公开善本为底、现代点�
 ## 标准流程（逐步执行，每步有质量闸）
 
 ```bash
-# M0 版面抽样（每书必做）：layoutProbe 抽 3-5 页 → 记录 列×行/格字制/顶退格规则
-#    （产物将落 layout.json，见流水线文档缺口②）
+# M0 版面抽样（每书必做，结论落盘 layout.json）
+node collation/tools/layout-probe.js <书>          # 默认抽前/中/后3页；--pages=8,30,50 指定
 
 # M2 干净底本（仅善本侧）
 node collation/tools/recollate.js <书> --pages=1-N --conc=3     # 视觉重OCR+互证 → recollate-*.json
 #   闸：平均一致率 ≥90%，低则查版面/旧OCR质量
 node collation/tools/build-v2.js <书>                           # 规则仲裁 → shanben-v2.json + pending-verify.json
-node collation/tools/verify-v2.js <书> --conc=3                 # 覆校真疑难 → verify-report.json
-node collation/tools/build-v2.js <书>                           # 再跑应用覆校 → shanben-v2.json 终态★
+node collation/tools/verify-v2.js <书> --conc=3                 # 覆校真疑难 → 直改 shanben-v2.json 终态 + verify-report.json
 
-# M3 版面判定经注（--cols/--rows 用 M0 抽样所得该书网格）
-node collation/tools/judge-grid.js <书> --pages=<正文起>-<正文止> --conc=3 --cols=16 --rows=15
+# M3 版面判定经注（自动读 layout.json 网格；--cols/--rows 可覆盖）
+node collation/tools/judge-grid.js <书> --pages=<正文起>-<正文止> --conc=3
 node collation/tools/verify-jz.js <workId> --jz=collation/data/<书>/grid.json   # 有既有works时核验，≥90%为佳
 node collation/tools/build-songke.js <书>                       # → output/善本点校本-分栏.md
 
-# P3-P4 对齐对校
+# P3-P4.5 对齐→对校→簇核验（含底本回修回路，收敛即止）
 node collation/run.js <书> --step=align && node collation/run.js <书> --step=diff
+node collation/run.js <书> --step=verify --conc=3               # 簇规则归类+双侧视觉核验 → clusters-verify.json
+node collation/tools/apply-basefix.js <书>                      # 善本底本误回修（有近邻守卫）；→ 重跑 diff/verify 至无新增
 
-# P4.5 夺/衍簇核验（当前为独立工具；并入 run.js 待审批，见流水线文档§5）
-node collation/tools/cluster-dy.js <书>                         # 字级夺/衍 → 簇级（带锚点+双页码）→ clusters.json
-node collation/tools/verify-clusters.js <书> --conc=3           # 双侧视觉核验 → clusters-verify.json
-#   结论四分类：现代OCR误(剔除留痕)/善本底本误(回修shanben-v2重跑P3起)/真异文(送校书官)/书题牌记(剔除)
+# P5 校书官（真异文+ocr疑+核验为真的簇；证据分级加权+β+悬置三规则）
+node collation/run.js <书> --step=officer --conc=3              # 4官并行、增量保存、断点续传、旧裁决内容键迁移
 
-# P5 校书官（真异文+ocr疑+核验为真的夺衍换簇）
-node collation/run.js <书> --step=officer                       # 4官并行、增量保存、断点续传
+# P6 出具（校勘记新体例 + 精校台.html）
+node collation/run.js <书> --step=export
 
-# P6 出具
-node collation/run.js <书> --step=export                        # → output/{善本点校本,现代本,校勘记}.md + flags.yaml
-
-# P7 人工：flags.yaml 悬置项核他本/石经 → 回写 verdicts.json human 字段 → 重跑 export 吸收
+# P7 人工：开 output/精校台.html（J/K移动、1采善本/2采现代本/3两存、V书影、E导出）
+node collation/run.js <书> --step=apply --decisions=<decisions.json 路径>   # 回灌重出定本
 
 # M6 进引擎（善本底独立新作品，不动通行本）
 node collation/tools/build-works.js <书> <新作品id> --base=<模板作品>
 npm run build -- --work=<新作品id> --only=html                  # 验证
 ```
 
-## 中庸章句（下一部，直接可用）
+## 中庸章句（进行中实例）
 
-- 善本 78 页；**先 M0 抽样确认中庸网格**（可能与大学 16×15 不同）。
-- 正文约 page 7/8 起；序另成卷（zhongyongxu-songben）；33 章强锚 `右第X章`（align 已含）。
-- 书末题跋页视觉差，归人工。
-- 现状：仅有 mock 占位产物（166 条 161 悬置），须按上流程全量重跑（task #15）。
+- 善本 78 页；M0 已定：与大学同版式（16列×15行、顶格经/退格注），layout.json 在册。
+- 序 p2–p6 另成卷（zhongyongxu-songben）；正文 p7–p76；p77 修版/音注页、p78 封底（题跋规则登记 colophonFrom=77）。
+- 33 章强锚 `右第X章`（align 已含）。
+- M2 已完成（互证 98.4%、覆校改 51）；其余按上流程续跑。
 
 ## 视觉两角色与思考开关
 
@@ -98,10 +95,10 @@ npm run build -- --work=<新作品id> --only=html                  # 验证
 ## 每书 Checklist
 
 - [ ] 前置四项齐备（数据/登记/配置/key）
-- [ ] M0 版面抽样结论记录
-- [ ] M2 互证 ≥90% + 覆校完成 + shanben-v2 终态
+- [ ] M0 layout.json 落盘（抽样 ≥3 页一致）
+- [ ] M2 互证 ≥90% + 覆校完成（shanben-v2 终态）
 - [ ] M3 判定核验 ≥90%（有 ground truth 时）
-- [ ] P4.5 全部夺/衍簇有核验结论
+- [ ] P4.5 全部簇有结论 + 底本回修至收敛（无新增底本误）
 - [ ] P5 校书官真跑（非 mock）无 error
-- [ ] P7 悬置项人工终裁回写
+- [ ] P7 精校台人工终裁 → decisions 回灌重出
 - [ ] M6 进引擎 `build --only=html` 通过
