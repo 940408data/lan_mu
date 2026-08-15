@@ -20,6 +20,7 @@ const { loadVerifications } = require('./cluster');
 const review = require('./review');
 const { publicWorkDir, privateWorkDir, internalReadPath } = require('./paths');
 const { buildQualityReport } = require('./quality');
+const { loadM2Base } = require('./base');
 
 function outDir(workId) {
   return publicWorkDir(workId);
@@ -48,6 +49,7 @@ function exportAll(result, workId) {
   const dir = outDir(workId);
   const privateDir = privateWorkDir(workId);
   const { shanben, xiandai } = loadWork(workId);
+  const m2 = loadM2Base(workId);
   const sb = buildShanbenPunctuated(result);
   if (!result.cleaned || !result.cleaned.xiandai) throw new Error('P6 出具必须由 P1.5 清洗结果驱动');
   const cleanBlockers = [
@@ -64,7 +66,9 @@ function exportAll(result, workId) {
   const verifs = loadVerifications(workId);
   const vfmap = {}; verifs.forEach(x => vfmap[x.id] = x);
   const fixLogPath = internalReadPath(workId, 'basefix-log.json');
-  const fixLog = fs.existsSync(fixLogPath) ? JSON.parse(fs.readFileSync(fixLogPath, 'utf8')) : [];
+  const fixLog = fs.existsSync(fixLogPath)
+    ? JSON.parse(fs.readFileSync(fixLogPath, 'utf8')).filter(x => x.baseSha256 === m2.sha256)
+    : [];
 
   // ── 善本点校本（公开）──
   const shanbenMd = [

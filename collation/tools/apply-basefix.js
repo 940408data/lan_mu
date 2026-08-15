@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const { privatePath, internalReadPath } = require('../src/paths');
+const { loadM2Base } = require('../src/base');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -20,16 +21,20 @@ for (const a of args) { const m = a.match(/^--([^=]+)(?:=(.*))?$/); if (m) flags
 const workId = pos[0];
 if (!workId) { console.error('用法: node collation/tools/apply-basefix.js <书名> [--dry]'); process.exit(1); }
 const dry = !!flags.dry;
+const m2 = loadM2Base(workId);
 
 const dir = path.join(__dirname, '..', 'data', workId);
 const v2path = path.join(dir, 'shanben-v2.json');
 const v2 = JSON.parse(fs.readFileSync(v2path, 'utf8'));
 const clusters = JSON.parse(fs.readFileSync(internalReadPath(workId, 'clusters.json'), 'utf8'));
-const verifs = JSON.parse(fs.readFileSync(internalReadPath(workId, 'clusters-verify.json'), 'utf8'));
+const verifs = JSON.parse(fs.readFileSync(internalReadPath(workId, 'clusters-verify.json'), 'utf8'))
+  .filter(v => v.baseSha256 === m2.sha256);
 const cmap = {}; clusters.forEach(c => cmap[c.id] = c);
 
 const logPath = privatePath(workId, 'basefix-log.json');
-const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : [];
+const log = fs.existsSync(logPath)
+  ? JSON.parse(fs.readFileSync(logPath, 'utf8')).filter(x => x.baseSha256 === m2.sha256)
+  : [];
 
 let applied = 0, skipped = 0;
 for (const v of verifs) {
@@ -62,7 +67,7 @@ for (const v of verifs) {
     }
     if (!dry) pgObj.text = pgObj.text.slice(0, bi + before6.length) + replacement + pgObj.text.slice(bi + before6.length);
     console.log(` ${v.id} p${pgN}：「…${before6}」后补入【${replacement.slice(0, 20)}${replacement.length > 20 ? '…' : ''}】${dry ? '（dry）' : ''}`);
-    log.push({ id: v.id, kind: c.kind, page: pgN, before: '…' + before6, wrong: '∅(脱句)', right: replacement, note: v.note || '', engine: v.engine, at: new Date().toISOString() });
+    log.push({ id: v.id, baseSha256: m2.sha256, kind: c.kind, page: pgN, before: '…' + before6, wrong: '∅(脱句)', right: replacement, note: v.note || '', engine: v.engine, at: new Date().toISOString() });
     v.fixed = new Date().toISOString();
     applied++; continue;
   }
@@ -92,7 +97,7 @@ for (const v of verifs) {
     pgObj.text = oldText.slice(0, idx) + oldText.slice(idx + phrase.length);
   }
   console.log(` ${v.id} p${pgN}：「${before}【${phrase || '∅'}】${after}」→「${before}【${replacement || '∅'}】${after}」${dry ? '（dry）' : ''}`);
-  log.push({ id: v.id, kind: c.kind, page: pgN, before, wrong: phrase, right: replacement, note: v.note || '', engine: v.engine, at: new Date().toISOString() });
+  log.push({ id: v.id, baseSha256: m2.sha256, kind: c.kind, page: pgN, before, wrong: phrase, right: replacement, note: v.note || '', engine: v.engine, at: new Date().toISOString() });
   v.fixed = new Date().toISOString();
   applied++;
 }
