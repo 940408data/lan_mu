@@ -116,11 +116,12 @@ async function review(b64, prompt, label) {
 /** 第一层：经注大小学判定 */
 function jzPrompt(bookTitle) {
   return `这是南宋当涂郡斋刊递修本《${bookTitle}》一页古籍扫描，竖排，自右向左。
-版式按字形大小分两类，请严格按【字的大小和每列行数】判断，不要按文字内容判断：
-- 经文：字**大**，每列是**单行**（一列只有一竖行字，字数较少）。
-- 注文：字**小**（约为经字一半高），每列是**双行**（一列拆成左右并排的两个短行，字数较多、字明显小）。
-请按自右向左逐列识别，输出每列：列序(自右1起)、识别出的汉字 text、类型 type（"j"=经文大字单行 / "z"=注文小字双行）、置信度 conf(0-1)。
-只输出严格 JSON 数组，形如 [{"col":1,"text":"……","type":"j","conf":0.9}]，不要任何解释文字。`;
+这页的每个竖列只属两类之一，判断时**先数清这一列里有几行字**，不要按文字内容猜：
+- 经文(j)：一个竖列里**只有 1 行字**，字**大**、笔画粗、字距宽。
+- 注文(z)：一个竖列里**并排挤着 2 行小字**（左一行右一行并列），字**明显小**（约为经字一半高）、笔画细、字密。
+请自右向左逐列看，先数该行数（1 行大字 / 2 行小字），再定 type（"j"=经文大字单行，"z"=注文小字双行）。
+输出每列：列序(自右1起)、识别汉字 text、type、conf(0-1)。
+只输出严格 JSON 数组：[{"col":1,"text":"……","type":"j","conf":0.9}]，不要任何解释文字。`;
 }
 async function judgeJZ(b64, bookTitle) {
   return review(b64, jzPrompt(bookTitle), 'jz');
@@ -147,6 +148,36 @@ async function verifyChars(b64, items) {
   return review(b64, verifyCharsPrompt(items), 'verify');
 }
 
+/** 版面结构抽样（方法论核心·先行）：视觉 Agent 分析善本版面网格，不看文字内容。
+ *  产出该书版面结构（列×行、每格字数、有无双行夹注、经注的顶格/退格规则、版心鱼尾），
+ *  供推导经注规则 + 后续网格转写/复原排版。每书版面不同，须逐书先抽样。 */
+function layoutProbePrompt() {
+  return `这是一页古籍扫描（竖排，自右向左）。请不要翻译文字内容，只分析它的**版面物理结构**：
+1. 这一页（一个版面）从右到左共几列？每列从上到下共几行？（即网格是几列 × 几行）
+2. 每个格网里是 1 个字，还是有并排的两个小字（双行夹注）？
+3. 每列文字从第几行开始？是顶格（最上一行）开始，还是退格（空一至两格）开始？
+4. 经文（正文大字）和注文（注释）各用哪种起始方式（顶格 / 退一格 / 退两格）？
+5. 版心（中缝）有没有鱼尾、书题、页码等标记？
+只输出严格 JSON 对象：{"cols":数字,"rows":数字,"charPerCell":1或2,"hasDoubleSmall":true或false,"jingStart":"顶格/退一格/退两格","zhuStart":"顶格/退一格/退两格","note":"其他版面特征"}，不要解释文字。`;
+}
+async function layoutProbe(b64) {
+  return review(b64, layoutProbePrompt(), 'layout');
+}
+
+/** 网格转写：按版面网格输出每个字的位置（row,col,char,格位起始）——判经注 + 复原排版两用。 */
+function gridTranscribePrompt(layout) {
+  const { cols, rows } = layout || {};
+  const grid = (cols && rows) ? `${cols} 列 × ${rows} 行` : '若干列 × 若干行';
+  return `这是一页古籍扫描（竖排自右向左），其版面为 ${grid} 的网格，每格一字。
+请按网格逐格转写：自右向左为列（col 从 1 起），自上而下为行（row 从 1 起）。
+每格输出：col（列号）、row（行号）、char（该格的汉字）、start（该列文字起始位置："顶格"/"退一格"/"退两格"，仅每列第一字需标）。
+空格（无字的格）用 char:"" 表示。
+只输出严格 JSON 数组：[{"col":1,"row":1,"char":"大","start":"顶格"},{"col":1,"row":2,"char":"學"},...]，不要解释文字。`;
+}
+async function gridTranscribe(b64, layout) {
+  return review(b64, gridTranscribePrompt(layout), 'layout');
+}
+
 /** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */
 function ocrPrompt() {
   return `你是一位精通古籍识别的资深学者。请对图片中的古籍页面进行严格的原文照录：
@@ -168,4 +199,4 @@ async function ocrPage(b64) {
   return { engine: '初校(' + cfg.vision.models.first + ')', role: cfg.vision.roles.first, text: r.text, thinking };
 }
 
-module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, callVision };
+module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, layoutProbe, gridTranscribe, callVision };
