@@ -2,16 +2,20 @@
  * collation · P4 对校（src/diff.js）
  * 取 align() 产出的对齐段，平坦化为异文清单 + 归类 + 上下文。
  *
- * 异文类型:
+ * 字级异文类型（variants，v 编号）:
  *   异体    — 归一后合、raw 形异（善本古字/异体），非真异文，登记善本用形
  *   ocr疑   — 归一后仍不合、且现代本统一而善本独异、字形相近 → 疑善本 OCR 误读
  *   真异文  — 归一后仍不合、两本各通（如「親/新」「矣」之有无）→ 校书官主战场
- *   夺     — 现代本有、善本无（detail '善本缺' / orphan 段）
- *   衍     — 善本有、现代本无（detail '善本多'）
- *   倒     — 顺序颠倒（暂以相邻 sub 简判，粗粒度）
+ *
+ * 簇级异文（clusters，c 编号）——夺/衍不再逐字炸开，由 clusterize() 原生归并：
+ *   夺簇   — 现代本有、善本无的连续短语（含 orphan 整段）
+ *   衍簇   — 善本有、现代本无的连续短语
+ *   换簇   — 两侧兼有、措辞相异（注文异文等多属此）
+ *   → 交 P4.5 簇核验（src/cluster.js）后再定真伪，杜绝「一处错位 = 十行假异文」。
  */
 'use strict';
 const { align, normChar } = require('./align');
+const { clusterize } = require('./cluster');
 
 function ctx(sbNorm, pos, n = 6) {
   if (pos == null) return '';
@@ -24,30 +28,17 @@ function diff(workId) {
   const variants = [];
   let id = 0;
   for (const seg of A.segments) {
+    if (seg.orphan) continue;  // 整段由簇级承接
     const det = seg.shanben.detail || [];
-    // orphan 段 → 整段作「夺」（现代本有善本无）
-    if (seg.orphan) {
-      variants.push(mkVar(++id, seg, '夺',
-        null, seg.xiandai.raw,
-        `现代本有、善本未对应（页 ${seg.xiandai.page}）`,
-        A.sbNorm, seg.shanben.span ? seg.shanben.span[0] : null));
-      continue;
-    }
     for (let k = 0; k < det.length; k++) {
       const d = det[k];
-      if (d.type === '同') continue;
+      if (d.type === '同' || d.type === '夺' || d.type === '衍') continue;  // 夺/衍归簇级
       const sbCh = d.sb ? d.sb.ch : null;
       const xdCh = d.xd ? d.xd.ch : null;
       let type, note;
       if (d.type === '异体') {
         type = '异体';
         note = `善本「${sbCh}」现代本「${xdCh}」异体同字`;
-      } else if (d.type === '衍') {
-        type = '衍';
-        note = `善本多「${sbCh}」（${d.sb.page}:${d.sb.line}）`;
-      } else if (d.type === '夺') {
-        type = '夺';
-        note = `善本缺「${xdCh}」（现代本 ${seg.xiandai.page}）`;
       } else { // 疑异（fuzzy sub）
         const sameNorm = d.sb && d.xd && normChar(d.sb.ch) === normChar(d.xd.ch);
         if (sameNorm) { type = '异体'; note = `善本「${sbCh}」现代本「${xdCh}」异体同字`; }
@@ -58,8 +49,11 @@ function diff(workId) {
         d.sb ? d.sb.page + ':' + d.sb.line : seg.xiandai.page, k));
     }
   }
+  const clusters = clusterize(A.segments);
   const summary = countBy(variants);
-  return { ...A, variants, summary };
+  summary.簇 = {};
+  for (const c of clusters) summary.簇[c.kind] = (summary.簇[c.kind] || 0) + 1;
+  return { ...A, variants, clusters, summary };
 }
 
 /** 字形相近判 OCR 误读（粗：笔画少改、部件同/近） */

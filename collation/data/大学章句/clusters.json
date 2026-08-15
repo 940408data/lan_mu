@@ -1,0 +1,645 @@
+[
+  {
+    "id": "c1",
+    "segId": 14,
+    "kind": "换",
+    "shanben": "之聖而不得君師之位",
+    "xiandai": "之",
+    "sbPages": [
+      4
+    ],
+    "sbPagesAround": [
+      4
+    ],
+    "xdPage": 1,
+    "anchor": {
+      "sbBefore": "時則有若孔子",
+      "sbAfter": "以行",
+      "xdBefore": "時則有若孔子",
+      "xdAfter": "性下"
+    },
+    "segXiandai": "時則有若孔子之性下。"
+  },
+  {
+    "id": "c2",
+    "segId": 30,
+    "kind": "衍",
+    "shanben": "朱熹章句",
+    "xiandai": null,
+    "sbPages": [
+      6
+    ],
+    "sbPagesAround": [
+      6
+    ],
+    "xdPage": 3,
+    "anchor": {
+      "sbBefore": "大學",
+      "sbAfter": "大舊音泰今讀如字",
+      "xdBefore": "大學",
+      "xdAfter": "大舊音泰今讀如字"
+    },
+    "segXiandai": "大\n學\n大，舊音泰，今讀如字。"
+  },
+  {
+    "id": "c3",
+    "segId": 31,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "朱熹章句",
+    "sbPages": [],
+    "sbPagesAround": [
+      6
+    ],
+    "xdPage": 3,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "子程子曰大學孔氏之遺",
+      "xdBefore": "",
+      "xdAfter": "子程子曰大學孔氏之遺"
+    },
+    "segXiandai": "朱熹章句\n子程子曰：《大學》，孔氏之遺書，而初學入德之門也。"
+  },
+  {
+    "id": "c4",
+    "segId": 42,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      7
+    ],
+    "xdPage": 3,
+    "anchor": {
+      "sbBefore": "新者",
+      "sbAfter": "革其舊之謂也",
+      "xdBefore": "新者",
+      "xdAfter": "革其舊之謂也"
+    },
+    "segXiandai": "新者，\n大\n學\n革其舊之謂也。"
+  },
+  {
+    "id": "c5",
+    "segId": 121,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      11
+    ],
+    "xdPage": 5,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "峻書作俊",
+      "xdBefore": "",
+      "xdAfter": "峻書作俊"
+    },
+    "segXiandai": "大\n學\n峻，《書》作俊。"
+  },
+  {
+    "id": "c6",
+    "segId": 135,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "又日新之，不可略有間斷也。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 5,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "又日新之，不可略有間斷也。"
+  },
+  {
+    "id": "c7",
+    "segId": 140,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      12
+    ],
+    "xdPage": 6,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "文王之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "文王之篇"
+    },
+    "segXiandai": "《詩》，《大雅·文王》之篇。"
+  },
+  {
+    "id": "c8",
+    "segId": 147,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      13
+    ],
+    "xdPage": 6,
+    "anchor": {
+      "sbBefore": "詩商頌",
+      "sbAfter": "玄鳥之篇",
+      "xdBefore": "詩商頌",
+      "xdAfter": "玄鳥之篇"
+    },
+    "segXiandai": "」\n《詩》，《商頌·玄鳥》之篇。"
+  },
+  {
+    "id": "c9",
+    "segId": 152,
+    "kind": "衍",
+    "shanben": "綿詩小雅綿蠻之篇",
+    "xiandai": null,
+    "sbPages": [
+      13
+    ],
+    "sbPagesAround": [
+      13
+    ],
+    "xdPage": 6,
+    "anchor": {
+      "sbBefore": "緡詩作",
+      "sbAfter": "緡",
+      "xdBefore": "緡詩作",
+      "xdAfter": "緜"
+    },
+    "segXiandai": "」\n緡，《詩》作緜。"
+  },
+  {
+    "id": "c10",
+    "segId": 153,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "○《詩》，《小雅·緜蠻》之篇。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 6,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "○《詩》，《小雅·緜蠻》之篇。"
+  },
+  {
+    "id": "c11",
+    "segId": 190,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      14
+    ],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "詩衛風",
+      "sbAfter": "淇澳之篇",
+      "xdBefore": "詩衛風",
+      "xdAfter": "淇澳之篇"
+    },
+    "segXiandai": "○《詩》，《衛風·淇澳》之篇。"
+  },
+  {
+    "id": "c12",
+    "segId": 217,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      15
+    ],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "於戲音嗚呼",
+      "xdBefore": "",
+      "xdAfter": "於戲音嗚呼"
+    },
+    "segXiandai": "大\n學\n於戲，音嗚呼。"
+  },
+  {
+    "id": "c13",
+    "segId": 219,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      15
+    ],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "詩周頌",
+      "sbAfter": "烈文之篇",
+      "xdBefore": "詩周頌",
+      "xdAfter": "烈文之篇"
+    },
+    "segXiandai": "《詩》，《周頌·烈文》之篇。"
+  },
+  {
+    "id": "c14",
+    "segId": 274,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      19,
+      20
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "此君子所",
+      "sbAfter": "以重以爲戒而必謹其獨",
+      "xdBefore": "此君子所",
+      "xdAfter": "以重以爲戒而必謹其獨"
+    },
+    "segXiandai": "此君子所\n大\n學\n以重以爲戒，而必謹其獨也。"
+  },
+  {
+    "id": "c15",
+    "segId": 278,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "其意。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "其意。"
+  },
+  {
+    "id": "c16",
+    "segId": 279,
+    "kind": "衍",
+    "shanben": "其意",
+    "xiandai": null,
+    "sbPages": [
+      20
+    ],
+    "sbPagesAround": [
+      20
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "身心廣體胖故君子必誠",
+      "sbAfter": "胖步丹反",
+      "xdBefore": "身心廣體胖故君子必誠",
+      "xdAfter": "胖步丹反"
+    },
+    "segXiandai": "富潤屋，德潤身，心廣體胖，故君子必誠\n胖，步丹反。"
+  },
+  {
+    "id": "c17",
+    "segId": 288,
+    "kind": "衍",
+    "shanben": "謹乎此則其所明又",
+    "xiandai": null,
+    "sbPages": [
+      21
+    ],
+    "sbPagesAround": [
+      21
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "然或巳明而不",
+      "sbAfter": "非已有",
+      "xdBefore": "然或己明而不",
+      "xdAfter": "銷亦通"
+    },
+    "segXiandai": "然或己明而不\n「銷」，亦通。"
+  },
+  {
+    "id": "c18",
+    "segId": 319,
+    "kind": "衍",
+    "shanben": "在人本有當然之則",
+    "xiandai": null,
+    "sbPages": [
+      23
+    ],
+    "sbPagesAround": [
+      23
+    ],
+    "xdPage": 10,
+    "anchor": {
+      "sbBefore": "五者",
+      "sbAfter": "然常人之情惟其所向而",
+      "xdBefore": "五者",
+      "xdAfter": "然常人之情惟其所向而"
+    },
+    "segXiandai": "五者，然常人之情惟其所向而不加審焉，則必陷於"
+  },
+  {
+    "id": "c19",
+    "segId": 338,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      24
+    ],
+    "xdPage": 11,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "康誥曰如保赤子",
+      "xdBefore": "",
+      "xdAfter": "康誥曰如保赤子"
+    },
+    "segXiandai": "大\n學\n《康誥》曰：「如保赤子。"
+  },
+  {
+    "id": "c20",
+    "segId": 355,
+    "kind": "衍",
+    "shanben": "所藏乎",
+    "xiandai": null,
+    "sbPages": [
+      25
+    ],
+    "sbPagesAround": [
+      25
+    ],
+    "xdPage": 11,
+    "anchor": {
+      "sbBefore": "君子有諸己而后求諸人",
+      "sbAfter": "身不恕而能喻諸人",
+      "xdBefore": "君子有諸己而后求諸人",
+      "xdAfter": "無諸己而后非諸人"
+    },
+    "segXiandai": "是故君子有諸己而后求諸人，無諸己而后非諸人。"
+  },
+  {
+    "id": "c21",
+    "segId": 357,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "「無諸己而后非諸人」，原脱。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 11,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "「無諸己而后非諸人」，原脱。"
+  },
+  {
+    "id": "c22",
+    "segId": 372,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      25
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "詩周南",
+      "sbAfter": "桃夭之篇",
+      "xdBefore": "詩周南",
+      "xdAfter": "桃夭之篇"
+    },
+    "segXiandai": "○《詩》，《周南·桃夭》之篇。"
+  },
+  {
+    "id": "c23",
+    "segId": 381,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      26
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "詩小雅",
+      "sbAfter": "蓼蕭篇",
+      "xdBefore": "詩小雅",
+      "xdAfter": "蓼蕭篇"
+    },
+    "segXiandai": "《詩》，《小雅·蓼蕭》篇。"
+  },
+  {
+    "id": "c24",
+    "segId": 384,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      26
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "詩曹風",
+      "sbAfter": "鳴鳩篇",
+      "xdBefore": "詩曹風",
+      "xdAfter": "鳲鳩篇"
+    },
+    "segXiandai": "《詩》，《曹風·鳲鳩》篇。"
+  },
+  {
+    "id": "c25",
+    "segId": 420,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      28
+    ],
+    "xdPage": 13,
+    "anchor": {
+      "sbBefore": "民之所好",
+      "sbAfter": "好之民之所惡惡之此之",
+      "xdBefore": "民之所好",
+      "xdAfter": "好之民之所惡惡之此之"
+    },
+    "segXiandai": "」民之所好大學\n好之，民之所惡惡之，此之謂民之父母。"
+  },
+  {
+    "id": "c26",
+    "segId": 425,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      28
+    ],
+    "xdPage": 13,
+    "anchor": {
+      "sbBefore": "詩小雅",
+      "sbAfter": "南山有臺之篇",
+      "xdBefore": "詩小雅",
+      "xdAfter": "南山有臺之篇"
+    },
+    "segXiandai": "《詩》，《小雅·南山有臺》之篇。"
+  },
+  {
+    "id": "c27",
+    "segId": 430,
+    "kind": "换",
+    "shanben": "節讀爲截辟讀爲僻僇與",
+    "xiandai": "下僇",
+    "sbPages": [
+      29
+    ],
+    "sbPagesAround": [
+      28,
+      29
+    ],
+    "xdPage": 13,
+    "anchor": {
+      "sbBefore": "者不可以不慎辟則爲天",
+      "sbAfter": "戮",
+      "xdBefore": "者不可以不慎辟則爲天",
+      "xdAfter": "矣"
+    },
+    "segXiandai": "有國者不可以不慎，辟則爲天下僇矣。"
+  },
+  {
+    "id": "c28",
+    "segId": 434,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      29
+    ],
+    "xdPage": 13,
+    "anchor": {
+      "sbBefore": "詩小雅",
+      "sbAfter": "節南山之篇",
+      "xdBefore": "詩小雅",
+      "xdAfter": "節南山之篇"
+    },
+    "segXiandai": "《詩》，《小雅·節南山》之篇。"
+  },
+  {
+    "id": "c29",
+    "segId": 504,
+    "kind": "衍",
+    "shanben": "也違拂戾也殆危",
+    "xiandai": null,
+    "sbPages": [
+      32
+    ],
+    "sbPagesAround": [
+      32
+    ],
+    "xdPage": 15,
+    "anchor": {
+      "sbBefore": "媢忌",
+      "sbAfter": "也",
+      "xdBefore": "媚忌",
+      "xdAfter": "也"
+    },
+    "segXiandai": "媚，忌也。"
+  },
+  {
+    "id": "c30",
+    "segId": 509,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "大學",
+    "sbPages": [],
+    "sbPagesAround": [
+      32
+    ],
+    "xdPage": 15,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "逆讀爲屏古字通用",
+      "xdBefore": "",
+      "xdAfter": "迸讀爲屏古字通用"
+    },
+    "segXiandai": "大\n學\n迸，讀爲屏，古字通用。"
+  },
+  {
+    "id": "c31",
+    "segId": 515,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "命，未詳孰是。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 15,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "命，未詳孰是。"
+  },
+  {
+    "id": "c32",
+    "segId": 516,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "遠，去聲。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 15,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "遠，去聲。"
+  },
+  {
+    "id": "c33",
+    "segId": 576,
+    "kind": "衍",
+    "shanben": "當塗郡",
+    "xiandai": null,
+    "sbPages": [
+      37
+    ],
+    "sbPagesAround": [
+      37
+    ],
+    "xdPage": 17,
+    "anchor": {
+      "sbBefore": "所準備差遣劉兼蘩校正",
+      "sbAfter": "齋舊",
+      "xdBefore": "所準備差遣劉夢高校正",
+      "xdAfter": "大學"
+    },
+    "segXiandai": "從政郎提領江淮茶鹽所準備差遣劉夢高校正\n大學"
+  }
+]
