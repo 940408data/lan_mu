@@ -6,15 +6,12 @@
     "shanben": {
       "stats": {
         "pages": 78,
-        "regions": 1112,
-        "bodyChars": 14499,
-        "excluded": 2,
+        "regions": 77,
+        "bodyChars": 14459,
+        "excluded": 1,
         "byKind": {
           "cover": 1,
-          "section_heading": 1,
-          "body": 1108,
-          "running_head": 1,
-          "annotation": 1
+          "body": 76
         }
       },
       "quality": {
@@ -47,6 +44,12 @@
         "unknown": 0
       }
     }
+  },
+  "base": {
+    "source": "recollate-1-78.json",
+    "sha256": "af16832c195a6af2ce3945e909fd11801aac6674a57ada9200b1a8dcf3fd383c",
+    "pendingVerify": 68,
+    "verified": false
   },
   "alignment": {
     "segments": 1158,
@@ -174,9 +177,9 @@
         "shanben": [
           {
             "page": 14,
-            "line": 3,
-            "regionId": "p14-r003",
-            "sourceHash": "78239c22d236bae8e209f64fc5966a668114333f97fed06660a443fc66bc0233"
+            "line": 1,
+            "regionId": "p14-r001",
+            "sourceHash": "df5d7ce9dcab34189b8ce0006b517e149c2d08405f9106c351d1f1af004cea26"
           }
         ],
         "xiandai": {
@@ -195,9 +198,9 @@
         "shanben": [
           {
             "page": 40,
-            "line": 3,
-            "regionId": "p40-r003",
-            "sourceHash": "5fdfd19b63b203ca17da57af1759025a557dcdf0570b1a1c63708cd6489a8058"
+            "line": 1,
+            "regionId": "p40-r001",
+            "sourceHash": "743da90764029635cca9327fbfd92762942762726abf26db3ca7f962efb49c91"
           }
         ],
         "xiandai": {
@@ -216,21 +219,9 @@
         "shanben": [
           {
             "page": 44,
-            "line": 8,
-            "regionId": "p44-r008",
-            "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
-          },
-          {
-            "page": 44,
-            "line": 9,
-            "regionId": "p44-r009",
-            "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
-          },
-          {
-            "page": 44,
-            "line": 10,
-            "regionId": "p44-r010",
-            "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
+            "line": 1,
+            "regionId": "p44-r001",
+            "sourceHash": "3b525d521c96f70dc0180b4ba458731e1fada0e3282fe0263e595fc3d82e57f0"
           }
         ],
         "xiandai": {
@@ -249,15 +240,9 @@
         "shanben": [
           {
             "page": 57,
-            "line": 6,
-            "regionId": "p57-r006",
-            "sourceHash": "737eec63c90e4a332a588d1aaa63165a65cccb21e0e1837e663832d5ed332b56"
-          },
-          {
-            "page": 57,
-            "line": 7,
-            "regionId": "p57-r007",
-            "sourceHash": "737eec63c90e4a332a588d1aaa63165a65cccb21e0e1837e663832d5ed332b56"
+            "line": 1,
+            "regionId": "p57-r001",
+            "sourceHash": "44debb2a7dd3024d0168da35d97d8f40b67fd7327e62810fdbceaeedf6ae9a11"
           }
         ],
         "xiandai": {
@@ -276,15 +261,9 @@
         "shanben": [
           {
             "page": 59,
-            "line": 13,
-            "regionId": "p59-r013",
-            "sourceHash": "f593a9e78741133981f79e026af077b3fd54cee967c36e8ee7d3fdcbbc947203"
-          },
-          {
-            "page": 59,
-            "line": 14,
-            "regionId": "p59-r014",
-            "sourceHash": "f593a9e78741133981f79e026af077b3fd54cee967c36e8ee7d3fdcbbc947203"
+            "line": 1,
+            "regionId": "p59-r001",
+            "sourceHash": "538178e2ad38e69361df4728de59c6295a500216aceaa54f2a9f3ab37d836f03"
           }
         ],
         "xiandai": {
@@ -304,15 +283,15 @@
         "shanben": [
           {
             "page": 65,
-            "line": 16,
-            "regionId": "p65-r016",
-            "sourceHash": "f81d8d9d69b35c3faf5be5de4d475c6262042e0824852416bb8939640546494e"
+            "line": 1,
+            "regionId": "p65-r001",
+            "sourceHash": "e78aa0474e58f23820fe135bbef177484a90e3f95806927d91a15a6f90a9c04a"
           },
           {
             "page": 66,
             "line": 1,
             "regionId": "p66-r001",
-            "sourceHash": "673a3149748fe5bbf4ea8e8d8f3dccb8486f1a41c13035507a55faf75a297d9d"
+            "sourceHash": "20ef76b641874526a53aefcefeb0bed48fce1484c5f002b2dedb285c25d18f01"
           }
         ],
         "xiandai": {
@@ -335,21 +314,9 @@
           "shanben": [
             {
               "page": 18,
-              "line": 11,
-              "regionId": "p18-r011",
-              "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
-            },
-            {
-              "page": 18,
-              "line": 12,
-              "regionId": "p18-r012",
-              "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
-            },
-            {
-              "page": 18,
-              "line": 13,
-              "regionId": "p18-r013",
-              "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
+              "line": 1,
+              "regionId": "p18-r001",
+              "sourceHash": "8d9753a988e9094cfa04d4f4d033de164d7e94c0b6f823cfdce91076515a9485"
             }
           ],
           "xiandai": {
@@ -367,9 +334,9 @@
           "shanben": [
             {
               "page": 18,
-              "line": 13,
-              "regionId": "p18-r013",
-              "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
+              "line": 1,
+              "regionId": "p18-r001",
+              "sourceHash": "8d9753a988e9094cfa04d4f4d033de164d7e94c0b6f823cfdce91076515a9485"
             }
           ],
           "xiandai": {
@@ -391,15 +358,9 @@
           "shanben": [
             {
               "page": 25,
-              "line": 8,
-              "regionId": "p25-r008",
-              "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
-            },
-            {
-              "page": 25,
-              "line": 9,
-              "regionId": "p25-r009",
-              "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
+              "line": 1,
+              "regionId": "p25-r001",
+              "sourceHash": "36f2955443fb0fd1d5b079e91092792a2228aaab16d1b2913bd44fbbfddcdc07"
             }
           ],
           "xiandai": {
@@ -416,15 +377,9 @@
           "shanben": [
             {
               "page": 25,
-              "line": 9,
-              "regionId": "p25-r009",
-              "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
-            },
-            {
-              "page": 25,
-              "line": 10,
-              "regionId": "p25-r010",
-              "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
+              "line": 1,
+              "regionId": "p25-r001",
+              "sourceHash": "36f2955443fb0fd1d5b079e91092792a2228aaab16d1b2913bd44fbbfddcdc07"
             }
           ],
           "xiandai": {
@@ -446,21 +401,9 @@
           "shanben": [
             {
               "page": 43,
-              "line": 14,
-              "regionId": "p43-r014",
-              "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-            },
-            {
-              "page": 43,
-              "line": 15,
-              "regionId": "p43-r015",
-              "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-            },
-            {
-              "page": 43,
-              "line": 16,
-              "regionId": "p43-r016",
-              "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
+              "line": 1,
+              "regionId": "p43-r001",
+              "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
             }
           ],
           "xiandai": {
@@ -477,15 +420,9 @@
           "shanben": [
             {
               "page": 43,
-              "line": 15,
-              "regionId": "p43-r015",
-              "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-            },
-            {
-              "page": 43,
-              "line": 16,
-              "regionId": "p43-r016",
-              "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
+              "line": 1,
+              "regionId": "p43-r001",
+              "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
             }
           ],
           "xiandai": {
@@ -507,9 +444,9 @@
           "shanben": [
             {
               "page": 52,
-              "line": 10,
-              "regionId": "p52-r010",
-              "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
+              "line": 1,
+              "regionId": "p52-r001",
+              "sourceHash": "a3754835c2c0147eceb053b1382ccddcac09dfcd974d531c4a16d3571ec65824"
             }
           ],
           "xiandai": {
@@ -526,15 +463,9 @@
           "shanben": [
             {
               "page": 52,
-              "line": 11,
-              "regionId": "p52-r011",
-              "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
-            },
-            {
-              "page": 52,
-              "line": 12,
-              "regionId": "p52-r012",
-              "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
+              "line": 1,
+              "regionId": "p52-r001",
+              "sourceHash": "a3754835c2c0147eceb053b1382ccddcac09dfcd974d531c4a16d3571ec65824"
             }
           ],
           "xiandai": {
@@ -556,15 +487,9 @@
           "shanben": [
             {
               "page": 67,
-              "line": 10,
-              "regionId": "p67-r010",
-              "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
-            },
-            {
-              "page": 67,
-              "line": 11,
-              "regionId": "p67-r011",
-              "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
+              "line": 1,
+              "regionId": "p67-r001",
+              "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
             }
           ],
           "xiandai": {
@@ -582,15 +507,9 @@
           "shanben": [
             {
               "page": 67,
-              "line": 11,
-              "regionId": "p67-r011",
-              "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
-            },
-            {
-              "page": 67,
-              "line": 12,
-              "regionId": "p67-r012",
-              "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
+              "line": 1,
+              "regionId": "p67-r001",
+              "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
             }
           ],
           "xiandai": {
@@ -612,15 +531,9 @@
           "shanben": [
             {
               "page": 68,
-              "line": 13,
-              "regionId": "p68-r013",
-              "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
-            },
-            {
-              "page": 68,
-              "line": 14,
-              "regionId": "p68-r014",
-              "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
+              "line": 1,
+              "regionId": "p68-r001",
+              "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
             }
           ],
           "xiandai": {
@@ -637,15 +550,9 @@
           "shanben": [
             {
               "page": 68,
-              "line": 13,
-              "regionId": "p68-r013",
-              "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
-            },
-            {
-              "page": 68,
-              "line": 14,
-              "regionId": "p68-r014",
-              "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
+              "line": 1,
+              "regionId": "p68-r001",
+              "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
             }
           ],
           "xiandai": {
@@ -669,19 +576,7 @@
               "page": 69,
               "line": 1,
               "regionId": "p69-r001",
-              "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-            },
-            {
-              "page": 69,
-              "line": 2,
-              "regionId": "p69-r002",
-              "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-            },
-            {
-              "page": 69,
-              "line": 3,
-              "regionId": "p69-r003",
-              "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
+              "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
             }
           ],
           "xiandai": {
@@ -698,15 +593,9 @@
           "shanben": [
             {
               "page": 69,
-              "line": 2,
-              "regionId": "p69-r002",
-              "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-            },
-            {
-              "page": 69,
-              "line": 3,
-              "regionId": "p69-r003",
-              "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
+              "line": 1,
+              "regionId": "p69-r001",
+              "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
             }
           ],
           "xiandai": {
@@ -856,9 +745,9 @@
       "shanben": [
         {
           "page": 14,
-          "line": 3,
-          "regionId": "p14-r003",
-          "sourceHash": "78239c22d236bae8e209f64fc5966a668114333f97fed06660a443fc66bc0233"
+          "line": 1,
+          "regionId": "p14-r001",
+          "sourceHash": "df5d7ce9dcab34189b8ce0006b517e149c2d08405f9106c351d1f1af004cea26"
         }
       ],
       "xiandai": {
@@ -878,9 +767,9 @@
       "shanben": [
         {
           "page": 40,
-          "line": 3,
-          "regionId": "p40-r003",
-          "sourceHash": "5fdfd19b63b203ca17da57af1759025a557dcdf0570b1a1c63708cd6489a8058"
+          "line": 1,
+          "regionId": "p40-r001",
+          "sourceHash": "743da90764029635cca9327fbfd92762942762726abf26db3ca7f962efb49c91"
         }
       ],
       "xiandai": {
@@ -900,21 +789,9 @@
       "shanben": [
         {
           "page": 44,
-          "line": 8,
-          "regionId": "p44-r008",
-          "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
-        },
-        {
-          "page": 44,
-          "line": 9,
-          "regionId": "p44-r009",
-          "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
-        },
-        {
-          "page": 44,
-          "line": 10,
-          "regionId": "p44-r010",
-          "sourceHash": "95e60fb188af6eda812b4d37fbb4967563f2ef3c498246358d50c864a6678b43"
+          "line": 1,
+          "regionId": "p44-r001",
+          "sourceHash": "3b525d521c96f70dc0180b4ba458731e1fada0e3282fe0263e595fc3d82e57f0"
         }
       ],
       "xiandai": {
@@ -934,15 +811,9 @@
       "shanben": [
         {
           "page": 57,
-          "line": 6,
-          "regionId": "p57-r006",
-          "sourceHash": "737eec63c90e4a332a588d1aaa63165a65cccb21e0e1837e663832d5ed332b56"
-        },
-        {
-          "page": 57,
-          "line": 7,
-          "regionId": "p57-r007",
-          "sourceHash": "737eec63c90e4a332a588d1aaa63165a65cccb21e0e1837e663832d5ed332b56"
+          "line": 1,
+          "regionId": "p57-r001",
+          "sourceHash": "44debb2a7dd3024d0168da35d97d8f40b67fd7327e62810fdbceaeedf6ae9a11"
         }
       ],
       "xiandai": {
@@ -962,15 +833,9 @@
       "shanben": [
         {
           "page": 59,
-          "line": 13,
-          "regionId": "p59-r013",
-          "sourceHash": "f593a9e78741133981f79e026af077b3fd54cee967c36e8ee7d3fdcbbc947203"
-        },
-        {
-          "page": 59,
-          "line": 14,
-          "regionId": "p59-r014",
-          "sourceHash": "f593a9e78741133981f79e026af077b3fd54cee967c36e8ee7d3fdcbbc947203"
+          "line": 1,
+          "regionId": "p59-r001",
+          "sourceHash": "538178e2ad38e69361df4728de59c6295a500216aceaa54f2a9f3ab37d836f03"
         }
       ],
       "xiandai": {
@@ -991,15 +856,15 @@
       "shanben": [
         {
           "page": 65,
-          "line": 16,
-          "regionId": "p65-r016",
-          "sourceHash": "f81d8d9d69b35c3faf5be5de4d475c6262042e0824852416bb8939640546494e"
+          "line": 1,
+          "regionId": "p65-r001",
+          "sourceHash": "e78aa0474e58f23820fe135bbef177484a90e3f95806927d91a15a6f90a9c04a"
         },
         {
           "page": 66,
           "line": 1,
           "regionId": "p66-r001",
-          "sourceHash": "673a3149748fe5bbf4ea8e8d8f3dccb8486f1a41c13035507a55faf75a297d9d"
+          "sourceHash": "20ef76b641874526a53aefcefeb0bed48fce1484c5f002b2dedb285c25d18f01"
         }
       ],
       "xiandai": {
@@ -1021,21 +886,9 @@
         "shanben": [
           {
             "page": 18,
-            "line": 11,
-            "regionId": "p18-r011",
-            "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
-          },
-          {
-            "page": 18,
-            "line": 12,
-            "regionId": "p18-r012",
-            "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
-          },
-          {
-            "page": 18,
-            "line": 13,
-            "regionId": "p18-r013",
-            "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
+            "line": 1,
+            "regionId": "p18-r001",
+            "sourceHash": "8d9753a988e9094cfa04d4f4d033de164d7e94c0b6f823cfdce91076515a9485"
           }
         ],
         "xiandai": {
@@ -1053,9 +906,9 @@
         "shanben": [
           {
             "page": 18,
-            "line": 13,
-            "regionId": "p18-r013",
-            "sourceHash": "0d852a0898213a6685a6f529ef8419ef1a1195043f1d3ef94593e62994a88bf7"
+            "line": 1,
+            "regionId": "p18-r001",
+            "sourceHash": "8d9753a988e9094cfa04d4f4d033de164d7e94c0b6f823cfdce91076515a9485"
           }
         ],
         "xiandai": {
@@ -1078,15 +931,9 @@
         "shanben": [
           {
             "page": 25,
-            "line": 8,
-            "regionId": "p25-r008",
-            "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
-          },
-          {
-            "page": 25,
-            "line": 9,
-            "regionId": "p25-r009",
-            "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
+            "line": 1,
+            "regionId": "p25-r001",
+            "sourceHash": "36f2955443fb0fd1d5b079e91092792a2228aaab16d1b2913bd44fbbfddcdc07"
           }
         ],
         "xiandai": {
@@ -1103,15 +950,9 @@
         "shanben": [
           {
             "page": 25,
-            "line": 9,
-            "regionId": "p25-r009",
-            "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
-          },
-          {
-            "page": 25,
-            "line": 10,
-            "regionId": "p25-r010",
-            "sourceHash": "93381206115c7ba77232dff2c985f4234eacb17ad550a98f08759a55c3c3f0b3"
+            "line": 1,
+            "regionId": "p25-r001",
+            "sourceHash": "36f2955443fb0fd1d5b079e91092792a2228aaab16d1b2913bd44fbbfddcdc07"
           }
         ],
         "xiandai": {
@@ -1134,21 +975,9 @@
         "shanben": [
           {
             "page": 43,
-            "line": 14,
-            "regionId": "p43-r014",
-            "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-          },
-          {
-            "page": 43,
-            "line": 15,
-            "regionId": "p43-r015",
-            "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-          },
-          {
-            "page": 43,
-            "line": 16,
-            "regionId": "p43-r016",
-            "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
+            "line": 1,
+            "regionId": "p43-r001",
+            "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
           }
         ],
         "xiandai": {
@@ -1165,15 +994,9 @@
         "shanben": [
           {
             "page": 43,
-            "line": 15,
-            "regionId": "p43-r015",
-            "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
-          },
-          {
-            "page": 43,
-            "line": 16,
-            "regionId": "p43-r016",
-            "sourceHash": "fc6387878dbd9b3c1b9d71609fa457f7aaf2b0f836e10f027825b69eacb0b764"
+            "line": 1,
+            "regionId": "p43-r001",
+            "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
           }
         ],
         "xiandai": {
@@ -1196,9 +1019,9 @@
         "shanben": [
           {
             "page": 52,
-            "line": 10,
-            "regionId": "p52-r010",
-            "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
+            "line": 1,
+            "regionId": "p52-r001",
+            "sourceHash": "a3754835c2c0147eceb053b1382ccddcac09dfcd974d531c4a16d3571ec65824"
           }
         ],
         "xiandai": {
@@ -1215,15 +1038,9 @@
         "shanben": [
           {
             "page": 52,
-            "line": 11,
-            "regionId": "p52-r011",
-            "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
-          },
-          {
-            "page": 52,
-            "line": 12,
-            "regionId": "p52-r012",
-            "sourceHash": "228fa6b589ed87695e2d2ba4c4e610ff3e179ba10b4bea9e814713f7f1534392"
+            "line": 1,
+            "regionId": "p52-r001",
+            "sourceHash": "a3754835c2c0147eceb053b1382ccddcac09dfcd974d531c4a16d3571ec65824"
           }
         ],
         "xiandai": {
@@ -1246,15 +1063,9 @@
         "shanben": [
           {
             "page": 67,
-            "line": 10,
-            "regionId": "p67-r010",
-            "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
-          },
-          {
-            "page": 67,
-            "line": 11,
-            "regionId": "p67-r011",
-            "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
+            "line": 1,
+            "regionId": "p67-r001",
+            "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
           }
         ],
         "xiandai": {
@@ -1272,15 +1083,9 @@
         "shanben": [
           {
             "page": 67,
-            "line": 11,
-            "regionId": "p67-r011",
-            "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
-          },
-          {
-            "page": 67,
-            "line": 12,
-            "regionId": "p67-r012",
-            "sourceHash": "3606546e00a720db21a861fe7a552dfd68308c14c6f0995faf6a7d139e215c48"
+            "line": 1,
+            "regionId": "p67-r001",
+            "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
           }
         ],
         "xiandai": {
@@ -1303,15 +1108,9 @@
         "shanben": [
           {
             "page": 68,
-            "line": 13,
-            "regionId": "p68-r013",
-            "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
-          },
-          {
-            "page": 68,
-            "line": 14,
-            "regionId": "p68-r014",
-            "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
+            "line": 1,
+            "regionId": "p68-r001",
+            "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
           }
         ],
         "xiandai": {
@@ -1328,15 +1127,9 @@
         "shanben": [
           {
             "page": 68,
-            "line": 13,
-            "regionId": "p68-r013",
-            "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
-          },
-          {
-            "page": 68,
-            "line": 14,
-            "regionId": "p68-r014",
-            "sourceHash": "c86883b9b8a42a873369a928292b989abab45e3db99e98acfc6a6959968a16b8"
+            "line": 1,
+            "regionId": "p68-r001",
+            "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
           }
         ],
         "xiandai": {
@@ -1361,19 +1154,7 @@
             "page": 69,
             "line": 1,
             "regionId": "p69-r001",
-            "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-          },
-          {
-            "page": 69,
-            "line": 2,
-            "regionId": "p69-r002",
-            "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-          },
-          {
-            "page": 69,
-            "line": 3,
-            "regionId": "p69-r003",
-            "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
+            "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
           }
         ],
         "xiandai": {
@@ -1390,15 +1171,9 @@
         "shanben": [
           {
             "page": 69,
-            "line": 2,
-            "regionId": "p69-r002",
-            "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
-          },
-          {
-            "page": 69,
-            "line": 3,
-            "regionId": "p69-r003",
-            "sourceHash": "ba51c74bc69108e9e3af5aba73ba03913c8196466df1b6779e2752ef1ad96c22"
+            "line": 1,
+            "regionId": "p69-r001",
+            "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
           }
         ],
         "xiandai": {
@@ -1414,6 +1189,7 @@
     }
   ],
   "blockers": [
+    "M2 尚有 68 处待覆校，暂不可发布",
     "9 个现代本句段未在善本对应",
     "6 个对齐段得分低于 0.8",
     "7 处相邻善本文字重叠，疑 OCR 跨页重复或错位"

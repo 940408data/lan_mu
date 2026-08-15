@@ -2,18 +2,15 @@
   "schemaVersion": 1,
   "work": "中庸章句",
   "shanben": {
-    "source": "ocr-markdown",
+    "source": "shanben-v2:recollate-1-78.json",
     "stats": {
       "pages": 78,
-      "regions": 1112,
-      "bodyChars": 14499,
-      "excluded": 2,
+      "regions": 77,
+      "bodyChars": 14459,
+      "excluded": 1,
       "byKind": {
         "cover": 1,
-        "section_heading": 1,
-        "body": 1108,
-        "running_head": 1,
-        "annotation": 1
+        "body": 76
       }
     },
     "quality": {
@@ -22,6 +19,11 @@
       "latexLeftovers": 0,
       "isolatedTitles": 0,
       "unknown": 0
+    },
+    "m2": {
+      "source": "recollate-1-78.json",
+      "sha256": "af16832c195a6af2ce3945e909fd11801aac6674a57ada9200b1a8dcf3fd383c",
+      "pendingVerify": 68
     }
   },
   "xiandai": {

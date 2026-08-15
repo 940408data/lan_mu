@@ -11,6 +11,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { loadWork } = require('./io');
+const { loadM2Base } = require('./base');
 
 const BODY_KINDS = new Set(['body', 'section_heading', 'annotation']);
 const FOOTNOTE_REF = /\$\s*\^\s*\{?\s*([\d①-⑳]+)\s*\}?\s*\$|\^\{\s*([\d①-⑳]+)\s*\}/g;
@@ -215,6 +216,7 @@ function cleanEdition(ed, work) {
     role: ed.role,
     level: ed.level,
     source: ed.source || 'ocr-markdown',
+    m2: ed.m2 || null,
     pages,
     bodyText,
     stats: {
@@ -228,13 +230,20 @@ function cleanEdition(ed, work) {
   };
 }
 
-function shanbenV2Edition(workId, fallback) {
-  const file = path.join(__dirname, '..', 'data', workId, 'shanben-v2.json');
-  if (!fs.existsSync(file)) return fallback;
-  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+function shanbenV2Edition(workId, fallback, m2 = loadM2Base(workId)) {
+  const data = m2.data;
   return {
     ...fallback,
     source: `shanben-v2:${data.source || 'unknown'}`,
+    m2: {
+      // 公开产物不写入 worktree 绝对路径，保留仓库内可复核的相对定位。
+      file: `collation/data/${workId}/shanben-v2.json`,
+      source: m2.source,
+      stats: m2.stats,
+      pendingFile: `collation/data/${workId}/pending-verify.json`,
+      pendingCount: m2.pendingCount,
+      sha256: m2.sha256,
+    },
     pages: data.pages.map(p => ({
       n: p.n,
       lines: [p.text],
@@ -246,7 +255,8 @@ function shanbenV2Edition(workId, fallback) {
 
 function cleanWork(workId) {
   const loaded = loadWork(workId);
-  const shanben = shanbenV2Edition(workId, loaded.shanben);
+  const m2 = loadM2Base(workId);
+  const shanben = shanbenV2Edition(workId, loaded.shanben, m2);
   return {
     work: loaded.work,
     shanben: cleanEdition(shanben, loaded.work),
@@ -258,7 +268,16 @@ function publicSummary(cleaned) {
   return {
     schemaVersion: cleaned.shanben.schemaVersion,
     work: cleaned.work.id,
-    shanben: { source: cleaned.shanben.source, stats: cleaned.shanben.stats, quality: cleaned.shanben.quality },
+    shanben: {
+      source: cleaned.shanben.source,
+      stats: cleaned.shanben.stats,
+      quality: cleaned.shanben.quality,
+      m2: cleaned.shanben.m2 ? {
+        source: cleaned.shanben.m2.source,
+        sha256: cleaned.shanben.m2.sha256,
+        pendingVerify: cleaned.shanben.m2.pendingCount,
+      } : null,
+    },
     xiandai: { source: cleaned.xiandai.source, stats: cleaned.xiandai.stats, quality: cleaned.xiandai.quality },
   };
 }

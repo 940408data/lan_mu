@@ -33,6 +33,7 @@ const byPage = {};
 pending.forEach(p => { (byPage[p.page] = byPage[p.page] || []).push(p); });
 const pageList = Object.keys(byPage).map(Number).sort((a, b) => a - b);
 let queue = pageList.slice(0, limit || pageList.length);
+function itemKey(x) { return `${x.page}:${x.ai}`; }
 
 (async () => {
   const report = [];
@@ -66,8 +67,16 @@ let queue = pageList.slice(0, limit || pageList.length);
   // ③ 终态唯一：直改 shanben-v2.json（不再产出 -final 中间态；build-v2 重跑亦按 verify-report 应用，幂等）
   fs.writeFileSync(path.join(dataDir, 'shanben-v2.json'), JSON.stringify(v2, null, 2));
   fs.writeFileSync(path.join(dataDir, 'verify-report.json'), JSON.stringify(report, null, 2));
+  // pending 是可续跑队列：已拿到实字（含“维持旧 OCR”）的条目移出，
+  // 未处理页及 deferred/error 条目保留，避免分批 --limit 覆校时误报已完成。
+  const reported = new Map(report.map(x => [itemKey(x), x]));
+  const remaining = pending.filter(it => {
+    const r = reported.get(itemKey(it));
+    return !r || !r.char || r.verdict === 'deferred' || r.verdict === 'error';
+  });
+  fs.writeFileSync(path.join(dataDir, 'pending-verify.json'), JSON.stringify(remaining, null, 2));
   const changed = report.filter(x => x.changed).length;
   const deferred = report.filter(x => x.verdict === 'deferred' || x.verdict === 'error').length;
   console.log(`✓ 覆校 ${report.length} 处：改字 ${changed}（旧OCR误读，已回填善本实字）、维持旧 ${report.length - changed - deferred}、失败/待人工 ${deferred}`);
-  console.log('  → shanben-v2.json（终态）+ verify-report.json');
+  console.log(`  → shanben-v2.json（终态）+ verify-report.json；pending-verify 剩余 ${remaining.length} 条`);
 })().catch(e => { console.error('✗', e); process.exit(1); });

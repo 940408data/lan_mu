@@ -22,6 +22,7 @@ const { exportAll } = require('./src/export');
 const { verifyClusters, migrateVerifications } = require('./src/cluster');
 const { engine } = require('./src/llm');
 const { privateWorkDir, privatePath, internalReadPath } = require('./src/paths');
+const { loadM2Base } = require('./src/base');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -52,6 +53,19 @@ function writeDiff(workId) {
   console.log(`✓ 字级异文 ${r.variants.length} 条（异体 ${r.summary.异体 || 0} / 真异文 ${r.summary.真异文 || 0} / ocr疑 ${r.summary.ocr疑 || 0}）+ 簇 ${r.clusters.length} 个`, r.summary.簇);
 }
 
+function readCurrentVerdicts(workId) {
+  const m2 = loadM2Base(workId);
+  const vpath = internalReadPath(workId, 'verdicts.json');
+  if (!fs.existsSync(vpath)) { console.error('✗ 无当前 M2 对应 verdicts.json，先跑 --step=officer 或 all'); process.exit(1); }
+  const verdicts = JSON.parse(fs.readFileSync(vpath, 'utf8'));
+  const stale = verdicts.filter(v => v.baseSha256 !== m2.sha256);
+  if (stale.length) {
+    console.error(`✗ verdicts.json 有 ${stale.length} 条不是当前 M2（${m2.sha256.slice(0, 12)}）生成；请重跑 --step=officer 或 all`);
+    process.exit(1);
+  }
+  return { verdicts, m2 };
+}
+
 async function runVerify(workId) {
   const r = await verifyClusters(workId, {
     conc: +(flags.conc || 3),
@@ -76,9 +90,7 @@ async function runVerify(workId) {
     const payload = JSON.parse(fs.readFileSync(decPath, 'utf8'));
     if (payload.work && payload.work !== workId) console.error(`  ⚠ decisions 属「${payload.work}」，当前作品「${workId}」，仍继续`);
     const decisions = payload.decisions || {};
-    const vpath = internalReadPath(workId, 'verdicts.json');
-    if (!fs.existsSync(vpath)) { console.error('✗ 无 verdicts.json，先跑 --step=officer 或 all'); process.exit(1); }
-    const verdicts = JSON.parse(fs.readFileSync(vpath, 'utf8'));
+    const { verdicts, m2 } = readCurrentVerdicts(workId);
     let hit = 0;
     for (const v of verdicts) {
       const dec = decisions[v.diffId];
@@ -107,9 +119,7 @@ async function runVerify(workId) {
   // officer / all / export
   let result;
   if (step === 'export') {
-    const vpath = internalReadPath(workId, 'verdicts.json');
-    if (!fs.existsSync(vpath)) { console.error('✗ 无 verdicts.json，先跑 --step=officer 或 all'); process.exit(1); }
-    const verdicts = JSON.parse(fs.readFileSync(vpath, 'utf8'));
+    const { verdicts } = readCurrentVerdicts(workId);
     const D = diff(workId);
     result = { ...D, verdicts, verdictSummary: { total: verdicts.length, resolved: verdicts.filter(v => v.verdict === 'resolved').length, suspended: verdicts.filter(v => v.verdict === 'suspended').length, human: verdicts.filter(v => v.verdict === 'human').length, engine } };
   } else {

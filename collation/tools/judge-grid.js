@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const { renderPage, gridColumns } = require('../src/vision');
 const { INPUT_DATA, loadConfig } = require('../src/io');
+const { loadM2Base } = require('../src/base');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -20,6 +21,7 @@ const workId = pos[0];
 if (!workId || !flags.pages) { console.error('用法: node collation/tools/judge-grid.js <书名> --pages=8-36 [--conc=3]'); process.exit(1); }
 const conc = parseInt(flags.conc || '3', 10);
 const dataDir = path.join(__dirname, '..', 'data', workId);
+const m2 = loadM2Base(workId);
 // ② 版面结构落盘：data/<书>/layout.json（M0 抽样结论）为默认网格，--cols/--rows 可覆盖
 const layoutFile = path.join(dataDir, 'layout.json');
 const savedLayout = fs.existsSync(layoutFile) ? JSON.parse(fs.readFileSync(layoutFile, 'utf8')) : {};
@@ -32,7 +34,13 @@ const outPath = path.join(dataDir, 'grid.json');
 function pad(n) { return String(n).padStart(4, '0'); }
 
 let done = {};
-if (fs.existsSync(outPath)) { try { JSON.parse(fs.readFileSync(outPath, 'utf8')).pages.forEach(p => done[p.n] = p); } catch {} }
+if (fs.existsSync(outPath)) {
+  try {
+    const old = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+    if (old.base?.sha256 === m2.sha256) old.pages.forEach(p => done[p.n] = p);
+    else console.log('⚠ grid.json 属旧 M2 底本，清空旧页判定并按新 shanben-v2 重跑');
+  } catch {}
+}
 
 (async () => {
   const queue = [];
@@ -55,13 +63,13 @@ if (fs.existsSync(outPath)) { try { JSON.parse(fs.readFileSync(outPath, 'utf8'))
         const j = cols.filter(c => c.type === 'j').length, z = cols.length - j;
         done[pg] = { n: pg, engine: r.engine, conf: r.conf, cols };
         console.log(`page_${pad(pg)}: ${cols.length}列 经${j}/注${z} conf=${(r.conf || 0).toFixed(2)} (${r.engine}) [${cnt}/${queue.length}]`);
-        fs.writeFileSync(outPath, JSON.stringify({ work: workId, layout, pages: Object.values(done).sort((a, b) => a.n - b.n) }, null, 2));
+        fs.writeFileSync(outPath, JSON.stringify({ work: workId, base: { file: 'shanben-v2.json', sha256: m2.sha256, pendingVerify: m2.pendingCount }, layout, pages: Object.values(done).sort((a, b) => a.n - b.n) }, null, 2));
       } catch (e) { console.log(`page_${pad(pg)}: 失败 ${e.message}`); }
     }
   }
   await Promise.all(Array.from({ length: conc }, worker));
   const pages = Object.values(done).sort((a, b) => a.n - b.n);
-  fs.writeFileSync(outPath, JSON.stringify({ work: workId, layout, pages }, null, 2));
+  fs.writeFileSync(outPath, JSON.stringify({ work: workId, base: { file: 'shanben-v2.json', sha256: m2.sha256, pendingVerify: m2.pendingCount }, layout, pages }, null, 2));
   const tj = pages.reduce((s, p) => s + p.cols.filter(c => c.type === 'j').length, 0);
   const tz = pages.reduce((s, p) => s + p.cols.filter(c => c.type === 'z').length, 0);
   console.log(`✓ grid.json：${pages.length} 页，经 ${tj} 列 / 注 ${tz} 列`);

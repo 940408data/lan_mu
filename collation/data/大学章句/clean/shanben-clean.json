@@ -5,6 +5,21 @@
   "role": "shanben",
   "level": "A",
   "source": "shanben-v2:recollate-1-40.json",
+  "m2": {
+    "file": "collation/data/大学章句/shanben-v2.json",
+    "source": "recollate-1-40.json",
+    "stats": {
+      "match": 6880,
+      "variant": 0,
+      "ins": 25,
+      "del": 125,
+      "subVerify": 1,
+      "verified": 50
+    },
+    "pendingFile": "collation/data/大学章句/pending-verify.json",
+    "pendingCount": 1,
+    "sha256": "100dbdcc4b523d50d813bd2a08608725e7ef8a29e78fdf23137d7b4edd93b112"
+  },
   "pages": [
     {
       "page": 1,

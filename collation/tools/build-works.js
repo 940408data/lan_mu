@@ -18,7 +18,13 @@ const [workId, newId] = pos;
 if (!workId || !newId) { console.error('用法: node collation/tools/build-works.js <书名> <新作品id> [--base=daxue]'); process.exit(1); }
 const baseId = flags.base || 'daxue';
 const dataDir = path.join(__dirname, '..', 'data', workId);
+const { loadM2Base } = require('../src/base');
 const grid = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid.json'), 'utf8'));
+const m2 = loadM2Base(workId);
+if (!grid.base || grid.base.sha256 !== m2.sha256) {
+  throw new Error('M6 grid.json 不是当前 M2 shanben-v2 新底本生成；请先重跑 judge-grid.js 与 build-songke.js');
+}
+if (m2.pendingCount) throw new Error(`M6 不能使用仍有 ${m2.pendingCount} 处待覆校的 M2 底本；请先完成 verify-v2.js`);
 const worksDir = path.join(__dirname, '..', '..', 'works');
 
 // 1) grid 列 → 合并连续同 type 为段（经注分栏 blocks）

@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { internalReadPath } = require('../src/paths');
+const { loadM2Base } = require('../src/base');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -19,6 +20,10 @@ const workId = pos[0];
 if (!workId) { console.error('用法: node collation/tools/build-songke.js <书名>'); process.exit(1); }
 const dataDir = path.join(__dirname, '..', 'data', workId);
 const grid = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid.json'), 'utf8'));
+const m2 = loadM2Base(workId);
+if (!grid.base || grid.base.sha256 !== m2.sha256) {
+  throw new Error('M3 grid.json 不是当前 M2 shanben-v2 新底本生成；请按新底本重跑 judge-grid.js');
+}
 let verdicts = [];
 try { verdicts = JSON.parse(fs.readFileSync(internalReadPath(workId, 'verdicts.json'), 'utf8')); } catch {}
 

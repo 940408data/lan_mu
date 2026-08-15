@@ -47,6 +47,12 @@
       }
     }
   },
+  "base": {
+    "source": "recollate-1-40.json",
+    "sha256": "100dbdcc4b523d50d813bd2a08608725e7ef8a29e78fdf23137d7b4edd93b112",
+    "pendingVerify": 1,
+    "verified": false
+  },
   "alignment": {
     "segments": 575,
     "exact": 538,
@@ -361,6 +367,7 @@
     }
   ],
   "blockers": [
+    "M2 尚有 1 处待覆校，暂不可发布",
     "3 个现代本句段未在善本对应",
     "1 个对齐段得分低于 0.8",
     "2 处相邻善本文字重叠，疑 OCR 跨页重复或错位"

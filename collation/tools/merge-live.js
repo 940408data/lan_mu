@@ -13,13 +13,16 @@ const fs = require('fs');
 const path = require('path');
 const { privateWorkDir, internalReadPath } = require('../src/paths');
 const { aggregate, OFFICER_NAME } = require('../src/officer');
+const { loadM2Base } = require('../src/base');
 
 const workId = process.argv[2];
 const opinionsArg = process.argv[3] || 'live-opinions.json';
 if (!workId) { console.error('用法: node collation/tools/merge-live.js <书名> [opinions文件]'); process.exit(1); }
 const dir = privateWorkDir(workId);
+const m2 = loadM2Base(workId);
 const diffs = JSON.parse(fs.readFileSync(internalReadPath(workId, 'diffs.json'), 'utf8'));
 const verdicts = JSON.parse(fs.readFileSync(internalReadPath(workId, 'verdicts.json'), 'utf8'));
+if (verdicts.some(v => v.baseSha256 !== m2.sha256)) throw new Error('verdicts.json 不是当前 M2 新底本生成；请先重跑 officer/all');
 const livePath = path.isAbsolute(opinionsArg) ? opinionsArg
   : (opinionsArg.includes('/') ? path.resolve(opinionsArg) : path.join(__dirname, opinionsArg));
 const live = JSON.parse(fs.readFileSync(livePath, 'utf8'));
@@ -32,6 +35,7 @@ for (const [vid, opinions] of Object.entries(live)) {
   if (!v) { console.warn(`⚠ ${vid} 不在 diffs.json，跳过`); continue; }
   // opinions: 各官原始输出（含 adopt/candidate/reason/confidence/线索）
   const agg = aggregate(opinions, v);
+  agg.baseSha256 = m2.sha256;
   agg._live = true;
   agg.engine = 'agent';
   // 替换 verdicts 中同 id 条目

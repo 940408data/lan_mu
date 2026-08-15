@@ -20,6 +20,7 @@ const { complete, engine, loadOfficerProfile } = require('./llm');
 const { diff } = require('./diff');
 const { privatePath, internalReadPath } = require('./paths');
 const { loadVerifications } = require('./cluster');
+const { loadM2Base } = require('./base');
 
 const OFFICERS = ['liu-xiang', 'jie-xian', 'dai-zhen', 'ji-yun'];
 const OFFICER_NAME = { 'liu-xiang': '刘向', 'jie-xian': '解缙', 'dai-zhen': '戴震', 'ji-yun': '纪昀' };
@@ -142,6 +143,7 @@ function migrateVerdicts(old, targets) {
 
 /** 校书官裁决主入口（真异文 + ocr疑 + 核验为真的夺/衍/换簇）。增量保存 + 断点续传 + 条间并行。 */
 async function adjudicate(workId, opts = {}) {
+  const m2 = loadM2Base(workId);
   const D = diff(workId);
   const charTargets = D.variants.filter(v => v.type === '真异文' || v.type === 'ocr疑');
   // P4.5 核验为真的簇入裁；未核验/核验为噪声者不入
@@ -154,6 +156,8 @@ async function adjudicate(workId, opts = {}) {
   const oldPath = internalReadPath(workId, 'verdicts.json');
   const outPath = privatePath(workId, 'verdicts.json');
   let verdicts = fs.existsSync(oldPath) ? JSON.parse(fs.readFileSync(oldPath, 'utf8')) : [];
+  // M2 换底本后，旧裁决即使内容键相同也不能继续沿用；无指纹的历史裁决同样作废。
+  verdicts = verdicts.filter(v => v.baseSha256 === m2.sha256);
   verdicts = migrateVerdicts(verdicts, targets);
   const doneIds = new Set(verdicts.map(v => v.diffId));
   const todo = targets.filter(v => !doneIds.has(v.id));
@@ -163,9 +167,9 @@ async function adjudicate(workId, opts = {}) {
       const v = todo[idx++];
       try {
         const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, v, { notes: D.notes })));
-        verdicts.push(aggregate(ops, v));
+        verdicts.push({ ...aggregate(ops, v), baseSha256: m2.sha256 });
       } catch (e) {
-        verdicts.push({ diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, seg: v.seg, verdict: 'error', note: String(e.message || e), opinions: [] });
+        verdicts.push({ diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, seg: v.seg, verdict: 'error', note: String(e.message || e), opinions: [], baseSha256: m2.sha256 });
       }
       done++;
       fs.writeFileSync(outPath, JSON.stringify(verdicts, null, 2));  // 增量保存，可断点续传

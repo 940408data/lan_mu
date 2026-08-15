@@ -18,6 +18,7 @@ const path = require('path');
 const { loadConfig, INPUT_DATA } = require('./io');
 const { loadVisionConfig, renderPage, callVision, getKey, pickJSON, getConf } = require('./vision');
 const { privateWorkDir, privatePath, internalReadPath } = require('./paths');
+const { loadM2Base } = require('./base');
 
 const HEADER_WORDS = new Set(['大學', '中庸', '論語', '孟子', '朱熹章句', '·', '章句']);
 const COLOPHON_PAGE = { '大学章句': 37 };   // 题跋牌记起始页（按书登记；未登记书无此规则）
@@ -123,7 +124,11 @@ function loadClusters(workId) {
 }
 function loadVerifications(workId) {
   const p = internalReadPath(workId, 'clusters-verify.json');
-  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
+  if (!fs.existsSync(p)) return [];
+  const m2 = loadM2Base(workId);
+  const rows = JSON.parse(fs.readFileSync(p, 'utf8'));
+  // M2 换底本后，旧核验即使内容键相同也不能复用；无指纹的历史产物同样作废。
+  return rows.filter(x => x.baseSha256 === m2.sha256);
 }
 
 /** 簇内容键（编号随对校漂移，内容不变则结论可迁；同键多簇按序消化） */
@@ -141,8 +146,10 @@ function migrateVerifications(workId, newClusters) {
   const oldFile = internalReadPath(workId, 'clusters-verify.json');
   const file = privatePath(workId, 'clusters-verify.json');
   if (!fs.existsSync(oldFile)) return { kept: 0, dropped: 0 };
-  const old = JSON.parse(fs.readFileSync(oldFile, 'utf8'));
-  fs.writeFileSync(file + '.bak', JSON.stringify(old, null, 2));   // 迁移前备份（覆写是破坏性的）
+  const m2 = loadM2Base(workId);
+  const oldRows = JSON.parse(fs.readFileSync(oldFile, 'utf8'));
+  const old = oldRows.filter(x => x.baseSha256 === m2.sha256);
+  fs.writeFileSync(file + '.bak', JSON.stringify(oldRows, null, 2));   // 迁移前备份（覆写是破坏性的）
   const pool = new Map();
   for (const c of newClusters) {
     const k = clusterKey(c);
@@ -164,6 +171,7 @@ function migrateVerifications(workId, newClusters) {
 
 /** 簇级双侧视觉核验主入口：规则归类 + 视觉四分类。增量保存、断点续传。 */
 async function verifyClusters(workId, opts = {}) {
+  const m2 = loadM2Base(workId);
   const conc = opts.conc || 3;
   const onlySet = opts.only ? new Set(opts.only.split(',')) : null;
   const clusters = loadClusters(workId);
@@ -229,7 +237,7 @@ async function verifyClusters(workId, opts = {}) {
     while (i < todo.length) {
       const c = todo[i++];
       const r = await verifyOne(c);
-      done.push({ ...r, kind: c.kind, shanben: c.shanben, xiandai: c.xiandai, sbPages: c.sbPages, xdPage: c.xdPage, segXiandai: c.segXiandai });
+      done.push({ ...r, baseSha256: m2.sha256, kind: c.kind, shanben: c.shanben, xiandai: c.xiandai, sbPages: c.sbPages, xdPage: c.xdPage, segXiandai: c.segXiandai });
       fs.writeFileSync(outFile, JSON.stringify(done, null, 2));
       n++;
       if (opts.onProgress) opts.onProgress(n, todo.length, { c, r });

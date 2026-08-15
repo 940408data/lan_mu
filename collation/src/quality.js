@@ -83,7 +83,12 @@ function buildQualityReport(result) {
     xiandai: { stats: result.cleaned.xiandai.stats, quality: result.cleaned.xiandai.quality },
   };
   const alignment = evaluateAlignment(result);
+  const m2 = result.cleaned.shanben.m2;
+  const baseBlockers = [];
+  if (!m2) baseBlockers.push('缺少 M2 shanben-v2 新底本');
+  else if (m2.pendingCount) baseBlockers.push(`M2 尚有 ${m2.pendingCount} 处待覆校，暂不可发布`);
   const blockers = [
+    ...baseBlockers,
     ...cleaning.shanben.quality.blockers,
     ...cleaning.xiandai.quality.blockers,
     ...alignment.blockers,
@@ -93,6 +98,12 @@ function buildQualityReport(result) {
     work: result.work.id,
     status: blockers.length ? 'draft' : 'reviewed',
     cleaning,
+    base: m2 ? {
+      source: m2.source,
+      sha256: m2.sha256,
+      pendingVerify: m2.pendingCount,
+      verified: m2.pendingCount === 0,
+    } : null,
     alignment,
     reviewQueue: [
       ...alignment.orphanItems.map(x => ({ kind: 'orphan', ...x })),
