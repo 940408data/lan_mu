@@ -18,6 +18,7 @@ const fs = require('fs');
 const path = require('path');
 const { complete, engine, loadOfficerProfile } = require('./llm');
 const { diff } = require('./diff');
+const { privatePath, internalReadPath } = require('./paths');
 const { loadVerifications } = require('./cluster');
 
 const OFFICERS = ['liu-xiang', 'jie-xian', 'dai-zhen', 'ji-yun'];
@@ -150,8 +151,9 @@ async function adjudicate(workId, opts = {}) {
   const targets = [...charTargets, ...clusterTargets];
 
   const conc = opts.conc || 3;
-  const outPath = path.join(__dirname, '..', 'data', workId, 'verdicts.json');
-  let verdicts = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf8')) : [];
+  const oldPath = internalReadPath(workId, 'verdicts.json');
+  const outPath = privatePath(workId, 'verdicts.json');
+  let verdicts = fs.existsSync(oldPath) ? JSON.parse(fs.readFileSync(oldPath, 'utf8')) : [];
   verdicts = migrateVerdicts(verdicts, targets);
   const doneIds = new Set(verdicts.map(v => v.diffId));
   const todo = targets.filter(v => !doneIds.has(v.id));

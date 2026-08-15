@@ -12,9 +12,7 @@
  * 不用 opencc（避 cn→tw 一对多坑，见 memory classical-text-opencc-gotchas），改手定善本异体表。
  */
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const { loadWork } = require('./io');
+const { cleanWork, BODY_KINDS } = require('./cleanup');
 
 // ── 善本异体归一表（古字/异体 → 通行形），用于对齐匹配；可扩充 ──
 const VARIANT_MAP = {
@@ -45,83 +43,62 @@ function normChar(ch) {
   return ch;
 }
 
-// ── 页中书题/鱼尾/篇名（独立成行的书名，剥出不参与对校，治"假夺"）──
-// 仅剥含「章句/集注」者；单独的「大學/中庸」不剥（避免误伤正文断行巧合）。
-function isBookTitle(line) {
-  const t = line.replace(/\s/g, '');
-  return t.length >= 2 && t.length <= 9 && /(章句|集注)/.test(t) && /^(宋本)?(大學|中庸|論語|孟子)/.test(t);
-}
-
-// ── 现代本内联校记识别（X本作/據X本/有「X」字/衍文/當作 等）→ 剥入校记，不作正文句 ──
-const COLLATION_NOTE = /本作|本有|本無|據[^，。；]*本|有「.+」字|無「.+」字|衍文|當作|原作|據.*改/;
-function isCollationNote(raw) { return COLLATION_NOTE.test(raw); }
-
-// ── 现代本剥离 ──
-const FOOTNOTE_REF = /\$\s*\^\s*\{?\s*[\d①-⑳]+\s*\}?\s*\$/g;  // $^{①}$ 之类（容空格）
-const SUP = /\^\{[\d①-⑳]+\}/g;                                  // 残留 ^{①}
-const DOLLAR = /\$/g;
-
-/** 善本 → 逐字 token（带溯源）。若有干净底本 shanben-v2.json（M2 覆校后），优先用之
- *  （消除旧 OCR 误读、存善本原刻字形）；否则退回旧 OCR（剥封面与书题行）。 */
-function shanbenTokens(ed, workId) {
-  if (workId) {
-    const v2 = path.join(__dirname, '..', 'data', workId, 'shanben-v2.json');
-    if (fs.existsSync(v2)) {
-      const data = JSON.parse(fs.readFileSync(v2, 'utf8'));
-      const toks = [];
-      for (const pg of data.pages) for (const ch of pg.text) { if (!/\s/.test(ch)) toks.push({ ch, norm: normChar(ch), page: pg.n, line: 0 }); }
-      return toks;
-    }
-  }
+/** 已清洗善本正文流 → 逐字 token（带页、行、region 溯源）。 */
+function shanbenTokens(ed) {
   const toks = [];
   for (const pg of ed.pages) {
-    if (pg.isCover) continue;
-    pg.lines.forEach((line, li) => {
-      if (isBookTitle(line)) return;  // 剥页中/页首书题（鱼尾/篇名），不参与对校
-      for (const ch of line) {
+    for (const region of pg.regions.filter(r => BODY_KINDS.has(r.kind))) {
+      for (const ch of region.text) {
         if (/\s/.test(ch)) continue;
-        toks.push({ ch, norm: normChar(ch), page: pg.n, line: li + 1 });
+        toks.push({
+          ch,
+          norm: normChar(ch),
+          page: pg.page,
+          sourceHash: pg.sourceHash,
+          line: region.source.lines[0] || 0,
+          regionId: region.id,
+        });
       }
-    });
+    }
   }
   return toks;
 }
 
-/** 现代本 → 句数组 + 脚注/校记数组 */
+/** 已清洗现代本正文流 → 句数组；脚注/校记取自清洗审计流。 */
 function xiandaiSentences(ed) {
   const sents = [];
-  const notes = [];
+  const notes = ed.pages.flatMap(pg => pg.excluded
+    .filter(r => r.kind === 'footnote' || r.kind === 'collation_note')
+    .map(r => ({ page: pg.page, text: r.text, kind: r.kind, regionId: r.id })));
   for (const pg of ed.pages) {
-    let buf = pg.lines.join('\n');
-    buf = buf.replace(FOOTNOTE_REF, '').replace(SUP, '').replace(DOLLAR, '');
-    // ①② 行首脚注文本 → 校记，剥离；页中书题/鱼尾 → 剥出（不作正文句）
-    buf = buf.split('\n').map(ln => {
-      if (/^[①-⑳]/.test(ln.trim())) { notes.push({ page: pg.n, text: ln.trim() }); return ''; }
-      if (isBookTitle(ln)) return '';  // 剥书题（v5 类假夺之源）
-      return ln;
-    }).join('\n');
-    // 内联校记子句（「，…本作/據X本/有「X」字/衍文…」）→ 剥入校记，保正文纯净
-    buf = buf.replace(
-      /[，；][^，。；]*?(?:本作|本有|本無|據[^，]*?本|有「[^」]*」字|無「[^」]*」字|衍文|當作|原作)[^，。；]*/g,
-      m => { notes.push({ page: pg.n, text: m.slice(1).trim(), inline: true }); return ''; });
-    // 按句末标点切句
-    const parts = buf.split(/([。！？；])/).filter(s => s.length > 0);
+    const bodyRegions = pg.regions.filter(r => BODY_KINDS.has(r.kind));
+    if (!bodyRegions.length) continue;
+    // 按句末标点切句；跨正文区域时保留所有参与该句的 regionId。
     let acc = '';
-    for (const p of parts) {
-      if (/^[。！？；]$/.test(p)) { acc += p; if (acc.trim()) sents.push(makeSent(acc, pg.n)); acc = ''; }
-      else acc += p;
+    let regionIds = new Set();
+    for (const region of bodyRegions) {
+      const parts = region.text.split(/([。！？；])/).filter(s => s.length > 0);
+      for (const p of parts) {
+        regionIds.add(region.id);
+        if (/^[。！？；]$/.test(p)) {
+          acc += p;
+          if (acc.trim()) sents.push(makeSent(acc, pg.page, [...regionIds], pg.sourceHash));
+          acc = '';
+          regionIds = new Set();
+        } else acc += p;
+      }
     }
-    if (acc.trim()) sents.push(makeSent(acc, pg.n));
+    if (acc.trim()) sents.push(makeSent(acc, pg.page, [...regionIds], pg.sourceHash));
   }
   return { sents, notes };
 }
-function makeSent(raw, page) {
+function makeSent(raw, page, regionIds = [], sourceHash = null) {
   const chars = [];
   for (const ch of raw.replace(/○/g, '')) {
     if (/[，。！？；：、""''「」『』《》（）\s]/.test(ch)) continue;
     chars.push({ ch, norm: normChar(ch) });
   }
-  return { raw: raw.trim(), chars, page, norm: chars.map(c => c.norm).join('') };
+  return { raw: raw.trim(), chars, page, regionIds, sourceHash, norm: chars.map(c => c.norm).join('') };
 }
 
 // ── 编辑距离（带 sub）对齐：s 善本窗 vs p 句norm ──
@@ -161,8 +138,9 @@ function editAlign(s, p) {
 
 /** 对齐主入口 */
 function align(workId) {
-  const { work, shanben, xiandai } = loadWork(workId);
-  const sbToks = shanbenTokens(shanben, workId);
+  const cleaned = cleanWork(workId);
+  const { work, shanben, xiandai } = cleaned;
+  const sbToks = shanbenTokens(shanben);
   const sbNorm = sbToks.map(t => t.norm).join('');
   const { sents, notes } = xiandaiSentences(xiandai);
 
@@ -201,31 +179,38 @@ function align(workId) {
       segments.push(mkOrphanSeg(++segId, s));
     }
   }
-  return { work, shanbenTitle: shanben.title, xiandaiTitle: xiandai.title,
-    sbToks, sbNorm, sents, notes, segments };
+  return {
+    work,
+    cleaned: { shanben, xiandai },
+    sbToks,
+    sbNorm,
+    sents,
+    notes,
+    segments,
+  };
 }
 
 function mkExactSeg(segId, sent, sbToks, hit, len) {
   const detail = [];
   for (let k = 0; k < sent.chars.length; k++) {
     const t = sbToks[hit + k];
-    detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line } : null, xd: sent.chars[k], type: (t && t.ch === sent.chars[k].ch) ? '同' : '异体' });
+    detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line, regionId: t.regionId, sourceHash: t.sourceHash } : null, xd: sent.chars[k], type: (t && t.ch === sent.chars[k].ch) ? '同' : '异体' });
   }
-  return { segId, xiandai: { raw: sent.raw, page: sent.page, chars: sent.chars }, shanben: { span: [hit, hit + len], detail, ops: null }, score: 1 };
+  return { segId, xiandai: { raw: sent.raw, page: sent.page, regionIds: sent.regionIds, sourceHash: sent.sourceHash, chars: sent.chars }, shanben: { span: [hit, hit + len], detail, ops: null }, score: 1 };
 }
 function mkFuzzySeg(segId, sent, sbToks, base, r) {
   const detail = [];
   for (const [op, sbi, xdi] of r.ops) {
     const t = sbi != null ? sbToks[base + sbi] : null;
-    if (op === '=') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line } : null, xd: sent.chars[xdi], type: t && t.ch === sent.chars[xdi].ch ? '同' : '异体' });
-    else if (op === 'sub') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line } : null, xd: sent.chars[xdi], type: '疑异' });
-    else if (op === 'del') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line } : null, xd: null, type: '衍' });
+    if (op === '=') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line, regionId: t.regionId, sourceHash: t.sourceHash } : null, xd: sent.chars[xdi], type: t && t.ch === sent.chars[xdi].ch ? '同' : '异体' });
+    else if (op === 'sub') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line, regionId: t.regionId, sourceHash: t.sourceHash } : null, xd: sent.chars[xdi], type: '疑异' });
+    else if (op === 'del') detail.push({ sb: t ? { ch: t.ch, page: t.page, line: t.line, regionId: t.regionId, sourceHash: t.sourceHash } : null, xd: null, type: '衍' });
     else if (op === 'ins') detail.push({ sb: null, xd: sent.chars[xdi], type: '夺' });
   }
-  return { segId, xiandai: { raw: sent.raw, page: sent.page, chars: sent.chars }, shanben: { span: [base, base + 0], detail, ops: r.ops }, score: r.score };
+  return { segId, xiandai: { raw: sent.raw, page: sent.page, regionIds: sent.regionIds, sourceHash: sent.sourceHash, chars: sent.chars }, shanben: { span: [base, base + 0], detail, ops: r.ops }, score: r.score };
 }
 function mkOrphanSeg(segId, sent) {
-  return { segId, xiandai: { raw: sent.raw, page: sent.page, chars: sent.chars }, shanben: { span: null, detail: [], ops: null }, score: 0, orphan: true };
+  return { segId, xiandai: { raw: sent.raw, page: sent.page, regionIds: sent.regionIds, sourceHash: sent.sourceHash, chars: sent.chars }, shanben: { span: null, detail: [], ops: null }, score: 0, orphan: true };
 }
 
 module.exports = { align, normChar, shanbenTokens, xiandaiSentences, VARIANT_MAP };

@@ -5,12 +5,14 @@
  * 以视觉照录的「善本实印」(sbActual) 替换底本误文（实印「无」= 删除衍文）。
  * 回修后须重跑：run.js <书> --step=diff（簇核验结论自动按内容键迁移）→ verify → officer → export。
  *
- * 产物：basefix-log.json（永久修复记录，校勘记第四节取此）；clusters-verify.json 中已修条目标 fixed。
+ * 产物：私有 _derived/collation/basefix-log.json（永久修复记录，校勘记第四节取此）；
+ * clusters-verify.json 中已修条目标 fixed。
  * 用法: node collation/tools/apply-basefix.js <书名> [--dry]
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { privatePath, internalReadPath } = require('../src/paths');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -22,11 +24,11 @@ const dry = !!flags.dry;
 const dir = path.join(__dirname, '..', 'data', workId);
 const v2path = path.join(dir, 'shanben-v2.json');
 const v2 = JSON.parse(fs.readFileSync(v2path, 'utf8'));
-const clusters = JSON.parse(fs.readFileSync(path.join(dir, 'clusters.json'), 'utf8'));
-const verifs = JSON.parse(fs.readFileSync(path.join(dir, 'clusters-verify.json'), 'utf8'));
+const clusters = JSON.parse(fs.readFileSync(internalReadPath(workId, 'clusters.json'), 'utf8'));
+const verifs = JSON.parse(fs.readFileSync(internalReadPath(workId, 'clusters-verify.json'), 'utf8'));
 const cmap = {}; clusters.forEach(c => cmap[c.id] = c);
 
-const logPath = path.join(dir, 'basefix-log.json');
+const logPath = privatePath(workId, 'basefix-log.json');
 const log = fs.existsSync(logPath) ? JSON.parse(fs.readFileSync(logPath, 'utf8')) : [];
 
 let applied = 0, skipped = 0;
@@ -98,7 +100,7 @@ for (const v of verifs) {
 if (!dry) {
   fs.writeFileSync(v2path, JSON.stringify(v2, null, 2));
   fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
-  fs.writeFileSync(path.join(dir, 'clusters-verify.json'), JSON.stringify(verifs, null, 2));
+  fs.writeFileSync(privatePath(workId, 'clusters-verify.json'), JSON.stringify(verifs, null, 2));
 }
 console.log(`${dry ? '[dry] ' : ''}回修 ${applied} 处，跳过 ${skipped} 处（累计修复记录 ${log.length} 条）`);
 if (applied && !dry) console.log('→ 请重跑：node collation/run.js ' + workId + ' --step=diff && --step=verify && --step=officer && --step=export');

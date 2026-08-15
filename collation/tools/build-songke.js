@@ -10,6 +10,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { internalReadPath } = require('../src/paths');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -19,7 +20,7 @@ if (!workId) { console.error('用法: node collation/tools/build-songke.js <书�
 const dataDir = path.join(__dirname, '..', 'data', workId);
 const grid = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid.json'), 'utf8'));
 let verdicts = [];
-try { verdicts = JSON.parse(fs.readFileSync(path.join(dataDir, 'verdicts.json'), 'utf8')); } catch {}
+try { verdicts = JSON.parse(fs.readFileSync(internalReadPath(workId, 'verdicts.json'), 'utf8')); } catch {}
 
 const title = (grid.work || workId).replace(/章句/, '章句');
 

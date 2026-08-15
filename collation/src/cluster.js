@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadConfig, INPUT_DATA } = require('./io');
 const { loadVisionConfig, renderPage, callVision, getKey, pickJSON, getConf } = require('./vision');
+const { privateWorkDir, privatePath, internalReadPath } = require('./paths');
 
 const HEADER_WORDS = new Set(['大學', '中庸', '論語', '孟子', '朱熹章句', '·', '章句']);
 const COLOPHON_PAGE = { '大学章句': 37 };   // 题跋牌记起始页（按书登记；未登记书无此规则）
@@ -114,13 +115,13 @@ function verifyPrompt(c) {
 仅输出 JSON：{"sbActual":"...","xdActual":"...","verdict":"...","conf":0.0,"note":"≤30字"${orphanField}}`;
 }
 
-function dataDir(workId) { return path.join(__dirname, '..', 'data', workId); }
+function dataDir(workId) { return privateWorkDir(workId); }
 function loadClusters(workId) {
-  const p = path.join(dataDir(workId), 'clusters.json');
+  const p = internalReadPath(workId, 'clusters.json');
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
 }
 function loadVerifications(workId) {
-  const p = path.join(dataDir(workId), 'clusters-verify.json');
+  const p = internalReadPath(workId, 'clusters-verify.json');
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
 }
 
@@ -136,9 +137,10 @@ const RETRYABLE = new Set(['无法定位', '调用失败', '渲染失败', '解�
  *   可重试类（无法定位/调用失败…）→ 剔除，由 verify 重核。
  */
 function migrateVerifications(workId, newClusters) {
-  const file = path.join(dataDir(workId), 'clusters-verify.json');
-  if (!fs.existsSync(file)) return { kept: 0, dropped: 0 };
-  const old = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const oldFile = internalReadPath(workId, 'clusters-verify.json');
+  const file = privatePath(workId, 'clusters-verify.json');
+  if (!fs.existsSync(oldFile)) return { kept: 0, dropped: 0 };
+  const old = JSON.parse(fs.readFileSync(oldFile, 'utf8'));
   fs.writeFileSync(file + '.bak', JSON.stringify(old, null, 2));   // 迁移前备份（覆写是破坏性的）
   const pool = new Map();
   for (const c of newClusters) {
@@ -164,7 +166,7 @@ async function verifyClusters(workId, opts = {}) {
   const conc = opts.conc || 3;
   const onlySet = opts.only ? new Set(opts.only.split(',')) : null;
   const clusters = loadClusters(workId);
-  const outFile = path.join(dataDir(workId), 'clusters-verify.json');
+  const outFile = privatePath(workId, 'clusters-verify.json');
   const done = loadVerifications(workId);
   const doneIds = new Set(done.map(x => x.id));
 

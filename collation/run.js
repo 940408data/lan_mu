@@ -18,9 +18,10 @@ const { align } = require('./src/align');
 const { diff } = require('./src/diff');
 const { adjudicate } = require('./src/officer');
 const { reconfirm } = require('./src/reconfirm');
-const { exportAll, outDir } = require('./src/export');
+const { exportAll } = require('./src/export');
 const { verifyClusters, migrateVerifications } = require('./src/cluster');
 const { engine } = require('./src/llm');
+const { privateWorkDir, privatePath, internalReadPath } = require('./src/paths');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -31,7 +32,7 @@ if (!workId) { console.error('用法: node collation/run.js <书名> [--step=...
 
 function writeAligned(workId) {
   const r = align(workId);
-  const d = outDir(workId);
+  const d = privateWorkDir(workId);
   fs.writeFileSync(path.join(d, 'aligned.json'), JSON.stringify(r.segments.map(s => ({
     segId: s.segId, score: s.score, orphan: !!s.orphan, xiandai: s.xiandai.raw, page: s.xiandai.page,
     shanben: (s.shanben.detail || []).filter(x => x.sb).map(x => x.sb.ch).join(''),
@@ -41,7 +42,7 @@ function writeAligned(workId) {
 
 function writeDiff(workId) {
   const r = diff(workId);
-  const d = outDir(workId);
+  const d = privateWorkDir(workId);
   fs.writeFileSync(path.join(d, 'diffs.json'), JSON.stringify(r.variants.map(v => ({
     id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos, note: v.note, seg: v.seg.xiandai, ctx: v.ctx,
   })), null, 2));
@@ -75,8 +76,7 @@ async function runVerify(workId) {
     const payload = JSON.parse(fs.readFileSync(decPath, 'utf8'));
     if (payload.work && payload.work !== workId) console.error(`  ⚠ decisions 属「${payload.work}」，当前作品「${workId}」，仍继续`);
     const decisions = payload.decisions || {};
-    const d = outDir(workId);
-    const vpath = path.join(d, 'verdicts.json');
+    const vpath = internalReadPath(workId, 'verdicts.json');
     if (!fs.existsSync(vpath)) { console.error('✗ 无 verdicts.json，先跑 --step=officer 或 all'); process.exit(1); }
     const verdicts = JSON.parse(fs.readFileSync(vpath, 'utf8'));
     let hit = 0;
@@ -89,7 +89,7 @@ async function runVerify(workId) {
       v.decidedBy = 'human';                   // 机器四官意见原文保留于 opinions，可推翻可追溯
       hit++;
     }
-    fs.writeFileSync(vpath, JSON.stringify(verdicts, null, 2));
+    fs.writeFileSync(privatePath(workId, 'verdicts.json'), JSON.stringify(verdicts, null, 2));
     console.log(`✓ 回灌人工裁定 ${hit} 条（decisions 共 ${Object.keys(decisions).length} 条）`);
     const D = diff(workId);
     const result = { ...D, verdicts, verdictSummary: { total: verdicts.length, resolved: verdicts.filter(v => v.verdict === 'resolved').length, suspended: verdicts.filter(v => v.verdict === 'suspended').length, human: hit, engine } };
@@ -107,8 +107,7 @@ async function runVerify(workId) {
   // officer / all / export
   let result;
   if (step === 'export') {
-    const d = outDir(workId);
-    const vpath = path.join(d, 'verdicts.json');
+    const vpath = internalReadPath(workId, 'verdicts.json');
     if (!fs.existsSync(vpath)) { console.error('✗ 无 verdicts.json，先跑 --step=officer 或 all'); process.exit(1); }
     const verdicts = JSON.parse(fs.readFileSync(vpath, 'utf8'));
     const D = diff(workId);
@@ -128,7 +127,8 @@ async function runVerify(workId) {
   reconfirm(result.variants, workId, { types: ['ocr疑'], limit: 20 }).catch(() => {});
 
   const r = exportAll(result, workId);
-  console.log(`✓ 出具：${r.dir}/output/{善本点校本,现代本,校勘记}.md + flags.yaml (${r.flagsCount} 待办)${r.reviewInfo || ''}`);
+  console.log(`✓ 公开出具：${r.dir}/output/{善本点校本,校勘记}.md`);
+  console.log(`✓ 私有出具：${r.privateDir}/output/{现代本,精校台}.md/html + flags.yaml (${r.flagsCount} 待办)${r.reviewInfo || ''}`);
   console.log(`  善本点校本定论夹注 ${r.shanbenResolved} 条 | 悬置 ${r.suspended} 条`);
   console.log(`〔${((Date.now() - t0) / 1000).toFixed(1)}s〕完成`);
 })().catch(e => { console.error('✗', e); process.exit(1); });

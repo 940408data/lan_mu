@@ -18,11 +18,11 @@ const { loadWork } = require('./io');
 const { buildShanbenPunctuated, buildXiandaiText } = require('./punctuate');
 const { loadVerifications } = require('./cluster');
 const review = require('./review');
+const { publicWorkDir, privateWorkDir } = require('./paths');
+const { buildQualityReport } = require('./quality');
 
 function outDir(workId) {
-  const d = path.join(__dirname, '..', 'data', workId);
-  fs.mkdirSync(path.join(d, 'output'), { recursive: true });
-  return d;
+  return publicWorkDir(workId);
 }
 function write(file, content) { fs.writeFileSync(file, content, 'utf8'); }
 const ADOPT = { shanben: '善本', xiandai: '现代本', neither: '兩存' };
@@ -35,24 +35,28 @@ function composeNote(v) {
   if (v.type === '夺') head = `底本無「${r}」，今本有之。`;
   else if (v.type === '衍') head = `底本多「${b}」，今本無。`;
   else head = `「${b}」，今本作「${r}」。`;
-  const GR = { '確證': 3, '旁證': 2, '推測': 1, '無證': 0 };
-  const ops = (v.opinions || []).filter(o => o.adopt && o.adopt !== 'suspend');
-  const strongest = ops.sort((a, z) => ((GR[z.grade] || 0) - (GR[a.grade] || 0)) || ((z.confidence || 0) - (a.confidence || 0)))[0];
-  const body = strongest ? `${strongest.name || strongest.officer}案：${strongest.reason}` : '';
   let tail;
   if (v.verdict === 'human') tail = `今人工裁定從${ADOPT[v.adopt] || v.adopt}${v.humanNote ? `（${v.humanNote}）` : ''}。`;
   else if (v.verdict === 'suspended') tail = '諸說未一，姑兩存之，俟考。';
-  else if (v.adopt === 'shanben') tail = '今仍底本之舊，不改。';
-  else if (v.adopt === 'xiandai') tail = `今從今本${v.xiandai ? `作「${v.xiandai}」` : ''}。`;
-  else tail = '兩存之。';
-  return head + (body ? body : '') + tail;
+  else if (v.adopt === 'shanben') tail = '機器初判仍底本之舊，待人工覆核。';
+  else if (v.adopt === 'xiandai') tail = `機器初判從今本${v.xiandai ? `作「${v.xiandai}」` : ''}，待人工覆核。`;
+  else tail = '機器初判兩存，待人工覆核。';
+  return head + tail;
 }
 
 function exportAll(result, workId) {
   const dir = outDir(workId);
+  const privateDir = privateWorkDir(workId);
   const { shanben, xiandai } = loadWork(workId);
   const sb = buildShanbenPunctuated(result);
-  const xd = buildXiandaiText(xiandai);
+  if (!result.cleaned || !result.cleaned.xiandai) throw new Error('P6 出具必须由 P1.5 清洗结果驱动');
+  const cleanBlockers = [
+    ...(result.cleaned.shanben.quality?.blockers || []),
+    ...(result.cleaned.xiandai.quality?.blockers || []),
+  ];
+  if (cleanBlockers.length) throw new Error(`P1.5 清洗质量闸未通过：${cleanBlockers.join('；')}`);
+  const xd = buildXiandaiText(result.cleaned.xiandai);
+  const qualityReport = buildQualityReport(result);
   const variants = result.variants || [];
   const clusters = result.clusters || [];
   const verdicts = result.verdicts || [];
@@ -67,7 +71,8 @@ function exportAll(result, workId) {
     `# ${result.work.title} · 善本点校本`,
     '',
     `> 底本：${shanben.title}（${shanben.role === 'shanben' ? '公开善本' : ''}，${shanben.level} 级，可公开传播）。`,
-    `> 句读由本系统点校；resolved 与人工裁定异文以夹注附。经注分栏见 善本点校本-分栏.md（版面结构先行产物）。`,
+    `> 句读由本系统点校；正文与校勘记分层，异文裁定见《校勘记》。经注分栏见 善本点校本-分栏.md。`,
+    `> 文本状态：${qualityReport.status}（${qualityReport.blockers.join('；') || '自动质量闸通过，仍须人工终校方可发布'}）。`,
     '',
     sb.text,
     '',
@@ -80,24 +85,28 @@ function exportAll(result, workId) {
     `# ${result.work.title} · 现代本（自用）`,
     '',
     `> 底本：${xiandai.title}（${xiandai.level} 级，仅供自修，不外传）。`,
-    `> 附校书官对异文全部意见（含善本异）+ 悬置疑问 ${suspended.length} 条。`,
+    `> 本文件仅含 P1.5 清洗后的自用正文；脚注、校记与机器工作意见均已分层。`,
     '',
     '## 正文',
     '',
     xd,
+  ].join('\n');
+  write(path.join(privateDir, 'output', '现代本.md'), xiandaiMd);
+
+  const officerMd = [
+    `# ${result.work.title} · 校书官工作记录（内部）`,
     '',
-    '## 校书官意见（悬置疑问）',
+    '> 以下为机器生成的研究线索，不是校勘定论，不进入正文与公开校勘记。',
     '',
-    ...suspended.map(v => [
+    ...verdicts.map(v => [
       `### ${v.diffId} 善本「${v.shanben || '∅'}」/ 现代本「${v.xiandai || '∅'}」 (${v.type})`,
       `- 所在句：${segTextOf(v) || '—'}`,
       `- 悬置原因：${(v.suspendReasons || []).join('；') || '—'}`,
       `- 暂拟倾向：${ADOPT[v.tentative] || v.tentative || 'neither'}`,
-      ...v.opinions.map(o => `  - **${o.name || o.officer}**（${o.adopt}·${o.grade || '—'}${o.confidence ? `·信${(o.confidence * 10).toFixed(0)}/10` : ''}）：${o.reason}${o.线索 ? `〔线索：${o.线索}〕` : ''}`),
+      ...(v.opinions || []).map(o => `  - **${o.name || o.officer}**（${o.adopt}·${o.grade || '—'}${o.confidence ? `·信${(o.confidence * 10).toFixed(0)}/10` : ''}）：${o.reason}${o.线索 ? `〔线索：${o.线索}〕` : ''}`),
     ].join('\n')),
-    '',
-  ].join('\n');
-  write(path.join(dir, 'output', '现代本.md'), xiandaiMd);
+  ].join('\n') + '\n';
+  write(path.join(privateDir, 'output', '校书官工作记录.md'), officerMd);
 
   // ── 校勘记（环节出处汇总）──
   const charRows = variants.filter(v => v.type !== '异体').map(v => {
@@ -176,28 +185,35 @@ function exportAll(result, workId) {
     '## 附录B · 定论体例（resolved + 人工裁定）',
     '',
     ...verdicts.filter(v => v.verdict === 'resolved' || v.verdict === 'human').map(v => `- ${v.diffId} ${composeNote(v)}`),
-    '',
-  ].join('\n');
+  ].join('\n') + '\n';
   write(path.join(dir, 'output', '校勘记.md'), jiaoji);
 
   // ── 中间 JSON ──
-  write(path.join(dir, 'aligned.json'), JSON.stringify(result.segments.map(s => ({
+  write(path.join(privateDir, 'aligned.json'), JSON.stringify(result.segments.map(s => ({
     segId: s.segId, score: s.score, orphan: !!s.orphan,
     xiandai: s.xiandai.raw, page: s.xiandai.page,
     shanben: (s.shanben.detail || []).filter(d => d.sb).map(d => d.sb.ch).join(''),
   })), null, 2));
-  write(path.join(dir, 'diffs.json'), JSON.stringify(variants.map(v => ({
+  write(path.join(privateDir, 'diffs.json'), JSON.stringify(variants.map(v => ({
     id: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos, note: v.note, seg: v.seg.xiandai, ctx: v.ctx, reconfirm: v.reconfirm,
   })), null, 2));
-  write(path.join(dir, 'clusters.json'), JSON.stringify(clusters, null, 2));
-  write(path.join(dir, 'verdicts.json'), JSON.stringify(verdicts, null, 2));
+  write(path.join(privateDir, 'clusters.json'), JSON.stringify(clusters, null, 2));
+  write(path.join(privateDir, 'verdicts.json'), JSON.stringify(verdicts, null, 2));
+  write(path.join(dir, 'punctuated.json'), JSON.stringify({
+    schemaVersion: 1,
+    work: workId,
+    status: qualityReport.status,
+    orphanCount: sb.orphanCount,
+    segments: sb.segments,
+  }, null, 2));
+  write(path.join(dir, 'quality-report.json'), JSON.stringify(qualityReport, null, 2));
 
   // ── P7 人工精校台（单文件离线 HTML）──
   let reviewInfo = '';
   try {
     const payload = review.buildPayload(result, workId);
     const images = review.collectImages(workId, payload.cases.filter(c => c.suspended));
-    write(path.join(dir, 'output', '精校台.html'), review.buildReviewApp(payload, images));
+    write(path.join(privateDir, 'output', '精校台.html'), review.buildReviewApp(payload, images));
     reviewInfo = ` + 精校台.html（悬置 ${payload.cases.filter(c => c.suspended).length} 条，书影 ${Object.keys(images).length} 页）`;
   } catch (e) {
     reviewInfo = `（精校台生成失败：${e.message}）`;
@@ -215,9 +231,9 @@ function exportAll(result, workId) {
     })),
     ...fixRows.length ? [{ id: 'base-fix', kind: '善本底本误', desc: `${fixRows.length} 簇核验为底本误，回修 shanben-v2 后重跑对齐对校` }] : [],
   ];
-  write(path.join(dir, 'flags.yaml'), YAML.stringify({ work: workId, count: flags.length, flags }, null, 2));
+  write(path.join(privateDir, 'flags.yaml'), YAML.stringify({ work: workId, count: flags.length, flags }, null, 2));
 
-  return { dir, shanbenResolved: sb.resolvedCount, variantCount: variants.length, clusterCount: clusters.length, suspended: suspended.length, flagsCount: flags.length, reviewInfo };
+  return { dir, privateDir, shanbenResolved: sb.resolvedCount, variantCount: variants.length, clusterCount: clusters.length, suspended: suspended.length, flagsCount: flags.length, reviewInfo };
 }
 
 module.exports = { exportAll, outDir, composeNote };

@@ -20,10 +20,13 @@ function segShanbenText(seg) {
 /** 善本点校本：逐段善本字 + 句末标点 → 连续点校文本（按段分行） */
 function buildShanbenPunctuated(result) {
   const lines = [];
+  const segments = [];
   let resolved = 0;
+  let orphanCount = 0;
   for (const seg of result.segments) {
     if (seg.orphan) {
-      lines.push(`［按〕${seg.xiandai.raw}`);  // 现代本有、善本未对应，作按语存之
+      // 现代本独有而善本未对应的文字不写入公开善本正文；异文/待办另入校勘记。
+      orphanCount++;
       continue;
     }
     const txt = segShanbenText(seg);
@@ -34,24 +37,19 @@ function buildShanbenPunctuated(result) {
       const segText = typeof x.seg === 'string' ? x.seg : (x.seg && x.seg.xiandai);
       return segText === seg.xiandai.raw && (x.verdict === 'resolved' || x.verdict === 'human');
     });
-    let note = '';
-    if (v.length) {
-      note = v.map(x => `〔${x.verdict === 'human' ? '人工裁定：' : ''}采${x.adopt === 'shanben' ? '善本' : x.adopt === 'xiandai' ? '现代本' : '兩存'}「${x.adopt === 'shanben' ? x.shanben : x.adopt === 'xiandai' ? x.xiandai : (x.shanben || '') + '/' + (x.xiandai || '')}」${x.humanNote ? '，' + x.humanNote : ''}〕`).join('');
-      resolved++;
-    }
-    lines.push(txt + punct + note);
+    if (v.length) resolved += v.length;
+    // 正文与流程性校记分层；裁定只进入校勘记，不再以内联“采某本”污染正文。
+    const text = txt + punct;
+    lines.push(text);
+    segments.push({ segId: seg.segId, page: seg.shanben.detail.find(d => d.sb)?.sb.page || null, text });
   }
-  return { text: lines.join('\n'), resolvedCount: resolved };
+  return { text: lines.join('\n'), segments, resolvedCount: resolved, orphanCount };
 }
 
-/** 现代本正文（按页拼接，保标点 ○ 脚注结构）——自用本用现代本为底 */
+/** 现代本正文只允许来自 P1.5 清洗正文流。 */
 function buildXiandaiText(ed) {
-  const out = [];
-  for (const pg of ed.pages) {
-    if (pg.isCover) continue;
-    out.push(pg.lines.filter(l => l.trim()).join('\n'));
-  }
-  return out.join('\n\n');
+  if (!ed || typeof ed.bodyText !== 'string') throw new Error('现代本出具缺少 P1.5 清洗正文流');
+  return ed.bodyText;
 }
 
 module.exports = { buildShanbenPunctuated, buildXiandaiText, sentenceEnder, segShanbenText };
