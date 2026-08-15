@@ -37,6 +37,8 @@ const VARIANT_MAP = {
   // P4.5 回路补：母/毋（善本混用，p18 实印毋、p27 六处实印母）、己/已——归一仅为对齐，
   // 差异以异体登记在册（可见可查），不淹没、不改正文
   母: '毋', 己: '已',
+  // 中庸回路补：虚/虛（一字之差致 13 字句 orphan）
+  虚: '虛',
 };
 function normChar(ch) {
   if (VARIANT_MAP[ch]) return VARIANT_MAP[ch];

@@ -1,0 +1,1320 @@
+[
+  {
+    "id": "c1",
+    "segId": 42,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "①",
+    "sbPages": [],
+    "sbPagesAround": [
+      6
+    ],
+    "xdPage": 3,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "淳熙己酉春三月戊申新",
+      "xdBefore": "",
+      "xdAfter": "淳熙己酉春三月戊申新"
+    },
+    "segXiandai": "①淳熙己酉春三月戊申，新安朱熹序。"
+  },
+  {
+    "id": "c2",
+    "segId": 55,
+    "kind": "衍",
+    "shanben": "也於是人物之生因",
+    "xiandai": null,
+    "sbPages": [
+      8
+    ],
+    "sbPagesAround": [
+      8
+    ],
+    "xdPage": 4,
+    "anchor": {
+      "sbBefore": "成形而理亦賦焉猶命令",
+      "sbAfter": "各得其",
+      "xdBefore": "成形而理亦賦焉猶命令",
+      "xdAfter": "中庸也"
+    },
+    "segXiandai": "天以陰陽五行化生萬物，氣以成形，而理亦賦焉，猶命令\n中庸\n也。"
+  },
+  {
+    "id": "c3",
+    "segId": 64,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "故子思於此首發明之，而不知其出於天知事之有道，而不知其由於性知聖人之有教，而不知其因吾之所固有者裁之也」。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 4,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "故子思於此首發明之，而不知其出於天知事之有道，而不知其由於性知聖人之有教，而不知其因吾之所固有者裁之也」。"
+  },
+  {
+    "id": "c4",
+    "segId": 91,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "讀者所宜深體而默識也，亦此意也」。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 5,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "讀者所宜深體而默識也，亦此意也」。"
+  },
+  {
+    "id": "c5",
+    "segId": 105,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      12
+    ],
+    "xdPage": 6,
+    "anchor": {
+      "sbBefore": "蓋欲學者於此反",
+      "sbAfter": "求諸身而自得之以去夫",
+      "xdBefore": "蓋欲學者於此反",
+      "xdAfter": "求諸身而自得之以去夫"
+    },
+    "segXiandai": "蓋欲學者於此反\n中\n庸\n求諸身而自得之，以去夫外誘之私，而充其本然之善，楊氏所謂一篇之體要是也。"
+  },
+  {
+    "id": "c6",
+    "segId": 131,
+    "kind": "衍",
+    "shanben": "道之不行",
+    "xiandai": null,
+    "sbPages": [
+      14
+    ],
+    "sbPagesAround": [
+      14
+    ],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "子曰",
+      "sbAfter": "也我知之矣知",
+      "xdBefore": "子曰",
+      "xdAfter": "中庸其至矣乎"
+    },
+    "segXiandai": "子曰：「中庸其至矣乎！"
+  },
+  {
+    "id": "c7",
+    "segId": 132,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "民鮮能久矣！",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "民鮮能久矣！"
+  },
+  {
+    "id": "c8",
+    "segId": 133,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "」\n石第三章。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 7,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "」\n石第三章。"
+  },
+  {
+    "id": "c9",
+    "segId": 163,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      16
+    ],
+    "xdPage": 8,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "此知之所以無過不及而",
+      "xdBefore": "",
+      "xdAfter": "此知之所以無過不及而"
+    },
+    "segXiandai": "中庸\n此知之所以無過不及，而道之所以行也。"
+  },
+  {
+    "id": "c10",
+    "segId": 193,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "①",
+    "sbPages": [],
+    "sbPagesAround": [
+      18
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "則雖不必皆如三者之難",
+      "sbAfter": "然非義精仁熟而無一毫",
+      "xdBefore": "則雖不必皆如三者之難",
+      "xdAfter": "然非義精仁熟而無一毫"
+    },
+    "segXiandai": "若中庸，則雖不必皆如三者之難，①然非義精仁熟而無一毫人欲之私者，不能及也。"
+  },
+  {
+    "id": "c11",
+    "segId": 199,
+    "kind": "衍",
+    "shanben": "問強子曰南方之",
+    "xiandai": null,
+    "sbPages": [
+      18
+    ],
+    "sbPagesAround": [
+      18
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "子路好勇故",
+      "sbAfter": "強與",
+      "xdBefore": "子路好勇故",
+      "xdAfter": "强與"
+    },
+    "segXiandai": "子路好勇，故\n强與？"
+  },
+  {
+    "id": "c12",
+    "segId": 202,
+    "kind": "衍",
+    "shanben": "強與",
+    "xiandai": null,
+    "sbPages": [
+      18
+    ],
+    "sbPagesAround": [
+      18
+    ],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "抑而",
+      "sbAfter": "與平聲",
+      "xdBefore": "抑而",
+      "xdAfter": "與平聲"
+    },
+    "segXiandai": "抑而\n與，平聲。"
+  },
+  {
+    "id": "c13",
+    "segId": 208,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "「然不必其合於中庸則質之近似者皆能以力爲之若中庸則雖不必皆如三者之難」，故資之近而力能勉者，皆足以能之。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "「然不必其合於中庸則質之近似者皆能以力爲之若中庸則雖不必皆如三者之難」，故資之近而力能勉者，皆足以能之。"
+  },
+  {
+    "id": "c14",
+    "segId": 209,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "至於中庸雖若易能」。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 9,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "至於中庸雖若易能」。"
+  },
+  {
+    "id": "c15",
+    "segId": 223,
+    "kind": "衍",
+    "shanben": "也塞未逹",
+    "xiandai": null,
+    "sbPages": [
+      19
+    ],
+    "sbPagesAround": [
+      19
+    ],
+    "xdPage": 10,
+    "anchor": {
+      "sbBefore": "𠋣偏著",
+      "sbAfter": "也",
+      "xdBefore": "倚偏著",
+      "xdAfter": "也"
+    },
+    "segXiandai": "倚，偏著也。"
+  },
+  {
+    "id": "c16",
+    "segId": 229,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中",
+    "sbPages": [],
+    "sbPagesAround": [
+      20
+    ],
+    "xdPage": 10,
+    "anchor": {
+      "sbBefore": "所以抑其血氣之剛而進",
+      "sbAfter": "之以德義之勇也",
+      "xdBefore": "所以抑其血氣之剛而進",
+      "xdAfter": "庸以德義之勇也"
+    },
+    "segXiandai": "夫子以是告子路者，所以抑其血氣之剛，而進\n中庸\n以德義之勇也。"
+  },
+  {
+    "id": "c17",
+    "segId": 232,
+    "kind": "衍",
+    "shanben": "按漢書當作索",
+    "xiandai": null,
+    "sbPages": [
+      20
+    ],
+    "sbPagesAround": [
+      20
+    ],
+    "xdPage": 10,
+    "anchor": {
+      "sbBefore": "素",
+      "sbAfter": "蓋字之誤也",
+      "xdBefore": "素",
+      "xdAfter": "蓋字之誤也"
+    },
+    "segXiandai": "素，蓋字之誤也。"
+  },
+  {
+    "id": "c18",
+    "segId": 238,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "①",
+    "sbPages": [],
+    "sbPagesAround": [
+      20,
+      21
+    ],
+    "xdPage": 10,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "半塗而廢則力之不足也",
+      "xdBefore": "",
+      "xdAfter": "半塗而廢則力之不足也"
+    },
+    "segXiandai": "①半塗而廢，則力之不足也。"
+  },
+  {
+    "id": "c19",
+    "segId": 278,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      23
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "旱麓之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "旱麓之篇"
+    },
+    "segXiandai": "《詩》，《大雅·旱麓》之篇。"
+  },
+  {
+    "id": "c20",
+    "segId": 293,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      24
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "道者率性而巳固衆人之",
+      "xdBefore": "",
+      "xdAfter": "道者率性而已固衆人之"
+    },
+    "segXiandai": "中庸\n道者，率性而已，固衆人之所能知能行者也，故常不遠於人。"
+  },
+  {
+    "id": "c21",
+    "segId": 299,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      24
+    ],
+    "xdPage": 12,
+    "anchor": {
+      "sbBefore": "詩豳風",
+      "sbAfter": "伐柯之篇",
+      "xdBefore": "詩豳風",
+      "xdAfter": "伐柯之篇"
+    },
+    "segXiandai": "《詩》，《豳風·伐柯》之篇。"
+  },
+  {
+    "id": "c22",
+    "segId": 310,
+    "kind": "衍",
+    "shanben": "忠恕違道不遠施諸",
+    "xiandai": null,
+    "sbPages": [
+      25
+    ],
+    "sbPagesAround": [
+      25
+    ],
+    "xdPage": 13,
+    "anchor": {
+      "sbBefore": "子所謂以衆人望人則易",
+      "sbAfter": "己而不",
+      "xdBefore": "子所謂以衆人望人則易",
+      "xdAfter": "從是也"
+    },
+    "segXiandai": "張子所謂「以衆人望人，則易從」是也。"
+  },
+  {
+    "id": "c23",
+    "segId": 369,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      28
+    ],
+    "xdPage": 14,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "子思之言也",
+      "xdBefore": "",
+      "xdAfter": "子思之言也"
+    },
+    "segXiandai": "中庸\n子思之言也。"
+  },
+  {
+    "id": "c24",
+    "segId": 379,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      29
+    ],
+    "xdPage": 14,
+    "anchor": {
+      "sbBefore": "詩小雅",
+      "sbAfter": "常棣之篇",
+      "xdBefore": "詩小雅",
+      "xdAfter": "常棣之篇"
+    },
+    "segXiandai": "○《詩》，《小雅·常棣》之篇。"
+  },
+  {
+    "id": "c25",
+    "segId": 412,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      31
+    ],
+    "xdPage": 15,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "抑之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "抑之篇"
+    },
+    "segXiandai": "○《詩》，《大雅·抑》之篇。"
+  },
+  {
+    "id": "c26",
+    "segId": 443,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      32
+    ],
+    "xdPage": 16,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "假樂之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "假樂之篇"
+    },
+    "segXiandai": "《詩》，《大雅·假樂》之篇。"
+  },
+  {
+    "id": "c27",
+    "segId": 447,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      33
+    ],
+    "xdPage": 16,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "故大德者必受命受命者",
+      "xdBefore": "",
+      "xdAfter": "故大德者必"
+    },
+    "segXiandai": "中庸\n「故大德者必受命。"
+  },
+  {
+    "id": "c28",
+    "segId": 447,
+    "kind": "换",
+    "shanben": "受命受命者受天",
+    "xiandai": "受",
+    "sbPages": [
+      33
+    ],
+    "sbPagesAround": [
+      33
+    ],
+    "xdPage": 16,
+    "anchor": {
+      "sbBefore": "故大德者必",
+      "sbAfter": "命",
+      "xdBefore": "中庸故大德者必",
+      "xdAfter": "命"
+    },
+    "segXiandai": "中庸\n「故大德者必受命。"
+  },
+  {
+    "id": "c29",
+    "segId": 515,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      37
+    ],
+    "xdPage": 18,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "踐猶履也其指先王也",
+      "xdBefore": "",
+      "xdAfter": "踐猶履也"
+    },
+    "segXiandai": "中庸\n踐，猶履也。"
+  },
+  {
+    "id": "c30",
+    "segId": 515,
+    "kind": "衍",
+    "shanben": "也其指先王",
+    "xiandai": null,
+    "sbPages": [
+      37
+    ],
+    "sbPagesAround": [
+      37
+    ],
+    "xdPage": 18,
+    "anchor": {
+      "sbBefore": "踐猶履",
+      "sbAfter": "也",
+      "xdBefore": "中庸踐猶履",
+      "xdAfter": "也"
+    },
+    "segXiandai": "中庸\n踐，猶履也。"
+  },
+  {
+    "id": "c31",
+    "segId": 568,
+    "kind": "衍",
+    "shanben": "脩身思",
+    "xiandai": null,
+    "sbPages": [
+      40
+    ],
+    "sbPagesAround": [
+      40
+    ],
+    "xdPage": 19,
+    "anchor": {
+      "sbBefore": "故君子不可以不",
+      "sbAfter": "脩身",
+      "xdBefore": "故君子不可以不",
+      "xdAfter": "修身"
+    },
+    "segXiandai": "」\n故君子不可以不修身；"
+  },
+  {
+    "id": "c32",
+    "segId": 569,
+    "kind": "衍",
+    "shanben": "知人",
+    "xiandai": null,
+    "sbPages": [
+      40
+    ],
+    "sbPagesAround": [
+      40
+    ],
+    "xdPage": 19,
+    "anchor": {
+      "sbBefore": "思事親不可以不",
+      "sbAfter": "思知",
+      "xdBefore": "思修身不可以不",
+      "xdAfter": "事親"
+    },
+    "segXiandai": "思修身，不可以不事親；"
+  },
+  {
+    "id": "c33",
+    "segId": 573,
+    "kind": "衍",
+    "shanben": "親欲盡親",
+    "xiandai": null,
+    "sbPages": [
+      40
+    ],
+    "sbPagesAround": [
+      40
+    ],
+    "xdPage": 20,
+    "anchor": {
+      "sbBefore": "仁故思脩身不可以不事",
+      "sbAfter": "親",
+      "xdBefore": "仁故思脩身不可以不事",
+      "xdAfter": "親"
+    },
+    "segXiandai": "修身以道，脩道以仁，故思脩身，不可以不事親。"
+  },
+  {
+    "id": "c34",
+    "segId": 589,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      41
+    ],
+    "xdPage": 20,
+    "anchor": {
+      "sbBefore": "程子曰所謂",
+      "sbAfter": "誠者止是誠實此三者三",
+      "xdBefore": "程子曰所謂",
+      "xdAfter": "誠者止是誠實此三"
+    },
+    "segXiandai": "程子曰：「所謂\n中庸\n誠者，止是誠實此三者。"
+  },
+  {
+    "id": "c35",
+    "segId": 589,
+    "kind": "衍",
+    "shanben": "三者",
+    "xiandai": null,
+    "sbPages": [
+      41
+    ],
+    "sbPagesAround": [
+      41
+    ],
+    "xdPage": 20,
+    "anchor": {
+      "sbBefore": "謂誠者止是誠實此",
+      "sbAfter": "三者",
+      "xdBefore": "謂中庸誠者止是誠實此",
+      "xdAfter": "三者"
+    },
+    "segXiandai": "程子曰：「所謂\n中庸\n誠者，止是誠實此三者。"
+  },
+  {
+    "id": "c36",
+    "segId": 608,
+    "kind": "衍",
+    "shanben": "知所以脩身",
+    "xiandai": null,
+    "sbPages": [
+      43
+    ],
+    "sbPagesAround": [
+      43
+    ],
+    "xdPage": 21,
+    "anchor": {
+      "sbBefore": "知斯三者則",
+      "sbAfter": "知所以脩身",
+      "xdBefore": "知斯三者則",
+      "xdAfter": "知所以修身"
+    },
+    "segXiandai": "知斯三者，則知所以修身；"
+  },
+  {
+    "id": "c37",
+    "segId": 609,
+    "kind": "衍",
+    "shanben": "天下",
+    "xiandai": null,
+    "sbPages": [
+      43
+    ],
+    "sbPagesAround": [
+      43
+    ],
+    "xdPage": 21,
+    "anchor": {
+      "sbBefore": "知所以治人則知所以治",
+      "sbAfter": "國",
+      "xdBefore": "知所以修身則知所以治",
+      "xdAfter": "人"
+    },
+    "segXiandai": "知所以修身，則知所以治人；"
+  },
+  {
+    "id": "c38",
+    "segId": 635,
+    "kind": "衍",
+    "shanben": "一時曆中唐置台",
+    "xiandai": null,
+    "sbPages": [
+      45
+    ],
+    "sbPagesAround": [
+      44,
+      45
+    ],
+    "xdPage": 22,
+    "anchor": {
+      "sbBefore": "任專而小臣不得以閒之",
+      "sbAfter": "故臨事而不眩也",
+      "xdBefore": "任專而小臣不得以間之",
+      "xdAfter": "故臨事而不眩也"
+    },
+    "segXiandai": "敬大臣，則信任專，而小臣不得以間之，故臨事而不眩也。"
+  },
+  {
+    "id": "c39",
+    "segId": 647,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      45
+    ],
+    "xdPage": 22,
+    "anchor": {
+      "sbBefore": "繼絕丗舉廢國治亂持危",
+      "sbAfter": "朝聘以時厚往而薄來所",
+      "xdBefore": "繼絕世舉廢國治亂持危",
+      "xdAfter": "朝聘以時厚往而薄來所"
+    },
+    "segXiandai": "繼絕世，舉廢國，治亂持危，\n中\n庸\n朝聘以時，厚往而薄來，所以懷諸侯也。"
+  },
+  {
+    "id": "c40",
+    "segId": 660,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      46
+    ],
+    "xdPage": 22,
+    "anchor": {
+      "sbBefore": "稱事如周禮",
+      "sbAfter": "稾人職曰考其弓弩以上",
+      "xdBefore": "稱事如周禮",
+      "xdAfter": "稟人職曰考其弓弩以上"
+    },
+    "segXiandai": "稱事，如《周禮·稟人職》曰「考其弓弩，以上下其食」是也。"
+  },
+  {
+    "id": "c41",
+    "segId": 667,
+    "kind": "换",
+    "shanben": "有不誠則是九者皆爲",
+    "xiandai": "者",
+    "sbPages": [
+      46
+    ],
+    "sbPagesAround": [
+      46
+    ],
+    "xdPage": 23,
+    "anchor": {
+      "sbBefore": "一",
+      "sbAfter": "虚文",
+      "xdBefore": "一",
+      "xdAfter": "誠也"
+    },
+    "segXiandai": "一者，誠也。"
+  },
+  {
+    "id": "c42",
+    "segId": 704,
+    "kind": "衍",
+    "shanben": "之此誠之",
+    "xiandai": null,
+    "sbPages": [
+      49
+    ],
+    "sbPagesAround": [
+      49
+    ],
+    "xdPage": 23,
+    "anchor": {
+      "sbBefore": "問之愼思之明辨之篤行",
+      "sbAfter": "之",
+      "xdBefore": "問之慎思之明辨之篤行",
+      "xdAfter": "之"
+    },
+    "segXiandai": "博學之，審問之，慎思之，明辨之，篤行之。"
+  },
+  {
+    "id": "c43",
+    "segId": 723,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      50
+    ],
+    "xdPage": 24,
+    "anchor": {
+      "sbBefore": "則雖有志於學亦愚不能",
+      "sbAfter": "明柔不能立而巳矣",
+      "xdBefore": "則雖有志於學亦愚不能",
+      "xdAfter": "明柔不能立而已矣"
+    },
+    "segXiandai": "不能勝之，則雖有志於學，亦愚不能\n中庸\n明，柔不能立而已矣。"
+  },
+  {
+    "id": "c44",
+    "segId": 784,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "中庸\n祥；",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 26,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "中庸\n祥；"
+  },
+  {
+    "id": "c45",
+    "segId": 801,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "至誠之道，可以前知。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 26,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "至誠之道，可以前知。"
+  },
+  {
+    "id": "c46",
+    "segId": 802,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "國家將興，必有禎\n誠者自成也，而道自道也。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 26,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "國家將興，必有禎\n誠者自成也，而道自道也。"
+  },
+  {
+    "id": "c47",
+    "segId": 808,
+    "kind": "换",
+    "shanben": "之爲貴天下之物皆實",
+    "xiandai": "之",
+    "sbPages": [
+      55
+    ],
+    "sbPagesAround": [
+      55
+    ],
+    "xdPage": 26,
+    "anchor": {
+      "sbBefore": "是故君子誠",
+      "sbAfter": "理之",
+      "xdBefore": "是故君子誠",
+      "xdAfter": "四三"
+    },
+    "segXiandai": "是故君子誠之\n四三"
+  },
+  {
+    "id": "c48",
+    "segId": 823,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "石第二十五章言人道也。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 27,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "石第二十五章言人道也。"
+  },
+  {
+    "id": "c49",
+    "segId": 859,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "中庸\n夫，音扶。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 28,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "中庸\n夫，音扶。"
+  },
+  {
+    "id": "c50",
+    "segId": 876,
+    "kind": "衍",
+    "shanben": "維天之命篇於歎辭",
+    "xiandai": null,
+    "sbPages": [
+      59
+    ],
+    "sbPagesAround": [
+      59
+    ],
+    "xdPage": 28,
+    "anchor": {
+      "sbBefore": "詩周頌",
+      "sbAfter": "穆深遠也",
+      "xdBefore": "詩周頌",
+      "xdAfter": "·維四五"
+    },
+    "segXiandai": "○《詩》，《周頌·維\n四五"
+  },
+  {
+    "id": "c51",
+    "segId": 924,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      62
+    ],
+    "xdPage": 30,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "烝民之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "烝民之篇"
+    },
+    "segXiandai": "《詩》，《大雅·烝民》之篇。"
+  },
+  {
+    "id": "c52",
+    "segId": 938,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      63
+    ],
+    "xdPage": 30,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "今天下車同軌書同文行",
+      "xdBefore": "",
+      "xdAfter": "今天下車同軌書同文行"
+    },
+    "segXiandai": "中庸\n今天下車同軌，書同文，行同倫。"
+  },
+  {
+    "id": "c53",
+    "segId": 982,
+    "kind": "衍",
+    "shanben": "度也則",
+    "xiandai": null,
+    "sbPages": [
+      66
+    ],
+    "sbPagesAround": [
+      65,
+      66
+    ],
+    "xdPage": 31,
+    "anchor": {
+      "sbBefore": "法",
+      "sbAfter": "準則也",
+      "xdBefore": "法",
+      "xdAfter": "法度也"
+    },
+    "segXiandai": "法，法度也。"
+  },
+  {
+    "id": "c54",
+    "segId": 989,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      66
+    ],
+    "xdPage": 31,
+    "anchor": {
+      "sbBefore": "詩周頌",
+      "sbAfter": "振鷺之篇",
+      "xdBefore": "詩周頌",
+      "xdAfter": "振鷺之篇"
+    },
+    "segXiandai": "○《詩》，《周頌·振鷺》之篇。"
+  },
+  {
+    "id": "c55",
+    "segId": 1017,
+    "kind": "夺",
+    "orphan": true,
+    "shanben": null,
+    "xiandai": "·中庸\n右第三十章。",
+    "sbPages": [],
+    "sbPagesAround": [],
+    "xdPage": 32,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "",
+      "xdBefore": "",
+      "xdAfter": ""
+    },
+    "segXiandai": "·中庸\n右第三十章。"
+  },
+  {
+    "id": "c56",
+    "segId": 1054,
+    "kind": "衍",
+    "shanben": "𠋣夫音扶焉於虔反",
+    "xiandai": null,
+    "sbPages": [
+      69
+    ],
+    "sbPagesAround": [
+      69
+    ],
+    "xdPage": 33,
+    "anchor": {
+      "sbBefore": "夫焉有所",
+      "sbAfter": "經",
+      "xdBefore": "夫焉有所",
+      "xdAfter": "倚"
+    },
+    "segXiandai": "夫焉有所倚？"
+  },
+  {
+    "id": "c57",
+    "segId": 1087,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸",
+    "sbPages": [],
+    "sbPagesAround": [
+      71
+    ],
+    "xdPage": 34,
+    "anchor": {
+      "sbBefore": "",
+      "sbAfter": "君子之道淡而不厭簡而",
+      "xdBefore": "",
+      "xdAfter": "君子之道淡而不厭簡而"
+    },
+    "segXiandai": "中庸\n君子之道，淡而不厭，簡而文，溫而理，知遠之近，知風之自，知微之顯，可與入德矣。"
+  },
+  {
+    "id": "c58",
+    "segId": 1094,
+    "kind": "换",
+    "shanben": "衛",
+    "xiandai": "·衛·",
+    "sbPages": [
+      72
+    ],
+    "sbPagesAround": [
+      72
+    ],
+    "xdPage": 34,
+    "anchor": {
+      "sbBefore": "詩國風",
+      "sbAfter": "碩人鄭之丰皆作衣錦褧",
+      "xdBefore": "詩國風",
+      "xdAfter": "碩人鄭之丰皆作衣錦"
+    },
+    "segXiandai": "《詩》，《國風·衛·碩人》、《鄭》之《丰》，皆作「衣錦褧衣」。"
+  },
+  {
+    "id": "c59",
+    "segId": 1094,
+    "kind": "换",
+    "shanben": "褧衣褧絅同禪",
+    "xiandai": "褧",
+    "sbPages": [
+      72
+    ],
+    "sbPagesAround": [
+      72
+    ],
+    "xdPage": 34,
+    "anchor": {
+      "sbBefore": "碩人鄭之丰皆作衣錦",
+      "sbAfter": "衣",
+      "xdBefore": "·碩人鄭之丰皆作衣錦",
+      "xdAfter": "衣"
+    },
+    "segXiandai": "《詩》，《國風·衛·碩人》、《鄭》之《丰》，皆作「衣錦褧衣」。"
+  },
+  {
+    "id": "c60",
+    "segId": 1111,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      73
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "詩小雅",
+      "sbAfter": "正月之篇",
+      "xdBefore": "詩小雅",
+      "xdAfter": "正月之篇"
+    },
+    "segXiandai": "《詩》，《小雅·正月》之篇。"
+  },
+  {
+    "id": "c61",
+    "segId": 1118,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      73
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "抑之篇",
+      "xdBefore": "詩大雅",
+      "xdAfter": "抑之篇"
+    },
+    "segXiandai": "《詩》，《大雅·抑》之篇。"
+  },
+  {
+    "id": "c62",
+    "segId": 1127,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      74
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "詩商頌",
+      "sbAfter": "烈祖之篇",
+      "xdBefore": "詩商頌",
+      "xdAfter": "烈祖之篇"
+    },
+    "segXiandai": "○《詩》，《商頌·烈\n祖》之篇。"
+  },
+  {
+    "id": "c63",
+    "segId": 1129,
+    "kind": "衍",
+    "shanben": "也威畏也缺莝斫刀",
+    "xiandai": null,
+    "sbPages": [
+      74
+    ],
+    "sbPagesAround": [
+      74
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "敬無有言說而人自化之",
+      "sbAfter": "也",
+      "xdBefore": "敬無有言説而人自化之",
+      "xdAfter": "也"
+    },
+    "segXiandai": "承上文而遂及其效，言進而感格於神明之際，極其誠敬，無有言説而人自化之也。"
+  },
+  {
+    "id": "c64",
+    "segId": 1131,
+    "kind": "衍",
+    "shanben": "也鉞斧",
+    "xiandai": null,
+    "sbPages": [
+      74
+    ],
+    "sbPagesAround": [
+      74
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "缺莝斫刀",
+      "sbAfter": "也",
+      "xdBefore": "鈇莝斫刀",
+      "xdAfter": "也"
+    },
+    "segXiandai": "鈇，莝斫刀也。"
+  },
+  {
+    "id": "c65",
+    "segId": 1136,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "·",
+    "sbPages": [],
+    "sbPagesAround": [
+      74
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "詩周頌",
+      "sbAfter": "烈文之篇",
+      "xdBefore": "詩周頌",
+      "xdAfter": "烈文之篇"
+    },
+    "segXiandai": "《詩》，《周頌·烈文》之篇。"
+  },
+  {
+    "id": "c66",
+    "segId": 1147,
+    "kind": "换",
+    "shanben": "皇矣之篇引",
+    "xiandai": "·皇矣",
+    "sbPages": [
+      75
+    ],
+    "sbPagesAround": [
+      75
+    ],
+    "xdPage": 35,
+    "anchor": {
+      "sbBefore": "詩大雅",
+      "sbAfter": "之",
+      "xdBefore": "詩大雅",
+      "xdAfter": "之"
+    },
+    "segXiandai": "○《詩》，《大雅·皇矣》之"
+  },
+  {
+    "id": "c67",
+    "segId": 1160,
+    "kind": "夺",
+    "shanben": null,
+    "xiandai": "中庸#",
+    "sbPages": [],
+    "sbPagesAround": [
+      76
+    ],
+    "xdPage": 36,
+    "anchor": {
+      "sbBefore": "言之其反復丁寧示人之",
+      "sbAfter": "意至深切矣學者其可不",
+      "xdBefore": "言之其反復丁寧示人之",
+      "xdAfter": "意至深切矣學者其可不"
+    },
+    "segXiandai": "蓋舉一篇之要而約言之，其反復丁寧示人之\n中庸\n# 意，至深切矣，學者其可不盡心乎！"
+  }
+]

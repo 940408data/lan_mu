@@ -184,11 +184,12 @@ async function gridTranscribe(b64, layout) {
 function gridColumnsPrompt(layout) {
   const { cols, rows } = layout || {};
   return `这是一页古籍扫描（竖排自右向左），版面为 ${cols || 16} 列 × ${rows || 15} 行网格，每格一字。
-对每一列（自右向左 col 从 1 起），输出三项：
+对每一列（自右向左 col 从 1 起），输出四项：
 - col：列号（自右 1 起）
 - start：该列文字从哪行开始——"顶格"（第1行/最上起，对应经文）/"退一格"/"退两格"（空格后起，对应注文）
 - text：该列全部汉字，自上而下连续照录（无字的空格不计）
-只输出严格 JSON 数组（每列一项）：[{"col":1,"start":"顶格","text":"……"},{"col":2,"start":"退一格","text":"……"},...]，不要解释文字。`;
+- conf：你对该列 start 判定的置信度（0-1）
+只输出严格 JSON 数组（每列一项）：[{"col":1,"start":"顶格","text":"……","conf":0.9},{"col":2,"start":"退一格","text":"……","conf":0.85},...]，不要解释文字。`;
 }
 async function gridColumns(b64, layout) {
   return review(b64, gridColumnsPrompt(layout), 'layout');

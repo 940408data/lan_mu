@@ -82,11 +82,14 @@ npm run build -- --work=<新作品id> --only=html                  # 验证
 | 坑 | 对策 |
 |---|---|
 | 视觉直接猜经注（43.5%） | 版面结构先行：抽样→规则→网格→核验 |
+| **同丛书各书版式也可能不同** | 大学当涂本注退格 vs 中庸晋府本**经注同顶格同大字**——M0 结论逐书有效，verify-jz <90% 即回头重抽样；版面确无区分时用 `tools/project-jz.js` 投影判定（须直读书影抽验） |
 | 关思考判版面变糙 | 版面/网格/核验任务开思考；仅纯 OCR 关 |
 | 视觉漏字 | 互证缺字采旧 OCR |
+| gridColumns 必升覆校（9min/页） | 提示词必须带 conf 字段，否则路由永远升级（已修，初校 0.93+ 直接过） |
 | CJK-Ext-B astral 字错位 | normChar 未映射 astral 归一单码元占位（align.js 已处理） |
 | 页中书题/页眉混入 | 对齐剥书题 + P4.5 规则归类「书题牌记」 |
-| 夺/衍字级炸开虚增体量 | cluster-dy 簇级归并 + verify-clusters 双侧核验 |
+| 夺/衍字级炸开虚增体量 | diff 原生簇级归并 + run.js --step=verify 双侧核验 |
+| orphan 短句核验误导误补 | apply-basefix 近邻守卫（24 字窗内已有则留人工） |
 | 校书官串行无保存 | officer 增量保存+断点续传+条间并行 |
 | key 触发分类器超时 | resolveApiKey 自读，勿嵌 bash |
 | 书末题跋页识别差 | 归人工 |
