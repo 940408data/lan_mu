@@ -34,7 +34,7 @@ function resolveApiKey(envName) {
 const ANTHROPIC_KEY = resolveApiKey('ANTHROPIC_API_KEY');
 const DASHSCOPE_KEY = resolveApiKey('DASHSCOPE_API_KEY');
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
-const DASHSCOPE_MODEL = process.env.DASHSCOPE_MODEL || 'qwen3.8-max';
+const DASHSCOPE_MODEL = process.env.DASHSCOPE_MODEL || 'qwen3.7-plus';  // 校书官默认初校(快)；疑难 suspend 可另升覆校
 
 let _engine = 'mock';
 if (ANTHROPIC_KEY) _engine = 'anthropic';

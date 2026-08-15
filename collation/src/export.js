@@ -58,7 +58,7 @@ function exportAll(result, workId) {
       `### ${v.diffId} 善本「${v.shanben || '∅'}」/ 现代本「${v.xiandai || '∅'}」 (${v.type})`,
       `- 所在句：${typeof v.seg === 'string' ? v.seg : (v.seg && v.seg.xiandai) || '—'}`,
       `- 暂拟倾向：${v.tentative || 'neither'}`,
-      ...v.opinions.map(o => `  - **${o.name}**（${o.adopt}${o.confidence ? `·信${(o.confidence * 10).toFixed(0)}/10` : ''}）：${o.reason}${o.线索 ? `〔线索：${o.线索}〕` : ''}`),
+      ...v.opinions.map(o => `  - **${o.name || o.officer}**（${o.adopt}${o.confidence ? `·信${(o.confidence * 10).toFixed(0)}/10` : ''}）：${o.reason}${o.线索 ? `〔线索：${o.线索}〕` : ''}`),
     ].join('\n')),
     '',
   ].join('\n');
@@ -107,7 +107,7 @@ function exportAll(result, workId) {
   const flags = [
     ...(verdicts.filter(v => v.verdict === 'suspended')).map(v => ({
       id: v.diffId, kind: 'suspended', desc: `善「${v.shanben || '∅'}」/今「${v.xiandai || '∅'}」(${v.type})`,
-      tentative: v.tentative, seg: v.seg.xiandai, officers: v.opinions.map(o => `${o.name}:${o.adopt}`),
+      tentative: v.tentative, seg: v.seg.xiandai, officers: v.opinions.map(o => `${o.name || o.officer}:${o.adopt}`),
     })),
     ...(variants.filter(v => v.type === 'ocr疑')).map(v => ({
       id: v.id, kind: 'ocr疑', desc: `善「${v.shanben || '∅'}」疑误读，今「${v.xiandai || '∅'}」`, reconfirm: v.reconfirm?.status || 'deferred',

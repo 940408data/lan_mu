@@ -9,6 +9,8 @@
  *   - mock 兜底：按各官方法论倾向 + 异文类型出确定性意见，标 _engine:'mock'。
  */
 'use strict';
+const fs = require('fs');
+const path = require('path');
 const { complete, engine, loadOfficerProfile } = require('./llm');
 const { diff } = require('./diff');
 
@@ -77,7 +79,7 @@ function aggregate(opinions, v) {
   if (suspend) tentative = best || (counts.suspend >= 2 ? 'neither' : 'neither');
   return {
     diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, pos: v.pos,
-    opinions: valid.map(o => ({ officer: o.officer, name: OFFICER_NAME[o.officer], adopt: o.adopt, candidate: o.candidate, reason: o.reason, confidence: o.confidence, 线索: o.线索 })),
+    opinions: valid.map(o => ({ officer: o.officer, name: OFFICER_NAME[o.officer] || o.officer, adopt: o.adopt, candidate: o.candidate, reason: o.reason, confidence: o.confidence, 线索: o.线索 })),
     verdict: resolved ? 'resolved' : 'suspended',
     adopt: resolved ? best : null,
     tentative: suspend ? tentative : null,
@@ -85,18 +87,32 @@ function aggregate(opinions, v) {
   };
 }
 
-/** 校书官裁决主入口（对 diff 的真异文 + ocr疑） */
+/** 校书官裁决主入口（对 diff 的真异文 + ocr疑）。增量保存 + 断点续传 + 条间并行。 */
 async function adjudicate(workId, opts = {}) {
   const D = diff(workId);
   const targets = D.variants.filter(v => v.type === '真异文' || v.type === 'ocr疑');
-  const verdicts = [];
-  let i = 0;
-  for (const v of targets) {
-    i++;
-    if (opts.onProgress) opts.onProgress(i, targets.length, v);
-    const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, v, { notes: D.notes })));  // 4官并行
-    verdicts.push(aggregate(ops, v));
+  const conc = opts.conc || 3;
+  const outPath = path.join(__dirname, '..', 'data', workId, 'verdicts.json');
+  // 断点续传：读已有 verdicts（注意：底本/对校变更后应先删旧 verdicts 再全量重裁）
+  const verdicts = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf8')) : [];
+  const doneIds = new Set(verdicts.map(v => v.diffId));
+  const todo = targets.filter(v => !doneIds.has(v.id));
+  let idx = 0, done = 0;
+  async function worker() {
+    while (idx < todo.length) {
+      const v = todo[idx++];
+      try {
+        const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, v, { notes: D.notes })));
+        verdicts.push(aggregate(ops, v));
+      } catch (e) {
+        verdicts.push({ diffId: v.id, type: v.type, shanben: v.shanben, xiandai: v.xiandai, seg: v.seg, verdict: 'error', note: String(e.message || e), opinions: [] });
+      }
+      done++;
+      fs.writeFileSync(outPath, JSON.stringify(verdicts, null, 2));  // 增量保存，可断点续传
+      if (opts.onProgress) opts.onProgress(done, todo.length, v);
+    }
   }
+  await Promise.all(Array.from({ length: conc }, worker));
   const summary = {
     total: verdicts.length,
     resolved: verdicts.filter(v => v.verdict === 'resolved').length,
