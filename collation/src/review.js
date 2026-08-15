@@ -74,7 +74,7 @@ function buildPayload(result, workId) {
       opinions: (v.opinions || []).map(o => ({
         name: o.name || o.officer, adopt: ADOPT_LABEL[o.adopt] || (o.adopt === 'suspend' ? '存疑' : o.adopt),
         grade: o.grade || '', confidence: o.confidence || 0,
-        reason: o.reason || '', clue: o['线索'] || '',
+        reason: o.reason || '', clue: Array.isArray(o['线索']) ? o['线索'].filter(Boolean).join('；') : (o['线索'] || ''),
       })),
     });
   }
@@ -145,14 +145,14 @@ const KEY = 'guji:' + DATA.work;
 let dec = JSON.parse(localStorage.getItem(KEY) || '{}');
 let filter = 'pending', cur = 0, imgOn = {};
 const save = () => localStorage.setItem(KEY, JSON.stringify(dec));
-const esc = s => (s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const ADOPT = {shanben:'善本', xiandai:'现代本', neither:'兩存'};
 function visible(){ return DATA.cases.filter(c => filter==='all' ? true : filter==='done' ? (dec[c.id] || !c.suspended) : (c.suspended && !dec[c.id])); }
 function imgHtml(c){
   if(!imgOn[c.id]) return '';
   let h = '<div class="imgs on">';
-  if(c.sbPage && IMGS['sb:'+c.sbPage]) h += '<figure><img src="'+IMGS['sb:'+c.sbPage']+'"><figcaption>善本 p'+c.sbPage+'</figcaption></figure>';
-  if(c.xdPage && IMGS['xd:'+c.xdPage]) h += '<figure><img src="'+IMGS['xd:'+c.xdPage']+'"><figcaption>现代本 p'+c.xdPage+'</figcaption></figure>';
+  if(c.sbPage && IMGS['sb:'+c.sbPage]) h += '<figure><img src="'+IMGS['sb:'+c.sbPage]+'"><figcaption>善本 p'+c.sbPage+'</figcaption></figure>';
+  if(c.xdPage && IMGS['xd:'+c.xdPage]) h += '<figure><img src="'+IMGS['xd:'+c.xdPage]+'"><figcaption>现代本 p'+c.xdPage+'</figcaption></figure>';
   return h + '</div>';
 }
 function render(){
