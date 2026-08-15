@@ -25,14 +25,17 @@
   - [古籍校勘推广指南](/古籍校勘推广指南.md)
   - [校勘异文讨论](/校勘异文讨论.md)
   - [校勘优化方案](/校勘优化方案.md)
+<!-- docs:collation-data start -->
   - 大學章句
     - [校勘记](/collation-data/大学章句/output/校勘记.md)
     - [善本点校本](/collation-data/大学章句/output/善本点校本.md)
+    - [善本点校本·分栏](/collation-data/大学章句/output/善本点校本-分栏.md)
     - [现代本](/collation-data/大学章句/output/现代本.md)
   - 中庸章句
     - [校勘记](/collation-data/中庸章句/output/校勘记.md)
     - [善本点校本](/collation-data/中庸章句/output/善本点校本.md)
     - [现代本](/collation-data/中庸章句/output/现代本.md)
+<!-- docs:collation-data end -->
 
 - 评估备忘
   - [门户首页探索否决备忘](/门户首页探索否决备忘.md)
