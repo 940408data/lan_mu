@@ -9,7 +9,8 @@
  *     现代OCR误（剔除留痕）/ 善本底本误（回修 shanben-v2 重跑对齐对校）/
  *     真异文（入册送校书官）/ 书题牌记（剔除留痕）
  *
- * 产物：data/<书>/clusters.json（diff 步骤写）、clusters-verify.json（verify 步骤写，增量保存断点续传）。
+ * 产物：input_data/<书>/_derived/collation/clusters.json（diff 步骤写）、
+ * clusters-verify.json（verify 步骤写，增量保存断点续传；均为私有）。
  */
 'use strict';
 const fs = require('fs');

@@ -2,10 +2,10 @@
  * collation · P6 双本出具 + P7 精校台/flags（src/export.js）
  * 入参：adjudicate() 全量结果（含 align/diff/clusters/verdicts）→ 写出
  *   data/<书>/output/善本点校本.md   （公开）
- *   data/<书>/output/现代本.md       （自用）
- *   data/<书>/output/校勘记.md       （字级真异文 + 簇级夺衍换 + 异体 + 底本修复 + 噪声附录，各带环节出处）
- *   data/<书>/output/精校台.html     （单文件离线人工精校台，见 src/review.js）
- *   data/<书>/{aligned,diffs,clusters,verdicts}.json + flags.yaml
+ *   data/<书>/output/校勘记.md       （公开；字级真异文 + 簇级夺衍换 + 异体 + 底本修复 + 噪声附录）
+ *   data/<书>/punctuated.json + quality-report.json（公开善本结构与质量摘要）
+ *   input_data/<书>/_derived/collation/output/现代本.md、精校台.html（私有）
+ *   input_data/<书>/_derived/collation/{aligned,diffs,clusters,verdicts}.json + flags.yaml（私有）
  *
  * 校勘记是流水线各环节记录的**忠实汇总**：每条异文带「发现（对校）/ 核验（P4.5 引擎+置信）/ 裁决（校书官|规则|人工）」出处；
  * 噪声不删，移附录留痕。

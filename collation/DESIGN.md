@@ -136,7 +136,7 @@ P5 悬置疑问 + P2.5 deferred + P4 ocr疑，汇成 `flags`。人工逐条终�
 
 ---
 
-## 5. 数据模型（中间产物，`data/<书名>/`）
+## 5. 数据模型（公开摘要 + 私有中间产物）
 
 ```
 _derived/collation/aligned.json   P3 → 对齐段（页/区域/hash 溯源，不公开现代句长文本）
