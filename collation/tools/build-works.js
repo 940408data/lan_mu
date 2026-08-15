@@ -19,28 +19,48 @@ if (!workId || !newId) { console.error('用法: node collation/tools/build-works
 const baseId = flags.base || 'daxue';
 const dataDir = path.join(__dirname, '..', 'data', workId);
 const grid = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid.json'), 'utf8'));
+// 正文页域：layout.json textPages 限定（序/题跋另成卷，不混入正文作品）
+let textRange = null;
+try {
+  const layout = JSON.parse(fs.readFileSync(path.join(dataDir, 'layout.json'), 'utf8'));
+  if (layout.textPages) textRange = layout.textPages;
+} catch {}
 const worksDir = path.join(__dirname, '..', '..', 'works');
 
-// 1) grid 列 → 合并连续同 type 为段（经注分栏 blocks）
+// 1) grid 列 → 合并连续同 type 为段（经注分栏 blocks，限正文页域）
 const blocks = [];
-for (const pg of grid.pages) for (const col of pg.cols) {
-  const t = (col.text || '').trim();
-  if (!t) continue;
-  const last = blocks[blocks.length - 1];
-  if (last && last.type === col.type) last.text += t;
-  else blocks.push({ type: col.type, text: t });
+for (const pg of grid.pages) {
+  if (textRange && (pg.n < textRange[0] || pg.n > textRange[1])) continue;
+  for (const col of pg.cols) {
+    const t = (col.text || '').trim();
+    if (!t) continue;
+    const last = blocks[blocks.length - 1];
+    if (last && last.type === col.type) last.text += t;
+    else blocks.push({ type: col.type, text: t });
+  }
 }
 
-// 2) 按章节锚点分 sections（右經一章 / 右傳之X章 分界）
+// 2) 按章节锚点分 sections（大学：右經一章/右傳之X章 起新节；中庸：右第X章 收前节）
 const sections = [];
 let cur = { id: 'jing', name: '經一章', blocks: [] };
-let secN = 0;
+let secN = 0, zhongyongMode = false;
 for (const b of blocks) {
-  const m = b.text.match(/右(傳之[首一二三四五六七八九十]+章|經一章)/);
-  if (m && /右傳之/.test(m[1]) && cur.blocks.length) { sections.push(cur); secN++; cur = { id: 'zhuan' + secN, name: m[1].replace('右', ''), blocks: [] }; }
+  const mZhongyong = b.text.match(/右第([一二三四五六七八九十百]+)章/);
+  const mDaxue = b.text.match(/右(傳之[首一二三四五六七八九十]+章|經一章)/);
+  if (mZhongyong) {
+    // 中庸章标在章末：归入当前节后闭节
+    zhongyongMode = true;
+    cur.blocks.push(b);
+    sections.push(cur); secN++;
+    cur = { id: 'zhang' + (secN + 1), name: '第' + mZhongyong[1] + '章', blocks: [] };
+    continue;
+  }
+  if (mDaxue && /右傳之/.test(mDaxue[1]) && cur.blocks.length) { sections.push(cur); secN++; cur = { id: 'zhuan' + secN, name: mDaxue[1].replace('右', ''), blocks: [] }; }
   cur.blocks.push(b);
 }
 sections.push(cur);
+// 中庸首节命名：题辞+首章（仅中庸模式）
+if (zhongyongMode && sections[0].id === 'jing') sections[0].name = '首章';
 
 // 3) 统计 expect
 const jChars = blocks.filter(b => b.type === 'j').reduce((s, b) => s + b.text.length, 0);
