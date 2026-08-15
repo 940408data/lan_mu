@@ -17,6 +17,8 @@
     "collate:test": "node collation/test/cleanup.test.js && node collation/test/p5b.test.js",
     "collate:review": "node collation/tools/review-full.js",
     "collate:punctuate": "node collation/tools/punctuate-llm.js",
+    "collate:verify-v2": "node collation/tools/verify-v2.js",
+    "collate:pipeline": "node collation/tools/pipeline.js",
     "collate:quality": "node collation/tools/quality-report.js",
     "collate:merge": "node collation/tools/merge-live.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"

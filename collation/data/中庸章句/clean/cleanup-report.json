@@ -6,7 +6,7 @@
     "stats": {
       "pages": 78,
       "regions": 77,
-      "bodyChars": 14459,
+      "bodyChars": 14456,
       "excluded": 1,
       "byKind": {
         "cover": 1,
@@ -22,8 +22,8 @@
     },
     "m2": {
       "source": "recollate-1-78.json",
-      "sha256": "af16832c195a6af2ce3945e909fd11801aac6674a57ada9200b1a8dcf3fd383c",
-      "pendingVerify": 68
+      "sha256": "0ad78d73ed448fb9ec4b31217af41ef9289b7bf85d1823dd384cf7e226864ab4",
+      "pendingVerify": 0
     }
   },
   "xiandai": {
@@ -31,14 +31,15 @@
     "stats": {
       "pages": 36,
       "regions": 387,
-      "bodyChars": 17758,
-      "excluded": 30,
+      "bodyChars": 17753,
+      "excluded": 31,
       "byKind": {
         "section_heading": 1,
-        "body": 356,
+        "body": 355,
         "collation_note": 5,
         "running_head": 17,
-        "footnote": 8
+        "footnote": 8,
+        "colophon": 1
       }
     },
     "quality": {

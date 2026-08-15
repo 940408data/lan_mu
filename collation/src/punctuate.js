@@ -31,13 +31,14 @@ function punctuationSourceHash(segments) {
   return crypto.createHash('sha256').update(JSON.stringify(payload), 'utf8').digest('hex');
 }
 
-function validatePunctuationMarks(raw, marks) {
+function validatePunctuationMarks(raw, marks, options = {}) {
   if (!Array.isArray(marks)) return { ok: false, reason: 'marks 不是数组' };
   const chars = [...String(raw || '')];
   const positions = new Set();
   for (const m of marks) {
     if (!m || !Number.isInteger(m.at) || m.at < 0 || m.at > chars.length) return { ok: false, reason: 'at 越界' };
     if (typeof m.char !== 'string' || [...m.char].length !== 1 || !PUNCTUATION.has(m.char)) return { ok: false, reason: '标点不在白名单' };
+    if (options.strict && '。！？'.includes(m.char) && m.at !== chars.length) return { ok: false, reason: '自动应用禁止在段中插入句末标点' };
     const k = `${m.at}:${m.char}`;
     if (positions.has(k)) return { ok: false, reason: '重复标点操作' };
     positions.add(k);
@@ -46,9 +47,9 @@ function validatePunctuationMarks(raw, marks) {
 }
 
 /** 按字符位置应用标点操作；输入 raw 不得包含标点。 */
-function applyPunctuationMarks(raw, marks) {
+function applyPunctuationMarks(raw, marks, options = {}) {
   const chars = [...String(raw || '')];
-  const check = validatePunctuationMarks(raw, marks);
+  const check = validatePunctuationMarks(raw, marks, options);
   if (!check.ok) throw new Error(check.reason);
   const byAt = new Map();
   for (const m of marks) {
@@ -89,9 +90,13 @@ function buildShanbenPunctuated(result, options = {}) {
     const decision = options.decisions && options.decisions[String(seg.segId)];
     let text = baseline;
     if (decision && Array.isArray(decision.marks)) {
-      const checked = validatePunctuationMarks(txt, decision.marks);
+      const checked = validatePunctuationMarks(txt, decision.marks, { strict: true });
       if (!checked.ok) throw new Error(`seg ${seg.segId} 标点建议无效：${checked.reason}`);
-      text = applyPunctuationMarks(txt, decision.marks);
+      const marks = [...decision.marks];
+      // 保留基础阶段从现代本投影的段末标点；模型未给段末标点时不得把句号吞掉。
+      const end = [...baseline].pop();
+      if (end && PUNCTUATION.has(end) && !marks.some(m => m.at === [...txt].length)) marks.push({ at: [...txt].length, char: end });
+      text = applyPunctuationMarks(txt, marks, { strict: true });
     }
     lines.push(text);
     segments.push({ segId: seg.segId, page: seg.shanben.detail.find(d => d.sb)?.sb.page || null, raw: txt, baseline, text });

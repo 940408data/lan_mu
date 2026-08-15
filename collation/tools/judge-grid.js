@@ -5,7 +5,7 @@
  *   顶格=经(j)、退格=注(z)。产 grid.json（页×列×{col,type,start,text}）。
  * 断点续传（已判页跳过）、并行、初校开思考/conf低升覆校。
  *
- * 用法: node collation/tools/judge-grid.js <书名> --pages=8-36 [--conc=3] [--cols=16] [--rows=15]
+ * 用法: node collation/tools/judge-grid.js <书名> --pages=8-36 [--conc=3] [--cols=16] [--rows=15] [--image-dir=DIR]
  */
 'use strict';
 const fs = require('fs');
@@ -20,6 +20,7 @@ for (const a of args) { const m = a.match(/^--([^=]+)(?:=(.*))?$/); if (m) flags
 const workId = pos[0];
 if (!workId || !flags.pages) { console.error('用法: node collation/tools/judge-grid.js <书名> --pages=8-36 [--conc=3]'); process.exit(1); }
 const conc = parseInt(flags.conc || '3', 10);
+const imageDir = flags['image-dir'] ? path.resolve(String(flags['image-dir'])) : null;
 const dataDir = path.join(__dirname, '..', 'data', workId);
 const m2 = loadM2Base(workId);
 // ② 版面结构落盘：data/<书>/layout.json（M0 抽样结论）为默认网格，--cols/--rows 可覆盖
@@ -32,6 +33,13 @@ const { editions, works } = loadConfig();
 const pdfDir = path.join(INPUT_DATA, workId, editions[works[workId].shanben].pdfDir);
 const outPath = path.join(dataDir, 'grid.json');
 function pad(n) { return String(n).padStart(4, '0'); }
+function pageImage(pg) {
+  if (!imageDir) return null;
+  const names = [`page_${pad(pg)}.png`, `page-${pad(pg)}.png`, `${pad(pg)}.png`];
+  const file = names.map(n => path.join(imageDir, n)).find(fs.existsSync);
+  if (!file) throw new Error(`找不到预渲染页图：${names.join(' / ')}（目录 ${imageDir}）`);
+  return fs.readFileSync(file).toString('base64');
+}
 
 let done = {};
 if (fs.existsSync(outPath)) {
@@ -53,7 +61,8 @@ if (fs.existsSync(outPath)) {
       const pdfPath = path.join(pdfDir, `page_${pad(pg)}.pdf`);
       if (!fs.existsSync(pdfPath)) continue;
       try {
-        const { b64 } = renderPage(pdfPath, 1, 150);
+        // 受限运行环境可由外部先渲染 PNG，再用 --image-dir 避免 Node 创建 pdftoppm 子进程。
+        const b64 = imageDir ? pageImage(pg) : renderPage(pdfPath, 1, 150).b64;
         const r = await gridColumns(b64, layout);
         cnt++;
         if (r.err || !r.obj) { console.log(`page_${pad(pg)}: ${r.err || '解析失败'}`); continue; }

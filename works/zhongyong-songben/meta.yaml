@@ -1,0 +1,62 @@
+id: zhongyong-songben
+title: 中庸章句（善本底）
+subtitle: 当涂郡斋刊递修本 · 经注分栏
+docTitle: 中庸章句 — 宋版善刻
+mark: 蘭木
+ariaLabel: 中庸章句，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+book:
+  id: zhongyong-songben
+  title: 中庸章句（善本底）
+  order: 1
+  entry:
+    big: 中庸
+    sub: 章句
+seed: 50837
+expect:
+  chars: 13393
+  jChars: 10479
+  zChars: 2914
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 中庸
+  gong:
+    - 牛山
+  spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
+  colophon: 依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子章句小字雙行；遇章別行；注隨經而下，與純注列網格對齊，本列不敷乃另起列；雙行並進，長短相差不過一字。<br>此卷錄《中庸章句》全帙：朱子分三十三章，章旨繫於章末；朱子之序另成一卷。<br>句讀以朱筆點之，附於字之右下，不占字位，點之斜正輕重因字而變，以仿手批氣韻。<br>文本以朱熹《四書章句集注》通行本為據，校錄重排，與宋本原刻容有出入。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR
+    PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han
+    Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti
+    SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK
+    TC",serif'
+export:
+  base: Zhongyong-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 朱熹《四書章句集注》
+    url: https://zh.wikisource.org/zh-hant/大學章句
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《中庸章句》為朱熹《四書章句集注》之一。朱子分三十三章，章旨繫於章末。此卷錄全帙，以宋刻本版式數字重刻；朱子《中庸章句序》另成一卷。</p>

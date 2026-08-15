@@ -7,7 +7,7 @@
       "stats": {
         "pages": 78,
         "regions": 77,
-        "bodyChars": 14459,
+        "bodyChars": 14456,
         "excluded": 1,
         "byKind": {
           "cover": 1,
@@ -26,14 +26,15 @@
       "stats": {
         "pages": 36,
         "regions": 387,
-        "bodyChars": 17758,
-        "excluded": 30,
+        "bodyChars": 17753,
+        "excluded": 31,
         "byKind": {
           "section_heading": 1,
-          "body": 356,
+          "body": 355,
           "collation_note": 5,
           "running_head": 17,
-          "footnote": 8
+          "footnote": 8,
+          "colophon": 1
         }
       },
       "quality": {
@@ -47,16 +48,16 @@
   },
   "base": {
     "source": "recollate-1-78.json",
-    "sha256": "af16832c195a6af2ce3945e909fd11801aac6674a57ada9200b1a8dcf3fd383c",
-    "pendingVerify": 68,
-    "verified": false
+    "sha256": "0ad78d73ed448fb9ec4b31217af41ef9289b7bf85d1823dd384cf7e226864ab4",
+    "pendingVerify": 0,
+    "verified": true
   },
   "alignment": {
-    "segments": 1158,
-    "exact": 1060,
-    "fuzzy": 89,
-    "orphan": 9,
-    "lowScore": 6,
+    "segments": 1157,
+    "exact": 1087,
+    "fuzzy": 62,
+    "orphan": 8,
+    "lowScore": 5,
     "orphanItems": [
       {
         "segId": 90,
@@ -93,18 +94,6 @@
             "p7-r005"
           ],
           "sourceHash": "ca7292084a1ab00f2029cfdce973f810914c164f0fef8a38d216044756e2d01b"
-        }
-      },
-      {
-        "segId": 674,
-        "xiandai": {
-          "pages": [
-            23
-          ],
-          "regionIds": [
-            "p23-r002"
-          ],
-          "sourceHash": "15cd338729c848b274e9f15a60cd8b0acb85d2c9311de2ca7d67a637343bc356"
         }
       },
       {
@@ -235,27 +224,6 @@
         }
       },
       {
-        "segId": 831,
-        "score": 0.7857142857142857,
-        "shanben": [
-          {
-            "page": 57,
-            "line": 1,
-            "regionId": "p57-r001",
-            "sourceHash": "44debb2a7dd3024d0168da35d97d8f40b67fd7327e62810fdbceaeedf6ae9a11"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            27
-          ],
-          "regionIds": [
-            "p27-r012"
-          ],
-          "sourceHash": "791f7d4291f10f104ff2d640acb138e0a84841a5c15b5d3f431b72a72f055f3e"
-        }
-      },
-      {
         "segId": 873,
         "score": 0.7142857142857143,
         "shanben": [
@@ -263,7 +231,7 @@
             "page": 59,
             "line": 1,
             "regionId": "p59-r001",
-            "sourceHash": "538178e2ad38e69361df4728de59c6295a500216aceaa54f2a9f3ab37d836f03"
+            "sourceHash": "696c31439a385dde5e8069fc7e336eefb8714eaba250e4719349afd52268157e"
           }
         ],
         "xiandai": {
@@ -394,16 +362,16 @@
         }
       },
       {
-        "prevSegId": 616,
-        "segId": 617,
-        "length": 7,
+        "prevSegId": 606,
+        "segId": 607,
+        "length": 13,
         "prev": {
           "shanben": [
             {
               "page": 43,
               "line": 1,
               "regionId": "p43-r001",
-              "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
+              "sourceHash": "79da59b76f274fe8477aa4dbaef8d9cbb45388e87d19eab2c5828dd57850d0cb"
             }
           ],
           "xiandai": {
@@ -411,7 +379,7 @@
               21
             ],
             "regionIds": [
-              "p21-r007"
+              "p21-r003"
             ],
             "sourceHash": "c8550b550df12e3614430736d39f5dc06d6c0650fbf6f808691a9c06a1e88b2a"
           }
@@ -422,7 +390,7 @@
               "page": 43,
               "line": 1,
               "regionId": "p43-r001",
-              "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
+              "sourceHash": "79da59b76f274fe8477aa4dbaef8d9cbb45388e87d19eab2c5828dd57850d0cb"
             }
           ],
           "xiandai": {
@@ -430,7 +398,7 @@
               21
             ],
             "regionIds": [
-              "p21-r007"
+              "p21-r003"
             ],
             "sourceHash": "c8550b550df12e3614430736d39f5dc06d6c0650fbf6f808691a9c06a1e88b2a"
           }
@@ -478,143 +446,13 @@
             "sourceHash": "9c85b1a680edbfa597bbff9439e0ba943c4ac32e754d863c786f9aeb81495090"
           }
         }
-      },
-      {
-        "prevSegId": 1006,
-        "segId": 1007,
-        "length": 6,
-        "prev": {
-          "shanben": [
-            {
-              "page": 67,
-              "line": 1,
-              "regionId": "p67-r001",
-              "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              32
-            ],
-            "regionIds": [
-              "p32-r008",
-              "p32-r009"
-            ],
-            "sourceHash": "ded0c33d635f5f275af4afb5d5c1df0bd163027f0b4b2651dfc4183988efc81b"
-          }
-        },
-        "current": {
-          "shanben": [
-            {
-              "page": 67,
-              "line": 1,
-              "regionId": "p67-r001",
-              "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              32
-            ],
-            "regionIds": [
-              "p32-r009"
-            ],
-            "sourceHash": "ded0c33d635f5f275af4afb5d5c1df0bd163027f0b4b2651dfc4183988efc81b"
-          }
-        }
-      },
-      {
-        "prevSegId": 1033,
-        "segId": 1034,
-        "length": 8,
-        "prev": {
-          "shanben": [
-            {
-              "page": 68,
-              "line": 1,
-              "regionId": "p68-r001",
-              "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              33
-            ],
-            "regionIds": [
-              "p33-r003"
-            ],
-            "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-          }
-        },
-        "current": {
-          "shanben": [
-            {
-              "page": 68,
-              "line": 1,
-              "regionId": "p68-r001",
-              "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              33
-            ],
-            "regionIds": [
-              "p33-r003"
-            ],
-            "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-          }
-        }
-      },
-      {
-        "prevSegId": 1040,
-        "segId": 1041,
-        "length": 8,
-        "prev": {
-          "shanben": [
-            {
-              "page": 69,
-              "line": 1,
-              "regionId": "p69-r001",
-              "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              33
-            ],
-            "regionIds": [
-              "p33-r005"
-            ],
-            "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-          }
-        },
-        "current": {
-          "shanben": [
-            {
-              "page": 69,
-              "line": 1,
-              "regionId": "p69-r001",
-              "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
-            }
-          ],
-          "xiandai": {
-            "pages": [
-              33
-            ],
-            "regionIds": [
-              "p33-r005"
-            ],
-            "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-          }
-        }
       }
     ],
     "pass": false,
     "blockers": [
-      "9 个现代本句段未在善本对应",
-      "6 个对齐段得分低于 0.8",
-      "7 处相邻善本文字重叠，疑 OCR 跨页重复或错位"
+      "8 个现代本句段未在善本对应",
+      "5 个对齐段得分低于 0.8",
+      "4 处相邻善本文字重叠，疑 OCR 跨页重复或错位"
     ]
   },
   "reviewQueue": [
@@ -656,19 +494,6 @@
           "p7-r005"
         ],
         "sourceHash": "ca7292084a1ab00f2029cfdce973f810914c164f0fef8a38d216044756e2d01b"
-      }
-    },
-    {
-      "kind": "orphan",
-      "segId": 674,
-      "xiandai": {
-        "pages": [
-          23
-        ],
-        "regionIds": [
-          "p23-r002"
-        ],
-        "sourceHash": "15cd338729c848b274e9f15a60cd8b0acb85d2c9311de2ca7d67a637343bc356"
       }
     },
     {
@@ -806,28 +631,6 @@
     },
     {
       "kind": "low-score",
-      "segId": 831,
-      "score": 0.7857142857142857,
-      "shanben": [
-        {
-          "page": 57,
-          "line": 1,
-          "regionId": "p57-r001",
-          "sourceHash": "44debb2a7dd3024d0168da35d97d8f40b67fd7327e62810fdbceaeedf6ae9a11"
-        }
-      ],
-      "xiandai": {
-        "pages": [
-          27
-        ],
-        "regionIds": [
-          "p27-r012"
-        ],
-        "sourceHash": "791f7d4291f10f104ff2d640acb138e0a84841a5c15b5d3f431b72a72f055f3e"
-      }
-    },
-    {
-      "kind": "low-score",
       "segId": 873,
       "score": 0.7142857142857143,
       "shanben": [
@@ -835,7 +638,7 @@
           "page": 59,
           "line": 1,
           "regionId": "p59-r001",
-          "sourceHash": "538178e2ad38e69361df4728de59c6295a500216aceaa54f2a9f3ab37d836f03"
+          "sourceHash": "696c31439a385dde5e8069fc7e336eefb8714eaba250e4719349afd52268157e"
         }
       ],
       "xiandai": {
@@ -968,16 +771,16 @@
     },
     {
       "kind": "adjacent-overlap",
-      "prevSegId": 616,
-      "segId": 617,
-      "length": 7,
+      "prevSegId": 606,
+      "segId": 607,
+      "length": 13,
       "prev": {
         "shanben": [
           {
             "page": 43,
             "line": 1,
             "regionId": "p43-r001",
-            "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
+            "sourceHash": "79da59b76f274fe8477aa4dbaef8d9cbb45388e87d19eab2c5828dd57850d0cb"
           }
         ],
         "xiandai": {
@@ -985,7 +788,7 @@
             21
           ],
           "regionIds": [
-            "p21-r007"
+            "p21-r003"
           ],
           "sourceHash": "c8550b550df12e3614430736d39f5dc06d6c0650fbf6f808691a9c06a1e88b2a"
         }
@@ -996,7 +799,7 @@
             "page": 43,
             "line": 1,
             "regionId": "p43-r001",
-            "sourceHash": "600dc939c03af05e065792838e0e3d8ac5cc1451c405752691e64f85515c8ec5"
+            "sourceHash": "79da59b76f274fe8477aa4dbaef8d9cbb45388e87d19eab2c5828dd57850d0cb"
           }
         ],
         "xiandai": {
@@ -1004,7 +807,7 @@
             21
           ],
           "regionIds": [
-            "p21-r007"
+            "p21-r003"
           ],
           "sourceHash": "c8550b550df12e3614430736d39f5dc06d6c0650fbf6f808691a9c06a1e88b2a"
         }
@@ -1053,145 +856,25 @@
           "sourceHash": "9c85b1a680edbfa597bbff9439e0ba943c4ac32e754d863c786f9aeb81495090"
         }
       }
-    },
-    {
-      "kind": "adjacent-overlap",
-      "prevSegId": 1006,
-      "segId": 1007,
-      "length": 6,
-      "prev": {
-        "shanben": [
-          {
-            "page": 67,
-            "line": 1,
-            "regionId": "p67-r001",
-            "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            32
-          ],
-          "regionIds": [
-            "p32-r008",
-            "p32-r009"
-          ],
-          "sourceHash": "ded0c33d635f5f275af4afb5d5c1df0bd163027f0b4b2651dfc4183988efc81b"
-        }
-      },
-      "current": {
-        "shanben": [
-          {
-            "page": 67,
-            "line": 1,
-            "regionId": "p67-r001",
-            "sourceHash": "a8d2e3eb7f3ef03407c9735785687781cde54fdc26f5c6ea82ab2e1fdb8478e5"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            32
-          ],
-          "regionIds": [
-            "p32-r009"
-          ],
-          "sourceHash": "ded0c33d635f5f275af4afb5d5c1df0bd163027f0b4b2651dfc4183988efc81b"
-        }
-      }
-    },
-    {
-      "kind": "adjacent-overlap",
-      "prevSegId": 1033,
-      "segId": 1034,
-      "length": 8,
-      "prev": {
-        "shanben": [
-          {
-            "page": 68,
-            "line": 1,
-            "regionId": "p68-r001",
-            "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            33
-          ],
-          "regionIds": [
-            "p33-r003"
-          ],
-          "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-        }
-      },
-      "current": {
-        "shanben": [
-          {
-            "page": 68,
-            "line": 1,
-            "regionId": "p68-r001",
-            "sourceHash": "5028c4d17eaa5dc7e4bf9ad79b8cd4402f5a75123fa4cb268d4dbe290b983ef2"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            33
-          ],
-          "regionIds": [
-            "p33-r003"
-          ],
-          "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-        }
-      }
-    },
-    {
-      "kind": "adjacent-overlap",
-      "prevSegId": 1040,
-      "segId": 1041,
-      "length": 8,
-      "prev": {
-        "shanben": [
-          {
-            "page": 69,
-            "line": 1,
-            "regionId": "p69-r001",
-            "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            33
-          ],
-          "regionIds": [
-            "p33-r005"
-          ],
-          "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-        }
-      },
-      "current": {
-        "shanben": [
-          {
-            "page": 69,
-            "line": 1,
-            "regionId": "p69-r001",
-            "sourceHash": "a2b22c40f60c397b495f133b3564f9722809d03af09433c8d62d8dd55f09c12f"
-          }
-        ],
-        "xiandai": {
-          "pages": [
-            33
-          ],
-          "regionIds": [
-            "p33-r005"
-          ],
-          "sourceHash": "d80442b3d24cd8868c3b1717431c804ced8ea6b5d119cfd4c9f1426d77861752"
-        }
-      }
     }
   ],
   "blockers": [
-    "M2 尚有 68 处待覆校，暂不可发布",
-    "9 个现代本句段未在善本对应",
-    "6 个对齐段得分低于 0.8",
-    "7 处相邻善本文字重叠，疑 OCR 跨页重复或错位"
-  ]
+    "8 个现代本句段未在善本对应",
+    "5 个对齐段得分低于 0.8",
+    "4 处相邻善本文字重叠，疑 OCR 跨页重复或错位"
+  ],
+  "fullReview": {
+    "schemaVersion": 1,
+    "status": "blocked",
+    "contentScore": 50,
+    "modelScore": 78,
+    "modelConcernScore": 2,
+    "findingCount": 104,
+    "blockerCount": 4,
+    "highCount": 20,
+    "source": {
+      "m2Sha256": "0ad78d73ed448fb9ec4b31217af41ef9289b7bf85d1823dd384cf7e226864ab4",
+      "segmentCount": 1157
+    }
+  }
 }

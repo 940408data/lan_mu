@@ -26,6 +26,7 @@ assert.deepStrictEqual(rawPunctuationText('大學之道，明明德。'), '大�
 assert.strictEqual(validatePunctuationMarks('大學之道明明德', marks).ok, true);
 assert.strictEqual(applyPunctuationMarks('大學之道明明德', marks), '大學，之道明。明德');
 assert.strictEqual(validatePunctuationMarks('大學', [{ at: 4, char: '。'}]).ok, false);
+assert.strictEqual(validatePunctuationMarks('大學之道', [{ at: 2, char: '。'}], { strict: true }).ok, false);
 assert.strictEqual(punctuationSourceHash([{ segId: 1, raw: '甲乙' }]).length, 64);
 
 const r = buildReview({

@@ -185,11 +185,24 @@ async function verifyClusters(workId, opts = {}) {
   const xdPdfDir = path.join(INPUT_DATA, workId, editions[work.xiandai].pdfDir);
   const vcfg = loadVisionConfig();
   const threshold = vcfg.vision.threshold || 0.7;
+  // 在受限执行器中 Node 不能创建 pdftoppm 子进程；可由外部预渲染 PNG，
+  // 通过 COLLATION_SB_IMAGE_DIR / COLLATION_XD_IMAGE_DIR 注入两侧页图目录。
+  const sbImageDir = process.env.COLLATION_SB_IMAGE_DIR || null;
+  const xdImageDir = process.env.COLLATION_XD_IMAGE_DIR || null;
   const pdfOf = (dirP, n) => path.join(dirP, `page_${String(n).padStart(4, '0')}.pdf`);
   const pageCache = new Map();
   const render = (dirP, n) => {
     const k = dirP + ':' + n;
-    if (!pageCache.has(k)) pageCache.set(k, renderPage(pdfOf(dirP, n), 1, vcfg.vision.render?.dpi || vcfg.vision.dpi || 150).b64);
+    if (!pageCache.has(k)) {
+      const imageDir = dirP === sbPdfDir ? sbImageDir : xdImageDir;
+      if (imageDir) {
+        const file = path.join(imageDir, `page_${String(n).padStart(4, '0')}.png`);
+        if (!fs.existsSync(file)) throw new Error(`预渲染页图不存在：${file}`);
+        pageCache.set(k, fs.readFileSync(file).toString('base64'));
+      } else {
+        pageCache.set(k, renderPage(pdfOf(dirP, n), 1, vcfg.vision.render?.dpi || vcfg.vision.dpi || 150).b64);
+      }
+    }
     return pageCache.get(k);
   };
 
@@ -215,17 +228,21 @@ async function verifyClusters(workId, opts = {}) {
       xdB64 = render(xdPdfDir, c.xdPage);
     } catch (e) { return { id: c.id, verdict: '渲染失败', engine: '-', err: e.message }; }
     const p = verifyPrompt(c), models = vcfg.vision.models;
+    // 视觉模型可按批次临时降级为更快的兼容模型（例如 qwen-turbo），
+    // 不改配置文件、不影响默认初校/覆校角色语义。
+    const firstModel = process.env.DASHSCOPE_VISION_MODEL || models.first;
+    const deepModel = process.env.DASHSCOPE_VISION_DEEP_MODEL || models.deep;
     let r;
     try {
-      r = await callVision(models.first, [sbB64, xdB64], p, getKey(vcfg), vcfg.vision.endpoint, true);
-    } catch (e) { return { id: c.id, verdict: '调用失败', engine: `初校(${models.first})`, err: String(e.message || e), retryable: true }; }
-    if (r.err) return { id: c.id, verdict: '调用失败', engine: `初校(${models.first})`, err: r.err, retryable: true };
+      r = await callVision(firstModel, [sbB64, xdB64], p, getKey(vcfg), vcfg.vision.endpoint, true);
+    } catch (e) { return { id: c.id, verdict: '调用失败', engine: `初校(${firstModel})`, err: String(e.message || e), retryable: true }; }
+    if (r.err) return { id: c.id, verdict: '调用失败', engine: `初校(${firstModel})`, err: r.err, retryable: true };
     let obj = pickJSON(r.text), conf = getConf(obj);
     if (obj && typeof conf === 'number' && conf >= threshold) return { id: c.id, ...obj, conf, engine: `初校(${models.first})`, sbPageUsed: sbPage };
     try {
-      r = await callVision(models.deep, [sbB64, xdB64], p, getKey(vcfg), vcfg.vision.endpoint, true);
-    } catch (e) { return { id: c.id, verdict: '调用失败', engine: `覆校(${models.deep})`, err: String(e.message || e), retryable: true }; }
-    if (r.err) return { id: c.id, verdict: '调用失败', engine: `覆校(${models.deep})`, err: r.err, retryable: true };
+      r = await callVision(deepModel, [sbB64, xdB64], p, getKey(vcfg), vcfg.vision.endpoint, true);
+    } catch (e) { return { id: c.id, verdict: '调用失败', engine: `覆校(${deepModel})`, err: String(e.message || e), retryable: true }; }
+    if (r.err) return { id: c.id, verdict: '调用失败', engine: `覆校(${deepModel})`, err: r.err, retryable: true };
     obj = pickJSON(r.text); conf = getConf(obj);
     return { id: c.id, ...(obj || { verdict: '解析失败' }), conf, engine: `覆校(${models.deep})`, sbPageUsed: sbPage, note: (obj && obj.note ? obj.note + '；' : '') + '初校置信低，升级覆校' };
   }
