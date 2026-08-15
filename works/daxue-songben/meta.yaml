@@ -15,7 +15,13 @@ book:
     big: 大學
     sub: 章句
 seed: 11205
-expect: null
+expect:
+  chars: 5957
+  jChars: 1944
+  zChars: 4013
+  columns: 235
+  halves: 30
+  leaves: 15
 songke:
   bigPerCol: 16
   subPerCol: 25

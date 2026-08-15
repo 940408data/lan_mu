@@ -18,7 +18,7 @@ const { loadConfig, INPUT_DATA } = require('./io');
 const { loadVisionConfig, renderPage, callVision, getKey, pickJSON, getConf } = require('./vision');
 
 const HEADER_WORDS = new Set(['大學', '中庸', '論語', '孟子', '朱熹章句', '·', '章句']);
-const COLOPHON_PAGE = { '大学章句': 37 };   // 题跋牌记起始页（按书登记；未登记书无此规则）
+const COLOPHON_PAGE = { '大学章句': 37, '中庸章句': 77 };   // 题跋牌记起始页（按书登记；未登记书无此规则）
 const XD_APPARATUS = /原脱|原奪|未詳|去聲|入聲|平聲|上聲|叶音|一作|^○|校按|謹按/;  // 现代本自带校记/音注脚注
 
 /** 夺/衍簇归并：自 diff 的对齐段流原生产出（字级异文不再含夺/衍） */
