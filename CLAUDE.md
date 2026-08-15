@@ -19,6 +19,8 @@ npm run validate                 # 数据校验（行数/字数/夹注/印/兰 �
 npm run verify                   # 幽兰复刻保真验收（dist 与根目录 Youlan-Scroll.html 逐字符比对，退出码 0=通过）
 npm run dev                      # 本地预览（node tools/serve.js，默认 8125，端口被占自动顺延）
 node tools/serve.js 8127         # 指定端口预览
+npm run docs                      # docsify 文档站（默认 8130，docs/ 目录）
+npm run docs:sidebar              # 自动生成 docs/_sidebar.md 中「校对数据」分类下的书名/文件列表
 npm run new <id>                 # 新建作品脚手架（id 须 ^[a-z0-9-]+$）
 npm run font:register <id> --file=<路径> --family=<英文名> --license=A|B|C   # 登记字体到 fonts.yaml
 node tools/gen-index.js          # 构建后生成 dist/index.html 静态首页（生产部署需要；dev 时由 serve.js 动态生成）
@@ -111,3 +113,11 @@ Playwright 无头 Chromium 打开 dist HTML 按字体角色逐版截图；缺失
 - **worktree 路径统一**：开发用 `.claude/worktrees/<语义名>`；审核预览用 `.preview-wt/<语义名>`，审核完即删，不长期保留。
 
 完整实践记录、清理流程、命令速查与其余规范（退出回收 / 探索收敛 / 删除前三查）见 `docs/多worktree多agent协作实践与规范.md`。
+
+## docsify 文档站（docs/）
+
+文档站用 docsify（SPA，纯静态），`npm run docs` 在 8130 端口启动。`docs/collation-data` 是指向 `../collation/data` 的符号链接，校对数据 markdown 无需复制即可通过 docsify 访问。
+
+- **侧边栏** `docs/_sidebar.md` 半自动维护：手动链接（设计方案、实施记录等）在标记区外；「校对数据」分类下的书名/文件列表由 `npm run docs:sidebar`（`tools/gen-sidebar.js`）自动扫描 `collation/data/<书名>/output/*.md` 生成，标记 `<!-- docs:collation-data start/end -->` 之间的内容每次运行覆盖。
+- **生成规则**：书名简→繁显示（opencc `cn→tw`），路径保持简体；书序按传统四书序（`BOOK_ORDER`），文件序按固定优先级（校勘记→善本点校本→善本点校本·分栏→现代本）。新增校对文档后跑一次 `npm run docs:sidebar` 即可。
+- **浏览器缓存**：docsify 是 SPA，浏览器会缓存 `index.html` 和 `_sidebar.md`，文档更新后前端不显示时优先硬刷新（`Ctrl+Shift+R` / Mac `Cmd+Shift+R`），或在 DevTools Network 面板勾选 "Disable cache"。
