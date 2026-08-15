@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "work": "大学章句",
+  "shanben": {
+    "source": "shanben-v2:recollate-1-40.json",
+    "stats": {
+      "pages": 40,
+      "regions": 40,
+      "bodyChars": 7043,
+      "excluded": 1,
+      "byKind": {
+        "cover": 1,
+        "body": 39
+      }
+    },
+    "quality": {
+      "publishable": true,
+      "blockers": [],
+      "latexLeftovers": 0,
+      "isolatedTitles": 0,
+      "unknown": 0
+    }
+  },
+  "xiandai": {
+    "source": "ocr-markdown",
+    "stats": {
+      "pages": 17,
+      "regions": 189,
+      "bodyChars": 8524,
+      "excluded": 17,
+      "byKind": {
+        "section_heading": 2,
+        "footnote_ref": 1,
+        "body": 169,
+        "running_head": 8,
+        "collation_note": 3,
+        "footnote": 5,
+        "annotation": 1
+      }
+    },
+    "quality": {
+      "publishable": true,
+      "blockers": [],
+      "latexLeftovers": 0,
+      "isolatedTitles": 0,
+      "unknown": 0
+    }
+  }
+}

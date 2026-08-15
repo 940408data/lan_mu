@@ -65,6 +65,13 @@ Edition { id, role:'shanben'|'xiandai', pages:[{n, raw}], pdfCount }
 - 结果写回异文条目的 `reconfirm` 字段（候选 + 依据 + 置信）。
 - 无模型时：标记 `reconfirm:'deferred'`，转入 P7 人工。
 
+### P1.5 清洗与 P3 对齐（`src/cleanup.js`、`src/align.js`）
+
+P3 之前必须先运行 P1.5：原始 OCR 只读保留，页面拆成 `body`、`section_heading`、
+`annotation`、`footnote`、`collation_note`、`running_head`、`page_number`、`cover` 等区域。
+只有正文区域进入对齐；每个排除区域保留页、行、规则、置信度和 source hash。
+现代本清洗正文只能写入私有 `_derived` 目录。
+
 ### P3 对齐（`src/align.js`）
 两本异质（善本无标点断行 / 现代本有标点注夹），需先归一再对齐：
 1. **善本**：跨页拼接去断行 → 连续字串；跳过封面。
@@ -132,13 +139,13 @@ P5 悬置疑问 + P2.5 deferred + P4 ocr疑，汇成 `flags`。人工逐条终�
 ## 5. 数据模型（中间产物，`data/<书名>/`）
 
 ```
-aligned.json     P3 → [{segId, shanben:[{n,text}], xiandai:[{n,text}], score, orphan?}]
-diffs.json        P4 → [{id, segId, type, shanben, xiandai, ctx, reconfirm?}]
-verdicts.json     P5 → [{diffId, opinions:[{officer, adopt, reason}], verdict:'resolved'|'suspended', adopt?, note, human?}]
-punctuated.json   P5 → 善本带句读结构（章节/经注/句读）
+_derived/collation/aligned.json   P3 → 对齐段（页/区域/hash 溯源，不公开现代句长文本）
+_derived/collation/diffs.json     P4 → 字级异文与上下文（私有）
+_derived/collation/verdicts.json  P5 → 校书官裁决（私有）
+punctuated.json   P5 → 公开善本带句读结构（章节/经注/句读）
 output/
   善本点校本.md     P6（公开）
-  现代本.md         P6（自用）
+  _derived/collation/output/现代本.md P6（自用）
   校勘记.md         P6（异文表 + 裁决 + 悬置）
 flags.yaml        P7 → 人工待办
 ```
@@ -177,7 +184,8 @@ node collation/run.js 大学章句 --step=diff
 ANTHROPIC_API_KEY=... node collation/run.js 大学章句
 ```
 
-产物见 `collation/data/大学章句/`。
+公开产物见 `collation/data/大学章句/`；现代本连续文本及中间对校结果见
+`input_data/大学章句/_derived/collation/`（gitignored、不给 docsify 挂载）。
 
 ---
 

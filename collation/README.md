@@ -13,7 +13,7 @@
 ## 流水线（七阶段）
 
 ```
-P0 装载 → P1 OCR* → P2 AI初校 → P2.5 视觉复核 → P3 对齐 → P4 对校 → P5 校书官 → P6 双本出具 → P7 人工
+P0 装载 → P1 OCR* → P1.5 清洗 → P2 AI初校 → P2.5 视觉复核 → P3 对齐 → P4 对校 → P5 校书官 → P6 双本出具 → P7 人工
  io.js           llm.js       reconfirm.js     align.js   diff.js   officer.js    export.js      flags
 ```
 \* P1 已由 `input_data/*_ocr/` 提供；如需对新扫描补跑，用 `tools/pointcheck/ocr.js`。
@@ -23,11 +23,12 @@ P0 装载 → P1 OCR* → P2 AI初校 → P2.5 视觉复核 → P3 对齐 → P4
 | P0 装载 | `src/io.js` | 读两本 OCR md + PDF 页索引 → `Edition` |
 | P2 AI 初校 | `src/llm.js` | 清洗/异体归一/经注判；mock 兜底保证可跑 |
 | P2.5 视觉复核 | `src/reconfirm.js` | 对善本扫描再调 VLM/OCR 确认疑难字 |
-| P3 对齐 | `src/align.js` | 句级锚点对齐（indexOf + 编辑距离兜底，异体归一，去内联校记） |
+| P1.5 清洗 | `src/cleanup.js` + `tools/clean.js` | 双本页面区域拆分、正文/附注分流、可审计溯源 |
+| P3 对齐 | `src/align.js` | 只消费 P1.5 正文流；句级锚点对齐（indexOf + 编辑距离兜底，异体归一） |
 | P4 对校 | `src/diff.js` | 字级异文 + 归类（异体/真异文/ocr疑/夺/衍） |
 | P5 校书官 | `src/officer.js` + `officers/` | 四官各陈意见 → 陈列 → resolved/suspended |
-| P6 双本出具 | `src/export.js` + `src/punctuate.js` | 善本点校本(公开) + 现代本(自用) + 校勘记 |
-| P7 人工 | `flags.yaml` | 悬置疑问 + ocr疑 + deferred 终裁回写 |
+| P6 双本出具 | `src/export.js` + `src/punctuate.js` | 善本点校本(公开) + 现代本(私有) + 校勘记 + 质量报告 |
+| P7 人工 | `flags.yaml` + `精校台.html` | 悬置疑问 + ocr疑 + 质量闸待办终裁回写 |
 
 ## 用法
 
@@ -48,8 +49,10 @@ ANTHROPIC_API_KEY=... node collation/run.js 大学章句
 DASHSCOPE_API_KEY=... node collation/run.js 大学章句
 ```
 
-产物见 `collation/data/<书名>/`：`aligned.json` / `diffs.json` / `verdicts.json` +
-`output/{善本点校本.md, 现代本.md, 校勘记.md}` + `flags.yaml`。
+公开产物见 `collation/data/<书名>/`：清洗统计、`quality-report.json`、`punctuated.json`、
+`output/{善本点校本.md, 校勘记.md}`。含现代本连续文本的 `aligned/diffs/clusters/verdicts`、
+`output/现代本.md`、精校台和 `flags.yaml` 统一写入被忽略的
+`input_data/<书名>/_derived/collation/`，不挂 docsify。
 
 ## 双本分流（法理）
 

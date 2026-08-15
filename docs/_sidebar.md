@@ -33,11 +33,9 @@
     - [校勘记](/collation-data/大学章句/output/校勘记.md)
     - [善本点校本](/collation-data/大学章句/output/善本点校本.md)
     - [善本点校本·分栏](/collation-data/大学章句/output/善本点校本-分栏.md)
-    - [现代本](/collation-data/大学章句/output/现代本.md)
   - 中庸章句
     - [校勘记](/collation-data/中庸章句/output/校勘记.md)
     - [善本点校本](/collation-data/中庸章句/output/善本点校本.md)
-    - [现代本](/collation-data/中庸章句/output/现代本.md)
 <!-- docs:collation-data end -->
 
 - 评估备忘

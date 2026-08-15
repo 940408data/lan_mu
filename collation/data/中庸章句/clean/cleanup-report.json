@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "work": "中庸章句",
+  "shanben": {
+    "source": "ocr-markdown",
+    "stats": {
+      "pages": 78,
+      "regions": 1112,
+      "bodyChars": 14499,
+      "excluded": 2,
+      "byKind": {
+        "cover": 1,
+        "section_heading": 1,
+        "body": 1108,
+        "running_head": 1,
+        "annotation": 1
+      }
+    },
+    "quality": {
+      "publishable": true,
+      "blockers": [],
+      "latexLeftovers": 0,
+      "isolatedTitles": 0,
+      "unknown": 0
+    }
+  },
+  "xiandai": {
+    "source": "ocr-markdown",
+    "stats": {
+      "pages": 36,
+      "regions": 387,
+      "bodyChars": 17758,
+      "excluded": 30,
+      "byKind": {
+        "section_heading": 1,
+        "body": 356,
+        "collation_note": 5,
+        "running_head": 17,
+        "footnote": 8
+      }
+    },
+    "quality": {
+      "publishable": true,
+      "blockers": [],
+      "latexLeftovers": 0,
+      "isolatedTitles": 0,
+      "unknown": 0
+    }
+  }
+}
