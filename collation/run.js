@@ -72,8 +72,8 @@ if (!workId) { console.error('用法: node collation/run.js <书名> [--step=...
 
   if (step === 'officer') return;
 
-  // 视觉复核 ocr疑
-  reconfirm(result.variants, workId).then(() => {});
+  // 视觉复核（仅兜底 ocr疑；干净底本经 verify-v2 后真疑难已覆校，真异文归校书官，不再重复视觉复核）
+  reconfirm(result.variants, workId, { types: ['ocr疑'], limit: 20 }).catch(() => {});
 
   // 出具
   const r = exportAll(result, workId);

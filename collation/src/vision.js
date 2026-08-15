@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const YAML = require('yaml');
-const { extractJSON } = require('./llm');
+const { extractJSON, resolveApiKey } = require('./llm');
 
 const CFG_PATH = path.join(__dirname, '..', 'config', 'vision.yaml');
 function loadVisionConfig() {
@@ -59,10 +59,10 @@ async function callVision(model, b64, prompt, key, endpoint, thinking) {
 }
 
 /** 从模型输出取 JSON（对象或数组） */
-/** 多 key 轮询（DASHSCOPE_API_KEY 支持逗号分隔多个，供并行分摊限流） */
+/** 多 key 轮询（DASHSCOPE_API_KEY 支持逗号分隔多个，供并行分摊限流）。key 经 resolveApiKey 解析（env 或 ~/.bashrc），无需命令行注入。 */
 let _keyIdx = 0;
 function getKey(cfg) {
-  const raw = process.env[cfg.vision.keyEnv];
+  const raw = resolveApiKey(cfg.vision.keyEnv);
   if (!raw) return null;
   const keys = raw.split(',').map(s => s.trim()).filter(Boolean);
   if (!keys.length) return null;

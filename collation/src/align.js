@@ -12,6 +12,8 @@
  * 不用 opencc（避 cn→tw 一对多坑，见 memory classical-text-opencc-gotchas），改手定善本异体表。
  */
 'use strict';
+const fs = require('fs');
+const path = require('path');
 const { loadWork } = require('./io');
 
 // ── 善本异体归一表（古字/异体 → 通行形），用于对齐匹配；可扩充 ──
@@ -56,8 +58,18 @@ const FOOTNOTE_REF = /\$\s*\^\s*\{?\s*[\d①-⑳]+\s*\}?\s*\$/g;  // $^{①}$ �
 const SUP = /\^\{[\d①-⑳]+\}/g;                                  // 残留 ^{①}
 const DOLLAR = /\$/g;
 
-/** 善本 → 逐字 token（带溯源），跳过封面与书题行，去空白 */
-function shanbenTokens(ed) {
+/** 善本 → 逐字 token（带溯源）。若有干净底本 shanben-v2.json（M2 覆校后），优先用之
+ *  （消除旧 OCR 误读、存善本原刻字形）；否则退回旧 OCR（剥封面与书题行）。 */
+function shanbenTokens(ed, workId) {
+  if (workId) {
+    const v2 = path.join(__dirname, '..', 'data', workId, 'shanben-v2.json');
+    if (fs.existsSync(v2)) {
+      const data = JSON.parse(fs.readFileSync(v2, 'utf8'));
+      const toks = [];
+      for (const pg of data.pages) for (const ch of pg.text) { if (!/\s/.test(ch)) toks.push({ ch, norm: normChar(ch), page: pg.n, line: 0 }); }
+      return toks;
+    }
+  }
   const toks = [];
   for (const pg of ed.pages) {
     if (pg.isCover) continue;
@@ -147,7 +159,7 @@ function editAlign(s, p) {
 /** 对齐主入口 */
 function align(workId) {
   const { work, shanben, xiandai } = loadWork(workId);
-  const sbToks = shanbenTokens(shanben);
+  const sbToks = shanbenTokens(shanben, workId);
   const sbNorm = sbToks.map(t => t.norm).join('');
   const { sents, notes } = xiandaiSentences(xiandai);
 

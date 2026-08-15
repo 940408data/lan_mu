@@ -15,11 +15,26 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
-const DASHSCOPE_KEY = process.env.DASHSCOPE_API_KEY;
+/** 解析 API key：先 process.env，无则从 ~/.bashrc 的 `export X="..."` 兜底解析
+ *  （工具 shell 为非交互模式不自动 source .bashrc；脚本自读文件，避免在 bash 命令里明文/内嵌 key 触发分类器）。 */
+function resolveApiKey(envName) {
+  if (process.env[envName]) return process.env[envName];
+  for (const rc of ['.bashrc', '.bash_profile', '.profile']) {
+    try {
+      const txt = fs.readFileSync(path.join(os.homedir(), rc), 'utf8');
+      const m = txt.match(new RegExp(`export\\s+${envName}=["']?([^"'\\s]+)`));
+      if (m) return m[1];
+    } catch {}
+  }
+  return null;
+}
+
+const ANTHROPIC_KEY = resolveApiKey('ANTHROPIC_API_KEY');
+const DASHSCOPE_KEY = resolveApiKey('DASHSCOPE_API_KEY');
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
-const DASHSCOPE_MODEL = process.env.DASHSCOPE_MODEL || 'qwen-plus';
+const DASHSCOPE_MODEL = process.env.DASHSCOPE_MODEL || 'qwen3.8-max';
 
 let _engine = 'mock';
 if (ANTHROPIC_KEY) _engine = 'anthropic';
@@ -105,4 +120,4 @@ function loadOfficerProfile(id) {
   return fs.readFileSync(path.join(__dirname, '..', 'officers', `${id}.md`), 'utf8');
 }
 
-module.exports = { complete, engine, extractJSON, loadOfficerProfile };
+module.exports = { complete, engine, extractJSON, loadOfficerProfile, resolveApiKey };

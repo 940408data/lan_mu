@@ -94,11 +94,7 @@ async function adjudicate(workId, opts = {}) {
   for (const v of targets) {
     i++;
     if (opts.onProgress) opts.onProgress(i, targets.length, v);
-    const ops = [];
-    for (const off of OFFICERS) {
-      const o = await officerOpinion(off, v, { notes: D.notes });
-      ops.push(o);
-    }
+    const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, v, { notes: D.notes })));  // 4官并行
     verdicts.push(aggregate(ops, v));
   }
   const summary = {
