@@ -18,7 +18,7 @@ const { loadWork } = require('./io');
 const { buildShanbenPunctuated, buildXiandaiText } = require('./punctuate');
 const { loadVerifications } = require('./cluster');
 const review = require('./review');
-const { publicWorkDir, privateWorkDir } = require('./paths');
+const { publicWorkDir, privateWorkDir, internalReadPath } = require('./paths');
 const { buildQualityReport } = require('./quality');
 
 function outDir(workId) {
@@ -63,7 +63,7 @@ function exportAll(result, workId) {
   const vmap = {}; verdicts.forEach(v => vmap[v.diffId] = v);
   const verifs = loadVerifications(workId);
   const vfmap = {}; verifs.forEach(x => vfmap[x.id] = x);
-  const fixLogPath = path.join(dir, 'basefix-log.json');
+  const fixLogPath = internalReadPath(workId, 'basefix-log.json');
   const fixLog = fs.existsSync(fixLogPath) ? JSON.parse(fs.readFileSync(fixLogPath, 'utf8')) : [];
 
   // ── 善本点校本（公开）──
