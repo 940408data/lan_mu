@@ -38,6 +38,7 @@ function renderPage(pdfPath, pageN, dpi) {
 /** 调百炼兼容端点（多模态）。对齐 /root/guji_ocr/ocr_dianjiao_original_only.py：
  *  temperature:0.3、max_tokens:8192；enable_thinking 按任务开关（关思考快 5.7×，纯 OCR 用之）。 */
 async function callVision(model, b64, prompt, key, endpoint, thinking) {
+  const imgs = (Array.isArray(b64) ? b64 : [b64]).map(b => ({ type: 'image_url', image_url: { url: `data:image/png;base64,${b}` } }));
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
@@ -48,7 +49,7 @@ async function callVision(model, b64, prompt, key, endpoint, thinking) {
       extra_body: { enable_thinking: thinking !== false },
       messages: [{ role: 'user', content: [
         { type: 'text', text: prompt },
-        { type: 'image_url', image_url: { url: `data:image/png;base64,${b64}` } },
+        ...imgs,
       ] }],
     }),
   });
@@ -214,4 +215,4 @@ async function ocrPage(b64) {
   return { engine: '初校(' + cfg.vision.models.first + ')', role: cfg.vision.roles.first, text: r.text, thinking };
 }
 
-module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, layoutProbe, gridTranscribe, gridColumns, callVision };
+module.exports = { loadVisionConfig, renderPage, review, judgeJZ, verifyChar, verifyChars, ocrPage, layoutProbe, gridTranscribe, gridColumns, callVision, getKey, pickJSON, getConf };
