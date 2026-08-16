@@ -1,5 +1,7 @@
 {
   "work": "大学章句",
+  "model": null,
+  "endpoint": null,
   "base": {
     "file": "shanben-v2.json",
     "sha256": "0427d8a83790dbedf3423f33831ad96b834998face29a187767e29db2606e55b",
@@ -189,6 +191,60 @@
       "filled": 218,
       "empty": 22,
       "cells": 240
+    },
+    {
+      "page": 11,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 16507,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12939,
+          "text_tokens": 3568
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 19226
+      },
+      "cost": 0.62688,
+      "currency": "CNY",
+      "filled": 150,
+      "empty": 90,
+      "cells": 240,
+      "renderTime": 4056,
+      "apiTime": 302679,
+      "totalTime": 306735
+    },
+    {
+      "page": 12,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 16484,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12898,
+          "text_tokens": 3586
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 19203
+      },
+      "cost": 0.6260519999999999,
+      "currency": "CNY",
+      "filled": 177,
+      "empty": 63,
+      "cells": 240,
+      "renderTime": 3194,
+      "apiTime": 301978,
+      "totalTime": 305172
     }
   ]
 }
