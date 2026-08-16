@@ -1,0 +1,231 @@
+{
+  "work": "大学章句",
+  "model": "gpt-5.6-terra",
+  "endpoint": "https://api.teamorouter.com/v1/chat/completions",
+  "base": {
+    "file": "shanben-v2.json",
+    "sha256": "0427d8a83790dbedf3423f33831ad96b834998face29a187767e29db2606e55b",
+    "pendingVerify": 0
+  },
+  "logs": [
+    {
+      "page": 10,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4622,
+        "completion_tokens": 6578,
+        "total_tokens": 11200,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3593
+        }
+      },
+      "cost": 0.0022873828,
+      "currency": "USD",
+      "filled": 179,
+      "empty": 61,
+      "cells": 240,
+      "renderTime": 3607,
+      "apiTime": 142512,
+      "totalTime": 146119
+    },
+    {
+      "page": 11,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 10804,
+        "completion_tokens": 7940,
+        "total_tokens": 18744,
+        "prompt_tokens_details": {
+          "cached_tokens": 4608
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3624
+        }
+      },
+      "cost": 0.0030222439999999995,
+      "currency": "USD",
+      "filled": 146,
+      "empty": 94,
+      "cells": 240,
+      "renderTime": 4292,
+      "apiTime": 165276,
+      "totalTime": 169568
+    },
+    {
+      "page": 2,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 10885,
+        "completion_tokens": 10207,
+        "total_tokens": 21092,
+        "prompt_tokens_details": {
+          "cached_tokens": 4608
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5568
+        }
+      },
+      "cost": 0.0037349582,
+      "currency": "USD",
+      "filled": 104,
+      "empty": 136,
+      "cells": 240,
+      "renderTime": 4016,
+      "apiTime": 175829,
+      "totalTime": 179845
+    },
+    {
+      "page": 3,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4689,
+        "completion_tokens": 6679,
+        "total_tokens": 11368,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3698
+        }
+      },
+      "cost": 0.0023223054000000003,
+      "currency": "USD",
+      "filled": 222,
+      "empty": 18,
+      "cells": 240,
+      "renderTime": 3720,
+      "apiTime": 142920,
+      "totalTime": 146640
+    },
+    {
+      "page": 4,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4727,
+        "completion_tokens": 5379,
+        "total_tokens": 10106,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2380
+        }
+      },
+      "cost": 0.0019178253999999999,
+      "currency": "USD",
+      "filled": 240,
+      "empty": 0,
+      "cells": 240,
+      "renderTime": 2840,
+      "apiTime": 126228,
+      "totalTime": 129068
+    },
+    {
+      "page": 5,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4689,
+        "completion_tokens": 4709,
+        "total_tokens": 9398,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1710
+        }
+      },
+      "cost": 0.0017064833999999999,
+      "currency": "USD",
+      "filled": 231,
+      "empty": 9,
+      "cells": 240,
+      "renderTime": 2948,
+      "apiTime": 114655,
+      "totalTime": 117603
+    },
+    {
+      "page": 6,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 10885,
+        "completion_tokens": 7806,
+        "total_tokens": 18691,
+        "prompt_tokens_details": {
+          "cached_tokens": 4608
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3547
+        }
+      },
+      "cost": 0.0029844055999999996,
+      "currency": "USD",
+      "filled": 98,
+      "empty": 142,
+      "cells": 240,
+      "renderTime": 3847,
+      "apiTime": 146941,
+      "totalTime": 150788
+    },
+    {
+      "page": 7,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4727,
+        "completion_tokens": 7461,
+        "total_tokens": 12188,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4477
+        }
+      },
+      "cost": 0.0025686586,
+      "currency": "USD",
+      "filled": 197,
+      "empty": 43,
+      "cells": 240,
+      "renderTime": 3849,
+      "apiTime": 150232,
+      "totalTime": 154081
+    },
+    {
+      "page": 8,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4756,
+        "completion_tokens": 6652,
+        "total_tokens": 11408,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3661
+        }
+      },
+      "cost": 0.0023172151999999997,
+      "currency": "USD",
+      "filled": 190,
+      "empty": 50,
+      "cells": 240,
+      "renderTime": 3823,
+      "apiTime": 141589,
+      "totalTime": 145412
+    },
+    {
+      "page": 9,
+      "engine": "gpt-5.6-terra",
+      "model": "gpt-5.6-terra",
+      "usage": {
+        "prompt_tokens": 4756,
+        "completion_tokens": 7232,
+        "total_tokens": 11988,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4208
+        }
+      },
+      "cost": 0.0024985231999999995,
+      "currency": "USD",
+      "filled": 214,
+      "empty": 26,
+      "cells": 240,
+      "renderTime": 3857,
+      "apiTime": 153941,
+      "totalTime": 157798
+    }
+  ]
+}
