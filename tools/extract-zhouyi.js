@@ -75,8 +75,7 @@ for (let i = 0; i < lines.length; i++) {
   }
 
   // 跳过文件尾
-  if (t.startsWith('目录页') || t.startsWith('□') || t === '下一页') continue;
-  if (t.includes('上一页') || t.includes('上一页')) continue;
+  if (t.startsWith('目录页') || t.startsWith('上一页') || t.startsWith('□') || t === '下一页') continue;
   if (t === '') continue;  // 跳过空行
 
   // 分类
