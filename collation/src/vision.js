@@ -195,14 +195,19 @@ function gridColumnsPrompt(layout) {
 只输出严格 JSON 数组（每列一项）：[{"col":1,"start":"顶格","text":"……"},{"col":2,"start":"退一格","text":"……"},...]，不要解释文字。`;
 }
 async function gridColumns(b64, layout) {
-  // 列级网格提示词不要求模型重复输出整体 conf；只要 JSON 结构完整，
-  // 初校结果即可使用，避免每页无谓升级到昂贵覆校模型。
-  return review(b64, gridColumnsPrompt(layout), 'layout', {
-    allowNoConf: true,
-    validate: obj => Array.isArray(obj) && obj.length > 0 && obj.every(c =>
-      c && Number.isFinite(Number(c.col)) && (c.start === '顶格' || c.start === '退一格' || c.start === '退两格') && typeof c.text === 'string'
-    ),
-  });
+  // 经注同大字版面（如中庸晋府本）顶格/退格 start 判定：3.7-plus 初校不稳
+  // （朱熹总论/注易误判顶格=经）；准确优先，直接覆校 qwen3.8-max，不走初校路由。
+  const cfg = loadVisionConfig();
+  const key = getKey(cfg);
+  if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
+  const thinking = (cfg.vision.thinking && 'layout' in cfg.vision.thinking) ? cfg.vision.thinking.layout : true;
+  const r = await callVision(cfg.vision.models.deep, b64, gridColumnsPrompt(layout), key, cfg.vision.endpoint, thinking);
+  if (r.err) return { engine: '覆校(' + cfg.vision.models.deep + ')', err: r.err };
+  const obj = pickJSON(r.text);
+  const ok = Array.isArray(obj) && obj.length > 0 && obj.every(c =>
+    c && Number.isFinite(Number(c.col)) && (c.start === '顶格' || c.start === '退一格' || c.start === '退两格') && typeof c.text === 'string');
+  if (!ok) return { engine: '覆校(' + cfg.vision.models.deep + ')', err: '校验失败', raw: r.text };
+  return { engine: '覆校(' + cfg.vision.models.deep + ')', obj, conf: null, role: cfg.vision.roles.deep, thinking, note: '经注同大字 start 判定不稳，直接覆校保准确' };
 }
 
 /** 纯 OCR 整页原文照录（对齐 guji_ocr 脚本，关思考保速度）——可替代/补充善本旧 OCR */

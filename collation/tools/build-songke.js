@@ -20,6 +20,8 @@ const workId = pos[0];
 if (!workId) { console.error('用法: node collation/tools/build-songke.js <书名>'); process.exit(1); }
 const dataDir = path.join(__dirname, '..', 'data', workId);
 const grid = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid.json'), 'utf8'));
+let textRange = null;
+try { const L = JSON.parse(fs.readFileSync(path.join(dataDir, 'layout.json'), 'utf8')); if (L.textPages) textRange = L.textPages; } catch {}
 const m2 = loadM2Base(workId);
 if (!grid.base || grid.base.sha256 !== m2.sha256) {
   throw new Error('M3 grid.json 不是当前 M2 shanben-v2 新底本生成；请按新底本重跑 judge-grid.js');
@@ -31,7 +33,9 @@ const title = (grid.work || workId).replace(/章句/, '章句');
 
 // 逐页按列顺序，连续同 type 合并为段
 const blocks = [];
+const outOfRange = [];
 for (const pg of grid.pages) {
+  if (textRange && (pg.n < textRange[0] || pg.n > textRange[1])) outOfRange.push(pg.n);
   for (const col of pg.cols) {
     const t = (col.text || '').trim();
     if (!t) continue;
@@ -57,5 +61,6 @@ fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, lines.join('\n'));
 const j = blocks.filter(b => b.type === 'j').length, z = blocks.length - j;
 console.log(`✓ 经注分栏善本点校本：${blocks.length} 段（经 ${j} / 注 ${z}）→ ${outPath}`);
+if (outOfRange.length) console.warn(`⚠ ${outOfRange.length} 页超正文页域（${outOfRange.join(',')}，疑序/题跋）已纳入分栏，请人工确认是否属正文。`);
 console.log('--- 前 6 段预览 ---');
 blocks.slice(0, 6).forEach(b => console.log(`  [${b.type === 'j' ? '经' : '注'}] ${b.text.slice(0, 30)}`));
