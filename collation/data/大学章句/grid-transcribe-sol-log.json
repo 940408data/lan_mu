@@ -1,0 +1,171 @@
+{
+  "work": "大学章句",
+  "model": "gpt-5.6-sol",
+  "endpoint": "https://api.teamorouter.com/v1/chat/completions",
+  "base": {
+    "file": "shanben-v2.json",
+    "sha256": "0427d8a83790dbedf3423f33831ad96b834998face29a187767e29db2606e55b",
+    "pendingVerify": 0
+  },
+  "logs": [
+    {
+      "page": 3,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 4689,
+        "completion_tokens": 5502,
+        "total_tokens": 10191,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2514
+        }
+      },
+      "cost": 0.0019543751999999996,
+      "currency": "USD",
+      "filled": 240,
+      "empty": 0,
+      "cells": 240,
+      "renderTime": 2820,
+      "apiTime": 125769,
+      "totalTime": 128589
+    },
+    {
+      "page": 4,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 4689,
+        "completion_tokens": 6096,
+        "total_tokens": 10785,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3100
+        }
+      },
+      "cost": 0.0021400596,
+      "currency": "USD",
+      "filled": 240,
+      "empty": 0,
+      "cells": 240,
+      "renderTime": 4207,
+      "apiTime": 136148,
+      "totalTime": 140355
+    },
+    {
+      "page": 5,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 9071,
+        "completion_tokens": 5621,
+        "total_tokens": 14692,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2623
+        }
+      },
+      "cost": 0.0022106746,
+      "currency": "USD",
+      "filled": 231,
+      "empty": 9,
+      "cells": 240,
+      "renderTime": 3885,
+      "apiTime": 127094,
+      "totalTime": 130979
+    },
+    {
+      "page": 6,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 7547,
+        "total_tokens": 16616,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4550
+        }
+      },
+      "cost": 0.0028126422000000002,
+      "currency": "USD",
+      "filled": 113,
+      "empty": 127,
+      "cells": 240,
+      "renderTime": 3164,
+      "apiTime": 285804,
+      "totalTime": 288968
+    },
+    {
+      "page": 8,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 4756,
+        "completion_tokens": 4585,
+        "total_tokens": 9341,
+        "completion_tokens_details": {
+          "reasoning_tokens": 1594
+        }
+      },
+      "cost": 0.0016710709999999999,
+      "currency": "USD",
+      "filled": 193,
+      "empty": 47,
+      "cells": 240,
+      "renderTime": 3963,
+      "apiTime": 110601,
+      "totalTime": 114564
+    },
+    {
+      "page": 9,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 9164,
+        "completion_tokens": 8988,
+        "total_tokens": 18152,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5990
+        }
+      },
+      "cost": 0.0032678488,
+      "currency": "USD",
+      "filled": 218,
+      "empty": 22,
+      "cells": 240,
+      "renderTime": 5099,
+      "apiTime": 220324,
+      "totalTime": 225423
+    },
+    {
+      "page": 10,
+      "engine": "gpt-5.6-sol",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "prompt_tokens": 9030,
+        "completion_tokens": 4537,
+        "total_tokens": 13567,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1541
+        }
+      },
+      "cost": 0.0018697662000000002,
+      "currency": "USD",
+      "filled": 173,
+      "empty": 67,
+      "cells": 240,
+      "renderTime": 3193,
+      "apiTime": 163966,
+      "totalTime": 167159
+    }
+  ]
+}
