@@ -16,11 +16,11 @@ book:
     sub: 上經乾傳
 seed: 20001
 expect:
-  jChars: 5283
-  zChars: 25948
-  columns: 905
-  halves: 114
-  leaves: 57
+  jChars: 4926
+  zChars: 23482
+  columns: 841
+  halves: 106
+  leaves: 53
 songke:
   bigPerCol: 16
   subPerCol: 25
