@@ -26,7 +26,7 @@ const SUB_VARIANTS = [
 ];
 
 const MARK = { '。': 1, '！': 1, '？': 1, '，': 1, '、': 1, '；': 1, '：': 1 };
-const DROP = /[「」『』（）〈〉—·]/;
+const DROP = /[「」『』（）〈〉《》—·【】\[\]]/;
 
 /* mulberry32：種子定序偽隨緣，朱點氣韻所由出 */
 function mulberry32(seed) {
