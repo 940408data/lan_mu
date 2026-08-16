@@ -13,6 +13,8 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 const { execSync } = require('child_process');
 const YAML = require('yaml');
 const { extractJSON, resolveApiKey } = require('./llm');
@@ -78,24 +80,43 @@ function renderPagePlaywright(pdfPath, pageN, dpi, tmpDir) {
  *  返回 {text, usage}，usage 包含 prompt_tokens, completion_tokens, total_tokens。 */
 async function callVision(model, b64, prompt, key, endpoint, thinking) {
   const imgs = (Array.isArray(b64) ? b64 : [b64]).map(b => ({ type: 'image_url', image_url: { url: `data:image/png;base64,${b}` } }));
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model,
-      temperature: 0.3,
-      max_tokens: 8192,
-      extra_body: { enable_thinking: thinking !== false },
-      messages: [{ role: 'user', content: [
-        { type: 'text', text: prompt },
-        ...imgs,
-      ] }],
-    }),
+  const body = JSON.stringify({
+    model,
+    temperature: 0.3,
+    max_tokens: 8192,
+    extra_body: { enable_thinking: thinking !== false },
+    messages: [{ role: 'user', content: [
+      { type: 'text', text: prompt },
+      ...imgs,
+    ] }],
   });
-  const txt = await res.text();
-  if (!res.ok) return { err: `${res.status} ${txt.slice(0, 200)}` };
-  const j = JSON.parse(txt);
-  return { text: j.choices?.[0]?.message?.content || '', usage: j.usage || null };
+  const url = new URL(endpoint);
+  const lib = url.protocol === 'https:' ? https : http;
+  return new Promise((resolve, reject) => {
+    const req = lib.request({
+      hostname: url.hostname,
+      port: url.port,
+      path: url.pathname + url.search,
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+      timeout: 600_000,  // 10 min（3.8-max thinking 常超 300s 默认）
+    }, (res) => {
+      const chunks = [];
+      res.on('data', c => chunks.push(c));
+      res.on('end', () => {
+        const txt = Buffer.concat(chunks).toString();
+        if (res.statusCode !== 200) return resolve({ err: `${res.statusCode} ${txt.slice(0, 200)}` });
+        try {
+          const j = JSON.parse(txt);
+          resolve({ text: j.choices?.[0]?.message?.content || '', usage: j.usage || null });
+        } catch (e) { resolve({ err: `JSON parse error: ${e.message}` }); }
+      });
+    });
+    req.on('timeout', () => { req.destroy(); reject(new Error('fetch failed (600s timeout)')); });
+    req.on('error', (e) => reject(new Error(`fetch failed: ${e.message}`)));
+    req.write(body);
+    req.end();
+  });
 }
 
 /** 从模型输出取 JSON（对象或数组） */
