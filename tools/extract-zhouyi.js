@@ -65,9 +65,9 @@ for (let i = 0; i < lines.length; i++) {
 
   // 跳过文件头（书名、卷名等）
   if (skipHeader) {
-    if (t === '《周易正义》' || t.startsWith('上经') || t.startsWith('下经') || t === '') continue;
+    if (t === '《周易正义》' || t.startsWith('上经') || t.startsWith('下经') || t.startsWith('系辞') || t.startsWith('说卦') || t.startsWith('序卦') || t.startsWith('杂卦') || t.startsWith('《周易·') || t === '') continue;
     // 遇到第一个实际内容行时结束 header
-    if (t.length > 5 && !t.startsWith('《周易') && !t.startsWith('上经') && !t.startsWith('下经')) {
+    if (t.length > 5 && !t.startsWith('《周易') && !t.startsWith('上经') && !t.startsWith('下经') && !t.startsWith('系辞') && !t.startsWith('说卦') && !t.startsWith('序卦') && !t.startsWith('杂卦')) {
       skipHeader = false;
     } else {
       continue;
@@ -75,7 +75,7 @@ for (let i = 0; i < lines.length; i++) {
   }
 
   // 跳过文件尾
-  if (t.startsWith('目录页') || t.startsWith('□') || t === '下一页') continue;
+  if (t.startsWith('目录页') || t.startsWith('上一页') || t.startsWith('□') || t === '下一页') continue;
   if (t === '') continue;  // 跳过空行
 
   // 分类
@@ -83,6 +83,9 @@ for (let i = 0; i < lines.length; i++) {
     // 疏文 → z 块
     const text = t.replace(/^\[疏\]/, '').trim();
     if (text) blocks.push({ type: 'z', text });
+  } else if (t.startsWith('《周易·') || t === '《周易·序卦》第十' || t === '《周易·杂卦》第十一') {
+    // 卷首标题（序卦/杂卦）→ 跳过
+    continue;
   } else {
     // 经+注 → j 块
     blocks.push({ type: 'j', text: t });
@@ -108,7 +111,9 @@ console.log(`total: ${blocks.length} blocks, ${jChars + zChars} chars`);
 const yamlLines = [];
 yamlLines.push(`# 周易正義卷${volNum}（孔穎達疏）：j 為經文＋王弼注，z 為正義疏文。`);
 yamlLines.push(`sections:`);
-yamlLines.push(`  - id: juan${volNum === '一' ? '1' : volNum}`);
+const CN2NUM = { '一': '1', '二': '2', '三': '3', '四': '4', '五': '5', '六': '6', '七': '7', '八': '8', '九': '9', '十': '10', '十一': '11' };
+const sectionNum = CN2NUM[volNum] || volNum;
+yamlLines.push(`  - id: juan${sectionNum}`);
 yamlLines.push(`    name: 卷${volNum}`);
 yamlLines.push(`    blocks:`);
 for (const b of blocks) {
