@@ -22,21 +22,60 @@ function loadVisionConfig() {
   return YAML.parse(fs.readFileSync(CFG_PATH, 'utf8'));
 }
 
-/** 善本页 PDF → PNG（pdftoppm 单页）→ base64。返回 {b64, file}，用完可清理。 */
+/** 善本页 PDF → PNG（pdftoppm 单页，或 playwright 备选）→ base64。返回 {b64, file}，用完可清理。 */
 function renderPage(pdfPath, pageN, dpi) {
   const cfg = loadVisionConfig();
   const d = dpi || cfg.vision.render.dpi;
-  const tmp = fs.mkdtempSync('/tmp/vpage-');
+  const os = require('os');
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'vpage-'));
   const prefix = path.join(tmp, 'p');
-  execSync(`pdftoppm -png -r ${d} -f ${pageN} -l ${pageN} ${JSON.stringify(pdfPath)} ${JSON.stringify(prefix)}`);
+  try {
+    execSync(`pdftoppm -png -r ${d} -f ${pageN} -l ${pageN} ${JSON.stringify(pdfPath)} ${JSON.stringify(prefix)}`, { stdio: 'pipe' });
+  } catch (e) {
+    // pdftoppm 不可用，尝试 playwright
+    return renderPagePlaywright(pdfPath, pageN, d, tmp);
+  }
   const png = fs.readdirSync(tmp).find(f => f.endsWith('.png'));
   const file = path.join(tmp, png);
   const b64 = fs.readFileSync(file).toString('base64');
   return { b64, file };
 }
 
+/** 使用 playwright 渲染 PDF 单页为 PNG（pdftoppm 备选方案） */
+function renderPagePlaywright(pdfPath, pageN, dpi, tmpDir) {
+  const { chromium } = require('playwright');
+  const scale = dpi / 72; // PDF 默认 72 DPI
+  (async () => {
+    const browser = await chromium.launch();
+    const context = await browser.newContext({ viewport: { width: 2000, height: 3000 } });
+    const page = await context.newPage();
+    const pdfBuffer = fs.readFileSync(pdfPath);
+    const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    await page.goto(url, { waitUntil: 'networkidle' });
+    // 等待 PDF 渲染
+    await page.waitForTimeout(1000);
+    const screenshot = await page.screenshot({ type: 'png' });
+    const file = path.join(tmpDir, `page_${String(pageN).padStart(4, '0')}.png`);
+    fs.writeFileSync(file, screenshot);
+    await browser.close();
+    URL.revokeObjectURL(url);
+  })();
+  // 同步等待文件生成
+  const file = path.join(tmpDir, `page_${String(pageN).padStart(4, '0')}.png`);
+  let retries = 0;
+  while (!fs.existsSync(file) && retries < 30) {
+    require('child_process').execSync('timeout /t 1 /nobreak', { stdio: 'pipe' });
+    retries++;
+  }
+  if (!fs.existsSync(file)) throw new Error('playwright 渲染超时');
+  const b64 = fs.readFileSync(file).toString('base64');
+  return { b64, file };
+}
+
 /** 调百炼兼容端点（多模态）。对齐 /root/guji_ocr/ocr_dianjiao_original_only.py：
- *  temperature:0.3、max_tokens:8192；enable_thinking 按任务开关（关思考快 5.7×，纯 OCR 用之）。 */
+ *  temperature:0.3、max_tokens:8192；enable_thinking 按任务开关（关思考快 5.7×，纯 OCR 用之）。
+ *  返回 {text, usage}，usage 包含 prompt_tokens, completion_tokens, total_tokens。 */
 async function callVision(model, b64, prompt, key, endpoint, thinking) {
   const imgs = (Array.isArray(b64) ? b64 : [b64]).map(b => ({ type: 'image_url', image_url: { url: `data:image/png;base64,${b}` } }));
   const res = await fetch(endpoint, {
@@ -56,7 +95,7 @@ async function callVision(model, b64, prompt, key, endpoint, thinking) {
   const txt = await res.text();
   if (!res.ok) return { err: `${res.status} ${txt.slice(0, 200)}` };
   const j = JSON.parse(txt);
-  return { text: j.choices?.[0]?.message?.content || '' };
+  return { text: j.choices?.[0]?.message?.content || '', usage: j.usage || null };
 }
 
 /** 从模型输出取 JSON（对象或数组） */
@@ -93,15 +132,32 @@ function getConf(obj) {
   return typeof obj.conf === 'number' ? obj.conf : null;
 }
 
-/** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock。thinking 按 label 从配置读。 */
+/** 初校→覆校 路由：默认初校；conf<threshold 升级覆校；无 key → mock。thinking 按 label 从配置读。
+ *  支持 opts.forceDeep 强制使用覆校模型。返回结果包含 usage（token 统计）。
+ *  支持 opts.customEndpoint 和 opts.customModel 使用自定义端点和模型。 */
 async function review(b64, prompt, label, opts = {}) {
   const cfg = loadVisionConfig();
-  const key = getKey(cfg);
-  if (!key) return { engine: 'mock', deferred: true, reason: '无 ' + cfg.vision.keyEnv };
+  // 自定义端点支持
+  const endpoint = opts.customEndpoint || cfg.vision.endpoint;
+  const key = opts.customKey || getKey(cfg);
+  if (!key) return { engine: 'mock', deferred: true, reason: '无 API key' };
   const models = cfg.vision.models;
   const thinking = (cfg.vision.thinking && label in cfg.vision.thinking) ? cfg.vision.thinking[label] : true;
+  
+  // 自定义模型支持
+  const modelName = opts.customModel || (opts.forceDeep ? models.deep : models.first);
+  const engineName = opts.customModel || (opts.forceDeep ? '覆校(' + models.deep + ')' : '初校(' + models.first + ')');
+  
+  // 使用自定义模型或强制覆校
+  if (opts.customModel || opts.forceDeep) {
+    const r = await callVision(modelName, b64, prompt, key, endpoint, thinking);
+    if (r.err) return { engine: engineName, err: r.err };
+    const obj = pickJSON(r.text), conf = getConf(obj);
+    return { engine: engineName, obj, conf, role: opts.customModel ? 'custom' : cfg.vision.roles.deep, thinking, usage: r.usage };
+  }
+  
   // 初校
-  let r = await callVision(models.first, b64, prompt, key, cfg.vision.endpoint, thinking);
+  let r = await callVision(models.first, b64, prompt, key, endpoint, thinking);
   if (r.err) return { engine: '初校(' + models.first + ')', err: r.err };
   let obj = pickJSON(r.text), conf = getConf(obj);
   const firstAccepted = obj !== null && (
@@ -109,13 +165,13 @@ async function review(b64, prompt, label, opts = {}) {
     (opts.allowNoConf && (!opts.validate || opts.validate(obj)))
   );
   if (firstAccepted) {
-    return { engine: '初校(' + models.first + ')', obj, conf, role: cfg.vision.roles.first, thinking };
+    return { engine: '初校(' + models.first + ')', obj, conf, role: cfg.vision.roles.first, thinking, usage: r.usage };
   }
   // 覆校升级（初校置信低或解析失败）
-  r = await callVision(models.deep, b64, prompt, key, cfg.vision.endpoint, thinking);
+  r = await callVision(models.deep, b64, prompt, key, endpoint, thinking);
   if (r.err) return { engine: '覆校(' + models.deep + ')', err: r.err, note: '初校后升级' };
   obj = pickJSON(r.text); conf = getConf(obj);
-  return { engine: '覆校(' + models.deep + ')', obj, conf, role: cfg.vision.roles.deep, thinking, note: '初校置信低，升级覆校' };
+  return { engine: '覆校(' + models.deep + ')', obj, conf, role: cfg.vision.roles.deep, thinking, note: '初校置信低，升级覆校', usage: r.usage };
 }
 
 /** 第一层：经注大小学判定 */
@@ -179,8 +235,8 @@ function gridTranscribePrompt(layout) {
 空格（无字的格）用 char:"" 表示。
 只输出严格 JSON 数组：[{"col":1,"row":1,"char":"大","start":"顶格"},{"col":1,"row":2,"char":"學"},...]，不要解释文字。`;
 }
-async function gridTranscribe(b64, layout) {
-  return review(b64, gridTranscribePrompt(layout), 'layout');
+async function gridTranscribe(b64, layout, opts = {}) {
+  return review(b64, gridTranscribePrompt(layout), 'layout', opts);
 }
 
 /** 列级版面判定（轻量，判经注用）：只判每列起始（顶格/退格），文字取自已验证的干净底本。

@@ -1,0 +1,198 @@
+{
+  "work": "大学章句",
+  "model": "gpt-5.6-luna",
+  "endpoint": "https://api.teamorouter.com/v1/chat/completions",
+  "base": {
+    "file": "shanben-v2.json",
+    "sha256": "0427d8a83790dbedf3423f33831ad96b834998face29a187767e29db2606e55b",
+    "pendingVerify": 0
+  },
+  "logs": [
+    {
+      "page": 2,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 9458,
+        "total_tokens": 18527,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6496
+        }
+      },
+      "cost": 0.0034100208,
+      "currency": "USD",
+      "filled": 110,
+      "empty": 130,
+      "cells": 240,
+      "renderTime": 4116,
+      "apiTime": 211524,
+      "totalTime": 215640
+    },
+    {
+      "page": 3,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 6368,
+        "total_tokens": 15437,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3381
+        }
+      },
+      "cost": 0.0024440868,
+      "currency": "USD",
+      "filled": 232,
+      "empty": 8,
+      "cells": 240,
+      "renderTime": 3250,
+      "apiTime": 166015,
+      "totalTime": 169265
+    },
+    {
+      "page": 4,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 7612,
+        "total_tokens": 16681,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4570
+        }
+      },
+      "cost": 0.0028329612000000002,
+      "currency": "USD",
+      "filled": 235,
+      "empty": 5,
+      "cells": 240,
+      "renderTime": 3222,
+      "apiTime": 186993,
+      "totalTime": 190215
+    },
+    {
+      "page": 5,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 6815,
+        "total_tokens": 15884,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3641
+        }
+      },
+      "cost": 0.0025838190000000002,
+      "currency": "USD",
+      "filled": 228,
+      "empty": 12,
+      "cells": 240,
+      "renderTime": 5420,
+      "apiTime": 187283,
+      "totalTime": 192703
+    },
+    {
+      "page": 6,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9069,
+        "completion_tokens": 8102,
+        "total_tokens": 17171,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5084
+        }
+      },
+      "cost": 0.0029861352,
+      "currency": "USD",
+      "filled": 101,
+      "empty": 139,
+      "cells": 240,
+      "renderTime": 5047,
+      "apiTime": 201044,
+      "totalTime": 206091
+    },
+    {
+      "page": 7,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 4689,
+        "completion_tokens": 7111,
+        "total_tokens": 11800,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4131
+        }
+      },
+      "cost": 0.0024573486,
+      "currency": "USD",
+      "filled": 221,
+      "empty": 19,
+      "cells": 240,
+      "renderTime": 4286,
+      "apiTime": 136572,
+      "totalTime": 140858
+    },
+    {
+      "page": 8,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9136,
+        "completion_tokens": 7950,
+        "total_tokens": 17086,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4963
+        }
+      },
+      "cost": 0.0029419700000000003,
+      "currency": "USD",
+      "filled": 200,
+      "empty": 40,
+      "cells": 240,
+      "renderTime": 2911,
+      "apiTime": 195888,
+      "totalTime": 198799
+    },
+    {
+      "page": 9,
+      "engine": "gpt-5.6-luna",
+      "model": "gpt-5.6-luna",
+      "usage": {
+        "prompt_tokens": 9136,
+        "completion_tokens": 4869,
+        "total_tokens": 14005,
+        "prompt_tokens_details": {
+          "cached_tokens": 3840
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4587
+        }
+      },
+      "cost": 0.0019788494,
+      "currency": "USD",
+      "filled": 0,
+      "empty": 0,
+      "cells": 0,
+      "renderTime": 3454,
+      "apiTime": 141374,
+      "totalTime": 144828
+    }
+  ]
+}
