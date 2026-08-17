@@ -31,8 +31,9 @@
     });
   })();
 
-  /* ── 繁簡 ── */
+  /* ── 繁簡：conv 隨正文切換；convUi 工具欄控件固定簡體（用戶友好，正文仍可繁簡） ── */
   const conv = (s) => (state.simp ? String(s).replace(/./g, (c) => T2S[c] || c) : String(s));
+  const convUi = (s) => String(s).replace(/./g, (c) => T2S[c] || c);
 
   /* ── 中文數碼（葉次可逾十） ── */
   const DIG = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
@@ -155,21 +156,21 @@
 
     $('mhTitle').textContent = conv(SK.title);
     $('mhSub').textContent = conv(V.spec);
-    $('navToc').textContent = conv(SK.navLabel || '目錄');
-    $('btnZh').textContent = state.simp ? conv('簡體') : '繁體';
-    $('btnDu').textContent = conv(zm.n);
-    $('btnJie').textContent = conv('界行');
+    $('navToc').textContent = convUi(SK.navLabel || '目錄');
+    $('btnZh').textContent = state.simp ? '简体' : '繁体';
+    $('btnDu').textContent = convUi(zm.n);
+    $('btnJie').textContent = '界行';
     const sel = $('faceSel');
-    [...sel.options].forEach((o, i) => { o.textContent = conv(SK.faces[i].label); });
+    [...sel.options].forEach((o, i) => { o.textContent = convUi(SK.faces[i].label); });
     sel.value = String(state.face);
     const zsel = $('zhuwenSel');
-    [...zsel.options].forEach((o, i) => { o.textContent = conv(SK.variants[i].name); });
+    [...zsel.options].forEach((o, i) => { o.textContent = convUi(SK.variants[i].name); });
     zsel.value = String(state.variant);
-    $('btnMode').textContent = conv(state.single ? '通葉披覽' : '單葉披覽');
-    $('btnPrev').textContent = conv('前葉');
-    $('btnNext').textContent = conv('後葉');
-    $('lblZoom').textContent = conv('字號');
-    $('folioNow').textContent = conv('第') + numCn(leafVol(state.leaf).no) + conv('葉');
+    $('btnMode').textContent = state.single ? '单页阅读' : '滚动阅读';
+    $('btnPrev').textContent = '前叶';
+    $('btnNext').textContent = '后叶';
+    $('lblZoom').textContent = '字号';
+    $('folioNow').textContent = convUi('第') + numCn(leafVol(state.leaf).no) + convUi('葉');
     $('colophon').innerHTML = conv(SK.colophon);
 
     $('btnZh').setAttribute('aria-pressed', state.simp);
