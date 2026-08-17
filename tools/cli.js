@@ -57,7 +57,7 @@ function cmdValidate(workId) {
 }
 
 /* ---------- build ---------- */
-async function cmdBuild(workId, only) {
+async function cmdBuild(workId, only, pdfFull) {
   const ids = workId ? [workId] : listWorks();
   if (!ids.length) throw new Error('works/ 中没有作品');
   const outputs = only ? only.split(',') : ['html', 'jpg', 'pdf'];
@@ -78,7 +78,7 @@ async function cmdBuild(workId, only) {
     // 2) HTML（按版式分派渲染器）
     const songke = tree.kind === 'songke';
     const { html, warnings } = songke
-      ? require('../src/render/html-songke').renderSongkeHtml(tree, { distWorkDir: outDir })
+      ? require('../src/render/html-songke').renderSongkeHtml(tree, { distWorkDir: outDir, pdfFull })
       : renderHtml(tree, { distWorkDir: outDir });
     for (const w of warnings) console.warn('  [字体]', w);
     const htmlPath = path.join(outDir, 'index.html');
@@ -105,7 +105,7 @@ async function cmdBuild(workId, only) {
       }
       if (outputs.includes('pdf')) {
         if (songke) {
-          const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir);
+          const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir, { full: pdfFull });
           for (const p of pdfs) console.log('  PDF:', p);
         } else {
           const pdf = await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
@@ -203,7 +203,7 @@ function cmdFontRegister(id) {
 (async () => {
   try {
     if (cmd === 'validate') cmdValidate(flags.work);
-    else if (cmd === 'build') await cmdBuild(flags.work, flags.only);
+    else if (cmd === 'build') await cmdBuild(flags.work, flags.only, !!flags['pdf-full']);
     else if (cmd === 'new') cmdNew(flags._ && flags._[0], flags.title);
     else if (cmd === 'font:register') cmdFontRegister(flags._ && flags._[0]);
     else {

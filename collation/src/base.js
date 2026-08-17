@@ -25,6 +25,9 @@ function loadM2Base(workId) {
     const value = JSON.parse(fs.readFileSync(pendingFile, 'utf8'));
     if (Array.isArray(value)) pending = value;
   }
+  // 指纹按 LF 归一化：Windows 检出会把 JSON 转成 CRLF，哈希须与平台无关，
+  // 否则同一底本在 Windows/Linux 上算出两个 sha，断点续跑门控会误报"换底本"。
+  const canonical = raw.replace(/\r\n/g, '\n');
   return {
     data,
     file,
@@ -32,7 +35,7 @@ function loadM2Base(workId) {
     stats: data.stats || null,
     pendingFile,
     pendingCount: pending.length,
-    sha256: crypto.createHash('sha256').update(raw, 'utf8').digest('hex'),
+    sha256: crypto.createHash('sha256').update(canonical, 'utf8').digest('hex'),
   };
 }
 

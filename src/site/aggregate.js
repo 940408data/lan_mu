@@ -76,6 +76,7 @@ function aggregateSite() {
     const bm = Object.assign({ collation: 'AI整理' }, BOOK_META[b.id] || {});
     b.collation = bm.collation;
     if (bm.diben) b.diben = bm.diben;
+    if (bm.netdisk) b.netdisk = bm.netdisk;
     books.push(b);
   }
   const catIx = (c) => { const i = CAT_ORDER.indexOf(c); return i < 0 ? CAT_ORDER.length : i; };

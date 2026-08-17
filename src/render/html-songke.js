@@ -7,6 +7,10 @@ const fs = require('fs');
 const path = require('path');
 const OpenCC = require('opencc-js');
 const { loadRegistry, resolveFace } = require('../fonts/fonts');
+const { BOOK_META, NETDISK_FOLDER } = require('../site/home');
+
+/* 構建期繁→簡轉換器：用於 UI 文案簡體化 */
+const _t2s = OpenCC.Converter({ from: 'tw', to: 'cn' });
 
 const SONGKE_CSS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'songke.css'), 'utf8');
 const SONGKE_JS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'songke.js'), 'utf8');
@@ -30,17 +34,16 @@ function cnSub(n) {
 
 /* 構建期生成繁→簡逐字映射（僅收錄本作用字 + 界面文案） */
 function buildT2S(tree) {
-  const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
   const chars = new Set();
   for (const b of tree.blocks) for (const ch of b.text) chars.add(ch);
   const m = tree.meta;
   for (const ch of (m.title || '') + (m.subtitle || '') + (m.songke && m.songke.colophon || '') + (m.songke && m.songke.spec || '')) chars.add(ch);
   for (const v of tree.volumes || []) for (const ch of v.title) chars.add(ch);
   for (const f of Object.values(m.faces || {})) for (const ch of (f.label || '')) chars.add(ch);
-  for (const ch of '繁體簡體界行楷體宋體英雄行楷經注並朱惟施白文無點單葉披覽通前後字號第半下載疏朗逸正宋槧版式二十二目錄藏書') chars.add(ch);
+  for (const ch of '經注並朱惟施白文無點後葉疏朗雅正宋槧目錄藏書') chars.add(ch);
   const map = {};
   for (const ch of chars) {
-    const s = conv(ch);
+    const s = _t2s(ch);
     if (s !== ch) map[ch] = s;
   }
   return map;
@@ -100,12 +103,23 @@ function renderSongkeHtml(tree, opts = {}) {
   const docTitle = meta.docTitle || `${meta.title} — ${meta.subtitle || ''}`;
   const exp = meta.export || {};
   const expBase = exp.base || `${meta.id}-songke`;
-  // 下載菜單：每字面一版 PDF（不再生成/提供 JPG、PNG 長圖）；點校未完成（draft）的卷次不提供下載
+  // 下載菜單：每字面一版 PDF（不再生成/提供 JPG、PNG 長圖）；點校未完成（draft）的卷次不提供下載。
+  // 默認構建僅出預覽葉數 PDF（--pdf-full 方出全帙），菜單據此標注
+  const pdfFull = !!(opts && opts.pdfFull);
+  const pv = Math.min(exp.previewLeaves || 5, 9);
+  const pvCn = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'][pv];
   const dlItems = Object.entries(exp.faces || { kai: 'Kai', song: 'Song' }).map(([role, tag]) => {
-    const label = (meta.faces[role] && meta.faces[role].label) || role;
+    const raw = (meta.faces[role] && meta.faces[role].label) || role;
+    const label = _t2s(raw);
     const file = `${expBase}-${tag}.pdf`;
-    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} PDF</a>`;
+    const tip = pdfFull ? '' : ' title="前五叶预览"';
+    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}"${tip}>${esc(label)}试读</a>`;
   }).join('');
+  // 全帙 PDF 走網盤：獨立鏈接（meta.netdisk / 屬書 BOOK_META）→ 共享文件夾兕底
+  const bookMeta = (meta.book && BOOK_META[meta.book.id]) || {};
+  const ndLink = meta.netdisk || bookMeta.netdisk || NETDISK_FOLDER;
+  const ndLabel = meta.netdisk || bookMeta.netdisk ? '全量资源 · 网盘' : '全量资源 · 网盘共享夹';
+  const ndItem = ndLink ? `<div class="dl-sep" role="separator"></div><a class="dl-item" role="menuitem" href="${esc(ndLink)}" target="_blank" rel="noopener">${ndLabel}</a>` : '';
 
   // 點校提示卡：僅 draft 卷渲染（正文未公開聲明 + 外部公開站鏈接 + 點校群招募）
   const dn = meta.draftNotice || {};
@@ -155,7 +169,6 @@ ${draftCss}
   <a class="btn nav" id="navToc" href="${navHref}"></a>
   <span class="sep"></span>
   <button id="btnZh" aria-pressed="false"></button>
-  <button id="btnDu" aria-pressed="true"></button>
   <button id="btnJie" aria-pressed="true"></button>
   <select id="faceSel" aria-label="字面"></select>
   <select id="zhuwenSel" aria-label="注文版式"></select>
@@ -166,14 +179,16 @@ ${draftCss}
   <button id="btnNext"></button>
   <span class="sep"></span>
   ${draft ? '' : `<div class="dl">
-    <button class="btn" id="dl" type="button" aria-haspopup="true">下載</button>
-    <div class="dl-menu" id="dlMenu" role="menu" aria-label="下載 PDF">
+    <button class="btn" id="dl" type="button" aria-haspopup="true">下载</button>
+    <div class="dl-menu" id="dlMenu" role="menu" aria-label="下载">
     ${dlItems}
+    ${ndItem}
     </div>
   </div>
   <span class="sep"></span>`}
   <label for="zoom" id="lblZoom"></label>
   <input id="zoom" type="range" min="14" max="36" step="1" value="26">
+  <button id="btnDu" aria-pressed="true"></button>
 </div>
 
 <div id="book" class="book ruled" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
