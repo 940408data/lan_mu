@@ -39,8 +39,11 @@
 git worktree add .claude/worktrees/daxue-grid-a -b content/daxue-grid-a dev
 git worktree add .claude/worktrees/daxue-grid-b -b content/daxue-grid-b dev
 # 各 worktree 建 input_data 软链（脚本靠它定位 PDF）
-ln -s /root/lan_mu/input_data .claude/worktrees/daxue-grid-a/input_data
-ln -s /root/lan_mu/input_data .claude/worktrees/daxue-grid-b/input_data
+# 注意：worktree 的 input_data 是被 git 跟踪的真目录（chm_extract 等源料已入库），
+# 软链整个 input_data 会因目标已存在而误建嵌套子软链、PDF 仍不可达。
+# 按 memory「collation-worktree-input-data」只软链「大学章句」书目录：
+ln -sfn /root/lan_mu/input_data/大学章句 .claude/worktrees/daxue-grid-a/input_data/大学章句
+ln -sfn /root/lan_mu/input_data/大学章句 .claude/worktrees/daxue-grid-b/input_data/大学章句
 ```
 
 ### 阶段 2：两支并行逐格转写（两个 agent 会话，各自在 worktree 内并行）
