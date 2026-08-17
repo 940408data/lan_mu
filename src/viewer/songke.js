@@ -231,12 +231,26 @@
       railTgl.setAttribute('aria-expanded', 'false');
     }
   });
-  /* 专注模式：进入/退出浏览器全屏；fullscreenchange 复同步按钮文案（含 Esc 退出） */
+  /* 专注模式：进入/退出浏览器全屏；并随全屏把字号设为第二档（次于最大档），退出还原原字号。
+     fullscreenchange 兼顾按钮切换与 Esc 退出，复同步按钮文案与字号。 */
+  let preFocusU = null;
+  const applyFocusZoom = () => {
+    const zoom = $('zoom');
+    if (document.fullscreenElement && preFocusU === null) {
+      preFocusU = zoom.value;                                     // 记下原字号
+      zoom.value = String(+zoom.max - 1);                         // 第二档（最大档之下一档）
+      document.documentElement.style.setProperty('--u', zoom.value + 'px');
+    } else if (!document.fullscreenElement && preFocusU !== null) {
+      zoom.value = preFocusU;                                     // 还原原字号
+      document.documentElement.style.setProperty('--u', preFocusU + 'px');
+      preFocusU = null;
+    }
+  };
   $('btnFocus').onclick = () => {
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
     else document.documentElement.requestFullscreen().catch(() => {});
   };
-  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('fullscreenchange', () => { applyFocusZoom(); sync(); });
 
   /* 桌面右栏唤起/收起（窄屏抽屉由 #railToggle 主导，不启用此逻辑）：
      鼠标离开书叶 0.5s → 唤出；无操作约 1.5s → 自动收起；点击书叶 → 立即收起。
