@@ -1,0 +1,9592 @@
+{
+  "schemaVersion": 1,
+  "work": "中庸章句",
+  "base": {
+    "file": "grid-transcribe.json",
+    "sha256": "8789709cab65df106bbcd4dce6c848539d8977b9af53440d63637e72e232e0dd"
+  },
+  "stats": {
+    "pages": 75,
+    "cells": 14452,
+    "oldOcr": {
+      "agree": 14316,
+      "sub": 46,
+      "missing": 13,
+      "extra": 31
+    },
+    "modern": {
+      "agree": 14221,
+      "sub": 60,
+      "missing": 17,
+      "extra": 112,
+      "anchors": {
+        "hard": 0,
+        "soft": 93,
+        "kept": 93,
+        "segs": 94
+      },
+      "unanchoredSegs": 0
+    },
+    "labels": {
+      "cols": 1181,
+      "titles": 41
+    },
+    "sections": 34
+  },
+  "variants": {
+    "oldOcr": {
+      "agree": 14316,
+      "sub": [
+        {
+          "page": 4,
+          "col": 4,
+          "row": 9,
+          "grid": "傅",
+          "old": "傳"
+        },
+        {
+          "page": 5,
+          "col": 3,
+          "row": 11,
+          "grid": "緼",
+          "old": "縕"
+        },
+        {
+          "page": 5,
+          "col": 15,
+          "row": 1,
+          "grid": "録",
+          "old": "錄"
+        },
+        {
+          "page": 6,
+          "col": 10,
+          "row": 6,
+          "grid": "凡",
+          "old": "兄"
+        },
+        {
+          "page": 9,
+          "col": 6,
+          "row": 5,
+          "grid": "愼",
+          "old": "慎"
+        },
+        {
+          "page": 9,
+          "col": 15,
+          "row": 11,
+          "grid": "子",
+          "old": "慎"
+        },
+        {
+          "page": 14,
+          "col": 4,
+          "row": 6,
+          "grid": "已",
+          "old": "乆"
+        },
+        {
+          "page": 16,
+          "col": 2,
+          "row": 15,
+          "grid": "两",
+          "old": "兩"
+        },
+        {
+          "page": 16,
+          "col": 4,
+          "row": 2,
+          "grid": "两",
+          "old": "兩"
+        },
+        {
+          "page": 16,
+          "col": 5,
+          "row": 4,
+          "grid": "两",
+          "old": "兩"
+        },
+        {
+          "page": 19,
+          "col": 2,
+          "row": 2,
+          "grid": "寛",
+          "old": "寬"
+        },
+        {
+          "page": 23,
+          "col": 9,
+          "row": 14,
+          "grid": "鳶",
+          "old": "鳶"
+        },
+        {
+          "page": 26,
+          "col": 12,
+          "row": 8,
+          "grid": "絶",
+          "old": "絕"
+        },
+        {
+          "page": 27,
+          "col": 7,
+          "row": 11,
+          "grid": "丘",
+          "old": "立"
+        },
+        {
+          "page": 27,
+          "col": 8,
+          "row": 10,
+          "grid": "費",
+          "old": "貴"
+        },
+        {
+          "page": 32,
+          "col": 9,
+          "row": 7,
+          "grid": "十",
+          "old": "歲"
+        },
+        {
+          "page": 35,
+          "col": 1,
+          "row": 14,
+          "grid": "絶",
+          "old": "絕"
+        },
+        {
+          "page": 35,
+          "col": 10,
+          "row": 7,
+          "grid": "纉",
+          "old": "纘"
+        },
+        {
+          "page": 43,
+          "col": 15,
+          "row": 3,
+          "grid": "吕",
+          "old": "呂"
+        },
+        {
+          "page": 45,
+          "col": 4,
+          "row": 12,
+          "grid": "博",
+          "old": "慱"
+        },
+        {
+          "page": 46,
+          "col": 6,
+          "row": 14,
+          "grid": "禮",
+          "old": "稾"
+        },
+        {
+          "page": 49,
+          "col": 16,
+          "row": 14,
+          "grid": "吕",
+          "old": "呂"
+        },
+        {
+          "page": 50,
+          "col": 5,
+          "row": 12,
+          "grid": "昬",
+          "old": "昏"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 4,
+          "grid": "有",
+          "old": "以"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 7,
+          "grid": "二",
+          "old": "答"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 8,
+          "grid": "字",
+          "old": "辭"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 9,
+          "grid": "蓋",
+          "old": "今"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 10,
+          "grid": "子",
+          "old": "無"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 11,
+          "grid": "思",
+          "old": "此"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 12,
+          "grid": "刪",
+          "old": "問"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 13,
+          "grid": "其",
+          "old": "詞"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 14,
+          "grid": "繁",
+          "old": "而"
+        },
+        {
+          "page": 51,
+          "col": 10,
+          "row": 9,
+          "grid": "博",
+          "old": "愽"
+        },
+        {
+          "page": 56,
+          "col": 16,
+          "row": 7,
+          "grid": "則",
+          "old": "慱"
+        },
+        {
+          "page": 56,
+          "col": 16,
+          "row": 9,
+          "grid": "厚",
+          "old": "慱"
+        },
+        {
+          "page": 57,
+          "col": 8,
+          "row": 3,
+          "grid": "遠",
+          "old": "乆"
+        },
+        {
+          "page": 59,
+          "col": 1,
+          "row": 5,
+          "grid": "貸",
+          "old": "貨"
+        },
+        {
+          "page": 68,
+          "col": 11,
+          "row": 1,
+          "grid": "溥",
+          "old": "博"
+        },
+        {
+          "page": 68,
+          "col": 12,
+          "row": 2,
+          "grid": "溥",
+          "old": "博"
+        },
+        {
+          "page": 68,
+          "col": 15,
+          "row": 1,
+          "grid": "溥",
+          "old": "博"
+        },
+        {
+          "page": 70,
+          "col": 7,
+          "row": 5,
+          "grid": "僞",
+          "old": "偽"
+        },
+        {
+          "page": 71,
+          "col": 15,
+          "row": 12,
+          "grid": "文",
+          "old": "温"
+        },
+        {
+          "page": 72,
+          "col": 9,
+          "row": 1,
+          "grid": "簡",
+          "old": "溫"
+        },
+        {
+          "page": 74,
+          "col": 1,
+          "row": 5,
+          "grid": "鈇",
+          "old": "缺"
+        },
+        {
+          "page": 74,
+          "col": 4,
+          "row": 11,
+          "grid": "也",
+          "old": "缺"
+        },
+        {
+          "page": 76,
+          "col": 14,
+          "row": 5,
+          "grid": "跆",
+          "old": "跲"
+        }
+      ],
+      "missing": [
+        {
+          "page": 2,
+          "after": {
+            "col": 2,
+            "row": 9
+          },
+          "text": "子"
+        },
+        {
+          "page": 7,
+          "after": null,
+          "text": "晉府中庸傳"
+        },
+        {
+          "page": 13,
+          "after": {
+            "col": 8,
+            "row": 10
+          },
+          "text": "##"
+        },
+        {
+          "page": 16,
+          "after": {
+            "col": 1,
+            "row": 8
+          },
+          "text": "而"
+        },
+        {
+          "page": 18,
+          "after": {
+            "col": 6,
+            "row": 4
+          },
+          "text": "易"
+        },
+        {
+          "page": 21,
+          "after": null,
+          "text": "國昭唐一層重合"
+        },
+        {
+          "page": 29,
+          "after": {
+            "col": 11,
+            "row": 7
+          },
+          "text": "之"
+        },
+        {
+          "page": 35,
+          "after": {
+            "col": 3,
+            "row": 4
+          },
+          "text": "右第十八章"
+        },
+        {
+          "page": 43,
+          "after": null,
+          "text": "日食日中為月之行"
+        },
+        {
+          "page": 45,
+          "after": null,
+          "text": "一時曆中唐置台"
+        },
+        {
+          "page": 51,
+          "after": {
+            "col": 7,
+            "row": 6
+          },
+          "text": "起"
+        },
+        {
+          "page": 56,
+          "after": {
+            "col": 9,
+            "row": 13
+          },
+          "text": "三第二十五章"
+        },
+        {
+          "page": 60,
+          "after": {
+            "col": 9,
+            "row": 3
+          },
+          "text": "2023"
+        }
+      ],
+      "extra": [
+        {
+          "page": 25,
+          "col": 9,
+          "row": 2,
+          "grid": "從"
+        },
+        {
+          "page": 25,
+          "col": 9,
+          "row": 3,
+          "grid": "是"
+        },
+        {
+          "page": 25,
+          "col": 9,
+          "row": 4,
+          "grid": "也"
+        },
+        {
+          "page": 28,
+          "col": 5,
+          "row": 12,
+          "grid": "外"
+        },
+        {
+          "page": 33,
+          "col": 8,
+          "row": 1,
+          "grid": "子"
+        },
+        {
+          "page": 35,
+          "col": 5,
+          "row": 3,
+          "grid": "右"
+        },
+        {
+          "page": 35,
+          "col": 5,
+          "row": 4,
+          "grid": "第"
+        },
+        {
+          "page": 35,
+          "col": 5,
+          "row": 5,
+          "grid": "十"
+        },
+        {
+          "page": 35,
+          "col": 5,
+          "row": 6,
+          "grid": "八"
+        },
+        {
+          "page": 35,
+          "col": 5,
+          "row": 7,
+          "grid": "章"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 1,
+          "grid": "脩"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 2,
+          "grid": "身"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 3,
+          "grid": "則"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 4,
+          "grid": "道"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 5,
+          "grid": "立"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 6,
+          "grid": "尊"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 7,
+          "grid": "賢"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 8,
+          "grid": "則"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 9,
+          "grid": "不"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 10,
+          "grid": "惑"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 11,
+          "grid": "親"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 12,
+          "grid": "親"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 13,
+          "grid": "則"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 14,
+          "grid": "諸"
+        },
+        {
+          "page": 44,
+          "col": 8,
+          "row": 15,
+          "grid": "父"
+        },
+        {
+          "page": 46,
+          "col": 13,
+          "row": 14,
+          "grid": "者"
+        },
+        {
+          "page": 51,
+          "col": 7,
+          "row": 3,
+          "grid": "猶"
+        },
+        {
+          "page": 65,
+          "col": 16,
+          "row": 14,
+          "grid": "法"
+        },
+        {
+          "page": 76,
+          "col": 9,
+          "row": 1,
+          "grid": "補"
+        },
+        {
+          "page": 76,
+          "col": 9,
+          "row": 2,
+          "grid": "音"
+        },
+        {
+          "page": 76,
+          "col": 9,
+          "row": 3,
+          "grid": "釋"
+        }
+      ]
+    },
+    "modern": {
+      "agree": 14221,
+      "sub": [
+        {
+          "page": 3,
+          "col": 1,
+          "row": 6,
+          "grid": "后",
+          "modern": "後"
+        },
+        {
+          "page": 5,
+          "col": 3,
+          "row": 11,
+          "grid": "緼",
+          "modern": "縕"
+        },
+        {
+          "page": 5,
+          "col": 15,
+          "row": 1,
+          "grid": "録",
+          "modern": "錄"
+        },
+        {
+          "page": 6,
+          "col": 10,
+          "row": 8,
+          "grid": "說",
+          "modern": "説"
+        },
+        {
+          "page": 9,
+          "col": 6,
+          "row": 5,
+          "grid": "愼",
+          "modern": "慎"
+        },
+        {
+          "page": 9,
+          "col": 15,
+          "row": 11,
+          "grid": "子",
+          "modern": "慎"
+        },
+        {
+          "page": 14,
+          "col": 4,
+          "row": 2,
+          "grid": "鮮",
+          "modern": "久"
+        },
+        {
+          "page": 14,
+          "col": 4,
+          "row": 9,
+          "grid": "論",
+          "modern": "石"
+        },
+        {
+          "page": 16,
+          "col": 2,
+          "row": 7,
+          "grid": "人",
+          "modern": "兩"
+        },
+        {
+          "page": 16,
+          "col": 3,
+          "row": 8,
+          "grid": "之",
+          "modern": "兩"
+        },
+        {
+          "page": 16,
+          "col": 4,
+          "row": 10,
+          "grid": "類",
+          "modern": "兩"
+        },
+        {
+          "page": 18,
+          "col": 11,
+          "row": 6,
+          "grid": "子",
+          "modern": "强"
+        },
+        {
+          "page": 18,
+          "col": 11,
+          "row": 7,
+          "grid": "仲",
+          "modern": "與"
+        },
+        {
+          "page": 18,
+          "col": 16,
+          "row": 8,
+          "grid": "道",
+          "modern": "寬"
+        },
+        {
+          "page": 26,
+          "col": 11,
+          "row": 3,
+          "grid": "言",
+          "modern": "絕"
+        },
+        {
+          "page": 32,
+          "col": 7,
+          "row": 1,
+          "grid": "故",
+          "modern": "歲"
+        },
+        {
+          "page": 34,
+          "col": 16,
+          "row": 2,
+          "grid": "法",
+          "modern": "絕"
+        },
+        {
+          "page": 35,
+          "col": 7,
+          "row": 13,
+          "grid": "子",
+          "modern": "纘"
+        },
+        {
+          "page": 39,
+          "col": 7,
+          "row": 2,
+          "grid": "者",
+          "modern": "脩"
+        },
+        {
+          "page": 39,
+          "col": 16,
+          "row": 3,
+          "grid": "位",
+          "modern": "修"
+        },
+        {
+          "page": 39,
+          "col": 16,
+          "row": 6,
+          "grid": "乎",
+          "modern": "修"
+        },
+        {
+          "page": 40,
+          "col": 3,
+          "row": 7,
+          "grid": "不",
+          "modern": "修"
+        },
+        {
+          "page": 42,
+          "col": 6,
+          "row": 13,
+          "grid": "困",
+          "modern": "耻"
+        },
+        {
+          "page": 42,
+          "col": 15,
+          "row": 11,
+          "grid": "欲",
+          "modern": "耻"
+        },
+        {
+          "page": 42,
+          "col": 16,
+          "row": 13,
+          "grid": "非",
+          "modern": "修"
+        },
+        {
+          "page": 43,
+          "col": 1,
+          "row": 4,
+          "grid": "破",
+          "modern": "修"
+        },
+        {
+          "page": 43,
+          "col": 12,
+          "row": 12,
+          "grid": "地",
+          "modern": "呂"
+        },
+        {
+          "page": 45,
+          "col": 8,
+          "row": 3,
+          "grid": "祿",
+          "modern": "斂"
+        },
+        {
+          "page": 45,
+          "col": 12,
+          "row": 15,
+          "grid": "世",
+          "modern": "斂"
+        },
+        {
+          "page": 46,
+          "col": 4,
+          "row": 9,
+          "grid": "而",
+          "modern": "禀"
+        },
+        {
+          "page": 46,
+          "col": 12,
+          "row": 6,
+          "grid": "而",
+          "modern": "虛"
+        },
+        {
+          "page": 48,
+          "col": 15,
+          "row": 6,
+          "grid": "思",
+          "modern": "慎"
+        },
+        {
+          "page": 50,
+          "col": 3,
+          "row": 4,
+          "grid": "強",
+          "modern": "昏"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 4,
+          "grid": "而",
+          "modern": "以"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 7,
+          "grid": "尤",
+          "modern": "答"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 8,
+          "grid": "詳",
+          "modern": "辭"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 9,
+          "grid": "成",
+          "modern": "今"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 10,
+          "grid": "功",
+          "modern": "無"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 11,
+          "grid": "一",
+          "modern": "此"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 12,
+          "grid": "也",
+          "modern": "問"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 13,
+          "grid": "之",
+          "modern": "詞"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 14,
+          "grid": "下",
+          "modern": "而"
+        },
+        {
+          "page": 53,
+          "col": 3,
+          "row": 2,
+          "grid": "處",
+          "modern": "一"
+        },
+        {
+          "page": 56,
+          "col": 7,
+          "row": 4,
+          "grid": "之",
+          "modern": "石"
+        },
+        {
+          "page": 56,
+          "col": 8,
+          "row": 7,
+          "grid": "外",
+          "modern": "虚"
+        },
+        {
+          "page": 57,
+          "col": 4,
+          "row": 8,
+          "grid": "也",
+          "modern": "久"
+        },
+        {
+          "page": 58,
+          "col": 4,
+          "row": 5,
+          "grid": "之",
+          "modern": "博"
+        },
+        {
+          "page": 58,
+          "col": 7,
+          "row": 1,
+          "grid": "天",
+          "modern": "天"
+        },
+        {
+          "page": 58,
+          "col": 14,
+          "row": 10,
+          "grid": "一",
+          "modern": "貨"
+        },
+        {
+          "page": 61,
+          "col": 8,
+          "row": 6,
+          "grid": "矣",
+          "modern": "修"
+        },
+        {
+          "page": 61,
+          "col": 12,
+          "row": 2,
+          "grid": "一",
+          "modern": "釐"
+        },
+        {
+          "page": 62,
+          "col": 9,
+          "row": 15,
+          "grid": "位",
+          "modern": "裁"
+        },
+        {
+          "page": 62,
+          "col": 11,
+          "row": 3,
+          "grid": "右",
+          "modern": "裁"
+        },
+        {
+          "page": 65,
+          "col": 16,
+          "row": 15,
+          "grid": "法",
+          "modern": "妒"
+        },
+        {
+          "page": 68,
+          "col": 7,
+          "row": 9,
+          "grid": "別",
+          "modern": "博"
+        },
+        {
+          "page": 68,
+          "col": 8,
+          "row": 3,
+          "grid": "知",
+          "modern": "博"
+        },
+        {
+          "page": 68,
+          "col": 10,
+          "row": 12,
+          "grid": "明",
+          "modern": "博"
+        },
+        {
+          "page": 72,
+          "col": 5,
+          "row": 3,
+          "grid": "至",
+          "modern": "溫"
+        },
+        {
+          "page": 73,
+          "col": 10,
+          "row": 3,
+          "grid": "聲",
+          "modern": "並"
+        },
+        {
+          "page": 73,
+          "col": 15,
+          "row": 12,
+          "grid": "故",
+          "modern": "説"
+        }
+      ],
+      "missing": [
+        {
+          "page": 2,
+          "after": {
+            "col": 2,
+            "row": 9
+          },
+          "text": "子"
+        },
+        {
+          "page": 6,
+          "after": {
+            "col": 8,
+            "row": 1
+          },
+          "text": "其司禮監本吳本作之"
+        },
+        {
+          "page": 9,
+          "after": {
+            "col": 4,
+            "row": 4
+          },
+          "text": "蓋人之所以為人道之所以為道聖人之所以為教原其所自無一不本於天而備於我學者知之則其於學知所用力而自不能已矣司禮監本作蓋人知已之有性而不知其出於天知事之有道而不知其由於性知聖人之有教而不知其因吾之所固有者裁之也"
+        },
+        {
+          "page": 14,
+          "after": {
+            "col": 4,
+            "row": 8
+          },
+          "text": "子曰中庸其至矣乎民鮮能久矣"
+        },
+        {
+          "page": 15,
+          "after": {
+            "col": 16,
+            "row": 14
+          },
+          "text": "而"
+        },
+        {
+          "page": 18,
+          "after": {
+            "col": 5,
+            "row": 9
+          },
+          "text": "易"
+        },
+        {
+          "page": 18,
+          "after": {
+            "col": 9,
+            "row": 3
+          },
+          "text": "問强"
+        },
+        {
+          "page": 19,
+          "after": {
+            "col": 3,
+            "row": 9
+          },
+          "text": "然不必其合於中庸則質之近似者皆能以力為之若中庸則雖不必皆如三者之難司禮監本作然皆倚於一偏故資之近而力能勉者皆足以能之至於中庸雖若易能"
+        },
+        {
+          "page": 29,
+          "after": {
+            "col": 9,
+            "row": 6
+          },
+          "text": "之"
+        },
+        {
+          "page": 35,
+          "after": {
+            "col": 1,
+            "row": 6
+          },
+          "text": "右第十八章"
+        },
+        {
+          "page": 51,
+          "after": {
+            "col": 4,
+            "row": 6
+          },
+          "text": "起"
+        },
+        {
+          "page": 55,
+          "after": {
+            "col": 1,
+            "row": 2
+          },
+          "text": "至誠之道可以前知國家將興必有禎"
+        },
+        {
+          "page": 55,
+          "after": {
+            "col": 7,
+            "row": 3
+          },
+          "text": "四三"
+        },
+        {
+          "page": 56,
+          "after": {
+            "col": 7,
+            "row": 3
+          },
+          "text": "故至誠無息"
+        },
+        {
+          "page": 59,
+          "after": {
+            "col": 10,
+            "row": 12
+          },
+          "text": "四五"
+        },
+        {
+          "page": 69,
+          "after": {
+            "col": 6,
+            "row": 4
+          },
+          "text": "右第三十一章"
+        },
+        {
+          "page": 76,
+          "after": {
+            "col": 1,
+            "row": 7
+          },
+          "text": "#"
+        }
+      ],
+      "extra": [
+        {
+          "page": 2,
+          "col": 1,
+          "row": 1,
+          "grid": "中"
+        },
+        {
+          "page": 2,
+          "col": 1,
+          "row": 2,
+          "grid": "庸"
+        },
+        {
+          "page": 2,
+          "col": 1,
+          "row": 3,
+          "grid": "章"
+        },
+        {
+          "page": 2,
+          "col": 1,
+          "row": 4,
+          "grid": "句"
+        },
+        {
+          "page": 2,
+          "col": 1,
+          "row": 5,
+          "grid": "序"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 1,
+          "grid": "中"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 2,
+          "grid": "庸"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 8,
+          "grid": "朱"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 9,
+          "grid": "熹"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 10,
+          "grid": "章"
+        },
+        {
+          "page": 7,
+          "col": 9,
+          "row": 11,
+          "grid": "句"
+        },
+        {
+          "page": 13,
+          "col": 14,
+          "row": 14,
+          "grid": "中"
+        },
+        {
+          "page": 13,
+          "col": 15,
+          "row": 3,
+          "grid": "和"
+        },
+        {
+          "page": 13,
+          "col": 15,
+          "row": 4,
+          "grid": "之"
+        },
+        {
+          "page": 13,
+          "col": 15,
+          "row": 5,
+          "grid": "義"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 1,
+          "grid": "子"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 2,
+          "grid": "曰"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 3,
+          "grid": "中"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 4,
+          "grid": "庸"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 5,
+          "grid": "其"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 6,
+          "grid": "至"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 7,
+          "grid": "矣"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 8,
+          "grid": "乎"
+        },
+        {
+          "page": 13,
+          "col": 16,
+          "row": 9,
+          "grid": "民"
+        },
+        {
+          "page": 18,
+          "col": 13,
+          "row": 6,
+          "grid": "強"
+        },
+        {
+          "page": 18,
+          "col": 13,
+          "row": 7,
+          "grid": "與"
+        },
+        {
+          "page": 20,
+          "col": 4,
+          "row": 10,
+          "grid": "所"
+        },
+        {
+          "page": 35,
+          "col": 2,
+          "row": 4,
+          "grid": "而"
+        },
+        {
+          "page": 35,
+          "col": 2,
+          "row": 5,
+          "grid": "父"
+        },
+        {
+          "page": 35,
+          "col": 2,
+          "row": 6,
+          "grid": "母"
+        },
+        {
+          "page": 35,
+          "col": 2,
+          "row": 7,
+          "grid": "之"
+        },
+        {
+          "page": 35,
+          "col": 2,
+          "row": 8,
+          "grid": "喪"
+        },
+        {
+          "page": 51,
+          "col": 4,
+          "row": 3,
+          "grid": "章"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 7,
+          "grid": "變"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 8,
+          "grid": "之"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 9,
+          "grid": "功"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 10,
+          "grid": "自"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 11,
+          "grid": "不"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 12,
+          "grid": "能"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 13,
+          "grid": "已"
+        },
+        {
+          "page": 54,
+          "col": 4,
+          "row": 14,
+          "grid": "積"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 1,
+          "grid": "而"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 2,
+          "grid": "至"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 3,
+          "grid": "於"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 4,
+          "grid": "能"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 5,
+          "grid": "化"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 6,
+          "grid": "則"
+        },
+        {
+          "page": 54,
+          "col": 5,
+          "row": 7,
+          "grid": "其"
+        },
+        {
+          "page": 56,
+          "col": 7,
+          "row": 14,
+          "grid": "性"
+        },
+        {
+          "page": 56,
+          "col": 8,
+          "row": 1,
+          "grid": "之"
+        },
+        {
+          "page": 56,
+          "col": 8,
+          "row": 2,
+          "grid": "固"
+        },
+        {
+          "page": 56,
+          "col": 8,
+          "row": 3,
+          "grid": "有"
+        },
+        {
+          "page": 56,
+          "col": 8,
+          "row": 4,
+          "grid": "而"
+        },
+        {
+          "page": 69,
+          "col": 4,
+          "row": 15,
+          "grid": "日"
+        },
+        {
+          "page": 69,
+          "col": 5,
+          "row": 1,
+          "grid": "月"
+        },
+        {
+          "page": 69,
+          "col": 5,
+          "row": 2,
+          "grid": "所"
+        },
+        {
+          "page": 69,
+          "col": 5,
+          "row": 3,
+          "grid": "照"
+        },
+        {
+          "page": 69,
+          "col": 5,
+          "row": 4,
+          "grid": "霜"
+        },
+        {
+          "page": 69,
+          "col": 5,
+          "row": 5,
+          "grid": "露"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 8,
+          "grid": "言"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 9,
+          "grid": "之"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 10,
+          "grid": "以"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 11,
+          "grid": "馴"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 12,
+          "grid": "致"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 13,
+          "grid": "乎"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 14,
+          "grid": "篤"
+        },
+        {
+          "page": 76,
+          "col": 2,
+          "row": 15,
+          "grid": "恭"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 3,
+          "grid": "而"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 4,
+          "grid": "天"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 5,
+          "grid": "下"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 6,
+          "grid": "平"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 7,
+          "grid": "之"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 8,
+          "grid": "盛"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 9,
+          "grid": "又"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 10,
+          "grid": "賛"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 11,
+          "grid": "其"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 12,
+          "grid": "妙"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 13,
+          "grid": "至"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 14,
+          "grid": "於"
+        },
+        {
+          "page": 76,
+          "col": 3,
+          "row": 15,
+          "grid": "無"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 3,
+          "grid": "聲"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 4,
+          "grid": "無"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 5,
+          "grid": "臭"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 6,
+          "grid": "而"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 7,
+          "grid": "後"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 8,
+          "grid": "已"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 9,
+          "grid": "焉"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 10,
+          "grid": "蓋"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 11,
+          "grid": "舉"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 12,
+          "grid": "一"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 13,
+          "grid": "篇"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 14,
+          "grid": "之"
+        },
+        {
+          "page": 76,
+          "col": 4,
+          "row": 15,
+          "grid": "要"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 3,
+          "grid": "而"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 4,
+          "grid": "約"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 5,
+          "grid": "言"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 6,
+          "grid": "之"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 7,
+          "grid": "其"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 8,
+          "grid": "反"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 9,
+          "grid": "復"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 10,
+          "grid": "丁"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 11,
+          "grid": "寧"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 12,
+          "grid": "示"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 13,
+          "grid": "人"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 14,
+          "grid": "之"
+        },
+        {
+          "page": 76,
+          "col": 5,
+          "row": 15,
+          "grid": "意"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 3,
+          "grid": "至"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 4,
+          "grid": "深"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 5,
+          "grid": "切"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 6,
+          "grid": "矣"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 7,
+          "grid": "學"
+        },
+        {
+          "page": 76,
+          "col": 6,
+          "row": 8,
+          "grid": "者"
+        }
+      ],
+      "preclean": [
+        {
+          "kind": "running-head",
+          "text": "中庸章句序"
+        },
+        {
+          "kind": "collation-note",
+          "text": "「行遠升高」，司禮監本作「升高行遠」。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "朱熹章句"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「中庸」、「朱熹章句」，吴本作「中庸章句」。"
+        },
+        {
+          "kind": "collation-note",
+          "text": "讀者所宜深體而默識也，司禮監本作「而董子所謂道之大原出於天，亦此意也」。"
+        },
+        {
+          "kind": "collation-note",
+          "text": "②「則爲外物而非道矣」，司禮監本作「則豈率性之謂哉」。"
+        },
+        {
+          "kind": "collation-note",
+          "text": "③「滋長」，司禮監本作「潛滋暗長」。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中"
+        },
+        {
+          "kind": "running-head",
+          "text": "庸"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「耳」，司禮監本、吴本作「矣」。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「擇乎善矣」，司禮監本作「擇而行矣」。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「脩」，原作「仁」，據仿元本改。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中"
+        },
+        {
+          "kind": "running-head",
+          "text": "庸"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「建」上，司禮監本、吴本有「皇」字。"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "·中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "running-head",
+          "text": "中庸"
+        },
+        {
+          "kind": "colophon",
+          "text": "中庸章句畢"
+        },
+        {
+          "kind": "collation-note",
+          "text": "①「事」，司禮監本作「載」。"
+        }
+      ],
+      "anchors": {
+        "hard": 0,
+        "soft": 93,
+        "kept": 93,
+        "segs": 94
+      },
+      "unanchoredSegs": 0
+    }
+  },
+  "labels": [
+    {
+      "page": 2,
+      "col": 1,
+      "role": "j",
+      "text": "中庸章句序"
+    },
+    {
+      "page": 2,
+      "col": 2,
+      "role": "j",
+      "text": "中庸何爲而作也子思憂道學之失"
+    },
+    {
+      "page": 2,
+      "col": 3,
+      "role": "j",
+      "text": "其傳而作也蓋自上古聖神繼天立極"
+    },
+    {
+      "page": 2,
+      "col": 4,
+      "role": "j",
+      "text": "而道統之傳有自來矣其見於經則允"
+    },
+    {
+      "page": 2,
+      "col": 5,
+      "role": "j",
+      "text": "執厥中者堯之所以授舜也人心惟危"
+    },
+    {
+      "page": 2,
+      "col": 6,
+      "role": "j",
+      "text": "道心惟微惟精惟一允執厥中者舜之"
+    },
+    {
+      "page": 2,
+      "col": 7,
+      "role": "j",
+      "text": "所以授禹也堯之一言至矣盡矣而舜"
+    },
+    {
+      "page": 2,
+      "col": 8,
+      "role": "j",
+      "text": "復益之以三言者則所以明夫堯之一"
+    },
+    {
+      "page": 3,
+      "col": 1,
+      "role": "j",
+      "text": "言必如是而后可庶幾也蓋嘗論之心"
+    },
+    {
+      "page": 3,
+      "col": 2,
+      "role": "j",
+      "text": "之虛靈知覺一而已矣而以為有人心"
+    },
+    {
+      "page": 3,
+      "col": 3,
+      "role": "j",
+      "text": "道心之異者則以其或生於形氣之私"
+    },
+    {
+      "page": 3,
+      "col": 4,
+      "role": "j",
+      "text": "或原於性命之正而所以為知覺者不"
+    },
+    {
+      "page": 3,
+      "col": 5,
+      "role": "j",
+      "text": "同是以或危殆而不安或微妙而難見"
+    },
+    {
+      "page": 3,
+      "col": 6,
+      "role": "j",
+      "text": "耳然人莫不有是形故雖上智不能無"
+    },
+    {
+      "page": 3,
+      "col": 7,
+      "role": "j",
+      "text": "人心亦莫不有是性故雖下愚不能無"
+    },
+    {
+      "page": 3,
+      "col": 8,
+      "role": "j",
+      "text": "道心二者雜於方寸之間而不知所以"
+    },
+    {
+      "page": 3,
+      "col": 9,
+      "role": "j",
+      "text": "治之則危者愈危微者愈微而天理之"
+    },
+    {
+      "page": 3,
+      "col": 10,
+      "role": "j",
+      "text": "公卒無以勝夫人欲之私矣精則察夫"
+    },
+    {
+      "page": 3,
+      "col": 11,
+      "role": "j",
+      "text": "二者之閒而不雜也一則守其本心之"
+    },
+    {
+      "page": 3,
+      "col": 12,
+      "role": "j",
+      "text": "正而不離也從事於斯無少閒斷必使"
+    },
+    {
+      "page": 3,
+      "col": 13,
+      "role": "j",
+      "text": "道心常為一身之主而人心每聽命焉"
+    },
+    {
+      "page": 3,
+      "col": 14,
+      "role": "j",
+      "text": "則危者安微者著而動靜云為自無過"
+    },
+    {
+      "page": 3,
+      "col": 15,
+      "role": "j",
+      "text": "不及之差矣夫堯舜禹天下之大聖也"
+    },
+    {
+      "page": 3,
+      "col": 16,
+      "role": "j",
+      "text": "以天下相傳天下之大事也以天下之"
+    },
+    {
+      "page": 4,
+      "col": 1,
+      "role": "j",
+      "text": "大聖行天下之大事而其授受之際丁"
+    },
+    {
+      "page": 4,
+      "col": 2,
+      "role": "j",
+      "text": "寧告戒不過如此則天下之理豈有以"
+    },
+    {
+      "page": 4,
+      "col": 3,
+      "role": "j",
+      "text": "加於此哉自是以來聖聖相承若成湯"
+    },
+    {
+      "page": 4,
+      "col": 4,
+      "role": "j",
+      "text": "文武之爲君臯陶伊傅周召之爲臣旣"
+    },
+    {
+      "page": 4,
+      "col": 5,
+      "role": "j",
+      "text": "皆以此而接夫道統之傳若吾夫子則"
+    },
+    {
+      "page": 4,
+      "col": 6,
+      "role": "j",
+      "text": "雖不得其位而所以繼徃聖開來學其"
+    },
+    {
+      "page": 4,
+      "col": 7,
+      "role": "j",
+      "text": "功反有賢於堯舜者然當是時見而知"
+    },
+    {
+      "page": 4,
+      "col": 8,
+      "role": "j",
+      "text": "之者惟顔氏曽氏之傳得其宗及曽氏"
+    },
+    {
+      "page": 4,
+      "col": 9,
+      "role": "j",
+      "text": "之再傳而復得夫子之孫子思則去聖"
+    },
+    {
+      "page": 4,
+      "col": 10,
+      "role": "j",
+      "text": "逺而異端起矣子思懼夫愈乆而愈失"
+    },
+    {
+      "page": 4,
+      "col": 11,
+      "role": "j",
+      "text": "其眞也於是推本堯舜以來相傳之意"
+    },
+    {
+      "page": 4,
+      "col": 12,
+      "role": "j",
+      "text": "質以平日所聞父師之言更互演繹作"
+    },
+    {
+      "page": 4,
+      "col": 13,
+      "role": "j",
+      "text": "爲此書以詔後之學者蓋其憂之也深"
+    },
+    {
+      "page": 4,
+      "col": 14,
+      "role": "j",
+      "text": "故其言之也切其慮之也逺故其說之"
+    },
+    {
+      "page": 4,
+      "col": 15,
+      "role": "j",
+      "text": "也詳其曰天命率性則道心之謂也其"
+    },
+    {
+      "page": 4,
+      "col": 16,
+      "role": "j",
+      "text": "曰擇善固執則精一之謂也其曰君子"
+    },
+    {
+      "page": 5,
+      "col": 1,
+      "role": "j",
+      "text": "時中則執中之謂也世之相後千有餘"
+    },
+    {
+      "page": 5,
+      "col": 2,
+      "role": "j",
+      "text": "年而其言之不異如合符節歷選前聖"
+    },
+    {
+      "page": 5,
+      "col": 3,
+      "role": "j",
+      "text": "之書所以提挈綱維開示緼奧未有若"
+    },
+    {
+      "page": 5,
+      "col": 4,
+      "role": "j",
+      "text": "是其明且盡者也自是而又再傳以得"
+    },
+    {
+      "page": 5,
+      "col": 5,
+      "role": "j",
+      "text": "孟氏爲能推明是書以承先聖之統及"
+    },
+    {
+      "page": 5,
+      "col": 6,
+      "role": "j",
+      "text": "其没而遂失其傳焉則吾道之所寄不"
+    },
+    {
+      "page": 5,
+      "col": 7,
+      "role": "j",
+      "text": "越乎言語文字之間而異端之說日新"
+    },
+    {
+      "page": 5,
+      "col": 8,
+      "role": "j",
+      "text": "月盛以至於老佛之徒出則彌近理而"
+    },
+    {
+      "page": 5,
+      "col": 9,
+      "role": "j",
+      "text": "大亂眞矣然而尚幸此書之不泯故程"
+    },
+    {
+      "page": 5,
+      "col": 10,
+      "role": "j",
+      "text": "夫子兄弟者出得有所考以續夫千載"
+    },
+    {
+      "page": 5,
+      "col": 11,
+      "role": "j",
+      "text": "不傳之緒得有所據以斥夫二家似是"
+    },
+    {
+      "page": 5,
+      "col": 12,
+      "role": "j",
+      "text": "之非蓋子思之功於是爲大而微程夫"
+    },
+    {
+      "page": 5,
+      "col": 13,
+      "role": "j",
+      "text": "子則亦莫能因其語而得其心也惜乎"
+    },
+    {
+      "page": 5,
+      "col": 14,
+      "role": "j",
+      "text": "其所以爲說者不傳而凡石氏之所輯"
+    },
+    {
+      "page": 5,
+      "col": 15,
+      "role": "j",
+      "text": "録僅出於其門人之所記是以大義雖"
+    },
+    {
+      "page": 5,
+      "col": 16,
+      "role": "j",
+      "text": "明而微言未析至其門人所自爲說則"
+    },
+    {
+      "page": 6,
+      "col": 1,
+      "role": "j",
+      "text": "雖頗詳盡而多所發明然倍其師說而"
+    },
+    {
+      "page": 6,
+      "col": 2,
+      "role": "j",
+      "text": "淫於老佛者亦有之矣熹自蚤歲即嘗"
+    },
+    {
+      "page": 6,
+      "col": 3,
+      "role": "j",
+      "text": "受讀而竊疑之沉潜反復蓋亦有年一"
+    },
+    {
+      "page": 6,
+      "col": 4,
+      "role": "j",
+      "text": "旦恍然似有以得其要領者然後乃敢"
+    },
+    {
+      "page": 6,
+      "col": 5,
+      "role": "j",
+      "text": "會衆說而折其中旣爲定著章句一篇"
+    },
+    {
+      "page": 6,
+      "col": 6,
+      "role": "j",
+      "text": "以竢後之君子而一二同志復取石氏"
+    },
+    {
+      "page": 6,
+      "col": 7,
+      "role": "j",
+      "text": "書刪其繁亂名以輯略且記所嘗論辯"
+    },
+    {
+      "page": 6,
+      "col": 8,
+      "role": "j",
+      "text": "取舎之意別爲或問以附其後然後此"
+    },
+    {
+      "page": 6,
+      "col": 9,
+      "role": "j",
+      "text": "書之旨支分節解脉絡貫通詳略相因"
+    },
+    {
+      "page": 6,
+      "col": 10,
+      "role": "j",
+      "text": "巨細畢舉而凡諸說之同異得失亦得"
+    },
+    {
+      "page": 6,
+      "col": 11,
+      "role": "j",
+      "text": "以曲暢旁通而各極其趣雖於道統之"
+    },
+    {
+      "page": 6,
+      "col": 12,
+      "role": "j",
+      "text": "傳不敢妄議然初學之士或有取焉則"
+    },
+    {
+      "page": 6,
+      "col": 13,
+      "role": "j",
+      "text": "亦庶乎行逺升髙之一助云爾淳熙己"
+    },
+    {
+      "page": 6,
+      "col": 14,
+      "role": "j",
+      "text": "酉春三月戊申新安朱熹序"
+    },
+    {
+      "page": 7,
+      "col": 9,
+      "role": "j",
+      "text": "中庸朱熹章句"
+    },
+    {
+      "page": 7,
+      "col": 10,
+      "role": "z",
+      "text": "中者不偏不倚無過不及之名庸"
+    },
+    {
+      "page": 7,
+      "col": 11,
+      "role": "z",
+      "text": "平常也"
+    },
+    {
+      "page": 7,
+      "col": 12,
+      "role": "z",
+      "text": "子程子曰不偏之謂中不易之謂庸"
+    },
+    {
+      "page": 7,
+      "col": 13,
+      "role": "z",
+      "text": "中者天下之正道庸者天下之定理"
+    },
+    {
+      "page": 7,
+      "col": 14,
+      "role": "z",
+      "text": "此篇乃孔門傳授心法子思恐其乆"
+    },
+    {
+      "page": 7,
+      "col": 15,
+      "role": "z",
+      "text": "而差也故筆之於書以授孟子其書"
+    },
+    {
+      "page": 7,
+      "col": 16,
+      "role": "z",
+      "text": "始言一理中散爲萬事末復合爲一"
+    },
+    {
+      "page": 8,
+      "col": 1,
+      "role": "z",
+      "text": "理放之則彌六合卷之則退藏於密"
+    },
+    {
+      "page": 8,
+      "col": 2,
+      "role": "z",
+      "text": "其味無窮皆實學也善讀者玩索而"
+    },
+    {
+      "page": 8,
+      "col": 3,
+      "role": "z",
+      "text": "有得焉則終身用之有不能盡者矣"
+    },
+    {
+      "page": 8,
+      "col": 4,
+      "role": "j",
+      "text": "天命之謂性率性之謂道脩道之謂教"
+    },
+    {
+      "page": 8,
+      "col": 5,
+      "role": "z",
+      "text": "命猶令也性即理也天以隂陽五行"
+    },
+    {
+      "page": 8,
+      "col": 6,
+      "role": "z",
+      "text": "化生萬物氣以成形而理亦賦焉猶"
+    },
+    {
+      "page": 8,
+      "col": 7,
+      "role": "z",
+      "text": "命令也於是人物之生因各得其所"
+    },
+    {
+      "page": 8,
+      "col": 8,
+      "role": "z",
+      "text": "賦之理以爲健順五常之德所謂性"
+    },
+    {
+      "page": 8,
+      "col": 9,
+      "role": "z",
+      "text": "也率循也道猶路也人物各循其性"
+    },
+    {
+      "page": 8,
+      "col": 10,
+      "role": "z",
+      "text": "之自然則其日用事物之閒莫不各"
+    },
+    {
+      "page": 8,
+      "col": 11,
+      "role": "z",
+      "text": "有當行之路是則所謂道也脩品節"
+    },
+    {
+      "page": 8,
+      "col": 12,
+      "role": "z",
+      "text": "之也性道雖同而氣禀或異故不能"
+    },
+    {
+      "page": 8,
+      "col": 13,
+      "role": "z",
+      "text": "無過不及之差聖人因人物之所當"
+    },
+    {
+      "page": 8,
+      "col": 14,
+      "role": "z",
+      "text": "行者而品節之以爲法於天下則謂"
+    },
+    {
+      "page": 8,
+      "col": 15,
+      "role": "z",
+      "text": "之教若禮樂刑政之屬是也蓋人之"
+    },
+    {
+      "page": 8,
+      "col": 16,
+      "role": "z",
+      "text": "所以爲人道之所以爲道聖人之所"
+    },
+    {
+      "page": 9,
+      "col": 1,
+      "role": "z",
+      "text": "以爲教原其所自無一不本於天而"
+    },
+    {
+      "page": 9,
+      "col": 2,
+      "role": "z",
+      "text": "備於我學者知之則其於學知所用"
+    },
+    {
+      "page": 9,
+      "col": 3,
+      "role": "z",
+      "text": "力而自不能已矣故子思於此首發"
+    },
+    {
+      "page": 9,
+      "col": 4,
+      "role": "z",
+      "text": "明之讀者所冝深體而黙識也"
+    },
+    {
+      "page": 9,
+      "col": 5,
+      "role": "j",
+      "text": "道也者不可須臾離也可離非道也是"
+    },
+    {
+      "page": 9,
+      "col": 6,
+      "role": "j",
+      "text": "故君子戒愼乎其所不睹恐懼乎其所"
+    },
+    {
+      "page": 9,
+      "col": 7,
+      "role": "j",
+      "text": "不聞"
+    },
+    {
+      "page": 9,
+      "col": 8,
+      "role": "z",
+      "text": "離去聲○道者日用事物當行之理"
+    },
+    {
+      "page": 9,
+      "col": 9,
+      "role": "z",
+      "text": "皆性之德而具於心無物不有無時"
+    },
+    {
+      "page": 9,
+      "col": 10,
+      "role": "z",
+      "text": "不然所以不可須臾離也若其可離"
+    },
+    {
+      "page": 9,
+      "col": 11,
+      "role": "z",
+      "text": "則爲外物而非道矣是以君子之心"
+    },
+    {
+      "page": 9,
+      "col": 12,
+      "role": "z",
+      "text": "常存敬畏雖不見聞亦不敢忽所以"
+    },
+    {
+      "page": 9,
+      "col": 13,
+      "role": "z",
+      "text": "存天理之本然而不使離於須臾之"
+    },
+    {
+      "page": 9,
+      "col": 14,
+      "role": "z",
+      "text": "頃也"
+    },
+    {
+      "page": 9,
+      "col": 15,
+      "role": "j",
+      "text": "莫見乎隱莫顯乎微故君子愼其獨也"
+    },
+    {
+      "page": 9,
+      "col": 16,
+      "role": "z",
+      "text": "見音現○隱暗處也微細事也獨者"
+    },
+    {
+      "page": 10,
+      "col": 1,
+      "role": "z",
+      "text": "人所不知而己所獨知之地也言幽"
+    },
+    {
+      "page": 10,
+      "col": 2,
+      "role": "z",
+      "text": "暗之中細微之事跡雖未形而幾則"
+    },
+    {
+      "page": 10,
+      "col": 3,
+      "role": "z",
+      "text": "已動人雖不知而己獨知之則是天"
+    },
+    {
+      "page": 10,
+      "col": 4,
+      "role": "z",
+      "text": "下之事無有著見明顯而過於此者"
+    },
+    {
+      "page": 10,
+      "col": 5,
+      "role": "z",
+      "text": "是以君子既常戒懼而於此尤加謹"
+    },
+    {
+      "page": 10,
+      "col": 6,
+      "role": "z",
+      "text": "焉所以遏人欲於將萌而不使其滋"
+    },
+    {
+      "page": 10,
+      "col": 7,
+      "role": "z",
+      "text": "長於隱微之中以至離道之遠也"
+    },
+    {
+      "page": 10,
+      "col": 8,
+      "role": "j",
+      "text": "喜怒哀樂之未發謂之中發而皆中節"
+    },
+    {
+      "page": 10,
+      "col": 9,
+      "role": "j",
+      "text": "謂之和中也者天下之大本也和也者"
+    },
+    {
+      "page": 10,
+      "col": 10,
+      "role": "j",
+      "text": "天下之達道也"
+    },
+    {
+      "page": 10,
+      "col": 11,
+      "role": "z",
+      "text": "樂音洛中節之中去聲○喜怒哀樂"
+    },
+    {
+      "page": 10,
+      "col": 12,
+      "role": "z",
+      "text": "情也其未發則性也無所偏倚故謂"
+    },
+    {
+      "page": 10,
+      "col": 13,
+      "role": "z",
+      "text": "之中發皆中節情之正也無所乖戾"
+    },
+    {
+      "page": 10,
+      "col": 14,
+      "role": "z",
+      "text": "故謂之和大本者天命之性天下之"
+    },
+    {
+      "page": 10,
+      "col": 15,
+      "role": "z",
+      "text": "理皆由此出道之體也達道者循性"
+    },
+    {
+      "page": 10,
+      "col": 16,
+      "role": "z",
+      "text": "之謂天下古今之所共由道之用也"
+    },
+    {
+      "page": 11,
+      "col": 1,
+      "role": "z",
+      "text": "此言性情之德以明道不可離之意"
+    },
+    {
+      "page": 11,
+      "col": 2,
+      "role": "j",
+      "text": "致中和天地位焉萬物育焉"
+    },
+    {
+      "page": 11,
+      "col": 3,
+      "role": "z",
+      "text": "致推而極之也位者安其所也育者"
+    },
+    {
+      "page": 11,
+      "col": 4,
+      "role": "z",
+      "text": "遂其生也自戒懼而約之以至於至"
+    },
+    {
+      "page": 11,
+      "col": 5,
+      "role": "z",
+      "text": "靜之中無少偏倚而其守不失則極"
+    },
+    {
+      "page": 11,
+      "col": 6,
+      "role": "z",
+      "text": "其中而天地位矣自謹獨而精之以"
+    },
+    {
+      "page": 11,
+      "col": 7,
+      "role": "z",
+      "text": "至於應物之處無少差謬而無適不"
+    },
+    {
+      "page": 11,
+      "col": 8,
+      "role": "z",
+      "text": "然則極其和而萬物育矣蓋天地萬"
+    },
+    {
+      "page": 11,
+      "col": 9,
+      "role": "z",
+      "text": "物本吾一體吾之心正則天地之心"
+    },
+    {
+      "page": 11,
+      "col": 10,
+      "role": "z",
+      "text": "亦正矣吾之氣順則天地之氣亦順"
+    },
+    {
+      "page": 11,
+      "col": 11,
+      "role": "z",
+      "text": "矣故其效驗至於如此此學問之極"
+    },
+    {
+      "page": 11,
+      "col": 12,
+      "role": "z",
+      "text": "功聖人之能事初非有待於外而脩"
+    },
+    {
+      "page": 11,
+      "col": 13,
+      "role": "z",
+      "text": "道之教亦在其中矣是其一體一用"
+    },
+    {
+      "page": 11,
+      "col": 14,
+      "role": "z",
+      "text": "雖有動靜之殊然必其體立而後用"
+    },
+    {
+      "page": 11,
+      "col": 15,
+      "role": "z",
+      "text": "有以行則其實亦非有兩事也故於"
+    },
+    {
+      "page": 11,
+      "col": 16,
+      "role": "title",
+      "text": "此合而言之以結上文之意"
+    },
+    {
+      "page": 12,
+      "col": 1,
+      "role": "title",
+      "text": "右第一章子思述所傳之意以立"
+    },
+    {
+      "page": 12,
+      "col": 2,
+      "role": "z",
+      "text": "言首明道之本原出於天而不可"
+    },
+    {
+      "page": 12,
+      "col": 3,
+      "role": "z",
+      "text": "易其實體備於己而不可離次言"
+    },
+    {
+      "page": 12,
+      "col": 4,
+      "role": "z",
+      "text": "存養省察之要終言聖神功化之"
+    },
+    {
+      "page": 12,
+      "col": 5,
+      "role": "z",
+      "text": "極蓋欲學者於此反求諸身而自"
+    },
+    {
+      "page": 12,
+      "col": 6,
+      "role": "z",
+      "text": "得之以去夫外誘之私而充其本"
+    },
+    {
+      "page": 12,
+      "col": 7,
+      "role": "z",
+      "text": "然之善楊氏所謂一篇之體要是"
+    },
+    {
+      "page": 12,
+      "col": 8,
+      "role": "z",
+      "text": "也其下十章蓋子思引夫子之言"
+    },
+    {
+      "page": 12,
+      "col": 9,
+      "role": "z",
+      "text": "以終此章之義"
+    },
+    {
+      "page": 12,
+      "col": 10,
+      "role": "j",
+      "text": "仲尼曰君子中庸小人反中庸"
+    },
+    {
+      "page": 12,
+      "col": 11,
+      "role": "z",
+      "text": "中庸者不偏不倚無過不及而平常"
+    },
+    {
+      "page": 12,
+      "col": 12,
+      "role": "z",
+      "text": "之理乃天命所當然精微之極致也"
+    },
+    {
+      "page": 12,
+      "col": 13,
+      "role": "z",
+      "text": "唯君子為能體之小人反是"
+    },
+    {
+      "page": 12,
+      "col": 14,
+      "role": "j",
+      "text": "君子之中庸也君子而時中小人之中"
+    },
+    {
+      "page": 12,
+      "col": 15,
+      "role": "j",
+      "text": "庸也小人而無忌憚也"
+    },
+    {
+      "page": 12,
+      "col": 16,
+      "role": "z",
+      "text": "王肅本作小人之反中庸也程子亦"
+    },
+    {
+      "page": 13,
+      "col": 1,
+      "role": "j",
+      "text": "以為然今從之○君子之所以為中"
+    },
+    {
+      "page": 13,
+      "col": 2,
+      "role": "j",
+      "text": "庸者以其有君子之德而又能隨時"
+    },
+    {
+      "page": 13,
+      "col": 3,
+      "role": "j",
+      "text": "以處中也小人之所以反中庸者以"
+    },
+    {
+      "page": 13,
+      "col": 4,
+      "role": "j",
+      "text": "其有小人之心而又無所忌憚也蓋"
+    },
+    {
+      "page": 13,
+      "col": 5,
+      "role": "j",
+      "text": "中無定體隨時而在是乃平常之理"
+    },
+    {
+      "page": 13,
+      "col": 6,
+      "role": "j",
+      "text": "也君子知其在我故能戒謹不睹恐"
+    },
+    {
+      "page": 13,
+      "col": 7,
+      "role": "j",
+      "text": "懼不聞而無時不中小人不知有此"
+    },
+    {
+      "page": 13,
+      "col": 8,
+      "role": "title",
+      "text": "則肆欲妄行而無所忌憚矣"
+    },
+    {
+      "page": 13,
+      "col": 9,
+      "role": "z",
+      "text": "右第二章"
+    },
+    {
+      "page": 13,
+      "col": 10,
+      "role": "z",
+      "text": "此下十章皆論中庸以釋首章"
+    },
+    {
+      "page": 13,
+      "col": 11,
+      "role": "z",
+      "text": "之義文雖不屬而意實相承也"
+    },
+    {
+      "page": 13,
+      "col": 12,
+      "role": "z",
+      "text": "變和言庸者游氏曰以性情言"
+    },
+    {
+      "page": 13,
+      "col": 13,
+      "role": "z",
+      "text": "之則曰中和以德行言之則曰"
+    },
+    {
+      "page": 13,
+      "col": 14,
+      "role": "z",
+      "text": "中庸是也然中庸之中實兼中"
+    },
+    {
+      "page": 13,
+      "col": 15,
+      "role": "z",
+      "text": "和之義"
+    },
+    {
+      "page": 13,
+      "col": 16,
+      "role": "j",
+      "text": "子曰中庸其至矣乎民鮮能久矣"
+    },
+    {
+      "page": 14,
+      "col": 1,
+      "role": "z",
+      "text": "鮮上聲下同○過則失中不及則未"
+    },
+    {
+      "page": 14,
+      "col": 2,
+      "role": "z",
+      "text": "至故惟中庸之德爲至然亦人所同"
+    },
+    {
+      "page": 14,
+      "col": 3,
+      "role": "z",
+      "text": "得初無難事但世教衰民不興行故"
+    },
+    {
+      "page": 14,
+      "col": 4,
+      "role": "title",
+      "text": "鮮能之今已允耳論語無能字"
+    },
+    {
+      "page": 14,
+      "col": 5,
+      "role": "z",
+      "text": "右第三章"
+    },
+    {
+      "page": 14,
+      "col": 6,
+      "role": "j",
+      "text": "子曰道之不行也我知之矣知者過之"
+    },
+    {
+      "page": 14,
+      "col": 7,
+      "role": "j",
+      "text": "愚者不及也道之不明也我知之矣賢"
+    },
+    {
+      "page": 14,
+      "col": 8,
+      "role": "j",
+      "text": "者過之不肖者不及也"
+    },
+    {
+      "page": 14,
+      "col": 9,
+      "role": "z",
+      "text": "知者之知去聲○道者天理之當然"
+    },
+    {
+      "page": 14,
+      "col": 10,
+      "role": "z",
+      "text": "中而已矣知愚賢不肖之過不及則"
+    },
+    {
+      "page": 14,
+      "col": 11,
+      "role": "z",
+      "text": "生禀之異而失其中也知者知之過"
+    },
+    {
+      "page": 14,
+      "col": 12,
+      "role": "z",
+      "text": "既以道爲不足行愚者不及知又不"
+    },
+    {
+      "page": 14,
+      "col": 13,
+      "role": "z",
+      "text": "知所以行此道之所以常不行也賢"
+    },
+    {
+      "page": 14,
+      "col": 14,
+      "role": "z",
+      "text": "者行之過既以道爲不足知不肖者"
+    },
+    {
+      "page": 14,
+      "col": 15,
+      "role": "z",
+      "text": "不及行又不求所以知此道之所以"
+    },
+    {
+      "page": 14,
+      "col": 16,
+      "role": "z",
+      "text": "常不明也"
+    },
+    {
+      "page": 15,
+      "col": 1,
+      "role": "j",
+      "text": "人莫不飲食也鮮能知味也"
+    },
+    {
+      "page": 15,
+      "col": 2,
+      "role": "title",
+      "text": "道不可離人自不察是以有過不及"
+    },
+    {
+      "page": 15,
+      "col": 3,
+      "role": "z",
+      "text": "之弊"
+    },
+    {
+      "page": 15,
+      "col": 4,
+      "role": "z",
+      "text": "右第四章"
+    },
+    {
+      "page": 15,
+      "col": 5,
+      "role": "j",
+      "text": "子曰道其不行矣夫"
+    },
+    {
+      "page": 15,
+      "col": 6,
+      "role": "title",
+      "text": "夫音扶○由不明故不行"
+    },
+    {
+      "page": 15,
+      "col": 7,
+      "role": "z",
+      "text": "右第五章"
+    },
+    {
+      "page": 15,
+      "col": 8,
+      "role": "z",
+      "text": "此章承上章而舉其不行之端"
+    },
+    {
+      "page": 15,
+      "col": 9,
+      "role": "z",
+      "text": "以起下章之意"
+    },
+    {
+      "page": 15,
+      "col": 10,
+      "role": "j",
+      "text": "子曰舜其大知也與舜好問而好察邇"
+    },
+    {
+      "page": 15,
+      "col": 11,
+      "role": "j",
+      "text": "言隱惡而揚善執其兩端用其中於民"
+    },
+    {
+      "page": 15,
+      "col": 12,
+      "role": "j",
+      "text": "其斯以爲舜乎"
+    },
+    {
+      "page": 15,
+      "col": 13,
+      "role": "z",
+      "text": "知去聲與平聲好去聲○舜之所以"
+    },
+    {
+      "page": 15,
+      "col": 14,
+      "role": "z",
+      "text": "爲大知者以其不自用而取諸人也"
+    },
+    {
+      "page": 15,
+      "col": 15,
+      "role": "z",
+      "text": "邇言者淺近之言猶必察焉其無遺"
+    },
+    {
+      "page": 15,
+      "col": 16,
+      "role": "z",
+      "text": "善可知然於其言之未善者則隱而"
+    },
+    {
+      "page": 16,
+      "col": 1,
+      "role": "z",
+      "text": "不宣其善者則播不匿其廣大光"
+    },
+    {
+      "page": 16,
+      "col": 2,
+      "role": "z",
+      "text": "明又如此則人孰不樂告以善哉两"
+    },
+    {
+      "page": 16,
+      "col": 3,
+      "role": "z",
+      "text": "端謂衆論不同之極致蓋凡物皆有"
+    },
+    {
+      "page": 16,
+      "col": 4,
+      "role": "z",
+      "text": "两端如小大厚薄之類於善之中又"
+    },
+    {
+      "page": 16,
+      "col": 5,
+      "role": "z",
+      "text": "執其两端而量度以取中然後用之"
+    },
+    {
+      "page": 16,
+      "col": 6,
+      "role": "z",
+      "text": "則其擇之審而行之至矣然非在我"
+    },
+    {
+      "page": 16,
+      "col": 7,
+      "role": "z",
+      "text": "之權度精切不差何以與此此知之"
+    },
+    {
+      "page": 16,
+      "col": 8,
+      "role": "title",
+      "text": "所以無過不及而道之所以行也"
+    },
+    {
+      "page": 16,
+      "col": 9,
+      "role": "z",
+      "text": "右第六章"
+    },
+    {
+      "page": 16,
+      "col": 10,
+      "role": "j",
+      "text": "子曰人皆曰予知驅而納諸罟擭陷阱"
+    },
+    {
+      "page": 16,
+      "col": 11,
+      "role": "j",
+      "text": "之中而莫之知辟也人皆曰予知擇乎"
+    },
+    {
+      "page": 16,
+      "col": 12,
+      "role": "j",
+      "text": "中庸而不能期月守也"
+    },
+    {
+      "page": 16,
+      "col": 13,
+      "role": "z",
+      "text": "予知之知去聲罟音古擭胡化反阱"
+    },
+    {
+      "page": 16,
+      "col": 14,
+      "role": "z",
+      "text": "才性反辟避同期居之反○罟網也"
+    },
+    {
+      "page": 16,
+      "col": 15,
+      "role": "z",
+      "text": "擭機檻也陷阱坑坎也皆所以揜取"
+    },
+    {
+      "page": 16,
+      "col": 16,
+      "role": "z",
+      "text": "禽獸者也擇乎中庸辨別衆理以求"
+    },
+    {
+      "page": 17,
+      "col": 1,
+      "role": "j",
+      "text": "所謂中庸即上章好問用中之事也"
+    },
+    {
+      "page": 17,
+      "col": 2,
+      "role": "z",
+      "text": "期月匝一月也言知禍而不知辟以"
+    },
+    {
+      "page": 17,
+      "col": 3,
+      "role": "title",
+      "text": "況能擇而不能守皆不得爲知也"
+    },
+    {
+      "page": 17,
+      "col": 4,
+      "role": "z",
+      "text": "右第七章"
+    },
+    {
+      "page": 17,
+      "col": 5,
+      "role": "z",
+      "text": "承上章大知而言又舉不明之"
+    },
+    {
+      "page": 17,
+      "col": 6,
+      "role": "z",
+      "text": "端以起下章也"
+    },
+    {
+      "page": 17,
+      "col": 7,
+      "role": "j",
+      "text": "子曰回之爲人也擇乎中庸得一善則"
+    },
+    {
+      "page": 17,
+      "col": 8,
+      "role": "j",
+      "text": "拳拳服膺而弗失之矣"
+    },
+    {
+      "page": 17,
+      "col": 9,
+      "role": "z",
+      "text": "回孔子弟子顔淵名拳拳奉持之貌"
+    },
+    {
+      "page": 17,
+      "col": 10,
+      "role": "z",
+      "text": "服猶著也膺胷也奉持而著之心胷"
+    },
+    {
+      "page": 17,
+      "col": 11,
+      "role": "z",
+      "text": "之閒言能守也顔子蓋眞知之故能"
+    },
+    {
+      "page": 17,
+      "col": 12,
+      "role": "title",
+      "text": "擇能守如此此行之所以無過不及"
+    },
+    {
+      "page": 17,
+      "col": 13,
+      "role": "title",
+      "text": "而道之所以明也"
+    },
+    {
+      "page": 17,
+      "col": 14,
+      "role": "z",
+      "text": "右第八章"
+    },
+    {
+      "page": 17,
+      "col": 15,
+      "role": "j",
+      "text": "子曰天下國家可均也爵祿可辭也白"
+    },
+    {
+      "page": 17,
+      "col": 16,
+      "role": "j",
+      "text": "刃可蹈也中庸不可能也"
+    },
+    {
+      "page": 18,
+      "col": 1,
+      "role": "j",
+      "text": "均平治也三者亦知仁勇之事天下"
+    },
+    {
+      "page": 18,
+      "col": 2,
+      "role": "j",
+      "text": "之至難也然不必其合於中庸則質"
+    },
+    {
+      "page": 18,
+      "col": 3,
+      "role": "j",
+      "text": "之近似者皆能以力為之若中庸則"
+    },
+    {
+      "page": 18,
+      "col": 4,
+      "role": "j",
+      "text": "雖不必皆如三者之難然非義精仁"
+    },
+    {
+      "page": 18,
+      "col": 5,
+      "role": "j",
+      "text": "熟而無一毫人欲之私者不能及也"
+    },
+    {
+      "page": 18,
+      "col": 6,
+      "role": "title",
+      "text": "三者難而中庸易而難此民之所"
+    },
+    {
+      "page": 18,
+      "col": 7,
+      "role": "z",
+      "text": "以鮮能也"
+    },
+    {
+      "page": 18,
+      "col": 8,
+      "role": "z",
+      "text": "右第九章"
+    },
+    {
+      "page": 18,
+      "col": 9,
+      "role": "z",
+      "text": "亦承上章以起下章"
+    },
+    {
+      "page": 18,
+      "col": 10,
+      "role": "j",
+      "text": "子路問強"
+    },
+    {
+      "page": 18,
+      "col": 11,
+      "role": "j",
+      "text": "子路孔子弟子仲由也子路好勇故"
+    },
+    {
+      "page": 18,
+      "col": 12,
+      "role": "z",
+      "text": "問強"
+    },
+    {
+      "page": 18,
+      "col": 13,
+      "role": "j",
+      "text": "子曰南方之強與北方之強與抑而強"
+    },
+    {
+      "page": 18,
+      "col": 14,
+      "role": "j",
+      "text": "與"
+    },
+    {
+      "page": 18,
+      "col": 15,
+      "role": "z",
+      "text": "與平聲○抑語辭而汝也"
+    },
+    {
+      "page": 18,
+      "col": 16,
+      "role": "j",
+      "text": "寬柔以教不報無道南方之強也君子"
+    },
+    {
+      "page": 19,
+      "col": 1,
+      "role": "j",
+      "text": "居之"
+    },
+    {
+      "page": 19,
+      "col": 2,
+      "role": "z",
+      "text": "寛柔以教謂含容巽順以誨人之不"
+    },
+    {
+      "page": 19,
+      "col": 3,
+      "role": "z",
+      "text": "及也不報無道謂橫逆之來直受之"
+    },
+    {
+      "page": 19,
+      "col": 4,
+      "role": "z",
+      "text": "而不報也南方風氣柔弱故以含忍"
+    },
+    {
+      "page": 19,
+      "col": 5,
+      "role": "z",
+      "text": "之力勝人爲強君子之道也"
+    },
+    {
+      "page": 19,
+      "col": 6,
+      "role": "j",
+      "text": "衽金革死而不厭北方之強也而強者"
+    },
+    {
+      "page": 19,
+      "col": 7,
+      "role": "j",
+      "text": "居之"
+    },
+    {
+      "page": 19,
+      "col": 8,
+      "role": "z",
+      "text": "衽席也金戈兵之屬革甲胄之屬北"
+    },
+    {
+      "page": 19,
+      "col": 9,
+      "role": "z",
+      "text": "方風氣剛勁故以果敢之力勝人爲"
+    },
+    {
+      "page": 19,
+      "col": 10,
+      "role": "z",
+      "text": "強強者之事也"
+    },
+    {
+      "page": 19,
+      "col": 11,
+      "role": "j",
+      "text": "故君子和而不流強哉矯中立而不倚"
+    },
+    {
+      "page": 19,
+      "col": 12,
+      "role": "j",
+      "text": "強哉矯國有道不變塞焉強哉矯國無"
+    },
+    {
+      "page": 19,
+      "col": 13,
+      "role": "j",
+      "text": "道至死不變強哉矯"
+    },
+    {
+      "page": 19,
+      "col": 14,
+      "role": "z",
+      "text": "此四者汝之所當強也矯強貌詩曰"
+    },
+    {
+      "page": 19,
+      "col": 15,
+      "role": "z",
+      "text": "矯矯虎臣是也倚偏著也塞未達也"
+    },
+    {
+      "page": 19,
+      "col": 16,
+      "role": "z",
+      "text": "國有道不變未達之所守國無道不"
+    },
+    {
+      "page": 20,
+      "col": 1,
+      "role": "z",
+      "text": "變平生之所守也此則所謂中庸之"
+    },
+    {
+      "page": 20,
+      "col": 2,
+      "role": "z",
+      "text": "不可能者非有以自勝其人欲之私"
+    },
+    {
+      "page": 20,
+      "col": 3,
+      "role": "z",
+      "text": "不能擇而守也君子之強孰大於是"
+    },
+    {
+      "page": 20,
+      "col": 4,
+      "role": "z",
+      "text": "夫子以是告子路者所以抑其血氣"
+    },
+    {
+      "page": 20,
+      "col": 5,
+      "role": "title",
+      "text": "之剛而進之以德義之勇也"
+    },
+    {
+      "page": 20,
+      "col": 6,
+      "role": "z",
+      "text": "右第十章"
+    },
+    {
+      "page": 20,
+      "col": 7,
+      "role": "j",
+      "text": "子曰素隱行恠後世有述焉吾弗為之"
+    },
+    {
+      "page": 20,
+      "col": 8,
+      "role": "j",
+      "text": "矣"
+    },
+    {
+      "page": 20,
+      "col": 9,
+      "role": "z",
+      "text": "素按漢書當作索蓋字之誤也索隱"
+    },
+    {
+      "page": 20,
+      "col": 10,
+      "role": "z",
+      "text": "行恠言深求隱僻之理而過為詭異"
+    },
+    {
+      "page": 20,
+      "col": 11,
+      "role": "z",
+      "text": "之行也然以其足以欺世而盜名故"
+    },
+    {
+      "page": 20,
+      "col": 12,
+      "role": "z",
+      "text": "後世或有稱述之者此知之過而不"
+    },
+    {
+      "page": 20,
+      "col": 13,
+      "role": "z",
+      "text": "擇乎善行之過而不用其中不當強"
+    },
+    {
+      "page": 20,
+      "col": 14,
+      "role": "z",
+      "text": "而強者也聖人豈為之哉"
+    },
+    {
+      "page": 20,
+      "col": 15,
+      "role": "j",
+      "text": "君子遵道而行半塗而廢吾弗能已矣"
+    },
+    {
+      "page": 20,
+      "col": 16,
+      "role": "z",
+      "text": "遵道而行則能擇乎善矣半塗而廢"
+    },
+    {
+      "page": 21,
+      "col": 1,
+      "role": "z",
+      "text": "則力之不足也此其知雖足以及之"
+    },
+    {
+      "page": 21,
+      "col": 2,
+      "role": "z",
+      "text": "而行有不逮當強而不強者也已止"
+    },
+    {
+      "page": 21,
+      "col": 3,
+      "role": "z",
+      "text": "也聖人於此非勉焉而不敢廢蓋至"
+    },
+    {
+      "page": 21,
+      "col": 4,
+      "role": "j",
+      "text": "誠無息自有所不能止也"
+    },
+    {
+      "page": 21,
+      "col": 5,
+      "role": "j",
+      "text": "君子依乎中庸遯世不見知而不悔唯"
+    },
+    {
+      "page": 21,
+      "col": 6,
+      "role": "j",
+      "text": "聖者能之"
+    },
+    {
+      "page": 21,
+      "col": 7,
+      "role": "z",
+      "text": "不爲索隱行恠則依乎中庸而已不"
+    },
+    {
+      "page": 21,
+      "col": 8,
+      "role": "z",
+      "text": "能半塗而廢是以遯世不見知而不"
+    },
+    {
+      "page": 21,
+      "col": 9,
+      "role": "z",
+      "text": "悔也此中庸之成德知之盡仁之至"
+    },
+    {
+      "page": 21,
+      "col": 10,
+      "role": "z",
+      "text": "不頼勇而裕如者正吾夫子之事而"
+    },
+    {
+      "page": 21,
+      "col": 11,
+      "role": "title",
+      "text": "猶不自居也故曰唯聖者能之而已"
+    },
+    {
+      "page": 21,
+      "col": 12,
+      "role": "z",
+      "text": "右第十一章"
+    },
+    {
+      "page": 21,
+      "col": 13,
+      "role": "z",
+      "text": "子思所引夫子之言以明首章"
+    },
+    {
+      "page": 21,
+      "col": 14,
+      "role": "z",
+      "text": "之義者止此蓋此篇大旨以知"
+    },
+    {
+      "page": 21,
+      "col": 15,
+      "role": "z",
+      "text": "仁勇三逹德爲入道之門故於"
+    },
+    {
+      "page": 21,
+      "col": 16,
+      "role": "z",
+      "text": "篇首即以大舜顏淵子路之事"
+    },
+    {
+      "page": 22,
+      "col": 1,
+      "role": "z",
+      "text": "明之舜知也顔淵仁也子路勇"
+    },
+    {
+      "page": 22,
+      "col": 2,
+      "role": "z",
+      "text": "也三者廢其一則無以造道而"
+    },
+    {
+      "page": 22,
+      "col": 3,
+      "role": "z",
+      "text": "成德矣餘見第二十章"
+    },
+    {
+      "page": 22,
+      "col": 4,
+      "role": "j",
+      "text": "君子之道費而隱"
+    },
+    {
+      "page": 22,
+      "col": 5,
+      "role": "z",
+      "text": "費符味反○費用之廣也隱體之微"
+    },
+    {
+      "page": 22,
+      "col": 6,
+      "role": "z",
+      "text": "也"
+    },
+    {
+      "page": 22,
+      "col": 7,
+      "role": "j",
+      "text": "夫婦之愚可以與知焉及其至也雖聖"
+    },
+    {
+      "page": 22,
+      "col": 8,
+      "role": "j",
+      "text": "人亦有所不知焉夫婦之不肖可以能"
+    },
+    {
+      "page": 22,
+      "col": 9,
+      "role": "j",
+      "text": "行焉及其至也雖聖人亦有所不能焉"
+    },
+    {
+      "page": 22,
+      "col": 10,
+      "role": "j",
+      "text": "天地之大也人猶有所憾故君子語大"
+    },
+    {
+      "page": 22,
+      "col": 11,
+      "role": "j",
+      "text": "天下莫能載焉語小天下莫能破焉"
+    },
+    {
+      "page": 22,
+      "col": 12,
+      "role": "z",
+      "text": "與去聲○君子之道近自夫婦居室"
+    },
+    {
+      "page": 22,
+      "col": 13,
+      "role": "z",
+      "text": "之閒遠而至於聖人天地之所不能"
+    },
+    {
+      "page": 22,
+      "col": 14,
+      "role": "z",
+      "text": "盡其大無外其小無內可謂費矣然"
+    },
+    {
+      "page": 22,
+      "col": 15,
+      "role": "z",
+      "text": "其理之所以然則隱而莫之見也蓋"
+    },
+    {
+      "page": 22,
+      "col": 16,
+      "role": "z",
+      "text": "可知可能者道中之一事及其至而"
+    },
+    {
+      "page": 23,
+      "col": 1,
+      "role": "j",
+      "text": "聖人不知不能則舉全體而言聖人"
+    },
+    {
+      "page": 23,
+      "col": 2,
+      "role": "j",
+      "text": "固有所不能盡也侯氏曰聖人所不"
+    },
+    {
+      "page": 23,
+      "col": 3,
+      "role": "j",
+      "text": "知如孔子問禮問官之類所不能如"
+    },
+    {
+      "page": 23,
+      "col": 4,
+      "role": "j",
+      "text": "孔子不得位堯舜病博施之類愚謂"
+    },
+    {
+      "page": 23,
+      "col": 5,
+      "role": "z",
+      "text": "人所憾於天地如覆載生成之偏及"
+    },
+    {
+      "page": 23,
+      "col": 6,
+      "role": "z",
+      "text": "寒暑灾祥之不得其正者"
+    },
+    {
+      "page": 23,
+      "col": 7,
+      "role": "j",
+      "text": "詩云鳶飛戾天魚躍于淵言其上下察"
+    },
+    {
+      "page": 23,
+      "col": 8,
+      "role": "j",
+      "text": "也"
+    },
+    {
+      "page": 23,
+      "col": 9,
+      "role": "z",
+      "text": "鳶余專反○詩大雅旱麓之篇鳶鴟"
+    },
+    {
+      "page": 23,
+      "col": 10,
+      "role": "z",
+      "text": "類戾至也察著也子思引此詩以明"
+    },
+    {
+      "page": 23,
+      "col": 11,
+      "role": "z",
+      "text": "化育流行上下昭著莫非此理之用"
+    },
+    {
+      "page": 23,
+      "col": 12,
+      "role": "z",
+      "text": "所謂費也然其所以然者則非見聞"
+    },
+    {
+      "page": 23,
+      "col": 13,
+      "role": "z",
+      "text": "所及所謂隱也故程子曰此一節子"
+    },
+    {
+      "page": 23,
+      "col": 14,
+      "role": "z",
+      "text": "思喫緊爲人處活潑潑地讀者其致"
+    },
+    {
+      "page": 23,
+      "col": 15,
+      "role": "z",
+      "text": "思焉"
+    },
+    {
+      "page": 23,
+      "col": 16,
+      "role": "title",
+      "text": "君子之道造端乎夫婦及其至也察乎"
+    },
+    {
+      "page": 24,
+      "col": 1,
+      "role": "j",
+      "text": "天地"
+    },
+    {
+      "page": 24,
+      "col": 2,
+      "role": "z",
+      "text": "結上文"
+    },
+    {
+      "page": 24,
+      "col": 3,
+      "role": "z",
+      "text": "右第十二章子思之言蓋以申明"
+    },
+    {
+      "page": 24,
+      "col": 4,
+      "role": "z",
+      "text": "首章道不可離之意也其下八章"
+    },
+    {
+      "page": 24,
+      "col": 5,
+      "role": "z",
+      "text": "雜引孔子之言以明之"
+    },
+    {
+      "page": 24,
+      "col": 6,
+      "role": "j",
+      "text": "子曰道不遠人人之為道而遠人不可"
+    },
+    {
+      "page": 24,
+      "col": 7,
+      "role": "j",
+      "text": "以為道"
+    },
+    {
+      "page": 24,
+      "col": 8,
+      "role": "z",
+      "text": "道者率性而已固衆人之所能知能"
+    },
+    {
+      "page": 24,
+      "col": 9,
+      "role": "z",
+      "text": "行者也故常不遠於人若為道者厭"
+    },
+    {
+      "page": 24,
+      "col": 10,
+      "role": "z",
+      "text": "其卑近以為不足為而反務為高遠"
+    },
+    {
+      "page": 24,
+      "col": 11,
+      "role": "z",
+      "text": "難行之事則非所以為道矣"
+    },
+    {
+      "page": 24,
+      "col": 12,
+      "role": "j",
+      "text": "詩云伐柯伐柯其則不遠執柯以伐柯"
+    },
+    {
+      "page": 24,
+      "col": 13,
+      "role": "j",
+      "text": "睨而視之猶以為遠故君子以人治人"
+    },
+    {
+      "page": 24,
+      "col": 14,
+      "role": "j",
+      "text": "改而止"
+    },
+    {
+      "page": 24,
+      "col": 15,
+      "role": "z",
+      "text": "睨研計反○詩豳風伐柯之篇柯斧"
+    },
+    {
+      "page": 24,
+      "col": 16,
+      "role": "z",
+      "text": "柄則法也睨邪視也言人執柯伐木"
+    },
+    {
+      "page": 25,
+      "col": 1,
+      "role": "z",
+      "text": "以爲柯者彼柯長短之法在此柯耳"
+    },
+    {
+      "page": 25,
+      "col": 2,
+      "role": "z",
+      "text": "然猶有彼此之別故伐者視之猶以"
+    },
+    {
+      "page": 25,
+      "col": 3,
+      "role": "z",
+      "text": "爲遠也若以人治人則所以爲人之"
+    },
+    {
+      "page": 25,
+      "col": 4,
+      "role": "z",
+      "text": "道各在當人之身初無彼此之別故"
+    },
+    {
+      "page": 25,
+      "col": 5,
+      "role": "z",
+      "text": "君子之治人也即以其人之道還治"
+    },
+    {
+      "page": 25,
+      "col": 6,
+      "role": "z",
+      "text": "其人之身其人能改即止不治蓋責"
+    },
+    {
+      "page": 25,
+      "col": 7,
+      "role": "z",
+      "text": "之以其所能知能行非欲其遠人以"
+    },
+    {
+      "page": 25,
+      "col": 8,
+      "role": "z",
+      "text": "爲道也張子所謂以衆人望人則易"
+    },
+    {
+      "page": 25,
+      "col": 9,
+      "role": "z",
+      "text": "從是也"
+    },
+    {
+      "page": 25,
+      "col": 10,
+      "role": "j",
+      "text": "忠恕違道不遠施諸己而不願亦勿施"
+    },
+    {
+      "page": 25,
+      "col": 11,
+      "role": "j",
+      "text": "於人"
+    },
+    {
+      "page": 25,
+      "col": 12,
+      "role": "z",
+      "text": "盡己之心爲忠推己及人爲恕違去"
+    },
+    {
+      "page": 25,
+      "col": 13,
+      "role": "z",
+      "text": "也如春秋傳齊師違穀七里之違言"
+    },
+    {
+      "page": 25,
+      "col": 14,
+      "role": "z",
+      "text": "自此至彼相去不遠非背而去之之"
+    },
+    {
+      "page": 25,
+      "col": 15,
+      "role": "z",
+      "text": "謂也道即其不遠人者是也施諸己"
+    },
+    {
+      "page": 25,
+      "col": 16,
+      "role": "z",
+      "text": "而不願亦勿施於人忠恕之事也以"
+    },
+    {
+      "page": 26,
+      "col": 1,
+      "role": "z",
+      "text": "己之心度人之心未嘗不同則道之"
+    },
+    {
+      "page": 26,
+      "col": 2,
+      "role": "z",
+      "text": "不遠於人者可見故己之所不欲則"
+    },
+    {
+      "page": 26,
+      "col": 3,
+      "role": "z",
+      "text": "勿以施之於人亦不遠人以爲道之"
+    },
+    {
+      "page": 26,
+      "col": 4,
+      "role": "z",
+      "text": "事張子所謂以愛己之心愛人則盡"
+    },
+    {
+      "page": 26,
+      "col": 5,
+      "role": "z",
+      "text": "仁是也"
+    },
+    {
+      "page": 26,
+      "col": 6,
+      "role": "j",
+      "text": "君子之道四丘未能一焉所求乎子以"
+    },
+    {
+      "page": 26,
+      "col": 7,
+      "role": "j",
+      "text": "事父未能也所求乎臣以事君未能也"
+    },
+    {
+      "page": 26,
+      "col": 8,
+      "role": "j",
+      "text": "所求乎弟以事兄未能也所求乎朋友"
+    },
+    {
+      "page": 26,
+      "col": 9,
+      "role": "j",
+      "text": "先施之未能也庸德之行庸言之謹有"
+    },
+    {
+      "page": 26,
+      "col": 10,
+      "role": "j",
+      "text": "所不足不敢不勉有餘不敢盡言顧行"
+    },
+    {
+      "page": 26,
+      "col": 11,
+      "role": "j",
+      "text": "行顧言君子胡不慥慥爾"
+    },
+    {
+      "page": 26,
+      "col": 12,
+      "role": "z",
+      "text": "子臣弟友四字絶句○求猶責也道"
+    },
+    {
+      "page": 26,
+      "col": 13,
+      "role": "z",
+      "text": "不遠人凡己之所以責人者皆道之"
+    },
+    {
+      "page": 26,
+      "col": 14,
+      "role": "z",
+      "text": "所當然也故反之以自責而自脩焉"
+    },
+    {
+      "page": 26,
+      "col": 15,
+      "role": "z",
+      "text": "庸平常也行者踐其實謹者擇其可"
+    },
+    {
+      "page": 26,
+      "col": 16,
+      "role": "z",
+      "text": "德不足而勉則行益力言有餘而訒"
+    },
+    {
+      "page": 27,
+      "col": 1,
+      "role": "z",
+      "text": "則謹益至謹之至則言顧行矣行之"
+    },
+    {
+      "page": 27,
+      "col": 2,
+      "role": "z",
+      "text": "力則行顧言矣慥慥篤實貌言君子"
+    },
+    {
+      "page": 27,
+      "col": 3,
+      "role": "z",
+      "text": "之言行如此豈不慥慥乎贊美之也"
+    },
+    {
+      "page": 27,
+      "col": 4,
+      "role": "title",
+      "text": "凡此皆不遠人以爲道之事張子所"
+    },
+    {
+      "page": 27,
+      "col": 5,
+      "role": "title",
+      "text": "謂以責人之心責己則盡道是也"
+    },
+    {
+      "page": 27,
+      "col": 6,
+      "role": "z",
+      "text": "右第十三章"
+    },
+    {
+      "page": 27,
+      "col": 7,
+      "role": "z",
+      "text": "道不遠人者夫婦所能丘未能"
+    },
+    {
+      "page": 27,
+      "col": 8,
+      "role": "z",
+      "text": "一者聖人所不能皆費也而其"
+    },
+    {
+      "page": 27,
+      "col": 9,
+      "role": "z",
+      "text": "所以然者則至隱存焉下章放"
+    },
+    {
+      "page": 27,
+      "col": 10,
+      "role": "z",
+      "text": "此"
+    },
+    {
+      "page": 27,
+      "col": 11,
+      "role": "j",
+      "text": "君子素其位而行不願乎其外"
+    },
+    {
+      "page": 27,
+      "col": 12,
+      "role": "z",
+      "text": "素猶見在也言君子但因見在所居"
+    },
+    {
+      "page": 27,
+      "col": 13,
+      "role": "z",
+      "text": "之位而爲其所當爲無慕乎其外之"
+    },
+    {
+      "page": 27,
+      "col": 14,
+      "role": "z",
+      "text": "心也"
+    },
+    {
+      "page": 27,
+      "col": 15,
+      "role": "j",
+      "text": "素富貴行乎富貴素貧賤行乎貧賤素"
+    },
+    {
+      "page": 27,
+      "col": 16,
+      "role": "j",
+      "text": "夷狄行乎夷狄素患難行乎患難君子"
+    },
+    {
+      "page": 28,
+      "col": 1,
+      "role": "j",
+      "text": "無入而不自得焉"
+    },
+    {
+      "page": 28,
+      "col": 2,
+      "role": "z",
+      "text": "難去聲○此言素其位而行也"
+    },
+    {
+      "page": 28,
+      "col": 3,
+      "role": "j",
+      "text": "在上位不陵下在下位不援上正己而"
+    },
+    {
+      "page": 28,
+      "col": 4,
+      "role": "j",
+      "text": "不求於人則無怨上不怨天下不尤人"
+    },
+    {
+      "page": 28,
+      "col": 5,
+      "role": "z",
+      "text": "援平聲○此言不願乎其外也"
+    },
+    {
+      "page": 28,
+      "col": 6,
+      "role": "j",
+      "text": "故君子居易以俟命小人行險以徼幸"
+    },
+    {
+      "page": 28,
+      "col": 7,
+      "role": "z",
+      "text": "易去聲○易平地也居易素位而行"
+    },
+    {
+      "page": 28,
+      "col": 8,
+      "role": "z",
+      "text": "也俟命不願乎外也徼求也幸謂所"
+    },
+    {
+      "page": 28,
+      "col": 9,
+      "role": "z",
+      "text": "不當得而得者"
+    },
+    {
+      "page": 28,
+      "col": 10,
+      "role": "j",
+      "text": "子曰射有似乎君子失諸正鵠反求諸"
+    },
+    {
+      "page": 28,
+      "col": 11,
+      "role": "j",
+      "text": "其身"
+    },
+    {
+      "page": 28,
+      "col": 12,
+      "role": "z",
+      "text": "正音征鵠工毒反○畫布曰正棲皮"
+    },
+    {
+      "page": 28,
+      "col": 13,
+      "role": "title",
+      "text": "曰鵠皆侯之中射之的也子思引此"
+    },
+    {
+      "page": 28,
+      "col": 14,
+      "role": "z",
+      "text": "孔子之言以結上文之意"
+    },
+    {
+      "page": 28,
+      "col": 15,
+      "role": "z",
+      "text": "右第十四章"
+    },
+    {
+      "page": 28,
+      "col": 16,
+      "role": "z",
+      "text": "子思之言也凡章首無子曰字"
+    },
+    {
+      "page": 29,
+      "col": 1,
+      "role": "z",
+      "text": "者放此"
+    },
+    {
+      "page": 29,
+      "col": 2,
+      "role": "j",
+      "text": "君子之道辟如行遠必自邇辟如登高"
+    },
+    {
+      "page": 29,
+      "col": 3,
+      "role": "j",
+      "text": "必自卑"
+    },
+    {
+      "page": 29,
+      "col": 4,
+      "role": "z",
+      "text": "辟譬同"
+    },
+    {
+      "page": 29,
+      "col": 5,
+      "role": "j",
+      "text": "詩曰妻子好合如鼓瑟琴兄弟既翕和"
+    },
+    {
+      "page": 29,
+      "col": 6,
+      "role": "j",
+      "text": "樂且耽宜爾室家樂爾妻帑"
+    },
+    {
+      "page": 29,
+      "col": 7,
+      "role": "z",
+      "text": "好去聲耽詩作湛亦音耽樂音洛○"
+    },
+    {
+      "page": 29,
+      "col": 8,
+      "role": "z",
+      "text": "詩小雅常棣之篇鼓瑟琴和也翕亦"
+    },
+    {
+      "page": 29,
+      "col": 9,
+      "role": "z",
+      "text": "合也耽亦樂也帑子孫也"
+    },
+    {
+      "page": 29,
+      "col": 10,
+      "role": "j",
+      "text": "子曰父母其順矣乎"
+    },
+    {
+      "page": 29,
+      "col": 11,
+      "role": "z",
+      "text": "夫子誦此詩而賛曰人能和於妻"
+    },
+    {
+      "page": 29,
+      "col": 12,
+      "role": "z",
+      "text": "子宜於兄弟如此則父母其安樂之"
+    },
+    {
+      "page": 29,
+      "col": 13,
+      "role": "title",
+      "text": "矣子思引詩及此語以明行遠自邇"
+    },
+    {
+      "page": 29,
+      "col": 14,
+      "role": "z",
+      "text": "登高自卑之意"
+    },
+    {
+      "page": 29,
+      "col": 15,
+      "role": "z",
+      "text": "右第十五章"
+    },
+    {
+      "page": 29,
+      "col": 16,
+      "role": "j",
+      "text": "子曰鬼神之爲德其盛矣乎"
+    },
+    {
+      "page": 30,
+      "col": 1,
+      "role": "j",
+      "text": "程子曰鬼神天地之功用而造化之"
+    },
+    {
+      "page": 30,
+      "col": 2,
+      "role": "j",
+      "text": "迹也張子曰鬼神者二氣之良能也"
+    },
+    {
+      "page": 30,
+      "col": 3,
+      "role": "j",
+      "text": "愚謂以二氣言則鬼者陰之靈也神"
+    },
+    {
+      "page": 30,
+      "col": 4,
+      "role": "j",
+      "text": "者陽之靈也以一氣言則至而伸者"
+    },
+    {
+      "page": 30,
+      "col": 5,
+      "role": "j",
+      "text": "爲神反而歸者爲鬼其實一物而巳"
+    },
+    {
+      "page": 30,
+      "col": 6,
+      "role": "z",
+      "text": "爲德猶言性情功效"
+    },
+    {
+      "page": 30,
+      "col": 7,
+      "role": "j",
+      "text": "視之而弗見聽之而弗聞體物而不可"
+    },
+    {
+      "page": 30,
+      "col": 8,
+      "role": "j",
+      "text": "遺"
+    },
+    {
+      "page": 30,
+      "col": 9,
+      "role": "j",
+      "text": "鬼神無形與聲然物之終始莫非陰"
+    },
+    {
+      "page": 30,
+      "col": 10,
+      "role": "j",
+      "text": "陽合散之所爲是其爲物之體而物"
+    },
+    {
+      "page": 30,
+      "col": 11,
+      "role": "j",
+      "text": "所不能遺也其言體物猶易所謂幹"
+    },
+    {
+      "page": 30,
+      "col": 12,
+      "role": "z",
+      "text": "事"
+    },
+    {
+      "page": 30,
+      "col": 13,
+      "role": "j",
+      "text": "使天下之人齊明盛服以承祭祀洋洋"
+    },
+    {
+      "page": 30,
+      "col": 14,
+      "role": "j",
+      "text": "乎如在其上如在其左右"
+    },
+    {
+      "page": 30,
+      "col": 15,
+      "role": "j",
+      "text": "齊側皆反○齊之爲言齊也所以齊"
+    },
+    {
+      "page": 30,
+      "col": 16,
+      "role": "j",
+      "text": "不齊而致其齊也明猶潔也洋洋流"
+    },
+    {
+      "page": 31,
+      "col": 1,
+      "role": "z",
+      "text": "動充滿之意能使人畏敬奉承而發"
+    },
+    {
+      "page": 31,
+      "col": 2,
+      "role": "z",
+      "text": "見昭著如此乃其體物而不可遺之"
+    },
+    {
+      "page": 31,
+      "col": 3,
+      "role": "z",
+      "text": "驗也孔子曰其氣發揚于上爲昭明"
+    },
+    {
+      "page": 31,
+      "col": 4,
+      "role": "z",
+      "text": "焄蒿悽愴此百物之精也神之著也"
+    },
+    {
+      "page": 31,
+      "col": 5,
+      "role": "z",
+      "text": "正謂此爾"
+    },
+    {
+      "page": 31,
+      "col": 6,
+      "role": "j",
+      "text": "詩曰神之格思不可度思矧可射思"
+    },
+    {
+      "page": 31,
+      "col": 7,
+      "role": "z",
+      "text": "度待洛反射音亦詩作斁○詩大雅"
+    },
+    {
+      "page": 31,
+      "col": 8,
+      "role": "z",
+      "text": "抑之篇格來也矧況也射厭也言厭"
+    },
+    {
+      "page": 31,
+      "col": 9,
+      "role": "z",
+      "text": "怠而不敬也思語辭"
+    },
+    {
+      "page": 31,
+      "col": 10,
+      "role": "j",
+      "text": "夫微之顯誠之不可揜如此夫"
+    },
+    {
+      "page": 31,
+      "col": 11,
+      "role": "title",
+      "text": "夫音扶○誠者眞實無妄之謂隂陽"
+    },
+    {
+      "page": 31,
+      "col": 12,
+      "role": "z",
+      "text": "合散無非實者故其發見之不可揜"
+    },
+    {
+      "page": 31,
+      "col": 13,
+      "role": "z",
+      "text": "如此"
+    },
+    {
+      "page": 31,
+      "col": 14,
+      "role": "z",
+      "text": "右第十六章"
+    },
+    {
+      "page": 31,
+      "col": 15,
+      "role": "z",
+      "text": "不見不聞隱也體物如在則亦"
+    },
+    {
+      "page": 31,
+      "col": 16,
+      "role": "z",
+      "text": "費矣此前三章以其費之小者"
+    },
+    {
+      "page": 32,
+      "col": 1,
+      "role": "z",
+      "text": "而言此後三章以其費之大者"
+    },
+    {
+      "page": 32,
+      "col": 2,
+      "role": "z",
+      "text": "而言此一章兼費隱包大小而"
+    },
+    {
+      "page": 32,
+      "col": 3,
+      "role": "z",
+      "text": "言"
+    },
+    {
+      "page": 32,
+      "col": 4,
+      "role": "j",
+      "text": "子曰舜其大孝也與德爲聖人尊爲天"
+    },
+    {
+      "page": 32,
+      "col": 5,
+      "role": "j",
+      "text": "子冨有四海之内宗廟饗之子孫保之"
+    },
+    {
+      "page": 32,
+      "col": 6,
+      "role": "z",
+      "text": "與平聲○子孫謂虞思陳胡公之屬"
+    },
+    {
+      "page": 32,
+      "col": 7,
+      "role": "j",
+      "text": "故大德必得其位必得其禄必得其名"
+    },
+    {
+      "page": 32,
+      "col": 8,
+      "role": "j",
+      "text": "必得其壽"
+    },
+    {
+      "page": 32,
+      "col": 9,
+      "role": "z",
+      "text": "舜年百有十歳"
+    },
+    {
+      "page": 32,
+      "col": 10,
+      "role": "j",
+      "text": "故天之生物必因其材而篤焉故栽者"
+    },
+    {
+      "page": 32,
+      "col": 11,
+      "role": "j",
+      "text": "培之傾者覆之"
+    },
+    {
+      "page": 32,
+      "col": 12,
+      "role": "z",
+      "text": "材質也篤厚也栽植也氣至而滋息"
+    },
+    {
+      "page": 32,
+      "col": 13,
+      "role": "z",
+      "text": "爲培氣反而遊散則覆"
+    },
+    {
+      "page": 32,
+      "col": 14,
+      "role": "j",
+      "text": "詩曰嘉樂君子憲憲令德冝民冝人受"
+    },
+    {
+      "page": 32,
+      "col": 15,
+      "role": "j",
+      "text": "禄于天保佑命之自天申之"
+    },
+    {
+      "page": 32,
+      "col": 16,
+      "role": "z",
+      "text": "詩大雅假樂之篇假當依此作嘉憲"
+    },
+    {
+      "page": 33,
+      "col": 1,
+      "role": "title",
+      "text": "當依詩作顯申重也"
+    },
+    {
+      "page": 33,
+      "col": 2,
+      "role": "j",
+      "text": "故大德者必受命"
+    },
+    {
+      "page": 33,
+      "col": 3,
+      "role": "z",
+      "text": "受命者受天命爲天子也"
+    },
+    {
+      "page": 33,
+      "col": 4,
+      "role": "z",
+      "text": "右第十七章"
+    },
+    {
+      "page": 33,
+      "col": 5,
+      "role": "z",
+      "text": "此由庸行之常推之以極其至"
+    },
+    {
+      "page": 33,
+      "col": 6,
+      "role": "z",
+      "text": "見道之用廣也而其所以然者"
+    },
+    {
+      "page": 33,
+      "col": 7,
+      "role": "z",
+      "text": "則爲體微矣後二章亦此意"
+    },
+    {
+      "page": 33,
+      "col": 8,
+      "role": "j",
+      "text": "子曰無憂者其惟文王乎以王季爲父"
+    },
+    {
+      "page": 33,
+      "col": 9,
+      "role": "j",
+      "text": "以武王爲子父作之子述之"
+    },
+    {
+      "page": 33,
+      "col": 10,
+      "role": "z",
+      "text": "此言文王之事書言王季其勤王家"
+    },
+    {
+      "page": 33,
+      "col": 11,
+      "role": "z",
+      "text": "蓋其所作亦積功累仁之事也"
+    },
+    {
+      "page": 33,
+      "col": 12,
+      "role": "j",
+      "text": "武王纘大王王季文王之緒壹戎衣而"
+    },
+    {
+      "page": 33,
+      "col": 13,
+      "role": "j",
+      "text": "有天下身不失天下之顯名尊爲天子"
+    },
+    {
+      "page": 33,
+      "col": 14,
+      "role": "j",
+      "text": "冨有四海之内宗廟饗之子孫保之"
+    },
+    {
+      "page": 33,
+      "col": 15,
+      "role": "z",
+      "text": "大音泰下同○此言武王之事纘繼"
+    },
+    {
+      "page": 33,
+      "col": 16,
+      "role": "z",
+      "text": "也大王王季之父也書云大王肇基"
+    },
+    {
+      "page": 34,
+      "col": 1,
+      "role": "z",
+      "text": "王迹詩云至于大王實始翦商緒業"
+    },
+    {
+      "page": 34,
+      "col": 2,
+      "role": "z",
+      "text": "也戎衣甲胄之屬壹戎衣武成文言"
+    },
+    {
+      "page": 34,
+      "col": 3,
+      "role": "z",
+      "text": "一著戎衣以伐紂也"
+    },
+    {
+      "page": 34,
+      "col": 4,
+      "role": "j",
+      "text": "武王末受命周公成文武之德追王大"
+    },
+    {
+      "page": 34,
+      "col": 5,
+      "role": "j",
+      "text": "王王季上祀先公以天子之禮斯禮也"
+    },
+    {
+      "page": 34,
+      "col": 6,
+      "role": "j",
+      "text": "達乎諸侯大夫及士庶人父爲大夫子"
+    },
+    {
+      "page": 34,
+      "col": 7,
+      "role": "j",
+      "text": "爲士葬以大夫祭以士父爲士子爲大"
+    },
+    {
+      "page": 34,
+      "col": 8,
+      "role": "j",
+      "text": "夫葬以士祭以大夫期之喪達乎大夫"
+    },
+    {
+      "page": 34,
+      "col": 9,
+      "role": "j",
+      "text": "三年之喪達乎天子父母之喪無貴賤"
+    },
+    {
+      "page": 34,
+      "col": 10,
+      "role": "j",
+      "text": "一也"
+    },
+    {
+      "page": 34,
+      "col": 11,
+      "role": "z",
+      "text": "追王之王去聲○此言周公之事末"
+    },
+    {
+      "page": 34,
+      "col": 12,
+      "role": "z",
+      "text": "猶老也追王蓋推文武之意以及乎"
+    },
+    {
+      "page": 34,
+      "col": 13,
+      "role": "z",
+      "text": "王迹之所起也先公組紺以上至后"
+    },
+    {
+      "page": 34,
+      "col": 14,
+      "role": "z",
+      "text": "稷也上祀先公以天子之禮又推大"
+    },
+    {
+      "page": 34,
+      "col": 15,
+      "role": "z",
+      "text": "王王季之意以及於無窮也制爲禮"
+    },
+    {
+      "page": 34,
+      "col": 16,
+      "role": "z",
+      "text": "法以及天下使葬用死者之爵祭用"
+    },
+    {
+      "page": 35,
+      "col": 1,
+      "role": "z",
+      "text": "生者之禄喪服自期以下諸侯絶大"
+    },
+    {
+      "page": 35,
+      "col": 2,
+      "role": "title",
+      "text": "夫降而父母之喪上下同之推己以"
+    },
+    {
+      "page": 35,
+      "col": 3,
+      "role": "z",
+      "text": "及人也"
+    },
+    {
+      "page": 35,
+      "col": 4,
+      "role": "j",
+      "text": "子曰武王周公其逹孝矣乎"
+    },
+    {
+      "page": 35,
+      "col": 5,
+      "role": "z",
+      "text": "右第十八章"
+    },
+    {
+      "page": 35,
+      "col": 6,
+      "role": "z",
+      "text": "逹通也承上章而言武王周公之孝"
+    },
+    {
+      "page": 35,
+      "col": 7,
+      "role": "z",
+      "text": "乃天下之人通謂之孝猶孟子之言"
+    },
+    {
+      "page": 35,
+      "col": 8,
+      "role": "z",
+      "text": "逹尊也"
+    },
+    {
+      "page": 35,
+      "col": 9,
+      "role": "j",
+      "text": "夫孝者善繼人之志善述人之事者也"
+    },
+    {
+      "page": 35,
+      "col": 10,
+      "role": "z",
+      "text": "上章言武王纉大王王季文王之緒"
+    },
+    {
+      "page": 35,
+      "col": 11,
+      "role": "z",
+      "text": "以有天下而周公成文武之德以追"
+    },
+    {
+      "page": 35,
+      "col": 12,
+      "role": "z",
+      "text": "崇其先祖此繼志述事之大者也下"
+    },
+    {
+      "page": 35,
+      "col": 13,
+      "role": "z",
+      "text": "文又以其所制祭祀之禮通于上下"
+    },
+    {
+      "page": 35,
+      "col": 14,
+      "role": "z",
+      "text": "者言之"
+    },
+    {
+      "page": 35,
+      "col": 15,
+      "role": "j",
+      "text": "春秋脩其祖廟陳其宗器設其裳衣薦"
+    },
+    {
+      "page": 35,
+      "col": 16,
+      "role": "j",
+      "text": "其時食"
+    },
+    {
+      "page": 36,
+      "col": 1,
+      "role": "z",
+      "text": "祖廟天子七諸侯五大夫三適士二"
+    },
+    {
+      "page": 36,
+      "col": 2,
+      "role": "z",
+      "text": "官師一宗器先世所藏之重器若周"
+    },
+    {
+      "page": 36,
+      "col": 3,
+      "role": "z",
+      "text": "之赤刀大訓天球河圖之屬也裳衣"
+    },
+    {
+      "page": 36,
+      "col": 4,
+      "role": "z",
+      "text": "先祖之遺衣服祭則設之以授尸也"
+    },
+    {
+      "page": 36,
+      "col": 5,
+      "role": "z",
+      "text": "時食四時之食各有其物如春行羔"
+    },
+    {
+      "page": 36,
+      "col": 6,
+      "role": "z",
+      "text": "豚膳膏香之類是也"
+    },
+    {
+      "page": 36,
+      "col": 7,
+      "role": "j",
+      "text": "宗廟之禮所以序昭穆也序爵所以辨"
+    },
+    {
+      "page": 36,
+      "col": 8,
+      "role": "j",
+      "text": "貴賤也序事所以辨賢也旅酬下爲上"
+    },
+    {
+      "page": 36,
+      "col": 9,
+      "role": "j",
+      "text": "所以逮賤也燕毛所以序齒也"
+    },
+    {
+      "page": 36,
+      "col": 10,
+      "role": "z",
+      "text": "昭如字爲去聲○宗廟之次左爲昭"
+    },
+    {
+      "page": 36,
+      "col": 11,
+      "role": "z",
+      "text": "右爲穆而子孫亦以爲序有事於大"
+    },
+    {
+      "page": 36,
+      "col": 12,
+      "role": "z",
+      "text": "廟則子姓兄弟羣昭羣穆咸在而不"
+    },
+    {
+      "page": 36,
+      "col": 13,
+      "role": "z",
+      "text": "失其倫焉爵公侯卿大夫也事宗祝"
+    },
+    {
+      "page": 36,
+      "col": 14,
+      "role": "z",
+      "text": "有司之職事也旅衆也酬導飲也旅"
+    },
+    {
+      "page": 36,
+      "col": 15,
+      "role": "z",
+      "text": "酬之禮賓弟子兄弟之子各舉觶於"
+    },
+    {
+      "page": 36,
+      "col": 16,
+      "role": "z",
+      "text": "其長而衆相酬蓋宗廟之中以有事"
+    },
+    {
+      "page": 37,
+      "col": 1,
+      "role": "z",
+      "text": "爲榮故逮及賤者使亦得以申其敬"
+    },
+    {
+      "page": 37,
+      "col": 2,
+      "role": "z",
+      "text": "也燕毛祭畢而燕則以毛髮之色別"
+    },
+    {
+      "page": 37,
+      "col": 3,
+      "role": "z",
+      "text": "長幼爲坐次也齒年數也"
+    },
+    {
+      "page": 37,
+      "col": 4,
+      "role": "j",
+      "text": "踐其位行其禮奏其樂敬其所尊愛其"
+    },
+    {
+      "page": 37,
+      "col": 5,
+      "role": "j",
+      "text": "所親事死如事生事亡如事存孝之至"
+    },
+    {
+      "page": 37,
+      "col": 6,
+      "role": "j",
+      "text": "也"
+    },
+    {
+      "page": 37,
+      "col": 7,
+      "role": "z",
+      "text": "踐猶履也其指先王也所尊所親先"
+    },
+    {
+      "page": 37,
+      "col": 8,
+      "role": "z",
+      "text": "王之祖考子孫臣庶也始死謂之死"
+    },
+    {
+      "page": 37,
+      "col": 9,
+      "role": "z",
+      "text": "旣葬則曰反而亡焉皆指先王也此"
+    },
+    {
+      "page": 37,
+      "col": 10,
+      "role": "z",
+      "text": "結上文兩節皆繼志述事之意也"
+    },
+    {
+      "page": 37,
+      "col": 11,
+      "role": "j",
+      "text": "郊社之禮所以事上帝也宗廟之禮所"
+    },
+    {
+      "page": 37,
+      "col": 12,
+      "role": "j",
+      "text": "以祀乎其先也明乎郊社之禮禘嘗之"
+    },
+    {
+      "page": 37,
+      "col": 13,
+      "role": "j",
+      "text": "義治國其如示諸掌乎"
+    },
+    {
+      "page": 37,
+      "col": 14,
+      "role": "z",
+      "text": "郊祀天社祭地不言后土者省文也"
+    },
+    {
+      "page": 37,
+      "col": 15,
+      "role": "z",
+      "text": "禘天子宗廟之大祭追祭太祖之所"
+    },
+    {
+      "page": 37,
+      "col": 16,
+      "role": "z",
+      "text": "自出於太廟而以太祖配之也嘗秋"
+    },
+    {
+      "page": 38,
+      "col": 1,
+      "role": "z",
+      "text": "祭也四時皆祭舉其一耳禮必有義"
+    },
+    {
+      "page": 38,
+      "col": 2,
+      "role": "title",
+      "text": "對舉之互文也示與視同視諸掌言"
+    },
+    {
+      "page": 38,
+      "col": 3,
+      "role": "z",
+      "text": "易見也此與論語文意大同小異記"
+    },
+    {
+      "page": 38,
+      "col": 4,
+      "role": "z",
+      "text": "有詳略耳"
+    },
+    {
+      "page": 38,
+      "col": 5,
+      "role": "z",
+      "text": "右第十九章"
+    },
+    {
+      "page": 38,
+      "col": 6,
+      "role": "j",
+      "text": "哀公問政"
+    },
+    {
+      "page": 38,
+      "col": 7,
+      "role": "z",
+      "text": "哀公魯君名蔣"
+    },
+    {
+      "page": 38,
+      "col": 8,
+      "role": "j",
+      "text": "子曰文武之政布在方策其人存則其"
+    },
+    {
+      "page": 38,
+      "col": 9,
+      "role": "j",
+      "text": "政舉其人亡則其政息"
+    },
+    {
+      "page": 38,
+      "col": 10,
+      "role": "z",
+      "text": "方版也策簡也息猶滅也有是君有"
+    },
+    {
+      "page": 38,
+      "col": 11,
+      "role": "z",
+      "text": "是臣則有是政矣"
+    },
+    {
+      "page": 38,
+      "col": 12,
+      "role": "j",
+      "text": "人道敏政地道敏樹夫政也者蒲盧也"
+    },
+    {
+      "page": 38,
+      "col": 13,
+      "role": "z",
+      "text": "夫音扶○敏速也蒲盧沈括以為蒲"
+    },
+    {
+      "page": 38,
+      "col": 14,
+      "role": "z",
+      "text": "葦是也以人立政猶以地種樹其成"
+    },
+    {
+      "page": 38,
+      "col": 15,
+      "role": "z",
+      "text": "速矣而蒲葦又易生之物其成尤速"
+    },
+    {
+      "page": 38,
+      "col": 16,
+      "role": "z",
+      "text": "也言人存政舉其易如此"
+    },
+    {
+      "page": 39,
+      "col": 1,
+      "role": "j",
+      "text": "故爲政在人取人以身脩身以道脩道"
+    },
+    {
+      "page": 39,
+      "col": 2,
+      "role": "j",
+      "text": "以仁"
+    },
+    {
+      "page": 39,
+      "col": 3,
+      "role": "z",
+      "text": "此承上文人道敏政而言也爲政在"
+    },
+    {
+      "page": 39,
+      "col": 4,
+      "role": "z",
+      "text": "人家語作爲政在於得人語意尤備"
+    },
+    {
+      "page": 39,
+      "col": 5,
+      "role": "z",
+      "text": "人謂賢臣身指君身道者天下之達"
+    },
+    {
+      "page": 39,
+      "col": 6,
+      "role": "z",
+      "text": "道仁者天地生物之心而人得以生"
+    },
+    {
+      "page": 39,
+      "col": 7,
+      "role": "z",
+      "text": "者所謂元者善之長也言人君爲政"
+    },
+    {
+      "page": 39,
+      "col": 8,
+      "role": "z",
+      "text": "在於得人而取人之則又在脩身能"
+    },
+    {
+      "page": 39,
+      "col": 9,
+      "role": "z",
+      "text": "仁其身則有君有臣而政無不舉矣"
+    },
+    {
+      "page": 39,
+      "col": 10,
+      "role": "j",
+      "text": "仁者人也親親爲大義者宜也尊賢爲"
+    },
+    {
+      "page": 39,
+      "col": 11,
+      "role": "j",
+      "text": "大親親之殺尊賢之等禮所生也、"
+    },
+    {
+      "page": 39,
+      "col": 12,
+      "role": "z",
+      "text": "殺去聲○人指人身而言具此生理"
+    },
+    {
+      "page": 39,
+      "col": 13,
+      "role": "z",
+      "text": "自然便有惻怛慈愛之意深體味之"
+    },
+    {
+      "page": 39,
+      "col": 14,
+      "role": "z",
+      "text": "可見宜者分別事理各有所宜也禮"
+    },
+    {
+      "page": 39,
+      "col": 15,
+      "role": "z",
+      "text": "則節文斯二者而已"
+    },
+    {
+      "page": 39,
+      "col": 16,
+      "role": "j",
+      "text": "在下位不獲乎上民不可得而治矣"
+    },
+    {
+      "page": 40,
+      "col": 1,
+      "role": "z",
+      "text": "鄭氏曰此句在下誤重在此"
+    },
+    {
+      "page": 40,
+      "col": 2,
+      "role": "j",
+      "text": "故君子不可以不脩身思脩身不可以"
+    },
+    {
+      "page": 40,
+      "col": 3,
+      "role": "j",
+      "text": "不事親思事親不可以不知人思知人"
+    },
+    {
+      "page": 40,
+      "col": 4,
+      "role": "j",
+      "text": "不可以不知天"
+    },
+    {
+      "page": 40,
+      "col": 5,
+      "role": "z",
+      "text": "爲政在人取人以身故不可以不脩"
+    },
+    {
+      "page": 40,
+      "col": 6,
+      "role": "z",
+      "text": "身脩身以道脩道以仁故思脩身不"
+    },
+    {
+      "page": 40,
+      "col": 7,
+      "role": "z",
+      "text": "可以不事親欲盡親親之仁必由尊"
+    },
+    {
+      "page": 40,
+      "col": 8,
+      "role": "z",
+      "text": "賢之義故又當知人親親之殺尊賢"
+    },
+    {
+      "page": 40,
+      "col": 9,
+      "role": "z",
+      "text": "之等皆天理也故又當知天"
+    },
+    {
+      "page": 40,
+      "col": 10,
+      "role": "j",
+      "text": "天下之達道五所以行之者三曰君臣"
+    },
+    {
+      "page": 40,
+      "col": 11,
+      "role": "j",
+      "text": "也父子也夫婦也昆弟也朋友之交也"
+    },
+    {
+      "page": 40,
+      "col": 12,
+      "role": "j",
+      "text": "五者天下之達道也知仁勇三者天下"
+    },
+    {
+      "page": 40,
+      "col": 13,
+      "role": "j",
+      "text": "之達德也所以行之者一也"
+    },
+    {
+      "page": 40,
+      "col": 14,
+      "role": "z",
+      "text": "知去聲○達道者天下古今所共由"
+    },
+    {
+      "page": 40,
+      "col": 15,
+      "role": "z",
+      "text": "之路即書所謂五典孟子所謂父子"
+    },
+    {
+      "page": 40,
+      "col": 16,
+      "role": "z",
+      "text": "有親君臣有義夫婦有别長幼有序"
+    },
+    {
+      "page": 41,
+      "col": 1,
+      "role": "z",
+      "text": "朋友有信是也知所以知此也仁所"
+    },
+    {
+      "page": 41,
+      "col": 2,
+      "role": "z",
+      "text": "以體此也勇所以強此也謂之達德"
+    },
+    {
+      "page": 41,
+      "col": 3,
+      "role": "z",
+      "text": "者天下古今所同得之理也一則誠"
+    },
+    {
+      "page": 41,
+      "col": 4,
+      "role": "z",
+      "text": "而已矣達道雖人所共由然無是三"
+    },
+    {
+      "page": 41,
+      "col": 5,
+      "role": "z",
+      "text": "德則無以行之達德雖人所同得然"
+    },
+    {
+      "page": 41,
+      "col": 6,
+      "role": "z",
+      "text": "一有不誠則人欲閒之而德非其德"
+    },
+    {
+      "page": 41,
+      "col": 7,
+      "role": "z",
+      "text": "矣程子曰所謂誠者止是誠實此三"
+    },
+    {
+      "page": 41,
+      "col": 8,
+      "role": "z",
+      "text": "者三者之外更別無誠"
+    },
+    {
+      "page": 41,
+      "col": 9,
+      "role": "j",
+      "text": "或生而知之或學而知之或困而知之"
+    },
+    {
+      "page": 41,
+      "col": 10,
+      "role": "j",
+      "text": "及其知之一也或安而行之或利而行"
+    },
+    {
+      "page": 41,
+      "col": 11,
+      "role": "j",
+      "text": "之或勉強而行之及其成功一也"
+    },
+    {
+      "page": 41,
+      "col": 12,
+      "role": "z",
+      "text": "強上聲○知之者之所知行之者之"
+    },
+    {
+      "page": 41,
+      "col": 13,
+      "role": "z",
+      "text": "所行謂達道也以其分而言則所以"
+    },
+    {
+      "page": 41,
+      "col": 14,
+      "role": "z",
+      "text": "知者知也所以行者仁也所以至於"
+    },
+    {
+      "page": 41,
+      "col": 15,
+      "role": "z",
+      "text": "知之成功而一者勇也以其等而言"
+    },
+    {
+      "page": 41,
+      "col": 16,
+      "role": "z",
+      "text": "則生知安行者知也學知利行者仁"
+    },
+    {
+      "page": 42,
+      "col": 1,
+      "role": "z",
+      "text": "也困知勉行者勇也蓋人性雖無不"
+    },
+    {
+      "page": 42,
+      "col": 2,
+      "role": "z",
+      "text": "善而氣稟有不同者故聞道有蚤莫"
+    },
+    {
+      "page": 42,
+      "col": 3,
+      "role": "z",
+      "text": "行道有難易然能自強不息則其至"
+    },
+    {
+      "page": 42,
+      "col": 4,
+      "role": "z",
+      "text": "一也吕氏曰所入之塗雖異而所至"
+    },
+    {
+      "page": 42,
+      "col": 5,
+      "role": "z",
+      "text": "之域則同此所以爲中庸若乃企生"
+    },
+    {
+      "page": 42,
+      "col": 6,
+      "role": "z",
+      "text": "知安行之資爲不可幾及輕困知勉"
+    },
+    {
+      "page": 42,
+      "col": 7,
+      "role": "z",
+      "text": "行謂不能有成此道之所以不明不"
+    },
+    {
+      "page": 42,
+      "col": 8,
+      "role": "z",
+      "text": "行也"
+    },
+    {
+      "page": 42,
+      "col": 9,
+      "role": "j",
+      "text": "子曰好學近乎知力行近乎仁知恥近"
+    },
+    {
+      "page": 42,
+      "col": 10,
+      "role": "j",
+      "text": "乎勇"
+    },
+    {
+      "page": 42,
+      "col": 11,
+      "role": "z",
+      "text": "子曰二字衍文好近乎知之知並去"
+    },
+    {
+      "page": 42,
+      "col": 12,
+      "role": "z",
+      "text": "聲○此言未及乎達德而求以入德"
+    },
+    {
+      "page": 42,
+      "col": 13,
+      "role": "z",
+      "text": "之事通上文三知爲知三行爲仁則"
+    },
+    {
+      "page": 42,
+      "col": 14,
+      "role": "z",
+      "text": "此三近者勇之次也吕氏曰愚者自"
+    },
+    {
+      "page": 42,
+      "col": 15,
+      "role": "z",
+      "text": "是而不求自私者徇人欲而忘反懦"
+    },
+    {
+      "page": 42,
+      "col": 16,
+      "role": "z",
+      "text": "者甘爲人下而不辭故好學非知然"
+    },
+    {
+      "page": 43,
+      "col": 1,
+      "role": "z",
+      "text": "足以破愚力行非仁然足以忘私知"
+    },
+    {
+      "page": 43,
+      "col": 2,
+      "role": "z",
+      "text": "恥非勇然足以起懦"
+    },
+    {
+      "page": 43,
+      "col": 3,
+      "role": "j",
+      "text": "知斯三者則知所以脩身知所以脩身"
+    },
+    {
+      "page": 43,
+      "col": 4,
+      "role": "j",
+      "text": "則知所以治人知所以治人則知所以"
+    },
+    {
+      "page": 43,
+      "col": 5,
+      "role": "j",
+      "text": "治天下國家矣"
+    },
+    {
+      "page": 43,
+      "col": 6,
+      "role": "z",
+      "text": "斯三者指三近而言人者對己之稱"
+    },
+    {
+      "page": 43,
+      "col": 7,
+      "role": "z",
+      "text": "天下國家則盡乎人矣言此以結上"
+    },
+    {
+      "page": 43,
+      "col": 8,
+      "role": "z",
+      "text": "文脩身之意起下文九經之端也"
+    },
+    {
+      "page": 43,
+      "col": 9,
+      "role": "j",
+      "text": "凡爲天下國家有九經曰脩身也尊賢"
+    },
+    {
+      "page": 43,
+      "col": 10,
+      "role": "j",
+      "text": "也親親也敬大臣也體羣臣也子庶民"
+    },
+    {
+      "page": 43,
+      "col": 11,
+      "role": "j",
+      "text": "也來百工也柔遠人也懷諸侯也"
+    },
+    {
+      "page": 43,
+      "col": 12,
+      "role": "z",
+      "text": "經常也體謂設以身處其地而察其"
+    },
+    {
+      "page": 43,
+      "col": 13,
+      "role": "z",
+      "text": "心也子如父母之愛其子也柔遠人"
+    },
+    {
+      "page": 43,
+      "col": 14,
+      "role": "z",
+      "text": "所謂無忘賔旅者也此列九經之目"
+    },
+    {
+      "page": 43,
+      "col": 15,
+      "role": "z",
+      "text": "也吕氏曰天下國家之本在身故脩"
+    },
+    {
+      "page": 43,
+      "col": 16,
+      "role": "z",
+      "text": "身爲九經之本然必親師友然後脩"
+    },
+    {
+      "page": 44,
+      "col": 1,
+      "role": "j",
+      "text": "身之道進故尊賢次之道之所進莫"
+    },
+    {
+      "page": 44,
+      "col": 2,
+      "role": "j",
+      "text": "先其家故親親次之由家以及朝廷"
+    },
+    {
+      "page": 44,
+      "col": 3,
+      "role": "j",
+      "text": "故敬大臣體羣臣次之由朝廷以及"
+    },
+    {
+      "page": 44,
+      "col": 4,
+      "role": "j",
+      "text": "其國故子庶民來百工次之由其國"
+    },
+    {
+      "page": 44,
+      "col": 5,
+      "role": "j",
+      "text": "以及天下故柔遠人懷諸侯次之此"
+    },
+    {
+      "page": 44,
+      "col": 6,
+      "role": "j",
+      "text": "九經之序也視羣臣猶吾四體視百"
+    },
+    {
+      "page": 44,
+      "col": 7,
+      "role": "z",
+      "text": "姓猶吾子此視臣視民之別也"
+    },
+    {
+      "page": 44,
+      "col": 8,
+      "role": "j",
+      "text": "脩身則道立尊賢則不惑親親則諸父"
+    },
+    {
+      "page": 44,
+      "col": 9,
+      "role": "j",
+      "text": "昆弟不怨敬大臣則不眩體羣臣則士"
+    },
+    {
+      "page": 44,
+      "col": 10,
+      "role": "j",
+      "text": "之報禮重子庶民則百姓勸來百工則"
+    },
+    {
+      "page": 44,
+      "col": 11,
+      "role": "j",
+      "text": "財用足柔遠人則四方歸之懷諸侯則"
+    },
+    {
+      "page": 44,
+      "col": 12,
+      "role": "j",
+      "text": "天下畏之"
+    },
+    {
+      "page": 44,
+      "col": 13,
+      "role": "z",
+      "text": "此言九經之效也道立謂道成於己"
+    },
+    {
+      "page": 44,
+      "col": 14,
+      "role": "z",
+      "text": "而可爲民表所謂建其有極是也不"
+    },
+    {
+      "page": 44,
+      "col": 15,
+      "role": "z",
+      "text": "惑謂不疑於理不眩謂不迷於事敬"
+    },
+    {
+      "page": 44,
+      "col": 16,
+      "role": "z",
+      "text": "大臣則信任專而小臣不得以閒之"
+    },
+    {
+      "page": 45,
+      "col": 1,
+      "role": "j",
+      "text": "故臨事而不眩也來百工則通功易"
+    },
+    {
+      "page": 45,
+      "col": 2,
+      "role": "j",
+      "text": "事農末相資故財用足柔遠人則天"
+    },
+    {
+      "page": 45,
+      "col": 3,
+      "role": "j",
+      "text": "下之旅皆悅而願出於其塗故四方"
+    },
+    {
+      "page": 45,
+      "col": 4,
+      "role": "z",
+      "text": "歸懷諸侯則德之所施者博而威之"
+    },
+    {
+      "page": 45,
+      "col": 5,
+      "role": "z",
+      "text": "所制者廣矣故曰天下畏之"
+    },
+    {
+      "page": 45,
+      "col": 6,
+      "role": "j",
+      "text": "齊明盛服非禮不動所以脩身也去讒"
+    },
+    {
+      "page": 45,
+      "col": 7,
+      "role": "j",
+      "text": "遠色賤貨而貴德所以勸賢也尊其位"
+    },
+    {
+      "page": 45,
+      "col": 8,
+      "role": "j",
+      "text": "重其祿同其好惡所以勸親親也官盛"
+    },
+    {
+      "page": 45,
+      "col": 9,
+      "role": "j",
+      "text": "任使所以勸大臣也忠信重祿所以勸"
+    },
+    {
+      "page": 45,
+      "col": 10,
+      "role": "j",
+      "text": "士也時使薄歛所以勸百姓也日省月"
+    },
+    {
+      "page": 45,
+      "col": 11,
+      "role": "j",
+      "text": "試既稟稱事所以勸百工也送往迎來"
+    },
+    {
+      "page": 45,
+      "col": 12,
+      "role": "j",
+      "text": "嘉善而矜不能所以柔遠人也繼絕世"
+    },
+    {
+      "page": 45,
+      "col": 13,
+      "role": "j",
+      "text": "舉廢國治亂持危朝聘以時厚往而薄"
+    },
+    {
+      "page": 45,
+      "col": 14,
+      "role": "j",
+      "text": "來所以懷諸侯也"
+    },
+    {
+      "page": 45,
+      "col": 15,
+      "role": "z",
+      "text": "齊側皆反去上聲遠好惡歛並去聲"
+    },
+    {
+      "page": 45,
+      "col": 16,
+      "role": "z",
+      "text": "既許氣反稟彼錦力錦二反稱去聲"
+    },
+    {
+      "page": 46,
+      "col": 1,
+      "role": "z",
+      "text": "朝音潮○此言九經之事也官盛任"
+    },
+    {
+      "page": 46,
+      "col": 2,
+      "role": "z",
+      "text": "使謂官屬衆盛足任使令也蓋大臣"
+    },
+    {
+      "page": 46,
+      "col": 3,
+      "role": "z",
+      "text": "不當親細事故所以優之者如此忠"
+    },
+    {
+      "page": 46,
+      "col": 4,
+      "role": "z",
+      "text": "信重禄謂待之誠而養之厚蓋以身"
+    },
+    {
+      "page": 46,
+      "col": 5,
+      "role": "z",
+      "text": "體之而知其所頼乎上者如此也旣"
+    },
+    {
+      "page": 46,
+      "col": 6,
+      "role": "z",
+      "text": "讀曰餼餼稟稍食也稱事如周禮槀"
+    },
+    {
+      "page": 46,
+      "col": 7,
+      "role": "z",
+      "text": "人職曰考其弓弩以上下其食是也"
+    },
+    {
+      "page": 46,
+      "col": 8,
+      "role": "z",
+      "text": "往則爲之授節以送之來則豐其委"
+    },
+    {
+      "page": 46,
+      "col": 9,
+      "role": "z",
+      "text": "積以迎之朝謂諸侯見於天子聘謂"
+    },
+    {
+      "page": 46,
+      "col": 10,
+      "role": "z",
+      "text": "諸侯使大夫來獻王制比年一小聘"
+    },
+    {
+      "page": 46,
+      "col": 11,
+      "role": "z",
+      "text": "三年一大聘五年一朝厚往薄來謂"
+    },
+    {
+      "page": 46,
+      "col": 12,
+      "role": "z",
+      "text": "燕賜厚而納貢薄"
+    },
+    {
+      "page": 46,
+      "col": 13,
+      "role": "j",
+      "text": "凡爲天下國家有九經所以行之者一"
+    },
+    {
+      "page": 46,
+      "col": 14,
+      "role": "j",
+      "text": "也"
+    },
+    {
+      "page": 46,
+      "col": 15,
+      "role": "z",
+      "text": "一者誠也一有不誠則是九者皆爲"
+    },
+    {
+      "page": 46,
+      "col": 16,
+      "role": "z",
+      "text": "虚文矣此九經之實也"
+    },
+    {
+      "page": 47,
+      "col": 1,
+      "role": "j",
+      "text": "凡事豫則立不豫則廢言前定則不跲"
+    },
+    {
+      "page": 47,
+      "col": 2,
+      "role": "j",
+      "text": "事前定則不困行前定則不疚道前定"
+    },
+    {
+      "page": 47,
+      "col": 3,
+      "role": "j",
+      "text": "則不窮"
+    },
+    {
+      "page": 47,
+      "col": 4,
+      "role": "z",
+      "text": "跲其刼反行去聲○凡事指達道達"
+    },
+    {
+      "page": 47,
+      "col": 5,
+      "role": "z",
+      "text": "德九經之屬豫素定也跲躓也疚病"
+    },
+    {
+      "page": 47,
+      "col": 6,
+      "role": "z",
+      "text": "也此承上文言凡事皆欲先立乎誠"
+    },
+    {
+      "page": 47,
+      "col": 7,
+      "role": "z",
+      "text": "如下文所推是也"
+    },
+    {
+      "page": 47,
+      "col": 8,
+      "role": "j",
+      "text": "在下位不獲乎上民不可得而治矣獲"
+    },
+    {
+      "page": 47,
+      "col": 9,
+      "role": "j",
+      "text": "乎上有道不信乎朋友不獲乎上矣信"
+    },
+    {
+      "page": 47,
+      "col": 10,
+      "role": "j",
+      "text": "乎朋友有道不順乎親不信乎朋友矣"
+    },
+    {
+      "page": 47,
+      "col": 11,
+      "role": "j",
+      "text": "順乎親有道反諸身不誠不順乎親矣"
+    },
+    {
+      "page": 47,
+      "col": 12,
+      "role": "j",
+      "text": "誠身有道不明乎善不誠乎身矣"
+    },
+    {
+      "page": 47,
+      "col": 13,
+      "role": "z",
+      "text": "此又以在下位者推言素定之意反"
+    },
+    {
+      "page": 47,
+      "col": 14,
+      "role": "z",
+      "text": "諸身不誠謂反求諸身而所存所發"
+    },
+    {
+      "page": 47,
+      "col": 15,
+      "role": "z",
+      "text": "未能眞實而無妄也不明乎善謂未"
+    },
+    {
+      "page": 47,
+      "col": 16,
+      "role": "z",
+      "text": "能察於人心天命之本然而眞知至"
+    },
+    {
+      "page": 48,
+      "col": 1,
+      "role": "z",
+      "text": "善之所在也"
+    },
+    {
+      "page": 48,
+      "col": 2,
+      "role": "j",
+      "text": "誠者天之道也誠之者人之道也誠者"
+    },
+    {
+      "page": 48,
+      "col": 3,
+      "role": "j",
+      "text": "不勉而中不思而得從容中道聖人也"
+    },
+    {
+      "page": 48,
+      "col": 4,
+      "role": "j",
+      "text": "誠之者擇善而固執之者也"
+    },
+    {
+      "page": 48,
+      "col": 5,
+      "role": "z",
+      "text": "中並去聲從七容反○此承上文誠"
+    },
+    {
+      "page": 48,
+      "col": 6,
+      "role": "z",
+      "text": "身而言誠者眞實無妄之謂天理之"
+    },
+    {
+      "page": 48,
+      "col": 7,
+      "role": "z",
+      "text": "本然也誠之者未能眞實無妄而欲"
+    },
+    {
+      "page": 48,
+      "col": 8,
+      "role": "z",
+      "text": "其眞實無妄之謂人事之當然也聖"
+    },
+    {
+      "page": 48,
+      "col": 9,
+      "role": "z",
+      "text": "人之德渾然天理眞實無妄不待思"
+    },
+    {
+      "page": 48,
+      "col": 10,
+      "role": "z",
+      "text": "勉而從容中道則亦天之道也未至"
+    },
+    {
+      "page": 48,
+      "col": 11,
+      "role": "z",
+      "text": "於聖則不能無人欲之私而其爲德"
+    },
+    {
+      "page": 48,
+      "col": 12,
+      "role": "z",
+      "text": "不能皆實故未能不思而得則必擇"
+    },
+    {
+      "page": 48,
+      "col": 13,
+      "role": "z",
+      "text": "善然後可以明善未能不勉而中則"
+    },
+    {
+      "page": 48,
+      "col": 14,
+      "role": "z",
+      "text": "必固執然後可以誠身此則所謂人"
+    },
+    {
+      "page": 48,
+      "col": 15,
+      "role": "z",
+      "text": "之道也不思而得生知也不勉而中"
+    },
+    {
+      "page": 48,
+      "col": 16,
+      "role": "z",
+      "text": "安行也擇善學知以下之事固執利"
+    },
+    {
+      "page": 49,
+      "col": 1,
+      "role": "z",
+      "text": "行以下之事也"
+    },
+    {
+      "page": 49,
+      "col": 2,
+      "role": "j",
+      "text": "博學之審問之愼思之明辨之篤行之"
+    },
+    {
+      "page": 49,
+      "col": 3,
+      "role": "z",
+      "text": "此誠之之目也學問思辨所以擇善"
+    },
+    {
+      "page": 49,
+      "col": 4,
+      "role": "z",
+      "text": "而爲知學而知也篤行所以固執而"
+    },
+    {
+      "page": 49,
+      "col": 5,
+      "role": "z",
+      "text": "爲仁利而行也程子曰五者廢其一"
+    },
+    {
+      "page": 49,
+      "col": 6,
+      "role": "z",
+      "text": "非學也"
+    },
+    {
+      "page": 49,
+      "col": 7,
+      "role": "j",
+      "text": "有弗學學之弗能弗措也有弗問問之"
+    },
+    {
+      "page": 49,
+      "col": 8,
+      "role": "j",
+      "text": "弗知弗措也有弗思思之弗得弗措也"
+    },
+    {
+      "page": 49,
+      "col": 9,
+      "role": "j",
+      "text": "有弗辨辨之弗明弗措也有弗行行之"
+    },
+    {
+      "page": 49,
+      "col": 10,
+      "role": "j",
+      "text": "弗篤弗措也人一能之己百之人十能"
+    },
+    {
+      "page": 49,
+      "col": 11,
+      "role": "j",
+      "text": "之己千之"
+    },
+    {
+      "page": 49,
+      "col": 12,
+      "role": "z",
+      "text": "君子之學不爲則已爲則必要其成"
+    },
+    {
+      "page": 49,
+      "col": 13,
+      "role": "z",
+      "text": "故常百倍其功此困而知勉而行者"
+    },
+    {
+      "page": 49,
+      "col": 14,
+      "role": "z",
+      "text": "也勇之事也"
+    },
+    {
+      "page": 49,
+      "col": 15,
+      "role": "j",
+      "text": "果能此道矣雖愚必明雖柔必強"
+    },
+    {
+      "page": 49,
+      "col": 16,
+      "role": "z",
+      "text": "明者擇善之功強者固執之效吕氏"
+    },
+    {
+      "page": 50,
+      "col": 1,
+      "role": "j",
+      "text": "曰君子所以學者為能變化氣質而"
+    },
+    {
+      "page": 50,
+      "col": 2,
+      "role": "j",
+      "text": "巳德勝氣質則愚者可進於明柔者"
+    },
+    {
+      "page": 50,
+      "col": 3,
+      "role": "j",
+      "text": "可進於強不能勝之則雖有志於學"
+    },
+    {
+      "page": 50,
+      "col": 4,
+      "role": "j",
+      "text": "亦愚不能明柔不能立而巳矣蓋均"
+    },
+    {
+      "page": 50,
+      "col": 5,
+      "role": "j",
+      "text": "善而無惡者性也人所同也昬明強"
+    },
+    {
+      "page": 50,
+      "col": 6,
+      "role": "j",
+      "text": "弱之稟不齊者才也人所異也誠之"
+    },
+    {
+      "page": 50,
+      "col": 7,
+      "role": "j",
+      "text": "者所以反其同而變其異也夫以不"
+    },
+    {
+      "page": 50,
+      "col": 8,
+      "role": "j",
+      "text": "美之質求變而美非百倍其功不足"
+    },
+    {
+      "page": 50,
+      "col": 9,
+      "role": "title",
+      "text": "以致之今以鹵莽滅裂之學或作或"
+    },
+    {
+      "page": 50,
+      "col": 10,
+      "role": "title",
+      "text": "輟以變其不美之質及不能變則曰"
+    },
+    {
+      "page": 50,
+      "col": 11,
+      "role": "j",
+      "text": "天質不美非學所能變是果於自棄"
+    },
+    {
+      "page": 50,
+      "col": 12,
+      "role": "j",
+      "text": "其為不仁甚矣"
+    },
+    {
+      "page": 50,
+      "col": 13,
+      "role": "z",
+      "text": "右第二十章"
+    },
+    {
+      "page": 50,
+      "col": 14,
+      "role": "z",
+      "text": "此引孔子之言以繼大舜文武"
+    },
+    {
+      "page": 50,
+      "col": 15,
+      "role": "z",
+      "text": "周公之緒明其所傳之一致舉"
+    },
+    {
+      "page": 50,
+      "col": 16,
+      "role": "z",
+      "text": "而措之亦猶是耳蓋包費隱兼"
+    },
+    {
+      "page": 51,
+      "col": 1,
+      "role": "z",
+      "text": "小大以終十二章之意章内語"
+    },
+    {
+      "page": 51,
+      "col": 2,
+      "role": "z",
+      "text": "誠始詳而所謂誠者實此篇之"
+    },
+    {
+      "page": 51,
+      "col": 3,
+      "role": "z",
+      "text": "樞紐也又按孔子家語亦載此"
+    },
+    {
+      "page": 51,
+      "col": 4,
+      "role": "z",
+      "text": "章而其文尤詳成功一也之下"
+    },
+    {
+      "page": 51,
+      "col": 5,
+      "role": "z",
+      "text": "有公曰子之言美矣至矣寡人"
+    },
+    {
+      "page": 51,
+      "col": 6,
+      "role": "z",
+      "text": "實固不足以成之也故其下復"
+    },
+    {
+      "page": 51,
+      "col": 7,
+      "role": "z",
+      "text": "猶有子曰二字蓋子思刪其繁"
+    },
+    {
+      "page": 51,
+      "col": 8,
+      "role": "z",
+      "text": "猶有子曰二字蓋子思刪其繁"
+    },
+    {
+      "page": 51,
+      "col": 9,
+      "role": "z",
+      "text": "文以附于篇而所刪有不盡者"
+    },
+    {
+      "page": 51,
+      "col": 10,
+      "role": "z",
+      "text": "今當爲衍文也博學之以下家語"
+    },
+    {
+      "page": 51,
+      "col": 11,
+      "role": "z",
+      "text": "無之意彼有闕文抑此或子思"
+    },
+    {
+      "page": 51,
+      "col": 12,
+      "role": "z",
+      "text": "所補也歟"
+    },
+    {
+      "page": 51,
+      "col": 13,
+      "role": "j",
+      "text": "自誠明謂之性自明誠謂之教誠則明"
+    },
+    {
+      "page": 51,
+      "col": 14,
+      "role": "j",
+      "text": "矣明則誠矣"
+    },
+    {
+      "page": 51,
+      "col": 15,
+      "role": "z",
+      "text": "自由也德無不實而明無不照者聖"
+    },
+    {
+      "page": 51,
+      "col": 16,
+      "role": "z",
+      "text": "人之德所性而有者也天道也先明"
+    },
+    {
+      "page": 52,
+      "col": 1,
+      "role": "title",
+      "text": "乎善而後能實其善者賢人之學由"
+    },
+    {
+      "page": 52,
+      "col": 2,
+      "role": "z",
+      "text": "教而入者也人道也誠則無不明矣"
+    },
+    {
+      "page": 52,
+      "col": 3,
+      "role": "z",
+      "text": "明則可以至於誠矣"
+    },
+    {
+      "page": 52,
+      "col": 4,
+      "role": "z",
+      "text": "右第二十一章子思承上章夫子"
+    },
+    {
+      "page": 52,
+      "col": 5,
+      "role": "z",
+      "text": "天道人道之意而立言也自此以"
+    },
+    {
+      "page": 52,
+      "col": 6,
+      "role": "z",
+      "text": "下十二章皆子思之言以反覆推"
+    },
+    {
+      "page": 52,
+      "col": 7,
+      "role": "z",
+      "text": "明此章之意"
+    },
+    {
+      "page": 52,
+      "col": 8,
+      "role": "j",
+      "text": "唯天下至誠爲能盡其性能盡其性則"
+    },
+    {
+      "page": 52,
+      "col": 9,
+      "role": "j",
+      "text": "能盡人之性能盡人之性則能盡物之"
+    },
+    {
+      "page": 52,
+      "col": 10,
+      "role": "j",
+      "text": "性能盡物之性則可以贊天地之化育"
+    },
+    {
+      "page": 52,
+      "col": 11,
+      "role": "j",
+      "text": "可以贊天地之化育則可以與天地參"
+    },
+    {
+      "page": 52,
+      "col": 12,
+      "role": "j",
+      "text": "矣"
+    },
+    {
+      "page": 52,
+      "col": 13,
+      "role": "z",
+      "text": "天下至誠謂聖人之德之實天下莫"
+    },
+    {
+      "page": 52,
+      "col": 14,
+      "role": "z",
+      "text": "能加也盡其性者德無不實故無人"
+    },
+    {
+      "page": 52,
+      "col": 15,
+      "role": "z",
+      "text": "欲之私而天命之在我者察之由之"
+    },
+    {
+      "page": 52,
+      "col": 16,
+      "role": "z",
+      "text": "巨細精粗無毫髮之不盡也人物之"
+    },
+    {
+      "page": 53,
+      "col": 1,
+      "role": "z",
+      "text": "性亦我之性但以所賦形氣不同而"
+    },
+    {
+      "page": 53,
+      "col": 2,
+      "role": "title",
+      "text": "有異耳能盡之者謂知之無不明而"
+    },
+    {
+      "page": 53,
+      "col": 3,
+      "role": "title",
+      "text": "處之無不當也賛猶助也與天地參"
+    },
+    {
+      "page": 53,
+      "col": 4,
+      "role": "z",
+      "text": "謂與天地並立爲三也此自誠而明"
+    },
+    {
+      "page": 53,
+      "col": 5,
+      "role": "z",
+      "text": "者之事也"
+    },
+    {
+      "page": 53,
+      "col": 6,
+      "role": "z",
+      "text": "右第二十二章"
+    },
+    {
+      "page": 53,
+      "col": 7,
+      "role": "z",
+      "text": "言天道也"
+    },
+    {
+      "page": 53,
+      "col": 8,
+      "role": "j",
+      "text": "其次致曲曲能有誠誠則形形則著著"
+    },
+    {
+      "page": 53,
+      "col": 9,
+      "role": "j",
+      "text": "則明明則動動則變變則化唯天下至"
+    },
+    {
+      "page": 53,
+      "col": 10,
+      "role": "j",
+      "text": "誠爲能化"
+    },
+    {
+      "page": 53,
+      "col": 11,
+      "role": "z",
+      "text": "其次通大賢以下凡誠有未至者而"
+    },
+    {
+      "page": 53,
+      "col": 12,
+      "role": "z",
+      "text": "言也致推致也曲一偏也形者積中"
+    },
+    {
+      "page": 53,
+      "col": 13,
+      "role": "z",
+      "text": "而發外著則又加顯矣明則又有光"
+    },
+    {
+      "page": 53,
+      "col": 14,
+      "role": "z",
+      "text": "輝發越之盛也動者誠能動物變者"
+    },
+    {
+      "page": 53,
+      "col": 15,
+      "role": "z",
+      "text": "物從而變化則有不知其所以然者"
+    },
+    {
+      "page": 53,
+      "col": 16,
+      "role": "z",
+      "text": "蓋人之性無不同而氣則有異故惟"
+    },
+    {
+      "page": 54,
+      "col": 1,
+      "role": "j",
+      "text": "聖人能舉其性之全體而盡之其次"
+    },
+    {
+      "page": 54,
+      "col": 2,
+      "role": "j",
+      "text": "則必自其善端發見之偏而悉推致"
+    },
+    {
+      "page": 54,
+      "col": 3,
+      "role": "title",
+      "text": "之以各造其極也曲無不致則德無"
+    },
+    {
+      "page": 54,
+      "col": 4,
+      "role": "title",
+      "text": "不實而形著動變之功自不能已積"
+    },
+    {
+      "page": 54,
+      "col": 5,
+      "role": "j",
+      "text": "而至於能化則其至誠之妙亦不異"
+    },
+    {
+      "page": 54,
+      "col": 6,
+      "role": "j",
+      "text": "於聖人矣"
+    },
+    {
+      "page": 54,
+      "col": 7,
+      "role": "z",
+      "text": "右第二十三章"
+    },
+    {
+      "page": 54,
+      "col": 8,
+      "role": "z",
+      "text": "言人道也"
+    },
+    {
+      "page": 54,
+      "col": 9,
+      "role": "j",
+      "text": "至誠之道可以前知國家將興必有禎"
+    },
+    {
+      "page": 54,
+      "col": 10,
+      "role": "j",
+      "text": "祥國家將亡必有妖孽見乎蓍龜動乎"
+    },
+    {
+      "page": 54,
+      "col": 11,
+      "role": "j",
+      "text": "四體禍福將至善必先知之不善必先"
+    },
+    {
+      "page": 54,
+      "col": 12,
+      "role": "j",
+      "text": "知之故至誠如神"
+    },
+    {
+      "page": 54,
+      "col": 13,
+      "role": "j",
+      "text": "見音現○禎祥者福之兆妖孽者禍"
+    },
+    {
+      "page": 54,
+      "col": 14,
+      "role": "j",
+      "text": "之萌蓍所以筮龜所以卜四體謂動"
+    },
+    {
+      "page": 54,
+      "col": 15,
+      "role": "j",
+      "text": "作威儀之閒如執玉高卑其容俯仰"
+    },
+    {
+      "page": 54,
+      "col": 16,
+      "role": "title",
+      "text": "之類凡此皆理之先見者也然唯誠"
+    },
+    {
+      "page": 55,
+      "col": 1,
+      "role": "z",
+      "text": "之至極而無一毫私僞留於心目之"
+    },
+    {
+      "page": 55,
+      "col": 2,
+      "role": "z",
+      "text": "閒者乃能有以察其幾焉神謂鬼神"
+    },
+    {
+      "page": 55,
+      "col": 3,
+      "role": "z",
+      "text": "右第二十四章"
+    },
+    {
+      "page": 55,
+      "col": 4,
+      "role": "z",
+      "text": "言天道也"
+    },
+    {
+      "page": 55,
+      "col": 5,
+      "role": "j",
+      "text": "誠者自成也而道自道也"
+    },
+    {
+      "page": 55,
+      "col": 6,
+      "role": "z",
+      "text": "道也之道音導○言誠者物之所以"
+    },
+    {
+      "page": 55,
+      "col": 7,
+      "role": "z",
+      "text": "自成而道者人之所當自行也誠以"
+    },
+    {
+      "page": 55,
+      "col": 8,
+      "role": "z",
+      "text": "心言本也道以理言用也"
+    },
+    {
+      "page": 55,
+      "col": 9,
+      "role": "j",
+      "text": "誠者物之終始不誠無物是故君子誠"
+    },
+    {
+      "page": 55,
+      "col": 10,
+      "role": "j",
+      "text": "之爲貴"
+    },
+    {
+      "page": 55,
+      "col": 11,
+      "role": "z",
+      "text": "天下之物皆實理之所爲故必得是"
+    },
+    {
+      "page": 55,
+      "col": 12,
+      "role": "z",
+      "text": "理然後有是物所得之理旣盡則是"
+    },
+    {
+      "page": 55,
+      "col": 13,
+      "role": "z",
+      "text": "物亦盡而無有矣故人之心一有不"
+    },
+    {
+      "page": 55,
+      "col": 14,
+      "role": "z",
+      "text": "實則雖有所爲亦如無有而君子必"
+    },
+    {
+      "page": 55,
+      "col": 15,
+      "role": "z",
+      "text": "以誠爲貴也蓋人之心能無不實乃"
+    },
+    {
+      "page": 55,
+      "col": 16,
+      "role": "z",
+      "text": "爲有以自成而道之在我者亦無不"
+    },
+    {
+      "page": 56,
+      "col": 1,
+      "role": "j",
+      "text": "行矣"
+    },
+    {
+      "page": 56,
+      "col": 2,
+      "role": "j",
+      "text": "誠者非自成己而已也所以成物也成"
+    },
+    {
+      "page": 56,
+      "col": 3,
+      "role": "j",
+      "text": "己仁也成物知也性之德也合外內之"
+    },
+    {
+      "page": 56,
+      "col": 4,
+      "role": "j",
+      "text": "道也故時措之宜也"
+    },
+    {
+      "page": 56,
+      "col": 5,
+      "role": "z",
+      "text": "知去聲○誠雖所以成己然既有以"
+    },
+    {
+      "page": 56,
+      "col": 6,
+      "role": "j",
+      "text": "自成則自然及物而道亦行於彼矣"
+    },
+    {
+      "page": 56,
+      "col": 7,
+      "role": "title",
+      "text": "仁者體之存智者用之發是皆吾性"
+    },
+    {
+      "page": 56,
+      "col": 8,
+      "role": "j",
+      "text": "之固有而無內外之殊既得於己則"
+    },
+    {
+      "page": 56,
+      "col": 9,
+      "role": "j",
+      "text": "見於事者以時措之而皆得其宜也"
+    },
+    {
+      "page": 56,
+      "col": 10,
+      "role": "z",
+      "text": "右第二十五章"
+    },
+    {
+      "page": 56,
+      "col": 11,
+      "role": "z",
+      "text": "言人道也"
+    },
+    {
+      "page": 56,
+      "col": 12,
+      "role": "j",
+      "text": "故至誠無息"
+    },
+    {
+      "page": 56,
+      "col": 13,
+      "role": "z",
+      "text": "既無虛假自無閒斷"
+    },
+    {
+      "page": 56,
+      "col": 14,
+      "role": "j",
+      "text": "不息則久久則徵"
+    },
+    {
+      "page": 56,
+      "col": 15,
+      "role": "z",
+      "text": "久常於中也徵驗於外也"
+    },
+    {
+      "page": 56,
+      "col": 16,
+      "role": "j",
+      "text": "徵則悠遠悠遠則博厚博厚則高明"
+    },
+    {
+      "page": 57,
+      "col": 1,
+      "role": "z",
+      "text": "此皆以其驗於外者言之鄭氏所謂"
+    },
+    {
+      "page": 57,
+      "col": 2,
+      "role": "z",
+      "text": "至誠之德著於四方者是也存諸中"
+    },
+    {
+      "page": 57,
+      "col": 3,
+      "role": "z",
+      "text": "者既久則驗於外者益悠遠而無窮"
+    },
+    {
+      "page": 57,
+      "col": 4,
+      "role": "z",
+      "text": "矣悠遠故其積也廣博而深厚博厚"
+    },
+    {
+      "page": 57,
+      "col": 5,
+      "role": "z",
+      "text": "故其發也高大而光明"
+    },
+    {
+      "page": 57,
+      "col": 6,
+      "role": "j",
+      "text": "博厚所以載物也高明所以覆物也悠"
+    },
+    {
+      "page": 57,
+      "col": 7,
+      "role": "j",
+      "text": "久所以成物也"
+    },
+    {
+      "page": 57,
+      "col": 8,
+      "role": "z",
+      "text": "悠遠即悠遠兼內外而言之也本以"
+    },
+    {
+      "page": 57,
+      "col": 9,
+      "role": "z",
+      "text": "悠遠致高厚而高厚又悠久也此言"
+    },
+    {
+      "page": 57,
+      "col": 10,
+      "role": "z",
+      "text": "聖人與天地同用"
+    },
+    {
+      "page": 57,
+      "col": 11,
+      "role": "j",
+      "text": "博厚配地高明配天悠久無疆"
+    },
+    {
+      "page": 57,
+      "col": 12,
+      "role": "z",
+      "text": "此言聖人與天地同體"
+    },
+    {
+      "page": 57,
+      "col": 13,
+      "role": "j",
+      "text": "如此者不見而章不動而變無為而成"
+    },
+    {
+      "page": 57,
+      "col": 14,
+      "role": "z",
+      "text": "見音現○見猶示也不見而章以配"
+    },
+    {
+      "page": 57,
+      "col": 15,
+      "role": "z",
+      "text": "地而言也不動而變以配天而言也"
+    },
+    {
+      "page": 57,
+      "col": 16,
+      "role": "z",
+      "text": "無為而成以無疆而言也"
+    },
+    {
+      "page": 58,
+      "col": 1,
+      "role": "j",
+      "text": "天地之道可一言而盡也其爲物不貳"
+    },
+    {
+      "page": 58,
+      "col": 2,
+      "role": "j",
+      "text": "則其生物不測"
+    },
+    {
+      "page": 58,
+      "col": 3,
+      "role": "z",
+      "text": "此以下復以天地明至誠無息之功"
+    },
+    {
+      "page": 58,
+      "col": 4,
+      "role": "z",
+      "text": "用天地之道可一言而盡不過曰誠"
+    },
+    {
+      "page": 58,
+      "col": 5,
+      "role": "z",
+      "text": "而巳不貳所以誠也誠故不息而生"
+    },
+    {
+      "page": 58,
+      "col": 6,
+      "role": "z",
+      "text": "物之多有莫知其所以然者"
+    },
+    {
+      "page": 58,
+      "col": 7,
+      "role": "j",
+      "text": "天地之道愽也厚也髙也明也悠也乆"
+    },
+    {
+      "page": 58,
+      "col": 8,
+      "role": "j",
+      "text": "也"
+    },
+    {
+      "page": 58,
+      "col": 9,
+      "role": "z",
+      "text": "言天地之道誠一不貳故能各極其"
+    },
+    {
+      "page": 58,
+      "col": 10,
+      "role": "z",
+      "text": "盛而有下文生物之功"
+    },
+    {
+      "page": 58,
+      "col": 11,
+      "role": "j",
+      "text": "今夫天斯昭昭之多及其無窮也日月"
+    },
+    {
+      "page": 58,
+      "col": 12,
+      "role": "j",
+      "text": "星辰繫焉萬物覆焉今夫地一撮土之"
+    },
+    {
+      "page": 58,
+      "col": 13,
+      "role": "j",
+      "text": "多及其廣厚載華嶽而不重振河海而"
+    },
+    {
+      "page": 58,
+      "col": 14,
+      "role": "j",
+      "text": "不洩萬物載焉今夫山一卷石之多及"
+    },
+    {
+      "page": 58,
+      "col": 15,
+      "role": "j",
+      "text": "其廣大草木生之禽獸居之寶藏興焉"
+    },
+    {
+      "page": 58,
+      "col": 16,
+      "role": "j",
+      "text": "今夫水一勺之多及其不測黿鼉鮫龍"
+    },
+    {
+      "page": 59,
+      "col": 1,
+      "role": "j",
+      "text": "魚鼈生焉貸財殖焉"
+    },
+    {
+      "page": 59,
+      "col": 2,
+      "role": "j",
+      "text": "夫音扶華藏並去聲卷平聲勺市若"
+    },
+    {
+      "page": 59,
+      "col": 3,
+      "role": "j",
+      "text": "反○昭昭猶耿耿小明也此指其一"
+    },
+    {
+      "page": 59,
+      "col": 4,
+      "role": "j",
+      "text": "處而言之及其無窮猶十二章及其"
+    },
+    {
+      "page": 59,
+      "col": 5,
+      "role": "j",
+      "text": "至也之意蓋舉全體而言也振收也"
+    },
+    {
+      "page": 59,
+      "col": 6,
+      "role": "j",
+      "text": "卷區也此四條皆以發明由其不貳"
+    },
+    {
+      "page": 59,
+      "col": 7,
+      "role": "j",
+      "text": "不息以致盛大而能生物之意然天"
+    },
+    {
+      "page": 59,
+      "col": 8,
+      "role": "j",
+      "text": "地山川實非由積累而後大讀者不"
+    },
+    {
+      "page": 59,
+      "col": 9,
+      "role": "z",
+      "text": "以辭害意可也"
+    },
+    {
+      "page": 59,
+      "col": 10,
+      "role": "j",
+      "text": "詩云維天之命於穆不已蓋曰天之所"
+    },
+    {
+      "page": 59,
+      "col": 11,
+      "role": "j",
+      "text": "以爲天也於乎不顯文王之德之純蓋"
+    },
+    {
+      "page": 59,
+      "col": 12,
+      "role": "j",
+      "text": "曰文王之所以爲文也純亦不已"
+    },
+    {
+      "page": 59,
+      "col": 13,
+      "role": "j",
+      "text": "於音烏乎音呼○詩周頌維天之命"
+    },
+    {
+      "page": 59,
+      "col": 14,
+      "role": "j",
+      "text": "篇於歎辭穆深遠也不顯猶言豈不"
+    },
+    {
+      "page": 59,
+      "col": 15,
+      "role": "title",
+      "text": "顯也純純一不雜也引此以明至誠"
+    },
+    {
+      "page": 59,
+      "col": 16,
+      "role": "j",
+      "text": "無息之意程子曰天道不已文王純"
+    },
+    {
+      "page": 60,
+      "col": 1,
+      "role": "z",
+      "text": "於天道亦不已純則無二無雜不已"
+    },
+    {
+      "page": 60,
+      "col": 2,
+      "role": "z",
+      "text": "則無閒斷先後"
+    },
+    {
+      "page": 60,
+      "col": 3,
+      "role": "z",
+      "text": "右第二十六章"
+    },
+    {
+      "page": 60,
+      "col": 4,
+      "role": "z",
+      "text": "言天道也"
+    },
+    {
+      "page": 60,
+      "col": 5,
+      "role": "j",
+      "text": "大哉聖人之道"
+    },
+    {
+      "page": 60,
+      "col": 6,
+      "role": "z",
+      "text": "包下文兩節而言"
+    },
+    {
+      "page": 60,
+      "col": 7,
+      "role": "j",
+      "text": "洋洋乎發育萬物峻極于天"
+    },
+    {
+      "page": 60,
+      "col": 8,
+      "role": "z",
+      "text": "峻高大也此言道之極於至大而無"
+    },
+    {
+      "page": 60,
+      "col": 9,
+      "role": "z",
+      "text": "外也"
+    },
+    {
+      "page": 60,
+      "col": 10,
+      "role": "j",
+      "text": "優優大哉禮儀三百威儀三千"
+    },
+    {
+      "page": 60,
+      "col": 11,
+      "role": "z",
+      "text": "優優充足有餘之意禮儀經禮也威"
+    },
+    {
+      "page": 60,
+      "col": 12,
+      "role": "z",
+      "text": "儀曲禮也此言道之入於至小而無"
+    },
+    {
+      "page": 60,
+      "col": 13,
+      "role": "z",
+      "text": "閒也"
+    },
+    {
+      "page": 60,
+      "col": 14,
+      "role": "j",
+      "text": "待其人而後行"
+    },
+    {
+      "page": 60,
+      "col": 15,
+      "role": "z",
+      "text": "總結上兩節"
+    },
+    {
+      "page": 60,
+      "col": 16,
+      "role": "j",
+      "text": "故曰苟不至德至道不凝焉"
+    },
+    {
+      "page": 61,
+      "col": 1,
+      "role": "j",
+      "text": "至德謂其人至道指上兩節而言也"
+    },
+    {
+      "page": 61,
+      "col": 2,
+      "role": "z",
+      "text": "凝聚也成也"
+    },
+    {
+      "page": 61,
+      "col": 3,
+      "role": "j",
+      "text": "故君子尊德性而道問學致廣大而盡"
+    },
+    {
+      "page": 61,
+      "col": 4,
+      "role": "j",
+      "text": "精微極高明而道中庸温故而知新敦"
+    },
+    {
+      "page": 61,
+      "col": 5,
+      "role": "j",
+      "text": "厚以崇禮"
+    },
+    {
+      "page": 61,
+      "col": 6,
+      "role": "z",
+      "text": "尊者恭敬奉持之意德性者吾所受"
+    },
+    {
+      "page": 61,
+      "col": 7,
+      "role": "z",
+      "text": "於天之正理道由也温猶燖温之温"
+    },
+    {
+      "page": 61,
+      "col": 8,
+      "role": "z",
+      "text": "謂故學之矣復時習之也敦加厚也"
+    },
+    {
+      "page": 61,
+      "col": 9,
+      "role": "z",
+      "text": "尊德性所以存心而極乎道體之大"
+    },
+    {
+      "page": 61,
+      "col": 10,
+      "role": "z",
+      "text": "也道問學所以致知而盡乎道體之"
+    },
+    {
+      "page": 61,
+      "col": 11,
+      "role": "z",
+      "text": "細也二者脩德凝道之大端也不以"
+    },
+    {
+      "page": 61,
+      "col": 12,
+      "role": "z",
+      "text": "一毫私意自蔽不以一毫私欲自累"
+    },
+    {
+      "page": 61,
+      "col": 13,
+      "role": "z",
+      "text": "涵泳乎其所已知敦篤乎其所已能"
+    },
+    {
+      "page": 61,
+      "col": 14,
+      "role": "z",
+      "text": "此皆存心之屬也析理則不使有毫"
+    },
+    {
+      "page": 61,
+      "col": 15,
+      "role": "z",
+      "text": "氂之差處事則不使有過不及之謬"
+    },
+    {
+      "page": 61,
+      "col": 16,
+      "role": "z",
+      "text": "理義則日知其所未知節文則日謹"
+    },
+    {
+      "page": 62,
+      "col": 1,
+      "role": "z",
+      "text": "其所未謹此皆致知之屬也蓋非存"
+    },
+    {
+      "page": 62,
+      "col": 2,
+      "role": "z",
+      "text": "心無以致知而存心者又不可以不"
+    },
+    {
+      "page": 62,
+      "col": 3,
+      "role": "z",
+      "text": "致知故此五句大小相資首尾相應"
+    },
+    {
+      "page": 62,
+      "col": 4,
+      "role": "z",
+      "text": "聖賢所示入德之方莫詳於此學者"
+    },
+    {
+      "page": 62,
+      "col": 5,
+      "role": "z",
+      "text": "宜盡心焉"
+    },
+    {
+      "page": 62,
+      "col": 6,
+      "role": "j",
+      "text": "是故居上不驕爲下不倍國有道其言"
+    },
+    {
+      "page": 62,
+      "col": 7,
+      "role": "title",
+      "text": "足以興國無道其黙足以容詩曰旣明"
+    },
+    {
+      "page": 62,
+      "col": 8,
+      "role": "j",
+      "text": "且哲以保其身其此之謂與"
+    },
+    {
+      "page": 62,
+      "col": 9,
+      "role": "z",
+      "text": "倍與背同與平聲○興謂興起在位"
+    },
+    {
+      "page": 62,
+      "col": 10,
+      "role": "z",
+      "text": "也詩大雅烝民之篇"
+    },
+    {
+      "page": 62,
+      "col": 11,
+      "role": "z",
+      "text": "右第二十七章"
+    },
+    {
+      "page": 62,
+      "col": 12,
+      "role": "z",
+      "text": "言人道也"
+    },
+    {
+      "page": 62,
+      "col": 13,
+      "role": "j",
+      "text": "子曰愚而好自用賤而好自專生乎今"
+    },
+    {
+      "page": 62,
+      "col": 14,
+      "role": "j",
+      "text": "之世反古之道如此者烖及其身者也"
+    },
+    {
+      "page": 62,
+      "col": 15,
+      "role": "z",
+      "text": "好去聲烖古灾字○以上孔子之言"
+    },
+    {
+      "page": 62,
+      "col": 16,
+      "role": "z",
+      "text": "子思引之反復也"
+    },
+    {
+      "page": 63,
+      "col": 1,
+      "role": "j",
+      "text": "非天子不議禮不制度不考文"
+    },
+    {
+      "page": 63,
+      "col": 2,
+      "role": "z",
+      "text": "此以下子思之言禮親疏貴賤相接"
+    },
+    {
+      "page": 63,
+      "col": 3,
+      "role": "z",
+      "text": "之體也度品制文書名"
+    },
+    {
+      "page": 63,
+      "col": 4,
+      "role": "j",
+      "text": "今天下車同軌書同文行同倫"
+    },
+    {
+      "page": 63,
+      "col": 5,
+      "role": "z",
+      "text": "行去聲○今子思自謂當時也軌轍"
+    },
+    {
+      "page": 63,
+      "col": 6,
+      "role": "z",
+      "text": "迹之度倫次序之體三者皆同言天"
+    },
+    {
+      "page": 63,
+      "col": 7,
+      "role": "z",
+      "text": "下一統也"
+    },
+    {
+      "page": 63,
+      "col": 8,
+      "role": "j",
+      "text": "雖有其位苟無其德不敢作禮樂焉雖"
+    },
+    {
+      "page": 63,
+      "col": 9,
+      "role": "j",
+      "text": "有其德苟無其位亦不敢作禮樂焉"
+    },
+    {
+      "page": 63,
+      "col": 10,
+      "role": "z",
+      "text": "鄭氏曰言作禮樂者必聖人在天子"
+    },
+    {
+      "page": 63,
+      "col": 11,
+      "role": "z",
+      "text": "之位"
+    },
+    {
+      "page": 63,
+      "col": 12,
+      "role": "j",
+      "text": "子曰吾說夏禮杞不足徵也吾學殷禮"
+    },
+    {
+      "page": 63,
+      "col": 13,
+      "role": "j",
+      "text": "有宋存焉吾學周禮今用之吾從周"
+    },
+    {
+      "page": 63,
+      "col": 14,
+      "role": "z",
+      "text": "此又引孔子之言杞夏之後徵證也"
+    },
+    {
+      "page": 63,
+      "col": 15,
+      "role": "z",
+      "text": "宋殷之後三代之禮孔子皆嘗學之"
+    },
+    {
+      "page": 63,
+      "col": 16,
+      "role": "title",
+      "text": "而能言其意但夏禮旣不可考證殷"
+    },
+    {
+      "page": 64,
+      "col": 1,
+      "role": "j",
+      "text": "禮雖存又非當世之法惟周禮乃時"
+    },
+    {
+      "page": 64,
+      "col": 2,
+      "role": "j",
+      "text": "王之制今日所用孔子旣不得位則"
+    },
+    {
+      "page": 64,
+      "col": 3,
+      "role": "j",
+      "text": "從周而已"
+    },
+    {
+      "page": 64,
+      "col": 4,
+      "role": "z",
+      "text": "右第二十八章"
+    },
+    {
+      "page": 64,
+      "col": 5,
+      "role": "z",
+      "text": "承上章爲下不倍而言亦人道"
+    },
+    {
+      "page": 64,
+      "col": 6,
+      "role": "z",
+      "text": "也"
+    },
+    {
+      "page": 64,
+      "col": 7,
+      "role": "j",
+      "text": "王天下有三重焉其寡過矣乎"
+    },
+    {
+      "page": 64,
+      "col": 8,
+      "role": "j",
+      "text": "王去聲○吕氏曰三重謂議禮制度"
+    },
+    {
+      "page": 64,
+      "col": 9,
+      "role": "z",
+      "text": "考文惟天子得以行之則國不異政"
+    },
+    {
+      "page": 64,
+      "col": 10,
+      "role": "z",
+      "text": "家不殊俗而人得寡過矣"
+    },
+    {
+      "page": 64,
+      "col": 11,
+      "role": "j",
+      "text": "上焉者雖善無徵無徵不信不信民弗"
+    },
+    {
+      "page": 64,
+      "col": 12,
+      "role": "j",
+      "text": "從下焉者雖善不尊不尊不信不信民"
+    },
+    {
+      "page": 64,
+      "col": 13,
+      "role": "j",
+      "text": "弗從"
+    },
+    {
+      "page": 64,
+      "col": 14,
+      "role": "z",
+      "text": "上焉者謂時王以前如夏商之禮雖"
+    },
+    {
+      "page": 64,
+      "col": 15,
+      "role": "z",
+      "text": "善而皆不可考下焉者謂聖人在下"
+    },
+    {
+      "page": 64,
+      "col": 16,
+      "role": "z",
+      "text": "如孔子雖善於禮而不在尊位也"
+    },
+    {
+      "page": 65,
+      "col": 1,
+      "role": "j",
+      "text": "故君子之道本諸身徵諸庶民考諸三"
+    },
+    {
+      "page": 65,
+      "col": 2,
+      "role": "j",
+      "text": "王而不繆建諸天地而不悖質諸鬼神"
+    },
+    {
+      "page": 65,
+      "col": 3,
+      "role": "j",
+      "text": "而無疑百世以俟聖人而不惑"
+    },
+    {
+      "page": 65,
+      "col": 4,
+      "role": "z",
+      "text": "此君子指王天下者而言其道即議"
+    },
+    {
+      "page": 65,
+      "col": 5,
+      "role": "z",
+      "text": "禮制度考文之事也本諸身有其德"
+    },
+    {
+      "page": 65,
+      "col": 6,
+      "role": "z",
+      "text": "也徵諸庶民驗其所信從也建立也"
+    },
+    {
+      "page": 65,
+      "col": 7,
+      "role": "z",
+      "text": "立於此而參於彼也天地者道也鬼"
+    },
+    {
+      "page": 65,
+      "col": 8,
+      "role": "z",
+      "text": "神者造化之迹也百世以俟聖人而"
+    },
+    {
+      "page": 65,
+      "col": 9,
+      "role": "z",
+      "text": "不惑所謂聖人復起不易吾言者也"
+    },
+    {
+      "page": 65,
+      "col": 10,
+      "role": "j",
+      "text": "質諸鬼神而無疑知天也百世以俟聖"
+    },
+    {
+      "page": 65,
+      "col": 11,
+      "role": "j",
+      "text": "人而不惑知人也"
+    },
+    {
+      "page": 65,
+      "col": 12,
+      "role": "z",
+      "text": "知天知人知其理也"
+    },
+    {
+      "page": 65,
+      "col": 13,
+      "role": "j",
+      "text": "是故君子動而世為天下道行而世為"
+    },
+    {
+      "page": 65,
+      "col": 14,
+      "role": "j",
+      "text": "天下法言而世為天下則遠之則有望"
+    },
+    {
+      "page": 65,
+      "col": 15,
+      "role": "j",
+      "text": "近之則不厭"
+    },
+    {
+      "page": 65,
+      "col": 16,
+      "role": "z",
+      "text": "動兼言行而言道兼法則而言法法"
+    },
+    {
+      "page": 66,
+      "col": 1,
+      "role": "z",
+      "text": "度也則準則也"
+    },
+    {
+      "page": 66,
+      "col": 2,
+      "role": "j",
+      "text": "詩曰在彼無惡在此無射庶幾夙夜以"
+    },
+    {
+      "page": 66,
+      "col": 3,
+      "role": "title",
+      "text": "永終譽君子未有不如此而蚤有譽於"
+    },
+    {
+      "page": 66,
+      "col": 4,
+      "role": "j",
+      "text": "天下者也"
+    },
+    {
+      "page": 66,
+      "col": 5,
+      "role": "z",
+      "text": "惡去聲射音妬詩作斁○詩周頌振"
+    },
+    {
+      "page": 66,
+      "col": 6,
+      "role": "z",
+      "text": "鷺之篇射厭也所謂此者指本諸身"
+    },
+    {
+      "page": 66,
+      "col": 7,
+      "role": "z",
+      "text": "以下六事而言"
+    },
+    {
+      "page": 66,
+      "col": 8,
+      "role": "z",
+      "text": "右第二十九章"
+    },
+    {
+      "page": 66,
+      "col": 9,
+      "role": "z",
+      "text": "承上章居上不驕而言亦人道"
+    },
+    {
+      "page": 66,
+      "col": 10,
+      "role": "z",
+      "text": "也"
+    },
+    {
+      "page": 66,
+      "col": 11,
+      "role": "j",
+      "text": "仲尼祖述堯舜憲章文武上律天時下"
+    },
+    {
+      "page": 66,
+      "col": 12,
+      "role": "j",
+      "text": "襲水土"
+    },
+    {
+      "page": 66,
+      "col": 13,
+      "role": "z",
+      "text": "祖述者遠宗其道憲章者近守其法"
+    },
+    {
+      "page": 66,
+      "col": 14,
+      "role": "z",
+      "text": "律天時者法其自然之運襲水土者"
+    },
+    {
+      "page": 66,
+      "col": 15,
+      "role": "z",
+      "text": "因其一定之理皆兼内外該本末而"
+    },
+    {
+      "page": 66,
+      "col": 16,
+      "role": "z",
+      "text": "言也"
+    },
+    {
+      "page": 67,
+      "col": 1,
+      "role": "j",
+      "text": "辟如天地之無不持載無不覆幬辟如"
+    },
+    {
+      "page": 67,
+      "col": 2,
+      "role": "j",
+      "text": "四時之錯行如日月之代明"
+    },
+    {
+      "page": 67,
+      "col": 3,
+      "role": "z",
+      "text": "辟音譬幬徒報反○錯猶迭也此言"
+    },
+    {
+      "page": 67,
+      "col": 4,
+      "role": "z",
+      "text": "聖人之德"
+    },
+    {
+      "page": 67,
+      "col": 5,
+      "role": "j",
+      "text": "萬物並育而不相害道並行而不相悖"
+    },
+    {
+      "page": 67,
+      "col": 6,
+      "role": "j",
+      "text": "小德川流大德敦化此天地之所以爲"
+    },
+    {
+      "page": 67,
+      "col": 7,
+      "role": "j",
+      "text": "大也"
+    },
+    {
+      "page": 67,
+      "col": 8,
+      "role": "z",
+      "text": "悖猶背也天覆地載萬物並育於其"
+    },
+    {
+      "page": 67,
+      "col": 9,
+      "role": "z",
+      "text": "閒而不相害四時日月錯行代明而"
+    },
+    {
+      "page": 67,
+      "col": 10,
+      "role": "z",
+      "text": "不相悖所以不害不悖者小德之川"
+    },
+    {
+      "page": 67,
+      "col": 11,
+      "role": "z",
+      "text": "流所以並育並行者大德之敦化小"
+    },
+    {
+      "page": 67,
+      "col": 12,
+      "role": "title",
+      "text": "德者全體之分大德者萬殊之本川"
+    },
+    {
+      "page": 67,
+      "col": 13,
+      "role": "title",
+      "text": "流者如川之流脈絡分明而往不息"
+    },
+    {
+      "page": 67,
+      "col": 14,
+      "role": "z",
+      "text": "也敦化者敦厚其化根本盛大而出"
+    },
+    {
+      "page": 67,
+      "col": 15,
+      "role": "z",
+      "text": "無窮也此言天地之道以見上文取"
+    },
+    {
+      "page": 67,
+      "col": 16,
+      "role": "z",
+      "text": "辟之意也"
+    },
+    {
+      "page": 68,
+      "col": 1,
+      "role": "z",
+      "text": "右第三十章"
+    },
+    {
+      "page": 68,
+      "col": 2,
+      "role": "z",
+      "text": "言天道也"
+    },
+    {
+      "page": 68,
+      "col": 3,
+      "role": "j",
+      "text": "唯天下至聖爲能聰明睿知足以有臨"
+    },
+    {
+      "page": 68,
+      "col": 4,
+      "role": "j",
+      "text": "也寬裕溫柔足以有容也發強剛毅足"
+    },
+    {
+      "page": 68,
+      "col": 5,
+      "role": "j",
+      "text": "以有執也齊莊中正足以有敬也文理"
+    },
+    {
+      "page": 68,
+      "col": 6,
+      "role": "j",
+      "text": "密察足以有別也"
+    },
+    {
+      "page": 68,
+      "col": 7,
+      "role": "z",
+      "text": "知去聲齊側皆反別彼列反○聰明"
+    },
+    {
+      "page": 68,
+      "col": 8,
+      "role": "z",
+      "text": "睿知生知之質臨謂居上而臨下也"
+    },
+    {
+      "page": 68,
+      "col": 9,
+      "role": "j",
+      "text": "其下四者乃仁義禮知之德文文章"
+    },
+    {
+      "page": 68,
+      "col": 10,
+      "role": "z",
+      "text": "也理條理也密詳細也察明辨也"
+    },
+    {
+      "page": 68,
+      "col": 11,
+      "role": "j",
+      "text": "溥溥淵泉而時出之"
+    },
+    {
+      "page": 68,
+      "col": 12,
+      "role": "z",
+      "text": "溥溥周徧而廣闊也淵泉靜深而有"
+    },
+    {
+      "page": 68,
+      "col": 13,
+      "role": "z",
+      "text": "本也出發見也言五者之德充積於"
+    },
+    {
+      "page": 68,
+      "col": 14,
+      "role": "z",
+      "text": "中而以時發見於外也"
+    },
+    {
+      "page": 68,
+      "col": 15,
+      "role": "j",
+      "text": "溥溥如天淵泉如淵見而民莫不敬言"
+    },
+    {
+      "page": 68,
+      "col": 16,
+      "role": "j",
+      "text": "而民莫不信行而民莫不說"
+    },
+    {
+      "page": 69,
+      "col": 1,
+      "role": "z",
+      "text": "見音現說音悅。言其充積極其盛"
+    },
+    {
+      "page": 69,
+      "col": 2,
+      "role": "z",
+      "text": "而發見當其可也"
+    },
+    {
+      "page": 69,
+      "col": 3,
+      "role": "j",
+      "text": "是以聲名洋溢乎中國施及蠻貊舟車"
+    },
+    {
+      "page": 69,
+      "col": 4,
+      "role": "title",
+      "text": "所至人力所通天之所覆地之所載日"
+    },
+    {
+      "page": 69,
+      "col": 5,
+      "role": "title",
+      "text": "月所照霜露所隊凡有血氣者莫不尊"
+    },
+    {
+      "page": 69,
+      "col": 6,
+      "role": "j",
+      "text": "親故曰配天"
+    },
+    {
+      "page": 69,
+      "col": 7,
+      "role": "z",
+      "text": "施去聲隊音墜。舟車所至以下蓋"
+    },
+    {
+      "page": 69,
+      "col": 8,
+      "role": "z",
+      "text": "極言之配天言其德之所及廣大如"
+    },
+    {
+      "page": 69,
+      "col": 9,
+      "role": "z",
+      "text": "天也"
+    },
+    {
+      "page": 69,
+      "col": 10,
+      "role": "z",
+      "text": "右第三十一章"
+    },
+    {
+      "page": 69,
+      "col": 11,
+      "role": "z",
+      "text": "承上章而言小德之川流亦天"
+    },
+    {
+      "page": 69,
+      "col": 12,
+      "role": "z",
+      "text": "道也"
+    },
+    {
+      "page": 69,
+      "col": 13,
+      "role": "j",
+      "text": "唯天下至誠爲能經綸天下之大經立"
+    },
+    {
+      "page": 69,
+      "col": 14,
+      "role": "j",
+      "text": "天下之大本知天地之化育夫焉有所"
+    },
+    {
+      "page": 69,
+      "col": 15,
+      "role": "j",
+      "text": "倚"
+    },
+    {
+      "page": 69,
+      "col": 16,
+      "role": "z",
+      "text": "夫音扶焉於虔反。經綸皆治絲之"
+    },
+    {
+      "page": 70,
+      "col": 1,
+      "role": "z",
+      "text": "事經者理其緒而分之綸者比其類"
+    },
+    {
+      "page": 70,
+      "col": 2,
+      "role": "z",
+      "text": "而合之也經常也大經者五品之人"
+    },
+    {
+      "page": 70,
+      "col": 3,
+      "role": "z",
+      "text": "倫大本者所性之全體也惟聖人之"
+    },
+    {
+      "page": 70,
+      "col": 4,
+      "role": "z",
+      "text": "德極誠無妄故於人倫各盡其當然"
+    },
+    {
+      "page": 70,
+      "col": 5,
+      "role": "z",
+      "text": "之實而皆可以爲天下後世法所謂"
+    },
+    {
+      "page": 70,
+      "col": 6,
+      "role": "z",
+      "text": "經綸之也其於所性之全體無一毫"
+    },
+    {
+      "page": 70,
+      "col": 7,
+      "role": "z",
+      "text": "人欲之僞以雜之而天下之道千變"
+    },
+    {
+      "page": 70,
+      "col": 8,
+      "role": "z",
+      "text": "萬化皆由此出所謂立之也其於天"
+    },
+    {
+      "page": 70,
+      "col": 9,
+      "role": "z",
+      "text": "地之化育則亦其極誠無妄者有默"
+    },
+    {
+      "page": 70,
+      "col": 10,
+      "role": "z",
+      "text": "契焉非但聞見之知而已此皆至誠"
+    },
+    {
+      "page": 70,
+      "col": 11,
+      "role": "z",
+      "text": "無妄自然之功用夫豈有所倚著於"
+    },
+    {
+      "page": 70,
+      "col": 12,
+      "role": "z",
+      "text": "物而後能哉"
+    },
+    {
+      "page": 70,
+      "col": 13,
+      "role": "j",
+      "text": "肫肫其仁淵淵其淵浩浩其天"
+    },
+    {
+      "page": 70,
+      "col": 14,
+      "role": "z",
+      "text": "肫之純反○肫肫懇至貌以經綸而"
+    },
+    {
+      "page": 70,
+      "col": 15,
+      "role": "z",
+      "text": "言也淵淵靜深貌以立本而言也浩"
+    },
+    {
+      "page": 70,
+      "col": 16,
+      "role": "title",
+      "text": "浩廣大貌以知化而言也其淵其天"
+    },
+    {
+      "page": 71,
+      "col": 1,
+      "role": "z",
+      "text": "則非特如之而已"
+    },
+    {
+      "page": 71,
+      "col": 2,
+      "role": "j",
+      "text": "苟不固聰明聖知達天德者其孰能知"
+    },
+    {
+      "page": 71,
+      "col": 3,
+      "role": "j",
+      "text": "之"
+    },
+    {
+      "page": 71,
+      "col": 4,
+      "role": "z",
+      "text": "聖知之知去聲○固猶實也鄭氏曰"
+    },
+    {
+      "page": 71,
+      "col": 5,
+      "role": "z",
+      "text": "唯聖人能知聖人也"
+    },
+    {
+      "page": 71,
+      "col": 6,
+      "role": "z",
+      "text": "右第三十二章"
+    },
+    {
+      "page": 71,
+      "col": 7,
+      "role": "z",
+      "text": "承上章而言大德之敦化亦天"
+    },
+    {
+      "page": 71,
+      "col": 8,
+      "role": "z",
+      "text": "道也前章言至聖之德此章言"
+    },
+    {
+      "page": 71,
+      "col": 9,
+      "role": "z",
+      "text": "至誠之道然至誠之道非至聖"
+    },
+    {
+      "page": 71,
+      "col": 10,
+      "role": "z",
+      "text": "不能知至聖之德非至誠不能"
+    },
+    {
+      "page": 71,
+      "col": 11,
+      "role": "z",
+      "text": "爲則亦非二物矣此篇言聖人"
+    },
+    {
+      "page": 71,
+      "col": 12,
+      "role": "z",
+      "text": "天道之極致至此而無以加矣"
+    },
+    {
+      "page": 71,
+      "col": 13,
+      "role": "j",
+      "text": "詩曰衣錦尚絅惡其文之著也故君子"
+    },
+    {
+      "page": 71,
+      "col": 14,
+      "role": "j",
+      "text": "之道闇然而日章小人之道的然而日"
+    },
+    {
+      "page": 71,
+      "col": 15,
+      "role": "j",
+      "text": "亡君子之道淡而不厭簡而文溫而理"
+    },
+    {
+      "page": 71,
+      "col": 16,
+      "role": "j",
+      "text": "知遠之近知風之自知微之顯可與入"
+    },
+    {
+      "page": 72,
+      "col": 1,
+      "role": "j",
+      "text": "德矣"
+    },
+    {
+      "page": 72,
+      "col": 2,
+      "role": "j",
+      "text": "衣去聲絅口迥反惡去聲闇於感反"
+    },
+    {
+      "page": 72,
+      "col": 3,
+      "role": "j",
+      "text": "○前章言聖人之德極其盛矣此復"
+    },
+    {
+      "page": 72,
+      "col": 4,
+      "role": "j",
+      "text": "自下學立心之始言之而下文又推"
+    },
+    {
+      "page": 72,
+      "col": 5,
+      "role": "j",
+      "text": "之以至其極也詩國風衛碩人鄭之"
+    },
+    {
+      "page": 72,
+      "col": 6,
+      "role": "j",
+      "text": "丰皆作衣錦褧衣褧絅同禪衣也尚"
+    },
+    {
+      "page": 72,
+      "col": 7,
+      "role": "j",
+      "text": "加也古之學者爲己故其立心如此"
+    },
+    {
+      "page": 72,
+      "col": 8,
+      "role": "j",
+      "text": "尚絅故闇然衣錦故有日章之實淡"
+    },
+    {
+      "page": 72,
+      "col": 9,
+      "role": "j",
+      "text": "簡温絅之襲於外也不厭而文且理"
+    },
+    {
+      "page": 72,
+      "col": 10,
+      "role": "j",
+      "text": "焉錦之美在中也小人反是則暴於"
+    },
+    {
+      "page": 72,
+      "col": 11,
+      "role": "j",
+      "text": "外而無實以繼之是以的然而日亡"
+    },
+    {
+      "page": 72,
+      "col": 12,
+      "role": "j",
+      "text": "也遠之近見於彼者由於此也風之"
+    },
+    {
+      "page": 72,
+      "col": 13,
+      "role": "j",
+      "text": "自著乎外者本乎內也微之顯有諸"
+    },
+    {
+      "page": 72,
+      "col": 14,
+      "role": "j",
+      "text": "內者形諸外也有爲己之心而又知"
+    },
+    {
+      "page": 72,
+      "col": 15,
+      "role": "j",
+      "text": "此三者則知所謹而可入德矣故下"
+    },
+    {
+      "page": 72,
+      "col": 16,
+      "role": "j",
+      "text": "文引詩言謹獨之事"
+    },
+    {
+      "page": 73,
+      "col": 1,
+      "role": "j",
+      "text": "詩云潛雖伏矣亦孔之昭故君子内省"
+    },
+    {
+      "page": 73,
+      "col": 2,
+      "role": "j",
+      "text": "不疚無惡於志君子之所不可及者其"
+    },
+    {
+      "page": 73,
+      "col": 3,
+      "role": "j",
+      "text": "唯人之所不見乎"
+    },
+    {
+      "page": 73,
+      "col": 4,
+      "role": "j",
+      "text": "惡去聲○詩小雅正月之篇承上文"
+    },
+    {
+      "page": 73,
+      "col": 5,
+      "role": "j",
+      "text": "言莫見乎隱莫顯乎微也疚病也無"
+    },
+    {
+      "page": 73,
+      "col": 6,
+      "role": "j",
+      "text": "惡於志猶言無愧於心此君子謹獨"
+    },
+    {
+      "page": 73,
+      "col": 7,
+      "role": "z",
+      "text": "之事也"
+    },
+    {
+      "page": 73,
+      "col": 8,
+      "role": "j",
+      "text": "詩云相在爾室尚不愧于屋漏故君子"
+    },
+    {
+      "page": 73,
+      "col": 9,
+      "role": "j",
+      "text": "不動而敬不言而信"
+    },
+    {
+      "page": 73,
+      "col": 10,
+      "role": "j",
+      "text": "相去聲○詩大雅抑之篇相視也屋"
+    },
+    {
+      "page": 73,
+      "col": 11,
+      "role": "j",
+      "text": "漏室西北隅也承上文又言君子之"
+    },
+    {
+      "page": 73,
+      "col": 12,
+      "role": "j",
+      "text": "戒謹恐懼無時不然不待言動而後"
+    },
+    {
+      "page": 73,
+      "col": 13,
+      "role": "j",
+      "text": "敬信則其爲己之功益加宻矣故下"
+    },
+    {
+      "page": 73,
+      "col": 14,
+      "role": "z",
+      "text": "文引詩并言其效"
+    },
+    {
+      "page": 73,
+      "col": 15,
+      "role": "j",
+      "text": "詩曰奏假無言時靡有爭是故君子不"
+    },
+    {
+      "page": 73,
+      "col": 16,
+      "role": "j",
+      "text": "賞而民勸不怒而民威於鈇鉞"
+    },
+    {
+      "page": 74,
+      "col": 1,
+      "role": "z",
+      "text": "假格同鈇音夫。詩商頌烈祖之篇"
+    },
+    {
+      "page": 74,
+      "col": 2,
+      "role": "z",
+      "text": "奏進也承上文而遂及其效言進而"
+    },
+    {
+      "page": 74,
+      "col": 3,
+      "role": "z",
+      "text": "感格於神明之際極其誠敬無有言"
+    },
+    {
+      "page": 74,
+      "col": 4,
+      "role": "z",
+      "text": "說而人自化之也威畏也鈇莝斫刀"
+    },
+    {
+      "page": 74,
+      "col": 5,
+      "role": "z",
+      "text": "也鉞斧也"
+    },
+    {
+      "page": 74,
+      "col": 6,
+      "role": "j",
+      "text": "詩曰不顯惟德百辟其刑之是故君子"
+    },
+    {
+      "page": 74,
+      "col": 7,
+      "role": "j",
+      "text": "篤恭而天下平"
+    },
+    {
+      "page": 74,
+      "col": 8,
+      "role": "z",
+      "text": "詩周頌烈文之篇不顯說見二十六"
+    },
+    {
+      "page": 74,
+      "col": 9,
+      "role": "z",
+      "text": "章此借引以爲幽深玄遠之意承上"
+    },
+    {
+      "page": 74,
+      "col": 10,
+      "role": "z",
+      "text": "文言天子有不顯之德而諸侯法之"
+    },
+    {
+      "page": 74,
+      "col": 11,
+      "role": "z",
+      "text": "則其德愈深而效愈遠矣篤厚也篤"
+    },
+    {
+      "page": 74,
+      "col": 12,
+      "role": "z",
+      "text": "恭言不顯其敬也篤恭而天下平乃"
+    },
+    {
+      "page": 74,
+      "col": 13,
+      "role": "z",
+      "text": "聖人至德淵微自然之應中庸之極"
+    },
+    {
+      "page": 74,
+      "col": 14,
+      "role": "z",
+      "text": "功也"
+    },
+    {
+      "page": 74,
+      "col": 15,
+      "role": "j",
+      "text": "詩云予懷明德不大聲以色子曰聲色"
+    },
+    {
+      "page": 74,
+      "col": 16,
+      "role": "j",
+      "text": "之於以化民末也詩曰德輶如毛毛猶"
+    },
+    {
+      "page": 75,
+      "col": 1,
+      "role": "j",
+      "text": "有倫上天之載無聲無臭至矣"
+    },
+    {
+      "page": 75,
+      "col": 2,
+      "role": "z",
+      "text": "輶由酉二音○詩大雅皇矣之篇引"
+    },
+    {
+      "page": 75,
+      "col": 3,
+      "role": "z",
+      "text": "之以明上文所謂不顯之德者正以"
+    },
+    {
+      "page": 75,
+      "col": 4,
+      "role": "z",
+      "text": "其不大聲與色也又引孔子之言以"
+    },
+    {
+      "page": 75,
+      "col": 5,
+      "role": "z",
+      "text": "爲聲色乃化民之末務今但言不大"
+    },
+    {
+      "page": 75,
+      "col": 6,
+      "role": "z",
+      "text": "之而已則猶有聲色者存是未足以"
+    },
+    {
+      "page": 75,
+      "col": 7,
+      "role": "z",
+      "text": "形容不顯之妙不若烝民之詩所言"
+    },
+    {
+      "page": 75,
+      "col": 8,
+      "role": "z",
+      "text": "德輶如毛則庶乎可以形容矣而又"
+    },
+    {
+      "page": 75,
+      "col": 9,
+      "role": "z",
+      "text": "自以爲謂之毛則猶有可比者是亦"
+    },
+    {
+      "page": 75,
+      "col": 10,
+      "role": "z",
+      "text": "未盡其妙不若文王之詩所言上天"
+    },
+    {
+      "page": 75,
+      "col": 11,
+      "role": "title",
+      "text": "之事無聲無臭然後乃爲不顯之至"
+    },
+    {
+      "page": 75,
+      "col": 12,
+      "role": "z",
+      "text": "耳蓋聲臭有氣無形在物最爲微妙"
+    },
+    {
+      "page": 75,
+      "col": 13,
+      "role": "z",
+      "text": "而猶曰無之故唯此可以形容不顯"
+    },
+    {
+      "page": 75,
+      "col": 14,
+      "role": "z",
+      "text": "篤恭之妙非此德之外又別有是三"
+    },
+    {
+      "page": 75,
+      "col": 15,
+      "role": "z",
+      "text": "等然後爲至也"
+    },
+    {
+      "page": 75,
+      "col": 16,
+      "role": "z",
+      "text": "右第三十三章子思因前章極致"
+    },
+    {
+      "page": 76,
+      "col": 1,
+      "role": "z",
+      "text": "之言反求其本復自下學爲己謹"
+    },
+    {
+      "page": 76,
+      "col": 2,
+      "role": "z",
+      "text": "獨之事推而言之以馴致乎篤恭"
+    },
+    {
+      "page": 76,
+      "col": 3,
+      "role": "z",
+      "text": "而天下平之盛又賛其妙至於無"
+    },
+    {
+      "page": 76,
+      "col": 4,
+      "role": "z",
+      "text": "聲無臭而後已焉蓋舉一篇之要"
+    },
+    {
+      "page": 76,
+      "col": 5,
+      "role": "z",
+      "text": "而約言之其反復丁寧示人之意"
+    },
+    {
+      "page": 76,
+      "col": 6,
+      "role": "z",
+      "text": "至深切矣學者其可不盡心乎"
+    },
+    {
+      "page": 76,
+      "col": 8,
+      "role": "j",
+      "text": "中庸章句畢"
+    },
+    {
+      "page": 76,
+      "col": 9,
+      "role": "j",
+      "text": "補音釋"
+    },
+    {
+      "page": 76,
+      "col": 10,
+      "role": "z",
+      "text": "第十三章"
+    },
+    {
+      "page": 76,
+      "col": 11,
+      "role": "z",
+      "text": "言顧行行顧言"
+    },
+    {
+      "page": 76,
+      "col": 12,
+      "role": "z",
+      "text": "釋文行皆下孟反或讀如字"
+    },
+    {
+      "page": 76,
+      "col": 13,
+      "role": "z",
+      "text": "第二十章"
+    },
+    {
+      "page": 76,
+      "col": 14,
+      "role": "z",
+      "text": "注文跆躓也"
+    },
+    {
+      "page": 76,
+      "col": 15,
+      "role": "z",
+      "text": "躓音致與疐通礙不行也"
+    },
+    {
+      "page": 76,
+      "col": 16,
+      "role": "z",
+      "text": "第二十七章"
+    }
+  ],
+  "sections": [
+    {
+      "id": "xu",
+      "name": "序",
+      "from": {
+        "page": 2,
+        "col": 1,
+        "row": 1
+      },
+      "to": {
+        "page": 6,
+        "col": 14,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang1",
+      "name": "首章",
+      "from": {
+        "page": 7,
+        "col": 9,
+        "row": 1
+      },
+      "to": {
+        "page": 12,
+        "col": 1,
+        "row": 3
+      }
+    },
+    {
+      "id": "zhang2",
+      "name": "第二章",
+      "from": {
+        "page": 12,
+        "col": 1,
+        "row": 4
+      },
+      "to": {
+        "page": 13,
+        "col": 8,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang3",
+      "name": "第三章",
+      "from": {
+        "page": 13,
+        "col": 9,
+        "row": 2
+      },
+      "to": {
+        "page": 14,
+        "col": 4,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang4",
+      "name": "第四章",
+      "from": {
+        "page": 14,
+        "col": 4,
+        "row": 13
+      },
+      "to": {
+        "page": 15,
+        "col": 2,
+        "row": 15
+      }
+    },
+    {
+      "id": "zhang5",
+      "name": "第五章",
+      "from": {
+        "page": 15,
+        "col": 3,
+        "row": 2
+      },
+      "to": {
+        "page": 15,
+        "col": 6,
+        "row": 8
+      }
+    },
+    {
+      "id": "zhang6",
+      "name": "第六章",
+      "from": {
+        "page": 15,
+        "col": 6,
+        "row": 9
+      },
+      "to": {
+        "page": 16,
+        "col": 8,
+        "row": 10
+      }
+    },
+    {
+      "id": "zhang7",
+      "name": "第七章",
+      "from": {
+        "page": 16,
+        "col": 8,
+        "row": 11
+      },
+      "to": {
+        "page": 17,
+        "col": 3,
+        "row": 9
+      }
+    },
+    {
+      "id": "zhang8",
+      "name": "第八章",
+      "from": {
+        "page": 17,
+        "col": 3,
+        "row": 10
+      },
+      "to": {
+        "page": 17,
+        "col": 13,
+        "row": 3
+      }
+    },
+    {
+      "id": "zhang9",
+      "name": "第九章",
+      "from": {
+        "page": 17,
+        "col": 13,
+        "row": 4
+      },
+      "to": {
+        "page": 18,
+        "col": 6,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang10",
+      "name": "第十章",
+      "from": {
+        "page": 18,
+        "col": 6,
+        "row": 13
+      },
+      "to": {
+        "page": 20,
+        "col": 5,
+        "row": 6
+      }
+    },
+    {
+      "id": "zhang11",
+      "name": "第十一章",
+      "from": {
+        "page": 20,
+        "col": 5,
+        "row": 7
+      },
+      "to": {
+        "page": 21,
+        "col": 11,
+        "row": 10
+      }
+    },
+    {
+      "id": "zhang12",
+      "name": "第十二章",
+      "from": {
+        "page": 21,
+        "col": 11,
+        "row": 11
+      },
+      "to": {
+        "page": 23,
+        "col": 16,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang13",
+      "name": "第十三章",
+      "from": {
+        "page": 23,
+        "col": 16,
+        "row": 13
+      },
+      "to": {
+        "page": 27,
+        "col": 5,
+        "row": 4
+      }
+    },
+    {
+      "id": "zhang14",
+      "name": "第十四章",
+      "from": {
+        "page": 27,
+        "col": 5,
+        "row": 5
+      },
+      "to": {
+        "page": 28,
+        "col": 13,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang15",
+      "name": "第十五章",
+      "from": {
+        "page": 28,
+        "col": 13,
+        "row": 12
+      },
+      "to": {
+        "page": 29,
+        "col": 13,
+        "row": 6
+      }
+    },
+    {
+      "id": "zhang16",
+      "name": "第十六章",
+      "from": {
+        "page": 29,
+        "col": 13,
+        "row": 7
+      },
+      "to": {
+        "page": 31,
+        "col": 11,
+        "row": 13
+      }
+    },
+    {
+      "id": "zhang17",
+      "name": "第十七章",
+      "from": {
+        "page": 31,
+        "col": 11,
+        "row": 14
+      },
+      "to": {
+        "page": 33,
+        "col": 1,
+        "row": 7
+      }
+    },
+    {
+      "id": "zhang18",
+      "name": "第十八章",
+      "from": {
+        "page": 33,
+        "col": 1,
+        "row": 8
+      },
+      "to": {
+        "page": 35,
+        "col": 2,
+        "row": 8
+      }
+    },
+    {
+      "id": "zhang19",
+      "name": "第十九章",
+      "from": {
+        "page": 35,
+        "col": 2,
+        "row": 9
+      },
+      "to": {
+        "page": 38,
+        "col": 2,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang20",
+      "name": "第二十章",
+      "from": {
+        "page": 38,
+        "col": 2,
+        "row": 12
+      },
+      "to": {
+        "page": 50,
+        "col": 10,
+        "row": 3
+      }
+    },
+    {
+      "id": "zhang21",
+      "name": "第二十一章",
+      "from": {
+        "page": 50,
+        "col": 10,
+        "row": 4
+      },
+      "to": {
+        "page": 52,
+        "col": 1,
+        "row": 7
+      }
+    },
+    {
+      "id": "zhang22",
+      "name": "第二十二章",
+      "from": {
+        "page": 52,
+        "col": 1,
+        "row": 8
+      },
+      "to": {
+        "page": 53,
+        "col": 3,
+        "row": 3
+      }
+    },
+    {
+      "id": "zhang23",
+      "name": "第二十三章",
+      "from": {
+        "page": 53,
+        "col": 3,
+        "row": 4
+      },
+      "to": {
+        "page": 54,
+        "col": 4,
+        "row": 2
+      }
+    },
+    {
+      "id": "zhang24",
+      "name": "第二十四章",
+      "from": {
+        "page": 54,
+        "col": 4,
+        "row": 3
+      },
+      "to": {
+        "page": 54,
+        "col": 16,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang25",
+      "name": "第二十五章",
+      "from": {
+        "page": 54,
+        "col": 16,
+        "row": 12
+      },
+      "to": {
+        "page": 56,
+        "col": 7,
+        "row": 9
+      }
+    },
+    {
+      "id": "zhang26",
+      "name": "第二十六章",
+      "from": {
+        "page": 56,
+        "col": 7,
+        "row": 10
+      },
+      "to": {
+        "page": 59,
+        "col": 15,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang27",
+      "name": "第二十七章",
+      "from": {
+        "page": 59,
+        "col": 15,
+        "row": 13
+      },
+      "to": {
+        "page": 62,
+        "col": 7,
+        "row": 11
+      }
+    },
+    {
+      "id": "zhang28",
+      "name": "第二十八章",
+      "from": {
+        "page": 62,
+        "col": 7,
+        "row": 12
+      },
+      "to": {
+        "page": 63,
+        "col": 16,
+        "row": 8
+      }
+    },
+    {
+      "id": "zhang29",
+      "name": "第二十九章",
+      "from": {
+        "page": 63,
+        "col": 16,
+        "row": 9
+      },
+      "to": {
+        "page": 66,
+        "col": 3,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang30",
+      "name": "第三十章",
+      "from": {
+        "page": 66,
+        "col": 3,
+        "row": 13
+      },
+      "to": {
+        "page": 67,
+        "col": 13,
+        "row": 4
+      }
+    },
+    {
+      "id": "zhang31",
+      "name": "第三十一章",
+      "from": {
+        "page": 67,
+        "col": 13,
+        "row": 5
+      },
+      "to": {
+        "page": 69,
+        "col": 5,
+        "row": 5
+      }
+    },
+    {
+      "id": "zhang32",
+      "name": "第三十二章",
+      "from": {
+        "page": 69,
+        "col": 5,
+        "row": 6
+      },
+      "to": {
+        "page": 70,
+        "col": 16,
+        "row": 12
+      }
+    },
+    {
+      "id": "zhang33",
+      "name": "第三十三章",
+      "from": {
+        "page": 70,
+        "col": 16,
+        "row": 13
+      },
+      "to": {
+        "page": 76,
+        "col": 6,
+        "row": 8
+      }
+    }
+  ],
+  "fixes": []
+}
