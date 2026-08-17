@@ -1,0 +1,12 @@
+# 宋版善刻鈐印：grid 2=豎二格 4=田字格；right/bottom 以大字格 --u 為單位
+seals:
+  - chars: 格物致知
+    grid: 4
+    right: 0.55
+    bottom: 0.3
+    rotate: -1.4
+  - chars: 晦庵
+    grid: 2
+    right: 3.3
+    bottom: 0.45
+    rotate: 1.2
