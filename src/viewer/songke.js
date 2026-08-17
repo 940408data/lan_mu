@@ -154,8 +154,6 @@
     document.documentElement.style.setProperty('--face', 'var(--' + SK.faces[state.face].role + ')');
     document.documentElement.lang = state.simp ? 'zh-Hans' : 'zh-Hant';
 
-    $('mhTitle').textContent = conv(SK.title);
-    $('mhSub').textContent = conv(V.spec);
     $('navToc').textContent = convUi(SK.navLabel || '目錄');
     $('btnZh').textContent = state.simp ? '简体' : '繁体';
     $('btnDu').textContent = convUi(zm.n);
@@ -167,6 +165,7 @@
     [...zsel.options].forEach((o, i) => { o.textContent = convUi(SK.variants[i].name); });
     zsel.value = String(state.variant);
     $('btnMode').textContent = state.single ? '单页阅读' : '滚动阅读';
+    $('btnFocus').textContent = document.fullscreenElement ? '退出专注' : '专注模式';
     $('btnPrev').textContent = '前叶';
     $('btnNext').textContent = '后叶';
     $('lblZoom').textContent = '字号';
@@ -177,6 +176,7 @@
     $('btnDu').setAttribute('aria-pressed', !!(zm.j || zm.z));
     $('btnJie').setAttribute('aria-pressed', state.jie);
     $('btnMode').setAttribute('aria-pressed', state.single);
+    $('btnFocus').setAttribute('aria-pressed', !!document.fullscreenElement);
     document.querySelectorAll('.leafwrap').forEach((el) =>
       el.classList.toggle('on', +el.dataset.l === state.leaf));
   }
@@ -231,6 +231,30 @@
       railTgl.setAttribute('aria-expanded', 'false');
     }
   });
+  /* 专注模式：进入/退出浏览器全屏；fullscreenchange 复同步按钮文案（含 Esc 退出） */
+  $('btnFocus').onclick = () => {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else document.documentElement.requestFullscreen().catch(() => {});
+  };
+  document.addEventListener('fullscreenchange', sync);
+
+  /* 桌面右栏自动隐藏：鼠标离栏片刻后滑出（.off），移入右缘热区（#railEdge）唤回；窄屏抽屉不启用 */
+  const railEdge = $('railEdge');
+  const wide = () => window.matchMedia('(min-width:861px)').matches;
+  let railTimer = null, railHover = false;
+  const railShow = () => {
+    rail.classList.remove('off');
+    if (railTimer) { clearTimeout(railTimer); railTimer = null; }
+  };
+  const railQueueHide = () => {
+    if (!wide()) return;
+    if (railTimer) clearTimeout(railTimer);
+    railTimer = setTimeout(() => { if (!railHover) rail.classList.add('off'); }, 2600);
+  };
+  railEdge.addEventListener('mouseenter', railShow);
+  rail.addEventListener('mouseenter', () => { railHover = true; railShow(); });
+  rail.addEventListener('mouseleave', () => { railHover = false; railQueueHide(); });
+  railQueueHide();
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if ($('dlMenu')) $('dlMenu').classList.remove('open');

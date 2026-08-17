@@ -161,10 +161,6 @@ ${draftCss}
 <body>
 
 <aside class="rail" id="rail">
-  <div class="tiqian">
-    <div class="zhu" id="mhTitle"></div>
-    <p class="ke" id="mhSub"></p>
-  </div>
   <a class="btn nav" id="navToc" href="${navHref}"></a>
 
   <section class="rg">
@@ -174,6 +170,7 @@ ${draftCss}
     </div>
     <span class="lbl folio-now" id="folioNow"></span>
     <button id="btnMode" class="wide" type="button" aria-pressed="false"></button>
+    <button id="btnFocus" class="wide" type="button" aria-pressed="false"></button>
   </section>
 
   <section class="rg">
@@ -187,7 +184,7 @@ ${draftCss}
   <section class="rg">
     <label class="fld"><span class="micro">字面</span><select id="faceSel" aria-label="字面"></select></label>
     <label class="fld"><span class="micro">注式</span><select id="zhuwenSel" aria-label="注文版式"></select></label>
-    <label class="fld fld-zoom"><span class="micro" id="lblZoom"></span><input id="zoom" type="range" min="14" max="36" step="1" value="26"></label>
+    <label class="fld fld-zoom"><span class="micro" id="lblZoom"></span><input id="zoom" type="range" min="14" max="44" step="1" value="26"></label>
   </section>
 
   ${draft ? '' : `<section class="rg rg-dl">
@@ -200,6 +197,7 @@ ${draftCss}
     </div>
   </section>`}
 </aside>
+<div id="railEdge" aria-hidden="true"></div>
 
 <div id="book" class="book ruled" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
 ${draftCard}
