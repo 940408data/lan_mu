@@ -47,7 +47,15 @@ body{
 }
 .rail:hover,.rail:focus-within{opacity:1}
 
-/* 目录（栏顶） */
+/* 题签：固定竖式签条「此弄宜緩」，仿线装书封面题签，栏内唯一竖排元素（装饰，不随书名/繁简变） */
+.tiqian{display:flex;justify-content:center;padding:.2rem 0 .95rem}
+.tiqian .zhu{
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:1.5rem;
+  letter-spacing:.36em;color:#e9ddc1;padding:.75rem .42rem;
+  border:1px solid rgba(216,198,160,.32);background:rgba(216,198,160,.05);
+}
+
+/* 目录（栏顶，题签之下） */
 .rail .nav{align-self:stretch;text-align:center}
 
 /* 分组：组间一道淡墨细线，仿版框余韵 */
@@ -113,13 +121,8 @@ body{
   padding:.95rem .3rem;border-radius:2px 0 0 2px;
 }
 
-/* 桌面右栏自动隐藏：右缘热区（极淡提示），鼠标移入唤回；.off 时栏滑出右缘 */
-#railEdge{display:none}
+/* 桌面右栏自动隐藏：.off 时栏滑出右缘（唤起/收起逻辑见 songke.js） */
 @media (min-width:861px){
-  #railEdge{
-    display:block;position:fixed;right:0;top:0;bottom:0;width:22px;z-index:19;
-    background:linear-gradient(to left,rgba(216,198,160,.07),transparent 75%);
-  }
   .rail.off{transform:translateX(102%);opacity:0;pointer-events:none}
 }
 

@@ -161,6 +161,7 @@ ${draftCss}
 <body>
 
 <aside class="rail" id="rail">
+  <div class="tiqian"><span class="zhu">此弄宜緩</span></div>
   <a class="btn nav" id="navToc" href="${navHref}"></a>
 
   <section class="rg">
@@ -197,7 +198,6 @@ ${draftCss}
     </div>
   </section>`}
 </aside>
-<div id="railEdge" aria-hidden="true"></div>
 
 <div id="book" class="book ruled" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
 ${draftCard}

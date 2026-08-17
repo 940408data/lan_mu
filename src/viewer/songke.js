@@ -238,23 +238,30 @@
   };
   document.addEventListener('fullscreenchange', sync);
 
-  /* 桌面右栏自动隐藏：鼠标离栏片刻后滑出（.off），移入右缘热区（#railEdge）唤回；窄屏抽屉不启用 */
-  const railEdge = $('railEdge');
+  /* 桌面右栏唤起/收起（窄屏抽屉由 #railToggle 主导，不启用此逻辑）：
+     鼠标离开书叶 0.5s → 唤出；无操作约 1.5s → 自动收起；点击书叶 → 立即收起。
+     「书叶」按真实页面 .leaf 判定（非整宽 #book 容器），页边空白即算离书。 */
   const wide = () => window.matchMedia('(min-width:861px)').matches;
-  let railTimer = null, railHover = false;
-  const railShow = () => {
-    rail.classList.remove('off');
-    if (railTimer) { clearTimeout(railTimer); railTimer = null; }
-  };
-  const railQueueHide = () => {
+  let railShowT = null, railHideT = null;
+  const railShow = () => rail.classList.remove('off');
+  const railHide = () => rail.classList.add('off');
+  const clearRailShow = () => { if (railShowT) { clearTimeout(railShowT); railShowT = null; } };
+  const armRailHide = () => { if (railHideT) clearTimeout(railHideT); railHideT = setTimeout(railHide, 1500); };
+  document.addEventListener('mousemove', (e) => {
     if (!wide()) return;
-    if (railTimer) clearTimeout(railTimer);
-    railTimer = setTimeout(() => { if (!railHover) rail.classList.add('off'); }, 2600);
-  };
-  railEdge.addEventListener('mouseenter', railShow);
-  rail.addEventListener('mouseenter', () => { railHover = true; railShow(); });
-  rail.addEventListener('mouseleave', () => { railHover = false; railQueueHide(); });
-  railQueueHide();
+    armRailHide();                                    // 有鼠标活动即重排 1.5s 收起
+    if (e.target.closest('.leaf')) clearRailShow();   // 在书叶上：不唤出
+    else if (rail.classList.contains('off') && !railShowT) {
+      railShowT = setTimeout(() => { railShow(); railShowT = null; }, 500);  // 离书叶 0.5s 唤出
+    }
+  });
+  document.addEventListener('click', (e) => {         // 点击书叶 → 立即收起
+    if (wide() && e.target.closest('.leaf')) railHide();
+  });
+  if (wide()) armRailHide();                        // 载入后无操作，1.5s 自动收起
+  window.matchMedia('(min-width:861px)').addEventListener('change', (e) => {
+    if (!e.matches) rail.classList.remove('off');   // 落入窄屏即清掉隐藏态，交还抽屉主导
+  });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if ($('dlMenu')) $('dlMenu').classList.remove('open');
