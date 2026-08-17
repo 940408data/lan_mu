@@ -51,6 +51,10 @@ function editOps(a, b) {
 }
 
 // ── 基础层装载：grid-transcribe.json → 扁平格序列（col 升序、列内 row 升序）──
+// gridStr 为归一串（供对齐），strIdx[k] = gridStr 第 k 字对应的 flat 格下标。
+// ○ 等符号格不进 gridStr，但保留在 flat 里（索引映射不断裂，坐标永远可回溯）。
+const STRIP_ONE = new RegExp(STRIP.source); // 无 g 标志：单字 test 安全
+const stripCh = (ch) => STRIP_ONE.test(ch);
 function loadBaseGrid(tr) {
   const pages = (tr.pages || []).map(pg => ({
     n: pg.n,
@@ -60,8 +64,14 @@ function loadBaseGrid(tr) {
       .map(c => ({ page: pg.n, col: c.col, row: c.row, char: [...c.char.trim()][0], start: c.start || null })),
   }));
   const flat = pages.flatMap(p => p.cells);
-  const gridStr = flat.map(c => canonCh(c.char)).join('').replace(new RegExp(STRIP.source, 'g'), '');
-  return { tr, pages, flat, gridStr };
+  let gridStr = '';
+  const strIdx = [];
+  flat.forEach((c, i) => {
+    if (stripCh(c.char)) return;
+    gridStr += canonCh(c.char);
+    strIdx.push(i);
+  });
+  return { tr, pages, flat, gridStr, strIdx, cellOf: (k) => flat[strIdx[k]] };
 }
 
 // ── G2a：旧OCR（shanben-v2 页文字流）→ 逐格（页级） ──
@@ -72,18 +82,24 @@ function alignOldOcr(base, v2) {
   for (const pg of base.pages) {
     const cells = pg.cells;
     const old = v2Map.get(pg.n);
-    const bCanon = cells.map(c => canonCh(c.char)).join('').replace(new RegExp(STRIP.source, 'g'), '');
+    // 页内归一串与 cells 的索引映射（○ 等符号格不进串）
+    let bCanon = '';
+    const bIdx = [];
+    cells.forEach((c, i) => {
+      if (stripCh(c.char)) return;
+      bCanon += canonCh(c.char);
+      bIdx.push(i);
+    });
     if (!old) { r.missing.push({ page: pg.n, after: cells[0] ? { col: cells[0].col, row: cells[0].row } : null, text: '(shanben-v2 缺页)', whole: true }); cellOff += cells.length; continue; }
     const aCanon = canon(old);
     // 双向索引：aCanon[k] ↔ old 原字序（canon 过滤后需重放原字）
     const aOrig = [...old.replace(STRIP, '')];
     if (aOrig.length !== aCanon.length) throw new Error(`p${pg.n} canon 长度不一致（内部错误）`);
     const ops = editOps(aCanon, bCanon);
-    let bPtr = 0; // ops 内 bi 相对页内 0 起
     const runs = { insStart: -1, insTxt: '' };
     const flushIns = (atBi) => {
       if (runs.insStart >= 0) {
-        const after = atBi > 0 ? cells[atBi - 1] : null;
+        const after = atBi > 0 ? cells[bIdx[atBi - 1]] : null;
         r.missing.push({ page: pg.n, after: after ? { col: after.col, row: after.row } : null, text: runs.insTxt });
         runs.insStart = -1; runs.insTxt = '';
       }
@@ -92,7 +108,7 @@ function alignOldOcr(base, v2) {
       if (op.t === '=') { flushIns(op.bi); r.agree++; }
       else if (op.t === 'sub') {
         flushIns(op.bi);
-        const cell = cells[op.bi];
+        const cell = cells[bIdx[op.bi]];
         r.sub.push({ page: pg.n, col: cell.col, row: cell.row, grid: cell.char, old: aOrig[op.ai] });
       } else if (op.t === 'ins') {
         if (runs.insStart < 0) { runs.insStart = op.bi; runs.insTxt = ''; }
@@ -195,7 +211,7 @@ function alignModern(base, modernRaw, ctx) {
     let runStart = -1, runTxt = '';
     const flush = (atBi) => {
       if (runStart >= 0) {
-        const cellBefore = atBi > 0 ? base.flat[s.b0 + atBi - 1] : (s.b0 > 0 ? base.flat[s.b0 - 1] : null);
+        const cellBefore = atBi > 0 ? base.cellOf(s.b0 + atBi - 1) : (s.b0 > 0 ? base.cellOf(s.b0 - 1) : null);
         r.missing.push({ page: cellBefore ? cellBefore.page : null, after: cellBefore ? { col: cellBefore.col, row: cellBefore.row } : null, text: runTxt });
         runStart = -1; runTxt = '';
       }
@@ -204,14 +220,14 @@ function alignModern(base, modernRaw, ctx) {
       if (op.t === '=') { flush(op.bi); r.agree++; }
       else if (op.t === 'sub') {
         flush(op.bi);
-        const cell = base.flat[s.b0 + op.bi];
+        const cell = base.cellOf(s.b0 + op.bi);
         r.sub.push({ page: cell.page, col: cell.col, row: cell.row, grid: cell.char, modern: a[op.ai] });
       } else if (op.t === 'ins') {
         if (runStart < 0) { runStart = op.bi; runTxt = ''; }
         runTxt += a[op.ai];
       } else {
         flush(op.bi);
-        const cell = base.flat[s.b0 + op.bi];
+        const cell = base.cellOf(s.b0 + op.bi);
         r.extra.push({ page: cell.page, col: cell.col, row: cell.row, grid: cell.char });
       }
     }
@@ -222,10 +238,10 @@ function alignModern(base, modernRaw, ctx) {
 
 // ── G3：标签（列级 j/z + 章题 title + sections）──
 function labelGrid(base, modernAligned) {
-  // 1) 章题格坐标：格串中的章题锚 → flat 索引区间
+  // 1) 章题格坐标：格串中的章题锚 → flat 索引区间（经 strIdx 映射）
   const chapterCells = [];
   for (const m of base.gridStr.matchAll(CHAPTER_RE)) {
-    const from = base.flat[m.index], to = base.flat[m.index + m[0].length - 1];
+    const from = base.cellOf(m.index), to = base.cellOf(m.index + m[0].length - 1);
     chapterCells.push({ text: m[0], raw: m[0], toIdx: m.index + m[0].length - 1, from: { page: from.page, col: from.col, row: from.row }, to: { page: to.page, col: to.col, row: to.row } });
   }
   // 2) 列级 j/z（复用 colsOfPage：start 頂格=j）
@@ -254,7 +270,8 @@ function labelGrid(base, modernAligned) {
   //    中庸：[xu, zhang1:首章, zhang2:第二章..zhang33:第三十三章]
   const sections = [];
   const endAt = (idx) => {
-    const c = base.flat[Math.max(0, Math.min(base.flat.length - 1, idx))];
+    const k = Math.max(0, Math.min(base.gridStr.length - 1, idx));
+    const c = base.cellOf(k);
     return { page: c.page, col: c.col, row: c.row };
   };
   let zhongyongMode = chapterCells.some(ch => /右第.+章/.test(ch.text));

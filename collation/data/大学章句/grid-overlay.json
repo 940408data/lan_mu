@@ -54,15 +54,15 @@
         {
           "page": 7,
           "col": 9,
-          "row": 8,
-          "grid": "之",
+          "row": 9,
+          "grid": "汙",
           "old": "污"
         },
         {
           "page": 11,
-          "col": 15,
-          "row": 14,
-          "grid": "誤",
+          "col": 16,
+          "row": 4,
+          "grid": "沒",
           "old": "没"
         },
         {
@@ -75,8 +75,8 @@
         {
           "page": 14,
           "col": 16,
-          "row": 9,
-          "grid": "鑢",
+          "row": 10,
+          "grid": "鐋",
           "old": "錫"
         },
         {
@@ -103,8 +103,8 @@
         {
           "page": 28,
           "col": 16,
-          "row": 10,
-          "grid": "不",
+          "row": 11,
+          "grid": "愼",
           "old": "慎"
         },
         {
@@ -144,16 +144,16 @@
         },
         {
           "page": 32,
-          "col": 13,
-          "row": 12,
-          "grid": "人",
+          "col": 14,
+          "row": 2,
+          "grid": "迸",
           "old": "逆"
         },
         {
           "page": 33,
-          "col": 9,
-          "row": 6,
-          "grid": "身",
+          "col": 10,
+          "row": 2,
+          "grid": "菑",
           "old": "蓄"
         },
         {
@@ -268,296 +268,296 @@
         {
           "page": 7,
           "col": 9,
-          "row": 8,
-          "grid": "之",
+          "row": 9,
+          "grid": "汙",
           "modern": "污"
         },
         {
           "page": 7,
           "col": 11,
-          "row": 11,
-          "grid": "當",
+          "row": 12,
+          "grid": "至",
           "modern": "止"
         },
         {
           "page": 10,
           "col": 3,
-          "row": 10,
-          "grid": "上",
+          "row": 14,
+          "grid": "脩",
           "modern": "修"
-        },
-        {
-          "page": 11,
-          "col": 15,
-          "row": 10,
-          "grid": "於",
-          "modern": "没"
         },
         {
           "page": 11,
           "col": 16,
           "row": 4,
           "grid": "沒",
+          "modern": "没"
+        },
+        {
+          "page": 12,
+          "col": 1,
+          "row": 1,
+          "grid": "湯",
           "modern": "物"
         },
         {
           "page": 12,
           "col": 5,
-          "row": 8,
-          "grid": "以",
+          "row": 14,
+          "grid": "汙",
           "modern": "污"
         },
         {
           "page": 12,
-          "col": 6,
-          "row": 11,
-          "grid": "而",
+          "col": 7,
+          "row": 3,
+          "grid": "曰",
           "modern": "日"
         },
         {
-          "page": 12,
-          "col": 16,
-          "row": 10,
-          "grid": "至",
+          "page": 13,
+          "col": 1,
+          "row": 5,
+          "grid": "二",
           "modern": "一"
         },
         {
           "page": 13,
-          "col": 6,
-          "row": 9,
-          "grid": "如",
+          "col": 7,
+          "row": 5,
+          "grid": "綿",
           "modern": "緜"
         },
         {
           "page": 13,
           "col": 7,
-          "row": 3,
-          "grid": "詩",
+          "row": 10,
+          "grid": "綿",
           "modern": "緜"
         },
         {
           "page": 14,
-          "col": 15,
-          "row": 15,
-          "grid": "物",
+          "col": 16,
+          "row": 10,
+          "grid": "鐋",
           "modern": "錫"
         },
         {
           "page": 15,
           "col": 13,
-          "row": 5,
-          "grid": "樂",
+          "row": 14,
+          "grid": "沒",
           "modern": "没"
         },
         {
           "page": 16,
-          "col": 4,
-          "row": 8,
-          "grid": "愈",
+          "col": 5,
+          "row": 4,
+          "grid": "嘆",
           "modern": "歎"
         },
         {
           "page": 17,
-          "col": 7,
-          "row": 8,
-          "grid": "蓋",
+          "col": 8,
+          "row": 5,
+          "grid": "云",
           "modern": "亡"
         },
         {
           "page": 18,
           "col": 8,
-          "row": 3,
-          "grid": "色",
+          "row": 13,
+          "grid": "愼",
           "modern": "慎"
         },
         {
           "page": 21,
-          "col": 11,
-          "row": 3,
-          "grid": "子",
+          "col": 12,
+          "row": 2,
+          "grid": "懥",
           "modern": "憶"
         },
         {
           "page": 24,
-          "col": 13,
-          "row": 3,
-          "grid": "戾",
+          "col": 15,
+          "row": 2,
+          "grid": "僨",
           "modern": "債"
         },
         {
           "page": 24,
-          "col": 14,
-          "row": 2,
-          "grid": "事",
+          "col": 16,
+          "row": 3,
+          "grid": "僨",
           "modern": "債"
         },
         {
           "page": 25,
-          "col": 13,
-          "row": 9,
-          "grid": "蓁",
+          "col": 15,
+          "row": 2,
+          "grid": "夭",
           "modern": "天"
         },
         {
           "page": 26,
-          "col": 6,
-          "row": 6,
-          "grid": "忒",
+          "col": 8,
+          "row": 5,
+          "grid": "鳴",
           "modern": "鳲"
         },
         {
           "page": 28,
-          "col": 15,
-          "row": 1,
-          "grid": "詩",
+          "col": 16,
+          "row": 11,
+          "grid": "愼",
           "modern": "慎"
         },
         {
-          "page": 29,
-          "col": 15,
+          "page": 30,
+          "col": 1,
+          "row": 6,
+          "grid": "愼",
+          "modern": "慎"
+        },
+        {
+          "page": 30,
+          "col": 8,
           "row": 5,
-          "grid": "存",
-          "modern": "慎"
-        },
-        {
-          "page": 30,
-          "col": 5,
-          "row": 2,
-          "grid": "國",
+          "grid": "爭",
           "modern": "争"
         },
         {
           "page": 30,
-          "col": 6,
-          "row": 7,
-          "grid": "末",
+          "col": 9,
+          "row": 14,
+          "grid": "爭",
           "modern": "争"
         },
         {
           "page": 30,
-          "col": 6,
-          "row": 8,
-          "grid": "也",
+          "col": 9,
+          "row": 15,
+          "grid": "闘",
           "modern": "鬭"
         },
         {
           "page": 30,
-          "col": 10,
-          "row": 7,
-          "grid": "以",
-          "modern": "争"
-        },
-        {
-          "page": 30,
-          "col": 11,
-          "row": 15,
-          "grid": "則",
+          "col": 12,
+          "row": 6,
+          "grid": "爭",
           "modern": "争"
         },
         {
           "page": 30,
           "col": 14,
-          "row": 3,
-          "grid": "本",
+          "row": 9,
+          "grid": "爭",
+          "modern": "争"
+        },
+        {
+          "page": 30,
+          "col": 16,
+          "row": 6,
+          "grid": "岀",
           "modern": "出"
         },
         {
           "page": 32,
-          "col": 3,
-          "row": 15,
-          "grid": "其",
+          "col": 5,
+          "row": 13,
+          "grid": "人",
           "modern": "之"
         },
         {
           "page": 32,
-          "col": 4,
-          "row": 1,
-          "grid": "口",
+          "col": 5,
+          "row": 14,
+          "grid": "之",
           "modern": "人"
         },
         {
           "page": 32,
-          "col": 6,
-          "row": 9,
-          "grid": "寔",
-          "modern": "媚"
-        },
-        {
-          "page": 32,
           "col": 8,
-          "row": 10,
-          "grid": "丁",
+          "row": 13,
+          "grid": "媢",
           "modern": "媚"
         },
         {
           "page": 32,
-          "col": 12,
-          "row": 14,
-          "grid": "中",
+          "col": 10,
+          "row": 11,
+          "grid": "媢",
+          "modern": "媚"
+        },
+        {
+          "page": 32,
+          "col": 15,
+          "row": 4,
+          "grid": "媢",
           "modern": "娼"
         },
         {
           "page": 35,
-          "col": 9,
-          "row": 7,
-          "grid": "乘",
+          "col": 11,
+          "row": 10,
+          "grid": "盗",
           "modern": "盜"
         }
       ],
       "missing": [
         {
-          "page": 17,
+          "page": 18,
           "after": {
-            "col": 16,
-            "row": 11
+            "col": 1,
+            "row": 8
           },
           "text": "其"
         },
         {
           "page": 20,
           "after": {
-            "col": 4,
-            "row": 4
+            "col": 5,
+            "row": 3
           },
           "text": "其意"
         },
         {
           "page": 21,
           "after": {
-            "col": 1,
-            "row": 5
+            "col": 2,
+            "row": 6
           },
           "text": "銷他本作消亦通"
         },
         {
           "page": 25,
           "after": {
-            "col": 2,
-            "row": 8
+            "col": 3,
+            "row": 13
           },
           "text": "諸人無諸已而后非"
         },
         {
           "page": 28,
           "after": {
-            "col": 7,
+            "col": 9,
             "row": 14
           },
           "text": "大學"
         },
         {
-          "page": 29,
+          "page": 30,
           "after": {
-            "col": 15,
-            "row": 10
+            "col": 1,
+            "row": 11
           },
           "text": "有人"
         },
         {
           "page": 36,
           "after": {
-            "col": 13,
-            "row": 8
+            "col": 16,
+            "row": 7
           },
           "text": "凡傳十章前四章統論綱領指趣後六章細論條目功夫其第五章乃明善之要第六章乃誠身之本在初學尤為當務之急讀者不可以其近而忽之也大學"
         }
@@ -816,12 +816,6 @@
           "grid": "句"
         },
         {
-          "page": 7,
-          "col": 16,
-          "row": 11,
-          "grid": "得"
-        },
-        {
           "page": 8,
           "col": 1,
           "row": 2,
@@ -840,16 +834,22 @@
           "grid": "後"
         },
         {
-          "page": 20,
-          "col": 6,
-          "row": 4,
-          "grid": "德"
+          "page": 8,
+          "col": 1,
+          "row": 5,
+          "grid": "同"
         },
         {
           "page": 20,
-          "col": 6,
-          "row": 5,
-          "grid": "潤"
+          "col": 7,
+          "row": 1,
+          "grid": "其"
+        },
+        {
+          "page": 20,
+          "col": 7,
+          "row": 2,
+          "grid": "意"
         }
       ],
       "preclean": [
@@ -1701,13 +1701,13 @@
     {
       "page": 10,
       "col": 8,
-      "role": "title",
+      "role": "z",
       "text": "文兩節之意"
     },
     {
       "page": 10,
       "col": 9,
-      "role": "z",
+      "role": "title",
       "text": "右經一章蓋孔子之言而曾子述"
     },
     {
@@ -1827,13 +1827,13 @@
     {
       "page": 11,
       "col": 13,
-      "role": "title",
+      "role": "z",
       "text": "結所引書皆言自明己德之意"
     },
     {
       "page": 11,
       "col": 14,
-      "role": "z",
+      "role": "title",
       "text": "右傳之首章釋明明德"
     },
     {
@@ -1941,13 +1941,13 @@
     {
       "page": 12,
       "col": 16,
-      "role": "title",
+      "role": "z",
       "text": "自新新民皆欲止於至善也"
     },
     {
       "page": 13,
       "col": 1,
-      "role": "z",
+      "role": "title",
       "text": "右傳之二章釋新民"
     },
     {
@@ -2259,13 +2259,13 @@
     {
       "page": 16,
       "col": 5,
-      "role": "title",
+      "role": "z",
       "text": "節咏嘆淫泆其味深長當熟玩之"
     },
     {
       "page": 16,
       "col": 6,
-      "role": "z",
+      "role": "title",
       "text": "右傳之三章釋止於至善"
     },
     {
@@ -2319,7 +2319,7 @@
     {
       "page": 16,
       "col": 15,
-      "role": "title",
+      "role": "j",
       "text": "自無也觀於此言可以知本末之先"
     },
     {
@@ -2331,7 +2331,7 @@
     {
       "page": 17,
       "col": 1,
-      "role": "z",
+      "role": "title",
       "text": "右傳之四章釋本末"
     },
     {
@@ -2361,13 +2361,13 @@
     {
       "page": 17,
       "col": 6,
-      "role": "title",
+      "role": "z",
       "text": "此句之上別有闕文此特其結語耳"
     },
     {
       "page": 17,
       "col": 7,
-      "role": "z",
+      "role": "title",
       "text": "右傳之五章蓋釋格物致知之義"
     },
     {
@@ -2679,7 +2679,7 @@
     {
       "page": 20,
       "col": 11,
-      "role": "title",
+      "role": "z",
       "text": "然也蓋善之實於中而形於外者如"
     },
     {
@@ -2691,7 +2691,7 @@
     {
       "page": 20,
       "col": 13,
-      "role": "z",
+      "role": "title",
       "text": "右傳之六章釋誠意"
     },
     {
@@ -2829,7 +2829,7 @@
     {
       "page": 22,
       "col": 4,
-      "role": "title",
+      "role": "z",
       "text": "存而身無不脩也"
     },
     {
@@ -2841,7 +2841,7 @@
     {
       "page": 22,
       "col": 6,
-      "role": "z",
+      "role": "title",
       "text": "右傳之七章釋正心脩身"
     },
     {
@@ -2967,7 +2967,7 @@
     {
       "page": 23,
       "col": 11,
-      "role": "title",
+      "role": "z",
       "text": "爲害而家之所以不齊也"
     },
     {
@@ -2979,7 +2979,7 @@
     {
       "page": 23,
       "col": 13,
-      "role": "z",
+      "role": "title",
       "text": "右傳之八章釋脩身齊家"
     },
     {
@@ -3249,7 +3249,7 @@
     {
       "page": 26,
       "col": 10,
-      "role": "title",
+      "role": "z",
       "text": "此三引詩皆以咏歎上文之事而又"
     },
     {
@@ -3261,7 +3261,7 @@
     {
       "page": 26,
       "col": 12,
-      "role": "z",
+      "role": "title",
       "text": "右傳之九章釋齊家治國"
     },
     {
@@ -4203,7 +4203,7 @@
     {
       "page": 36,
       "col": 9,
-      "role": "title",
+      "role": "z",
       "text": "文誤字○自由也言由小人導之也"
     },
     {
@@ -4221,7 +4221,7 @@
     {
       "page": 36,
       "col": 12,
-      "role": "z",
+      "role": "title",
       "text": "右傳之十章釋治國平天下"
     },
     {
@@ -4274,7 +4274,7 @@
       },
       "to": {
         "page": 10,
-        "col": 8,
+        "col": 9,
         "row": 6
       }
     },
@@ -4284,12 +4284,12 @@
       "from": {
         "page": 10,
         "col": 9,
-        "row": 3
+        "row": 7
       },
       "to": {
         "page": 11,
-        "col": 13,
-        "row": 12
+        "col": 14,
+        "row": 7
       }
     },
     {
@@ -4297,27 +4297,27 @@
       "name": "傳之二章",
       "from": {
         "page": 11,
-        "col": 13,
-        "row": 13
+        "col": 14,
+        "row": 8
       },
       "to": {
-        "page": 12,
-        "col": 16,
-        "row": 11
+        "page": 13,
+        "col": 1,
+        "row": 6
       }
     },
     {
       "id": "zhuan3",
       "name": "傳之三章",
       "from": {
-        "page": 12,
-        "col": 16,
-        "row": 12
+        "page": 13,
+        "col": 1,
+        "row": 7
       },
       "to": {
         "page": 16,
-        "col": 5,
-        "row": 9
+        "col": 6,
+        "row": 7
       }
     },
     {
@@ -4325,27 +4325,27 @@
       "name": "傳之四章",
       "from": {
         "page": 16,
-        "col": 5,
-        "row": 10
+        "col": 6,
+        "row": 8
       },
       "to": {
-        "page": 16,
-        "col": 15,
-        "row": 11
+        "page": 17,
+        "col": 1,
+        "row": 6
       }
     },
     {
       "id": "zhuan5",
       "name": "傳之五章",
       "from": {
-        "page": 16,
-        "col": 15,
-        "row": 12
+        "page": 17,
+        "col": 1,
+        "row": 7
       },
       "to": {
         "page": 17,
-        "col": 6,
-        "row": 10
+        "col": 7,
+        "row": 7
       }
     },
     {
@@ -4353,13 +4353,13 @@
       "name": "傳之六章",
       "from": {
         "page": 17,
-        "col": 6,
-        "row": 11
+        "col": 7,
+        "row": 8
       },
       "to": {
         "page": 20,
-        "col": 11,
-        "row": 15
+        "col": 13,
+        "row": 7
       }
     },
     {
@@ -4367,13 +4367,13 @@
       "name": "傳之七章",
       "from": {
         "page": 20,
-        "col": 12,
-        "row": 2
+        "col": 13,
+        "row": 8
       },
       "to": {
         "page": 22,
-        "col": 4,
-        "row": 7
+        "col": 6,
+        "row": 6
       }
     },
     {
@@ -4381,13 +4381,13 @@
       "name": "傳之八章",
       "from": {
         "page": 22,
-        "col": 4,
-        "row": 8
+        "col": 6,
+        "row": 7
       },
       "to": {
         "page": 23,
-        "col": 11,
-        "row": 10
+        "col": 13,
+        "row": 6
       }
     },
     {
@@ -4395,13 +4395,13 @@
       "name": "傳之九章",
       "from": {
         "page": 23,
-        "col": 11,
-        "row": 11
+        "col": 13,
+        "row": 7
       },
       "to": {
         "page": 26,
-        "col": 10,
-        "row": 10
+        "col": 12,
+        "row": 7
       }
     },
     {
@@ -4409,13 +4409,13 @@
       "name": "傳之十章",
       "from": {
         "page": 26,
-        "col": 10,
-        "row": 11
+        "col": 12,
+        "row": 8
       },
       "to": {
         "page": 36,
-        "col": 13,
-        "row": 8
+        "col": 16,
+        "row": 7
       }
     }
   ],
