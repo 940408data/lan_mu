@@ -194,4 +194,4 @@ async function adjudicate(workId, opts = {}) {
   return { ...D, verdicts, verdictSummary: summary };
 }
 
-module.exports = { adjudicate, aggregate, mockOpinion, migrateVerdicts, OFFICERS, OFFICER_NAME, GRADE_COEF };
+module.exports = { adjudicate, aggregate, mockOpinion, migrateVerdicts, officerOpinion, OFFICERS, OFFICER_NAME, GRADE_COEF };

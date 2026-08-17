@@ -109,13 +109,17 @@ function alignOldOcr(base, v2) {
       else if (op.t === 'sub') {
         flushIns(op.bi);
         const cell = cells[bIdx[op.bi]];
-        r.sub.push({ page: pg.n, col: cell.col, row: cell.row, grid: cell.char, old: aOrig[op.ai] });
+        r.sub.push({
+          page: pg.n, col: cell.col, row: cell.row, grid: cell.char, old: aOrig[op.ai],
+          ctxSb: bCanon.slice(Math.max(0, op.bi - 10), op.bi) + '【' + cell.char + '】' + bCanon.slice(op.bi + 1, op.bi + 11),
+          ctxOld: aCanon.slice(Math.max(0, op.ai - 10), op.ai) + '【' + aOrig[op.ai] + '】' + aCanon.slice(op.ai + 1, op.ai + 11),
+        });
       } else if (op.t === 'ins') {
         if (runs.insStart < 0) { runs.insStart = op.bi; runs.insTxt = ''; }
         runs.insTxt += aOrig[op.ai];
       } else { // del：格有旧无
         flushIns(op.bi);
-        const cell = cells[op.bi];
+        const cell = cells[bIdx[op.bi]];
         r.extra.push({ page: pg.n, col: cell.col, row: cell.row, grid: cell.char });
       }
     }
@@ -224,7 +228,11 @@ function alignModern(base, modernRaw, ctx) {
       else if (op.t === 'sub') {
         flush(op.bi);
         const cell = base.cellOf(s.b0 + op.bi);
-        r.sub.push({ page: cell.page, col: cell.col, row: cell.row, grid: cell.char, modern: a[op.ai] });
+        r.sub.push({
+          page: cell.page, col: cell.col, row: cell.row, grid: cell.char, modern: a[op.ai],
+          ctxSb: b.slice(Math.max(0, op.bi - 10), op.bi) + '【' + cell.char + '】' + b.slice(op.bi + 1, op.bi + 11),
+          ctxXd: a.slice(Math.max(0, op.ai - 10), op.ai) + '【' + a[op.ai] + '】' + a.slice(op.ai + 1, op.ai + 11),
+        });
       } else if (op.t === 'ins') {
         if (runStart < 0) { runStart = op.bi; runTxt = ''; }
         runTxt += a[op.ai];
