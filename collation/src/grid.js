@@ -135,6 +135,7 @@ function precleanModern(lines, ctx) {
     if (c) counts.set(c, (counts.get(c) || 0) + 1);
   }
   const out = [];
+  const seenHeading = new Set(); // 首现保留（首行常为真章题/序题，与页眉同名）
   for (const raw of compacted) {
     let line = raw;
     // ① LaTeX 脚注标记（行内剥除）
@@ -143,10 +144,12 @@ function precleanModern(lines, ctx) {
     if (line !== before) excluded.push({ kind: 'latex', text: before });
     if (!line) continue;
     const c = line.replace(STRIP, '').replace(/\d+/g, '');
-    // ② 页眉：短行（≤12 字符）且（重复出现 ≥2 次 或 命中书名/序名集）
-    if ([...c].length <= 12 && !/[。！？]$/.test(line) && (counts.get(c) >= 2 || ctx.headings.has(c))) {
-      excluded.push({ kind: 'running-head', text: line });
-      continue;
+    // ② 页眉：短行（≤12 字符）且重复出现 ≥2 次；首现保留（防误剥首行真章题）
+    if ([...c].length <= 12 && !/[。！？]$/.test(line) && counts.get(c) >= 2) {
+      const first = !seenHeading.has(c);
+      seenHeading.add(c);
+      if (first) excluded.push({ kind: 'heading-first-kept', text: line }); // 留痕但保留
+      else if (ctx.headings.has(c) || counts.get(c) > 2) { excluded.push({ kind: 'running-head', text: line }); continue; }
     }
     // ③ 校记：脚注序号开头，或含版本对校用语
     if (/^[①-⑳]/.test(line) || (/司禮監本|監本|吳本|吴本/.test(line) && [...c].length <= 60)) {

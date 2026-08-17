@@ -15,10 +15,10 @@
       "extra": 8
     },
     "modern": {
-      "agree": 6661,
+      "agree": 6668,
       "sub": 36,
-      "missing": 7,
-      "extra": 48,
+      "missing": 8,
+      "extra": 41,
       "anchors": {
         "hard": 11,
         "soft": 44,
@@ -249,7 +249,7 @@
       ]
     },
     "modern": {
-      "agree": 6661,
+      "agree": 6668,
       "sub": [
         {
           "page": 3,
@@ -506,6 +506,14 @@
       ],
       "missing": [
         {
+          "page": 6,
+          "after": {
+            "col": 10,
+            "row": 10
+          },
+          "text": "朱熹章句"
+        },
+        {
           "page": 18,
           "after": {
             "col": 1,
@@ -563,36 +571,6 @@
         }
       ],
       "extra": [
-        {
-          "page": 2,
-          "col": 1,
-          "row": 1,
-          "grid": "大"
-        },
-        {
-          "page": 2,
-          "col": 1,
-          "row": 2,
-          "grid": "學"
-        },
-        {
-          "page": 2,
-          "col": 1,
-          "row": 3,
-          "grid": "章"
-        },
-        {
-          "page": 2,
-          "col": 1,
-          "row": 4,
-          "grid": "句"
-        },
-        {
-          "page": 2,
-          "col": 1,
-          "row": 5,
-          "grid": "序"
-        },
         {
           "page": 4,
           "col": 2,
@@ -782,18 +760,6 @@
         {
           "page": 6,
           "col": 9,
-          "row": 1,
-          "grid": "大"
-        },
-        {
-          "page": 6,
-          "col": 9,
-          "row": 2,
-          "grid": "學"
-        },
-        {
-          "page": 6,
-          "col": 9,
           "row": 9,
           "grid": "朱"
         },
@@ -854,7 +820,7 @@
       ],
       "preclean": [
         {
-          "kind": "running-head",
+          "kind": "heading-first-kept",
           "text": "大學章句序"
         },
         {
@@ -870,16 +836,12 @@
           "text": "及周之衰，賢聖之君不作，學校之政不修，教化陵夷，風俗頹敗。時則有若孔子之性下，司禮監本、吴本有「矣」字。"
         },
         {
-          "kind": "running-head",
+          "kind": "heading-first-kept",
           "text": "大"
         },
         {
-          "kind": "running-head",
+          "kind": "heading-first-kept",
           "text": "學"
-        },
-        {
-          "kind": "running-head",
-          "text": "朱熹章句"
         },
         {
           "kind": "running-head",
