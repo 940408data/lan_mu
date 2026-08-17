@@ -50,6 +50,27 @@ for (const [src, key] of [['oldOcr', '旧OCR'], ['modern', '今本']]) {
 // 标签索引："p:c" -> role
 const lab = new Map((ov.labels || []).map(l => [`${l.page}:${l.col}`, l.role]));
 
+// ── G4 校书官意见索引（若已跑 grid-officer.js；基础层指纹锁） ──
+let officerIdx = null, officerEngine = null;
+const offFile = path.join(privateWorkDir(workId), 'grid-officer.json');
+if (fs.existsSync(offFile)) {
+  try {
+    const off = JSON.parse(fs.readFileSync(offFile, 'utf8'));
+    if (off.baseSha256 === ov.base.sha256) {
+      officerEngine = off.engine || 'unknown';
+      officerIdx = new Map();
+      for (const v of off.verdicts || []) {
+        if (v.page == null) continue;
+        officerIdx.set(`${v.page}:${v.col}:${v.row}`, {
+          type: v.type, verdict: v.verdict, adopt: v.adopt, tentative: v.tentative,
+          suspendReasons: v.suspendReasons || [],
+          opinions: (v.opinions || []).map(o => ({ name: o.name || o.officer, adopt: o.adopt, candidate: o.candidate, grade: o.grade, confidence: o.confidence, reason: (o.reason || '').slice(0, 60) })),
+        });
+      }
+    }
+  } catch (e) { console.log('⚠ grid-officer.json 解析失败，忽略：' + e.message); }
+}
+
 // ── 可选书影（base64 内嵌） ──
 let images = null;
 if (flags['image-dir']) {
@@ -73,6 +94,7 @@ const pages = tr.pages.map(pg => ({
     .map(c => {
       const role = lab.get(`${pg.n}:${c.col}`) || 'z';
       const q = qIdx.get(`${pg.n}:${c.col}:${c.row}`) || null;
+      if (q && officerIdx) q.officer = officerIdx.get(`${pg.n}:${c.col}:${c.row}`) || null;
       return { c: c.col, r: c.row, ch: [...c.char.trim()][0], role, q };
     }),
 }));
@@ -80,7 +102,7 @@ const pages = tr.pages.map(pg => ({
 const DATA = {
   work: workId,
   baseSha: ov.base.sha256,
-  meta: { cells: ov.stats.cells, pages: pages.length, runs: runs.length, qCells: qIdx.size },
+  meta: { cells: ov.stats.cells, pages: pages.length, runs: runs.length, qCells: qIdx.size, officer: officerEngine ? { engine: officerEngine, count: officerIdx.size } : null },
   pages, runs,
   images, // 可能很大；无 --image-dir 时为 null
 };
@@ -171,7 +193,7 @@ function renderStats() {
   const qTotal = DATA.meta.qCells;
   const done = Object.keys(decisions).length;
   const rDone = Object.keys(runChoices).length;
-  document.getElementById('stats').textContent = '疑问格 ' + done + '/' + qTotal + ' 已裁 · 夺文句 ' + rDone + '/' + DATA.meta.runs + ' 已裁 · 共 ' + DATA.meta.pages + ' 页';
+  document.getElementById('stats').textContent = '疑问格 ' + done + '/' + qTotal + ' 已裁 · 夺文句 ' + rDone + '/' + DATA.meta.runs + ' 已裁 · 共 ' + DATA.meta.pages + ' 页' + (DATA.meta.officer ? ' · 校书官 ' + DATA.meta.officer.count + ' 条（' + DATA.meta.officer.engine + '）' : '');
 }
 
 function render() {
@@ -222,6 +244,20 @@ function render() {
   renderStats();
 }
 
+function officerHtml(q) {
+  const off = q.officer;
+  if (!off) return '';
+  const ADOPT = { shanben: '从善本', xiandai: '从他本', neither: '两存', suspend: '悬置' };
+  const rows = (off.opinions || []).map(o =>
+    '<tr><td>' + o.name + '</td><td>' + (ADOPT[o.adopt] || o.adopt) + (o.candidate && o.candidate !== '∅' ? '「' + o.candidate + '」' : '') + '</td><td>' + (o.grade || '') + ' ' + (o.confidence != null ? o.confidence.toFixed(2) : '') + '</td><td style="font-size:12px">' + (o.reason || '') + '</td></tr>').join('');
+  const agg = off.verdict === 'resolved'
+    ? '聚合：<b>resolved</b> · 建议' + (off.adopt === 'shanben' ? '维持格字（底本优先）' : '从他本「' + (q.modern || '') + '」')
+    : '聚合：<b>suspended</b>（暂拟 ' + (ADOPT[off.tentative] || off.tentative || '无') + '；' + (off.suspendReasons || []).join('；') + '）——不代选，请人工定夺';
+  return '<div style="margin:8px 0"><b style="font-size:13px">校书官四议（' + (DATA.meta.officer ? DATA.meta.officer.engine : '') + '）：</b>' +
+    '<table style="font-size:12px"><tr><th>官</th><th>倾向</th><th>证据/置信</th><th>理由</th></tr>' + rows + '</table>' +
+    '<div id="sugg2">' + agg + '</div></div>';
+}
+
 function openPanel(p, c) {
   const panel = document.getElementById('panel');
   const k = p + ':' + c.c + ':' + c.r;
@@ -237,10 +273,17 @@ function openPanel(p, c) {
     '<tr><td>现代点校</td><td>' + (q.modern != null ? q.modern : '（一致/无意见）') + '</td></tr>' +
     '</table>' +
     '<div id="sugg">' + suggest(q, c.ch) + '</div>' +
+    officerHtml(q) +
     '<b style="font-size:13px">人工裁决：</b>' +
     ['keep-grid|维持格字', 'oldocr|从旧OCR「' + (q.old || '—') + '」', 'modern|从今本「' + (q.modern || '—') + '」', 'custom|自定义', 'defer|存疑'].map(s => {
       const [v, label] = s.split('|');
-      return '<label class="choice"><input type="radio" name="ch" value="' + v + '"' + (dec.choice === v ? ' checked' : '') + '> ' + label + '</label>';
+      // 预填：无已存裁决时按校书官聚合结论预选（resolved 才预填；suspended 不代选）
+      let checked = dec.choice === v;
+      if (!dec.choice && q.officer && q.officer.verdict === 'resolved') {
+        if (q.officer.adopt === 'shanben' && v === 'keep-grid') checked = true;
+        if (q.officer.adopt !== 'shanben' && v === 'modern') checked = true;
+      }
+      return '<label class="choice"><input type="radio" name="ch" value="' + v + '"' + (checked ? ' checked' : '') + '> ' + label + '</label>';
     }).join('') +
     '<input id="customChar" placeholder="自定义字" maxlength="2" style="width:60px;font-size:16px" value="' + (dec.custom || '') + '">' +
     '<textarea id="note" placeholder="备注（理由/出处）">' + (dec.note || '') + '</textarea>' +
@@ -248,7 +291,7 @@ function openPanel(p, c) {
   panel.querySelector('#saveDec').onclick = () => {
     const v = panel.querySelector('input[name=ch]:checked');
     if (!v) { alert('请先选择'); return; }
-    decisions[k] = { page: p, col: c.c, row: c.r, grid: c.ch, oldOcr: q.old ?? null, modern: q.modern ?? null, choice: v.value, custom: panel.querySelector('#customChar').value || null, note: panel.querySelector('#note').value };
+    decisions[k] = { page: p, col: c.c, row: c.r, grid: c.ch, oldOcr: q.old ?? null, modern: q.modern ?? null, choice: v.value, custom: panel.querySelector('#customChar').value || null, note: panel.querySelector('#note').value, officerSugg: q.officer ? (q.officer.verdict + ':' + (q.officer.adopt || q.officer.tentative || '')) : null };
     save(); render();
   };
   panel.querySelector('#closePanel').onclick = () => panel.style.display = 'none';
