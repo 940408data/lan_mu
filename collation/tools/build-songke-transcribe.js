@@ -20,6 +20,7 @@ const dataDir = path.join(__dirname, '..', 'data', workId);
 const trFile = path.join(dataDir, 'grid-transcribe.json');
 if (!fs.existsSync(trFile)) { console.error(`找不到 ${trFile}（先跑 grid-transcribe.js）`); process.exit(1); }
 const tr = JSON.parse(fs.readFileSync(trFile, 'utf8'));
+const { colsOfPage } = require('../src/transcribe');
 
 let textRange = null;
 try { const L = JSON.parse(fs.readFileSync(path.join(dataDir, 'layout.json'), 'utf8')); if (L.textPages) textRange = L.textPages; } catch {}
@@ -27,32 +28,12 @@ try { const L = JSON.parse(fs.readFileSync(path.join(dataDir, 'layout.json'), 'u
 const pageFilter = flags.pages ? new Set(String(flags.pages).split(',').map(Number)) : null;
 const title = (tr.work || workId).replace(/章句/, '章句');
 
-/** 逐格→列聚合：按 col 分组、row 升序，列 text=char 连接，start 取首字标记或按 row 推，type=顶格→j/退格→z */
-function colsOf(page) {
-  const byCol = {};
-  for (const c of page.cells || []) { (byCol[c.col] ||= []).push(c); }
-  const cols = [];
-  for (const col of Object.keys(byCol).map(Number).sort((a, b) => a - b)) {
-    const cells = byCol[col].sort((a, b) => a.row - b.row);
-    const text = cells.map(c => c.char || '').filter(s => s).join('');
-    if (!text) continue;
-    let start = cells.find(c => c.start)?.start;
-    if (!start) {
-      const r = cells[0]?.row;
-      start = r === 1 ? '顶格' : (r === 2 ? '退一格' : '退两格');
-    }
-    const type = (start === '顶格' || start === '頂格') ? 'j' : 'z';
-    cols.push({ col, start, type, text });
-  }
-  return cols;
-}
-
 const blocks = [];
 const outOfRange = [];
 for (const pg of tr.pages) {
   if (pageFilter && !pageFilter.has(pg.n)) continue;
   if (textRange && (pg.n < textRange[0] || pg.n > textRange[1])) outOfRange.push(pg.n);
-  for (const c of colsOf(pg)) {
+  for (const c of colsOfPage(pg)) {
     const last = blocks[blocks.length - 1];
     if (last && last.type === c.type) last.text += c.text;
     else blocks.push({ type: c.type, text: c.text, page: pg.n });
