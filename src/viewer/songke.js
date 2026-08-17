@@ -253,26 +253,33 @@
   document.addEventListener('fullscreenchange', () => { applyFocusZoom(); sync(); });
 
   /* 桌面右栏唤起/收起（窄屏抽屉由 #railToggle 主导，不启用此逻辑）：
-     鼠标离开书叶 0.5s → 唤出；无操作约 1.5s → 自动收起；点击书叶 → 立即收起。
-     「书叶」按真实页面 .leaf 判定（非整宽 #book 容器），页边空白即算离书。 */
+     「书叶」按真实页面 .leaf 判定（非整宽 #book 容器），页边空白即算离书。
+     - 唤出：鼠标离开书叶 0.5s → 唤出；
+     - 悬浮：鼠标一直在非书页内（页边/栏上）→ 一直悬浮，不收起；
+     - 收起：仅两种——点击书叶立即收起；或鼠标停在书叶内 1.5s 没操作收起。 */
   const wide = () => window.matchMedia('(min-width:861px)').matches;
   let railShowT = null, railHideT = null;
   const railShow = () => rail.classList.remove('off');
   const railHide = () => rail.classList.add('off');
   const clearRailShow = () => { if (railShowT) { clearTimeout(railShowT); railShowT = null; } };
-  const armRailHide = () => { if (railHideT) clearTimeout(railHideT); railHideT = setTimeout(railHide, 1500); };
+  const clearRailHide = () => { if (railHideT) { clearTimeout(railHideT); railHideT = null; } };
+  const armRailHide = () => { clearRailHide(); railHideT = setTimeout(railHide, 1500); };  // 停在书叶 1.5s 收起
   document.addEventListener('mousemove', (e) => {
     if (!wide()) return;
-    armRailHide();                                    // 有鼠标活动即重排 1.5s 收起
-    if (e.target.closest('.leaf')) clearRailShow();   // 在书叶上：不唤出
-    else if (rail.classList.contains('off') && !railShowT) {
-      railShowT = setTimeout(() => { railShow(); railShowT = null; }, 500);  // 离书叶 0.5s 唤出
+    if (e.target.closest('.leaf')) {
+      clearRailShow();      // 在书叶上：不唤出
+      armRailHide();        // 停下阅读 1.5s 无操作 → 收起（持续移动则不断顺延）
+    } else {
+      clearRailHide();      // 非书页内：取消收起，一直悬浮
+      if (rail.classList.contains('off') && !railShowT) {
+        railShowT = setTimeout(() => { railShow(); railShowT = null; }, 500);  // 离书叶 0.5s → 唤出
+      }
     }
   });
   document.addEventListener('click', (e) => {         // 点击书叶 → 立即收起
-    if (wide() && e.target.closest('.leaf')) railHide();
+    if (wide() && e.target.closest('.leaf')) { clearRailShow(); clearRailHide(); railHide(); }
   });
-  if (wide()) armRailHide();                        // 载入后无操作，1.5s 自动收起
+  if (wide()) armRailHide();                        // 载入后若停在书页阅读，1.5s 收起
   window.matchMedia('(min-width:861px)').addEventListener('change', (e) => {
     if (!e.matches) rail.classList.remove('off');   // 落入窄屏即清掉隐藏态，交还抽屉主导
   });
