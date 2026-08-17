@@ -1,0 +1,62 @@
+﻿id: shangshu-juan8
+title: 尚書正義卷八
+subtitle: 宋刻本式樣 · 孔穎達疏 · 五子之歌第三
+docTitle: 尚書正義卷八 — 宋版善刻
+mark: 蘭木
+ariaLabel: 尚書正義卷八，宋刻本版式，自右向左讀
+category: 經
+era: 唐
+layout: songke
+book:
+  id: shangshu
+  title: 尚書正義
+  order: 8
+  entry:
+    big: 卷八
+    sub: 五子之歌第三
+seed: 20008
+expect:
+  jChars: 1123
+  zChars: 4104
+  columns: 162
+  halves: 21
+  leaves: 11
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 尚書卷八
+  gong:
+    - 牛山
+  spec: 半葉八行 行十六字 注文雙行二十五字 白口 左右雙邊 單黑魚尾
+  colophon: |-
+    依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，孔穎達正義小字雙行；疏隨經注而下，與純注列網格對齊，本列不敷乃另起列；雙行並進，長短相差不過一字。<br>版心上下留白口，上鐫單黑魚尾，次書名卷次、葉次，末署刻工姓名。<br>注文之制，備疏朗、雅正、宋槧三版，可於欄內遞轉；疏朗字大易誦，宋槧嚴守舊觀。<br>句讀以朱筆點之，附於字之右下，不占字位，點之斜正輕重因字而變，以仿手批氣韻。<br>本卷錄《尚書正義》卷八五子之歌第三，經文據漢孔安國傳，疏文為唐孔穎達等奉敕撰。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Shangshu-Juan8-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 孔穎達《尚書正義》
+    url: https://zh.wikisource.org/zh-hant/尚書正義
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《尚書正義》為唐孔穎達等奉敕撰，以漢孔安國傳為本，為十三經注疏之一。此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。</p>
+  <p>卷八收五子之歌第三，經注疏全帙。</p>
