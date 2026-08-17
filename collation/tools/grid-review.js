@@ -104,7 +104,8 @@ const html = `<!DOCTYPE html>
   .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; }
   .page-h b { color: #2c2416; font-size: 15px; }
   .flexrow { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
-  .sheet { display: inline-grid; grid-auto-flow: column; grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: 1px; background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
+  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: 1px; background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
+  /* 每格显式定位 grid-row:row / grid-column:col（rtl 下 col1=最右），空位自然留白，严格还原善本版面 */
   .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center; justify-content: center; border-radius: 2px; user-select: none; }
   .cell.j { font-size: 21px; font-weight: 700; }
   .cell.z { font-size: 15px; color: #4d3f2c; }
@@ -189,11 +190,12 @@ function render() {
     const row = document.createElement('div'); row.className = 'flexrow';
     const sheet = document.createElement('div'); sheet.className = 'sheet';
     sheet.style.setProperty('--rows', pg.rows);
-    if (hidePlain) sheet.style.gridTemplateRows = '';
+    sheet.style.setProperty('--cols', pg.cols);
     for (const c of pg.cells) {
       const d = document.createElement('div');
       d.className = 'cell ' + c.role;
       d.textContent = c.ch;
+      d.style.gridRow = c.r; d.style.gridColumn = c.c; // 严格按 (col,row) 坐标定位：col1=最右，空位留白不挤位
       d.dataset.p = pg.n; d.dataset.c = c.c; d.dataset.r = c.r;
       if (c.q) {
         const isQ = c.q.old != null || c.q.modern != null || c.q.extraMod || c.q.extraOld || c.q.missAfter;
