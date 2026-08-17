@@ -16,9 +16,9 @@ book:
     sub: 章句
 seed: 50837
 expect:
-  chars: 13393
-  jChars: 10479
-  zChars: 2914
+  chars: 13412
+  jChars: 5012
+  zChars: 8400
 songke:
   bigPerCol: 16
   subPerCol: 25
