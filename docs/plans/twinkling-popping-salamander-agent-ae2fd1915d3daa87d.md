@@ -37,7 +37,7 @@
 | **M3-A 出分栏 md** | `collation/tools/build-songke.js` | `node collation/tools/build-songke.js 大学章句` | grid.json + shanben-v2.json → `output/善本点校本-分栏.md` | ❌ 一次全成 |
 | **M3-B 逐格转写**（路线 B·推荐） | `collation/tools/grid-transcribe.js` | `node collation/tools/grid-transcribe.js 大学章句 --pages=7-76 --conc=3 [--force-deep] [--model=X --endpoint=Y] [--suffix=gpt5]` | layout.json + 善本 PDF → `grid-transcribe.json`（页×格×{col,row,char,start}）+ `grid-transcribe-log.json` | ✅ 完全按页独立（最佳切分点） |
 | **M3-B 逐格→分栏 md** | `collation/tools/build-songke-transcribe.js`（commit 39cae62） | `node collation/tools/build-songke-transcribe.js 大学章句 [--pages=2,9]` | grid-transcribe.json → `output/善本点校本-分栏-逐格.md` | ❌ 一次全成（但内部可按 `--pages=` 过滤输出段） |
-| **M6 进引擎** | `collation/tools/build-works.js` | `node collation/tools/build-works.js 大学章句 daxue-songben --base=daxue` | grid.json → `works/<新id>/{text.yaml, meta.yaml, seals.yaml, ornaments.yaml}`，meta.yaml 里 `expect: {chars, jChars, zChars}` 按 grid 实算写入 | ❌ 单次生成 |
+| **M6 进引擎** | `collation/tools/build-works.js` | `node collation/tools/build-works.js 大学章句 daxue-songben --base=daxue [--from=transcribe]` | grid.json（或 `--from=transcribe` 时读 grid-transcribe.json 逐格聚合）→ `works/<新id>/{text.yaml, meta.yaml, seals.yaml, ornaments.yaml}`，meta.yaml 里 `expect: {chars, jChars, zChars}` 按版面实算写入；另支持 `--pages=a-b`（序卷等非正文卷）、`--section-name/--section-id`、`--subtitle`、`--book/--book-title` | ❌ 单次生成 |
 | **P1.5 清洗** | `collation/tools/clean.js --write` | `node collation/tools/clean.js 大学章句 --write` | shanben-v2.json → 清洗后版本 | ❌ 全文件 |
 | **P3-P6 对校全链** | `collation/run.js --step=all` | `node collation/run.js 大学章句 --step=all` | shanben-v2.json + 现代本 → `output/善本点校本.md` + `output/校勘记.md` + 精校台.html | ❌ 主流程串行 |
 | **质量报告** | `collation/tools/quality-report.js` | `node collation/tools/quality-report.js 大学章句 [--write]` | align(workId) → 控制台 JSON / `works/<id>/quality-report.json` | ❌ 单次 |
@@ -169,7 +169,8 @@ M2 阶段（recollate）也可按段并行（大学已有 `recollate-1-40.json` 
 2. 确认 `layout.json` 已登记（大学与中庸同版式 16×15，已落盘）
 3. 走路线 B：`node collation/tools/grid-transcribe.js 大学章句 --pages=7-76 --conc=3`（已部分完成？看现有 grid-transcribe.json 的 pages 长度）
 4. `node collation/tools/build-songke-transcribe.js 大学章句`
-5. `node collation/tools/build-works.js 大学章句 daxue-songben --base=daxue` → expect 自动写入
+5. `node collation/tools/build-works.js 大学章句 daxue-songben --base=daxue --from=transcribe` → expect 自动写入
+   （中庸路线 B 已走通：正文卷 zhongyong-songben 经 5012/注 8400；序卷用 `--pages=2-6 --section-name=…` 另成 zhongyongxu-songben）
 6. `npm run validate` 验证 expect 一致
 7. `node collation/run.js 大学章句 --step=all` 跑 P 链出校勘记
 8. `node collation/tools/quality-report.js 大学章句 --write`
