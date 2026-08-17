@@ -219,8 +219,24 @@
       if (!e.target.closest('.dl')) $('dlMenu').classList.remove('open');
     });
   }
+  /* 窄屏右欄開合：右緣豎式小簽喚出抽屜；點欄外/Esc 收起（桌面常顯，此鈕隱藏） */
+  const rail = $('rail'), railTgl = $('railToggle');
+  railTgl.textContent = '卷';
+  railTgl.onclick = () => {
+    railTgl.setAttribute('aria-expanded', rail.classList.toggle('open'));
+  };
+  document.addEventListener('click', (e) => {
+    if (rail.classList.contains('open') && !e.target.closest('.rail') && !e.target.closest('#railToggle')) {
+      rail.classList.remove('open');
+      railTgl.setAttribute('aria-expanded', 'false');
+    }
+  });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && $('dlMenu')) $('dlMenu').classList.remove('open');
+    if (e.key === 'Escape') {
+      if ($('dlMenu')) $('dlMenu').classList.remove('open');
+      rail.classList.remove('open');
+      railTgl.setAttribute('aria-expanded', 'false');
+    }
     if (e.key === 'ArrowLeft') go(1);
     if (e.key === 'ArrowRight') go(-1);
   });

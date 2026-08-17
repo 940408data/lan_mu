@@ -160,40 +160,52 @@ ${draftCss}
 </head>
 <body>
 
-<div class="masthead">
-  <div class="zhu" id="mhTitle"></div>
-  <p class="ke" id="mhSub"></p>
-</div>
-
-<div class="bar">
-  <a class="btn nav" id="navToc" href="${navHref}"></a>
-  <span class="sep"></span>
-  <button id="btnZh" aria-pressed="false"></button>
-  <button id="btnJie" aria-pressed="true"></button>
-  <select id="faceSel" aria-label="字面"></select>
-  <select id="zhuwenSel" aria-label="注文版式"></select>
-  <span class="sep"></span>
-  <button id="btnMode" aria-pressed="false"></button>
-  <button id="btnPrev"></button>
-  <span class="lbl" id="folioNow"></span>
-  <button id="btnNext"></button>
-  <span class="sep"></span>
-  ${draft ? '' : `<div class="dl">
-    <button class="btn" id="dl" type="button" aria-haspopup="true">下载</button>
-    <div class="dl-menu" id="dlMenu" role="menu" aria-label="下载">
-    ${dlItems}
-    ${ndItem}
-    </div>
+<aside class="rail" id="rail">
+  <div class="tiqian">
+    <div class="zhu" id="mhTitle"></div>
+    <p class="ke" id="mhSub"></p>
   </div>
-  <span class="sep"></span>`}
-  <label for="zoom" id="lblZoom"></label>
-  <input id="zoom" type="range" min="14" max="36" step="1" value="26">
-  <button id="btnDu" aria-pressed="true"></button>
-</div>
+  <a class="btn nav" id="navToc" href="${navHref}"></a>
+
+  <section class="rg">
+    <div class="rg-row">
+      <button id="btnPrev" type="button"></button>
+      <button id="btnNext" type="button"></button>
+    </div>
+    <span class="lbl folio-now" id="folioNow"></span>
+    <button id="btnMode" class="wide" type="button" aria-pressed="false"></button>
+  </section>
+
+  <section class="rg">
+    <div class="rg-row">
+      <button id="btnZh" type="button" aria-pressed="false"></button>
+      <button id="btnJie" type="button" aria-pressed="true"></button>
+    </div>
+    <button id="btnDu" class="wide" type="button" aria-pressed="true"></button>
+  </section>
+
+  <section class="rg">
+    <label class="fld"><span class="micro">字面</span><select id="faceSel" aria-label="字面"></select></label>
+    <label class="fld"><span class="micro">注式</span><select id="zhuwenSel" aria-label="注文版式"></select></label>
+    <label class="fld fld-zoom"><span class="micro" id="lblZoom"></span><input id="zoom" type="range" min="14" max="36" step="1" value="26"></label>
+  </section>
+
+  ${draft ? '' : `<section class="rg rg-dl">
+    <div class="dl">
+      <button class="btn wide" id="dl" type="button" aria-haspopup="true">下载</button>
+      <div class="dl-menu" id="dlMenu" role="menu" aria-label="下载">
+      ${dlItems}
+      ${ndItem}
+      </div>
+    </div>
+  </section>`}
+</aside>
 
 <div id="book" class="book ruled" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
 ${draftCard}
 <p class="colophon" id="colophon"></p>
+
+<button id="railToggle" type="button" aria-label="開合目錄" aria-expanded="false"></button>
 
 <script>
 window.SONGKE=${JSON.stringify(payload)};
