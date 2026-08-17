@@ -154,8 +154,6 @@
     document.documentElement.style.setProperty('--face', 'var(--' + SK.faces[state.face].role + ')');
     document.documentElement.lang = state.simp ? 'zh-Hans' : 'zh-Hant';
 
-    $('mhTitle').textContent = conv(SK.title);
-    $('mhSub').textContent = conv(V.spec);
     $('navToc').textContent = convUi(SK.navLabel || '目錄');
     $('btnZh').textContent = state.simp ? '简体' : '繁体';
     $('btnDu').textContent = convUi(zm.n);
@@ -167,6 +165,7 @@
     [...zsel.options].forEach((o, i) => { o.textContent = convUi(SK.variants[i].name); });
     zsel.value = String(state.variant);
     $('btnMode').textContent = state.single ? '单页阅读' : '滚动阅读';
+    $('btnFocus').textContent = document.fullscreenElement ? '退出专注' : '专注模式';
     $('btnPrev').textContent = '前叶';
     $('btnNext').textContent = '后叶';
     $('lblZoom').textContent = '字号';
@@ -177,6 +176,7 @@
     $('btnDu').setAttribute('aria-pressed', !!(zm.j || zm.z));
     $('btnJie').setAttribute('aria-pressed', state.jie);
     $('btnMode').setAttribute('aria-pressed', state.single);
+    $('btnFocus').setAttribute('aria-pressed', !!document.fullscreenElement);
     document.querySelectorAll('.leafwrap').forEach((el) =>
       el.classList.toggle('on', +el.dataset.l === state.leaf));
   }
@@ -219,8 +219,76 @@
       if (!e.target.closest('.dl')) $('dlMenu').classList.remove('open');
     });
   }
+  /* 窄屏右欄開合：右緣豎式小簽喚出抽屜；點欄外/Esc 收起（桌面常顯，此鈕隱藏） */
+  const rail = $('rail'), railTgl = $('railToggle');
+  railTgl.textContent = '卷';
+  railTgl.onclick = () => {
+    railTgl.setAttribute('aria-expanded', rail.classList.toggle('open'));
+  };
+  document.addEventListener('click', (e) => {
+    if (rail.classList.contains('open') && !e.target.closest('.rail') && !e.target.closest('#railToggle')) {
+      rail.classList.remove('open');
+      railTgl.setAttribute('aria-expanded', 'false');
+    }
+  });
+  /* 专注模式：进入/退出浏览器全屏；并随全屏把字号设为第二档（次于最大档），退出还原原字号。
+     fullscreenchange 兼顾按钮切换与 Esc 退出，复同步按钮文案与字号。 */
+  let preFocusU = null;
+  const applyFocusZoom = () => {
+    const zoom = $('zoom');
+    if (document.fullscreenElement && preFocusU === null) {
+      preFocusU = zoom.value;                                     // 记下原字号
+      zoom.value = String(+zoom.max - 1);                         // 第二档（最大档之下一档）
+      document.documentElement.style.setProperty('--u', zoom.value + 'px');
+    } else if (!document.fullscreenElement && preFocusU !== null) {
+      zoom.value = preFocusU;                                     // 还原原字号
+      document.documentElement.style.setProperty('--u', preFocusU + 'px');
+      preFocusU = null;
+    }
+  };
+  $('btnFocus').onclick = () => {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else document.documentElement.requestFullscreen().catch(() => {});
+  };
+  document.addEventListener('fullscreenchange', () => { applyFocusZoom(); sync(); });
+
+  /* 桌面右栏唤起/收起（窄屏抽屉由 #railToggle 主导，不启用此逻辑）：
+     「书叶」按真实页面 .leaf 判定（非整宽 #book 容器），页边空白即算离书。
+     - 唤出：鼠标离开书叶 0.5s → 唤出；
+     - 悬浮：鼠标一直在非书页内（页边/栏上）→ 一直悬浮，不收起；
+     - 收起：仅两种——点击书叶立即收起；或鼠标停在书叶内 1.5s 没操作收起。 */
+  const wide = () => window.matchMedia('(min-width:861px)').matches;
+  let railShowT = null, railHideT = null;
+  const railShow = () => rail.classList.remove('off');
+  const railHide = () => rail.classList.add('off');
+  const clearRailShow = () => { if (railShowT) { clearTimeout(railShowT); railShowT = null; } };
+  const clearRailHide = () => { if (railHideT) { clearTimeout(railHideT); railHideT = null; } };
+  const armRailHide = () => { clearRailHide(); railHideT = setTimeout(railHide, 1500); };  // 停在书叶 1.5s 收起
+  document.addEventListener('mousemove', (e) => {
+    if (!wide()) return;
+    if (e.target.closest('.leaf')) {
+      clearRailShow();      // 在书叶上：不唤出
+      armRailHide();        // 停下阅读 1.5s 无操作 → 收起（持续移动则不断顺延）
+    } else {
+      clearRailHide();      // 非书页内：取消收起，一直悬浮
+      if (rail.classList.contains('off') && !railShowT) {
+        railShowT = setTimeout(() => { railShow(); railShowT = null; }, 500);  // 离书叶 0.5s → 唤出
+      }
+    }
+  });
+  document.addEventListener('click', (e) => {         // 点击书叶 → 立即收起
+    if (wide() && e.target.closest('.leaf')) { clearRailShow(); clearRailHide(); railHide(); }
+  });
+  if (wide()) armRailHide();                        // 载入后若停在书页阅读，1.5s 收起
+  window.matchMedia('(min-width:861px)').addEventListener('change', (e) => {
+    if (!e.matches) rail.classList.remove('off');   // 落入窄屏即清掉隐藏态，交还抽屉主导
+  });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && $('dlMenu')) $('dlMenu').classList.remove('open');
+    if (e.key === 'Escape') {
+      if ($('dlMenu')) $('dlMenu').classList.remove('open');
+      rail.classList.remove('open');
+      railTgl.setAttribute('aria-expanded', 'false');
+    }
     if (e.key === 'ArrowLeft') go(1);
     if (e.key === 'ArrowRight') go(-1);
   });
