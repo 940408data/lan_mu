@@ -11,9 +11,10 @@ const { loadRegistry, resolveExportFaces } = require('../fonts/fonts');
  * @param {object} tree     songke LayoutTree
  * @param {string} htmlPath 作品 HTML 绝对路径
  * @param {string} outDir   输出目录
+ * @param {object} opts     { full?: boolean } 全量 PDF（否则仅前 previewLeaves 叶预览，默认 5）
  * @returns {Promise<string[]>} 每字面一份 PDF 的路径列表
  */
-async function renderSongkePdf(tree, htmlPath, outDir) {
+async function renderSongkePdf(tree, htmlPath, outDir, opts = {}) {
   const exp = tree.meta.export || {};
   const base = exp.base || `${tree.meta.id}-songke`;
   const faces = exp.faces || { kai: 'Kai', song: 'Song' };
@@ -45,9 +46,12 @@ async function renderSongkePdf(tree, htmlPath, outDir) {
 
       const loc = page.locator('.leafwrap');
       const n = await loc.count();
+      // 预览模式：仅截前 previewLeaves 叶（meta.export.previewLeaves 可覆盖）；--pdf-full 出全量
+      const maxLeaves = opts.full ? n : Math.min(n, exp.previewLeaves || 5);
       const pdfDoc = await PDFDocument.create();
       pdfDoc.setTitle(tree.meta.docTitle || tree.meta.title);
-      for (let i = 0; i < n; i++) {
+      if (maxLeaves < n) console.log(`  [PDF] ${tag}面：預覽前 ${maxLeaves} 葉（共 ${n} 葉，全量用 --pdf-full）`);
+      for (let i = 0; i < maxLeaves; i++) {
         const buf = await loc.nth(i).screenshot({ type: 'png' });
         const img = await pdfDoc.embedPng(buf);
         // 设备像素 → CSS 像素 → 点（72dpi）

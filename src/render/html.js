@@ -6,6 +6,10 @@ const fs = require('fs');
 const path = require('path');
 const OpenCC = require('opencc-js');
 const { loadRegistry, resolveFace } = require('../fonts/fonts');
+const { BOOK_META, NETDISK_FOLDER } = require('../site/home');
+
+/* 構建期繁→簡轉換器：用於 UI 文案簡體化 */
+const _t2s = OpenCC.Converter({ from: 'tw', to: 'cn' });
 
 const VIEWER_CSS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'viewer.css'), 'utf8');
 const VIEWER_JS = () => fs.readFileSync(path.join(__dirname, '..', 'viewer', 'viewer.js'), 'utf8');
@@ -24,7 +28,6 @@ function glyphsHtml(glyphs) {
 
 /** 構建期生成繁→簡逐字映射（僅收錄本作用字，內嵌 HTML 供運行時切換） */
 function buildT2S(tree, meta) {
-  const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
   const chars = new Set();
   for (const c of tree.columns) {
     for (const g of c.glyphs) if (g.ch && g.ch !== '　') chars.add(g.ch);
@@ -33,7 +36,7 @@ function buildT2S(tree, meta) {
   for (const ch of meta.title + meta.subtitle) chars.add(ch);
   const map = {};
   for (const ch of chars) {
-    const s = conv(ch);
+    const s = _t2s(ch);
     if (s !== ch) map[ch] = s;
   }
   return map;
@@ -72,20 +75,7 @@ function orchidsSvg(tree) {
   return `<svg class="tex" viewBox="0 0 ${paperW} ${paperH}" preserveAspectRatio="none" aria-hidden="true"><g class="lan">${groups}</g>${tree.paperDecor || ''}</svg>`;
 }
 
-function factsHtml(tree) {
-  const { stats, meta } = tree;
-  const items = [
-    [stats.lines, '全卷行'],
-  ];
-  // 譜文行仅在作品确有譜文分区（如幽兰）时展示
-  if (stats.scoreLines) items.push([stats.scoreLines, '譜文行']);
-  items.push(
-    [stats.chars.toLocaleString('en-US'), '摹錄字'],
-    [stats.notes, '處夾注'],
-  );
-  if (meta.physical && meta.physical.lengthCm) items.push([meta.physical.lengthCm, '厘米']);
-  return items.map(([v, l]) => `<span class="fact"><b>${v}</b>${l}</span>`).join('\n    ');
-}
+/* facts 統計區已移除（用戶要求簡化） */
 
 /* ---------- 主装配 ---------- */
 
@@ -129,19 +119,26 @@ function renderHtml(tree, opts = {}) {
   const docTitle = meta.docTitle ||
     `${meta.title.replace(/ · /g, '·')} — ${meta.subtitle.replace(/ · /g, '')}`;
 
-  const faceButtons = ['song', 'jing', 'xing'].map((role, i) => {
-    const label = (meta.faces[role] && meta.faces[role].label) || role;
-    return `<button class="btn seg-b${i === 0 ? ' on' : ''}" data-face="f-${role}" type="button">${esc(label)}</button>`;
-  }).join('\n      ');
+  const faceOptions = ['song', 'jing', 'xing'].map((role) => {
+    const raw = (meta.faces[role] && meta.faces[role].label) || role;
+    const label = _t2s(raw);
+    return `<option value="${role}">${esc(label)}</option>`;
+  }).join('\n        ');
 
   // 下載菜單：按 export.faces 逐版列出長圖 JPG（與出圖產物同名）
   const exp = meta.export || {};
   const expBase = exp.base || `${meta.id}-scroll`;
   const dlItems = Object.entries(exp.faces || { song: 'Song', jing: 'Jing', xing: 'Xingkai' }).map(([role, tag]) => {
-    const label = (meta.faces[role] && meta.faces[role].label) || role;
+    const raw = (meta.faces[role] && meta.faces[role].label) || role;
+    const label = _t2s(raw);
     const file = `${expBase}-${tag}.jpg`;
-    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)} JPG</a>`;
+    return `<a class="dl-item" role="menuitem" href="${file}" download="${file}">${esc(label)}长图</a>`;
   }).join('\n      ');
+  // 全帙 PDF 走網盤：獨立鏈接（meta.netdisk / 屬書 BOOK_META）→ 共享文件夾兕底
+  const bookMeta = (meta.book && BOOK_META[meta.book.id]) || {};
+  const ndLink = meta.netdisk || bookMeta.netdisk || NETDISK_FOLDER;
+  const ndLabel = meta.netdisk || bookMeta.netdisk ? '全量资源 · 网盘' : '全量资源 · 网盘共享夹';
+  const ndItem = ndLink ? `<div class="dl-sep" role="separator"></div>\n      <a class="dl-item" role="menuitem" href="${esc(ndLink)}" target="_blank" rel="noopener">${ndLabel}</a>` : '';
 
   const columnsHtml = tree.columns.map(columnHtml).join('\n');
   const first = tree.columns[0];
@@ -168,22 +165,19 @@ ${VIEWER_CSS()}
 <header class="topbar">
   <div class="mark" aria-hidden="true">${esc(meta.mark)}</div>
   <div class="tt"><h1>${esc(meta.title)}</h1><p>${esc(meta.subtitle)}</p></div>
-  <div class="facts">
-    ${factsHtml(tree)}
-  </div>
   <nav class="tools">
-    <span class="seg" role="group" aria-label="字體">
-      ${faceButtons}
-    </span>
+    <select class="btn" id="faceSel" aria-label="字体">
+      ${faceOptions}
+    </select>
     <div class="dl">
-      <button class="btn" id="dl" type="button" aria-haspopup="true" aria-expanded="false">下載</button>
-      <div class="dl-menu" role="menu" aria-label="下載長圖">
-      ${dlItems}
+      <button class="btn" id="dl" type="button" aria-haspopup="true" aria-expanded="false">下载</button>
+      <div class="dl-menu" role="menu" aria-label="下载">
+      ${dlItems}${ndItem}
       </div>
     </div>
     <button class="btn txt on" id="mode" type="button" aria-pressed="false">摹本</button>
     <button class="btn txt" id="rule" type="button" aria-pressed="false">界行</button>
-    <button class="btn txt" id="simp" type="button" aria-pressed="false">簡體</button>
+    <button class="btn txt" id="simp" type="button" aria-pressed="false">简体</button>
     ${tree.columns.some((c) => c.glyphs.some((g) => g.du)) ? '<button class="btn txt" id="duBtn" type="button" aria-pressed="false">句讀</button>' : ''}
     <button class="btn ico" id="minus" type="button" aria-label="縮小">−</button>
     <button class="btn ico" id="plus" type="button" aria-label="放大">＋</button>

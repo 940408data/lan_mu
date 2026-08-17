@@ -34,11 +34,16 @@ const TOPICS = [
   },
 ];
 
+/* 網盤共享文件夾（全量 PDF 兕底鏈接）：重要書在 BOOK_META 配獨立 netdisk 一書一鏈，
+ * 其餘書一律指向此共享文件夾；留空則不顯示兕底鏈接。 */
+const NETDISK_FOLDER = 'https://pan.baidu.com/s/1i3e4N9SLcnwJBhRD0LbQAw?pwd=6666';
+
 /* 書卡詳情：點校類別 + 底本（集中配置；缺省 collation='AI整理'，無 diben 不顯底本行）。
- * bookId = songke 的 book.id（多卷聚合）或 scroll 單卷 work id。 */
+ * bookId = songke 的 book.id（多卷聚合）或 scroll 單卷 work id。
+ * netdisk：全量 PDF 網盤鏈接（一書一鏈）；留空/缺省則走 NETDISK_FOLDER 共享文件夾。 */
 const BOOK_META = {
-  daxue:      { collation: '精校', diben: '當塗郡本' },
-  zhongyong:  { collation: '精校', diben: '當塗郡本' },
+  daxue:      { collation: '精校', diben: '當塗郡本', netdisk: '' },
+  zhongyong:  { collation: '精校', diben: '當塗郡本', netdisk: '' },
   lunyu:      { collation: '初校', diben: '當塗郡本' },
   mengzi:     { collation: '初校', diben: '當塗郡本' },
   xinjing:    { collation: '初校', diben: '乾隆本' },
@@ -66,4 +71,4 @@ const COPY = {
   sanzangSub: '經史子集選編',
 };
 
-module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META };
+module.exports = { NAV, TABS, TOPICS, COPY, BOOK_META, NETDISK_FOLDER };
