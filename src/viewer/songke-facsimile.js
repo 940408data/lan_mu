@@ -116,7 +116,7 @@
 
     $('book').innerHTML =
       `<div class="fleafwrap"><div class="fleaf">` +
-      `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${half},var(--u)) var(--bx) repeat(${COLS - half},var(--u));grid-template-rows:repeat(${ROWS},var(--u))">` +
+      `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${half},var(--cw)) var(--bx) repeat(${COLS - half},var(--cw));grid-template-rows:repeat(${ROWS},var(--u))">` +
       cellsHTML + rulesHTML + banxin + `</div>` +
       `</div><div class="ffolio">${conv('第')}${numCn(pg.n)}${conv('葉')}</div></div>`;
 

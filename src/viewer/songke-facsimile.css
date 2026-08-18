@@ -5,8 +5,9 @@
    正是原刻空白叶的真实面貌（逐格数据独有的版面全真），可由右栏「界行」开关。
    --kai / --song / --xing 由构建期注入（A 级子集 / 回退链），--face 为当前字面。 */
 :root{
-  --u: 26px;                                   /* 格宽高（zoom 控件实时调节） */
-  --bx: calc(var(--u) * 1.18);                 /* 版心中缝轨宽（真实轨道，不遮两侧列） */
+  --u: 26px;                                   /* 格高（一字一行距；zoom 控件实时调节） */
+  --cw: calc(var(--u) * 1.40);                 /* 列宽（行宽）：稍宽则行气疏朗，与宋版同源 */
+  --bx: calc(var(--cw) * .95);                 /* 版心中缝轨宽（真实轨道，不遮两侧列） */
   --j-scale: .84;                              /* 经/题字号系数（meta.facsimile.jSize 可调） */
   --z-scale: .80;                              /* 注字号系数（meta.facsimile.zSize 可调，接近经字） */
   --big-size:   calc(var(--u) * var(--j-scale));
@@ -174,7 +175,7 @@ body{
     border-radius:50%;background:var(--zhu)}
 .fbook.dj .fcell.j .mk{display:block}
 .fbook.dz .fcell.s .mk{display:block}
-.fcell .mk{right:calc(var(--u)*.04);bottom:calc(var(--u)*.05)}
+.fcell .mk{right:calc(var(--u)*.16);bottom:calc(var(--u)*.05)}   /* 格宽 1.40u，点贴字右下隙 */
 
 /* 校勘朱记：裁决格字左下施小朱点（与句读右下点相别；可由 rail 开关隐藏） */
 .fcell.fix::after{
@@ -208,7 +209,7 @@ body{
              rgba(120,88,44,0) 50%,rgba(120,88,44,.01) 74%,rgba(120,88,44,.05) 100%);
 }
 .fbanxin .kou{flex:0 0 auto;height:calc(var(--u)*.55)}       /* 上下白口 */
-.fbanxin .fish{display:block;width:44%;height:calc(var(--u)*.5)}
+.fbanxin .fish{display:block;width:46%;height:calc(var(--u)*.5)}
 .fbanxin .fish svg{display:block;width:100%;height:100%}
 .fbanxin .gap{flex:0 0 auto;height:calc(var(--u)*.3)}
 .fbanxin .fill{flex:1 1 auto;min-height:calc(var(--u)*.45)}
