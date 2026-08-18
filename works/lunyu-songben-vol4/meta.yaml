@@ -1,0 +1,54 @@
+id: lunyu-songben-vol4
+title: 論語集注·卷四（善本底·G5）
+subtitle: 当涂郡斋刊递修本 · 述而第七 · 泰伯第八
+docTitle: 論語集注卷四 — 宋版善刻
+mark: 蘭木
+ariaLabel: 論語集注卷四，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+book:
+  id: lunyu-songben-vol4
+  title: 論語集注·卷四（善本底·G5）
+  order: 4
+  entry:
+    big: 論語
+    sub: 集注
+seed: 21204
+expect: null
+songke:
+  bigPerCol: 15
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 論語
+  gong:
+    - 牛山
+  spec: 半葉八行 行十五字 注文雙行 白口 左右雙邊
+  colophon: 依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子集注小字雙行；篇題別行（述而第七、泰伯第八），注隨經而下。<br>此卷錄《論語集注》卷四全帙：述而第七（三十七章）、泰伯第八（二十二章）。行款依底本實測（每列十五字位，行款眾數十四字）。<br>文本由網格基校勘管線（G1 逐格轉寫 → G2/G3 參校掛格 → G4 裁決 → G5 單源出口）自當涂郡齋刊遞修本影印派生，異文經四校書官審議與人工精校。<br>句讀以朱筆點之，附於字之右下，不占字位。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Lunyu4-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 當涂郡齋刊遞修本《四書章句集注》（中國國家圖書館藏）
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《論語集注》卷四：述而第七、泰伯第八，以宋刻本版式數字重刻。文本由網格基校勘管線自善本影印逐格派生，為該管線通用性驗證（skill 復跑·卷四，零代碼改動）之產物。</p>

@@ -36,12 +36,13 @@ const put = (p, c, r, k, v) => {
   qIdx.get(key)[k] = v;
 };
 for (const s of ov.variants.oldOcr.sub || []) put(s.page, s.col, s.row, 'old', s.old);
-for (const s of ov.variants.modern.sub || []) put(s.page, s.col, s.row, 'modern', s.modern);
+for (const s of ov.variants.modern?.sub || []) put(s.page, s.col, s.row, 'modern', s.modern);
 for (const e of ov.variants.oldOcr.extra || []) put(e.page, e.col, e.row, 'extraOld', true);
-for (const e of ov.variants.modern.extra || []) put(e.page, e.col, e.row, 'extraMod', true);
+for (const e of ov.variants.modern?.extra || []) put(e.page, e.col, e.row, 'extraMod', true);
 // 夺文 run 挂 after 格
 const runs = [];
 for (const [src, key] of [['oldOcr', '旧OCR'], ['modern', '今本']]) {
+  if (!ov.variants[src]) continue;
   for (const m of ov.variants[src].missing || []) {
     runs.push({ src, srcLabel: key, page: m.page, after: m.after, text: m.text, whole: !!m.whole });
     if (m.after) put(m.page, m.after.col, m.after.row, 'missAfter', { src: key, text: m.text });

@@ -72,3 +72,15 @@ works:
     structure:
       - { type: 篇, name: 八佾第三 }
       - { type: 篇, name: 里仁第四 }
+
+  - id: 论语集注卷四
+    title: 論語集注·卷四
+    inputBook: 论语集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [學而, 爲政, 八佾, 里仁, 公冶長, 雍也, 述而, 泰伯, 子罕, 鄉黨, 先進, 顏淵, 子路, 憲問, 衛靈公, 季氏, 陽貨, 微子, 子張, 堯曰]
+    structure:
+      - { type: 篇, name: 述而第七 }
+      - { type: 篇, name: 泰伯第八 }
