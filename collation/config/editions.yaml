@@ -47,3 +47,15 @@ works:
     structure:
       - { type: 序, name: 中庸章句序 }
       - { type: 章, name: 第一章至第三十三章 }
+
+  - id: 论语集注                      # 分卷书：input_data/论语集注/<卷>/{当涂郡本,儒藏本}_{ocr,pdf}/，页码全局连续
+    title: 論語集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:                           # 锚规则登记（grid.js deriveAnchors）：篇题开节式，非双书右X章收束式
+      mode: pian
+      pianNames: [學而, 爲政, 八佾, 里仁, 公冶長, 雍也, 述而, 泰伯, 子罕, 鄉黨, 先進, 顏淵, 子路, 憲問, 衛靈公, 季氏, 陽貨, 微子, 子張, 堯曰]
+    structure:
+      - { type: 序, name: 論語序說 }
+      - { type: 篇, name: 學而第一 }
+      - { type: 篇, name: 爲政第二 }

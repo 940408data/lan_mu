@@ -32,18 +32,64 @@ function loadConfig() {
   return { editions: byId, works };
 }
 
-/** 列出某版本某书的 OCR 页（page_XXXX.md），按页码升序 */
+/** 列出某版本某书的 OCR 页（page_XXXX.md），按页码升序。
+ *  分卷书（input_data/<书>/<卷>/<ocrDir>/，页码全局连续）自动回退卷目录扫描，带 vol 字段。 */
 function listPages(bookDir, ocrDir) {
   const dir = path.join(INPUT_DATA, bookDir, ocrDir);
-  if (!fs.existsSync(dir)) throw new Error(`OCR 目录不存在: ${dir}`);
-  return fs.readdirSync(dir)
-    .filter(f => /^page_\d+\.md$/.test(f))
-    .sort()
-    .map(f => ({
-      n: parseInt(f.match(/(\d+)/)[1], 10),
-      file: f,
-      path: path.join(dir, f),
-    }));
+  if (fs.existsSync(dir)) {
+    return fs.readdirSync(dir)
+      .filter(f => /^page_\d+\.md$/.test(f))
+      .sort()
+      .map(f => ({
+        n: parseInt(f.match(/(\d+)/)[1], 10),
+        file: f,
+        path: path.join(dir, f),
+      }));
+  }
+  // 分卷书：扫描 input_data/<bookDir>/<任意卷目录>/<ocrDir>/
+  const vol = listVolumePages(bookDir, ocrDir);
+  if (!vol.length) throw new Error(`OCR 目录不存在: ${dir}（含分卷扫描）`);
+  return vol;
+}
+
+/** 分卷书页扫描：input_data/<bookDir>/<卷>/<ocrDir>/page_*.md → [{vol,n,file,path}]（页码升序） */
+function listVolumePages(bookDir, ocrDir) {
+  const root = path.join(INPUT_DATA, bookDir);
+  if (!fs.existsSync(root)) return [];
+  const out = [];
+  for (const ent of fs.readdirSync(root, { withFileTypes: true })) {
+    if (!ent.isDirectory() || ent.name.startsWith('_') || ent.name === 'chm_extract') continue;
+    const dir = path.join(root, ent.name, ocrDir);
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir).filter(f => /^page_\d+\.md$/.test(f))) {
+      out.push({ vol: ent.name, n: parseInt(f.match(/(\d+)/)[1], 10), file: f, path: path.join(dir, f) });
+    }
+  }
+  return out.sort((a, b) => a.n - b.n);
+}
+
+/** 按页码解析善本 PDF 页路径：平铺优先，分卷书回退卷目录扫描。 */
+function pagePdfPath(bookDir, pdfDir, n) {
+  const name = `page_${String(n).padStart(4, '0')}.pdf`;
+  const flat = path.join(INPUT_DATA, bookDir, pdfDir, name);
+  if (fs.existsSync(flat)) return flat;
+  const root = path.join(INPUT_DATA, bookDir);
+  if (fs.existsSync(root)) {
+    for (const ent of fs.readdirSync(root, { withFileTypes: true })) {
+      if (!ent.isDirectory() || ent.name.startsWith('_') || ent.name === 'chm_extract') continue;
+      const p = path.join(root, ent.name, pdfDir, name);
+      if (fs.existsSync(p)) return p;
+    }
+  }
+  return flat; // 不存在时返回平铺路径（调用方 existsSync 自查）
+}
+
+/** 页码→卷名（分卷书）：在 <ocrDir> 的卷扫描中定位 n 所在卷。平铺书返回 null。 */
+function volumeOfPage(bookDir, ocrDir, n) {
+  for (const p of listVolumePages(bookDir, ocrDir)) {
+    if (p.n === n) return p.vol;
+  }
+  return null;
 }
 
 /** 读一页 markdown → { lines:[去空行后的行], raw:全文 } */
@@ -96,4 +142,4 @@ function loadWork(workId) {
   };
 }
 
-module.exports = { loadConfig, loadWork, loadEdition, listPages, readPage, INPUT_DATA, REPO_ROOT };
+module.exports = { loadConfig, loadWork, loadEdition, listPages, listVolumePages, pagePdfPath, volumeOfPage, readPage, INPUT_DATA, REPO_ROOT };

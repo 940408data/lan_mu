@@ -52,11 +52,12 @@ function leanNote(officer) {
   return m[officer] || '';
 }
 
-/** 单官真实 LLM 审议 */
+/** 单官真实 LLM 审议。ctx.shanbenTitle 可传底本描述（editions.yaml 派生），未传用双书默认 */
 async function officerOpinion(officer, v, ctx) {
   const system = loadOfficerProfile(officer);
+  const sbTitle = (ctx && ctx.shanbenTitle) || '当涂郡斋刊递修本，南宋';
   const user = `审议异文（以你 ${OFFICER_NAME[officer]} 之方法）：
-- 善本（当涂郡斋刊递修本，南宋）：「${v.shanben || '∅'}」
+- 善本（${sbTitle}）：「${v.shanben || '∅'}」
 - 现代本（儒藏精华编）：「${v.xiandai || '∅'}」
 - 异文类型：${v.type}${v.cluster ? '（短语级，双侧所引为连续文字）' : ''}
 - 所在句（现代本）：${v.seg.xiandai}

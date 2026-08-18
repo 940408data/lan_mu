@@ -28,6 +28,24 @@ const canon = (s) => [...s.replace(STRIP, '')].map(normChar).join('');
 const CHAPTER_RE = /右(經一章|傳之[首一二三四五六七八九十]+章|第[一二三四五六七八九十百]+章)/g;
 const PREFACE_END_RE = /淳熙[己已]酉[^\s]{0,14}新安朱熹序/; // 序尾锚（收束序节；容错视觉误识 己→已）
 
+// ── 锚规则派生：works.anchors 登记优先（登记式适配），未登记回落双书默认（右X章收束式）──
+//  登记例（editions.yaml）：
+//    anchors: { mode: pian, pianNames: [學而, 爲政, …] }  # 篇题开节式（论语：學而第一/爲政第二…）
+//  篇名登记可写原刻异体（如「爲」）；匹配目标为归一格串（canon 后），
+//  故每个篇名生成「原字形｜归一字形」双写 alternation（如 爲政｜為政）。
+function deriveAnchors(work) {
+  const a = (work && work.anchors) || {};
+  if (a.mode === 'pian' && Array.isArray(a.pianNames) && a.pianNames.length) {
+    const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const names = a.pianNames.map(n => {
+      const c = [...String(n)].map(canonCh).join('');
+      return String(n) === c ? esc(n) : `${esc(n)}|${esc(c)}`;
+    }).join('|');
+    return { mode: 'pian', chapterRE: new RegExp(`(${names})第[一二三四五六七八九十百]+`, 'g'), prefaceEndRE: null };
+  }
+  return { mode: 'you', chapterRE: CHAPTER_RE, prefaceEndRE: PREFACE_END_RE };
+}
+
 // ── 编辑对齐 a(参校) × b(格串) → ops[{t,a,b,ai,bi}] ──
 function editOps(a, b) {
   const m = a.length, n = b.length;
@@ -53,10 +71,17 @@ function editOps(a, b) {
 // ── 基础层装载：grid-transcribe.json → 扁平格序列（col 升序、列内 row 升序）──
 // gridStr 为归一串（供对齐），strIdx[k] = gridStr 第 k 字对应的 flat 格下标。
 // ○ 等符号格不进 gridStr，但保留在 flat 里（索引映射不断裂，坐标永远可回溯）。
+// 重复叶排除（layout.json specialPages kind=dupPage）：影印本同版面重复拍摄，
+// 基础层照录两份；装载时按登记跳过副本（不改基础层文件本身，铁律不破）。
 const STRIP_ONE = new RegExp(STRIP.source); // 无 g 标志：单字 test 安全
 const stripCh = (ch) => STRIP_ONE.test(ch);
-function loadBaseGrid(tr) {
-  const pages = (tr.pages || []).map(pg => ({
+function loadBaseGrid(tr, dataDir) {
+  const skip = new Set();
+  try {
+    const lay = JSON.parse(require('fs').readFileSync(path.join(dataDir || path.join(__dirname, '..', 'data', tr.work || ''), 'layout.json'), 'utf8'));
+    for (const sp of lay.specialPages || []) if (sp.kind === 'dupPage') for (const n of sp.pages || []) skip.add(n);
+  } catch {}
+  const pages = (tr.pages || []).filter(pg => !skip.has(pg.n)).map(pg => ({
     n: pg.n,
     cells: (pg.cells || [])
       .slice().sort((x, y) => x.col - y.col || x.row - y.row)
@@ -160,8 +185,8 @@ function precleanModern(lines, ctx) {
       excluded.push({ kind: 'collation-note', text: line });
       continue;
     }
-    // ④ 页码 / 刊记署名行
-    if (/^\d+$/.test(line) || /從政郎.*校正|章句畢$/.test(line)) {
+    // ④ 页码 / 刊记署名行 / 卷尾题（論語卷第一 等，分卷书儒藏本每卷末行）
+    if (/^\d+$/.test(line) || /從政郎.*校正|章句畢$/.test(line) || /^.{0,8}卷第[一二三四五六七八九十百]+$/.test(line)) {
       excluded.push({ kind: /^[\d]+$/.test(line) ? 'page-number' : 'colophon', text: line });
       continue;
     }
@@ -178,11 +203,12 @@ function alignModern(base, modernRaw, ctx) {
   const pre = precleanModern(modernRaw.split(/\r?\n/), ctx);
   const modern = canon(pre.lines.join('\n'));
   const W = 14, MIN_GAP = 150;
+  const chapterRE = ctx.chapterRE || CHAPTER_RE;
 
   // 硬锚：两侧章题序列
   const hard = [];
-  const mChapters = [...modern.matchAll(CHAPTER_RE)];
-  const gChapters = [...base.gridStr.matchAll(CHAPTER_RE)];
+  const mChapters = [...modern.matchAll(chapterRE)];
+  const gChapters = [...base.gridStr.matchAll(chapterRE)];
   if (mChapters.length && mChapters.length === gChapters.length) {
     for (let k = 0; k < mChapters.length; k++)
       hard.push({ ai: mChapters[k].index, bi: gChapters[k].index, key: mChapters[k][0], kind: 'chapter' });
@@ -248,12 +274,13 @@ function alignModern(base, modernRaw, ctx) {
 }
 
 // ── G3：标签（列级 j/z + 章题 title + sections）──
-function labelGrid(base, modernAligned) {
+function labelGrid(base, modernAligned, anchors) {
+  anchors = anchors || { mode: 'you', chapterRE: CHAPTER_RE, prefaceEndRE: PREFACE_END_RE };
   // 1) 章题格坐标：格串中的章题锚 → flat 索引区间（经 strIdx 映射）
   const chapterCells = [];
-  for (const m of base.gridStr.matchAll(CHAPTER_RE)) {
+  for (const m of base.gridStr.matchAll(anchors.chapterRE)) {
     const from = base.cellOf(m.index), to = base.cellOf(m.index + m[0].length - 1);
-    chapterCells.push({ text: m[0], raw: m[0], toIdx: m.index + m[0].length - 1, from: { page: from.page, col: from.col, row: from.row }, to: { page: to.page, col: to.col, row: to.row } });
+    chapterCells.push({ text: m[0], raw: m[0], fromIdx: m.index, toIdx: m.index + m[0].length - 1, from: { page: from.page, col: from.col, row: from.row }, to: { page: to.page, col: to.col, row: to.row } });
   }
   // 2) 列级 j/z（复用 colsOfPage：start 頂格=j）
   const labels = [];
@@ -275,22 +302,32 @@ function labelGrid(base, modernAligned) {
       }
     }
   }
-  // 4) sections：统一收束式（章题锚标记其前正文的归属，锚块归上一节末尾）
-  //    序尾锚（淳熙己酉…新安朱熹序）收束 xu；其后每节 = 前一边界后 → 本锚 to；尾锚不开节，尾节至卷尾。
+  // 4) sections：双模式——收束式（右X章，双书）与篇题开节式（论语：篇题锚处开节）
+  //    收束式：锚 k 收束其前正文；新节名 = 下一锚章名去「右」；序尾锚收束 xu。
+  //    开节式：篇题锚即节起点（锚块=title 列，G5 skip）；锚前内容（卷题/撰人）不入节。
   //    大学：[xu, jing:經一章, zhuan1:傳之首章..zhuan10:傳之十章]
   //    中庸：[xu, zhang1:首章, zhang2:第二章..zhang33:第三十三章]
+  //    论语：[pian1:學而第一, pian2:爲政第二, …]（锚前卷題不入节）
   const sections = [];
   const endAt = (idx) => {
     const k = Math.max(0, Math.min(base.gridStr.length - 1, idx));
     const c = base.cellOf(k);
     return { page: c.page, col: c.col, row: c.row };
   };
+  if (anchors.mode === 'pian') {
+    chapterCells.forEach((ch, k) => {
+      const toIdx = k + 1 < chapterCells.length ? chapterCells[k + 1].fromIdx - 1 : base.gridStr.length - 1;
+      if (ch.fromIdx > toIdx) return;
+      sections.push({ id: 'pian' + (k + 1), name: ch.text, from: endAt(ch.fromIdx), to: endAt(toIdx) });
+    });
+    return { labels, sections, chapterCells, zhongyongMode: false, anchorMode: 'pian' };
+  }
   let zhongyongMode = chapterCells.some(ch => /右第.+章/.test(ch.text));
   // 边界点（格串索引 + 在此处并始的新节元数据）
   const bounds = [];
   if (chapterCells.length) bounds.push({ idx: -1, sec: { id: 'xu', name: '序' } }); // -1 = 格串头
-  const prefEnd = base.gridStr.search(PREFACE_END_RE);
-  const prefEndTo = prefEnd >= 0 ? prefEnd + PREFACE_END_RE.exec(base.gridStr)[0].length - 1 : -1;
+  const prefEnd = anchors.prefaceEndRE ? base.gridStr.search(anchors.prefaceEndRE) : -1;
+  const prefEndTo = prefEnd >= 0 && anchors.prefaceEndRE ? prefEnd + anchors.prefaceEndRE.exec(base.gridStr)[0].length - 1 : -1;
   if (prefEndTo >= 0) {
     bounds.push({ idx: prefEndTo, sec: zhongyongMode ? { id: 'zhang1', name: '首章' } : { id: 'jing', name: '經一章' } });
   }
@@ -311,7 +348,7 @@ function labelGrid(base, modernAligned) {
     if (fromIdx > toIdx) continue;
     sections.push({ id: bounds[i].sec.id, name: bounds[i].sec.name, from: endAt(fromIdx), to: endAt(toIdx) });
   }
-  return { labels, sections, chapterCells, zhongyongMode };
+  return { labels, sections, chapterCells, zhongyongMode, anchorMode: anchors.mode };
 }
 
 // ── 主入口 ──
@@ -320,29 +357,43 @@ function buildOverlay(workId, opts = {}) {
   const dataDir = path.join(__dirname, '..', 'data', workId);
   const tr = JSON.parse(fs.readFileSync(path.join(dataDir, 'grid-transcribe.json'), 'utf8'));
   const v2 = JSON.parse(fs.readFileSync(path.join(dataDir, 'shanben-v2.json'), 'utf8'));
-  const base = loadBaseGrid(tr);
+  const base = loadBaseGrid(tr, dataDir);
   const baseSha = crypto.createHash('sha256').update(fs.readFileSync(path.join(dataDir, 'grid-transcribe.json'))).digest('hex');
+
+  // 作品登记（editions.yaml）：锚规则派生 + 现代本卷路由所需 edition 目录名
+  let work = null, ioMod = null;
+  try { ioMod = require('./io'); work = ioMod.loadConfig().works[workId] || null; } catch { work = null; }
+  const anchors = deriveAnchors(work);
 
   const oldOcr = alignOldOcr(base, v2);
 
-  // 现代本（可选：无输入目录时跳过 G2b）
+  // 现代本（可选：无输入目录时跳过 G2b；分卷书按基础层首页码路由到同卷儒藏目录）
   let modern = null;
   const inputRoot = opts.inputRoot || path.join(__dirname, '..', '..', '..', 'input_data');
-  const mdir = path.join(inputRoot, workId, '儒藏本_ocr');
+  let mdir = path.join(inputRoot, workId, '儒藏本_ocr');
   let headings = new Set();
-  if (opts.modern !== false && fs.existsSync(mdir)) {
-    // 页眉集：书名/序名（editions.yaml title 为繁体，与儒藏本 OCR 一致）
-    try {
-      const { loadConfig } = require('./io');
-      const title = loadConfig().works[workId].title || workId;
+  if (opts.modern !== false) {
+    if (!fs.existsSync(mdir) && ioMod && work) {
+      // 分卷书：基础层首页码 → 当涂卷名 → 同名卷的儒藏目录（页码全局连续）
+      const firstPage = base.pages.length ? base.pages[0].n : null;
+      const vol = firstPage != null ? ioMod.volumeOfPage(workId, ioMod.loadConfig().editions[work.shanben].ocrDir, firstPage) : null;
+      const cand = vol ? path.join(inputRoot, workId, vol, ioMod.loadConfig().editions[work.xiandai].ocrDir) : null;
+      if (cand && fs.existsSync(cand)) {
+        mdir = cand;
+        console.log(`分卷书路由：基础层首页 p${firstPage} → 卷「${vol}」→ ${mdir}`);
+      }
+    }
+    if (fs.existsSync(mdir)) {
+      // 页眉集：书名/序名（editions.yaml title 为繁体，与儒藏本 OCR 一致）
+      const title = (work && work.title) || workId;
       headings = new Set([title, `${title.replace(/章句$/, '')}章句序`, '朱熹章句']);
-    } catch { headings = new Set(['朱熹章句']); }
-    const raw = fs.readdirSync(mdir).filter(f => /^page_\d+\.md$/.test(f)).sort()
-      .map(f => fs.readFileSync(path.join(mdir, f), 'utf8')).join('\n');
-    modern = alignModern(base, raw, { headings });
+      const raw = fs.readdirSync(mdir).filter(f => /^page_\d+\.md$/.test(f)).sort()
+        .map(f => fs.readFileSync(path.join(mdir, f), 'utf8')).join('\n');
+      modern = alignModern(base, raw, { headings, chapterRE: anchors.chapterRE });
+    }
   }
 
-  const g3 = labelGrid(base, modern);
+  const g3 = labelGrid(base, modern, anchors);
 
   // j/z 对照（与现行 grid.json 列级判定）
   let jzCheck = null;
@@ -383,10 +434,11 @@ function buildOverlay(workId, opts = {}) {
     modernAgree: modern ? modern.agree / Math.max(1, modern.agree + modern.sub.length + modern.extra.length) : null,
     preclean: modern ? modern.preclean.reduce((m, e) => { m[e.kind] = (m[e.kind] || 0) + 1; return m; }, {}) : null,
     zhongyongMode: g3.zhongyongMode,
+    anchorMode: g3.anchorMode,
     sections: g3.sections.map(s => `${s.id}:${s.name}`),
     jzCheck,
   };
   return { overlay, report };
 }
 
-module.exports = { buildOverlay, loadBaseGrid, alignOldOcr, alignModern, labelGrid, canon, canonCh, precleanModern };
+module.exports = { buildOverlay, loadBaseGrid, alignOldOcr, alignModern, labelGrid, deriveAnchors, canon, canonCh, precleanModern };
