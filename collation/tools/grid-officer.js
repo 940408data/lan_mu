@@ -39,7 +39,7 @@ function ensure(s) {
   return byCell.get(k);
 }
 for (const s of ov.variants.oldOcr.sub || []) { const t = ensure(s); t.old = s.old; t.ctxOld = s.ctxOld || ''; }
-for (const s of ov.variants.modern.sub || []) { const t = ensure(s); t.modern = s.modern; t.ctxXd = s.ctxXd || ''; t.ctxSb = t.ctxSb || s.ctxSb || ''; }
+for (const s of ov.variants.modern?.sub || []) { const t = ensure(s); t.modern = s.modern; t.ctxXd = s.ctxXd || ''; t.ctxSb = t.ctxSb || s.ctxSb || ''; }
 
 const targets = [...byCell.values()].map(t => {
   // 与现代本相异 = 真异文候选；仅旧OCR相异（今本无意见=与格一致）= ocr疑读

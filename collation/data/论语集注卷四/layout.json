@@ -1,0 +1,21 @@
+{
+  "work": "论语集注卷四",
+  "edition": "当涂郡斋刊递修本（四书章句集注）",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "同卷一/卷二/卷三版式（16×15 整叶两半叶各 8 栏）；卷首 p144 含卷題「論語卷第四」+朱熹集注+篇題「述而第七」（正文同页开排）；篇題開節式（述而第七/泰伯第八）",
+  "textPages": [144, 187],
+  "specialPages": [
+    { "pages": [144], "kind": "卷首", "note": "卷題「論語卷第四」+朱熹集注+篇題「述而第七」+篇旨，正文同页开排" },
+    { "pages": [188], "kind": "图版页", "note": "OCR 无文字输出（同 p49/p90/p142 模式）" },
+    { "pages": [189], "kind": "图版页", "note": "OCR 无文字输出（同 p49/p90/p142 模式）" },
+    { "pages": [190], "kind": "扉页", "note": "「宋本論語集注卷五」扉页（卷五首），本卷范围外" }
+  ],
+  "sampledPages": [144, 166, 187],
+  "probedBy": "S7 卷四复跑（skill 零代码改动验证）：页边界经当涂 OCR p144/p187/p188/p189/p190 实证",
+  "note": "2026-08-18 S7 卷四。G1 由并行会话（lunyu-juan4 worktree）执行，全量 qwen3.8-max"
+}
