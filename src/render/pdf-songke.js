@@ -35,7 +35,7 @@ async function renderSongkePdf(tree, htmlPath, outDir, opts = {}) {
     await page.evaluate((u) => {
       document.getElementById('book').classList.remove('single');
       document.documentElement.style.setProperty('--u', u + 'px');
-      document.querySelector('.bar').style.display = 'none';
+      document.querySelector('.bar')?.style?.setProperty('display', 'none');
     }, exportU);
 
     const outputs = [];
