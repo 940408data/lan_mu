@@ -32,6 +32,15 @@ function loadConfig() {
   return { editions: byId, works };
 }
 
+/** workId → input_data 子目录名（分卷书每卷一作品时，workId ≠ 目录名，经 works[].inputBook 别名解耦） */
+function inputBookOf(workId) {
+  try {
+    const w = loadConfig().works[workId];
+    if (w && w.inputBook) return w.inputBook;
+  } catch {}
+  return workId;
+}
+
 /** 列出某版本某书的 OCR 页（page_XXXX.md），按页码升序。
  *  分卷书（input_data/<书>/<卷>/<ocrDir>/，页码全局连续）自动回退卷目录扫描，带 vol 字段。 */
 function listPages(bookDir, ocrDir) {
@@ -110,15 +119,19 @@ function isCoverPage(lines, role) {
 function loadEdition(bookId, work, editionId) {
   const cfg = loadConfig();
   const e = cfg.editions[editionId];
-  const pages = listPages(bookId, e.ocrDir).map(p => {
+  const bookDir = (work && work.inputBook) || bookId;
+  const pages = listPages(bookDir, e.ocrDir).map(p => {
     const r = readPage(p.path);
-    return { n: p.n, ...r, isCover: isCoverPage(r.lines, e.role) };
+    return { n: p.n, vol: p.vol || null, ...r, isCover: isCoverPage(r.lines, e.role) };
   });
-  // PDF 页数（仅登记，不读二进制）
-  const pdfDir = path.join(INPUT_DATA, bookId, e.pdfDir);
-  const pdfCount = fs.existsSync(pdfDir)
-    ? fs.readdirSync(pdfDir).filter(f => /\.pdf$/i.test(f)).length
-    : 0;
+  // PDF 页数（仅登记，不读二进制；分卷书退卷目录合计）
+  const pdfDir = path.join(INPUT_DATA, bookDir, e.pdfDir);
+  let pdfCount = 0;
+  if (fs.existsSync(pdfDir)) {
+    pdfCount = fs.readdirSync(pdfDir).filter(f => /\.pdf$/i.test(f)).length;
+  } else {
+    pdfCount = listVolumePages(bookDir, e.pdfDir).length;
+  }
   return {
     id: e.id,
     role: e.role,
@@ -142,4 +155,4 @@ function loadWork(workId) {
   };
 }
 
-module.exports = { loadConfig, loadWork, loadEdition, listPages, listVolumePages, pagePdfPath, volumeOfPage, readPage, INPUT_DATA, REPO_ROOT };
+module.exports = { loadConfig, loadWork, loadEdition, listPages, listVolumePages, pagePdfPath, volumeOfPage, inputBookOf, readPage, INPUT_DATA, REPO_ROOT };

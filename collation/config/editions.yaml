@@ -50,6 +50,7 @@ works:
 
   - id: 论语集注                      # 分卷书：input_data/论语集注/<卷>/{当涂郡本,儒藏本}_{ocr,pdf}/，页码全局连续
     title: 論語集注
+    inputBook: 论语集注                # workId 与 input 目录同名（显式自指；每卷一作品时经此字段解耦）
     shanben: dangtu
     xiandai: ruzang
     anchors:                           # 锚规则登记（grid.js deriveAnchors）：篇题开节式，非双书右X章收束式
@@ -59,3 +60,15 @@ works:
       - { type: 序, name: 論語序說 }
       - { type: 篇, name: 學而第一 }
       - { type: 篇, name: 爲政第二 }
+
+  - id: 论语集注卷二                   # 每卷一作品：独立 data 目录/指纹/裁决链，input 经 inputBook 指回原书目录
+    title: 論語集注·卷二
+    inputBook: 论语集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [學而, 爲政, 八佾, 里仁, 公冶長, 雍也, 述而, 泰伯, 子罕, 鄉黨, 先進, 顏淵, 子路, 憲問, 衛靈公, 季氏, 陽貨, 微子, 子張, 堯曰]
+    structure:
+      - { type: 篇, name: 八佾第三 }
+      - { type: 篇, name: 里仁第四 }

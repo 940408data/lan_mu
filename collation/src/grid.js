@@ -370,14 +370,15 @@ function buildOverlay(workId, opts = {}) {
   // 现代本（可选：无输入目录时跳过 G2b；分卷书按基础层首页码路由到同卷儒藏目录）
   let modern = null;
   const inputRoot = opts.inputRoot || path.join(__dirname, '..', '..', '..', 'input_data');
-  let mdir = path.join(inputRoot, workId, '儒藏本_ocr');
+  const inputBook = (work && work.inputBook) || workId;
+  let mdir = path.join(inputRoot, inputBook, '儒藏本_ocr');
   let headings = new Set();
   if (opts.modern !== false) {
     if (!fs.existsSync(mdir) && ioMod && work) {
       // 分卷书：基础层首页码 → 当涂卷名 → 同名卷的儒藏目录（页码全局连续）
       const firstPage = base.pages.length ? base.pages[0].n : null;
-      const vol = firstPage != null ? ioMod.volumeOfPage(workId, ioMod.loadConfig().editions[work.shanben].ocrDir, firstPage) : null;
-      const cand = vol ? path.join(inputRoot, workId, vol, ioMod.loadConfig().editions[work.xiandai].ocrDir) : null;
+      const vol = firstPage != null ? ioMod.volumeOfPage(inputBook, ioMod.loadConfig().editions[work.shanben].ocrDir, firstPage) : null;
+      const cand = vol ? path.join(inputRoot, inputBook, vol, ioMod.loadConfig().editions[work.xiandai].ocrDir) : null;
       if (cand && fs.existsSync(cand)) {
         mdir = cand;
         console.log(`分卷书路由：基础层首页 p${firstPage} → 卷「${vol}」→ ${mdir}`);
