@@ -4,9 +4,12 @@
    --kai / --song / --xing 由构建期注入（A 级子集 / 回退链），--face 为当前字面。 */
 :root{
   --u: 26px;                                   /* 格宽高（zoom 控件实时调节） */
-  --big-size:   calc(var(--u) * .84);          /* 经/题大字（字身小于字格，四围留白） */
-  --small-size: calc(var(--u) * .62);          /* 注小字（等宽格内缩字号，原刻注列比经列窄、此处以字号别之） */
-  --sub-stroke: .25px;                         /* 小字笔画加重，防发虚 */
+  --bx: calc(var(--u) * 1.18);                 /* 版心中缝轨宽（真实轨道，不遮两侧列） */
+  --j-scale: .84;                              /* 经/题字号系数（meta.facsimile.jSize 可调） */
+  --z-scale: .80;                              /* 注字号系数（meta.facsimile.zSize 可调，接近经字） */
+  --big-size:   calc(var(--u) * var(--j-scale));
+  --small-size: calc(var(--u) * var(--z-scale));
+  --sub-stroke: .2px;                          /* 小字笔画加重，防发虚 */
 
   --paper:  #e8dec8;
   --paper2: #dccfb1;
@@ -64,12 +67,11 @@ body{
 .fld{display:flex;align-items:center;gap:.45rem}
 .micro{font-size:.72rem;color:rgba(224,208,178,.6)}
 
-/* ───── 书叶（一叶 = 原刻一页：cols×rows 等宽格阵，rtl 使 col1 居最右） ───── */
+/* ───── 书叶（一叶 = 原刻一页：右半叶 + 版心轨 + 左半叶，rtl 使 col1 居最右） ───── */
 .fbook{display:flex;justify-content:center}
 .fsheet{
-  display:grid;                       /* 模板列/行由内联样式注入 repeat(cols,var(--u)) / repeat(rows,var(--u)) */
+  display:grid;                       /* 模板列由内联注入：repeat(half,u) var(--bx) repeat(half,u)——版心为真实轨道 */
   direction:rtl;                      /* rtl 下 grid-column:1 = 最右——阅读自右向左 */
-  position:relative;                  /* 版心绝对定位于此 */
   padding:calc(var(--u)*.55) calc(var(--u)*.5);
   background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 52%,var(--paper) 100%);
   box-shadow:0 18px 60px -18px rgba(0,0,0,.75), 0 2px 10px rgba(0,0,0,.4);
@@ -112,16 +114,14 @@ body{
 .fixtip b{color:#f3e8d0}
 .fixtip .zhu{color:#e8b4a0}
 
-/* ───── 版心（中缝竖条：鱼尾 + 书名 + 叶次；绝对居中，不占格） ───── */
+/* ───── 版心（中缝轨道：鱼尾 + 书名 + 叶次；占独立 grid 轨，不遮两侧列） ───── */
 .fbanxin{
-  position:absolute;top:calc(var(--u)*.18);bottom:calc(var(--u)*.18);
-  left:50%;transform:translateX(-50%);
-  width:calc(var(--u)*.92);
+  grid-row: 1 / -1;                   /* 独占全行高（列轨道由内联 grid-column 指定） */
+  width: var(--bx);
   display:flex;flex-direction:column;align-items:center;
   border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);
   background:linear-gradient(90deg,var(--paper2),var(--paper) 50%,var(--paper2));
   padding:calc(var(--u)*.3) 0;
-  pointer-events:none;                 /* 不遮正文交互 */
 }
 .fbanxin .fish{width:calc(var(--u)*.6);height:calc(var(--u)*.58)}
 .fbanxin .bt{writing-mode:vertical-rl;font-family:var(--face);color:var(--ink);

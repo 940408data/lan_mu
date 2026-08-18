@@ -64,6 +64,8 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
     banxinTitle: fm.banxinTitle || meta.title,
     cols: (grid.layout && grid.layout.cols) || 16,
     rows: (grid.layout && grid.layout.rows) || 15,
+    jScale: fm.jSize || .84,                 // 经/题字号系数（meta.facsimile.jSize）
+    zScale: fm.zSize || .80,                 // 注字号系数（meta.facsimile.zSize，接近经字）
     pages: grid.pages.map((pg) => ({ n: pg.n, cells: pg.cells || [] })),
     labels: grid.labels || [],
     fixes: grid.fixes || [],

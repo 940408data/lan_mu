@@ -40,10 +40,14 @@
 
   const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-  /* ── 一叶渲染：sheet = 完整一页（cols×rows 等宽格阵），rtl + 逐格显式定位 ── */
+  /* ── 一叶渲染：sheet = 右半叶(half列) + 版心轨 + 左半叶(half列)；rtl 下 col1 居最右 ──
+     版心为真实 grid 轨道（track half+1），不遮两侧列——靠近中缝的字全真呈现。
+     cells 坐标仍为原刻 col（1..COLS）：右半叶 c≤half 映射 track c，左半叶 c>half 映射 track c+1（跳过版心轨）。 */
   function renderLeaf() {
     const pg = SK.pages[state.leaf];
     if (!pg) return;
+    const half = Math.ceil(COLS / 2);
+    const trackOf = (c) => (c <= half ? c : c + 1);
 
     /* 逐格：只含有字格生成 DOM；空位（敬空/阙字/空列）无 DOM 自然留白——坐标即版面 */
     let cellsHTML = '';
@@ -54,20 +58,20 @@
       let inner;
       if (fx) {
         const tip = `${fx.from} → ${fx.to}${fx.evidence ? '｜' + fx.evidence : ''}`;
-        inner = `<span class="fcell ${cls} fix" style="grid-row:${r};grid-column:${c}" title="${escAttr(tip)}">${conv(ch)}</span>`;
+        inner = `<span class="fcell ${cls} fix" style="grid-row:${r};grid-column:${trackOf(c)}" title="${escAttr(tip)}">${conv(ch)}</span>`;
       } else {
-        inner = `<span class="fcell ${cls}" style="grid-row:${r};grid-column:${c}">${conv(ch)}</span>`;
+        inner = `<span class="fcell ${cls}" style="grid-row:${r};grid-column:${trackOf(c)}">${conv(ch)}</span>`;
       }
       cellsHTML += inner;
     }
 
     const banxin =
-      `<div class="fbanxin"><span class="fish">${FISH}</span>` +
+      `<div class="fbanxin" style="grid-column:${half + 1}"><span class="fish">${FISH}</span>` +
       `<span class="bt">${conv(SK.banxinTitle || SK.title)}</span>` +
       `<span class="fo">${conv('葉 ' + numCn(pg.n))}</span><span class="fish">${FISH}</span></div>`;
 
     $('book').innerHTML =
-      `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${COLS},var(--u));grid-template-rows:repeat(${ROWS},var(--u))">` +
+      `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${half},var(--u)) var(--bx) repeat(${COLS - half},var(--u));grid-template-rows:repeat(${ROWS},var(--u))">` +
       cellsHTML + banxin + `</div>`;
     $('folioNow').textContent = convUi('第 ' + numCn(pg.n) + ' 葉 / 共 ' + numCn(SK.pages.length) + ' 葉');
     $('btnPrev').disabled = state.leaf <= 0;
@@ -82,6 +86,10 @@
   }
 
   function init() {
+    /* 经/注字号系数（meta.facsimile.jSize/zSize 可调，注字默认接近经字） */
+    document.documentElement.style.setProperty('--j-scale', SK.jScale || .84);
+    document.documentElement.style.setProperty('--z-scale', SK.zScale || .80);
+
     const sel = $('faceSel');
     sel.innerHTML = SK.faces.map((f, i) => `<option value="${i}">${convUi(f.label)}</option>`).join('');
     sel.value = '0';
