@@ -29,6 +29,7 @@ function buildT2S(tree) {
     for (const ch of String(fx.from || '') + String(fx.to || '') + String(fx.evidence || '')) chars.add(ch);
   }
   for (const ch of '繁體簡體上一葉下一第共校勘記字面縮放目錄藏書經注標題界行施朱並惟白文無點專注模式退出下載逐格數據摹刻二期卷') chars.add(ch);
+  for (const ch of String((fm.cover || {}).slip || '')) chars.add(ch);
   const map = {};
   for (const ch of chars) {
     const s = _t2s(ch);
@@ -68,6 +69,7 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
     jScale: fm.jSize || .84,                 // 经/题字号系数（meta.facsimile.jSize）
     zScale: fm.zSize || .80,                 // 注字号系数（meta.facsimile.zSize，接近经字）
     gong: fm.gong || [],                     // 版心刻工（轮流值）
+    cover: fm.cover || null,                 // 首开右半书衣（题签复刻；image 实图二期）
     pages: grid.pages.map((pg) => ({ n: pg.n, cells: pg.cells || [] })),
     labels: grid.labels || [],
     fixes: grid.fixes || [],

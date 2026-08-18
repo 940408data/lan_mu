@@ -157,6 +157,39 @@ body{
 .crule{grid-row:1/-1;pointer-events:none;display:none}
 .fbook.ruled .crule{display:block;border-left:.7px solid var(--rule)}
 
+/* ───── 书衣（首开右半）：花笺纸 + 题签 + 订线，复刻底本书衣神韵 ─────
+   米色花笺（线描菊纹 SVG 平纹）、左置深褐题签（书名竖签）、
+   右缘订线（竖线 + 四道横线，仿四眼线订）。image 实图方案留二期配置。 */
+.fcover{
+  grid-row:1/-1;position:relative;overflow:hidden;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><g fill='none' stroke='%237a5c34' stroke-opacity='.13' stroke-width='1.1'><g transform='translate(46 46)'><circle r='6.5'/><path id='p' d='M0-9Q4.5-16 0-24Q-4.5-16 0-9'/><use href='%23p' transform='rotate(45)'/><use href='%23p' transform='rotate(90)'/><use href='%23p' transform='rotate(135)'/><use href='%23p' transform='rotate(180)'/><use href='%23p' transform='rotate(225)'/><use href='%23p' transform='rotate(270)'/><use href='%23p' transform='rotate(315)'/></g><g transform='translate(122 118) scale(.78)'><circle r='6.5'/><path id='q' d='M0-9Q4.5-16 0-24Q-4.5-16 0-9'/><use href='%23q' transform='rotate(45)'/><use href='%23q' transform='rotate(90)'/><use href='%23q' transform='rotate(135)'/><use href='%23q' transform='rotate(180)'/><use href='%23q' transform='rotate(225)'/><use href='%23q' transform='rotate(270)'/><use href='%23q' transform='rotate(315)'/></g><path d='M64 62Q92 74 104 98'/><path d='M18 118Q40 96 62 102'/><path d='M96 30Q120 44 132 40'/></g></svg>"),
+    linear-gradient(105deg,#d9cbaa 0%,#cfc0a0 55%,#c3b291 100%);
+  background-size:calc(var(--u)*5.4) calc(var(--u)*5.4),auto;
+  box-shadow:inset 0 0 calc(var(--u)*1.4) rgba(92,64,28,.20);
+}
+.fcover .slip{
+  position:absolute;left:7%;top:4.5%;height:72%;width:calc(var(--cw)*1.02);
+  display:flex;justify-content:center;
+  background:linear-gradient(160deg,#7b6547,#5e4b34 58%,#6a553c);
+  color:#e6d9ba;font-family:var(--kai);writing-mode:vertical-rl;
+  font-size:calc(var(--u)*.58);letter-spacing:.3em;
+  padding:calc(var(--u)*.55) 0;
+  box-shadow:0 1px 3px rgba(0,0,0,.35), inset 0 0 calc(var(--u)*.25) rgba(0,0,0,.3);
+}
+.fcover .stitch{
+  position:absolute;right:4.5%;top:0;bottom:0;width:1.5px;
+  background:rgba(240,232,212,.7);
+}
+.fcover .stitch::before{
+  content:'';position:absolute;top:0;bottom:0;left:calc(var(--u)*-.32);width:calc(var(--u)*.64);
+  background:
+    linear-gradient(rgba(240,232,212,.85),rgba(240,232,212,.85)) 0 7%/100% 2px no-repeat,
+    linear-gradient(rgba(240,232,212,.85),rgba(240,232,212,.85)) 0 36%/100% 2px no-repeat,
+    linear-gradient(rgba(240,232,212,.85),rgba(240,232,212,.85)) 0 64%/100% 2px no-repeat,
+    linear-gradient(rgba(240,232,212,.85),rgba(240,232,212,.85)) 0 93%/100% 2px no-repeat;
+}
+
 /* ───── 格（等宽格阵；j/title 大字、z 小字；显式 grid-row/grid-column 定位） ───── */
 .fcell{
   display:flex;align-items:center;justify-content:center;

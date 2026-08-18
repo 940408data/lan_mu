@@ -74,7 +74,9 @@
     const pg = SK.pages[state.leaf];
     if (!pg) return;
     const half = Math.ceil(COLS / 2);
-    const trackOf = (c) => (c <= half ? c : c + 1);
+    /* 首开：右半为书衣（题签复刻），page 文本列（局部 1..half）整体落左半叶 */
+    const isCover = !!SK.cover && state.leaf === 0;
+    const trackOf = (c) => (isCover ? c + half + 1 : (c <= half ? c : c + 1));
 
     /* 逐格：只含有字格生成 DOM；空位（敬空/阙字/空列）无 DOM 自然留白——坐标即版面 */
     let cellsHTML = '';
@@ -104,6 +106,11 @@
     let rulesHTML = '';
     for (const c of usedCols) rulesHTML += `<i class="crule" style="grid-column:${trackOf(c)}"></i>`;
 
+    /* 书衣（首开右半）：花笺纸 + 题签 + 订线，复刻底本书衣神韵 */
+    const cover = isCover
+      ? `<div class="fcover" style="grid-column:1 / ${half + 1}"><span class="slip">${conv(SK.cover.slip || SK.title)}</span><i class="stitch" aria-hidden="true"></i></div>`
+      : '';
+
     /* 版心：上下白口、单黑鱼尾、书名、叶次、刻工（宋式白口版式） */
     const gong = SK.gong && SK.gong.length ? SK.gong[state.leaf % SK.gong.length] : '';
     const banxin =
@@ -117,7 +124,7 @@
     $('book').innerHTML =
       `<div class="fleafwrap"><div class="fleaf">` +
       `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${half},var(--cw)) var(--bx) repeat(${COLS - half},var(--cw));grid-template-rows:repeat(${ROWS},var(--u))">` +
-      cellsHTML + rulesHTML + banxin + `</div>` +
+      cellsHTML + rulesHTML + cover + banxin + `</div>` +
       `</div><div class="ffolio">${conv('第')}${numCn(pg.n)}${conv('葉')}</div></div>`;
 
     $('folioNow').textContent = convUi('第 ' + numCn(pg.n) + ' 葉 / 共 ' + numCn(SK.pages.length) + ' 葉');
