@@ -1,0 +1,158 @@
+/* 宋版影刻直出查看器：逐格原刻列阵渲染式样。
+   与 songke.css（重排引擎）并行，类名以 f- 前缀隔离；
+   --kai / --song / --xing 由构建期注入（A 级子集 / 回退链），--face 为当前字面。 */
+:root{
+  --u: 26px;                                   /* 大字格高（行格） */
+  --rows: 15;                                  /* 每列行格数（来自 grid.yaml layout） */
+  --col-h: calc(var(--u) * var(--rows));       /* 半叶高 */
+  --col-w: calc(var(--u) * 1.40);              /* 物理列宽（经大字列 = 注双行物理列） */
+
+  --big-size:   calc(var(--u) * .855);         /* 字身小于字格，四围留白 */
+  --small-size: calc(var(--u) * .58);          /* 注小字（双行半宽） */
+  --sub-stroke: .25px;                         /* 小字笔画加重，防发虚 */
+
+  --paper:  #e8dec8;
+  --paper2: #dccfb1;
+  --ink:    #241c14;
+  --rule:   rgba(62,46,30,.34);
+  --seal:   #a63125;
+  --zhu:    #b8402c;
+  --face: var(--kai);
+  --rail-w: 10.5rem;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(120% 90% at 50% -5%, #4c4235 0%, #332c23 55%, #221d18 100%);
+  color:#d9cdb4;font-family:var(--song);
+  -webkit-font-smoothing:antialiased;padding:1.6rem 0 3.5rem;
+}
+
+/* ───── 右栏（复用宋版查看器视觉） ───── */
+.rail{
+  position:fixed;right:0;top:0;bottom:0;width:var(--rail-w);z-index:20;
+  display:flex;flex-direction:column;padding:2.6rem .8rem 1.3rem;
+  border-left:1px solid rgba(216,198,160,.14);
+  background:linear-gradient(180deg,rgba(28,24,19,.4),rgba(28,24,19,.1) 30%,rgba(28,24,19,.28));
+  box-shadow:-14px 0 34px -18px rgba(0,0,0,.6);
+  opacity:.84;transition:opacity .25s;
+}
+.rail:hover,.rail:focus-within{opacity:1}
+.tiqian{display:flex;justify-content:center;padding:.2rem 0 .95rem}
+.tiqian .zhu{
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:1.5rem;
+  letter-spacing:.36em;color:#e9ddc1;padding:.75rem .42rem;
+  border:1px solid rgba(216,198,160,.32);background:rgba(216,198,160,.05);
+}
+.rg{border-top:1px solid rgba(216,198,160,.16);padding:.65rem 0;display:flex;flex-direction:column;gap:.45rem}
+.rg-row{display:flex;gap:.4rem}
+.rg-row>*{flex:1}
+.rail button,.rail a.btn,.rail select,.rail .lbl,.rail .micro{font-family:var(--kai);font-size:.8rem;letter-spacing:.08em}
+.rail button,.rail a.btn{
+  display:block;text-align:center;text-decoration:none;cursor:pointer;
+  color:rgba(228,214,186,.85);background:none;
+  border:1px solid rgba(216,198,160,.26);padding:.3rem .4rem;border-radius:1px;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.rail button:hover,.rail a.btn:hover{background:rgba(216,198,160,.1);border-color:rgba(216,198,160,.5)}
+.rail button[aria-pressed="true"]{background:rgba(216,198,160,.16);border-color:rgba(216,198,160,.55);color:#f3e8d0}
+.rail .wide{width:100%}
+.rail .lbl{display:block;text-align:center;color:rgba(224,208,178,.7);font-size:.8rem}
+.folio-now{letter-spacing:.2em;text-indent:.2em}
+.rail select{
+  width:100%;background:rgba(28,24,19,.5);color:rgba(228,214,186,.9);
+  border:1px solid rgba(216,198,160,.26);padding:.25rem .3rem;border-radius:1px;
+}
+.rail input[type=range]{width:100%}
+.fld{display:flex;align-items:center;gap:.45rem}
+.micro{font-size:.72rem;color:rgba(224,208,178,.6)}
+
+/* ───── 书叶（一叶 = 原刻一页：两半叶 + 中缝版心） ───── */
+.fbook{display:flex;justify-content:center}
+.fleaf{
+  display:flex;flex-direction:row-reverse;align-items:stretch;  /* RTL：DOM 顺序 [右半叶, 版心, 左半叶]，首子元素最右 */
+  background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 52%,var(--paper) 100%);
+  box-shadow:0 18px 60px -18px rgba(0,0,0,.75), 0 2px 10px rgba(0,0,0,.4);
+  border-radius:2px;
+}
+.fhalf{
+  display:flex;flex-direction:row-reverse;         /* RTL：DOM 顺序即阅读顺序（col 升序），首列最右 */
+  padding:calc(var(--u)*.55) calc(var(--u)*.5);
+  border:2px solid var(--rule);                  /* 版框：左右双边意匠（外粗） */
+  position:relative;
+}
+.fhalf::before{                                   /* 版框内细线（双边之内线） */
+  content:'';position:absolute;inset:calc(var(--u)*.18);
+  border:1px solid var(--rule);pointer-events:none;
+}
+.fhalf.right{border-right:none}
+.fhalf.left{border-left:none}
+.fhalf.right{padding-right:calc(var(--u)*.28)}
+.fhalf.left{padding-left:calc(var(--u)*.28)}
+
+/* ───── 版心（中缝：鱼尾 + 书名 + 叶次） ───── */
+.fbanxin{
+  width:calc(var(--col-w)*.92);flex:none;
+  display:flex;flex-direction:column;align-items:center;
+  border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);
+  background:linear-gradient(90deg,var(--paper2),var(--paper) 50%,var(--paper2));
+  padding:calc(var(--u)*.3) 0;
+}
+.fbanxin .fish{width:calc(var(--col-w)*.62);height:calc(var(--u)*.62)}
+.fbanxin .bt{writing-mode:vertical-rl;font-family:var(--face);color:var(--ink);
+  font-size:calc(var(--u)*.52);letter-spacing:.2em;margin:calc(var(--u)*.3) 0;flex:1}
+.fbanxin .fo{writing-mode:vertical-rl;font-family:var(--kai);color:var(--ink);
+  font-size:calc(var(--u)*.44);letter-spacing:.14em}
+
+/* ───── 物理列与格 ───── */
+.fcol{
+  width:var(--col-w);height:calc(var(--col-h) + var(--u)*.0);
+  display:flex;flex-direction:column;
+  flex:none;
+}
+.fcol + .fcol{border-left:1px solid var(--rule)}   /* 栏线 */
+.fpair{display:flex;flex-direction:row}
+.fsub{flex:1;display:flex;flex-direction:column}
+.fsub + .fsub{border-left:1px dashed rgba(62,46,30,.14)}  /* 双行中缝虚意 */
+
+.fcell{
+  height:var(--u);display:flex;align-items:center;justify-content:center;
+  font-family:var(--face);color:var(--ink);
+  font-size:var(--big-size);line-height:1;
+  position:relative;
+}
+.fcell.s{font-size:var(--small-size);-webkit-text-stroke:var(--sub-stroke) rgba(48,38,26,.28);text-shadow:0 0 .5px rgba(48,38,26,.32)}
+.fcell.blank{visibility:visible}                    /* 留白占位（敬空/阙字全真保留） */
+.fcell.title-ch{font-size:calc(var(--big-size)*1.02)}
+
+/* 校勘朱记：裁决格字下施小朱点（可由 rail 开关隐藏） */
+.fcell.fix::after{
+  content:'';position:absolute;right:8%;bottom:6%;
+  width:.16em;height:.16em;border-radius:50%;
+  background:var(--zhu);opacity:.9;
+}
+.fcell.fix{cursor:help}
+.fbook.hide-fix .fcell.fix::after{display:none}
+
+/* 校勘证据浮层 */
+.fixtip{
+  position:fixed;z-index:40;max-width:22rem;
+  background:rgba(30,25,19,.96);color:#e8dcc0;
+  border:1px solid rgba(216,198,160,.35);border-radius:3px;
+  padding:.6rem .8rem;font-size:.82rem;line-height:1.7;
+  font-family:var(--kai);pointer-events:none;display:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+.fixtip b{color:#f3e8d0}
+.fixtip .zhu{color:#e8b4a0}
+
+/* 题跋（页底） */
+.colophon{max-width:46rem;margin:2.2rem auto 0;padding:0 1.2rem;
+  font-family:var(--kai);font-size:.92rem;line-height:2;color:rgba(228,214,186,.88);
+  text-align:justify}
+.colophon b{color:#e5d3ae}
+
+@media (max-width:900px){
+  .rail{width:8.6rem}
+  body{padding-top:1rem}
+}
