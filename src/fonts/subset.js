@@ -9,7 +9,7 @@ const fontkit = require('fontkit');
 const subsetFont = require('subset-font');
 const { fontFileOf } = require('./fonts');
 
-/** 收集作品全部用字：手卷（正文 + 夹注 + 印章）或宋版善刻（經/注區塊）+ 界面通用字 */
+/** 收集作品全部用字：手卷（正文 + 夹注 + 印章）、宋版善刻（經/注區塊）、影刻直出（逐格格陣）+ 界面通用字 */
 function collectChars(work) {
   const set = new Set();
   for (const sec of work.sections) {
@@ -20,6 +20,15 @@ function collectChars(work) {
       }
     } else if (sec.blocks) {
       for (const b of sec.blocks) for (const ch of b.text) set.add(ch);
+    }
+  }
+  // 影刻直出（songke-facsimile）：正文在 grid.yaml 逐格 cells（[col,row,char]，只含有字格）
+  if (work.grid) {
+    for (const pg of work.grid.pages || []) {
+      for (const cell of pg.cells || []) if (cell[2]) set.add(String(cell[2]));
+    }
+    for (const f of work.grid.fixes || []) {          // 校勘证据链用字（悬停提示）
+      for (const ch of String(f.from || '') + String(f.to || '') + String(f.evidence || '') + String(f.text || '')) set.add(ch);
     }
   }
   for (const s of work.seals || []) {
@@ -50,8 +59,11 @@ async function buildSubsets(work, registry, distWorkDir) {
     ...Object.values(m.faces || {}).map((f) => f.label)].filter(Boolean).join('');
   const uiExtra = work.meta.layout === 'songke'
     ? '繁體簡體界行楷體宋體經注並朱惟施白文無點單葉披覽通前後字號第半下載卷之一二三目錄藏書'
-    : '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
-  const colophonChars = work.meta.songke ? ((work.meta.songke.colophon || '') + (work.meta.songke.spec || '') + (work.meta.songke.banxinTitle || '') + ((work.meta.songke.gong || []).join('')) + (work.sections || []).map((s) => s.volume || '').join('')) : '';
+    : work.meta.layout === 'songke-facsimile'
+      ? '繁體簡體上一葉下一第共校勘記字面縮放目錄藏書楷體宋體行楷'
+      : '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
+  const colophonChars = work.meta.songke ? ((work.meta.songke.colophon || '') + (work.meta.songke.spec || '') + (work.meta.songke.banxinTitle || '') + ((work.meta.songke.gong || []).join('')) + (work.sections || []).map((s) => s.volume || '').join(''))
+    : work.meta.facsimile ? ((work.meta.facsimile.colophon || '') + (work.meta.facsimile.spec || '') + (work.meta.facsimile.banxinTitle || '') + ((work.meta.facsimile.gong || []).join(''))) : '';
   const text = [...new Set(chars.join('') + metaChars + uiExtra + colophonChars)].join('');
 
   const usedFontIds = new Set(

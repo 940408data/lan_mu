@@ -44,6 +44,8 @@ function cmdValidate(workId) {
       const s = tree.stats;
       if (tree.kind === 'songke') {
         console.log(`✓ ${id}（宋版善刻）：${s.leaves} 葉 / ${s.halves} 半葉 / ${s.columns} 行 / 經字 ${s.jChars} · 注字 ${s.zChars} / 印章 ${tree.seals.length} 枚`);
+      } else if (tree.kind === 'songke-facsimile') {
+        console.log(`✓ ${id}（宋版影刻直出）：${s.pages} 葉 / ${s.cols} 列 / 經題字 ${s.jChars} · 注字 ${s.zChars} / 校記 ${s.fixes} 條 / 句讀 ${s.marks || 0} 點 / sections ${s.sections}${s.noRole ? ` / ⚠ 無標籤列 ${s.noRole}` : ''}`);
       } else {
         console.log(`✓ ${id}：${s.lines} 行 / ${s.chars} 字 / ${s.notes} 处夹注 / 印章 ${tree.seals.length} 枚 / 兰花 ${tree.orchids.length} 处`);
       }
@@ -77,9 +79,12 @@ async function cmdBuild(workId, only, pdfFull) {
 
     // 2) HTML（按版式分派渲染器）
     const songke = tree.kind === 'songke';
+    const facsimile = tree.kind === 'songke-facsimile';
     const { html, warnings } = songke
       ? require('../src/render/html-songke').renderSongkeHtml(tree, { distWorkDir: outDir, pdfFull })
-      : renderHtml(tree, { distWorkDir: outDir });
+      : facsimile
+        ? require('../src/render/html-songke-facsimile').renderSongkeFacsimileHtml(tree, { distWorkDir: outDir })
+        : renderHtml(tree, { distWorkDir: outDir });
     for (const w of warnings) console.warn('  [字体]', w);
     const htmlPath = path.join(outDir, 'index.html');
     fs.writeFileSync(htmlPath, html);
@@ -96,8 +101,8 @@ async function cmdBuild(workId, only, pdfFull) {
       console.log('  [點校] 本卷標記為 draft（需點校）：僅出書葉版式頁，不生成 PDF/圖像');
     } else {
       if (outputs.includes('jpg')) {
-        if (songke) {
-          console.log('  JPG: 宋版善刻不再生成圖像長圖，已略過（改用每字面一版 PDF）');
+        if (songke || facsimile) {
+          console.log('  JPG: 宋版善刻/影刻不再生成圖像長圖，已略過（改用每字面一版 PDF）');
         } else {
           const jpgs = await require('../src/render/image').renderImages(tree, htmlPath, outDir);
           for (const j of jpgs) console.log('  JPG:', j);
@@ -107,6 +112,8 @@ async function cmdBuild(workId, only, pdfFull) {
         if (songke) {
           const pdfs = await require('../src/render/pdf-songke').renderSongkePdf(tree, htmlPath, outDir, { full: pdfFull });
           for (const p of pdfs) console.log('  PDF:', p);
+        } else if (facsimile) {
+          console.log('  PDF: 影刻直出 PDF 二期實現，已略過（首版僅 HTML）');
         } else {
           const pdf = await require('../src/render/pdf').renderPdf(tree, htmlPath, outDir);
           console.log('  PDF:', pdf);
