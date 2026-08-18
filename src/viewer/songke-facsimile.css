@@ -1,6 +1,8 @@
-/* 宋版影刻直出查看器 V2 式样：精校台坐标纪律 + 宋刻皮肤。
+/* 宋版影刻直出查看器 V2 式样：精校台坐标纪律 + 宋刻皮肤（视觉令牌与 songke.css 同源）。
    布局：一页一 .fsheet（cols×rows 等宽 CSS grid，direction:rtl 使 col1 居最右），
-   每格显式 grid-row/grid-column，空位自然留白；版心为 sheet 中央绝对定位竖条。
+   每格显式 grid-row/grid-column，空位自然留白；版心为真实轨道（中缝轨），不占格列。
+   匡郭栏线：外粗内细版框常驻；栏线（.crule）逐列一条、只画有字列——空列无栏线，
+   正是原刻空白叶的真实面貌（逐格数据独有的版面全真），可由右栏「界行」开关。
    --kai / --song / --xing 由构建期注入（A 级子集 / 回退链），--face 为当前字面。 */
 :root{
   --u: 26px;                                   /* 格宽高（zoom 控件实时调节） */
@@ -14,7 +16,10 @@
   --paper:  #e8dec8;
   --paper2: #dccfb1;
   --ink:    #241c14;
-  --rule:   rgba(62,46,30,.34);
+  --ink2:   #382d20;
+  --rule:   rgba(62,46,30,.28);                /* 栏线：淡，不与墨色争 */
+  --frame:  rgba(36,28,20,.88);                /* 匡郭外粗线 */
+  --frame2: rgba(36,28,20,.55);                /* 匡郭内细线 */
   --seal:   #a63125;
   --zhu:    #b8402c;
   --face: var(--kai);
@@ -28,22 +33,26 @@ body{
   -webkit-font-smoothing:antialiased;padding:1.6rem 0 3.5rem;
 }
 
-/* ───── 右栏（复用宋版查看器视觉） ───── */
+/* ───── 右栏（与宋版查看器同款：低饱和悬浮、自动滑出唤回） ───── */
 .rail{
   position:fixed;right:0;top:0;bottom:0;width:var(--rail-w);z-index:20;
   display:flex;flex-direction:column;padding:2.6rem .8rem 1.3rem;
+  overflow:visible;                              /* 让下载菜单可向左溢出 */
   border-left:1px solid rgba(216,198,160,.14);
   background:linear-gradient(180deg,rgba(28,24,19,.4),rgba(28,24,19,.1) 30%,rgba(28,24,19,.28));
   box-shadow:-14px 0 34px -18px rgba(0,0,0,.6);
-  opacity:.84;transition:opacity .25s;
+  opacity:.84;transition:transform .35s ease,opacity .25s;
 }
 .rail:hover,.rail:focus-within{opacity:1}
+
+/* 题签：仿线装书封面签条 */
 .tiqian{display:flex;justify-content:center;padding:.2rem 0 .95rem}
 .tiqian .zhu{
   writing-mode:vertical-rl;font-family:var(--kai);font-size:1.5rem;
   letter-spacing:.36em;color:#e9ddc1;padding:.75rem .42rem;
   border:1px solid rgba(216,198,160,.32);background:rgba(216,198,160,.05);
 }
+
 .rg{border-top:1px solid rgba(216,198,160,.16);padding:.65rem 0;display:flex;flex-direction:column;gap:.45rem}
 .rg-row{display:flex;gap:.4rem}
 .rg-row>*{flex:1}
@@ -56,32 +65,96 @@ body{
 }
 .rail button:hover,.rail a.btn:hover{background:rgba(216,198,160,.1);border-color:rgba(216,198,160,.5)}
 .rail button[aria-pressed="true"]{background:rgba(216,198,160,.16);border-color:rgba(216,198,160,.55);color:#f3e8d0}
+.rail button:disabled{opacity:.38;cursor:default}
 .rail .wide{width:100%}
 .rail .lbl{display:block;text-align:center;color:rgba(224,208,178,.7);font-size:.8rem}
 .folio-now{letter-spacing:.2em;text-indent:.2em}
-.rail select{
-  width:100%;background:rgba(28,24,19,.5);color:rgba(228,214,186,.9);
-  border:1px solid rgba(216,198,160,.26);padding:.25rem .3rem;border-radius:1px;
-}
-.rail input[type=range]{width:100%}
 .fld{display:flex;align-items:center;gap:.45rem}
-.micro{font-size:.72rem;color:rgba(224,208,178,.6)}
+.fld .micro{flex:0 0 auto;font-size:.68rem;color:rgba(214,198,166,.55);letter-spacing:.1em}
+.fld select{flex:1;min-width:0}
+.rail select{
+  appearance:none;-webkit-appearance:none;background:rgba(216,198,160,.08);
+  border:1px solid rgba(216,198,160,.34);color:#f3e8d0;
+  font-family:var(--kai);font-size:.8rem;letter-spacing:.06em;
+  padding:.28rem 1.3rem .28rem .5rem;border-radius:1px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23d8c6a0'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .4rem center;
+}
+.rail select:hover{border-color:rgba(216,198,160,.55)}
+.rail select option{background:#221d18;color:#e8d6ba}
+.fld-zoom{flex-direction:column;align-items:stretch;gap:.25rem}
+.fld-zoom .micro{text-align:center}
+.rail input[type=range]{width:100%;accent-color:#bfa87c;margin:0}
 
-/* ───── 书叶（一叶 = 原刻一页：右半叶 + 版心轨 + 左半叶，rtl 使 col1 居最右） ───── */
-.fbook{display:flex;justify-content:center}
+/* 下载菜单：向左飞入阅读区（右缘不被裁） */
+.rail .dl{position:relative}
+.rail .dl-menu{
+  display:none;position:absolute;right:calc(100% + .5rem);top:0;z-index:30;
+  min-width:9.5rem;padding:.4rem;background:#2c261d;border:1px solid rgba(216,198,160,.32);
+  box-shadow:0 10px 28px -10px rgba(0,0,0,.8);flex-direction:column;gap:.1rem;
+}
+.rail .dl-menu.open{display:flex}
+.rail .dl-sep{height:1px;margin:.25rem .2rem;background:rgba(216,198,160,.18)}
+.rail .dl-item{
+  font-family:var(--kai);font-size:.78rem;letter-spacing:.08em;color:rgba(228,214,186,.9);
+  text-decoration:none;padding:.34rem .6rem;white-space:nowrap;display:block;cursor:pointer;
+}
+.rail .dl-item:hover{background:rgba(216,198,160,.14)}
+.rail .dl-item.off{opacity:.42;cursor:default}
+.rail .dl-item.off:hover{background:none}
+.rail :focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
+
+/* 窄屏开合钮：右缘竖式小签，默认隐藏 */
+#railToggle{
+  display:none;position:fixed;right:0;top:38%;z-index:40;cursor:pointer;
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:.85rem;letter-spacing:.22em;
+  color:rgba(228,214,186,.92);background:rgba(40,34,26,.92);
+  border:1px solid rgba(216,198,160,.4);border-right:none;
+  padding:.95rem .3rem;border-radius:2px 0 0 2px;
+}
+
+/* 桌面右栏自动隐藏：.off 时栏滑出右缘 */
+@media (min-width:861px){
+  .rail.off{transform:translateX(102%);opacity:0;pointer-events:none}
+}
+
+/* ───── 书叶（一纸：纹理 + 晕影 + 阴影；内衬版框 grid） ───── */
+.fbook{display:flex;flex-direction:column;align-items:center}
+.fleafwrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.fleaf{
+  position:relative;
+  background:linear-gradient(102deg,var(--paper) 0%,var(--paper2) 44%,var(--paper) 72%,#d7c9a9 100%);
+  padding:calc(var(--u)*1.1) calc(var(--u)*.9) calc(var(--u)*1.2);
+  box-shadow:0 1px 0 rgba(255,255,255,.16) inset,
+             0 18px 42px -20px rgba(0,0,0,.8), 0 2px 6px rgba(0,0,0,.32);
+  overflow:hidden;
+}
+.fleaf::before{                                   /* 纸纹噪点 */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.085;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+.fleaf::after{                                    /* 四缘晕影（旧纸沁色） */
+  content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;
+  background:radial-gradient(118% 108% at 50% 45%, rgba(0,0,0,0) 50%, rgba(92,64,28,.15) 80%, rgba(70,45,18,.30) 100%);
+}
+
+/* 版框：外粗内细（左右雙邊之余韵），格阵居其中 */
 .fsheet{
-  display:grid;                       /* 模板列由内联注入：repeat(half,u) var(--bx) repeat(half,u)——版心为真实轨道 */
+  position:relative;z-index:1;
+  display:grid;                       /* 模板列由内联注入：repeat(half,u) var(--bx) repeat(half,u) */
   direction:rtl;                      /* rtl 下 grid-column:1 = 最右——阅读自右向左 */
-  padding:calc(var(--u)*.55) calc(var(--u)*.5);
-  background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 52%,var(--paper) 100%);
-  box-shadow:0 18px 60px -18px rgba(0,0,0,.75), 0 2px 10px rgba(0,0,0,.4);
-  border-radius:2px;
-  border:2px solid var(--rule);       /* 版框：外粗 */
+  padding:calc(var(--u)*.34) calc(var(--u)*.3);
+  border:2px solid var(--frame);
 }
-.fsheet::before{                        /* 版框内细线（双边之内线） */
-  content:'';position:absolute;inset:calc(var(--u)*.18);
-  border:1px solid var(--rule);pointer-events:none;
+.fsheet::before{                        /* 版框内细线 */
+  content:'';position:absolute;inset:calc(var(--u)*.14);
+  border:1px solid var(--frame2);pointer-events:none;
 }
+
+/* 栏线（界行）：逐有字列一条，纵贯版心两侧；空列无 DOM 即无栏线——空白叶全真。
+   默认开（.ruled），右栏「界行」可关。 */
+.crule{grid-row:1/-1;pointer-events:none;display:none}
+.fbook.ruled .crule{display:block;border-left:.7px solid var(--rule)}
 
 /* ───── 格（等宽格阵；j/title 大字、z 小字；显式 grid-row/grid-column 定位） ───── */
 .fcell{
@@ -89,13 +162,23 @@ body{
   font-family:var(--face);color:var(--ink);
   font-size:var(--big-size);line-height:1;
   position:relative;
+  text-shadow:0 0 .45px rgba(36,28,20,.5);
 }
-.fcell.s{font-size:var(--small-size);-webkit-text-stroke:var(--sub-stroke) rgba(48,38,26,.28);text-shadow:0 0 .5px rgba(48,38,26,.32)}
+.fcell.s{font-size:var(--small-size);color:var(--ink2);
+  -webkit-text-stroke:var(--sub-stroke) rgba(48,38,26,.28);text-shadow:0 0 .5px rgba(48,38,26,.32)}
 .fcell.title{font-size:calc(var(--big-size)*1.04);font-weight:600}
 
-/* 校勘朱记：裁决格字下施小朱点（可由 rail 开关隐藏） */
+/* 朱筆句讀：一式朱點附字右下，不占字位；點徑角度墨濃因字而變（JV 十六式，仿手批氣韻）。
+   顯隱由右欄施朱四式統制：.dj 經點 / .dz 注點。 */
+.mk{position:absolute;display:none;pointer-events:none;mix-blend-mode:multiply;
+    border-radius:50%;background:var(--zhu)}
+.fbook.dj .fcell.j .mk{display:block}
+.fbook.dz .fcell.s .mk{display:block}
+.fcell .mk{right:calc(var(--u)*.04);bottom:calc(var(--u)*.05)}
+
+/* 校勘朱记：裁决格字左下施小朱点（与句读右下点相别；可由 rail 开关隐藏） */
 .fcell.fix::after{
-  content:'';position:absolute;right:8%;bottom:6%;
+  content:'';position:absolute;left:10%;bottom:6%;
   width:.16em;height:.16em;border-radius:50%;
   background:var(--zhu);opacity:.9;
 }
@@ -114,28 +197,54 @@ body{
 .fixtip b{color:#f3e8d0}
 .fixtip .zhu{color:#e8b4a0}
 
-/* ───── 版心（中缝轨道：鱼尾 + 书名 + 叶次；占独立 grid 轨，不遮两侧列） ───── */
+/* ───── 版心（中缝轨：上下白口、單黑魚尾、書名、葉次、刻工；獨佔一軌不遮兩側列） ───── */
 .fbanxin{
-  grid-row: 1 / -1;                   /* 独占全行高（列轨道由内联 grid-column 指定） */
+  grid-row: 1 / -1;
   width: var(--bx);
   display:flex;flex-direction:column;align-items:center;
-  border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);
-  background:linear-gradient(90deg,var(--paper2),var(--paper) 50%,var(--paper2));
-  padding:calc(var(--u)*.3) 0;
+  border-left:1.5px solid rgba(36,28,20,.62);   /* 中縫側欄線（匡郭之屬，常駐） */
+  border-right:1.5px solid rgba(36,28,20,.62);
+  background:linear-gradient(90deg,rgba(120,88,44,.05) 0%,rgba(120,88,44,.01) 26%,
+             rgba(120,88,44,0) 50%,rgba(120,88,44,.01) 74%,rgba(120,88,44,.05) 100%);
 }
-.fbanxin .fish{width:calc(var(--u)*.6);height:calc(var(--u)*.58)}
-.fbanxin .bt{writing-mode:vertical-rl;font-family:var(--face);color:var(--ink);
-  font-size:calc(var(--u)*.5);letter-spacing:.2em;margin:calc(var(--u)*.28) 0;flex:1}
-.fbanxin .fo{writing-mode:vertical-rl;font-family:var(--kai);color:var(--ink);
-  font-size:calc(var(--u)*.42);letter-spacing:.14em}
+.fbanxin .kou{flex:0 0 auto;height:calc(var(--u)*.55)}       /* 上下白口 */
+.fbanxin .fish{display:block;width:44%;height:calc(var(--u)*.5)}
+.fbanxin .fish svg{display:block;width:100%;height:100%}
+.fbanxin .gap{flex:0 0 auto;height:calc(var(--u)*.3)}
+.fbanxin .fill{flex:1 1 auto;min-height:calc(var(--u)*.45)}
+.fbanxin .bt{                                   /* 書名豎排 */
+  writing-mode:vertical-rl;text-align:center;font-family:var(--face);color:var(--ink);
+  font-size:calc(var(--u)*.52);letter-spacing:.22em;text-indent:.22em;
+}
+.fbanxin .fo{                                   /* 葉次 */
+  writing-mode:vertical-rl;text-align:center;font-family:var(--kai);color:var(--ink);
+  font-size:calc(var(--u)*.44);letter-spacing:.16em;text-indent:.16em;
+}
+.fbanxin .gong{                                 /* 刻工名，小字淡墨 */
+  writing-mode:vertical-rl;text-align:center;font-family:var(--face);
+  font-size:calc(var(--u)*.38);color:rgba(36,28,20,.66);letter-spacing:.1em;
+}
+
+/* 葉腳標注（書葉之下，淡墨小字） */
+.ffolio{font-family:var(--kai);font-size:.73rem;letter-spacing:.3em;text-indent:.3em;color:rgba(214,198,166,.48)}
 
 /* 题跋（页底） */
-.colophon{max-width:46rem;margin:2.2rem auto 0;padding:0 1.2rem;
-  font-family:var(--kai);font-size:.92rem;line-height:2;color:rgba(228,214,186,.88);
-  text-align:justify}
-.colophon b{color:#e5d3ae}
+.colophon{max-width:660px;margin:3rem auto 0;padding:0 1.4rem;font-family:var(--kai);
+  font-size:.79rem;line-height:2.1;letter-spacing:.05em;color:rgba(214,198,166,.48);text-align:center}
+.colophon b{font-weight:400;color:rgba(226,212,182,.7)}
 
-@media (max-width:900px){
-  .rail{width:8.6rem}
-  body{padding-top:1rem}
+/* 窄屏：右栏收起为抽屉，右缘竖式小签唤出 */
+@media (max-width:860px){
+  :root{--u:15px}
+  body{padding-right:0}
+  .rail{
+    transform:translateX(105%);transition:transform .3s ease,opacity .25s;
+    overflow-y:auto;opacity:1;
+    background:rgba(30,25,20,.97);
+    box-shadow:-14px 0 34px -12px rgba(0,0,0,.75);
+  }
+  .rail.open{transform:translateX(0)}
+  #railToggle{display:block}
+  .rail .dl-menu{right:0;left:0;top:calc(100% + .3rem)}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

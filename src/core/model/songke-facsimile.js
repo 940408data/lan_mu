@@ -40,6 +40,7 @@ function buildSongkeFacsimile(work) {
       cells, jChars, zChars,
       fixes: (grid.fixes || []).length,
       sections: (grid.sections || []).length,
+      marks: (grid.marks || []).length,        // 句读朱点格数
       noRole,
     },
   };

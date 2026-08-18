@@ -2,7 +2,7 @@ work: 大学章句
 base:
   file: grid-transcribe.json
   sha256: af85ff6a40e9a132eaa498598979f3a3108499455ba6be97b9a056d75c822073
-exportedAt: 2026-08-18T06:40:56.745Z
+exportedAt: 2026-08-18T07:56:11.992Z
 layout:
   cols: 16
   rows: 15
@@ -22724,3 +22724,1591 @@ sections:
       col: 16
       row: 7
 fixes: []
+marks:
+  - page: 2
+    col: 2
+    row: 15
+  - page: 2
+    col: 4
+    row: 4
+  - page: 2
+    col: 6
+    row: 1
+  - page: 2
+    col: 8
+    row: 8
+  - page: 3
+    col: 2
+    row: 6
+  - page: 3
+    col: 3
+    row: 13
+  - page: 3
+    col: 6
+    row: 9
+  - page: 3
+    col: 9
+    row: 14
+  - page: 3
+    col: 10
+    row: 13
+  - page: 3
+    col: 15
+    row: 2
+  - page: 4
+    col: 1
+    row: 2
+  - page: 4
+    col: 2
+    row: 11
+  - page: 4
+    col: 5
+    row: 7
+  - page: 4
+    col: 6
+    row: 11
+  - page: 4
+    col: 10
+    row: 10
+  - page: 4
+    col: 12
+    row: 9
+  - page: 4
+    col: 13
+    row: 13
+  - page: 4
+    col: 15
+    row: 4
+  - page: 4
+    col: 16
+    row: 6
+  - page: 5
+    col: 6
+    row: 3
+  - page: 5
+    col: 6
+    row: 11
+  - page: 5
+    col: 7
+    row: 8
+  - page: 5
+    col: 11
+    row: 11
+  - page: 5
+    col: 12
+    row: 11
+  - page: 5
+    col: 14
+    row: 15
+  - page: 6
+    col: 1
+    row: 8
+  - page: 6
+    col: 2
+    row: 6
+  - page: 6
+    col: 10
+    row: 10
+  - page: 6
+    col: 12
+    row: 5
+  - page: 6
+    col: 13
+    row: 13
+  - page: 6
+    col: 14
+    row: 14
+  - page: 6
+    col: 16
+    row: 1
+  - page: 7
+    col: 1
+    row: 8
+  - page: 7
+    col: 2
+    row: 3
+  - page: 7
+    col: 2
+    row: 7
+  - page: 7
+    col: 4
+    row: 3
+  - page: 7
+    col: 5
+    row: 4
+  - page: 7
+    col: 6
+    row: 2
+  - page: 7
+    col: 7
+    row: 5
+  - page: 7
+    col: 7
+    row: 13
+  - page: 7
+    col: 9
+    row: 10
+  - page: 7
+    col: 10
+    row: 7
+  - page: 7
+    col: 11
+    row: 3
+  - page: 7
+    col: 12
+    row: 6
+  - page: 7
+    col: 13
+    row: 12
+  - page: 7
+    col: 14
+    row: 8
+  - page: 7
+    col: 16
+    row: 11
+  - page: 8
+    col: 1
+    row: 8
+  - page: 8
+    col: 2
+    row: 9
+  - page: 8
+    col: 3
+    row: 2
+  - page: 8
+    col: 3
+    row: 8
+  - page: 8
+    col: 3
+    row: 14
+  - page: 8
+    col: 4
+    row: 6
+  - page: 8
+    col: 4
+    row: 12
+  - page: 8
+    col: 6
+    row: 1
+  - page: 8
+    col: 8
+    row: 11
+  - page: 8
+    col: 9
+    row: 5
+  - page: 8
+    col: 10
+    row: 14
+  - page: 8
+    col: 11
+    row: 8
+  - page: 8
+    col: 12
+    row: 2
+  - page: 8
+    col: 12
+    row: 11
+  - page: 8
+    col: 13
+    row: 5
+  - page: 8
+    col: 13
+    row: 14
+  - page: 8
+    col: 14
+    row: 4
+  - page: 8
+    col: 15
+    row: 4
+  - page: 8
+    col: 15
+    row: 7
+  - page: 8
+    col: 16
+    row: 14
+  - page: 9
+    col: 1
+    row: 7
+  - page: 9
+    col: 1
+    row: 10
+  - page: 9
+    col: 2
+    row: 3
+  - page: 9
+    col: 3
+    row: 5
+  - page: 9
+    col: 3
+    row: 9
+  - page: 9
+    col: 3
+    row: 13
+  - page: 9
+    col: 4
+    row: 13
+  - page: 9
+    col: 5
+    row: 2
+  - page: 9
+    col: 5
+    row: 6
+  - page: 9
+    col: 6
+    row: 6
+  - page: 9
+    col: 6
+    row: 15
+  - page: 9
+    col: 9
+    row: 13
+  - page: 9
+    col: 10
+    row: 4
+  - page: 9
+    col: 10
+    row: 7
+  - page: 9
+    col: 11
+    row: 6
+  - page: 9
+    col: 12
+    row: 4
+  - page: 9
+    col: 13
+    row: 10
+  - page: 9
+    col: 14
+    row: 6
+  - page: 9
+    col: 14
+    row: 15
+  - page: 9
+    col: 15
+    row: 10
+  - page: 9
+    col: 16
+    row: 8
+  - page: 10
+    col: 2
+    row: 1
+  - page: 10
+    col: 3
+    row: 6
+  - page: 10
+    col: 4
+    row: 2
+  - page: 10
+    col: 4
+    row: 13
+  - page: 10
+    col: 5
+    row: 9
+  - page: 10
+    col: 6
+    row: 9
+  - page: 10
+    col: 7
+    row: 5
+  - page: 10
+    col: 7
+    row: 10
+  - page: 10
+    col: 8
+    row: 6
+  - page: 10
+    col: 10
+    row: 1
+  - page: 10
+    col: 10
+    row: 6
+  - page: 10
+    col: 11
+    row: 8
+  - page: 10
+    col: 13
+    row: 5
+  - page: 10
+    col: 13
+    row: 13
+  - page: 11
+    col: 1
+    row: 7
+  - page: 11
+    col: 2
+    row: 6
+  - page: 11
+    col: 3
+    row: 5
+  - page: 11
+    col: 3
+    row: 8
+  - page: 11
+    col: 4
+    row: 9
+  - page: 11
+    col: 5
+    row: 5
+  - page: 11
+    col: 5
+    row: 9
+  - page: 11
+    col: 5
+    row: 14
+  - page: 11
+    col: 6
+    row: 7
+  - page: 11
+    col: 6
+    row: 15
+  - page: 11
+    col: 8
+    row: 7
+  - page: 11
+    col: 9
+    row: 3
+  - page: 11
+    col: 10
+    row: 7
+  - page: 11
+    col: 11
+    row: 5
+  - page: 11
+    col: 11
+    row: 12
+  - page: 11
+    col: 11
+    row: 15
+  - page: 11
+    col: 12
+    row: 4
+  - page: 11
+    col: 13
+    row: 13
+  - page: 11
+    col: 14
+    row: 7
+  - page: 11
+    col: 14
+    row: 11
+  - page: 12
+    col: 1
+    row: 14
+  - page: 12
+    col: 2
+    row: 7
+  - page: 12
+    col: 3
+    row: 3
+  - page: 12
+    col: 3
+    row: 6
+  - page: 12
+    col: 4
+    row: 11
+  - page: 12
+    col: 8
+    row: 6
+  - page: 12
+    col: 9
+    row: 8
+  - page: 12
+    col: 10
+    row: 3
+  - page: 12
+    col: 11
+    row: 10
+  - page: 12
+    col: 12
+    row: 8
+  - page: 12
+    col: 14
+    row: 3
+  - page: 12
+    col: 15
+    row: 10
+  - page: 12
+    col: 16
+    row: 12
+  - page: 13
+    col: 1
+    row: 6
+  - page: 13
+    col: 1
+    row: 9
+  - page: 13
+    col: 2
+    row: 10
+  - page: 13
+    col: 3
+    row: 8
+  - page: 13
+    col: 3
+    row: 15
+  - page: 13
+    col: 4
+    row: 14
+  - page: 13
+    col: 5
+    row: 10
+  - page: 13
+    col: 6
+    row: 11
+  - page: 13
+    col: 7
+    row: 14
+  - page: 13
+    col: 8
+    row: 3
+  - page: 13
+    col: 8
+    row: 9
+  - page: 13
+    col: 9
+    row: 15
+  - page: 13
+    col: 10
+    row: 11
+  - page: 13
+    col: 12
+    row: 12
+  - page: 13
+    col: 13
+    row: 7
+  - page: 13
+    col: 13
+    row: 13
+  - page: 13
+    col: 14
+    row: 9
+  - page: 13
+    col: 14
+    row: 13
+  - page: 13
+    col: 15
+    row: 3
+  - page: 13
+    col: 15
+    row: 15
+  - page: 13
+    col: 16
+    row: 13
+  - page: 14
+    col: 1
+    row: 8
+  - page: 14
+    col: 3
+    row: 15
+  - page: 14
+    col: 4
+    row: 10
+  - page: 14
+    col: 5
+    row: 7
+  - page: 14
+    col: 5
+    row: 15
+  - page: 14
+    col: 6
+    row: 9
+  - page: 14
+    col: 7
+    row: 2
+  - page: 14
+    col: 7
+    row: 10
+  - page: 14
+    col: 8
+    row: 3
+  - page: 14
+    col: 8
+    row: 11
+  - page: 14
+    col: 10
+    row: 2
+  - page: 14
+    col: 11
+    row: 5
+  - page: 14
+    col: 11
+    row: 13
+  - page: 14
+    col: 11
+    row: 14
+  - page: 14
+    col: 12
+    row: 4
+  - page: 14
+    col: 12
+    row: 8
+  - page: 14
+    col: 13
+    row: 8
+  - page: 14
+    col: 14
+    row: 2
+  - page: 14
+    col: 14
+    row: 5
+  - page: 14
+    col: 14
+    row: 8
+  - page: 14
+    col: 14
+    row: 13
+  - page: 14
+    col: 14
+    row: 15
+  - page: 14
+    col: 15
+    row: 4
+  - page: 14
+    col: 16
+    row: 6
+  - page: 15
+    col: 1
+    row: 8
+  - page: 15
+    col: 3
+    row: 13
+  - page: 15
+    col: 4
+    row: 4
+  - page: 15
+    col: 4
+    row: 9
+  - page: 15
+    col: 5
+    row: 3
+  - page: 15
+    col: 5
+    row: 6
+  - page: 15
+    col: 5
+    row: 9
+  - page: 15
+    col: 6
+    row: 3
+  - page: 15
+    col: 6
+    row: 12
+  - page: 15
+    col: 7
+    row: 3
+  - page: 15
+    col: 7
+    row: 7
+  - page: 15
+    col: 7
+    row: 11
+  - page: 15
+    col: 8
+    row: 13
+  - page: 15
+    col: 9
+    row: 11
+  - page: 15
+    col: 10
+    row: 9
+  - page: 15
+    col: 11
+    row: 5
+  - page: 15
+    col: 12
+    row: 8
+  - page: 15
+    col: 15
+    row: 6
+  - page: 15
+    col: 15
+    row: 9
+  - page: 15
+    col: 16
+    row: 3
+  - page: 15
+    col: 16
+    row: 7
+  - page: 15
+    col: 16
+    row: 13
+  - page: 16
+    col: 1
+    row: 7
+  - page: 16
+    col: 1
+    row: 13
+  - page: 16
+    col: 4
+    row: 13
+  - page: 16
+    col: 5
+    row: 14
+  - page: 16
+    col: 6
+    row: 7
+  - page: 16
+    col: 6
+    row: 12
+  - page: 16
+    col: 8
+    row: 9
+  - page: 16
+    col: 9
+    row: 14
+  - page: 16
+    col: 10
+    row: 11
+  - page: 16
+    col: 10
+    row: 15
+  - page: 16
+    col: 11
+    row: 7
+  - page: 16
+    col: 11
+    row: 10
+  - page: 16
+    col: 13
+    row: 5
+  - page: 16
+    col: 15
+    row: 3
+  - page: 16
+    col: 16
+    row: 2
+  - page: 17
+    col: 1
+    row: 6
+  - page: 17
+    col: 1
+    row: 9
+  - page: 17
+    col: 2
+    row: 12
+  - page: 17
+    col: 4
+    row: 7
+  - page: 17
+    col: 5
+    row: 6
+  - page: 17
+    col: 6
+    row: 15
+  - page: 17
+    col: 7
+    row: 7
+  - page: 17
+    col: 8
+    row: 6
+  - page: 17
+    col: 10
+    row: 3
+  - page: 17
+    col: 13
+    row: 10
+  - page: 17
+    col: 15
+    row: 15
+  - page: 18
+    col: 2
+    row: 10
+  - page: 18
+    col: 5
+    row: 8
+  - page: 18
+    col: 6
+    row: 5
+  - page: 18
+    col: 7
+    row: 10
+  - page: 18
+    col: 8
+    row: 8
+  - page: 19
+    col: 9
+    row: 11
+  - page: 18
+    col: 10
+    row: 8
+  - page: 18
+    col: 10
+    row: 15
+  - page: 18
+    col: 11
+    row: 11
+  - page: 18
+    col: 12
+    row: 3
+  - page: 18
+    col: 13
+    row: 8
+  - page: 18
+    col: 13
+    row: 13
+  - page: 18
+    col: 14
+    row: 2
+  - page: 18
+    col: 14
+    row: 13
+  - page: 18
+    col: 16
+    row: 9
+  - page: 19
+    col: 3
+    row: 10
+  - page: 19
+    col: 5
+    row: 13
+  - page: 19
+    col: 7
+    row: 11
+  - page: 19
+    col: 8
+    row: 10
+  - page: 19
+    col: 10
+    row: 4
+  - page: 19
+    col: 10
+    row: 10
+  - page: 19
+    col: 11
+    row: 2
+  - page: 19
+    col: 11
+    row: 10
+  - page: 19
+    col: 14
+    row: 7
+  - page: 19
+    col: 16
+    row: 5
+  - page: 20
+    col: 1
+    row: 6
+  - page: 20
+    col: 2
+    row: 14
+  - page: 20
+    col: 3
+    row: 9
+  - page: 20
+    col: 5
+    row: 3
+  - page: 20
+    col: 8
+    row: 5
+  - page: 20
+    col: 8
+    row: 10
+  - page: 20
+    col: 11
+    row: 3
+  - page: 20
+    col: 12
+    row: 9
+  - page: 20
+    col: 13
+    row: 7
+  - page: 20
+    col: 13
+    row: 10
+  - page: 20
+    col: 14
+    row: 12
+  - page: 20
+    col: 15
+    row: 8
+  - page: 21
+    col: 1
+    row: 12
+  - page: 21
+    col: 3
+    row: 13
+  - page: 21
+    col: 6
+    row: 14
+  - page: 21
+    col: 8
+    row: 4
+  - page: 21
+    col: 8
+    row: 13
+  - page: 21
+    col: 9
+    row: 7
+  - page: 21
+    col: 10
+    row: 1
+  - page: 21
+    col: 11
+    row: 11
+  - page: 21
+    col: 11
+    row: 15
+  - page: 21
+    col: 12
+    row: 5
+  - page: 21
+    col: 12
+    row: 10
+  - page: 21
+    col: 12
+    row: 15
+  - page: 21
+    col: 14
+    row: 2
+  - page: 21
+    col: 15
+    row: 15
+  - page: 22
+    col: 1
+    row: 3
+  - page: 22
+    col: 4
+    row: 8
+  - page: 22
+    col: 5
+    row: 8
+  - page: 22
+    col: 6
+    row: 6
+  - page: 22
+    col: 6
+    row: 11
+  - page: 22
+    col: 7
+    row: 10
+  - page: 22
+    col: 9
+    row: 8
+  - page: 22
+    col: 11
+    row: 10
+  - page: 22
+    col: 12
+    row: 9
+  - page: 22
+    col: 16
+    row: 6
+  - page: 23
+    col: 1
+    row: 7
+  - page: 23
+    col: 2
+    row: 5
+  - page: 23
+    col: 2
+    row: 14
+  - page: 23
+    col: 3
+    row: 3
+  - page: 23
+    col: 3
+    row: 8
+  - page: 23
+    col: 3
+    row: 12
+  - page: 23
+    col: 4
+    row: 2
+  - page: 23
+    col: 6
+    row: 2
+  - page: 23
+    col: 6
+    row: 9
+  - page: 23
+    col: 8
+    row: 3
+  - page: 23
+    col: 9
+    row: 4
+  - page: 23
+    col: 9
+    row: 10
+  - page: 23
+    col: 9
+    row: 15
+  - page: 23
+    col: 11
+    row: 11
+  - page: 23
+    col: 13
+    row: 6
+  - page: 23
+    col: 13
+    row: 11
+  - page: 23
+    col: 15
+    row: 7
+  - page: 23
+    col: 16
+    row: 10
+  - page: 24
+    col: 1
+    row: 2
+  - page: 24
+    col: 1
+    row: 9
+  - page: 24
+    col: 2
+    row: 4
+  - page: 24
+    col: 2
+    row: 7
+  - page: 24
+    col: 2
+    row: 15
+  - page: 24
+    col: 3
+    row: 14
+  - page: 24
+    col: 5
+    row: 4
+  - page: 24
+    col: 6
+    row: 3
+  - page: 24
+    col: 7
+    row: 7
+  - page: 24
+    col: 8
+    row: 2
+  - page: 24
+    col: 8
+    row: 12
+  - page: 24
+    col: 9
+    row: 4
+  - page: 24
+    col: 11
+    row: 2
+  - page: 24
+    col: 12
+    row: 7
+  - page: 24
+    col: 12
+    row: 14
+  - page: 24
+    col: 13
+    row: 11
+  - page: 24
+    col: 14
+    row: 6
+  - page: 24
+    col: 15
+    row: 4
+  - page: 24
+    col: 15
+    row: 10
+  - page: 24
+    col: 16
+    row: 2
+  - page: 24
+    col: 16
+    row: 6
+  - page: 24
+    col: 16
+    row: 14
+  - page: 25
+    col: 1
+    row: 11
+  - page: 25
+    col: 2
+    row: 7
+  - page: 25
+    col: 3
+    row: 3
+  - page: 25
+    col: 4
+    row: 11
+  - page: 25
+    col: 5
+    row: 1
+  - page: 25
+    col: 6
+    row: 4
+  - page: 25
+    col: 7
+    row: 2
+  - page: 25
+    col: 7
+    row: 14
+  - page: 25
+    col: 8
+    row: 12
+  - page: 25
+    col: 9
+    row: 8
+  - page: 25
+    col: 10
+    row: 9
+  - page: 25
+    col: 10
+    row: 12
+  - page: 25
+    col: 11
+    row: 7
+  - page: 25
+    col: 12
+    row: 5
+  - page: 25
+    col: 13
+    row: 10
+  - page: 25
+    col: 14
+    row: 3
+  - page: 25
+    col: 14
+    row: 14
+  - page: 25
+    col: 15
+    row: 4
+  - page: 25
+    col: 15
+    row: 7
+  - page: 25
+    col: 15
+    row: 15
+  - page: 25
+    col: 16
+    row: 6
+  - page: 25
+    col: 16
+    row: 11
+  - page: 25
+    col: 16
+    row: 13
+  - page: 26
+    col: 1
+    row: 14
+  - page: 26
+    col: 2
+    row: 7
+  - page: 26
+    col: 2
+    row: 11
+  - page: 26
+    col: 3
+    row: 6
+  - page: 26
+    col: 4
+    row: 2
+  - page: 26
+    col: 5
+    row: 7
+  - page: 26
+    col: 6
+    row: 10
+  - page: 26
+    col: 7
+    row: 9
+  - page: 26
+    col: 8
+    row: 7
+  - page: 26
+    col: 8
+    row: 10
+  - page: 26
+    col: 9
+    row: 8
+  - page: 26
+    col: 11
+    row: 5
+  - page: 26
+    col: 12
+    row: 7
+  - page: 26
+    col: 12
+    row: 12
+  - page: 26
+    col: 15
+    row: 11
+  - page: 26
+    col: 16
+    row: 4
+  - page: 26
+    col: 16
+    row: 7
+  - page: 26
+    col: 16
+    row: 11
+  - page: 26
+    col: 16
+    row: 15
+  - page: 27
+    col: 1
+    row: 10
+  - page: 27
+    col: 2
+    row: 6
+  - page: 27
+    col: 3
+    row: 3
+  - page: 27
+    col: 3
+    row: 9
+  - page: 27
+    col: 4
+    row: 15
+  - page: 27
+    col: 6
+    row: 7
+  - page: 27
+    col: 7
+    row: 6
+  - page: 27
+    col: 9
+    row: 2
+  - page: 27
+    col: 13
+    row: 12
+  - page: 27
+    col: 14
+    row: 6
+  - page: 27
+    col: 15
+    row: 4
+  - page: 28
+    col: 1
+    row: 3
+  - page: 28
+    col: 2
+    row: 15
+  - page: 28
+    col: 5
+    row: 5
+  - page: 28
+    col: 6
+    row: 10
+  - page: 28
+    col: 7
+    row: 13
+  - page: 28
+    col: 8
+    row: 10
+  - page: 28
+    col: 9
+    row: 10
+  - page: 28
+    col: 10
+    row: 14
+  - page: 28
+    col: 11
+    row: 4
+  - page: 28
+    col: 11
+    row: 7
+  - page: 28
+    col: 11
+    row: 12
+  - page: 28
+    col: 11
+    row: 15
+  - page: 28
+    col: 12
+    row: 11
+  - page: 28
+    col: 12
+    row: 15
+  - page: 28
+    col: 14
+    row: 12
+  - page: 28
+    col: 15
+    row: 10
+  - page: 28
+    col: 16
+    row: 3
+  - page: 29
+    col: 2
+    row: 12
+  - page: 29
+    col: 2
+    row: 5
+  - page: 29
+    col: 2
+    row: 9
+  - page: 29
+    col: 2
+    row: 13
+  - page: 29
+    col: 3
+    row: 8
+  - page: 29
+    col: 3
+    row: 14
+  - page: 29
+    col: 4
+    row: 8
+  - page: 29
+    col: 4
+    row: 11
+  - page: 29
+    col: 4
+    row: 14
+  - page: 29
+    col: 5
+    row: 12
+  - page: 29
+    col: 7
+    row: 10
+  - page: 29
+    col: 8
+    row: 11
+  - page: 29
+    col: 9
+    row: 4
+  - page: 29
+    col: 9
+    row: 15
+  - page: 29
+    col: 10
+    row: 4
+  - page: 29
+    col: 10
+    row: 8
+  - page: 29
+    col: 10
+    row: 12
+  - page: 29
+    col: 10
+    row: 15
+  - page: 29
+    col: 11
+    row: 6
+  - page: 29
+    col: 11
+    row: 9
+  - page: 29
+    col: 11
+    row: 12
+  - page: 29
+    col: 12
+    row: 13
+  - page: 29
+    col: 13
+    row: 2
+  - page: 29
+    col: 13
+    row: 5
+  - page: 29
+    col: 13
+    row: 11
+  - page: 29
+    col: 13
+    row: 14
+  - page: 29
+    col: 14
+    row: 13
+  - page: 30
+    col: 2
+    row: 13
+  - page: 30
+    col: 3
+    row: 14
+  - page: 30
+    col: 4
+    row: 6
+  - page: 30
+    col: 4
+    row: 11
+  - page: 30
+    col: 5
+    row: 2
+  - page: 30
+    col: 5
+    row: 11
+  - page: 30
+    col: 6
+    row: 4
+  - page: 30
+    col: 6
+    row: 8
+  - page: 30
+    col: 7
+    row: 6
+  - page: 30
+    col: 8
+    row: 8
+  - page: 30
+    col: 10
+    row: 12
+  - page: 30
+    col: 12
+    row: 8
+  - page: 30
+    col: 13
+    row: 12
+  - page: 30
+    col: 14
+    row: 15
+  - page: 30
+    col: 15
+    row: 10
+  - page: 31
+    col: 1
+    row: 5
+  - page: 31
+    col: 2
+    row: 5
+  - page: 31
+    col: 2
+    row: 9
+  - page: 31
+    col: 3
+    row: 7
+  - page: 31
+    col: 5
+    row: 5
+  - page: 31
+    col: 6
+    row: 8
+  - page: 31
+    col: 7
+    row: 4
+  - page: 31
+    col: 8
+    row: 4
+  - page: 31
+    col: 9
+    row: 14
+  - page: 31
+    col: 11
+    row: 5
+  - page: 31
+    col: 11
+    row: 15
+  - page: 31
+    col: 13
+    row: 12
+  - page: 31
+    col: 14
+    row: 14
+  - page: 31
+    col: 15
+    row: 4
+  - page: 31
+    col: 16
+    row: 3
+  - page: 32
+    col: 2
+    row: 9
+  - page: 32
+    col: 5
+    row: 4
+  - page: 32
+    col: 7
+    row: 10
+  - page: 32
+    col: 8
+    row: 8
+  - page: 32
+    col: 8
+    row: 12
+  - page: 32
+    col: 8
+    row: 15
+  - page: 32
+    col: 9
+    row: 6
+  - page: 32
+    col: 9
+    row: 12
+  - page: 32
+    col: 10
+    row: 2
+  - page: 32
+    col: 10
+    row: 6
+  - page: 32
+    col: 10
+    row: 10
+  - page: 32
+    col: 11
+    row: 6
+  - page: 32
+    col: 11
+    row: 3
+  - page: 32
+    col: 12
+    row: 15
+  - page: 32
+    col: 14
+    row: 14
+  - page: 32
+    col: 16
+    row: 8
+  - page: 33
+    col: 1
+    row: 10
+  - page: 33
+    col: 2
+    row: 13
+  - page: 33
+    col: 3
+    row: 12
+  - page: 33
+    col: 5
+    row: 3
+  - page: 33
+    col: 5
+    row: 6
+  - page: 33
+    col: 7
+    row: 4
+  - page: 33
+    col: 9
+    row: 6
+  - page: 33
+    col: 10
+    row: 8
+  - page: 33
+    col: 10
+    row: 12
+  - page: 33
+    col: 11
+    row: 6
+  - page: 33
+    col: 12
+    row: 5
+  - page: 33
+    col: 14
+    row: 9
+  - page: 33
+    col: 16
+    row: 1
+  - page: 33
+    col: 16
+    row: 3
+  - page: 34
+    col: 1
+    row: 6
+  - page: 34
+    col: 2
+    row: 5
+  - page: 34
+    col: 3
+    row: 3
+  - page: 34
+    col: 3
+    row: 11
+  - page: 34
+    col: 4
+    row: 10
+  - page: 34
+    col: 6
+    row: 5
+  - page: 34
+    col: 8
+    row: 11
+  - page: 34
+    col: 9
+    row: 5
+  - page: 34
+    col: 10
+    row: 4
+  - page: 34
+    col: 10
+    row: 13
+  - page: 34
+    col: 11
+    row: 8
+  - page: 34
+    col: 12
+    row: 3
+  - page: 34
+    col: 14
+    row: 10
+  - page: 34
+    col: 15
+    row: 6
+  - page: 34
+    col: 16
+    row: 13
+  - page: 35
+    col: 1
+    row: 5
+  - page: 35
+    col: 2
+    row: 6
+  - page: 35
+    col: 5
+    row: 2
+  - page: 35
+    col: 7
+    row: 2
+  - page: 35
+    col: 8
+    row: 5
+  - page: 35
+    col: 10
+    row: 5
+  - page: 35
+    col: 10
+    row: 15
+  - page: 35
+    col: 12
+    row: 9
+  - page: 35
+    col: 13
+    row: 5
+  - page: 35
+    col: 14
+    row: 9
+  - page: 35
+    col: 15
+    row: 6
+  - page: 35
+    col: 16
+    row: 7
+  - page: 36
+    col: 2
+    row: 13
+  - page: 36
+    col: 3
+    row: 9
+  - page: 36
+    col: 4
+    row: 13
+  - page: 36
+    col: 5
+    row: 13
+  - page: 36
+    col: 6
+    row: 2
+  - page: 36
+    col: 6
+    row: 8
+  - page: 36
+    col: 7
+    row: 6
+  - page: 36
+    col: 8
+    row: 4
+  - page: 36
+    col: 9
+    row: 4
+  - page: 36
+    col: 9
+    row: 8
+  - page: 36
+    col: 9
+    row: 15
+  - page: 36
+    col: 11
+    row: 11
+  - page: 36
+    col: 12
+    row: 7
+  - page: 36
+    col: 12
+    row: 13
+  - page: 36
+    col: 14
+    row: 14
+  - page: 36
+    col: 16
+    row: 7

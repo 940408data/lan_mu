@@ -45,7 +45,7 @@ function cmdValidate(workId) {
       if (tree.kind === 'songke') {
         console.log(`✓ ${id}（宋版善刻）：${s.leaves} 葉 / ${s.halves} 半葉 / ${s.columns} 行 / 經字 ${s.jChars} · 注字 ${s.zChars} / 印章 ${tree.seals.length} 枚`);
       } else if (tree.kind === 'songke-facsimile') {
-        console.log(`✓ ${id}（宋版影刻直出）：${s.pages} 葉 / ${s.cols} 列 / 經題字 ${s.jChars} · 注字 ${s.zChars} / 校記 ${s.fixes} 條 / sections ${s.sections}${s.noRole ? ` / ⚠ 無標籤列 ${s.noRole}` : ''}`);
+        console.log(`✓ ${id}（宋版影刻直出）：${s.pages} 葉 / ${s.cols} 列 / 經題字 ${s.jChars} · 注字 ${s.zChars} / 校記 ${s.fixes} 條 / 句讀 ${s.marks || 0} 點 / sections ${s.sections}${s.noRole ? ` / ⚠ 無標籤列 ${s.noRole}` : ''}`);
       } else {
         console.log(`✓ ${id}：${s.lines} 行 / ${s.chars} 字 / ${s.notes} 处夹注 / 印章 ${tree.seals.length} 枚 / 兰花 ${tree.orchids.length} 处`);
       }

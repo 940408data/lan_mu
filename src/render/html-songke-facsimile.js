@@ -28,7 +28,7 @@ function buildT2S(tree) {
   for (const fx of tree.grid.fixes || []) {
     for (const ch of String(fx.from || '') + String(fx.to || '') + String(fx.evidence || '')) chars.add(ch);
   }
-  for (const ch of '繁體簡體上一葉下一第共校勘記字面縮放目錄藏書經注標題') chars.add(ch);
+  for (const ch of '繁體簡體上一葉下一第共校勘記字面縮放目錄藏書經注標題界行施朱並惟白文無點專注模式退出下載逐格數據摹刻二期卷') chars.add(ch);
   const map = {};
   for (const ch of chars) {
     const s = _t2s(ch);
@@ -60,15 +60,18 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
   }
 
   const payload = {
+    id: meta.id,
     title: meta.title,
     banxinTitle: fm.banxinTitle || meta.title,
     cols: (grid.layout && grid.layout.cols) || 16,
     rows: (grid.layout && grid.layout.rows) || 15,
     jScale: fm.jSize || .84,                 // 经/题字号系数（meta.facsimile.jSize）
     zScale: fm.zSize || .80,                 // 注字号系数（meta.facsimile.zSize，接近经字）
+    gong: fm.gong || [],                     // 版心刻工（轮流值）
     pages: grid.pages.map((pg) => ({ n: pg.n, cells: pg.cells || [] })),
     labels: grid.labels || [],
     fixes: grid.fixes || [],
+    marks: grid.marks || [],                 // 句读朱点格清单（grid-to-work 自 punctuated.json 映回）
     faces: Object.entries(meta.faces || {}).map(([role, f]) => ({ role, label: f.label || role })),
     colophon: fm.colophon || '',
     navLabel: meta.book && meta.book.id ? '目錄' : '藏書',
@@ -110,15 +113,30 @@ ${CSS()}
   <section class="rg">
     <div class="rg-row">
       <button id="btnZh" type="button" aria-pressed="false"></button>
-      <button id="btnJiao" class="wide" type="button" aria-pressed="true"></button>
+      <button id="btnJie" type="button" aria-pressed="true"></button>
     </div>
+    <button id="btnDu" class="wide" type="button" aria-pressed="false"></button>
+    <button id="btnJiao" class="wide" type="button" aria-pressed="true"></button>
   </section>
 
   <section class="rg">
     <label class="fld"><span class="micro">字面</span><select id="faceSel" aria-label="字面"></select></label>
     <label class="fld fld-zoom"><span class="micro">縮放</span><input id="zoom" type="range" min="14" max="44" step="1" value="26"></label>
   </section>
+
+  <section class="rg">
+    <button id="btnFocus" class="wide" type="button" aria-pressed="false"></button>
+    <div class="dl">
+      <button id="dl" class="wide" type="button">下載</button>
+      <div class="dl-menu" id="dlMenu">
+        <a class="dl-item" id="dlJson" href="javascript:void 0">逐格數據（JSON）</a>
+        <span class="dl-sep"></span>
+        <span class="dl-item off" aria-disabled="true">PDF 摹刻 · 二期</span>
+      </div>
+    </div>
+  </section>
 </aside>
+<button id="railToggle" type="button" aria-expanded="false"></button>
 
 <div id="book" class="fbook" aria-label="${esc(meta.ariaLabel || meta.title)}"></div>
 <p class="colophon" id="colophon"></p>
