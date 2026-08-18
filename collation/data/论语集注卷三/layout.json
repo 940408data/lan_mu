@@ -1,0 +1,21 @@
+{
+  "work": "论语集注卷三",
+  "edition": "当涂郡斋刊递修本（四书章句集注）",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "同卷一/卷二版式（16×15 整叶两半叶各 8 栏）；卷首 p92 含卷題「論語卷第三」+篇題「公冶長第五」（正文同页开排）；篇題開節式（公冶長第五/雍也第六）",
+  "textPages": [92, 140],
+  "specialPages": [
+    { "pages": [92], "kind": "卷首", "note": "卷題+篇題起始页，正文同页开排" },
+    { "pages": [141], "kind": "尾题页", "note": "卷尾题「論語卷第三」（OCR 输出为 <table> HTML 标记形态），非正文" },
+    { "pages": [142], "kind": "图版页", "note": "OCR 无文字输出（同 p49/p90 模式）" },
+    { "pages": [143], "kind": "扉页", "note": "「宋本論語集注卷四」扉页（卷四首），本卷范围外" }
+  ],
+  "sampledPages": [92, 116, 140],
+  "probedBy": "S7 卷三复跑（skill 零代码改动验证）：页边界经当涂 OCR p92/p140/p141/p142/p143 实证；G1 由并行会话（lunyu-juan3 worktree）完成并拷入，49 页全 qwen3.8-max",
+  "note": "2026-08-18 S7 卷三。观察项：p141 卷尾题 OCR 形态为 HTML 表格标记（<table><tr><td>論語卷第三</td></tr></table>），build-v2-lite 现有剥行规则不含 HTML 标记类——本卷 --pages=92-140 不涉该页无影响；后续若全卷范围跑 lite 需补 HTML 标记剥除规则"
+}
