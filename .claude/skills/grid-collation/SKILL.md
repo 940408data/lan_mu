@@ -15,7 +15,7 @@ description: 网格基校勘 G 管线通用流程——以视觉逐格（qwen3.8
 
 ## 前置（每书必做，产出=登记文件，无代码改动）
 
-1. **数据落位**：平铺 `input_data/<书>/{当涂郡本,儒藏本}_{ocr,pdf}/` 或分卷 `input_data/<书>/<卷>/…`（页码全局连续，工具自动卷路由）。
+1. **数据落位**：平铺 `input_data/<书>/{当涂郡本,儒藏本}_{ocr,pdf}/` 或分卷 `input_data/<书>/<卷>/…`（页码全局连续，工具自动卷路由）。**分卷书每卷一作品**：每卷独立 workId（如 论语集注卷二），登记 `inputBook: 论语集注` 指回原书目录——保证各卷基础层指纹/裁决链互不作废。
 2. **版本登记** `collation/config/editions.yaml`：works 映射 + **锚规则登记**（`anchors.mode: pian` + 篇名表，或默认右X章收束式不登记）。
 3. **版面抽样**：有 key 跑 `node collation/tools/layout-probe.js <书> --pages=卷首,中,卷末`；无 key 用本地证据链（PDF 尺寸对比同类书 + OCR 行款众数 + 浏览器实拍）→ 手写 `collation/data/<书>/layout.json`（cols×rows、经注起格、textPages、specialPages）。
 4. **页范围与非标准页登记**：卷首扉页（宋本XX卷X）、半叶、OCR 空页（图版页）显式记 specialPages，G1 跳过。
@@ -71,6 +71,8 @@ npm run validate -- --work=<新作品id> && npm run build -- --work=<新作品id
 | 篇题锚异体失配：格串为正体「為政」（qwen 输出+VARIANT_MAP 爲→為），登记原刻「爲政」 | deriveAnchors 已生成「原字形｜归一字形」双写 alternation，登记可写原刻；section.name 会取匹配文本（正体），原刻字形保留属 fixes 阶段 |
 | 影印本同一版面重复拍摄（论语 p40/p41，G2b extra 单页飙高为信号） | layout.json specialPages 登记 `kind:dupPage, dupOf:N`，loadBaseGrid 装载时跳过副本（不改基础层文件）；先逐字比对两页文本+OCR md 确认 |
 | `npm run build -- --work=x` 在 PowerShell 下 --work 丢失致全量构建 | 用 `node tools/cli.js build --work=x --only=html` 直调；PS 会把 stderr 字体回退警告包装成 ExitCode 1 假象，以「构建完成」文本为准 |
+| 分卷书各卷共用 workId → 后卷追加页改变全书指纹，前卷裁决链作废 | 每卷独立 workId + `works[].inputBook` 指回原书目录（io.inputBookOf）；新增调用点务必同步包 inputBookOf |
+| 儒藏论语篇名兼作页眉 → 硬锚不配对（卷二硬锚 0） | 无需处理：软锚兑底质量同量级（观测项，非坑） |
 
 ## 已知边界（勿越）
 

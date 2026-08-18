@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderPage, layoutProbe } = require('../src/vision');
-const { loadConfig, INPUT_DATA, pagePdfPath } = require('../src/io');
+const { loadConfig, INPUT_DATA, pagePdfPath, inputBookOf } = require('../src/io');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -22,10 +22,11 @@ const { editions, works } = loadConfig();
 const work = works[workId];
 if (!work) { console.error('未登记作品: ' + workId); process.exit(1); }
 // 平铺优先统计总页数；分卷书退卷目录合计
-const flatDir = path.join(INPUT_DATA, workId, editions[work.shanben].pdfDir);
+const bookDir = inputBookOf(workId);
+const flatDir = path.join(INPUT_DATA, bookDir, editions[work.shanben].pdfDir);
 const totalPages = fs.existsSync(flatDir)
   ? fs.readdirSync(flatDir).filter(f => /\.pdf$/i.test(f)).length
-  : require('../src/io').listVolumePages(workId, editions[work.shanben].pdfDir.replace(/ocr$/, 'pdf')).length;
+  : require('../src/io').listVolumePages(bookDir, editions[work.shanben].pdfDir.replace(/ocr$/, 'pdf')).length;
 // 默认抽样：正文前/中/后三页（跳过封面与题跋）
 const sample = flags.pages
   ? flags.pages.split(',').map(Number)
@@ -35,7 +36,7 @@ const sample = flags.pages
   console.log(`M0 版面抽样：${workId} 共 ${totalPages} 页，抽样 ${sample.join('/')}`);
   const probes = [];
   for (const pg of sample) {
-    const pdf = pagePdfPath(workId, editions[work.shanben].pdfDir, pg);
+    const pdf = pagePdfPath(inputBookOf(workId), editions[work.shanben].pdfDir, pg);
     try {
       const { b64 } = renderPage(pdf, 1, 150);
       const r = await layoutProbe(b64);

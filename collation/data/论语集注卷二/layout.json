@@ -1,0 +1,20 @@
+{
+  "work": "论语集注卷二",
+  "edition": "当涂郡斋刊递修本（四书章句集注）",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "同卷一版式（16×15 整叶两半叶各 8 栏，行款众数 14 字/列）；卷首 p51 含卷題「論語卷第二」+篇題「八佾第三」（正文同页开排）；篇題開節式（八佾第三/里仁第四）",
+  "textPages": [51, 89],
+  "specialPages": [
+    { "pages": [51], "kind": "卷首", "note": "卷題「論語卷第二」+「八佾第三」+「朱熹集注」+篇旨，正文同页开排" },
+    { "pages": [90], "kind": "半叶", "note": "图版页（OCR 无文字输出，同卷一 p49 模式），本轮跳过" },
+    { "pages": [91], "kind": "扉页", "note": "「宋本論語集注卷三」扉页（卷三首），本卷范围外" }
+  ],
+  "sampledPages": [51, 70, 89],
+  "probedBy": "S7 卷二复跑（skill 流程）：页边界经当涂 OCR p51/p89/p90/p91 实证；G1 由并行会话（lunyu-juan2 worktree）完成并拷贝，引擎全 qwen3.8-max",
+  "note": "2026-08-18 S7。inputBook 机制（workId=论语集注卷二 → input_data/论语集注）为本轮新增通用性改造；未发现 dupPage/异体失配类新坑"
+}

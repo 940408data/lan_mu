@@ -19,7 +19,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderPage, gridTranscribe } = require('../src/vision');
-const { INPUT_DATA, loadConfig, pagePdfPath } = require('../src/io');
+const { INPUT_DATA, loadConfig, pagePdfPath, inputBookOf } = require('../src/io');
 const { loadM2Base } = require('../src/base');
 
 const args = process.argv.slice(2);
@@ -106,7 +106,7 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
   async function worker() {
     while (idx < queue.length) {
       const pg = queue[idx++];
-      const pdfPath = pagePdfPath(workId, editions[works[workId].shanben].pdfDir, pg);
+      const pdfPath = pagePdfPath(inputBookOf(workId), editions[works[workId].shanben].pdfDir, pg);
       if (!fs.existsSync(pdfPath)) continue;
       try {
         const startTime = Date.now();
