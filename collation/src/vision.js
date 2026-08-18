@@ -24,6 +24,21 @@ function loadVisionConfig() {
   return YAML.parse(fs.readFileSync(CFG_PATH, 'utf8'));
 }
 
+/** 探测 pdftoppm 可执行路径：env POPPLER_BIN > 仓库 __poppler（本地解压，gitignored）> PATH 裸命令 */
+function pdftoppmBin() {
+  const exe = process.platform === 'win32' ? 'pdftoppm.exe' : 'pdftoppm';
+  if (process.env.POPPLER_BIN) return path.join(process.env.POPPLER_BIN, exe);
+  const local = path.join(__dirname, '..', '..', '__poppler');
+  try {
+    for (const ent of fs.readdirSync(local, { withFileTypes: true })) {
+      if (!ent.isDirectory()) continue;
+      const bin = path.join(local, ent.name, 'Library', 'bin', exe);
+      if (fs.existsSync(bin)) return bin;
+    }
+  } catch {}
+  return 'pdftoppm';
+}
+
 /** 善本页 PDF → PNG（pdftoppm 单页，或 playwright 备选）→ base64。返回 {b64, file}，用完可清理。 */
 function renderPage(pdfPath, pageN, dpi) {
   const cfg = loadVisionConfig();
@@ -32,7 +47,7 @@ function renderPage(pdfPath, pageN, dpi) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'vpage-'));
   const prefix = path.join(tmp, 'p');
   try {
-    execSync(`pdftoppm -png -r ${d} -f ${pageN} -l ${pageN} ${JSON.stringify(pdfPath)} ${JSON.stringify(prefix)}`, { stdio: 'pipe' });
+    execSync(`${JSON.stringify(pdftoppmBin())} -png -r ${d} -f ${pageN} -l ${pageN} ${JSON.stringify(pdfPath)} ${JSON.stringify(prefix)}`, { stdio: 'pipe' });
   } catch (e) {
     // pdftoppm 不可用，尝试 playwright
     return renderPagePlaywright(pdfPath, pageN, d, tmp);

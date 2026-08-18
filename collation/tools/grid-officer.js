@@ -21,6 +21,7 @@ const path = require('path');
 const { officerOpinion, aggregate, OFFICERS, OFFICER_NAME } = require('../src/officer');
 const { engine } = require('../src/llm');
 const { privatePath } = require('../src/paths');
+const { loadConfig } = require('../src/io');
 
 const args = process.argv.slice(2);
 const flags = {}, pos = [];
@@ -68,13 +69,20 @@ if (flags.limit) todo = todo.slice(0, parseInt(String(flags.limit), 10));
 console.log(`G4 校书官：目标 ${targets.length} 条（真异文 ${targets.filter(t => t.type === '真异文').length} / ocr疑 ${targets.filter(t => t.type === 'ocr疑').length}），已裁 ${verdicts.length}，本次待裁 ${todo.length}，engine=${engine}`);
 
 const conc = Math.max(1, parseInt(String(flags.conc || '3'), 10));
+// 底本描述（editions.yaml 派生，替代 prompt 硬编码）
+let shanbenTitle = null;
+try {
+  const cfg = loadConfig();
+  const w = cfg.works[workId];
+  if (w) { const e = cfg.editions[w.shanben]; if (e) shanbenTitle = `${e.title}，${e.era || ''}`.replace(/，$/, ''); }
+} catch {}
 let idx = 0, done = 0;
 (async () => {
   async function worker() {
     while (idx < todo.length) {
       const t = todo[idx++];
       try {
-        const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, t, { notes: [] })));
+        const ops = await Promise.all(OFFICERS.map(off => officerOpinion(off, t, { notes: [], shanbenTitle })));
         verdicts.push({ ...aggregate(ops, t), page: t.page, col: t.col, row: t.row, baseSha256: ov.base.sha256, human: null });
       } catch (e) {
         verdicts.push({ diffId: t.id, type: t.type, shanben: t.shanben, xiandai: t.xiandai, pos: t.pos, page: t.page, col: t.col, row: t.row, verdict: 'error', note: String(e.message || e), opinions: [], baseSha256: ov.base.sha256 });

@@ -19,7 +19,7 @@
 const fs = require('fs');
 const path = require('path');
 const { renderPage, gridTranscribe } = require('../src/vision');
-const { INPUT_DATA, loadConfig } = require('../src/io');
+const { INPUT_DATA, loadConfig, pagePdfPath } = require('../src/io');
 const { loadM2Base } = require('../src/base');
 
 const args = process.argv.slice(2);
@@ -45,11 +45,7 @@ const savedLayout = fs.existsSync(layoutFile) ? JSON.parse(fs.readFileSync(layou
 const layout = { cols: parseInt(flags.cols || savedLayout.cols || '16', 10), rows: parseInt(flags.rows || savedLayout.rows || '15', 10) };
 const [pStart, pEnd] = String(flags.pages).split('-').map(Number);
 const { editions, works } = loadConfig();
-const pdfDirCandidates = [
-  path.join(INPUT_DATA, workId, editions[works[workId].shanben].pdfDir),
-  path.join(INPUT_DATA, workId, workId, editions[works[workId].shanben].pdfDir),
-];
-const pdfDir = pdfDirCandidates.find(d => fs.existsSync(d)) || pdfDirCandidates[0];
+// PDF 页路径：平铺优先，分卷书（input_data/<书>/<卷>/）按页码路由（io.pagePdfPath）
 const outPath = path.join(dataDir, `grid-transcribe${suffix}.json`);
 const logPath = path.join(dataDir, `grid-transcribe${suffix}-log.json`);
 function pad(n) { return String(n).padStart(4, '0'); }
@@ -110,7 +106,7 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
   async function worker() {
     while (idx < queue.length) {
       const pg = queue[idx++];
-      const pdfPath = path.join(pdfDir, `page_${pad(pg)}.pdf`);
+      const pdfPath = pagePdfPath(workId, editions[works[workId].shanben].pdfDir, pg);
       if (!fs.existsSync(pdfPath)) continue;
       try {
         const startTime = Date.now();
