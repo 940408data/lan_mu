@@ -19,9 +19,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 function buildT2S(tree) {
   const chars = new Set();
   for (const pg of tree.grid.pages || []) {
-    for (const col of pg.cols || []) {
-      for (const ch of String(col.chars || '')) if (ch !== '　') chars.add(ch);
-    }
+    for (const cell of pg.cells || []) if (cell[2]) chars.add(String(cell[2]));
   }
   const m = tree.meta;
   const fm = m.facsimile || {};
@@ -64,11 +62,10 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
   const payload = {
     title: meta.title,
     banxinTitle: fm.banxinTitle || meta.title,
+    cols: (grid.layout && grid.layout.cols) || 16,
     rows: (grid.layout && grid.layout.rows) || 15,
-    pages: grid.pages.map((pg) => ({
-      n: pg.n,
-      cols: (pg.cols || []).map((c) => ({ c: c.c, role: c.role || null, chars: c.chars })),
-    })),
+    pages: grid.pages.map((pg) => ({ n: pg.n, cells: pg.cells || [] })),
+    labels: grid.labels || [],
     fixes: grid.fixes || [],
     faces: Object.entries(meta.faces || {}).map(([role, f]) => ({ role, label: f.label || role })),
     colophon: fm.colophon || '',

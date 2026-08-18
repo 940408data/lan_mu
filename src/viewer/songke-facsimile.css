@@ -1,14 +1,11 @@
-/* 宋版影刻直出查看器：逐格原刻列阵渲染式样。
-   与 songke.css（重排引擎）并行，类名以 f- 前缀隔离；
+/* 宋版影刻直出查看器 V2 式样：精校台坐标纪律 + 宋刻皮肤。
+   布局：一页一 .fsheet（cols×rows 等宽 CSS grid，direction:rtl 使 col1 居最右），
+   每格显式 grid-row/grid-column，空位自然留白；版心为 sheet 中央绝对定位竖条。
    --kai / --song / --xing 由构建期注入（A 级子集 / 回退链），--face 为当前字面。 */
 :root{
-  --u: 26px;                                   /* 大字格高（行格） */
-  --rows: 15;                                  /* 每列行格数（来自 grid.yaml layout） */
-  --col-h: calc(var(--u) * var(--rows));       /* 半叶高 */
-  --col-w: calc(var(--u) * 1.40);              /* 物理列宽（经大字列 = 注双行物理列） */
-
-  --big-size:   calc(var(--u) * .855);         /* 字身小于字格，四围留白 */
-  --small-size: calc(var(--u) * .58);          /* 注小字（双行半宽） */
+  --u: 26px;                                   /* 格宽高（zoom 控件实时调节） */
+  --big-size:   calc(var(--u) * .84);          /* 经/题大字（字身小于字格，四围留白） */
+  --small-size: calc(var(--u) * .62);          /* 注小字（等宽格内缩字号，原刻注列比经列窄、此处以字号别之） */
   --sub-stroke: .25px;                         /* 小字笔画加重，防发虚 */
 
   --paper:  #e8dec8;
@@ -67,63 +64,32 @@ body{
 .fld{display:flex;align-items:center;gap:.45rem}
 .micro{font-size:.72rem;color:rgba(224,208,178,.6)}
 
-/* ───── 书叶（一叶 = 原刻一页：两半叶 + 中缝版心） ───── */
+/* ───── 书叶（一叶 = 原刻一页：cols×rows 等宽格阵，rtl 使 col1 居最右） ───── */
 .fbook{display:flex;justify-content:center}
-.fleaf{
-  display:flex;flex-direction:row-reverse;align-items:stretch;  /* RTL：DOM 顺序 [右半叶, 版心, 左半叶]，首子元素最右 */
+.fsheet{
+  display:grid;                       /* 模板列/行由内联样式注入 repeat(cols,var(--u)) / repeat(rows,var(--u)) */
+  direction:rtl;                      /* rtl 下 grid-column:1 = 最右——阅读自右向左 */
+  position:relative;                  /* 版心绝对定位于此 */
+  padding:calc(var(--u)*.55) calc(var(--u)*.5);
   background:linear-gradient(100deg,var(--paper) 0%,var(--paper2) 52%,var(--paper) 100%);
   box-shadow:0 18px 60px -18px rgba(0,0,0,.75), 0 2px 10px rgba(0,0,0,.4);
   border-radius:2px;
+  border:2px solid var(--rule);       /* 版框：外粗 */
 }
-.fhalf{
-  display:flex;flex-direction:row-reverse;         /* RTL：DOM 顺序即阅读顺序（col 升序），首列最右 */
-  padding:calc(var(--u)*.55) calc(var(--u)*.5);
-  border:2px solid var(--rule);                  /* 版框：左右双边意匠（外粗） */
-  position:relative;
-}
-.fhalf::before{                                   /* 版框内细线（双边之内线） */
+.fsheet::before{                        /* 版框内细线（双边之内线） */
   content:'';position:absolute;inset:calc(var(--u)*.18);
   border:1px solid var(--rule);pointer-events:none;
 }
-.fhalf.right{border-right:none}
-.fhalf.left{border-left:none}
-.fhalf.right{padding-right:calc(var(--u)*.28)}
-.fhalf.left{padding-left:calc(var(--u)*.28)}
 
-/* ───── 版心（中缝：鱼尾 + 书名 + 叶次） ───── */
-.fbanxin{
-  width:calc(var(--col-w)*.92);flex:none;
-  display:flex;flex-direction:column;align-items:center;
-  border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);
-  background:linear-gradient(90deg,var(--paper2),var(--paper) 50%,var(--paper2));
-  padding:calc(var(--u)*.3) 0;
-}
-.fbanxin .fish{width:calc(var(--col-w)*.62);height:calc(var(--u)*.62)}
-.fbanxin .bt{writing-mode:vertical-rl;font-family:var(--face);color:var(--ink);
-  font-size:calc(var(--u)*.52);letter-spacing:.2em;margin:calc(var(--u)*.3) 0;flex:1}
-.fbanxin .fo{writing-mode:vertical-rl;font-family:var(--kai);color:var(--ink);
-  font-size:calc(var(--u)*.44);letter-spacing:.14em}
-
-/* ───── 物理列与格 ───── */
-.fcol{
-  width:var(--col-w);height:calc(var(--col-h) + var(--u)*.0);
-  display:flex;flex-direction:column;
-  flex:none;
-}
-.fcol + .fcol{border-left:1px solid var(--rule)}   /* 栏线 */
-.fpair{display:flex;flex-direction:row}
-.fsub{flex:1;display:flex;flex-direction:column}
-.fsub + .fsub{border-left:1px dashed rgba(62,46,30,.14)}  /* 双行中缝虚意 */
-
+/* ───── 格（等宽格阵；j/title 大字、z 小字；显式 grid-row/grid-column 定位） ───── */
 .fcell{
-  height:var(--u);display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;
   font-family:var(--face);color:var(--ink);
   font-size:var(--big-size);line-height:1;
   position:relative;
 }
 .fcell.s{font-size:var(--small-size);-webkit-text-stroke:var(--sub-stroke) rgba(48,38,26,.28);text-shadow:0 0 .5px rgba(48,38,26,.32)}
-.fcell.blank{visibility:visible}                    /* 留白占位（敬空/阙字全真保留） */
-.fcell.title-ch{font-size:calc(var(--big-size)*1.02)}
+.fcell.title{font-size:calc(var(--big-size)*1.04);font-weight:600}
 
 /* 校勘朱记：裁决格字下施小朱点（可由 rail 开关隐藏） */
 .fcell.fix::after{
@@ -145,6 +111,23 @@ body{
 }
 .fixtip b{color:#f3e8d0}
 .fixtip .zhu{color:#e8b4a0}
+
+/* ───── 版心（中缝竖条：鱼尾 + 书名 + 叶次；绝对居中，不占格） ───── */
+.fbanxin{
+  position:absolute;top:calc(var(--u)*.18);bottom:calc(var(--u)*.18);
+  left:50%;transform:translateX(-50%);
+  width:calc(var(--u)*.92);
+  display:flex;flex-direction:column;align-items:center;
+  border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);
+  background:linear-gradient(90deg,var(--paper2),var(--paper) 50%,var(--paper2));
+  padding:calc(var(--u)*.3) 0;
+  pointer-events:none;                 /* 不遮正文交互 */
+}
+.fbanxin .fish{width:calc(var(--u)*.6);height:calc(var(--u)*.58)}
+.fbanxin .bt{writing-mode:vertical-rl;font-family:var(--face);color:var(--ink);
+  font-size:calc(var(--u)*.5);letter-spacing:.2em;margin:calc(var(--u)*.28) 0;flex:1}
+.fbanxin .fo{writing-mode:vertical-rl;font-family:var(--kai);color:var(--ink);
+  font-size:calc(var(--u)*.42);letter-spacing:.14em}
 
 /* 题跋（页底） */
 .colophon{max-width:46rem;margin:2.2rem auto 0;padding:0 1.2rem;

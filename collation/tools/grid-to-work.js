@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 /**
- * collation · 逐格直出作品数据（tools/grid-to-work.js）
+ * collation · 逐格直出作品数据 V2（tools/grid-to-work.js）
  * 以 grid-transcribe.json（基础层）+ grid-overlay.json（labels/sections/fixes）
  * 产出 works/<新作品id>/grid.yaml —— 影刻直出引擎（layout: songke-facsimile）的数据源。
  *
- * 与 G5（grid-export.js → text.yaml）的关系：G5 压平为连续文本供 songke 重排；
- * 本工具保留全真列阵（页/列/行/空格/证据链），供影刻直出零重排渲染。两通道并存。
- *
- * fixes 应用规则（影刻=原刻原貌）：
- *   - sub 类：导出时应用（chars 已是裁决后字），证据链保留于 fixes 快照；
- *   - insert 类：不入版面（原刻本无此字），仅保留快照供校勘交互层提示「参校本多出」。
+ * V2 无损原则（V1 教训：全空列被删、cells 压串、半叶拆分皆失真）：
+ *   - cells 原样快照为 [col,row,char] 三元组，只含有字格；空格/空列由 layout(cols×rows) 隐含——
+ *     渲染层按坐标显式定位，空位自然留白（p2 左半叶整白、p6 中缝空白全真保留）；
+ *   - 不压定长串、不删空列、不做 z 列配对、不拆半叶——版面信息零损失；
+ *   - sub 类 fixes：导出时应用（cell.char 已是裁决后字），证据链保留于 fixes 快照；
+ *   - insert 类 fixes：不入版面（原刻本无此字），仅保留快照供校勘交互层提示「参校本多出」；
+ *   - cell.start（頂格/退格推断）不入快照——顶格与否已由 row1 有无字表达，属冗余推断。
  *
  * 用法: node collation/tools/grid-to-work.js <书名> <新作品id> [--write]
  *   例: node collation/tools/grid-to-work.js 大学章句 daxue-facsimile --write
@@ -50,46 +51,37 @@ for (const f of fixes) {
   if (f.kind === 'sub') fixMap.set(`${f.page}:${f.col}:${f.row}`, f);
 }
 
-// labels 索引："p:c" -> role
-const labelMap = new Map();
-for (const l of ov.labels || []) labelMap.set(`${l.page}:${l.col}`, l.role);
-
 const N_ROWS = (tr.layout && tr.layout.rows) || 15;
 const N_COLS = (tr.layout && tr.layout.cols) || 16;
-const BLANK = '　'; // 空位占位（敬空/阙字/余白全真保留）
 
-// 逐页组织：列 × 定长行串（保留空格；基础层零重排直出）
-let nCols = 0, nCells = 0, nFixed = 0, nNoRole = 0;
+// 逐页无损快照：cells 只含有字格（含 fix 覆盖），坐标原样 [col,row,char]
+let nCells = 0, nFixed = 0, nNoRole = 0;
+const blankPages = [];   // 含整空列的页（渲染应自然留白——版面真实信息）
 const pages = [];
 for (const pg of tr.pages || []) {
-  const cellMap = new Map(); // "c:r" -> char
-  let startMap = new Map();  // col -> start（頂格/退格）
+  const usedCols = new Set();
+  const cells = [];
   for (const cell of pg.cells || []) {
-    cellMap.set(`${cell.col}:${cell.row}`, (cell.char || '').trim());
-    if (cell.start) startMap.set(cell.col, cell.start);
+    let ch = String(cell.char || '').trim();
+    const fx = fixMap.get(`${pg.n}:${cell.col}:${cell.row}`);
+    if (fx) { ch = String(fx.to || '').trim(); nFixed++; }   // sub 应用（裁决后字）
+    if (!ch) continue;                                        // 空格不存（layout 隐含）
+    cells.push([cell.col, cell.row, ch]);
+    usedCols.add(cell.col);
+    nCells++;
   }
-  const cols = [];
-  for (let c = 1; c <= N_COLS; c++) {
-    let chars = '';
-    for (let r = 1; r <= N_ROWS; r++) {
-      let ch = cellMap.get(`${c}:${r}`) || '';
-      const fx = fixMap.get(`${pg.n}:${c}:${r}`);
-      if (fx) { ch = fx.to; nFixed++; }       // sub 应用（裁决后字）
-      chars += ch ? [...ch][0] : BLANK;
-    }
-    // 全空列不出（原刻该页无此列——末页/半叶常见）
-    if (!chars.replace(/\u3000/g, '')) continue;
-    const role = labelMap.get(`${pg.n}:${c}`) || null;
-    if (!role) nNoRole++;
-    const col = { c, chars };
-    if (role) col.role = role;
-    if (startMap.has(c)) col.start = startMap.get(c);
-    cols.push(col);
-    nCols++;
-    nCells += chars.replace(/\u3000/g, '').length;
-  }
-  pages.push({ n: pg.n, cols });
+  // 版面报告：该页 1..N_COLS 中无字的列（半叶空白/中缝空白——全真保留的版面信息）
+  const blanks = [];
+  for (let c = 1; c <= N_COLS; c++) if (!usedCols.has(c)) blanks.push(c);
+  if (blanks.length) blankPages.push(`p${pg.n}[${blanks.join(',')}]`);
+  pages.push({ n: pg.n, cells });
 }
+
+// labels 无标签列统计（渲染按 z 兜底）
+const labelled = new Set((ov.labels || []).map((l) => `${l.page}:${l.col}`));
+const allCols = new Set();
+for (const pg of tr.pages || []) for (const cell of pg.cells || []) if (String(cell.char || '').trim()) allCols.add(`${pg.n}:${cell.col}`);
+for (const k of allCols) if (!labelled.has(k)) nNoRole++;
 
 const gridDoc = {
   work: workId,
@@ -97,11 +89,13 @@ const gridDoc = {
   exportedAt: new Date().toISOString(),
   layout: { cols: N_COLS, rows: N_ROWS },
   pages,
+  labels: ov.labels || [],
   sections: ov.sections || [],
   fixes,
 };
 
-const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCols} 列 ${nCells} 字；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；sections ${(ov.sections || []).length}`;
+const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCells} 有字格（${allCols.size} 有字列 / 版面 ${N_COLS}×${N_ROWS}）；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；sections ${(ov.sections || []).length}`;
+if (blankPages.length) console.log(`  [版面] 含空列页（自然留白全真保留）：${blankPages.join(' ')}`);
 if (nNoRole) console.warn(`  [警告] ${nNoRole} 列无 role 标签（渲染按 z 兜底）`);
 
 if (flags.write) {

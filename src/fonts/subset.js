@@ -22,12 +22,10 @@ function collectChars(work) {
       for (const b of sec.blocks) for (const ch of b.text) set.add(ch);
     }
   }
-  // 影刻直出（songke-facsimile）：正文在 grid.yaml 逐格格阵，不在 sections
+  // 影刻直出（songke-facsimile）：正文在 grid.yaml 逐格 cells（[col,row,char]，只含有字格）
   if (work.grid) {
     for (const pg of work.grid.pages || []) {
-      for (const col of pg.cols || []) {
-        for (const ch of String(col.chars || '')) if (ch !== '\u3000') set.add(ch);
-      }
+      for (const cell of pg.cells || []) if (cell[2]) set.add(String(cell[2]));
     }
     for (const f of work.grid.fixes || []) {          // 校勘证据链用字（悬停提示）
       for (const ch of String(f.from || '') + String(f.to || '') + String(f.evidence || '') + String(f.text || '')) set.add(ch);

@@ -1,8 +1,11 @@
-/* 宋版影刻直出查看器：逐格原刻列阵渲染与交互。
-   构建期注入：window.SKF（页/列/格阵、版心、校勘 fixes）、window.T2S（繁→简逐字映射）。
-   与 songke.js（重排引擎查看器）并行：本查看器零重排，页=原刻葉，叶次即原刻叶次。 */
+/* 宋版影刻直出查看器 V2：逐格坐标渲染（精校台纪律 + 宋刻皮肤）。
+   构建期注入：window.SKF（pages[].cells[]=[col,row,char] 三元组、labels、版心、fixes）、window.T2S。
+   版面还原：一页一 sheet（16列×15行 CSS grid，direction:rtl 使 col1 居最右），
+   每格显式 grid-row/grid-column 定位——空格无 DOM 自然留白（p2 左半叶整白、p6 中缝空白全真），
+   不做半叶拆分、不做 z 列配对；版心为 sheet 中央绝对定位竖条，不占格。 */
 (function () {
   const SK = window.SKF;
+  const COLS = SK.cols || 16;
   const ROWS = SK.rows || 15;
 
   /* ── 繁简：conv 随正文切换；convUi 控件固定简体 ── */
@@ -24,7 +27,6 @@
 
   const state = { simp: false, face: 0, leaf: 0, showFix: true };
   const $ = (id) => document.getElementById(id);
-  const BLANK = '　';
 
   /* 校勘 fixes 索引："page:col:row" -> fix */
   const fixMap = {};
@@ -32,69 +34,32 @@
     if (f.kind === 'sub') fixMap[f.page + ':' + f.col + ':' + f.row] = f;
   });
 
-  /* ── 物理列配对：相邻两 z 转写列 = 原刻双行注的一物理列（右行先、左行次） ── */
-  function pairCols(cols) {
-    const out = [];
-    for (let i = 0; i < cols.length; i++) {
-      const c = cols[i];
-      const role = c.role || 'z';
-      if (role === 'z' && i + 1 < cols.length && (cols[i + 1].role || 'z') === 'z') {
-        out.push({ type: 'z', right: c, left: cols[i + 1] });   // 右行=靠右列（c 小），左行=靠左列
-        i++;
-      } else if (role === 'z') {
-        out.push({ type: 'z1', col: c });                       // 落单小字列（原刻半行/残列）
-      } else {
-        out.push({ type: role, col: c });                       // j / title 大字列
-      }
-    }
-    return out;
-  }
+  /* 列角色索引："page:col" -> j/z/title（渲染字号依此，无标签按 z 兜底） */
+  const roleMap = {};
+  (SK.labels || []).forEach((l) => { roleMap[l.page + ':' + l.col] = l.role; });
 
   const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-  /* 单格：大字列每格一字；空格留白占位（敬空/阙字全真保留）；裁决格施朱记 + 悬停证据链 */
-  function cellHTML(ch, cls, fx) {
-    if (ch === BLANK || !ch) return `<span class="fcell ${cls} blank"></span>`;
-    if (fx) {
-      const tip = `${fx.from} → ${fx.to}${fx.evidence ? '｜' + fx.evidence : ''}`;
-      return `<span class="fcell ${cls} fix" title="${escAttr(tip)}">${conv(ch)}</span>`;
-    }
-    return `<span class="fcell ${cls}">${conv(ch)}</span>`;
-  }
-
-  function subColHTML(col, small) {
-    let h = '';
-    for (let r = 0; r < ROWS; r++) {
-      const ch = col.chars[r] || BLANK;
-      const fx = fixMap[curPageN + ':' + col.c + ':' + (r + 1)];
-      h += cellHTML(ch, small ? 's' : '', fx);
-    }
-    return h;
-  }
-
-  let curPageN = 0;
-
-  function physColHTML(pc) {
-    if (pc.type === 'z') {
-      return `<div class="fcol fpair"><div class="fsub">${subColHTML(pc.left, true)}</div>` +
-        `<div class="fsub">${subColHTML(pc.right, true)}</div></div>`;
-    }
-    if (pc.type === 'z1') {
-      return `<div class="fcol fpair"><div class="fsub"></div><div class="fsub">${subColHTML(pc.col, true)}</div></div>`;
-    }
-    const cls = pc.type === 'title' ? 'title-ch' : '';
-    return `<div class="fcol">${subColHTML(pc.col, false).replace(/class="fcell /g, `class="fcell ${cls} `)}</div>`;
-  }
-
-  /* ── 一叶渲染：物理列对半切为右/左半叶，中缝版心（页码即原刻叶次） ── */
+  /* ── 一叶渲染：sheet = 完整一页（cols×rows 等宽格阵），rtl + 逐格显式定位 ── */
   function renderLeaf() {
     const pg = SK.pages[state.leaf];
     if (!pg) return;
-    curPageN = pg.n;
-    const phys = pairCols(pg.cols);
-    const half = Math.ceil(phys.length / 2);
-    const right = phys.slice(0, half);       // 阅读顺序先右半
-    const left = phys.slice(half);
+
+    /* 逐格：只含有字格生成 DOM；空位（敬空/阙字/空列）无 DOM 自然留白——坐标即版面 */
+    let cellsHTML = '';
+    for (const [c, r, ch] of pg.cells) {
+      const role = roleMap[pg.n + ':' + c] || 'z';
+      const cls = role === 'j' ? 'j' : role === 'title' ? 'j title' : 's';
+      const fx = fixMap[pg.n + ':' + c + ':' + r];
+      let inner;
+      if (fx) {
+        const tip = `${fx.from} → ${fx.to}${fx.evidence ? '｜' + fx.evidence : ''}`;
+        inner = `<span class="fcell ${cls} fix" style="grid-row:${r};grid-column:${c}" title="${escAttr(tip)}">${conv(ch)}</span>`;
+      } else {
+        inner = `<span class="fcell ${cls}" style="grid-row:${r};grid-column:${c}">${conv(ch)}</span>`;
+      }
+      cellsHTML += inner;
+    }
 
     const banxin =
       `<div class="fbanxin"><span class="fish">${FISH}</span>` +
@@ -102,11 +67,8 @@
       `<span class="fo">${conv('葉 ' + numCn(pg.n))}</span><span class="fish">${FISH}</span></div>`;
 
     $('book').innerHTML =
-      `<div class="fleaf" data-page="${pg.n}">` +
-      `<div class="fhalf right">${right.map(physColHTML).join('')}</div>` +
-      banxin +
-      `<div class="fhalf left">${left.map(physColHTML).join('')}</div>` +
-      `</div>`;
+      `<div class="fsheet" data-page="${pg.n}" style="grid-template-columns:repeat(${COLS},var(--u));grid-template-rows:repeat(${ROWS},var(--u))">` +
+      cellsHTML + banxin + `</div>`;
     $('folioNow').textContent = convUi('第 ' + numCn(pg.n) + ' 葉 / 共 ' + numCn(SK.pages.length) + ' 葉');
     $('btnPrev').disabled = state.leaf <= 0;
     $('btnNext').disabled = state.leaf >= SK.pages.length - 1;

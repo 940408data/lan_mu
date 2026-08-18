@@ -1,7 +1,8 @@
 /**
- * 宋版影刻直出版式模型：WorkData(grid.yaml) → LayoutTree（kind: 'songke-facsimile'）。
- * 与 songke（重排引擎）相对：零重排，按逐格原刻列阵直出；页=葉，页码即原刻葉次；
- * 注文双行取原刻真实切分（相邻两转写列配对），不做算法均齐。
+ * 宋版影刻直出版式模型 V2：WorkData(grid.yaml) → LayoutTree（kind: 'songke-facsimile'）。
+ * 薄化直通：grid.pages[].cells[]（[col,row,char] 三元组，只含有字格）原样传渲染层，
+ * 不做列阵化/半叶拆分/z 配对——版面由渲染层按坐标显式定位还原（精校台纪律）。
+ * 空 cell 不存于快照，空格/空列由 layout(cols×rows) 隐含。
  */
 function buildSongkeFacsimile(work) {
   const { meta, grid } = work;
@@ -10,14 +11,19 @@ function buildSongkeFacsimile(work) {
     throw new Error(`作品 ${work.id} 缺 grid.yaml 数据源（先跑 collation/tools/grid-to-work.js <书> ${work.id} --write）`);
   }
 
-  let cols = 0, cells = 0, jChars = 0, zChars = 0, noRole = 0;
+  const labelMap = new Map();
+  for (const l of grid.labels || []) labelMap.set(`${l.page}:${l.col}`, l.role);
+
+  let cells = 0, jChars = 0, zChars = 0, noRole = 0;
+  const seenCols = new Set();
   for (const pg of grid.pages) {
-    for (const c of pg.cols || []) {
-      cols++;
-      const n = String(c.chars || '').replace(/　/g, '').length;
-      cells += n;
-      if (c.role === 'j' || c.role === 'title') jChars += n;
-      else { zChars += n; if (!c.role) noRole++; }
+    for (const [c, , ch] of pg.cells || []) {
+      cells++;
+      const role = labelMap.get(`${pg.n}:${c}`) || 'z';
+      if (role === 'j' || role === 'title') jChars += String(ch).length;
+      else zChars += String(ch).length;
+      const ck = `${pg.n}:${c}`;
+      if (!seenCols.has(ck)) { seenCols.add(ck); if (!labelMap.has(ck)) noRole++; }
     }
   }
 
@@ -29,7 +35,9 @@ function buildSongkeFacsimile(work) {
     fallbackStacks: meta.fallbackStacks,
     seals: work.seals,
     stats: {
-      pages: grid.pages.length, cols, cells, jChars, zChars,
+      pages: grid.pages.length,
+      cols: seenCols.size,
+      cells, jChars, zChars,
       fixes: (grid.fixes || []).length,
       sections: (grid.sections || []).length,
       noRole,
