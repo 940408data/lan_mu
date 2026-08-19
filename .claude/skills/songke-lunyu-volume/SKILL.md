@@ -1,98 +1,97 @@
 ---
 name: songke-lunyu-volume
-description: 从四书章句集注.CHM 制作论语集注宋版善刻卷（lunyuN）。抽取、繁简转换、○ 补入、字符校正、校验构建的完整工作流。用于新增/修正论语各卷。
+description: 从四书章句集注.CHM 制作论语集注宋版影刻直出卷（lunyu-songben-volN）。抽取、繁简转换、○ 补入、字符校正、校验构建的完整工作流。用于新增/修正论语各卷（影刻直出引擎，layout: songke-facsimile）。
 ---
 
-# 论语集注宋版善刻卷制作
+# 论语集注宋版影刻直出卷制作
 
-将《四书章句集注》CHM 中的论语篇章转为 `works/lunyuN/` 宋版善刻数据。**先跑抽取脚本得草稿，再逐字校录，最后校验构建。**
+将《四书章句集注》CHM 中的论语篇章转为 `works/lunyu-songben-volN/` 宋版影刻直出数据。**数据源为 G 管线（grid-collation）逐格转写产出，CHM 文本仅作参校参考。**
 
-## 文件映射（CHM → 篇）
+> **引擎说明：** 当前标准为 `songke-facsimile`（影刻直出，`layout: songke-facsimile`），逐格坐标直出。旧版 `songke`（宋版善刻，`layout: songke`）已废弃。如需旧版流程，参考 git history 中 `lunyuN` 系列作品。
 
-`input_data/chm_extract/<N>.htm`，N = 论语篇次 + 6（前 6 个文件为大学/序说等）：
+## 数据源
 
-| 卷 | 篇 | htm |
-|---|---|---|
-| 四 | 述而第七 / 泰伯第八 | 13 / 14 |
-| 五 | 子罕第九 / 鄉黨第十 | 15 / 16 |
-| 六 | 先進第十一 / 顏淵第十二 | 17 / 18 |
-| 七 | 子路第十三 / 憲問第十四 | 19 / 20 |
-| 八 | 衛靈公第十五 / 季氏第十六 | 21 / 22 |
-| 九 | 陽貨第十七 / 微子第十八 | 23 / 24 |
-| 十 | 子張第十九 / 堯曰第二十 | 25 / 26 |
+影刻直出作品的数据源为 **G 管线（grid-collation skill）** 逐格网格转写，从善本影印 PDF/OCR 经 G1→G5 五阶段派生。详见 `grid-collation` 技能。
 
-对校本：`input_data/lunyucollect.txt`（數位經典 UTF-8 繁体全文，行首 `○`=章起首，行中 `○`=注内分节）。
+CHM 文本（`input_data/四书章句集注.CHM`）仅用于参校参照，不再作为主数据源。
 
 ## 工作流
 
-### 1. 抽取草稿
+### 1. G 管线（主流程）
 
 ```bash
+# 详见 grid-collation 技能；以下为 lunyu-songben-volN 专有步骤
+# 前置：input_data/论语集注/第N卷/ 就绪（当涂郡本/儒藏本 PDF+OCR）
+
+# 1a. 登记 editions.yaml + 创建 layout.json
+# 1b. G1 逐格转写（qwen3.8-max --force-deep）
+# 1c. G2/G3 参校挂格
+# 1d. G4 四官审议
+# 1e. G5 出口：grid-to-work.js 产出 grid.yaml
+```
+
+### 2. meta.yaml / seals / ornaments
+
+复制上一卷 songke-facsimile meta.yaml 改：
+
+| 字段 | 修改 |
+|------|------|
+| `id` | `lunyu-songben-volN` |
+| `title` | 論語集注·卷N（影刻直出） |
+| `subtitle` | 当涂郡斋刊递修本 · 逐格还原 · 篇名 |
+| `docTitle` | 論語集注卷N — 宋版影刻 |
+| `ariaLabel` | 論語集注卷N，宋刻本逐格影刻还原，自右向左讀 |
+| `seed` | 新 5 位数 `2120N` |
+| `layout` | `songke-facsimile`（固定） |
+| `facsimile.banxinTitle` | 論語 |
+| `facsimile.cover.slip` | 宋本論語集注卷N |
+| `facsimile.colophon` | 末句篇名+凡N章 |
+| `export.base` | `LunyuN-Songke` |
+| `aboutHtml` | 更新卷次/篇名 |
+
+`gong: 牛山`、faces/fallbackStacks/spec/sources 不变。
+`seals.yaml`: `seals: []`；`ornaments.yaml`: `orchids: []`。
+`expect: null`（暂不设回归基准，待稳定后填）。
+
+### 3. 校验构建
+
+```bash
+npm run validate -- --work=lunyu-songben-volN
+npm run build -- --work=lunyu-songben-volN --only=html   # 快速验证
+npm run build -- --work=lunyu-songben-volN               # 出 PDF（宋版影刻不出长图）
+```
+
+### 4. 提交
+
+分支命名 `content/lunyu-volN-facsimile`（从 dev 切出）；提交信息用中文，写明：G 管线质检数据（葉/列/經字/注字/一致率/四官结果）、构建结果。完成后 push origin dev。
+
+## 参考基线
+
+- lunyu-songben-vol7（卷七 子路·憲問）：55 葉 / 870 列 / 經字 3033 · 注字 7550 / G2a 一致率 99.2% / G2b 一致率 99.1% / 四官 105/117 已决
+- lunyu-songben-vol4（卷四 述而·泰伯）：44 葉 / 693 列 / 經字 1937 · 注字 6676
+- lunyu-songben-vol8（卷八 衛靈公·季氏）：37 葉 / 584 列 / 經字 2171 · 注字 4781
+
+## 附录：旧版 CHM 抽取（仅参校参考）
+
+以下为旧版 `songke` 引擎的 CHM 抽取流程，仅作文本参校参考，不再用于主数据生产：
+
+```bash
+# 文件映射（CHM → 篇）
+# input_data/chm_extract/<N>.htm，N = 论语篇次 + 6
+# 卷七 子路第十三/憲問第十四 → 19 / 20
+
 node tools/extract-lunyu.js input_data/chm_extract/<首篇htm> --name=<首篇篇名> --header --vol=<卷号汉字>
 node tools/extract-lunyu.js input_data/chm_extract/<次篇htm> --name=<次篇篇名>
 ```
 
-首篇加 `--header`（卷首两 j：論語集注卷之X / 新安朱熹集註）。输出 YAML blocks 行，拼入 text.yaml 两个 section。
+对校本：`input_data/lunyucollect.txt`（數位經典 UTF-8 繁体全文）。
 
-脚本已内置：GBK 解码 → 章界（≥2 空段）合并经注碎片 → 篇旨独立/校记丢弃 → opencc s2tw + CORRECT 修正（歎/游/欲/繫/弔/戚/里/并/范）→ 引号「」『』→ rule A（注音→释义补○）+ rule B（各家引论前补○）。
-
-### 2. 校录（关键，勿跳过）
-
-对每章 z 块与对校本逐注比对。**○ 目标**：接近对校本注文内 ○ 数（约 +8%，lunyu5：79 vs 73）。
-
-补 ○ 的时机（对校本有而脚本漏的）：
-- 非注音起始 z 的首位引论（rule B 会跳过，需人工判断：释义后独立引论 → 补；并入释义者 → 不补）
-- 释义段间语义分节（不同经句的释义之间）
-- 连续注音段与后续释义之间
-
-删 ○ 的时机：释义碎片间机械连接的 ○（脚本 v2 已去除，若旧数据有须删）。
-
-**常见字符校正**（opencc 过度转/误转，以对校本为准）：
+字符校正参考（opencc 过度转换）：
 
 | 误 | 正 | 说明 |
-|---|---|---|
+|-----|-----|------|
 | 史記雲 | 史記云 | 云=说，非雲雨 |
 | 山樑 | 山梁 | 论语原文用梁 |
-| 迴翔 | 回翔 | |
 | 後雕 | 後彫 | |
 | 韞并 | 韞匵 | 匵=匣 |
 | 亦佔反 | 亦占反 | 注音用占 |
-| 質樸/週末/槨/闢/跡/鬥/地誌/觜 | 質朴/周末/椁/辟/迹/鬬/地志/頫 | 先进卷六依对校 |
-| 幹道/大概/剝床/僕也/表里/粗鄙 | 乾道/大槩/剝牀/仆也/表裡/麤鄙 | 颜渊卷六依对校 |
-| 嘆→歎、遊→游、慾→欲、系→繫、吊→弔、慼→戚、裡→里、並→并 | | CORRECT 表已处理（语境字另查） |
-
-**关键陷阱——PUA 损字**：抽取脚本 `clean()` 会静默删除 PUA 实体（`&#60073;`/`&#60147;` 等 ≥0xE000）。若 CHM 用 PUA 表示罕见字（如卷六 `&#60147;`=鞟），抽取后该字消失，经文/注文断裂（如「虎豹之猶犬羊之」）。**务必用 `tools/proofread.js` 逐章字符多重集比对发现，再按对校本回填**。同理 CHM 若以 `●`(U+25CF) 占位缺字（如卷六●=宿），也须按对校本还原。
-
-其他必查：
-- 篇旨中的 `〔一〕`校记注脚：删除（如鄉黨「按本篇实有十八节…」、先進「五原七」条）
-- 引号残留（如 `」` 误入注首）
-- 于/於、麤/粗、修/脩、游/遊、并/並、里/裡、云/雲 等语境字：**逐处按对校本判断，CORRECT 表不可全信**
-- 章内○数与对校核对，颜渊卷首「問仁+請問其目」在朱子本为一章（对校拆成两段○，须合并）
-
-**校录工具**（gitignore，本地可用）：
-- `tools/proofread.js <work> <secId> <ref行起> <ref行止>`：按章对齐、j+z 并集字符多重集比对，输出本多/本少字符 → 精准定位讹误（顺序无关，推荐）
-- `tools/proofread-split.js`：j/z 分列比对（章内经注交错时误报，慎用）
-- 对校本行号：先进857-983、颜渊985-1097、子路1098起、余类推（grep 篇名定位）
-
-### 3. meta.yaml / seals / ornaments
-
-复制上一卷 meta.yaml 改：`id`、`title`（論語集注卷X）、`subtitle`、`docTitle`、`ariaLabel`、`seed`（新 5 位数）、`songke.banxinTitle`（論語卷X）、`songke.colophon` 末句（「篇名」凡N章…）、`export.base`（LunyuN-Songke）、`aboutHtml`。`gong: 牛山`、faces/fallbackStacks/spec/sources 不变。
-`seals.yaml`: `seals: []`；`ornaments.yaml`: `orchids: []`。
-
-### 4. 校验构建
-
-```bash
-npm run validate -- --work=lunyuN
-npm run build -- --work=lunyuN --only=html   # 快速验证
-npm run build -- --work=lunyuN               # 出三体 PDF（宋版不出长图）
-```
-
-### 5. 提交
-
-分支命名 `lunyu_book<N>`（从上一卷分支切出）；提交信息用中文，写明：数据源、校验数字（葉/半葉/行/經字/注字）、构建结果、○ 与字符校正明细、残留项。完成后 push。
-
-## 参考基线
-
-- lunyu4（卷四）：z 块 101 ○，每章严格 1j+1z
-- lunyu5（卷五）：z 块 79 ○ / 对校本 73；17 葉 / 33 半葉 / 262 行 / 經字 1435 · 注字 6301
-- 对校本注文内 ○ 数（卷六至十可对照）：先進+顏淵 约 110、子路+憲問 约 130、衛靈公+季氏 约 110、陽貨+微子 约 90、子張+堯曰 约 80（以实际统计为准）
