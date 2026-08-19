@@ -1,6 +1,6 @@
 ---
 name: grid-collation
-description: 网格基校勘 G 管线通用流程——以视觉逐格（qwen3.8-max，禁 mock）为唯一基础层，旧 OCR 与现代点校本旁挂参校，四校书官审议 + 精校台人工裁决 + fixes 唯一改字通道 + G5 单源出口。适用任意分卷/平铺古籍（论语/孟子集注等大部头照本技能逐步执行）。旧管线 skill 见 guji-jiaokan（双轨过渡期，验收后下线）。
+description: 网格基校勘 G 管线通用流程——以视觉逐格（qwen3.8-max，禁 mock）为唯一基础层，旧 OCR 与现代点校本旁挂参校，四校书官审议 + 精校台人工裁决 + fixes 唯一改字通道 + G5 单源出口（songke-facsimile 影刻直出产 grid.yaml）。适用任意分卷/平铺古籍（论语/孟子集注等大部头照本技能逐步执行）。旧管线 skill 见 guji-jiaokan（双轨过渡期，验收后下线）。
 ---
 
 # 网格基校勘（G 管线）
@@ -41,8 +41,9 @@ node collation/tools/grid-review.js <书>          # 精校台 HTML（私有目�
 # 人工裁决（浏览器）→ 导出裁决 JSON →
 node collation/tools/grid-review-merge.js <书> --file=精校裁决-<书>.json --write
 
-# G5 单一出口（基础层 + overlay + fixes → works/<id>/text.yaml）
-node collation/tools/grid-export.js <书> <新作品id>
+# G5 单一出口（songke-facsimile 影刻直出标准）——产 grid.yaml（逐格坐标三元组）
+#   旧 songke 引擎（text.yaml）用 grid-export.js，见附录
+node collation/tools/grid-to-work.js <书> <新作品id> --write
 npm run validate -- --work=<新作品id> && npm run build -- --work=<新作品id> --only=html
 ```
 
@@ -53,7 +54,7 @@ npm run validate -- --work=<新作品id> && npm run build -- --work=<新作品id
 - [ ] build-v2-lite 底本（剥行留痕核对，空留痕=规则失效信号）
 - [ ] 儒藏本预清洗留痕复核（① 序号/校记用语/卷尾题；缺则增量扩 precleanModern 规则并复验双书回归）
 - [ ] G1 试跑 3 页（列数/密度/费用/文本抽比）
-- [ ] works 四件套（meta 参考 daxue-songben-g5 改 id/title/banxinTitle/colophon/seed/export.base）
+- [ ] works 四件套——meta.yaml（layout: songke-facsimile，参考 lunyu-songben-vol7 改 id/title/banxinTitle/colophon/seed/export.base）+ grid.yaml（G5 产）+ seals.yaml + ornaments.yaml
 - [ ] 双书回归（大学/中庸 overlay dry-run 逐项不变）
 
 ## 坑表（实证回填）
@@ -78,4 +79,15 @@ npm run validate -- --work=<新作品id> && npm run build -- --work=<新作品id
 
 - extra/missing（衍/夺候选）不请四官，以书影为据（T3 视觉复核通道未建）。
 - suspended 复议闭环未建；fixes 未清零可出口但需在验收报告标注。
-- G5 只产 text.yaml；meta/seals/ornaments 手工维护；善本点校本.md / 校勘记.md 二期。
+- G5 标准出口为 grid.yaml（songke-facsimile 影刻直出）；旧 songke 引擎用 grid-export.js 产 text.yaml（见附录）。
+- meta/seals/ornaments 手工维护；善本点校本.md / 校勘记.md 二期。
+
+## 附录：旧 songke 引擎 G5（grid-export.js → text.yaml）
+
+仅用于 `layout: songke` 的旧版宋版善刻作品，不再作为新作品的标准出口：
+
+```powershell
+# G5 旧出口（songke 引擎：sections[].blocks[]{type:j|z, text}）
+node collation/tools/grid-export.js <书> <新作品id>
+npm run validate -- --work=<新作品id> && npm run build -- --work=<新作品id> --only=html
+```
