@@ -110,7 +110,7 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
       if (!fs.existsSync(pdfPath)) continue;
       try {
         const startTime = Date.now();
-        const b64 = imageDir ? pageImage(pg) : renderPage(pdfPath, 1, 150).b64;
+        const b64 = imageDir ? pageImage(pg) : (await renderPage(pdfPath, 1, 150)).b64;
         const renderTime = Date.now() - startTime;
         
         const apiStart = Date.now();

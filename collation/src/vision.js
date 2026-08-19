@@ -39,53 +39,57 @@ function pdftoppmBin() {
   return 'pdftoppm';
 }
 
-/** 善本页 PDF → PNG（pdftoppm 单页，或 playwright 备选）→ base64。返回 {b64, file}，用完可清理。 */
-function renderPage(pdfPath, pageN, dpi) {
+/** 善本页 PDF → PNG（pdftoppm → pypdfium2 → playwright 三级回退）→ base64。返回 {b64, file}，用完可清理。 */
+async function renderPage(pdfPath, pageN, dpi) {
   const cfg = loadVisionConfig();
   const d = dpi || cfg.vision.render.dpi;
   const os = require('os');
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'vpage-'));
   const prefix = path.join(tmp, 'p');
+  // 1) pdftoppm（poppler）
   try {
     execSync(`${JSON.stringify(pdftoppmBin())} -png -r ${d} -f ${pageN} -l ${pageN} ${JSON.stringify(pdfPath)} ${JSON.stringify(prefix)}`, { stdio: 'pipe' });
-  } catch (e) {
-    // pdftoppm 不可用，尝试 playwright
-    return renderPagePlaywright(pdfPath, pageN, d, tmp);
-  }
-  const png = fs.readdirSync(tmp).find(f => f.endsWith('.png'));
-  const file = path.join(tmp, png);
-  const b64 = fs.readFileSync(file).toString('base64');
-  return { b64, file };
+    const png = fs.readdirSync(tmp).find(f => f.endsWith('.png'));
+    const file = path.join(tmp, png);
+    const b64 = fs.readFileSync(file).toString('base64');
+    return { b64, file };
+  } catch (e) { /* pdftoppm 不可用，继续下一级 */ }
+  // 2) pypdfium2（Python，poppler 替代）
+  try {
+    const outFile = path.join(tmp, `page_${String(pageN).padStart(4, '0')}.png`);
+    const pyScript = path.join(__dirname, '..', 'tools', 'pdf-render.py');
+    execSync(`python ${JSON.stringify(pyScript)} ${JSON.stringify(pdfPath)} ${pageN} ${d} ${JSON.stringify(outFile)}`, { stdio: 'pipe' });
+    if (fs.existsSync(outFile)) {
+      const b64 = fs.readFileSync(outFile).toString('base64');
+      return { b64, file: outFile };
+    }
+  } catch (e) { /* pypdfium2 不可用，继续下一级 */ }
+  // 3) playwright 兜底
+  return renderPagePlaywright(pdfPath, pageN, d, tmp);
 }
 
 /** 使用 playwright 渲染 PDF 单页为 PNG（pdftoppm 备选方案） */
-function renderPagePlaywright(pdfPath, pageN, dpi, tmpDir) {
+async function renderPagePlaywright(pdfPath, pageN, dpi, tmpDir) {
   const { chromium } = require('playwright');
-  const scale = dpi / 72; // PDF 默认 72 DPI
-  (async () => {
-    const browser = await chromium.launch();
+  const file = path.join(tmpDir, `page_${String(pageN).padStart(4, '0')}.png`);
+  let browser;
+  try {
+    browser = await chromium.launch();
     const context = await browser.newContext({ viewport: { width: 2000, height: 3000 } });
     const page = await context.newPage();
-    const pdfBuffer = fs.readFileSync(pdfPath);
-    const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    await page.goto(url, { waitUntil: 'networkidle' });
+    // 用 file:// 协议直接加载 PDF（避免 blob: URL 在 Node 环境不可用）
+    const fileUrl = 'file:///' + path.resolve(pdfPath).replace(/\\/g, '/');
+    await page.goto(fileUrl, { waitUntil: 'networkidle', timeout: 30000 }).catch(() => {});
     // 等待 PDF 渲染
-    await page.waitForTimeout(1000);
-    const screenshot = await page.screenshot({ type: 'png' });
-    const file = path.join(tmpDir, `page_${String(pageN).padStart(4, '0')}.png`);
+    await page.waitForTimeout(2000);
+    const screenshot = await page.screenshot({ type: 'png', fullPage: true });
     fs.writeFileSync(file, screenshot);
     await browser.close();
-    URL.revokeObjectURL(url);
-  })();
-  // 同步等待文件生成
-  const file = path.join(tmpDir, `page_${String(pageN).padStart(4, '0')}.png`);
-  let retries = 0;
-  while (!fs.existsSync(file) && retries < 30) {
-    require('child_process').execSync('timeout /t 1 /nobreak', { stdio: 'pipe' });
-    retries++;
+  } catch (e) {
+    if (browser) await browser.close().catch(() => {});
+    throw e;
   }
-  if (!fs.existsSync(file)) throw new Error('playwright 渲染超时');
+  if (!fs.existsSync(file)) throw new Error('playwright 渲染失败');
   const b64 = fs.readFileSync(file).toString('base64');
   return { b64, file };
 }
