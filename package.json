@@ -4,6 +4,7 @@
   "private": true,
   "description": "兰木 · 书法、古籍、音乐的现代数字文创：一次校录，多态呈现（Web 交互卷 / JPG 长图 / PDF）",
   "type": "commonjs",
+  "main": "electron/main.js",
   "scripts": {
     "new": "node tools/cli.js new",
     "validate": "node tools/cli.js validate",
@@ -21,6 +22,10 @@
     "collate:pipeline": "node collation/tools/pipeline.js",
     "collate:quality": "node collation/tools/quality-report.js",
     "collate:merge": "node collation/tools/merge-live.js",
+    "electron:dist": "node tools/electron-dist.js",
+    "electron:dev": "node tools/electron-dist.js --if-missing && ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/ electron electron/main.js",
+    "electron:build:win": "node tools/electron-dist.js && ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/ ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/ electron-builder --win",
+    "electron:check": "node --check electron/main.js && node --check electron/preload.js",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
@@ -34,6 +39,35 @@
     "yaml": "^2.6.0"
   },
   "devDependencies": {
-    "docsify-cli": "^4.4.4"
+    "docsify-cli": "^4.4.4",
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.lanmu.desktop",
+    "productName": "Lanmu",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "dist",
+        "to": "dist"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
   }
 }
