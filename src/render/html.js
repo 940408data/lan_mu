@@ -109,6 +109,7 @@ function renderHtml(tree, opts = {}) {
     const ks = ['.k0', '.k1', '.k2', '.k3', '.k4', '.k5'].map((k) => `.paper.fsc-${n} ${k}`).join(',');
     const js = ['.j0', '.j1', '.j2', '.j3', '.j4', '.j5', '.j6', '.j7'].map((j) => `.paper.fsc-${n} ${j}`).join(',');
     return `.paper.fsc-${n}{--face:var(--fsc-${n})}\n${ks}{opacity:1}\n${js}{position:static;left:auto;top:auto}\n` +
+      `.paper.fsc-${n} .t i.du{position:relative}\n` +
       `.paper.fsc-${n} .t i{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased}`;
   }).join('\n');
   faceCss += sc.roles.map((r) => r.faceCss).join('') + '\n' + scCss;
