@@ -1,0 +1,20 @@
+{
+  "work": "论语集注卷九",
+  "edition": "当涂郡斋刊递修本（四书章句集注）",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "同卷一至卷八版式（16×15 整叶两半叶各 8 栏）；篇題開節式（陽貨第十七/微子第十八）",
+  "textPages": [386, 422],
+  "specialPages": [
+    { "pages": [386], "kind": "卷首", "note": "卷題「論語卷第九」+朱熹集注+篇題「陽貨第十七」+篇旨，正文同页开排" },
+    { "pages": [422], "kind": "空页", "note": "OCR 无文字输出（build-v2-lite 警告），G2a 记整页 missing，需影像核验" },
+    { "pages": [423], "kind": "尾题", "note": "「論語卷第九」尾题" }
+  ],
+  "sampledPages": [386, 400, 410, 422],
+  "probedBy": "手写初版（参考卷七/卷八）",
+  "note": "2026-08-19 第九卷（陽貨第十七+微子第十八）首跑。当涂页 386-423，儒藏页 183-200。版面规格复用同类卷，specialPages 待 G1 试跑确认。"
+}

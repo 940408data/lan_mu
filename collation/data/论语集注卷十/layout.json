@@ -1,0 +1,19 @@
+{
+  "work": "论语集注卷十",
+  "edition": "当涂郡斋刊递修本（四书章句集注）",
+  "cols": 16,
+  "rows": 15,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": "退一格",
+  "rules": "同卷一至卷九版式（16×15 整叶两半叶各 8 栏）；篇題開節式（子張第十九/堯曰第二十）",
+  "textPages": [424, 444],
+  "specialPages": [
+    { "pages": [424], "kind": "卷首", "note": "卷題「論語卷第十」+朱熹集注+篇題「子張第十九」+篇旨，正文同页开排" },
+    { "pages": [445], "kind": "空页", "note": "OCR 无文字输出（build-v2-lite 警告），G2a 记整页 missing，需影像核验" }
+  ],
+  "sampledPages": [424, 435, 444],
+  "probedBy": "手写初版（参考卷七/卷八）",
+  "note": "2026-08-19 第十卷（子張第十九+堯曰第二十）首跑。当涂页 424-445，儒藏页 201-211。版面规格复用同类卷，specialPages 待 G1 试跑确认。"
+}
