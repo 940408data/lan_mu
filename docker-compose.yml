@@ -10,7 +10,7 @@ services:
       # 宿主 dist 作为重媒体（pdf/jpg/png）只读源——不烘进镜像
       - ./dist:/media:ro
     ports:
-      - "${PORT:-8080}:8080"
+      - "127.0.0.1:${PORT:-8080}:8080"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
       interval: 30s
