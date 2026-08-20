@@ -23,14 +23,26 @@ function setZoom(z){
 minus.onclick=()=>setZoom(zoom-.14); plus.onclick=()=>setZoom(zoom+.14);
 rule.onclick=e=>{const a=paper.classList.toggle('rule');e.currentTarget.classList.toggle('on',a);
   e.currentTarget.setAttribute('aria-pressed',a);};
-/* 簡繁轉換：依構建期內嵌 T2S 映射逐字切換，原文存 dataset.t 可還原 */
+/* 双轨字面：繁体轨 f-* / 简体轨 fsc-*（FACES 由 render/html.js 烘焙），
+   两轨选项与选择各自独立记忆；简体按钮同时逐字繁简转换（T2S 映射，原文存 dataset.t 可还原） */
+const faceSel=document.getElementById('faceSel');
+let simpOn=false,tcFace=faceSel.value||'song',
+    scFace=FACES.def||(FACES.sc[0]&&FACES.sc[0].v)||tcFace;
+function clearFaceCls(){for(const c of [...paper.classList])if(/^f(sc)?-/.test(c))paper.classList.remove(c);}
+function applyFace(){clearFaceCls();paper.classList.add(simpOn?'fsc-'+scFace:'f-'+tcFace);}
+function rebuildSel(){
+  const list=simpOn?FACES.sc:FACES.tc;
+  faceSel.innerHTML=list.map((o)=>`<option value="${o.v}">${o.l}</option>`).join('');
+  faceSel.value=simpOn?scFace:tcFace;
+}
 simp.onclick=()=>{
-  const on=!simp.classList.contains('on');
-  simp.classList.toggle('on',on); simp.setAttribute('aria-pressed',on);
-  simp.textContent=on?'繁体':'简体';
+  simpOn=!simpOn;
+  simp.classList.toggle('on',simpOn); simp.setAttribute('aria-pressed',simpOn);
+  simp.textContent=simpOn?'繁体':'简体';
+  if(FACES.sc.length){rebuildSel();applyFace();}
   const conv=(el)=>{
     if(el.dataset.t==null)el.dataset.t=el.textContent;
-    el.textContent=on?[...el.dataset.t].map((c)=>T2S[c]||c).join(''):el.dataset.t;
+    el.textContent=simpOn?[...el.dataset.t].map((c)=>T2S[c]||c).join(''):el.dataset.t;
   };
   document.querySelectorAll('.ribbon .t i,.note,.tt h1,.tt p').forEach(conv);
 };
@@ -46,9 +58,7 @@ mode.onclick=e=>{
   }
   e.currentTarget.textContent=orig?'原貌':'摹本';e.currentTarget.setAttribute('aria-pressed',orig);};
 about.onclick=e=>{const o=panel.classList.toggle('on');e.currentTarget.setAttribute('aria-expanded',o);};
-/* 字面選擇：select 下拉替代原有三體按鈕 */
-const faceSel=document.getElementById('faceSel');
-faceSel.onchange=e=>{paper.classList.remove('f-song','f-jing','f-xing');paper.classList.add('f-'+e.target.value);};
+faceSel.onchange=e=>{if(simpOn)scFace=e.target.value;else tcFace=e.target.value;applyFace();};
 
 /* 下載菜單：開合、選後收、點外部收 */
 const dlWrap=dl.parentElement;

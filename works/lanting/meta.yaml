@@ -51,10 +51,23 @@ faces:
     font: lxgw-wenkai-tc
     fontLocal: ac-gyosyo
     label: 行楷
+facesSc:
+  liushang:
+    font: liushang-xingyi
+    label: 行書
+  song:
+    label: 宋體
+  kai:
+    label: 楷體
+defaultSc: liushang
 fallbackStacks:
   song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
   jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
   xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+fallbackStacksSc:
+  liushang: '"Xingkai SC","STXingkai","華文行楷","华文行楷","HanziPen SC","楷体","KaiTi","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","宋体","NSimSun","Noto Serif CJK SC","Source Han Serif SC",serif'
+  kai: '"Kaiti SC","STKaiti","楷体","KaiTi","AR PL UKai CN","Noto Serif CJK SC",serif'
 sources:
   - label: 維基文庫底本
     url: https://zh.wikisource.org/zh-hant/蘭亭集序
@@ -66,6 +79,7 @@ aboutHtml: |-
     <p>點綴取魏晋意度：卷首折枝一支、拖尾補蘭一叢，卷中兩處自天頭地腳淡淡探入一葉，不作全株；引首鈐「蘭亭雅集」與「永和」二印，拖尾鈐「曲水流觴」一印。皆極淡，遠觀若無，近察方見。</p>
     <h3>三體</h3>
     <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，如唐人寫經；<b>行楷</b>筆勢流走，最接近蘭亭體勢。三體共用同一版心格律，行數字數不變。若你的系統未裝相應中文字體，會自動退回可用的最近字體。</p>
+    <p><b>簡體試驗</b>：點「簡體」進入獨立簡體字面軌——默認「行書」為「流觴行意」簡體行書（志莽行書改作，OFL 授權，簡體蘭亭全字覆蓋），軌內可另切宋體／楷體（回落系統簡體字體）；繁簡兩軌選擇各自記憶、互不牽連。</p>
     <h3>操作</h3>
-    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · 「下載」存長圖 · 「簡體」繁簡互換 · 「句讀」施朱點讀 · Esc 關閉本板</p>
+    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「簡體」切換獨立簡體軌（行書／宋體／楷體） · 「界行」顯示行號與字數 · 「下載」存長圖 · 「句讀」施朱點讀 · Esc 關閉本板</p>
     <p><a href="https://zh.wikisource.org/zh-hant/蘭亭集序" target="_blank" rel="noreferrer">維基文庫釋文</a></p>

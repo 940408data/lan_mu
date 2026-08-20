@@ -57,7 +57,7 @@ node tools/gen-index.js          # 构建后生成 dist/index.html 静态首页�
 ### 数据模型（works/&lt;id&gt;/）
 
 每个作品一个目录，四件套 YAML + `assets/`：
-- `meta.yaml` — 元信息、版式参数（scroll 几何 / songke 版式）、`seed`（确定性种子）、`expect`（校验基准，可 null）、`faces`（字体角色，支持 `font` 主 + `fontLocal` B 级兜底双轨）、`fallbackStacks`（系统字体回退栈）、`aboutHtml`。属书之卷另有 `book` 块（书目归属，见「站点页」节）。
+- `meta.yaml` — 元信息、版式参数（scroll 几何 / songke 版式）、`seed`（确定性种子）、`expect`（校验基准，可 null）、`faces`（繁体轨字体角色，`font` 主 + `fontLocal` B 级兜底双轨）、`facesSc`（简体轨字体角色，独立列表，可省——省则镜像繁体轨；`defaultSc` 指定入简体默认字面）、`fallbackStacks`/`fallbackStacksSc`（两轨系统回退栈）。简体/繁体按钮切换字面轨，两轨选择各自记忆。属书之卷另有 `book` 块（书目归属，见「站点页」节）。
 - `text.yaml` — 正文。**两种结构随引擎而异**：
   - 手卷：`sections[].columns[]`，每列 `line`/`class`/`text`，可选 `marks`（逐字 3 位数字 k/j/h 紧凑串）、`note`（夹注，含 `at` 起始偏移）、`du`（句读段，须为 text 连续前缀片段，构建期前缀接龙校验）。
   - 宋版：`sections[].blocks[]`，每块 `{type: j|z, text}`。
