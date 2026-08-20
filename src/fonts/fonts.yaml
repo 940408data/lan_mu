@@ -55,3 +55,14 @@ fonts:
     allowEmbed: false
     status: 就绪
     note: 日式行书 15563 glyphs，本机安装后用于行楷版出图（local() 引用），不进 dist
+  liushang-xingyi:
+    name: 流觞行意（简体竖排）
+    family: Liushang Xingyi SC Vertical
+    author: 流觞行意字体作者（改作自志莽行书，见 NOTICE.md）
+    license: A
+    licenseName: SIL Open Font License 1.1
+    source: https://fonts.google.com/specimen/Zhi+Mang+Xing
+    file: src/fonts/src/liushang-xingyi/LiushangXingyiSCVertical-Regular.ttf
+    allowEmbed: true
+    status: 就绪
+    note: v0.4 简体竖排修正版，志莽行书基底；含 vhea/vmtx 与 vert/vrt2，简体兰亭集序覆盖 213/213；作简体切换字体试验

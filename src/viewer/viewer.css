@@ -80,6 +80,7 @@
 .paper.f-song{--face:var(--f-song)}
 .paper.f-jing{--face:var(--f-jing)}
 .paper.f-xing{--face:var(--f-xing)}
+/* 简体轨 .fsc-* 规则按作品由 render/html.js 注入（角色列表独立，静态 CSS 不枚举） */
 .paper.f-jing .col{font-weight:400}
 .paper.f-xing .col{font-weight:400}
 .paper.f-jing .t i,.paper.f-xing .t i{display:inline-block}

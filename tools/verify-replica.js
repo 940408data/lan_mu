@@ -17,8 +17,9 @@ const o = fs.readFileSync(OLD, 'utf8');
 const n = fs.readFileSync(NEW, 'utf8');
 let fail = 0;
 
-// 渲染细节归一化：全角空格字盒包裹（<i class="sp">）不影响内容保真
-const norm = (h) => h.replace(/<i class="sp">　<\/i>/g, '　');
+// 渲染细节归一化：全角空格字盒包裹（<i class="sp">）不影响内容保真；
+// 行尾归一：历史快照为 CRLF、构建产物为 LF，逐字符比对前统一为 LF
+const norm = (h) => h.replace(/\r\n/g, '\n').replace(/<i class="sp">　<\/i>/g, '　');
 
 // 1. 正文列逐行对比
 const colLines = (h) => norm(h).split('\n').filter((l) => l.startsWith('<i class="col '));

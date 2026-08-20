@@ -7,7 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const fontkit = require('fontkit');
 const subsetFont = require('subset-font');
-const { fontFileOf } = require('./fonts');
+const OpenCC = require('opencc-js');
+const { fontFileOf, scRolesOf } = require('./fonts');
+
+/* 構建期繁→簡轉換器：简体字体（sc）子集按简体用字取字 */
+const _t2s = OpenCC.Converter({ from: 'tw', to: 'cn' });
 
 /** 收集作品全部用字：手卷（正文 + 夹注 + 印章）、宋版善刻（經/注區塊）、影刻直出（逐格格陣）+ 界面通用字 */
 function collectChars(work) {
@@ -65,21 +69,29 @@ async function buildSubsets(work, registry, distWorkDir) {
   const colophonChars = work.meta.songke ? ((work.meta.songke.colophon || '') + (work.meta.songke.spec || '') + (work.meta.songke.banxinTitle || '') + ((work.meta.songke.gong || []).join('')) + (work.sections || []).map((s) => s.volume || '').join(''))
     : work.meta.facsimile ? ((work.meta.facsimile.colophon || '') + (work.meta.facsimile.spec || '') + (work.meta.facsimile.banxinTitle || '') + ((work.meta.facsimile.gong || []).join(''))) : '';
   const text = [...new Set(chars.join('') + metaChars + uiExtra + colophonChars)].join('');
+  /* 简体用字集：简体切换（T2S）后实际呈现的字形，供 sc 字体子集与缺字校验 */
+  const scText = [...new Set(_t2s(text))].join('');
 
-  const usedFontIds = new Set(
-    Object.values(work.meta.faces || {})
-      .flatMap((f) => [f.font, f.fontLocal].filter(Boolean))
-  );
-  for (const fontId of usedFontIds) {
+  const facesArr = Object.values(work.meta.faces || {});
+  const tcFontIds = new Set(facesArr.flatMap((f) => [f.font, f.fontLocal].filter(Boolean)));
+  /* 简体轨字体：facesSc 独立角色表（未定义时遗留镜像繁体轨） */
+  const scFontIds = new Set(scRolesOf(work.meta).flatMap((r) => [r.conf.font, r.conf.fontLocal].filter(Boolean)));
+  for (const fontId of [...new Set([...tcFontIds, ...scFontIds])]) {
     const entry = registry[fontId];
     if (!entry || entry.status === '待选型' || entry.status === '待下载') continue;
     const file = fontFileOf(entry);
     if (!file) continue;
 
-    const cov = checkCoverage(file, chars);
+    /* 仅简体轨：按简体用字取字与校覆盖率；仅繁体轨：按原文；双轨共用：取并集 */
+    const isTc = tcFontIds.has(fontId);
+    const isSc = scFontIds.has(fontId);
+    const scChars = [...new Set(_t2s(chars.join('')))];
+    const fontChars = isTc && isSc ? [...new Set([...chars, ...scChars])] : isSc ? scChars : chars;
+    const fontText = isTc && isSc ? [...new Set(text + scText)].join('') : isSc ? scText : text;
+    const cov = checkCoverage(file, fontChars);
     if (cov.missing.length) {
       warnings.push(
-        `字体「${entry.name}」缺 ${cov.missing.length} 字（共需 ${cov.total}）：` +
+        `字体「${entry.name}」${isTc && isSc ? '（繁+简）' : isSc ? '（简体）' : ''}缺 ${cov.missing.length} 字（共需 ${cov.total}）：` +
         cov.missing.slice(0, 30).join('') + (cov.missing.length > 30 ? ' …' : '')
       );
     }
@@ -87,9 +99,9 @@ async function buildSubsets(work, registry, distWorkDir) {
       const outDir = path.join(distWorkDir, 'fonts');
       fs.mkdirSync(outDir, { recursive: true });
       const out = path.join(outDir, fontId + '.woff2');
-      const buf = await subsetFont(fs.readFileSync(file), text, { targetFormat: 'woff2' });
+      const buf = await subsetFont(fs.readFileSync(file), fontText, { targetFormat: 'woff2' });
       fs.writeFileSync(out, buf);
-      built.push(`${fontId}.woff2 (${Math.round(buf.length / 1024)}KB, ${[...text].length}字)`);
+      built.push(`${fontId}.woff2 (${Math.round(buf.length / 1024)}KB, ${[...fontText].length}字${isTc && isSc ? '，繁+简' : isSc ? '，简体' : ''})`);
     }
   }
   return { built, warnings };

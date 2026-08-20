@@ -5,7 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const OpenCC = require('opencc-js');
-const { loadRegistry, resolveFace } = require('../fonts/fonts');
+const { loadRegistry, resolveFace, resolveScFaces } = require('../fonts/fonts');
 const { BOOK_META, NETDISK_FOLDER } = require('../site/home');
 
 /* 構建期繁→簡轉換器：用於 UI 文案簡體化 */
@@ -89,7 +89,7 @@ function renderHtml(tree, opts = {}) {
   const registry = loadRegistry();
   const distWorkDir = opts.distWorkDir || path.join(__dirname, '..', '..', 'dist', 'works', meta.id);
 
-  // 三体字体栈：A 级嵌入子集 / B 级 local() 引用 / 无文件回退链
+  // 繁体轨三体字体栈：A 级嵌入子集 / B 级 local() 引用 / 无文件回退链
   const warnings = [];
   const stacks = {};
   let faceCss = '';
@@ -99,6 +99,19 @@ function renderHtml(tree, opts = {}) {
     faceCss += r.faceCss;
     warnings.push(...r.warnings);
   }
+  // 简体轨（独立字面列表）：--fsc-<id> 变量 + .fsc-* 切换规则；
+  // 笔毫归一（浓淡拉平/位移归零/不叠加旋转）——简体字面自身笔势优先
+  const sc = resolveScFaces(meta, registry, distWorkDir);
+  warnings.push(...sc.warnings);
+  const scVars = sc.roles.map((r) => `  --fsc-${r.id}:${r.stack};`).join('\n');
+  const scCss = sc.roles.map((r) => {
+    const n = r.id;
+    const ks = ['.k0', '.k1', '.k2', '.k3', '.k4', '.k5'].map((k) => `.paper.fsc-${n} ${k}`).join(',');
+    const js = ['.j0', '.j1', '.j2', '.j3', '.j4', '.j5', '.j6', '.j7'].map((j) => `.paper.fsc-${n} ${j}`).join(',');
+    return `.paper.fsc-${n}{--face:var(--fsc-${n})}\n${ks}{opacity:1}\n${js}{position:static;left:auto;top:auto}\n` +
+      `.paper.fsc-${n} .t i{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased}`;
+  }).join('\n');
+  faceCss += sc.roles.map((r) => r.faceCss).join('') + '\n' + scCss;
 
   const rootVars = `:root{
   --ch:${dims.ch}px; --pitch:${dims.pitch}px; --glyph:${dims.glyph}px; --text-h:${dims.textH}px;
@@ -113,6 +126,7 @@ function renderHtml(tree, opts = {}) {
   --f-song:${stacks.song};
   --f-jing:${stacks.jing};
   --f-xing:${stacks.xing};
+${scVars}
   --kai:var(--f-jing);
 }`;
 
@@ -210,6 +224,11 @@ ${meta.aboutHtml}
 </aside>
 
 <script>
+const FACES=${JSON.stringify({
+  tc: ['song', 'jing', 'xing'].map((role) => ({ v: role, l: _t2s((meta.faces[role] && meta.faces[role].label) || role) })),
+  sc: sc.roles.map((r) => ({ v: r.id, l: _t2s(r.label) })),
+  def: sc.def || null,
+})};
 const T2S=${JSON.stringify(buildT2S(tree, meta))};
 ${VIEWER_JS().replace('__WRAP_H__', String(dims.wrapH))}
 </script>
