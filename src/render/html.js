@@ -228,6 +228,7 @@ const FACES=${JSON.stringify({
   tc: ['song', 'jing', 'xing'].map((role) => ({ v: role, l: _t2s((meta.faces[role] && meta.faces[role].label) || role) })),
   sc: sc.roles.map((r) => ({ v: r.id, l: _t2s(r.label) })),
   def: sc.def || null,
+  defScript: meta.defaultScript || 'tc',
 })};
 const T2S=${JSON.stringify(buildT2S(tree, meta))};
 ${VIEWER_JS().replace('__WRAP_H__', String(dims.wrapH))}
