@@ -132,3 +132,11 @@ works:
     structure:
       - { type: 篇, name: 衛靈公第十五 }
       - { type: 篇, name: 季氏第十六 }
+
+  - id: 孟子集注序说                   # 分卷书：input_data/孟子集注/序说/，页码全局连续（1-7）
+    title: 孟子集注·序說
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    structure:
+      - { type: 序, name: 孟子集注序說 }

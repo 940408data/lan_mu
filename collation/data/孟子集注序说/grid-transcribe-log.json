@@ -1,0 +1,174 @@
+{
+  "work": "孟子集注序说",
+  "model": null,
+  "endpoint": null,
+  "base": {
+    "file": "shanben-v2.json",
+    "sha256": "38d89089a777adb174abdec2e69fb0a8ba9222237e3105d8d47e6f23e078d90b",
+    "pendingVerify": 0
+  },
+  "logs": [
+    {
+      "page": 2,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 22637,
+        "completion_tokens_details": {
+          "reasoning_tokens": 19031,
+          "text_tokens": 3606
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 25356
+      },
+      "cost": 0.84756,
+      "currency": "CNY",
+      "filled": 187,
+      "empty": 53,
+      "cells": 240,
+      "renderTime": 2147,
+      "apiTime": 410779,
+      "totalTime": 412926
+    },
+    {
+      "page": 3,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 19683,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15951,
+          "text_tokens": 3732
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 22402
+      },
+      "cost": 0.741216,
+      "currency": "CNY",
+      "filled": 215,
+      "empty": 25,
+      "cells": 240,
+      "renderTime": 1618,
+      "apiTime": 356604,
+      "totalTime": 358222
+    },
+    {
+      "page": 4,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 21882,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18236,
+          "text_tokens": 3646
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 24601
+      },
+      "cost": 0.82038,
+      "currency": "CNY",
+      "filled": 230,
+      "empty": 10,
+      "cells": 240,
+      "renderTime": 1463,
+      "apiTime": 396193,
+      "totalTime": 397656
+    },
+    {
+      "page": 5,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 25420,
+        "completion_tokens_details": {
+          "reasoning_tokens": 21821,
+          "text_tokens": 3599
+        },
+        "prompt_tokens": 2673,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2486,
+          "text_tokens": 187
+        },
+        "total_tokens": 28093
+      },
+      "cost": 0.947196,
+      "currency": "CNY",
+      "filled": 188,
+      "empty": 52,
+      "cells": 240,
+      "renderTime": 1361,
+      "apiTime": 461407,
+      "totalTime": 462768
+    },
+    {
+      "page": 6,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 16485,
+        "completion_tokens_details": {
+          "reasoning_tokens": 12851,
+          "text_tokens": 3634
+        },
+        "prompt_tokens": 2673,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2486,
+          "text_tokens": 187
+        },
+        "total_tokens": 19158
+      },
+      "cost": 0.625536,
+      "currency": "CNY",
+      "filled": 225,
+      "empty": 15,
+      "cells": 240,
+      "renderTime": 1568,
+      "apiTime": 299708,
+      "totalTime": 301276
+    },
+    {
+      "page": 7,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 12466,
+        "completion_tokens_details": {
+          "reasoning_tokens": 8862,
+          "text_tokens": 3604
+        },
+        "prompt_tokens": 2719,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2532,
+          "text_tokens": 187
+        },
+        "total_tokens": 15185
+      },
+      "cost": 0.481404,
+      "currency": "CNY",
+      "filled": 199,
+      "empty": 41,
+      "cells": 240,
+      "renderTime": 1588,
+      "apiTime": 227134,
+      "totalTime": 228722
+    }
+  ]
+}
