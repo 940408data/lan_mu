@@ -121,6 +121,7 @@ function renderHtml(tree, opts = {}) {
   --wrap-w:${dims.wrapW}px; --wrap-h:${dims.wrapH}px;
   --ui:"PingFang TC","Noto Sans CJK TC","Microsoft JhengHei","Hiragino Sans GB",sans-serif;
   --zoom:1;
+  --fs:1;
   --ink:#2a2117; --ink2:#3b3226; --note:#4f4030;
   --paper:#e3d7ba; --paper-hi:#efe7d1; --paper-lo:#cdbc99;
   --cinnabar:#9d3126;
@@ -194,8 +195,10 @@ ${VIEWER_CSS()}
     <button class="btn txt" id="rule" type="button" aria-pressed="false">界行</button>
     <button class="btn txt" id="simp" type="button" aria-pressed="false">简体</button>
     ${tree.columns.some((c) => c.glyphs.some((g) => g.du)) ? '<button class="btn txt" id="duBtn" type="button" aria-pressed="false">句讀</button>' : ''}
-    <button class="btn ico" id="minus" type="button" aria-label="縮小">−</button>
-    <button class="btn ico" id="plus" type="button" aria-label="放大">＋</button>
+    <button class="btn ico" id="minus" type="button" aria-label="縮小卷軸">−</button>
+    <button class="btn ico" id="plus" type="button" aria-label="放大卷軸">＋</button>
+    <button class="btn txt" id="fminus" type="button" aria-label="縮小字體">字−</button>
+    <button class="btn txt" id="fplus" type="button" aria-label="放大字體">字＋</button>
     <button class="btn ico" id="about" type="button" aria-label="卷軸說明" aria-expanded="false">ⓘ</button>
   </nav>
 </header>

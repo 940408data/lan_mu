@@ -27,8 +27,9 @@
 .col{
   position:relative; width:var(--pitch); flex:0 0 var(--pitch); height:var(--text-h);
   writing-mode:vertical-rl; text-orientation:upright; font-style:normal;
-  font-family:var(--face); font-weight:400; font-size:var(--glyph); line-height:1;
-  --ls:calc(var(--ch) - var(--glyph)); letter-spacing:var(--ls); color:var(--ink);
+  font-family:var(--face); font-weight:400; font-size:calc(var(--glyph) * var(--fs)); line-height:1;
+  /* 字距并入字盒：1em(=glyph*fs) + ls = ch，故 --fs 只改字形大小、不改变行格律 */
+  --ls:calc(var(--ch) - var(--glyph) * var(--fs)); letter-spacing:var(--ls); color:var(--ink);
   padding-right:7px; outline:none;
 }
 .col > .t{display:block; white-space:nowrap; font-style:normal;}
@@ -70,7 +71,7 @@
 .note{
   position:absolute; left:2px; top:var(--nt); height:var(--nh);
   writing-mode:vertical-rl; text-orientation:upright; white-space:normal;
-  font:400 var(--nfs)/1.35 var(--face); font-style:normal;
+  font:400 calc(var(--nfs) * var(--fs))/1.35 var(--face); font-style:normal;
   letter-spacing:.6px; color:var(--note); opacity:.88; z-index:5;
 }
 .paper.rule .col{ border-left:1px solid rgba(104,78,44,.16); }
