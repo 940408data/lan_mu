@@ -1,7 +1,7 @@
 id: youlan
-title: 碣石�?· 幽蘭第五
-subtitle: 唐人寫本 · 文字�?· 數字復刻
-docTitle: 碣石調·幽蘭第�?�?唐人寫本數字復刻
+title: 碣石調 · 幽蘭第五
+subtitle: 唐人寫本 · 文字譜 · 數字復刻
+docTitle: 碣石調·幽蘭第五 — 唐人寫本數字復刻
 export:
   base: Youlan-Scroll
   faces:
@@ -11,11 +11,11 @@ export:
   scale: 1.6
   quality: 88
 mark: 國寶
-ariaLabel: 碣石調幽蘭第�?橫卷，自右向左讀
+ariaLabel: 碣石調幽蘭第五 橫卷，自右向左讀
 category: 禮樂
-era: �?
+era: 唐
 layout: scroll
-repository: 東京國立博物館（TB-1393�?
+repository: 東京國立博物館（TB-1393）
 physical:
   heightCm: 27.4
   lengthCm: 423.1
@@ -47,54 +47,53 @@ faces:
     label: 宋體
   jing:
     font: fahua-wenkai
-    label: 寫經�?
+    label: 寫經體
   xing:
     font: lxgw-wenkai-tc
     fontLocal: ac-gyosyo
     label: 行楷
 fallbackStacks:
   song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
-  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷�?,"TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
-  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷�?,"Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
-
+  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
 facesSc:
   liushang:
     font: liushang-xingyi
-    label: �Е�
+    label: 行書
   song:
-    label: ���w
+    label: 宋體
   kai:
-    label: ���w
+    label: 楷體
 defaultSc: liushang
 defaultScript: sc
 fallbackStacksSc:
-  liushang: '"Xingkai SC","STXingkai","�A���п�","�����п�","HanziPen SC","����","KaiTi","Noto Serif CJK SC",serif'
-  song: '"Songti SC","STSong","SimSun","����","NSimSun","Noto Serif CJK SC","Source Han Serif SC",serif'
-  kai: '"Kaiti SC","STKaiti","����","KaiTi","AR PL UKai CN","Noto Serif CJK SC",serif'
+  liushang: '"Xingkai SC","STXingkai","華文行楷","华文行楷","HanziPen SC","楷体","KaiTi","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","宋体","NSimSun","Noto Serif CJK SC","Source Han Serif SC",serif'
+  kai: '"Kaiti SC","STKaiti","楷体","KaiTi","AR PL UKai CN","Noto Serif CJK SC",serif'
 sources:
   - label: e-Museum 原卷
     url: https://emuseum.nich.go.jp/detail/100229
   - label: 維基文庫底本
-    url: https://zh.wikisource.org/zh-hant/碣石調·幽�?
+    url: https://zh.wikisource.org/zh-hant/碣石調·幽蘭
 aboutHtml: |-
   <h2>關於這卷</h2>
-    <p>《碣石調·幽蘭》是現存唯一的古琴文字譜，以文字逐句記寫左右手指法，不記音高符號。原卷唐人寫本，藏東京國立博物館（TB-1393）；紙本墨書，縱 27.4 厘米、全�?423.1 厘米�?/p>
-    <h3>兩種「行數」口�?/h3>
-    <p>卷面合計 <b>242 �?/b>；常說的「二百二十四行」專指《幽蘭》譜文部分（譜題一行、正文二百二十二行、尾題一行）�?/p>
+    <p>《碣石調·幽蘭》是現存唯一的古琴文字譜，以文字逐句記寫左右手指法，不記音高符號。原卷唐人寫本，藏東京國立博物館（TB-1393）；紙本墨書，縱 27.4 厘米、全長 423.1 厘米。</p>
+    <h3>兩種「行數」口徑</h3>
+    <p>卷面合計 <b>242 行</b>；常說的「二百二十四行」專指《幽蘭》譜文部分（譜題一行、正文二百二十二行、尾題一行）。</p>
     <table>
-      <tr><th>卷首題名與序</th><td>5 �?/td></tr>
-      <tr><th>譜題《幽蘭第五�?/th><td>1 �?/td></tr>
-      <tr><th>文字譜正�?/th><td>222 �?/td></tr>
-      <tr><th>尾題</th><td>1 �?/td></tr>
-      <tr><th>卷末五十九曲名錄</th><td>13 �?/td></tr>
-      <tr><th>全卷</th><td>242 �?/td></tr>
+      <tr><th>卷首題名與序</th><td>5 行</td></tr>
+      <tr><th>譜題《幽蘭第五》</th><td>1 行</td></tr>
+      <tr><th>文字譜正文</th><td>222 行</td></tr>
+      <tr><th>尾題</th><td>1 行</td></tr>
+      <tr><th>卷末五十九曲名錄</th><td>13 行</td></tr>
+      <tr><th>全卷</th><td>242 行</td></tr>
     </table>
     <h3>復刻取捨</h3>
-    <p>行數與每行字數嚴格依原卷結構；字�?28、行�?46（比例約合原卷），墨色按「蘸墨—行筆—墨盡」的節奏逐字微調濃淡，夾注作雙行小字置於行左�?/p>
-    <p>點綴取魏晉意度：卷首折枝一支、拖尾補蘭一叢，卷中十處自天頭地腳淡淡探入一兩葉，不作全株。朱印取序中語「聲微志遠」，並散鈐「淡」「微」「隱」「韻遠」四印。皆極淡，遠觀若無，近察方見�?/p>
+    <p>行數與每行字數嚴格依原卷結構；字距 28、行距 46（比例約合原卷），墨色按「蘸墨—行筆—墨盡」的節奏逐字微調濃淡，夾注作雙行小字置於行左。</p>
+    <p>點綴取魏晉意度：卷首折枝一支、拖尾補蘭一叢，卷中十處自天頭地腳淡淡探入一兩葉，不作全株。朱印取序中語「聲微志遠」，並散鈐「淡」「微」「隱」「韻遠」四印。皆極淡，遠觀若無，近察方見。</p>
     <h3>三體</h3>
-    <p><b>宋體</b>近刊本，字口清勁�?b>寫經�?/b>取楷法，逐字微側微欹，如唐人寫經�?b>行楷</b>筆勢流走，字形略欹側而互有呼應。三體共用同一版心格律，行數字數不變。若你的系統未裝相應中文字體，會自動退回可用的最近字體�?/p>
-    <p>《序》云：「以其聲微而志遠，而不堪授人。」此卷之神，正在一個「微」字�?/p>
+    <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，逐字微側微欹，如唐人寫經；<b>行楷</b>筆勢流走，字形略欹側而互有呼應。三體共用同一版心格律，行數字數不變。若你的系統未裝相應中文字體，會自動退回可用的最近字體。</p>
+    <p>《序》云：「以其聲微而志遠，而不堪授人。」此卷之神，正在一個「微」字。</p>
     <h3>操作</h3>
-    <p>拖曳或滾輪橫向移�?· ＋／�?縮放 · 宋體／寫經體／行�?切換字體 · 「界行」顯示行號與字數 · 「摹本／原卷」切換影�?· 「簡體」繁簡互�?· Esc 關閉本板</p>
-    <p><a href="https://emuseum.nich.go.jp/detail/100229" target="_blank" rel="noreferrer">e國寶原卷</a> · <a href="https://zh.wikisource.org/zh-hant/碣石調幽�? target="_blank" rel="noreferrer">維基文庫釋文</a></p>
+    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · 「摹本／原卷」切換影像 · 「簡體」繁簡互換 · Esc 關閉本板</p>
+    <p><a href="https://emuseum.nich.go.jp/detail/100229" target="_blank" rel="noreferrer">e國寶原卷</a> · <a href="https://zh.wikisource.org/zh-hant/碣石調幽蘭" target="_blank" rel="noreferrer">維基文庫釋文</a></p>
