@@ -66,3 +66,14 @@ fonts:
     allowEmbed: true
     status: 就绪
     note: v0.4 简体竖排修正版，志莽行书基底；含 vhea/vmtx 与 vert/vrt2，简体兰亭集序覆盖 213/213；作简体切换字体试验
+  liushang-xingyi-xingkai-tc:
+    name: 流觞行意行楷（繁体竖排）
+    family: Liushang Xingyi Xingkai TC
+    author: 流觞行意字体作者（改作自清松手写体 5，见 NOTICE.md）
+    license: A
+    licenseName: SIL Open Font License 1.1
+    source: https://github.com/jasonhandwriting/JasonHandwriting
+    file: src/fonts/src/liushang-xingyi-xingkai-tc/LiushangXingyiXingkaiTC-Regular.ttf
+    allowEmbed: true
+    status: 就绪
+    note: v0.3 繁体行楷，清松手写体 5 基底；含 vhea/vmtx 与 vert/vrt2，兰亭集序繁体全覆盖；作繁体行楷角色升级

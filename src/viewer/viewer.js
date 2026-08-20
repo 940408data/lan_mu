@@ -26,7 +26,7 @@ rule.onclick=e=>{const a=paper.classList.toggle('rule');e.currentTarget.classLis
 /* 双轨字面：繁体轨 f-* / 简体轨 fsc-*（FACES 由 render/html.js 烘焙），
    两轨选项与选择各自独立记忆；简体按钮同时逐字繁简转换（T2S 映射，原文存 dataset.t 可还原） */
 const faceSel=document.getElementById('faceSel');
-let simpOn=false,tcFace=faceSel.value||'song',
+let simpOn=FACES.defScript==='sc',tcFace=faceSel.value||'song',
     scFace=FACES.def||(FACES.sc[0]&&FACES.sc[0].v)||tcFace;
 function clearFaceCls(){for(const c of [...paper.classList])if(/^f(sc)?-/.test(c))paper.classList.remove(c);}
 function applyFace(){clearFaceCls();paper.classList.add(simpOn?'fsc-'+scFace:'f-'+tcFace);}
@@ -34,6 +34,16 @@ function rebuildSel(){
   const list=simpOn?FACES.sc:FACES.tc;
   faceSel.innerHTML=list.map((o)=>`<option value="${o.v}">${o.l}</option>`).join('');
   faceSel.value=simpOn?scFace:tcFace;
+}
+// 初始化：若默认简体，需先重建下拉并应用字面
+if(simpOn){rebuildSel();applyFace();
+  simp.classList.add('on'); simp.setAttribute('aria-pressed','true');
+  simp.textContent='繁体';
+  const conv=(el)=>{
+    if(el.dataset.t==null)el.dataset.t=el.textContent;
+    el.textContent=[...el.dataset.t].map((c)=>T2S[c]||c).join('');
+  };
+  document.querySelectorAll('.ribbon .t i,.note,.tt h1,.tt p').forEach(conv);
 }
 simp.onclick=()=>{
   simpOn=!simpOn;

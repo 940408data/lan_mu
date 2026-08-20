@@ -1,7 +1,7 @@
 id: chibifu
 title: 前赤壁賦
 subtitle: 蘇軾 · 數字復刻
-docTitle: 前赤壁賦 — 數字復刻
+docTitle: 前赤壁賦 �?數字復刻
 export:
   base: Chibifu-Scroll
   faces:
@@ -12,8 +12,8 @@ export:
   quality: 88
 mark: 蘭木
 ariaLabel: 前赤壁賦 橫卷，自右向左讀
-category: 書
-era: 宋
+category: �?
+era: �?
 layout: scroll
 seed: 82194
 expect:
@@ -42,26 +42,41 @@ faces:
     label: 宋體
   jing:
     font: fahua-wenkai
-    label: 寫經體
+    label: 寫經�?
   xing:
     font: lxgw-wenkai-tc
     fontLocal: ac-gyosyo
     label: 行楷
 fallbackStacks:
   song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
-  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
-  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷簡","Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+  jing: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","DFKai-SB","標楷�?,"TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"STXingkai","華文行楷","华文行楷","Xingkai SC","Xingkai TC","HanziPen TC","HanziPen SC","漢儀行楷�?,"Yuppy TC","Kaiti TC","STKaiti","楷体","Noto Serif CJK TC",serif'
+
+facesSc:
+  liushang:
+    font: liushang-xingyi
+    label: �Е�
+  song:
+    label: ���w
+  kai:
+    label: ���w
+defaultSc: liushang
+defaultScript: sc
+fallbackStacksSc:
+  liushang: '"Xingkai SC","STXingkai","�A���п�","�����п�","HanziPen SC","����","KaiTi","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","����","NSimSun","Noto Serif CJK SC","Source Han Serif SC",serif'
+  kai: '"Kaiti SC","STKaiti","����","KaiTi","AR PL UKai CN","Noto Serif CJK SC",serif'
 sources:
   - label: 維基文庫底本
     url: https://zh.wikisource.org/zh-hant/前赤壁賦
 aboutHtml: |-
   <h2>關於這卷</h2>
-    <p>《前赤壁賦》，宋神宗元豐五年壬戌（1082）秋七月既望，蘇軾謫居黃州，泛舟遊於赤壁之下，作此賦。全文五百三十七字，主客問答，借景抒懷，於「變」與「不變」之間得天地之達觀。同年十月復作《後赤壁賦》，世並稱「赤壁二賦」。</p>
+    <p>《前赤壁賦》，宋神宗元豐五年壬戌（1082）秋七月既望，蘇軾謫居黃州，泛舟遊於赤壁之下，作此賦。全文五百三十七字，主客問答，借景抒懷，於「變」與「不變」之間得天地之達觀。同年十月復作《後赤壁賦》，世並稱「赤壁二賦」�?/p>
     <h3>復刻取捨</h3>
-    <p>本卷以蘭木手卷引擎重排：行文依通行本（古詩文網等），底本參見維基文庫。依骈對斷句、參差成行，凡四十九行，每行九至十二字，行氣隨文意起伏。墨色按蘸墨—行筆—墨盡的節奏逐字微調濃淡（種子確定性生成，無手書 marks）。無夾注。</p>
-    <p>點綴：引首鈐閒章一枚、卷末鈐作者名章一枚，極淡，遠觀若無，近察方見。</p>
+    <p>本卷以蘭木手卷引擎重排：行文依通行本（古詩文網等），底本參見維基文庫。依骈對斷句、參差成行，凡四十九行，每行九至十二字，行氣隨文意起伏。墨色按蘸墨—行筆—墨盡的節奏逐字微調濃淡（種子確定性生成，無手�?marks）。無夾注�?/p>
+    <p>點綴：引首鈐閒章一枚、卷末鈐作者名章一枚，極淡，遠觀若無，近察方見�?/p>
     <h3>三體</h3>
-    <p><b>宋體</b>近刊本，字口清勁；<b>寫經體</b>取楷法，如唐人寫經；<b>行楷</b>筆勢流走。三體共用同一版心格律，行數字數不變。若系統未裝相應中文字體，自動退回可用的最近字體。</p>
+    <p><b>宋體</b>近刊本，字口清勁�?b>寫經�?/b>取楷法，如唐人寫經；<b>行楷</b>筆勢流走。三體共用同一版心格律，行數字數不變。若系統未裝相應中文字體，自動退回可用的最近字體�?/p>
     <h3>操作</h3>
-    <p>拖曳或滾輪橫向移動 · ＋／− 縮放 · 宋體／寫經體／行楷 切換字體 · 「界行」顯示行號與字數 · 「下載」存長圖 · 「簡體」繁簡互換 · 「句讀」施朱點讀 · Esc 關閉本板</p>
+    <p>拖曳或滾輪橫向移�?· ＋／�?縮放 · 宋體／寫經體／行�?切換字體 · 「界行」顯示行號與字數 · 「下載」存長圖 · 「簡體」繁簡互�?· 「句讀」施朱點讀 · Esc 關閉本板</p>
     <p><a href="https://zh.wikisource.org/zh-hant/前赤壁賦" target="_blank" rel="noreferrer">維基文庫釋文</a></p>
