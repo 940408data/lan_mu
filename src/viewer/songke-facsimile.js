@@ -74,9 +74,13 @@
     const pg = SK.pages[state.leaf];
     if (!pg) return;
     const half = Math.ceil(COLS / 2);
-    /* 首开：右半为书衣（题签复刻），page 文本列（局部 1..half）整体落左半叶 */
+    /* 首开：右半为书衣（题签复刻），文本整体落左半叶。
+       文本源在右半(1..half)→右移 half+1 落左半；源已在左半(half+1..COLS)→保持（仅让出版心轨），
+       避免再移推出界致左半页空、出现“三个半页”。 */
     const isCover = !!SK.cover && state.leaf === 0;
-    const trackOf = (c) => (isCover ? c + half + 1 : (c <= half ? c : c + 1));
+    const _cs = pg.cells.map(x => x[0]);
+    const textOnRight = _cs.length && Math.max(..._cs) <= half;
+    const trackOf = (c) => (isCover ? (textOnRight ? c + half + 1 : c + 1) : (c <= half ? c : c + 1));
 
     /* 逐格：只含有字格生成 DOM；空位（敬空/阙字/空列）无 DOM 自然留白——坐标即版面 */
     let cellsHTML = '';

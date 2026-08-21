@@ -53,22 +53,44 @@ for (const f of fixes) {
   if (f.kind === 'sub') fixMap.set(`${f.page}:${f.col}:${f.row}`, f);
 }
 
+// 列纵偏移索引："p:c" -> shift（视觉识别整列错位的纠正，精校台 colShifts 裁决合入）
+const shiftMap = new Map();
+for (const s of (Array.isArray(ov.colShifts) ? ov.colShifts : [])) {
+  if (s && s.shift) shiftMap.set(`${s.page}:${s.col}`, s.shift);
+}
+// 列内删字集合："p:c:r"（本格由下一格字占据，后续字上移；精校台 colDels 裁决合入）
+const delSet = new Set();
+for (const d of (Array.isArray(ov.colDels) ? ov.colDels : [])) {
+  if (d) delSet.add(`${d.page}:${d.col}:${d.row}`);
+}
+
 const N_ROWS = (tr.layout && tr.layout.rows) || 15;
 const N_COLS = (tr.layout && tr.layout.cols) || 16;
 
-// 逐页无损快照：cells 只含有字格（含 fix 覆盖），坐标原样 [col,row,char]
+// 逐页无损快照：cells 只含有字格（含 fix 覆盖），坐标 [col,row,char]
+// 行坐标 = 原始 row + 列纵偏移（colShifts）− 同列已删格数（删除格上移，版面紧凑）
 let nCells = 0, nFixed = 0, nNoRole = 0;
 const blankPages = [];   // 含整空列的页（渲染应自然留白——版面真实信息）
 const pages = [];
 for (const pg of tr.pages || []) {
   const usedCols = new Set();
   const cells = [];
+  const colDelCount = {};   // col -> 该列已删除的格数（后续字 row 需减去）
   for (const cell of pg.cells || []) {
-    let ch = String(cell.char || '').trim();
+    const rawCh = String(cell.char || '').trim();
     const fx = fixMap.get(`${pg.n}:${cell.col}:${cell.row}`);
+    let ch = rawCh;
     if (fx) { ch = String(fx.to || '').trim(); nFixed++; }   // sub 应用（裁决后字）
-    if (!ch) continue;                                        // 空格不存（layout 隐含）
-    cells.push([cell.col, cell.row, ch]);
+    // 真正删除格：colDels 指定 或 fix 把有字格置空 → 同列后续字上移
+    const isDel = delSet.has(`${pg.n}:${cell.col}:${cell.row}`) || (!!fx && !ch && !!rawCh);
+    if (isDel) {
+      colDelCount[cell.col] = (colDelCount[cell.col] || 0) + 1;
+      continue;
+    }
+    if (!ch) continue;   // 天然空格（版面留白/注列首行空）：跳过，不位移
+    const shift = shiftMap.get(`${pg.n}:${cell.col}`) || 0;   // 列纵偏移
+    const adjRow = cell.row + shift - (colDelCount[cell.col] || 0);
+    cells.push([cell.col, adjRow, ch]);
     usedCols.add(cell.col);
     nCells++;
   }
@@ -143,10 +165,12 @@ const gridDoc = {
   labels: ov.labels || [],
   sections: ov.sections || [],
   fixes,
+  colShifts: Array.isArray(ov.colShifts) ? ov.colShifts : [],   // 列纵偏移留痕（已应用入 pages 坐标）
+  colDels: Array.isArray(ov.colDels) ? ov.colDels : [],         // 列内删字留痕（已应用，后续字上移）
   marks,                                          // 句读朱点格清单（punctuated.json 缺失则为空）
 };
 
-const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCells} 有字格（${allCols.size} 有字列 / 版面 ${N_COLS}×${N_ROWS}）；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；sections ${(ov.sections || []).length}；句读朱点 ${marks.length}`;
+const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCells} 有字格（${allCols.size} 有字列 / 版面 ${N_COLS}×${N_ROWS}）；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；列偏移 ${shiftMap.size} / 删字 ${delSet.size}；sections ${(ov.sections || []).length}；句读朱点 ${marks.length}`;
 if (fs.existsSync(puFile) && nOrphan) console.warn(`  [句读] ${nOrphan} 段未能映回格坐标（已略，不阻塞）`);
 if (blankPages.length) console.log(`  [版面] 含空列页（自然留白全真保留）：${blankPages.join(' ')}`);
 if (nNoRole) console.warn(`  [警告] ${nNoRole} 列无 role 标签（渲染按 z 兜底）`);
