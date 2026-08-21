@@ -119,7 +119,7 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${workId} · 网格基精校台</title>
 <style>
-  :root { --cell: 36px; --gap: 0px; --rail-w: 17.5rem; }
+  :root { --cell: 36px; --gap: 0px; --pad: 2px; --rail-w: 17.5rem; }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "LXGW WenKai TC", "Kaiti TC", Kaiti, serif; background: #f6f1e4; color: #2c2416; padding-right: var(--rail-w); }
 
@@ -137,6 +137,8 @@ const html = `<!DOCTYPE html>
   .fld { display: flex; align-items: center; gap: 7px; font-size: 13px; }
   .fld input[type=range] { flex: 1; accent-color: #b9a671; }
   .fld .val { font-size: 12px; color: #6b5a3e; min-width: 34px; text-align: right; }
+  .fld .pm { font-size: 14px; font-weight: bold; width: 20px; height: 20px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; background: #fffaf0; border: 1px solid #b9a671; }
+  .fld .pm:hover { background: #f3e8c8; }
   button { font: inherit; font-size: 13px; padding: 5px 10px; border: 1px solid #b9a671; background: #fffaf0; border-radius: 4px; cursor: pointer; }
   button:hover { background: #f3e8c8; }
   button.active { background: #d8c48a; }
@@ -147,7 +149,7 @@ const html = `<!DOCTYPE html>
   .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
   .page-h b { color: #2c2416; font-size: 15px; }
   .flexrow { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
-  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: var(--gap); background: #fffdf6; border: 1px solid #cbbd97; padding: 2px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
+  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: var(--gap); background: #fffdf6; border: 1px solid #cbbd97; padding: var(--pad); box-shadow: 0 1px 3px rgba(60,45,20,.15); }
   .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center; justify-content: center; border-radius: 2px; user-select: none; }
   .cell.j { font-size: calc(var(--cell) * .62); font-weight: 700; }
   .cell.z { font-size: calc(var(--cell) * .55); color: #382d1e; }
@@ -197,8 +199,9 @@ const html = `<!DOCTYPE html>
     <label class="chk"><input type="checkbox" id="showShift"> 高亮已偏移列</label>
   </div>
   <div class="sec">
-    <div class="fld"><span class="micro">字号</span><input type="range" id="zoom" min="24" max="60" step="1" value="36"><span class="val" id="zoomVal">36px</span></div>
-    <div class="fld"><span class="micro">格距</span><input type="range" id="gapSel" min="0" max="4" step="1" value="0"><span class="val" id="gapVal">0px</span></div>
+    <div class="fld"><span class="micro">字号</span><button class="pm" id="zoomOut">−</button><input type="range" id="zoom" min="24" max="60" step="1" value="36"><button class="pm" id="zoomIn">+</button><span class="val" id="zoomVal">36px</span></div>
+    <div class="fld"><span class="micro">格距</span><button class="pm" id="gapOut">−</button><input type="range" id="gapSel" min="0" max="4" step="1" value="0"><button class="pm" id="gapIn">+</button><span class="val" id="gapVal">0px</span></div>
+    <div class="fld"><span class="micro">边距</span><button class="pm" id="padOut">−</button><input type="range" id="padSel" min="0" max="8" step="1" value="2"><button class="pm" id="padIn">+</button><span class="val" id="padVal">2px</span></div>
   </div>
   <div class="sec">
     <button id="btnRuns">句子级夺文清单</button>
@@ -333,13 +336,13 @@ function officerHtml(q) {
   const off = q.officer;
   if (!off) return '';
   const ADOPT = { shanben: '从善本', xiandai: '从他本', neither: '两存', suspend: '悬置' };
-  const rows = (off.opinions || []).map(o =>
-    '<tr><td>' + o.name + '</td><td>' + (ADOPT[o.adopt] || o.adopt) + (o.candidate && o.candidate !== '∅' ? '「' + o.candidate + '」' : '') + '</td><td>' + (o.grade || '') + ' ' + (o.confidence != null ? o.confidence.toFixed(2) : '') + '</td><td style="font-size:12px">' + (o.reason || '') + '</td></tr>').join('');
+  const rows = (off.opinions || []).map((o, i) =>
+    '<tr><td>' + o.name + '</td><td>' + (ADOPT[o.adopt] || o.adopt) + (o.candidate && o.candidate !== '∅' ? '「' + o.candidate + '」' : '') + '</td><td>' + (o.grade || '') + ' ' + (o.confidence != null ? o.confidence.toFixed(2) : '') + '</td><td style="font-size:12px"><span class="off-reason" data-idx="' + i + '">' + (o.reason || '').slice(0, 12) + (o.reason && o.reason.length > 12 ? '…' : '') + '</span><span class="off-reason-full hide" data-idx="' + i + '">' + (o.reason || '') + '</span></td></tr>').join('');
   const agg = off.verdict === 'resolved'
     ? '聚合：<b>resolved</b> · 建议' + (off.adopt === 'shanben' ? '维持格字（底本优先）' : '从他本「' + (q.modern || '') + '」')
     : '聚合：<b>suspended</b>（暂拟 ' + (ADOPT[off.tentative] || off.tentative || '无') + '；' + (off.suspendReasons || []).join('；') + '）——不代选，请人工定夺';
   return '<div style="margin:8px 0"><b style="font-size:13px">校书官四议（' + (DATA.meta.officer ? DATA.meta.officer.engine : '') + '）：</b>' +
-    '<table style="font-size:12px"><tr><th>官</th><th>倾向</th><th>证据/置信</th><th>理由</th></tr>' + rows + '</table>' +
+    '<table style="font-size:12px"><tr><th>官</th><th>倾向</th><th>证据/置信</th><th>理由 <a href="javascript:void(0)" class="off-toggle" style="font-size:11px;color:#6b5a3e;margin-left:4px">[详情]</a></th></tr>' + rows + '</table>' +
     '<div id="sugg2">' + agg + '</div></div>';
 }
 
@@ -434,6 +437,18 @@ function openPanel(pg, c) {
     save(); render();
   };
   panel.querySelector('#closePanel').onclick = () => panel.style.display = 'none';
+
+  /* 校书官四议：点击 [详情] 切换理由展开/折叠 */
+  const offToggle = panel.querySelector('.off-toggle');
+  if (offToggle) offToggle.onclick = () => {
+    const shorts = panel.querySelectorAll('.off-reason');
+    const fulls = panel.querySelectorAll('.off-reason-full');
+    const expanded = offToggle.dataset.expanded === '1';
+    shorts.forEach(s => s.classList.toggle('hide', !expanded));
+    fulls.forEach(s => s.classList.toggle('hide', expanded));
+    offToggle.dataset.expanded = expanded ? '0' : '1';
+    offToggle.textContent = expanded ? '[详情]' : '[收起]';
+  };
 }
 
 function renderRuns() {
@@ -452,17 +467,33 @@ function renderRuns() {
   });
 }
 
-/* 字号/格距控件：实时调 --cell / --gap（字号随之 calc 缩放，格距为版面疏密配置项） */
+/* 字号/格距/边距控件：实时调 --cell / --gap / --pad */
 const zoom = document.getElementById('zoom');
+const zoomVal = document.getElementById('zoomVal');
 zoom.oninput = () => {
   document.documentElement.style.setProperty('--cell', zoom.value + 'px');
-  document.getElementById('zoomVal').textContent = zoom.value + 'px';
+  zoomVal.textContent = zoom.value + 'px';
 };
+document.getElementById('zoomIn').onclick = () => { zoom.value = Math.min(60, +zoom.value + 2); zoom.oninput(); };
+document.getElementById('zoomOut').onclick = () => { zoom.value = Math.max(24, +zoom.value - 2); zoom.oninput(); };
+
 const gapSel = document.getElementById('gapSel');
+const gapVal = document.getElementById('gapVal');
 gapSel.oninput = () => {
   document.documentElement.style.setProperty('--gap', gapSel.value + 'px');
-  document.getElementById('gapVal').textContent = gapSel.value + 'px';
+  gapVal.textContent = gapSel.value + 'px';
 };
+document.getElementById('gapIn').onclick = () => { gapSel.value = Math.min(4, +gapSel.value + 1); gapSel.oninput(); };
+document.getElementById('gapOut').onclick = () => { gapSel.value = Math.max(0, +gapSel.value - 1); gapSel.oninput(); };
+
+const padSel = document.getElementById('padSel');
+const padVal = document.getElementById('padVal');
+padSel.oninput = () => {
+  document.documentElement.style.setProperty('--pad', padSel.value + 'px');
+  padVal.textContent = padSel.value + 'px';
+};
+document.getElementById('padIn').onclick = () => { padSel.value = Math.min(8, +padSel.value + 1); padSel.oninput(); };
+document.getElementById('padOut').onclick = () => { padSel.value = Math.max(0, +padSel.value - 1); padSel.oninput(); };
 document.getElementById('onlyQ').onchange = render;
 document.getElementById('onlyQCell').onchange = render;
 document.getElementById('showShift').onchange = (e) => document.body.classList.toggle('show-shift', e.target.checked);
