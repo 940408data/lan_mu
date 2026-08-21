@@ -147,10 +147,10 @@ const html = `<!DOCTYPE html>
   .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
   .page-h b { color: #2c2416; font-size: 15px; }
   .flexrow { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
-  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: var(--gap); background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
+  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: var(--gap); background: #fffdf6; border: 1px solid #cbbd97; padding: 2px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
   .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center; justify-content: center; border-radius: 2px; user-select: none; }
   .cell.j { font-size: calc(var(--cell) * .62); font-weight: 700; }
-  .cell.z { font-size: calc(var(--cell) * .44); color: #382d1e; }
+  .cell.z { font-size: calc(var(--cell) * .55); color: #382d1e; }
   .cell.title { background: #f1e2b8; }
   .cell.q { cursor: pointer; outline: 2px solid #c0392b; outline-offset: -1px; }
   .cell.q-old-only { outline-color: #d68910; }
