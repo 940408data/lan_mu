@@ -16,3 +16,13 @@ tools/_*
 
 # vim swap
 *.swp
+
+# Claude/Agent 临时产物
+
+# 根目录临时脚本（exe 提取调试用）
+/*.ps1
+/*.py
+/*.cs
+/*.exe
+/*.png
+/write_script.js
