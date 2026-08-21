@@ -58,13 +58,18 @@ const shiftMap = new Map();
 for (const s of (Array.isArray(ov.colShifts) ? ov.colShifts : [])) {
   if (s && s.shift) shiftMap.set(`${s.page}:${s.col}`, s.shift);
 }
+// 列内删字集合："p:c:r"（本格由下一格字占据，后续字上移；精校台 colDels 裁决合入）
+const delSet = new Set();
+for (const d of (Array.isArray(ov.colDels) ? ov.colDels : [])) {
+  if (d) delSet.add(`${d.page}:${d.col}:${d.row}`);
+}
 
 const N_ROWS = (tr.layout && tr.layout.rows) || 15;
 const N_COLS = (tr.layout && tr.layout.cols) || 16;
 
 // 逐页无损快照：cells 只含有字格（含 fix 覆盖），坐标 [col,row,char]
 // 行坐标 = 原始 row + 列纵偏移（colShifts）− 同列已删格数（删除格上移，版面紧凑）
-let nCells = 0, nFixed = 0, nNoRole = 0, nShiftCols = 0;
+let nCells = 0, nFixed = 0, nNoRole = 0;
 const blankPages = [];   // 含整空列的页（渲染应自然留白——版面真实信息）
 const pages = [];
 for (const pg of tr.pages || []) {
@@ -75,7 +80,7 @@ for (const pg of tr.pages || []) {
     let ch = String(cell.char || '').trim();
     const fx = fixMap.get(`${pg.n}:${cell.col}:${cell.row}`);
     if (fx) { ch = String(fx.to || '').trim(); nFixed++; }   // sub 应用（裁决后字）
-    if (!ch) {                                                 // 删除格：同列后续字上移
+    if (!ch || delSet.has(`${pg.n}:${cell.col}:${cell.row}`)) {   // 删除格（fix 置空 或 colDels）：同列后续字上移
       colDelCount[cell.col] = (colDelCount[cell.col] || 0) + 1;
       continue;
     }
@@ -91,7 +96,6 @@ for (const pg of tr.pages || []) {
   if (blanks.length) blankPages.push(`p${pg.n}[${blanks.join(',')}]`);
   pages.push({ n: pg.n, cells });
 }
-nShiftCols = shiftMap.size;
 
 // ── 句读朱点：punctuated.json 段末字 → 格坐标（P5b 点校产物，可选） ──
 // 全书全局阅读流（page 升→col 升→row 升，rtl 下 col1 最右先读）。实测三类失配与对策：
@@ -158,10 +162,11 @@ const gridDoc = {
   sections: ov.sections || [],
   fixes,
   colShifts: Array.isArray(ov.colShifts) ? ov.colShifts : [],   // 列纵偏移留痕（已应用入 pages 坐标）
+  colDels: Array.isArray(ov.colDels) ? ov.colDels : [],         // 列内删字留痕（已应用，后续字上移）
   marks,                                          // 句读朱点格清单（punctuated.json 缺失则为空）
 };
 
-const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCells} 有字格（${allCols.size} 有字列 / 版面 ${N_COLS}×${N_ROWS}）；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；列偏移 ${nShiftCols}；sections ${(ov.sections || []).length}；句读朱点 ${marks.length}`;
+const brief = `${workId} → works/${newId}/grid.yaml：${pages.length} 葉 ${nCells} 有字格（${allCols.size} 有字列 / 版面 ${N_COLS}×${N_ROWS}）；sub 应用 ${nFixed} / insert 快照 ${fixes.filter(f => f.kind === 'insert').length}（不入版面）；列偏移 ${shiftMap.size} / 删字 ${delSet.size}；sections ${(ov.sections || []).length}；句读朱点 ${marks.length}`;
 if (fs.existsSync(puFile) && nOrphan) console.warn(`  [句读] ${nOrphan} 段未能映回格坐标（已略，不阻塞）`);
 if (blankPages.length) console.log(`  [版面] 含空列页（自然留白全真保留）：${blankPages.join(' ')}`);
 if (nNoRole) console.warn(`  [警告] ${nNoRole} 列无 role 标签（渲染按 z 兜底）`);

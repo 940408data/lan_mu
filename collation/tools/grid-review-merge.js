@@ -79,7 +79,14 @@ if (Array.isArray(dec.colShifts) && dec.colShifts.length) {
   ov.colShifts = [...sm.values()];
 }
 
-const brief = `裁决 ${ (dec.decisions || []).length } 条：改字 ${sub}（自定义 ${custom}）· 维持格字 ${keep} · 存疑 ${defer} · 补入夺文 ${ins} · 列偏移 ${nShift}`;
+/* 列内删字（colDels）：精校台导出为当前全量，直接替换（本格由下一格字占据） */
+let nDel = 0;
+if (Array.isArray(dec.colDels)) {
+  ov.colDels = dec.colDels.filter(d => d && d.page != null && d.col != null && d.row != null).map(d => ({ page: d.page, col: d.col, row: d.row }));
+  nDel = ov.colDels.length;
+}
+
+const brief = `裁决 ${ (dec.decisions || []).length } 条：改字 ${sub}（自定义 ${custom}）· 维持格字 ${keep} · 存疑 ${defer} · 补入夺文 ${ins} · 列偏移 ${nShift} · 删字 ${nDel}`;
 if (flags.write) {
   fs.writeFileSync(ovPath, JSON.stringify(ov, null, 2));
   console.log(`✓ ${brief}\n✓ fixes 共 ${ov.fixes.length} 条已写入 ${ovPath}`);
