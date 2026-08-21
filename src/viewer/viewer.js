@@ -23,9 +23,9 @@ function setZoom(z){
 minus.onclick=()=>setZoom(zoom-.14); plus.onclick=()=>setZoom(zoom+.14);
 /* 字体大小（--fs）：独立于卷轴缩放，只改字形大小、不重排 */
 let fsScale=1;
-function setFs(v){fsScale=Math.min(1.2,Math.max(.8,v));
+function setFs(v){fsScale=Math.min(1.5,Math.max(.7,v));
   document.documentElement.style.setProperty('--fs',fsScale.toFixed(2));}
-fminus.onclick=()=>setFs(fsScale-.08); fplus.onclick=()=>setFs(fsScale+.08);
+fminus.onclick=()=>setFs(fsScale-.1); fplus.onclick=()=>setFs(fsScale+.1);
 rule.onclick=e=>{const a=paper.classList.toggle('rule');e.currentTarget.classList.toggle('on',a);
   e.currentTarget.setAttribute('aria-pressed',a);};
 /* 双轨字面：繁体轨 f-* / 简体轨 fsc-*（FACES 由 render/html.js 烘焙），
