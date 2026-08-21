@@ -186,3 +186,14 @@ works:
       pianNames: [梁惠王章句上, 梁惠王章句下, 公孫丑上, 公孫丑下, 滕文公上, 滕文公下, 離婁上, 離婁下, 萬章上, 萬章下, 告子上, 告子下, 盡心上, 盡心下]
     structure:
       - { type: 篇, name: 梁惠王章句下 }
+
+  - id: 孟子集注卷三                   # 分卷书：input_data/孟子集注/第三卷/，页码全局连续（86-129）
+    title: 孟子集注·卷三
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [公孫丑章句上]
+    structure:
+      - { type: 篇, name: 公孫丑章句上 }

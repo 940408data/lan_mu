@@ -41,7 +41,12 @@ function deriveAnchors(work) {
       const c = [...String(n)].map(canonCh).join('');
       return String(n) === c ? esc(n) : `${esc(n)}|${esc(c)}`;
     }).join('|');
-    return { mode: 'pian', chapterRE: new RegExp(`(${names})第[一二三四五六七八九十百]+`, 'g'), prefaceEndRE: null };
+    // 《孟子》篇题是「公孫丑章句上」式完整标题，不带《论语》的「第X」后缀。
+    // 保留 pian 模式以复用 G3 开节逻辑；含「章句」时按完整篇题匹配。
+    const chapterSuffix = a.pianNames.some(n => /章句[上下]$/.test(String(n)))
+      ? ''
+      : '第[一二三四五六七八九十百]+';
+    return { mode: 'pian', chapterRE: new RegExp(`(${names})${chapterSuffix}`, 'g'), prefaceEndRE: null };
   }
   return { mode: 'you', chapterRE: CHAPTER_RE, prefaceEndRE: PREFACE_END_RE };
 }
