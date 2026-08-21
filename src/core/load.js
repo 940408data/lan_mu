@@ -49,4 +49,15 @@ function listWorks() {
     .map((d) => d.name);
 }
 
-module.exports = { loadWork, listWorks, ROOT };
+/** 輕量裝載：僅 meta.yaml（站點聚合用，不讀 text/grid/seals/ornaments）。
+ *  hasSrc 僅 existsSync 探測 text/grid 存在性，保持與 loadWork 的「缺數據源」語義而不 parse 內容。 */
+function loadMeta(workId) {
+  const dir = path.join(ROOT, 'works', workId);
+  if (!fs.existsSync(dir)) throw new Error(`作品不存在: works/${workId}`);
+  const metaPath = path.join(dir, 'meta.yaml');
+  if (!fs.existsSync(metaPath)) throw new Error(`作品 ${workId} 缺 meta.yaml`);
+  const hasSrc = fs.existsSync(path.join(dir, 'text.yaml')) || fs.existsSync(path.join(dir, 'grid.yaml'));
+  return { id: workId, dir, meta: readYaml(metaPath), hasSrc };
+}
+
+module.exports = { loadWork, loadMeta, listWorks, ROOT };

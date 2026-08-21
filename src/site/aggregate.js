@@ -1,6 +1,8 @@
 /** 站點聚合：works/ → 書級視圖（供首頁「藏書」與書目頁「目錄葉」生成）。
  *  歸屬依據各卷 meta.book 塊（id/title/order/entry）；無 book 者視為單卷書，首頁直達作品頁。 */
-const { listWorks, loadWork } = require('../core/load');
+const fs = require('fs');
+const path = require('path');
+const { listWorks, loadMeta, ROOT } = require('../core/load');
 const { BOOK_META } = require('./home');
 
 /* 部類次序（經子書禮樂；未列入者殿後，按 id 字典序） */
@@ -21,12 +23,22 @@ function numCn(n) {
  * @returns {{books:Array, warnings:string[], catOrder:string[]}}
  * book: {id,title,category,caption,href,draft,standalone?,layout?,gong?,volumes:[{workId,title,order,entry,draft,href,gong}]}
  */
+/* mtime 指紋失效快取：命中時零 parse（僅 stat 101 meta.yaml）；改 meta/增刪作品自動失效。 */
+let _cache = { fp: null, result: null };
+function fingerprint() {
+  const ids = listWorks();
+  const mt = ids.map((id) => fs.statSync(path.join(ROOT, 'works', id, 'meta.yaml')).mtimeMs);
+  return ids.length + ':' + ids.join(',') + '|' + mt.join(',');
+}
 function aggregateSite() {
+  const fp = fingerprint();
+  if (_cache.fp === fp) return _cache.result;
   const warnings = [];
   const byBook = new Map();
   for (const workId of listWorks()) {
     let w;
-    try { w = loadWork(workId); } catch (e) { warnings.push(`裝載失敗 ${workId}: ${e.message}`); continue; }
+    try { w = loadMeta(workId); } catch (e) { warnings.push(`裝載失敗 ${workId}: ${e.message}`); continue; }
+    if (!w.hasSrc) warnings.push(`作品 ${workId} 缺數據源（text.yaml 或 grid.yaml 至少其一）`);
     const m = w.meta || {};
     const draft = m.stage === 'draft';
     const bk = m.book;
@@ -82,7 +94,8 @@ function aggregateSite() {
   const catIx = (c) => { const i = CAT_ORDER.indexOf(c); return i < 0 ? CAT_ORDER.length : i; };
   const bkIx = (id) => { const i = BOOK_ORDER.indexOf(id); return i < 0 ? 999 : i; };
   books.sort((a, b) => catIx(a.category) - catIx(b.category) || bkIx(a.id) - bkIx(b.id) || a.id.localeCompare(b.id));
-  return { books, warnings, catOrder: CAT_ORDER };
+  _cache = { fp, result: { books, warnings, catOrder: CAT_ORDER } };
+  return _cache.result;
 }
 
 module.exports = { aggregateSite, numCn };
