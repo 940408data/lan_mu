@@ -40,8 +40,12 @@ for (const d of dec.decisions || []) {
   const k = `${d.page}:${d.col}:${d.row}`;
   if (d.choice === 'defer') { defer++; continue; }
   if (d.choice === 'keep-grid') { keep++; if (cellFix.has(k)) ov.fixes.splice(cellFix.get(k), 1); continue; }
-  const to = d.choice === 'oldocr' ? d.oldOcr : d.choice === 'modern' ? d.modern : d.custom;
-  if (!to || [...to].length !== 1) { console.warn(`  跳过 ${k}：choice=${d.choice} 但目标字缺失`); continue; }
+  let to = d.choice === 'oldocr' ? d.oldOcr : d.choice === 'modern' ? d.modern : d.custom;
+  if (to == null && (d.choice === 'oldocr' || d.choice === 'modern')) {
+    to = ''; console.warn(`  ${k}：choice=${d.choice} 且目标字为 null → 置空（删除该字）`);
+  }
+  if (to === '' || [...to].length !== 1) { /* 空串=删除，单字=改字，其余跳过 */ }
+  if (to !== '' && (!to || [...to].length !== 1)) { console.warn(`  跳过 ${k}：choice=${d.choice} 但目标字缺失`); continue; }
   const entry = {
     kind: 'sub', page: d.page, col: d.col, row: d.row,
     from: d.grid, to,
@@ -63,7 +67,19 @@ for (const r of dec.runs || []) {
   ins++;
 }
 
-const brief = `裁决 ${ (dec.decisions || []).length } 条：改字 ${sub}（自定义 ${custom}）· 维持格字 ${keep} · 存疑 ${defer} · 补入夺文 ${ins}`;
+/* 列纵偏移（colShifts）：幂等，同 (page,col) 覆盖；shift=0 则移除（归零即无偏移） */
+let nShift = 0;
+if (Array.isArray(dec.colShifts) && dec.colShifts.length) {
+  const sm = new Map((Array.isArray(ov.colShifts) ? ov.colShifts : []).map(s => [`${s.page}:${s.col}`, s]));
+  for (const s of dec.colShifts) {
+    if (!s || s.shift == null) continue;
+    const k = `${s.page}:${s.col}`;
+    if (s.shift === 0) sm.delete(k); else { sm.set(k, { page: s.page, col: s.col, shift: s.shift }); nShift++; }
+  }
+  ov.colShifts = [...sm.values()];
+}
+
+const brief = `裁决 ${ (dec.decisions || []).length } 条：改字 ${sub}（自定义 ${custom}）· 维持格字 ${keep} · 存疑 ${defer} · 补入夺文 ${ins} · 列偏移 ${nShift}`;
 if (flags.write) {
   fs.writeFileSync(ovPath, JSON.stringify(ov, null, 2));
   console.log(`✓ ${brief}\n✓ fixes 共 ${ov.fixes.length} 条已写入 ${ovPath}`);

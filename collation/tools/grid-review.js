@@ -5,9 +5,11 @@
  *   - 每页 16×15 竖排网格（direction:rtl，列自右向左，同宋刻版面）
  *   - 经(j)大字/注(z)小字/章题(title)底色，疑问格红框标注（sub/extra/夺文锚点）
  *   - 点击疑问格 → 面板显示：格字、旧OCR字、现代点校字、机器参考建议、人工选择（可保存本地）
+ *   - 列级纵偏移（colShifts）：视觉识别整列错位时，调列首一格，全列实时联动
  *   - 句子级夺文（missing runs）单独列表可裁
  *   - 导出裁决 JSON → tools/grid-review-merge.js 合入 overlay.fixes（唯一改字通道）
  *
+ * 布局：右侧悬浮栏（rail）承载全部控件，为版面让出左侧全幅空间（参考 songke-facsimile 引擎）。
  * 输出到私有目录 input_data/<书>/_derived/collation/output/（含现代本字，不入公开产物）。
  * 用法:
  *   node collation/tools/grid-review.js <书名> [--image-dir=DIR] [--open]
@@ -105,6 +107,7 @@ const DATA = {
   baseSha: ov.base.sha256,
   meta: { cells: ov.stats.cells, pages: pages.length, runs: runs.length, qCells: qIdx.size, officer: officerEngine ? { engine: officerEngine, count: officerIdx.size } : null },
   pages, runs,
+  colShifts: Array.isArray(ov.colShifts) ? ov.colShifts : [],   // 既有列偏移（overlay 持久化）
   images, // 可能很大；无 --image-dir 时为 null
 };
 
@@ -112,71 +115,118 @@ const html = `<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${workId} · 网格基精校台</title>
 <style>
-  :root { --cell: 34px; }
+  :root { --cell: 36px; --rail-w: 17.5rem; }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: "LXGW WenKai TC", "Kaiti TC", Kaiti, serif; background: #f6f1e4; color: #2c2416; }
-  header { position: sticky; top: 0; z-index: 10; background: #efe6d0; border-bottom: 2px solid #c9b98a; padding: 8px 14px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-  header h1 { font-size: 17px; margin: 0; }
-  #stats { font-size: 13px; color: #6b5a3e; }
-  button { font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid #b9a671; background: #fffaf0; border-radius: 4px; cursor: pointer; }
+  body { margin: 0; font-family: "LXGW WenKai TC", "Kaiti TC", Kaiti, serif; background: #f6f1e4; color: #2c2416; padding-right: var(--rail-w); }
+
+  /* ── 右侧悬浮栏（参考 songke-facsimile 引擎 .rail） ── */
+  .rail { position: fixed; right: 0; top: 0; bottom: 0; width: var(--rail-w); z-index: 20; background: #efe6d0; border-left: 2px solid #c9b98a; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; box-shadow: -8px 0 22px -14px rgba(60,45,20,.4); }
+  .rail h1 { font-size: 15px; margin: 0; line-height: 1.4; }
+  .rail .sec { border-top: 1px solid #d8c8a0; padding-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .rail .micro { font-size: 11px; color: #9a8a66; letter-spacing: .04em; }
+  #stats { font-size: 12px; color: #6b5a3e; line-height: 1.6; }
+  .rail label.chk { font-size: 13px; display: flex; gap: 6px; align-items: center; cursor: pointer; }
+  .fld { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+  .fld input[type=range] { flex: 1; accent-color: #b9a671; }
+  .fld .val { font-size: 12px; color: #6b5a3e; min-width: 34px; text-align: right; }
+  button { font: inherit; font-size: 13px; padding: 5px 10px; border: 1px solid #b9a671; background: #fffaf0; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #f3e8c8; }
   button.active { background: #d8c48a; }
-  main { padding: 14px; }
-  .page { margin: 0 0 26px; }
-  .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; }
+  button.mini { font-size: 12px; padding: 2px 8px; }
+
+  main { padding: 14px 18px; }
+  .page { margin: 0 0 28px; }
+  .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
   .page-h b { color: #2c2416; font-size: 15px; }
   .flexrow { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
   .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: 1px; background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
-  /* 每格显式定位 grid-row:row / grid-column:col（rtl 下 col1=最右），空位自然留白，严格还原善本版面 */
   .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center; justify-content: center; border-radius: 2px; user-select: none; }
-  .cell.j { font-size: 21px; font-weight: 700; }
-  .cell.z { font-size: 15px; color: #4d3f2c; }
+  .cell.j { font-size: calc(var(--cell) * .62); font-weight: 700; }
+  .cell.z { font-size: calc(var(--cell) * .44); color: #4d3f2c; }
   .cell.title { background: #f1e2b8; }
   .cell.q { cursor: pointer; outline: 2px solid #c0392b; outline-offset: -1px; }
   .cell.q-old-only { outline-color: #d68910; }
   .cell.q-extra { outline-style: dashed; }
   .cell.q-miss { outline-color: #8e44ad; outline-style: dotted; }
   .cell.done { outline-color: #1e8449 !important; }
+  .show-shift .cell.shifted { box-shadow: inset 0 0 0 2px #16a085; }
   .cell:hover { background: #fdf0d5; }
   .pageimg { max-height: 560px; border: 1px solid #cbbd97; background: #fff; }
-  #panel { position: fixed; right: 0; top: 0; bottom: 0; width: 330px; background: #fffdf4; border-left: 2px solid #c9b98a; box-shadow: -2px 0 8px rgba(60,45,20,.18); padding: 14px; display: none; overflow-y: auto; z-index: 20; }
+
+  /* ── 裁决面板（停靠在右栏左缘） ── */
+  #panel { position: fixed; right: var(--rail-w); top: 0; bottom: 0; width: 340px; background: #fffdf4; border-left: 2px solid #c9b98a; box-shadow: -2px 0 8px rgba(60,45,20,.18); padding: 14px; display: none; overflow-y: auto; z-index: 25; }
   #panel h3 { margin: 0 0 8px; font-size: 15px; }
-  #panel .big { font-size: 40px; text-align: center; margin: 6px 0; }
+  #panel .big { font-size: 42px; text-align: center; margin: 6px 0; }
   #panel table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0; }
   #panel td { border: 1px solid #dccf9f; padding: 4px 6px; }
-  #sugg { background: #f3ecda; border: 1px dashed #b9a671; padding: 6px 8px; font-size: 13px; margin: 8px 0; border-radius: 4px; }
+  #sugg { background: #f3ecda; border: 1px dashed #b9a671; padding: 6px 8px; font-size: 13px; margin: 8px 0; border-radius: 4px; line-height: 1.55; }
   label.choice { display: block; margin: 4px 0; font-size: 14px; cursor: pointer; }
   textarea { width: 100%; height: 44px; font: inherit; font-size: 13px; }
+  .shiftbox { background: #eef3ea; border: 1px solid #9bbf9a; border-radius: 4px; padding: 7px 8px; margin: 8px 0; }
+  .shiftbox .srow { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .shiftbox .shint { font-size: 12px; color: #7d6608; margin-top: 5px; line-height: 1.5; }
   #runs li { margin: 6px 0; font-size: 14px; cursor: pointer; border: 1px solid #dccf9f; border-radius: 4px; padding: 4px 6px; }
   #runs li:hover { background: #fdf0d5; }
   .tag { display: inline-block; font-size: 11px; border-radius: 3px; padding: 0 4px; color: #fff; }
-  .tag.mod { background: #c0392b; } .tag.old { background: #d68910; } .tag.extra { background: #7d6608; } .tag.miss { background: #8e44ad; }
+  .tag.mod { background: #c0392b; } .tag.old { background: #d68910; } .tag.extra { background: #7d6608; } .tag.miss { background: #8e44ad; } .tag.shift { background: #16a085; }
   .hide { display: none !important; }
+  @media (max-width: 860px) {
+    body { padding-right: 0; }
+    .rail { position: static; width: auto; box-shadow: none; }
+    #panel { right: 0; width: min(340px, 100vw); }
+  }
 </style>
 </head>
 <body>
-<header>
+<aside class="rail" id="rail">
   <h1>${workId} · 网格基精校台</h1>
   <span id="stats"></span>
-  <label><input type="checkbox" id="onlyQ"> 只看疑问页</label>
-  <label><input type="checkbox" id="onlyQCell"> 隐藏无疑问格</label>
-  <button id="btnRuns">句子级夺文清单</button>
-  <button id="btnExport">导出裁决 JSON</button>
-  <button id="btnClear">清空本地暂存</button>
-</header>
+  <div class="sec">
+    <label class="chk"><input type="checkbox" id="onlyQ"> 只看疑问页</label>
+    <label class="chk"><input type="checkbox" id="onlyQCell"> 隐藏无疑问格</label>
+    <label class="chk"><input type="checkbox" id="showShift"> 高亮已偏移列</label>
+  </div>
+  <div class="sec">
+    <div class="fld"><span class="micro">字号</span><input type="range" id="zoom" min="24" max="60" step="1" value="36"><span class="val" id="zoomVal">36px</span></div>
+  </div>
+  <div class="sec">
+    <button id="btnRuns">句子级夺文清单</button>
+    <button id="btnExport">导出裁决 JSON</button>
+    <button id="btnShiftReset">清空全部列偏移</button>
+    <button id="btnClear">清空本地暂存</button>
+  </div>
+  <div class="sec micro">列偏移：点列内任一字，面板中调「本列纵偏移」，全列实时联动。注列顶格 / 经列退格者会自动给出建议。</div>
+</aside>
 <main id="main"></main>
 <div id="runsWrap" class="hide"><main><h3 style="font-size:15px">句子级夺文/缺页（参校本多出，格无）</h3><ul id="runs"></ul></main></div>
 <div id="panel"></div>
 <script>
 const DATA = ${JSON.stringify(DATA)};
 const LS_KEY = 'grid-review:' + DATA.work + ':' + DATA.baseSha.slice(0, 12);
-let decisions = {};  // "p:c:r" -> {choice, custom, note}
-let runChoices = {}; // run idx -> {choice, note}
-try { const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); decisions = s.decisions || {}; runChoices = s.runs || {}; } catch (e) {}
+let decisions = {};   // "p:c:r" -> {choice, custom, note}
+let runChoices = {};  // run idx -> {choice, note}
+let colShifts = {};   // "p:c" -> 纵偏移（整数；正=下移，负=上移）
+for (const s of DATA.colShifts || []) colShifts[s.page + ':' + s.col] = s.shift;
+try { const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); decisions = s.decisions || {}; runChoices = s.runs || {}; Object.assign(colShifts, s.colShifts || {}); } catch (e) {}
 
 const key = c => c.page + ':' + c.c + ':' + c.r;
-function save() { localStorage.setItem(LS_KEY, JSON.stringify({ decisions, runs: runChoices })); renderStats(); }
+const shiftKey = (p, c) => p + ':' + c;
+function save() { localStorage.setItem(LS_KEY, JSON.stringify({ decisions, runs: runChoices, colShifts })); renderStats(); }
+function shiftOf(p, c) { return colShifts[shiftKey(p, c)] || 0; }
+function clampRow(r, rows) { return Math.max(1, Math.min(rows, r)); }
+
+/* 列错位智能建议：注(z)应退一格而顶格→疑整体上移，建议 +1 下移；经(j)应顶格而退格→建议 -1 上移 */
+function shiftSuggest(pg, col) {
+  const role = (pg.cells.find(x => x.c === col) || {}).role;
+  const minR = Math.min(...pg.cells.filter(x => x.c === col).map(x => x.r));
+  if (!isFinite(minR)) return 0;
+  if (role === 'z' && minR === 1) return 1;    // 注列却顶格 → 整列上移了一格
+  if (role === 'j' && minR >= 2) return -1;    // 经列却退格 → 整列下移了一格
+  return 0;
+}
 
 function suggest(q, ch) {
   const parts = [];
@@ -194,7 +244,8 @@ function renderStats() {
   const qTotal = DATA.meta.qCells;
   const done = Object.keys(decisions).length;
   const rDone = Object.keys(runChoices).length;
-  document.getElementById('stats').textContent = '疑问格 ' + done + '/' + qTotal + ' 已裁 · 夺文句 ' + rDone + '/' + DATA.meta.runs + ' 已裁 · 共 ' + DATA.meta.pages + ' 页' + (DATA.meta.officer ? ' · 校书官 ' + DATA.meta.officer.count + ' 条（' + DATA.meta.officer.engine + '）' : '');
+  const nShift = Object.keys(colShifts).filter(k => colShifts[k] !== 0).length;
+  document.getElementById('stats').textContent = '疑问格 ' + done + '/' + qTotal + ' 已裁 · 夺文句 ' + rDone + '/' + DATA.meta.runs + ' 已裁 · 列偏移 ' + nShift + ' · 共 ' + DATA.meta.pages + ' 页' + (DATA.meta.officer ? ' · 校书官 ' + DATA.meta.officer.count + ' 条（' + DATA.meta.officer.engine + '）' : '');
 }
 
 function render() {
@@ -216,9 +267,12 @@ function render() {
     sheet.style.setProperty('--cols', pg.cols);
     for (const c of pg.cells) {
       const d = document.createElement('div');
+      const shift = shiftOf(pg.n, c.c);
       d.className = 'cell ' + c.role;
+      if (shift !== 0) d.classList.add('shifted');
       d.textContent = c.ch;
-      d.style.gridRow = c.r; d.style.gridColumn = c.c; // 严格按 (col,row) 坐标定位：col1=最右，空位留白不挤位
+      /* 坐标定位：原始 row + 列纵偏移（clamp 到版面行域）；col1=最右，空位留白不挤位 */
+      d.style.gridRow = clampRow(c.r + shift, pg.rows); d.style.gridColumn = c.c;
       d.dataset.p = pg.n; d.dataset.c = c.c; d.dataset.r = c.r;
       if (c.q) {
         const isQ = c.q.old != null || c.q.modern != null || c.q.extraMod || c.q.extraOld || c.q.missAfter;
@@ -228,10 +282,10 @@ function render() {
           if (c.q.missAfter) d.classList.add('q-miss');
           if (c.q.old != null && c.q.modern == null && !c.q.extraMod && !c.q.extraOld) d.classList.add('q-old-only');
           if (decisions[pg.n + ':' + c.c + ':' + c.r]) d.classList.add('done');
-          if (hidePlain) d.classList.remove('hide'); 
+          if (hidePlain) d.classList.remove('hide');
         } else if (hidePlain) d.classList.add('hide');
       } else if (hidePlain) d.classList.add('hide');
-      d.onclick = () => { if (d.classList.contains('q')) openPanel(pg.n, c); };
+      d.onclick = () => { if (d.classList.contains('q')) openPanel(pg, c); };
       sheet.appendChild(d);
     }
     row.appendChild(sheet);
@@ -259,15 +313,31 @@ function officerHtml(q) {
     '<div id="sugg2">' + agg + '</div></div>';
 }
 
-function openPanel(p, c) {
+/* 列纵偏移控件：↑下移 +1 / ↓上移 -1 / 归零；调整后整列实时联动（render 重绘） */
+function shiftCtlHtml(pg, c) {
+  const cur = shiftOf(pg.n, c.c);
+  const sugg = shiftSuggest(pg, c.c);
+  const suggHtml = sugg !== 0 && cur !== sugg
+    ? '<div class="shint">⚑ 检测到该列角色为「' + ({ j: '经', z: '注' }[c.role] || c.role) + '」但起格位置不符，建议偏移 ' + (sugg > 0 ? '+' : '') + sugg + ' —— <button class="mini" id="applySugg">一键应用</button></div>'
+    : (cur !== 0 ? '<div class="shint">当前整列已偏移 ' + (cur > 0 ? '+' : '') + cur + ' 格（导出后随裁决生效）</div>' : '');
+  return '<div class="shiftbox"><b style="font-size:13px">本列纵偏移（第' + c.c + '列）</b>' +
+    '<div class="srow" style="margin-top:6px">' +
+    '<button class="mini" id="shDown" title="整列上移一格">↑ −1</button>' +
+    '<span style="min-width:44px;text-align:center;font-size:14px" id="shVal">' + (cur > 0 ? '+' : '') + cur + '</span>' +
+    '<button class="mini" id="shUp" title="整列下移一格">↓ +1</button>' +
+    '<button class="mini" id="shZero">归零</button></div>' + suggHtml + '</div>';
+}
+
+function openPanel(pg, c) {
   const panel = document.getElementById('panel');
-  const k = p + ':' + c.c + ':' + c.r;
+  const k = pg.n + ':' + c.c + ':' + c.r;
   const q = c.q || {};
   const dec = decisions[k] || {};
   panel.style.display = 'block';
   panel.innerHTML =
-    '<h3>第' + p + '页 列' + c.c + ' 行' + c.r + '（' + ({ j: '经', z: '注', title: '章题' }[c.role] || c.role) + '）</h3>' +
+    '<h3>第' + pg.n + '页 列' + c.c + ' 行' + c.r + '（' + ({ j: '经', z: '注', title: '章题' }[c.role] || c.role) + '）</h3>' +
     '<div class="big">' + c.ch + '</div>' +
+    shiftCtlHtml(pg, c) +
     '<table>' +
     '<tr><td>视觉格字</td><td><b>' + c.ch + '</b></td></tr>' +
     '<tr><td>旧OCR</td><td>' + (q.old != null ? q.old : '（一致/无意见）') + '</td></tr>' +
@@ -278,7 +348,6 @@ function openPanel(p, c) {
     '<b style="font-size:13px">人工裁决：</b>' +
     ['keep-grid|维持格字', 'oldocr|从旧OCR「' + (q.old || '—') + '」', 'modern|从今本「' + (q.modern || '—') + '」', 'custom|自定义', 'defer|存疑'].map(s => {
       const [v, label] = s.split('|');
-      // 预填：无已存裁决时按校书官聚合结论预选（resolved 才预填；suspended 不代选）
       let checked = dec.choice === v;
       if (!dec.choice && q.officer && q.officer.verdict === 'resolved') {
         if (q.officer.adopt === 'shanben' && v === 'keep-grid') checked = true;
@@ -289,10 +358,29 @@ function openPanel(p, c) {
     '<input id="customChar" placeholder="自定义字" maxlength="2" style="width:60px;font-size:16px" value="' + (dec.custom || '') + '">' +
     '<textarea id="note" placeholder="备注（理由/出处）">' + (dec.note || '') + '</textarea>' +
     '<button id="saveDec">保存裁决</button> <button id="closePanel">关闭</button>';
+
+  /* 列偏移控件绑定 */
+  const applyShift = (delta) => {
+    const sk = shiftKey(pg.n, c.c);
+    const nv = (colShifts[sk] || 0) + delta;
+    if (nv === 0) delete colShifts[sk]; else colShifts[sk] = nv;
+    save(); render(); openPanel(pg, c);   // 重绘版面 + 刷新面板数值
+  };
+  panel.querySelector('#shUp').onclick = () => applyShift(1);
+  panel.querySelector('#shDown').onclick = () => applyShift(-1);
+  panel.querySelector('#shZero').onclick = () => { delete colShifts[shiftKey(pg.n, c.c)]; save(); render(); openPanel(pg, c); };
+  const as = panel.querySelector('#applySugg');
+  if (as) as.onclick = () => {
+    const s = shiftSuggest(pg, c.c);
+    const sk = shiftKey(pg.n, c.c);
+    if (s === 0) delete colShifts[sk]; else colShifts[sk] = s;
+    save(); render(); openPanel(pg, c);
+  };
+
   panel.querySelector('#saveDec').onclick = () => {
     const v = panel.querySelector('input[name=ch]:checked');
     if (!v) { alert('请先选择'); return; }
-    decisions[k] = { page: p, col: c.c, row: c.r, grid: c.ch, oldOcr: q.old ?? null, modern: q.modern ?? null, choice: v.value, custom: panel.querySelector('#customChar').value || null, note: panel.querySelector('#note').value, officerSugg: q.officer ? (q.officer.verdict + ':' + (q.officer.adopt || q.officer.tentative || '')) : null };
+    decisions[k] = { page: pg.n, col: c.c, row: c.r, grid: c.ch, oldOcr: q.old ?? null, modern: q.modern ?? null, choice: v.value, custom: panel.querySelector('#customChar').value || null, note: panel.querySelector('#note').value, officerSugg: q.officer ? (q.officer.verdict + ':' + (q.officer.adopt || q.officer.tentative || '')) : null };
     save(); render();
   };
   panel.querySelector('#closePanel').onclick = () => panel.style.display = 'none';
@@ -314,18 +402,28 @@ function renderRuns() {
   });
 }
 
+/* 字号控件：实时调 --cell（字号随之 calc 缩放） */
+const zoom = document.getElementById('zoom');
+zoom.oninput = () => {
+  document.documentElement.style.setProperty('--cell', zoom.value + 'px');
+  document.getElementById('zoomVal').textContent = zoom.value + 'px';
+};
 document.getElementById('onlyQ').onchange = render;
 document.getElementById('onlyQCell').onchange = render;
+document.getElementById('showShift').onchange = (e) => document.body.classList.toggle('show-shift', e.target.checked);
 document.getElementById('btnRuns').onclick = () => { const w = document.getElementById('runsWrap'); w.classList.toggle('hide'); document.getElementById('main').classList.toggle('hide'); renderRuns(); };
+document.getElementById('btnShiftReset').onclick = () => { if (confirm('清空全部列偏移？')) { colShifts = {}; save(); render(); } };
 document.getElementById('btnExport').onclick = () => {
-  const payload = { work: DATA.work, base: DATA.baseSha, exportedAt: new Date().toISOString(), decisions: Object.values(decisions), runs: Object.values(runChoices).map((r, i) => ({ ...r })) };
+  const shifts = Object.entries(colShifts).filter(([, v]) => v !== 0).map(([k, v]) => { const [p, c] = k.split(':'); return { page: +p, col: +c, shift: v }; });
+  const payload = { work: DATA.work, base: DATA.baseSha, exportedAt: new Date().toISOString(), decisions: Object.values(decisions), runs: Object.values(runChoices).map((r) => ({ ...r })), colShifts: shifts };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = '精校裁决-' + DATA.work + '.json';
   a.click();
 };
-document.getElementById('btnClear').onclick = () => { if (confirm('清空本地暂存的人工裁决？')) { decisions = {}; runChoices = {}; save(); render(); } };
+document.getElementById('btnClear').onclick = () => { if (confirm('清空本地暂存的人工裁决与列偏移？')) { decisions = {}; runChoices = {}; colShifts = {}; save(); render(); } };
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.getElementById('panel').style.display = 'none'; });
 render();
 </script>
 </body>

@@ -4453,5 +4453,36 @@
     }
   ],
   "sections": [],
-  "fixes": []
+  "fixes": [
+    {
+      "kind": "sub",
+      "page": 9,
+      "col": 1,
+      "row": 2,
+      "from": "平",
+      "to": "乎",
+      "evidence": "oldOcr=∅; modern=乎; human=modern",
+      "decidedAt": "2026-08-21T01:57:53.714Z"
+    },
+    {
+      "kind": "sub",
+      "page": 8,
+      "col": 14,
+      "row": 3,
+      "from": "王",
+      "to": "",
+      "evidence": "oldOcr=∅; modern=∅; human=oldocr",
+      "decidedAt": "2026-08-21T01:57:53.714Z"
+    },
+    {
+      "kind": "sub",
+      "page": 14,
+      "col": 6,
+      "row": 10,
+      "from": "日",
+      "to": "",
+      "evidence": "oldOcr=曰; modern=∅; human=modern",
+      "decidedAt": "2026-08-21T01:57:53.714Z"
+    }
+  ]
 }
