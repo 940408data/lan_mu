@@ -165,8 +165,9 @@ const html = `<!DOCTYPE html>
   .cell:hover { background: #fdf0d5; }
   .pageimg { max-height: 560px; border: 1px solid #cbbd97; background: #fff; }
 
-  /* ── 裁决面板（停靠在右栏左缘） ── */
-  #panel { position: fixed; right: var(--rail-w); top: 0; bottom: 0; width: 340px; background: #fffdf4; border-left: 2px solid #c9b98a; box-shadow: -2px 0 8px rgba(60,45,20,.18); padding: 14px; display: none; overflow-y: auto; z-index: 25; }
+  /* ── 裁决面板（停靠在右栏左缘；右栏隐藏时靠最右） ── */
+  #panel { position: fixed; right: var(--rail-w); top: 0; bottom: 0; width: 340px; background: #fffdf4; border-left: 2px solid #c9b98a; box-shadow: -2px 0 8px rgba(60,45,20,.18); padding: 14px; display: none; overflow-y: auto; z-index: 25; transition: right .3s ease; }
+  #panel.rail-hidden { right: 0; }
   #panel h3 { margin: 0 0 8px; font-size: 15px; }
   #panel .big { font-size: 42px; text-align: center; margin: 6px 0; }
   #panel table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0; }
@@ -375,10 +376,13 @@ function delCtlHtml(pg, c) {
 
 function openPanel(pg, c) {
   const panel = document.getElementById('panel');
+  const rail = document.getElementById('rail');
   const k = pg.n + ':' + c.c + ':' + c.r;
   const q = c.q || {};
   const dec = decisions[k] || {};
   panel.style.display = 'block';
+  /* 裁决面板智能定位：菜单栏显示时停靠其左缘，隐藏时靠最右 */
+  panel.classList.toggle('rail-hidden', rail.classList.contains('off'));
   panel.innerHTML =
     '<h3>第' + pg.n + '页 列' + c.c + ' 行' + c.r + '（' + ({ j: '经', z: '注', title: '章题' }[c.role] || c.role) + (isColHead(pg, c) ? ' · 列首' : '') + '）</h3>' +
     '<div class="big">' + c.ch + '</div>' +
@@ -512,15 +516,21 @@ document.getElementById('btnExport').onclick = () => {
 document.getElementById('btnClear').onclick = () => { if (confirm('清空本地暂存的人工裁决、列偏移与删字？')) { decisions = {}; runChoices = {}; colShifts = {}; colDels = {}; save(); render(); } };
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.getElementById('panel').style.display = 'none'; });
 
-/* 悬浮栏自动隐藏：鼠标离栏 1s 后滑出右缘，唯留右缘竖签唤出 */
+/* 悬浮栏自动隐藏：鼠标离栏 1s 后滑出右缘，唯留右缘竖签唤出；裁决面板同步跟随 */
 (function () {
   const rail = document.getElementById('rail');
   const tgl = document.getElementById('railToggle');
+  const panel = document.getElementById('panel');
   let hideT = null;
-  const arm = () => { clearTimeout(hideT); hideT = setTimeout(() => rail.classList.add('off'), 1000); };
-  rail.addEventListener('mouseenter', () => { clearTimeout(hideT); rail.classList.remove('off'); });
+  const syncPanel = () => {
+    if (panel.style.display === 'block') {
+      panel.classList.toggle('rail-hidden', rail.classList.contains('off'));
+    }
+  };
+  const arm = () => { clearTimeout(hideT); hideT = setTimeout(() => { rail.classList.add('off'); syncPanel(); }, 1000); };
+  rail.addEventListener('mouseenter', () => { clearTimeout(hideT); rail.classList.remove('off'); syncPanel(); });
   rail.addEventListener('mouseleave', arm);
-  tgl.addEventListener('click', () => { rail.classList.remove('off'); clearTimeout(hideT); });
+  tgl.addEventListener('click', () => { rail.classList.remove('off'); clearTimeout(hideT); syncPanel(); });
 })();
 
 render();
