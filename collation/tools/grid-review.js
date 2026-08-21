@@ -119,7 +119,7 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${workId} · 网格基精校台</title>
 <style>
-  :root { --cell: 36px; --rail-w: 17.5rem; }
+  :root { --cell: 36px; --gap: 0px; --rail-w: 17.5rem; }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "LXGW WenKai TC", "Kaiti TC", Kaiti, serif; background: #f6f1e4; color: #2c2416; padding-right: var(--rail-w); }
 
@@ -147,10 +147,10 @@ const html = `<!DOCTYPE html>
   .page-h { font-size: 14px; color: #6b5a3e; margin: 0 0 6px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
   .page-h b { color: #2c2416; font-size: 15px; }
   .flexrow { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
-  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: 1px; background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
+  .sheet { display: inline-grid; grid-template-columns: repeat(var(--cols, 16), var(--cell)); grid-template-rows: repeat(var(--rows, 15), var(--cell)); direction: rtl; gap: var(--gap); background: #fffdf6; border: 1px solid #cbbd97; padding: 6px; box-shadow: 0 1px 3px rgba(60,45,20,.15); }
   .cell { width: var(--cell); height: var(--cell); display: flex; align-items: center; justify-content: center; border-radius: 2px; user-select: none; }
   .cell.j { font-size: calc(var(--cell) * .62); font-weight: 700; }
-  .cell.z { font-size: calc(var(--cell) * .44); color: #4d3f2c; }
+  .cell.z { font-size: calc(var(--cell) * .44); color: #382d1e; }
   .cell.title { background: #f1e2b8; }
   .cell.q { cursor: pointer; outline: 2px solid #c0392b; outline-offset: -1px; }
   .cell.q-old-only { outline-color: #d68910; }
@@ -198,6 +198,7 @@ const html = `<!DOCTYPE html>
   </div>
   <div class="sec">
     <div class="fld"><span class="micro">字号</span><input type="range" id="zoom" min="24" max="60" step="1" value="36"><span class="val" id="zoomVal">36px</span></div>
+    <div class="fld"><span class="micro">格距</span><input type="range" id="gapSel" min="0" max="4" step="1" value="0"><span class="val" id="gapVal">0px</span></div>
   </div>
   <div class="sec">
     <button id="btnRuns">句子级夺文清单</button>
@@ -451,11 +452,16 @@ function renderRuns() {
   });
 }
 
-/* 字号控件：实时调 --cell（字号随之 calc 缩放） */
+/* 字号/格距控件：实时调 --cell / --gap（字号随之 calc 缩放，格距为版面疏密配置项） */
 const zoom = document.getElementById('zoom');
 zoom.oninput = () => {
   document.documentElement.style.setProperty('--cell', zoom.value + 'px');
   document.getElementById('zoomVal').textContent = zoom.value + 'px';
+};
+const gapSel = document.getElementById('gapSel');
+gapSel.oninput = () => {
+  document.documentElement.style.setProperty('--gap', gapSel.value + 'px');
+  document.getElementById('gapVal').textContent = gapSel.value + 'px';
 };
 document.getElementById('onlyQ').onchange = render;
 document.getElementById('onlyQCell').onchange = render;
