@@ -77,13 +77,17 @@ for (const pg of tr.pages || []) {
   const cells = [];
   const colDelCount = {};   // col -> 该列已删除的格数（后续字 row 需减去）
   for (const cell of pg.cells || []) {
-    let ch = String(cell.char || '').trim();
+    const rawCh = String(cell.char || '').trim();
     const fx = fixMap.get(`${pg.n}:${cell.col}:${cell.row}`);
+    let ch = rawCh;
     if (fx) { ch = String(fx.to || '').trim(); nFixed++; }   // sub 应用（裁决后字）
-    if (!ch || delSet.has(`${pg.n}:${cell.col}:${cell.row}`)) {   // 删除格（fix 置空 或 colDels）：同列后续字上移
+    // 真正删除格：colDels 指定 或 fix 把有字格置空 → 同列后续字上移
+    const isDel = delSet.has(`${pg.n}:${cell.col}:${cell.row}`) || (!!fx && !ch && !!rawCh);
+    if (isDel) {
       colDelCount[cell.col] = (colDelCount[cell.col] || 0) + 1;
       continue;
     }
+    if (!ch) continue;   // 天然空格（版面留白/注列首行空）：跳过，不位移
     const shift = shiftMap.get(`${pg.n}:${cell.col}`) || 0;   // 列纵偏移
     const adjRow = cell.row + shift - (colDelCount[cell.col] || 0);
     cells.push([cell.col, adjRow, ch]);
