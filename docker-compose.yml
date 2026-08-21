@@ -10,7 +10,8 @@ services:
       # 宿主 dist 作为重媒体（pdf/jpg/png）只读源——不烘进镜像
       - ./dist:/media:ro
     ports:
-      - "127.0.0.1:${PORT:-8080}:8080"
+      - "127.0.0.1:${PORT:-8080}:8080"   # Caddy 反代用（本地回环）
+      - "0.0.0.0:${DIRECT_PORT:-8081}:8080"  # 直连访问用（备案期间，对外暴露）
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
       interval: 30s
