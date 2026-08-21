@@ -165,6 +165,17 @@ works:
       - { type: 篇, name: 子張第十九 }
       - { type: 篇, name: 堯曰第二十 }
 
+  - id: 孟子集注卷一                   # 分卷书：input_data/孟子集注/第一卷/，页码全局连续（8-41）
+    title: 孟子集注·卷一
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [梁惠王章句上, 梁惠王章句下, 公孫丑上, 公孫丑下, 滕文公上, 滕文公下, 離婁上, 離婁下, 萬章上, 萬章下, 告子上, 告子下, 盡心上, 盡心下]
+    structure:
+      - { type: 篇, name: 梁惠王章句上 }
+
   - id: 孟子集注卷二                   # 分卷书：input_data/孟子集注/第二卷/，页码全局连续（45-82）
     title: 孟子集注·卷二
     inputBook: 孟子集注
