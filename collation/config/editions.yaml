@@ -274,3 +274,47 @@ works:
       pianNames: [萬章章句下]
     structure:
       - { type: 篇, name: 萬章章句下 }
+
+  - id: 孟子集注卷十一               # 分卷书：input_data/孟子集注/第十一卷/，页码全局连续（385-423，正文 385-421）
+    title: 孟子集注·卷十一
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [告子章句上]
+    structure:
+      - { type: 篇, name: 告子章句上 }
+
+  - id: 孟子集注卷十二               # 分卷书：input_data/孟子集注/第十二卷/，页码全局连续（424-458，正文 424-455）
+    title: 孟子集注·卷十二
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [告子章句下]
+    structure:
+      - { type: 篇, name: 告子章句下 }
+
+  - id: 孟子集注卷十三               # 分卷书：input_data/孟子集注/第十三卷/，页码全局连续（459-506，正文 459-503）
+    title: 孟子集注·卷十三
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [盡心章句上]
+    structure:
+      - { type: 篇, name: 盡心章句上 }
+
+  - id: 孟子集注卷十四               # 分卷书：input_data/孟子集注/第十四卷/，页码全局连续（507-547，正文 507-546）
+    title: 孟子集注·卷十四
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [盡心章句下]
+    structure:
+      - { type: 篇, name: 盡心章句下 }
