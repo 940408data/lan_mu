@@ -34,9 +34,11 @@ function loadWork(workId) {
   const orchidShapes = fs.existsSync(orchidShapesPath)
     ? JSON.parse(fs.readFileSync(orchidShapesPath, 'utf8')).shapes : [];
   const scanPath = path.join(dir, 'assets', 'scan.jpg');
+  const bookPath = path.join(dir, 'book.yaml');
   return {
     id: workId, dir, meta, sections, grid, seals, ornaments, orchidShapes, paperDecor,
     scan: fs.existsSync(scanPath) ? scanPath : null,
+    book: fs.existsSync(bookPath) ? readYaml(bookPath) : null,
   };
 }
 
