@@ -219,3 +219,14 @@ works:
       pianNames: [滕文公章句上]
     structure:
       - { type: 篇, name: 滕文公章句上 }
+
+  - id: 孟子集注卷六                   # 分卷书：input_data/孟子集注/第六卷/，页码全局连续（201-234，正文 201-231）
+    title: 孟子集注·卷六
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [滕文公章句下]
+    structure:
+      - { type: 篇, name: 滕文公章句下 }
