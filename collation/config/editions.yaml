@@ -197,3 +197,25 @@ works:
       pianNames: [公孫丑章句上]
     structure:
       - { type: 篇, name: 公孫丑章句上 }
+
+  - id: 孟子集注卷四                   # 分卷书：input_data/孟子集注/第四卷/，页码全局连续（130-161，正文 130-158）
+    title: 孟子集注·卷四
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [公孫丑章句下]
+    structure:
+      - { type: 篇, name: 公孫丑章句下 }
+
+  - id: 孟子集注卷五                   # 分卷书：input_data/孟子集注/第五卷/，页码全局连续（162-200，正文 162-198）
+    title: 孟子集注·卷五
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [滕文公章句上]
+    structure:
+      - { type: 篇, name: 滕文公章句上 }
