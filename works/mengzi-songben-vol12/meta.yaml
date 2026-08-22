@@ -1,0 +1,62 @@
+id: mengzi-songben-vol12
+title: 孟子集注·卷十二（影刻直出）
+subtitle: 当涂郡斋刊递修本 · 逐格还原 · 告子章句下
+docTitle: 孟子集注卷十二 — 宋版影刻
+mark: 蘭木
+ariaLabel: 孟子集注卷十二，宋刻本逐格影刻还原，自右向左讀
+category: 經
+era: 宋
+layout: songke-facsimile
+book:
+  id: mengzi-songben-vol12
+  title: 孟子集注·卷十二（影刻直出）
+  order: 12
+  entry:
+    big: 孟子
+    sub: 集注
+seed: 21207
+expect:
+  pages: 32
+  cols: 500
+  cells: 6085
+  jChars: 3272
+  zChars: 2813
+  sections: 1
+facsimile:
+  banxinTitle: 孟子
+  jSize: 0.84
+  zSize: 0.80
+  gong:
+    - 白羽
+  cover:
+    slip: 宋本孟子集注卷十二
+  spec: 當塗郡齋刊遞修本 逐格影刻還原 半葉八行 行十六字 注文雙行 白口 左右雙邊 單黑魚尾
+  colophon: 此卷為逐格影刻還原：逐字坐標直出，版式悉依當塗郡齋刊遞修本原刻列陣，頁界、列界、半葉餘白、敬空闕字皆從原刻，不加重排、不作拼合。<br>文本經網格基校勘管線（G1 視覺逐格轉寫 → G2/G3 參校掛格 → G4 四官審議 + 精校台裁決 → G5 單源出口）自善本影印派生。<br>此卷錄《孟子集注》卷十二：告子章句下（凡十六章）。p455 末為第十六章注末，原刻本卷正文即接圖版葉（與卷四至十一同式）。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Mengzi12-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 當塗郡齋刊遞修本《四書章句集注》（中國國家圖書館藏）
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《孟子集注》卷十二：告子章句下（凡十六章），以宋刻影刻還原版式數字重刻。文本由網格基校勘管線（G1 視覺逐格轉寫 → G2/G3 參校掛格 → G4 四官審議 + 精校台裁決 → G5 單源出口）自當塗郡齋刊遞修本影印派生，由影刻直出引擎（songke-facsimile V2）零重排渲染。</p>
+  <p>本卷經四校書官審議異文並精校台裁決，resolved 條按四官建議改字入 fixes，suspended 條留人工復核。</p>
