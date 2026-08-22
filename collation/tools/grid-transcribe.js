@@ -110,7 +110,8 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
       if (!fs.existsSync(pdfPath)) continue;
       try {
         const startTime = Date.now();
-        const b64 = imageDir ? pageImage(pg) : (await renderPage(pdfPath, 1, 150)).b64;
+        const rendered = imageDir ? { b64: pageImage(pg) } : (await renderPage(pdfPath, 1, 150));
+        const b64 = rendered.b64;
         const renderTime = Date.now() - startTime;
         
         const apiStart = Date.now();
@@ -121,6 +122,8 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
           customKey 
         });
         const apiTime = Date.now() - apiStart;
+        // 清理 pdftoppm 临时 PNG（renderPage 写 os.tmpdir()/vpage-XXXX，用完即删防 /tmp 占满）
+        if (!imageDir && rendered.file) { try { fs.rmSync(path.dirname(rendered.file), { recursive: true, force: true }); } catch {} }
         
         cnt++;
         if (r.err || !r.obj) { console.log(`page_${pad(pg)}: ${r.err || '解析失败'}`); continue; }

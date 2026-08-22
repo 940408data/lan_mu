@@ -66,6 +66,7 @@ async function cmdBuild(workId, only, pdfFull) {
   const outputs = only ? only.split(',') : ['html', 'jpg', 'pdf'];
 
   for (const id of ids) {
+    try {
     console.log(`\n══ 构建 ${id} ══`);
     const work = loadWork(id);
     const tree = buildLayout(work);
@@ -128,6 +129,7 @@ async function cmdBuild(workId, only, pdfFull) {
         }
       }
     }
+    } catch (e) { console.warn(`  [跳过] 作品 ${id} 构建失败: ${e.message}`); }
   }
   // 全量構建末尾生成站點頁（首頁「藏書」+ 各書「目錄葉」+ 站點小字庫）
   if (!workId) {
