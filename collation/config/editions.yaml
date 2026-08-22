@@ -230,3 +230,25 @@ works:
       pianNames: [滕文公章句下]
     structure:
       - { type: 篇, name: 滕文公章句下 }
+
+  - id: 孟子集注卷七                   # 分卷书：input_data/孟子集注/第七卷/，页码全局连续（235-276，正文 235-274）
+    title: 孟子集注·卷七
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [離婁章句上]
+    structure:
+      - { type: 篇, name: 離婁章句上 }
+
+  - id: 孟子集注卷八                   # 分卷书：input_data/孟子集注/第八卷/，页码全局连续（277-315，正文 277-312）
+    title: 孟子集注·卷八
+    inputBook: 孟子集注
+    shanben: dangtu
+    xiandai: ruzang
+    anchors:
+      mode: pian
+      pianNames: [離婁章句下]
+    structure:
+      - { type: 篇, name: 離婁章句下 }
