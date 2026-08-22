@@ -16,11 +16,11 @@ book:
     sub: 公孫丑章句下
 seed: 29005
 expect:
-  jChars: 6009
-  zChars: 10577
-  columns: 595
-  halves: 75
-  leaves: 38
+  jChars: 2532
+  zChars: 14054
+  columns: 486
+  halves: 61
+  leaves: 31
 songke:
   bigPerCol: 16
   subPerCol: 25

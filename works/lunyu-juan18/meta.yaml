@@ -16,11 +16,11 @@ book:
     sub: 微子第十八
 seed: 28018
 expect:
-  jChars: 5003
-  zChars: 274
-  columns: 386
-  halves: 49
-  leaves: 25
+  jChars: 4274
+  zChars: 1003
+  columns: 306
+  halves: 39
+  leaves: 20
 songke:
   bigPerCol: 16
   subPerCol: 25

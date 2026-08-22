@@ -16,11 +16,11 @@ book:
     sub: 盡心章句下
 seed: 29015
 expect:
-  jChars: 7014
-  zChars: 12632
-  columns: 716
-  halves: 90
-  leaves: 45
+  jChars: 2325
+  zChars: 17321
+  columns: 539
+  halves: 68
+  leaves: 34
 songke:
   bigPerCol: 16
   subPerCol: 25

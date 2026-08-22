@@ -16,11 +16,11 @@ book:
     sub: 子路第十三
 seed: 28013
 expect:
-  jChars: 6749
-  zChars: 719
-  columns: 537
-  halves: 68
-  leaves: 34
+  jChars: 5889
+  zChars: 1579
+  columns: 428
+  halves: 54
+  leaves: 27
 songke:
   bigPerCol: 16
   subPerCol: 25

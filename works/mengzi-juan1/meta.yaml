@@ -16,9 +16,9 @@ book:
     sub: 序
 seed: 29001
 expect:
-  jChars: 1651
-  zChars: 5237
-  columns: 220
+  jChars: 1650
+  zChars: 5238
+  columns: 219
   halves: 28
   leaves: 14
 songke:

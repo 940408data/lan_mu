@@ -16,11 +16,11 @@ book:
     sub: 告子章句上
 seed: 29012
 expect:
-  jChars: 5728
-  zChars: 10609
-  columns: 581
-  halves: 73
-  leaves: 37
+  jChars: 2650
+  zChars: 13687
+  columns: 480
+  halves: 60
+  leaves: 30
 songke:
   bigPerCol: 16
   subPerCol: 25

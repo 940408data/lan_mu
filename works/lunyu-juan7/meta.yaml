@@ -16,11 +16,11 @@ book:
     sub: 述而第七
 seed: 28007
 expect:
-  jChars: 8170
-  zChars: 917
-  columns: 650
-  halves: 82
-  leaves: 41
+  jChars: 6989
+  zChars: 2098
+  columns: 509
+  halves: 64
+  leaves: 32
 songke:
   bigPerCol: 16
   subPerCol: 25

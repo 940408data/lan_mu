@@ -16,11 +16,11 @@ book:
     sub: 雍也第六
 seed: 28006
 expect:
-  jChars: 6985
-  zChars: 720
-  columns: 559
-  halves: 70
-  leaves: 35
+  jChars: 6015
+  zChars: 1690
+  columns: 433
+  halves: 55
+  leaves: 28
 songke:
   bigPerCol: 16
   subPerCol: 25

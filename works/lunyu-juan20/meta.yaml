@@ -16,11 +16,11 @@ book:
     sub: 堯曰第二十
 seed: 28020
 expect:
-  jChars: 3309
-  zChars: 98
-  columns: 248
-  halves: 31
-  leaves: 16
+  jChars: 3007
+  zChars: 400
+  columns: 202
+  halves: 26
+  leaves: 13
 songke:
   bigPerCol: 16
   subPerCol: 25

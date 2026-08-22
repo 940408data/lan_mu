@@ -16,11 +16,11 @@ book:
     sub: 衛靈公第十五
 seed: 28015
 expect:
-  jChars: 6703
-  zChars: 1009
-  columns: 553
-  halves: 70
-  leaves: 35
+  jChars: 5752
+  zChars: 1960
+  columns: 425
+  halves: 54
+  leaves: 27
 songke:
   bigPerCol: 16
   subPerCol: 25

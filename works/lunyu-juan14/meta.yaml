@@ -16,11 +16,11 @@ book:
     sub: 憲問第十四
 seed: 28014
 expect:
-  jChars: 13003
-  zChars: 1053
-  columns: 1030
-  halves: 129
-  leaves: 65
+  jChars: 11619
+  zChars: 2437
+  columns: 816
+  halves: 102
+  leaves: 51
 songke:
   bigPerCol: 16
   subPerCol: 25

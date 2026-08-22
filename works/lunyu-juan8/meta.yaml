@@ -16,11 +16,11 @@ book:
     sub: 泰伯第八
 seed: 28008
 expect:
-  jChars: 6428
-  zChars: 503
-  columns: 501
-  halves: 63
-  leaves: 32
+  jChars: 5562
+  zChars: 1369
+  columns: 395
+  halves: 50
+  leaves: 25
 songke:
   bigPerCol: 16
   subPerCol: 25

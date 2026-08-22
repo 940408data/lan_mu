@@ -16,11 +16,11 @@ book:
     sub: 滕文公章句下
 seed: 29007
 expect:
-  jChars: 5857
-  zChars: 10165
-  columns: 576
-  halves: 72
-  leaves: 36
+  jChars: 2566
+  zChars: 13456
+  columns: 473
+  halves: 60
+  leaves: 30
 songke:
   bigPerCol: 16
   subPerCol: 25

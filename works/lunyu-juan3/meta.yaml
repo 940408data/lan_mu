@@ -16,11 +16,11 @@ book:
     sub: 八佾第三
 seed: 28003
 expect:
-  jChars: 11500
-  zChars: 612
-  columns: 893
-  halves: 112
-  leaves: 56
+  jChars: 10315
+  zChars: 1797
+  columns: 704
+  halves: 88
+  leaves: 44
 songke:
   bigPerCol: 16
   subPerCol: 25

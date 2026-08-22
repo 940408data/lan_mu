@@ -16,11 +16,11 @@ book:
     sub: 學而第一
 seed: 28001
 expect:
-  jChars: 6409
-  zChars: 391
-  columns: 498
-  halves: 63
-  leaves: 32
+  jChars: 5872
+  zChars: 928
+  columns: 400
+  halves: 50
+  leaves: 25
 songke:
   bigPerCol: 16
   subPerCol: 25

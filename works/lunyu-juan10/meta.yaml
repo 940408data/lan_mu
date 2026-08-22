@@ -16,11 +16,11 @@ book:
     sub: 鄉黨第十
 seed: 28010
 expect:
-  jChars: 9086
-  zChars: 549
-  columns: 706
-  halves: 89
-  leaves: 45
+  jChars: 8256
+  zChars: 1379
+  columns: 569
+  halves: 72
+  leaves: 36
 songke:
   bigPerCol: 16
   subPerCol: 25

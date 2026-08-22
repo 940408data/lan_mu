@@ -16,11 +16,11 @@ book:
     sub: 陽貨第十七
 seed: 28017
 expect:
-  jChars: 7527
-  zChars: 572
-  columns: 587
-  halves: 74
-  leaves: 37
+  jChars: 6588
+  zChars: 1511
+  columns: 469
+  halves: 59
+  leaves: 30
 songke:
   bigPerCol: 16
   subPerCol: 25

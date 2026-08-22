@@ -16,11 +16,11 @@ book:
     sub: 里仁第四
 seed: 28004
 expect:
-  jChars: 3060
-  zChars: 618
-  columns: 256
-  halves: 32
-  leaves: 16
+  jChars: 2551
+  zChars: 1127
+  columns: 203
+  halves: 26
+  leaves: 13
 songke:
   bigPerCol: 16
   subPerCol: 25

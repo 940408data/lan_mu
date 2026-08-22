@@ -16,11 +16,11 @@ book:
     sub: 梁惠王章句下
 seed: 29003
 expect:
-  jChars: 6910
-  zChars: 17455
-  columns: 790
-  halves: 99
-  leaves: 50
+  jChars: 2935
+  zChars: 21430
+  columns: 672
+  halves: 84
+  leaves: 42
 songke:
   bigPerCol: 16
   subPerCol: 25

@@ -16,11 +16,11 @@ book:
     sub: 離婁章句上
 seed: 29008
 expect:
-  jChars: 5570
-  zChars: 13220
-  columns: 625
-  halves: 79
-  leaves: 40
+  jChars: 2356
+  zChars: 16434
+  columns: 524
+  halves: 66
+  leaves: 33
 songke:
   bigPerCol: 16
   subPerCol: 25

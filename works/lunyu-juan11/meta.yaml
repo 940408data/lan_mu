@@ -16,11 +16,11 @@ book:
     sub: 先進第十一
 seed: 28011
 expect:
-  jChars: 8970
-  zChars: 584
-  columns: 694
-  halves: 87
-  leaves: 44
+  jChars: 7794
+  zChars: 1760
+  columns: 555
+  halves: 70
+  leaves: 35
 songke:
   bigPerCol: 16
   subPerCol: 25

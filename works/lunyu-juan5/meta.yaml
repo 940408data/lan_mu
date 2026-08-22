@@ -16,11 +16,11 @@ book:
     sub: 公冶長第五
 seed: 28005
 expect:
-  jChars: 8324
-  zChars: 668
-  columns: 664
-  halves: 83
-  leaves: 42
+  jChars: 7527
+  zChars: 1465
+  columns: 526
+  halves: 66
+  leaves: 33
 songke:
   bigPerCol: 16
   subPerCol: 25

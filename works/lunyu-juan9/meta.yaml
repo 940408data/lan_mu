@@ -16,11 +16,11 @@ book:
     sub: 子罕第九
 seed: 28009
 expect:
-  jChars: 6821
-  zChars: 715
-  columns: 542
-  halves: 68
-  leaves: 34
+  jChars: 5608
+  zChars: 1928
+  columns: 416
+  halves: 52
+  leaves: 26
 songke:
   bigPerCol: 16
   subPerCol: 25

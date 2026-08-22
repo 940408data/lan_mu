@@ -16,11 +16,11 @@ book:
     sub: 萬章章句下
 seed: 29011
 expect:
-  jChars: 5656
-  zChars: 11821
-  columns: 596
-  halves: 75
-  leaves: 38
+  jChars: 2450
+  zChars: 15027
+  columns: 497
+  halves: 63
+  leaves: 32
 songke:
   bigPerCol: 16
   subPerCol: 25

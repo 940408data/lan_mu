@@ -16,11 +16,11 @@ book:
     sub: 顏淵第十二
 seed: 28012
 expect:
-  jChars: 7111
-  zChars: 569
-  columns: 553
-  halves: 70
-  leaves: 35
+  jChars: 6173
+  zChars: 1507
+  columns: 442
+  halves: 56
+  leaves: 28
 songke:
   bigPerCol: 16
   subPerCol: 25

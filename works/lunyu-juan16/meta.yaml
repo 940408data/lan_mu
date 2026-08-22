@@ -16,11 +16,11 @@ book:
     sub: 季氏第十六
 seed: 28016
 expect:
-  jChars: 7024
-  zChars: 343
-  columns: 539
-  halves: 68
-  leaves: 34
+  jChars: 6344
+  zChars: 1023
+  columns: 437
+  halves: 55
+  leaves: 28
 songke:
   bigPerCol: 16
   subPerCol: 25

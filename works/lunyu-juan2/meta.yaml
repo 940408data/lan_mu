@@ -16,11 +16,11 @@ book:
     sub: 為政第二
 seed: 28002
 expect:
-  jChars: 6877
-  zChars: 568
-  columns: 549
-  halves: 69
-  leaves: 35
+  jChars: 6181
+  zChars: 1264
+  columns: 433
+  halves: 55
+  leaves: 28
 songke:
   bigPerCol: 16
   subPerCol: 25

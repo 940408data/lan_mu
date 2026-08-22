@@ -16,11 +16,11 @@ book:
     sub: 子張第十九
 seed: 28019
 expect:
-  jChars: 4633
-  zChars: 626
-  columns: 366
-  halves: 46
-  leaves: 23
+  jChars: 4130
+  zChars: 1129
+  columns: 301
+  halves: 38
+  leaves: 19
 songke:
   bigPerCol: 16
   subPerCol: 25
