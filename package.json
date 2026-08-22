@@ -41,7 +41,8 @@
   "devDependencies": {
     "docsify-cli": "^4.4.4",
     "electron": "^43.4.1",
-    "electron-builder": "^26.15.3"
+    "electron-builder": "^26.15.3",
+    "word-extractor": "^1.0.4"
   },
   "build": {
     "appId": "com.lanmu.desktop",

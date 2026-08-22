@@ -1,0 +1,62 @@
+id: lunyu-juan12
+title: 論語注疏卷十二
+subtitle: 宋刻本式樣 · 邢昺疏 · 顏淵第十二
+docTitle: 論語注疏卷十二 — 宋版善刻
+mark: 蘭木
+ariaLabel: 論語注疏卷十二，宋刻本版式，自右向左讀
+category: 經
+era: 宋
+layout: songke
+book:
+  id: lunyu-zhushu
+  title: 論語注疏
+  order: 12
+  entry:
+    big: 卷十二
+    sub: 顏淵第十二
+seed: 28012
+expect:
+  jChars: 6173
+  zChars: 1507
+  columns: 442
+  halves: 56
+  leaves: 28
+songke:
+  bigPerCol: 16
+  subPerCol: 25
+  colsPerHalf: 8
+  banxinTitle: 論語卷十二
+  gong:
+    - 某
+  spec: 半葉八行 行十六字 注文雙行二十五字 白口 左右雙邊 單黑魚尾
+  colophon: |-
+    依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，注文小字雙行；疏隨經注而下，與經注列網格對齊，本列不敷乃另起列；雙行並進，長短相差不過一字。<br>版心上下留白口，上鐫單黑魚尾，次書名卷次、葉次，末署刻工姓名。<br>注文之制，備疏朗、雅正、宋槧三版，可於欄內遞轉；疏朗字大易誦，宋槧嚴守舊觀。<br>句讀以朱筆點之，附於字之右下，不占字位，點之斜正輕重因字而變，以仿手批氣韻。<br>本卷錄《論語注疏》卷十二 顏淵第十二，經文據魏何晏集解，疏文為宋邢昺撰。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+export:
+  base: Lunyu-Juan12-Songke
+  faces:
+    kai: Kai
+    song: Song
+    xing: Xingkai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 邢昺《論語注疏》
+    url: https://zh.wikisource.org/zh-hant/論語注疏
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《論語注疏》為宋邢昺疏，以魏何晏《論語集解》為本，為十三經注疏之一。論語二十篇，記孔子及門人言行，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。</p>
+  <p>卷十二收顏淵第十二，經注疏全帙。</p>
