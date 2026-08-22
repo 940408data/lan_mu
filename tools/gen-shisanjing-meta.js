@@ -69,10 +69,54 @@ const BOOKS = {
     intro: '《孝經注疏》為宋邢昺疏，以唐玄宗注為本，為十三經注疏之一。孝經十八章，言孝之始終，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。',
     sourceUrl: 'https://zh.wikisource.org/zh-hant/孝經注疏', sourceLabel: '邢昺《孝經注疏》',
   },
+  lunyu: {
+    prefix: 'lunyu', bookId: 'lunyu-zhushu', title: '論語注疏', banxin: '論語',
+    shuAuthor: '邢昺', zhuDesc: '魏何晏集解', era: '宋', seedBase: 28000,
+    intro: '《論語注疏》為宋邢昺疏，以魏何晏《論語集解》為本，為十三經注疏之一。論語二十篇，記孔子及門人言行，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。',
+    sourceUrl: 'https://zh.wikisource.org/zh-hant/論語注疏', sourceLabel: '邢昺《論語注疏》',
+  },
+  mengzi: {
+    prefix: 'mengzi', bookId: 'mengzi-zhushu', title: '孟子注疏', banxin: '孟子',
+    shuAuthor: '孫奭', zhuDesc: '漢趙岐注', era: '宋', seedBase: 29000,
+    intro: '《孟子注疏》為宋孫奭疏，以漢趙岐注為本，為十三經注疏之一。孟子七篇十四卷，記孟子遊說諸侯及與弟子問答之言，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。',
+    sourceUrl: 'https://zh.wikisource.org/zh-hant/孟子注疏', sourceLabel: '孫奭《孟子注疏》',
+  },
+  erya: {
+    prefix: 'erya', bookId: 'erya', title: '爾雅注疏', banxin: '爾雅',
+    shuAuthor: '邢昺', zhuDesc: '晉郭璞注', era: '宋', seedBase: 30000,
+    intro: '《爾雅注疏》為宋邢昺疏，以晉郭璞注為本，為十三經注疏之一。爾雅十九篇，為訓詁之祖、五經之通路，此卷以宋刻本版式數字重刻，半葉八行、行十六字、注文雙行二十五字。',
+    sourceUrl: 'https://zh.wikisource.org/zh-hant/爾雅注疏', sourceLabel: '邢昺《爾雅注疏》',
+  },
+};
+
+// ── 子标题硬编码（论语/孟子/尔雅）──
+const SUB_TITLES = {
+  lunyu: [
+    '學而第一', '為政第二', '八佾第三', '里仁第四', '公冶長第五',
+    '雍也第六', '述而第七', '泰伯第八', '子罕第九', '鄉黨第十',
+    '先進第十一', '顏淵第十二', '子路第十三', '憲問第十四', '衛靈公第十五',
+    '季氏第十六', '陽貨第十七', '微子第十八', '子張第十九', '堯曰第二十',
+  ],
+  mengzi: [
+    '序', '梁惠王章句上', '梁惠王章句下', '公孫丑章句上', '公孫丑章句下',
+    '滕文公章句上', '滕文公章句下', '離婁章句上', '離婁章句下',
+    '萬章章句上', '萬章章句下', '告子章句上', '告子章句下',
+    '盡心章句上', '盡心章句下',
+  ],
+  erya: [
+    '疏叙', '序', '釋詁第一', '釋詁下', '釋言第二', '釋訓第三', '釋親第四',
+    '釋宮第五', '釋器第六', '釋樂第七', '釋天第八', '釋地第九', '釋丘第十',
+    '釋山第十一', '釋水第十二', '釋草第十三', '釋木第十四', '釋蟲第十五',
+    '釋魚第十六', '釋鳥第十七', '釋獸第十八', '釋畜第十九',
+  ],
 };
 
 // ── 从 vol_XX.txt 提取子标题 ──
-function extractSub(raw, bookId) {
+function extractSub(raw, bookId, volNum) {
+  // 硬编码优先
+  if (SUB_TITLES[bookId] && SUB_TITLES[bookId][volNum - 1]) {
+    return SUB_TITLES[bookId][volNum - 1];
+  }
   const lines = raw.split(/\r?\n/).map((l) => l.replace(/\u3000/g, '').trim()).filter(Boolean);
   for (const l of lines.slice(0, 30)) {
     if (bookId === 'chunqiu-gongyang') {
@@ -85,7 +129,6 @@ function extractSub(raw, bookId) {
       const m = l.match(/^卷[一二三四五六七八九十百]+[上下]?\s+(.+)/);
       if (m) {
         let sub = m[1];
-        // 左传「文五年，尽十年」只取段前
         if (bookId === 'chunqiu-zuozhuan') sub = sub.split(/[，,]/)[0];
         return sub;
       }
@@ -190,7 +233,7 @@ for (const [bookId, cfg] of Object.entries(BOOKS)) {
     }
 
     const raw = fs.readFileSync(path.join(volsDir, vf), 'utf8');
-    const sub = s2tw(extractSub(raw, bookId));
+    const sub = SUB_TITLES[bookId] ? extractSub(raw, bookId, volNum) : s2tw(extractSub(raw, bookId));
     fs.writeFileSync(metaPath, renderMeta(cfg, volNum, sub, ''), 'utf8');
 
     // 阶段2：buildLayout 计算统计 → 回填 expect

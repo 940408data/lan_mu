@@ -1,7 +1,7 @@
 /**
  * 十三经注疏通用抽取脚本：vol_XX.txt → works/{id}-juan{N}/text.yaml (j/z blocks)
  *
- * 适用：毛诗正义、周礼注疏、仪礼注疏、礼记正义、春秋左传正义、春秋公羊传注疏、孝经注疏
+ * 适用：毛诗正义、周礼注疏、仪礼注疏、礼记正义、春秋左传正义、春秋公羊传注疏、孝经注疏、论语注疏、孟子注疏、尔雅注疏
  * 数据来源：十三经注疏 exe（IE DOM 提取 → merge → split）
  * 结构：[疏] 行 → z 块（疏文），其余 → j 块（经+注）
  *
@@ -19,6 +19,9 @@ const BOOKS = {
   'chunqiu-zuozhuan': { title: '春秋左傳正義', volTitle: '春秋左傳正義', shuAuthor: '孔穎達', zhuAuthor: '杜預注', worksPrefix: 'zuozhuan' },
   'chunqiu-gongyang': { title: '春秋公羊傳注疏', volTitle: '春秋公羊傳注疏', shuAuthor: '徐彥', zhuAuthor: '何休解詁', worksPrefix: 'gongyang' },
   xiaojing: { title: '孝經注疏', volTitle: '孝經注疏', shuAuthor: '邢昺', zhuAuthor: '唐玄宗注' },
+  lunyu: { title: '論語注疏', volTitle: '論語注疏', shuAuthor: '邢昺', zhuAuthor: '魏何晏集解', alreadyTraditional: true },
+  mengzi: { title: '孟子注疏', volTitle: '孟子注疏', shuAuthor: '孫奭', zhuAuthor: '漢趙岐注', alreadyTraditional: true },
+  erya: { title: '爾雅注疏', volTitle: '爾雅注疏', shuAuthor: '邢昺', zhuAuthor: '晉郭璞注', alreadyTraditional: true },
 };
 
 // ── opencc s2tw + 修正（沿用尚书正义方案）──
@@ -50,7 +53,7 @@ function isNoise(t, bookTitle) {
 }
 
 // ── 解析单卷为 j/z 块 ──
-function parseVol(raw, bookTitle) {
+function parseVol(raw, bookTitle, cfg) {
   const lines = raw.split(/\r?\n/);
   const blocks = [];
   for (const ln of lines) {
@@ -63,9 +66,9 @@ function parseVol(raw, bookTitle) {
       blocks.push({ type: 'j', text: t });
     }
   }
-  // s2tw + 修正
+  // s2tw + 修正（已是繁體的書跳過）
   for (const b of blocks) {
-    b.text = fixOpencc(s2tw(b.text));
+    b.text = cfg.alreadyTraditional ? b.text : fixOpencc(s2tw(b.text));
   }
   return blocks;
 }
@@ -106,7 +109,7 @@ for (const [bookId, cfg] of Object.entries(BOOKS)) {
   for (const vf of volFiles) {
     const volNum = parseInt(vf.match(/vol_(\d+)\.txt/)[1], 10);
     const raw = fs.readFileSync(path.join(volsDir, vf), 'utf8');
-    const blocks = parseVol(raw, cfg.volTitle);
+    const blocks = parseVol(raw, cfg.volTitle, cfg);
     const jChars = blocks.filter((b) => b.type === 'j').reduce((s, b) => s + b.text.length, 0);
     const zChars = blocks.filter((b) => b.type === 'z').reduce((s, b) => s + b.text.length, 0);
     const outPath = path.join('works', `${prefix}-juan${volNum}`, 'text.yaml');

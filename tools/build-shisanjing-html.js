@@ -12,6 +12,7 @@ const { buildSubsets } = require('../src/fonts/subset');
 const ROOT = path.join(__dirname, '..');
 const PREFIXES = {
   maoshi: 20, zhouli: 42, yili: 50, liji: 63, zuozhuan: 60, gongyang: 28, xiaojing: 9,
+  lunyu: 20, mengzi: 15, erya: 22,
 };
 
 const only = process.argv[2];
