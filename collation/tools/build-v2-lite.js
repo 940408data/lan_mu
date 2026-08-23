@@ -27,12 +27,13 @@ const cfg = loadConfig();
 const work = cfg.works[workId];
 if (!work) { console.error(`未登记作品: ${workId}（见 collation/config/editions.yaml）`); process.exit(1); }
 const ocrDir = cfg.editions[work.shanben].ocrDir;
+const pagesRoot = cfg.editions[work.shanben].pagesRoot || null;
 const bookDir = inputBookOf(workId);
 
 let lo = 0, hi = Infinity;
 if (flags.pages) { const [a, b] = String(flags.pages).split('-').map(Number); lo = a; hi = b || a; }
 
-const pages = listPages(bookDir, ocrDir).filter(p => p.n >= lo && p.n <= hi);
+const pages = listPages(bookDir, ocrDir, pagesRoot).filter(p => p.n >= lo && p.n <= hi);
 if (!pages.length) { console.error(`页范围为空：--pages=${flags.pages}`); process.exit(1); }
 
 // ── 剥行规则（test 在已剥 markdown # 前缀的行上执行，留痕） ──

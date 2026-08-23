@@ -45,6 +45,9 @@ const savedLayout = fs.existsSync(layoutFile) ? JSON.parse(fs.readFileSync(layou
 const layout = { cols: parseInt(flags.cols || savedLayout.cols || '16', 10), rows: parseInt(flags.rows || savedLayout.rows || '15', 10) };
 const [pStart, pEnd] = String(flags.pages).split('-').map(Number);
 const { editions, works } = loadConfig();
+const work = works[workId];
+const edition = work ? editions[work.shanben] : null;
+const pagesRoot = edition?.pagesRoot || null;
 // PDF 页路径：平铺优先，分卷书（input_data/<书>/<卷>/）按页码路由（io.pagePdfPath）
 const outPath = path.join(dataDir, `grid-transcribe${suffix}.json`);
 const logPath = path.join(dataDir, `grid-transcribe${suffix}-log.json`);
@@ -106,8 +109,9 @@ const grid = fs.existsSync(gridFile) ? JSON.parse(fs.readFileSync(gridFile, 'utf
   async function worker() {
     while (idx < queue.length) {
       const pg = queue[idx++];
-      const pdfPath = pagePdfPath(inputBookOf(workId), editions[works[workId].shanben].pdfDir, pg);
-      if (!fs.existsSync(pdfPath)) continue;
+      const pdfPath = pagePdfPath(inputBookOf(workId), editions[works[workId].shanben].pdfDir, pg, pagesRoot);
+      // 使用 --image-dir 时不需要 PDF（PNG 已预渲染），跳过 PDF 存在性检查
+      if (!imageDir && !fs.existsSync(pdfPath)) continue;
       try {
         const startTime = Date.now();
         const rendered = imageDir ? { b64: pageImage(pg) } : (await renderPage(pdfPath, 1, 150));
