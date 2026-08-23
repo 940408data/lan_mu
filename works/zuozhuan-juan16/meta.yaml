@@ -45,6 +45,15 @@ fallbackStacks:
   kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
   song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC",serif'
   xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+facesSc:
+  kai: { label: 楷體 }
+  song: { label: 宋體 }
+  xing: { font: liushang-xingyi, label: 行書 }
+defaultSc: kai
+fallbackStacksSc:
+  kai: '"Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","TW-Kai","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif SC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti SC","STKaiti","楷体","KaiTi","Noto Serif CJK SC",serif'
 export:
   base: Zuozhuan-Juan16-Songke
   faces:

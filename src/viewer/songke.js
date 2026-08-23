@@ -68,7 +68,21 @@
   const FISH = '<svg viewBox="0 0 40 22" preserveAspectRatio="none" aria-hidden="true">' +
     '<path d="M0 0 H40 L34.5 22 L20 12.2 L5.5 22 Z" fill="rgba(36,28,20,.88)"/></svg>';
 
-  const state = { simp: false, zhu: 0, jie: true, face: 0, single: false, leaf: 0, variant: 0 };
+  const FACES = window.FACES || { tc: SK.faces || [], sc: SK.faces || [], def: 0, defScript: 'tc' };
+  const state = { simp: (FACES.defScript === 'sc'), zhu: 0, jie: true, tcFace: 0, scFace: FACES.def || 0, single: false, leaf: 0, variant: 0 };
+  const applyFace = () => {
+    const list = state.simp ? FACES.sc : FACES.tc;
+    const idx = state.simp ? state.scFace : state.tcFace;
+    const role = (list[idx] && list[idx].role) || 'kai';
+    document.documentElement.style.setProperty('--face', `var(${state.simp ? '--fsc-' + role : '--' + role})`);
+  };
+  const rebuildSel = () => {
+    const sel = $('faceSel');
+    if (!sel) return;
+    const list = state.simp ? FACES.sc : FACES.tc;
+    sel.innerHTML = list.map((f, i) => `<option value="${i}">${convUi(f.label)}</option>`).join('');
+    sel.value = String(state.simp ? state.scFace : state.tcFace);
+  };
   const $ = (id) => document.getElementById(id);
   const curV = () => SK.variants[state.variant];
 
@@ -167,16 +181,14 @@
     book.classList.toggle('dj', !!zm.j);
     book.classList.toggle('dz', !!zm.z);
     book.classList.toggle('single', state.single);
-    document.documentElement.style.setProperty('--face', 'var(--' + SK.faces[state.face].role + ')');
+    applyFace();
     document.documentElement.lang = state.simp ? 'zh-Hans' : 'zh-Hant';
 
     $('navToc').textContent = convUi(SK.navLabel || '目錄');
     $('btnZh').textContent = state.simp ? '简体' : '繁体';
     $('btnDu').textContent = convUi(zm.n);
     $('btnJie').textContent = '界行';
-    const sel = $('faceSel');
-    [...sel.options].forEach((o, i) => { o.textContent = convUi(SK.faces[i].label); });
-    sel.value = String(state.face);
+    rebuildSel();
     const zsel = $('zhuwenSel');
     [...zsel.options].forEach((o, i) => { o.textContent = convUi(SK.variants[i].name); });
     zsel.value = String(state.variant);
@@ -207,16 +219,11 @@
     sync();
   }
 
-  $('btnZh').onclick = () => { state.simp = !state.simp; render(); sync(); };
+  $('btnZh').onclick = () => { state.simp = !state.simp; rebuildSel(); applyFace(); render(); sync(); };
   $('btnDu').onclick = () => { state.zhu = (state.zhu + 1) % ZHU.length; sync(); };
   $('btnJie').onclick = () => { state.jie = !state.jie; sync(); };
-  SK.faces.forEach((f, i) => {
-    const o = document.createElement('option');
-    o.value = String(i);
-    o.textContent = f.label;
-    $('faceSel').appendChild(o);
-  });
-  $('faceSel').onchange = (e) => { state.face = +e.target.value; sync(); };
+  rebuildSel();
+  $('faceSel').onchange = (e) => { if (state.simp) state.scFace = +e.target.value; else state.tcFace = +e.target.value; applyFace(); };
   SK.variants.forEach((v, i) => {
     const o = document.createElement('option');
     o.value = String(i);
@@ -305,9 +312,9 @@
       rail.classList.remove('open');
       railTgl.setAttribute('aria-expanded', 'false');
     }
-    if (e.key === 'ArrowLeft') go(1);
-    if (e.key === 'ArrowRight') go(-1);
+    if (e.key === 'ArrowLeft') go(-1);   // 左箭头 = 前叶（往上页）
+    if (e.key === 'ArrowRight') go(1);   // 右箭头 = 后叶（往下页）
   });
 
-  render(); sync();
+  applyFace(); render(); sync();
 })();

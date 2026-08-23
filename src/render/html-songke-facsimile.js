@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const OpenCC = require('opencc-js');
-const { loadRegistry, resolveFace } = require('../fonts/fonts');
+const { loadRegistry, resolveFace, resolveScFaces } = require('../fonts/fonts');
 
 const _t2s = OpenCC.Converter({ from: 'tw', to: 'cn' });
 
@@ -59,6 +59,11 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
     faceCss += r.faceCss;
     warnings.push(...r.warnings);
   }
+  // 简体轨（独立字面列表）：--fsc-<id> 变量 + .fsc-* 切换规则
+  const sc = resolveScFaces(meta, registry, distWorkDir);
+  warnings.push(...sc.warnings);
+  const scVars = sc.roles.map((r) => `--fsc-${r.id}:${r.stack};`).join('');
+  faceCss += sc.roles.map((r) => `.fsc-${r.id}{--face:var(--fsc-${r.id})}`).join('\n');
 
   const payload = {
     id: meta.id,
@@ -75,6 +80,9 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
     fixes: grid.fixes || [],
     marks: grid.marks || [],                 // 句读朱点格清单（grid-to-work 自 punctuated.json 映回）
     faces: Object.entries(meta.faces || {}).map(([role, f]) => ({ role, label: f.label || role })),
+    facesSc: sc.roles.map((r) => ({ role: r.id, label: r.label })),
+    defaultSc: sc.def,
+    defaultScript: meta.defaultScript || 'tc',
     colophon: fm.colophon || '',
     navLabel: meta.book && meta.book.id ? '目錄' : '藏書',
   };
@@ -93,7 +101,7 @@ function renderSongkeFacsimileHtml(tree, opts = {}) {
 <meta name="theme-color" content="#221d18">
 <title>${esc(docTitle)}</title>
 <style>
-:root{${Object.entries(stacks).map(([role, s]) => `--${role}:${s || 'serif'};`).join('')}}
+:root{${Object.entries(stacks).map(([role, s]) => `--${role}:${s || 'serif'};`).join('')}${scVars}}
 ${faceCss}
 ${CSS()}
 </style>
@@ -146,6 +154,7 @@ ${CSS()}
 <script>
 window.SKF=${JSON.stringify(payload)};
 window.T2S=${JSON.stringify(buildT2S(tree))};
+window.FACES={tc:${JSON.stringify(payload.faces)},sc:${JSON.stringify(payload.facesSc)},def:${JSON.stringify(payload.defaultSc)},defScript:${JSON.stringify(payload.defaultScript)}};
 ${JS()}
 </script>
 </body></html>`;
