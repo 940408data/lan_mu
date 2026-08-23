@@ -19,6 +19,21 @@
     if (n < 10) return DIG[n];
     if (n < 20) return '十' + (n % 10 ? DIG[n % 10] : '');
     if (n < 100) return DIG[Math.floor(n / 10)] + '十' + (n % 10 ? DIG[n % 10] : '');
+    if (n < 1000) {
+      const b = Math.floor(n / 100), r = n % 100;
+      const head = (b === 1 ? '一' : DIG[b]) + '百';
+      if (r === 0) return head;
+      if (r < 10) return head + '零' + DIG[r];
+      if (r < 20) return head + '一十' + (r % 10 ? DIG[r % 10] : '');
+      return head + DIG[Math.floor(r / 10)] + '十' + (r % 10 ? DIG[r % 10] : '');
+    }
+    if (n < 10000) {
+      const q = Math.floor(n / 1000), r = n % 1000;
+      const head = (q === 1 ? '一' : DIG[q]) + '千';
+      if (r === 0) return head;
+      if (r < 100) return head + '零' + (r < 10 ? DIG[r] : DIG[Math.floor(r / 10)] + '十' + (r % 10 ? DIG[r % 10] : ''));
+      return head + numCn(r);
+    }
     return String(n);
   };
 
