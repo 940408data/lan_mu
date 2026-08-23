@@ -31,6 +31,54 @@ function buildManuscript(work) {
   const { meta } = work;
   if (meta.layout !== 'manuscript') throw new Error(`作品 ${work.id} 的版式不是 manuscript: ${meta.layout}`);
   const mc = meta.manuscript || {};
+  // 坐标直出（优先）：有 grid.yaml 时按 (页/列/行) 全真还原，与 songke-facsimile 同一纪律；
+  // 无 grid.yaml 才落回行流布重排（旧 text.yaml 通路）。
+  if (work.grid && Array.isArray(work.grid.pages) && work.grid.pages.length) {
+    return buildFromGrid(work, meta, mc);
+  }
+  return buildFromText(work, meta, mc);
+}
+
+/** 坐标直出：grid.pages[].cells[]=[col,row,char] → 每半葉 cols 列，每列 chars 按 row 定位（空行留白）。 */
+function buildFromGrid(work, meta, mc) {
+  const grid = work.grid;
+  const COLS = (grid.layout && grid.layout.cols) || 8;
+  const ROWS = (grid.layout && grid.layout.rows) || 20;
+  const halves = [];
+  let totalChars = 0, totalCols = 0;
+  for (const pg of grid.pages) {
+    const cols = [];
+    for (let c = 1; c <= COLS; c++) {
+      const chars = new Array(ROWS).fill('');
+      for (const cell of pg.cells || []) {
+        if (cell[0] === c) {
+          const r = cell[1];
+          if (r >= 1 && r <= ROWS) chars[r - 1] = cell[2];
+        }
+      }
+      const real = chars.filter(Boolean).length;
+      if (!real) { cols.push({ chars, marks: [], doudu: [], drop: 0 }); continue; } // 空列占位（保列序）
+      totalChars += real;
+      totalCols++;
+      const ri = halves.length * COLS + c; // 稳定行号（笔墨/句读种子）
+      cols.push({ chars, marks: glyphMarks(meta.seed, ri + 1, ROWS), doudu: douduOf(meta.seed, ri, chars), drop: 0 });
+    }
+    halves.push(cols);
+  }
+  if (!halves.length) throw new Error(`作品 ${work.id} 无坐标页（grid.yaml）`);
+  if (halves.length % 2) halves.push([]); // 奇数半葉：末葉左半留白
+  const leaves = [];
+  for (let L = 0; L < halves.length / 2; L++) leaves.push({ right: halves[L * 2] || [], left: halves[L * 2 + 1] || [] });
+  const stats = { chars: totalChars, rows: totalCols, leaves: leaves.length };
+  return {
+    kind: 'manuscript', meta, conf: mc, leaves,
+    seals: work.seals || [], paper: work.paperDecor || {}, book: work.book || null,
+    faces: meta.faces, fallbackStacks: meta.fallbackStacks, stats,
+  };
+}
+
+/** 行流布重排（旧通路）：title 独立成行，j 块按 per 切行。 */
+function buildFromText(work, meta, mc) {
   const per = mc.charsPerRow || 20;
   const rph = mc.rowsPerHalf || 8;
   const drop = mc.titleDrop == null ? 2 : mc.titleDrop;

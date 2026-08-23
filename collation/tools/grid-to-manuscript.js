@@ -88,6 +88,23 @@ if (flags.write) {
   const outFile = path.join(outDir, 'text.yaml');
   fs.writeFileSync(outFile, YAML.stringify(doc, { lineWidth: 0 }));
   console.log('✓ 写入 ' + outFile + ' (' + Math.round(fs.statSync(outFile).size / 1024) + ' KB)');
+
+  // 坐标快照 grid.yaml（[col,row,char] 三元组，只含有字格）——manuscript 引擎按坐标直出，
+  // 与 songke-facsimile 同一还原纪律：页/列/行全真，空格/空列由 layout 隐含自然留白。
+  const gridDoc = {
+    work: workId,
+    layout: { cols: N_COLS, rows: N_ROWS },
+    pages: (tr.pages || []).map((pg) => ({
+      n: pg.n,
+      cells: (pg.cells || []).filter((c) => String(c.char || '').trim())
+        .map((c) => [c.col, c.row, String(c.char).trim()]),
+    })),
+    labels: [], sections: [], fixes: [], marks: [],
+  };
+  const gridFile = path.join(outDir, 'grid.yaml');
+  fs.writeFileSync(gridFile, YAML.stringify(gridDoc, { lineWidth: 0 }));
+  const nCells = gridDoc.pages.reduce((s, p) => s + p.cells.length, 0);
+  console.log('✓ 写入 ' + gridFile + '（' + gridDoc.pages.length + ' 半葉 ' + nCells + ' 有字格）');
 } else {
-  console.log('(dry-run) 加 --write 写入 works/' + newId + '/text.yaml');
+  console.log('(dry-run) 加 --write 写入 works/' + newId + '/text.yaml + grid.yaml');
 }

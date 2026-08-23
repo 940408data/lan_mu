@@ -32,6 +32,7 @@ function colHtml(row, colIdx, withDots) {
   const left = right - G.char;
   const out = [`<div class="ms-col" style="left:${left}px">`];
   row.chars.forEach((ch, ci) => {
+    if (!ch) return; // 坐标直出：空行留白（不占 DOM，但 top 仍由 ci 行号决定）
     const top = G.top + ci * G.charPitch + (row.drop || 0) * G.charPitch;
     const m = row.marks[ci];
     out.push(`<i class="ms-ch k${m.k}" style="top:${top}px;transform:${chTransform(m)}">${esc(ch)}</i>`);
