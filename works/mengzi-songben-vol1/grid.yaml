@@ -2,7 +2,7 @@ work: 孟子集注卷一
 base:
   file: grid-transcribe.json
   sha256: c5e6364098d6510f1e2712272566f379139838cb81518aa8db761a5c28cac82a
-exportedAt: 2026-08-21T06:58:46.312Z
+exportedAt: 2026-08-23T00:24:06.794Z
 layout:
   cols: 16
   rows: 15
@@ -82,88 +82,88 @@ pages:
         - 6
         - 王
       - - 13
-        - 2
+        - 1
         - 梁
       - - 13
-        - 3
+        - 2
         - 惠
       - - 13
-        - 4
+        - 3
         - 王
       - - 13
-        - 5
+        - 4
         - 魏
       - - 13
-        - 6
+        - 5
         - 侯
       - - 13
-        - 7
+        - 6
         - 罃
       - - 13
-        - 8
+        - 7
         - 也
       - - 13
-        - 9
+        - 8
         - 都
       - - 13
-        - 10
+        - 9
         - 大
       - - 13
-        - 11
+        - 10
         - 梁
       - - 13
-        - 12
+        - 11
         - 僭
       - - 13
-        - 13
+        - 12
         - 稱
       - - 13
-        - 14
+        - 13
         - 王
       - - 13
-        - 15
+        - 14
         - 謚
       - - 14
-        - 2
+        - 1
         - 曰
       - - 14
-        - 3
+        - 2
         - 惠
       - - 14
-        - 4
+        - 3
         - 史
       - - 14
-        - 5
+        - 4
         - 記
       - - 14
-        - 6
+        - 5
         - 惠
       - - 14
-        - 7
+        - 6
         - 王
       - - 14
-        - 8
+        - 7
         - 三
       - - 14
-        - 9
+        - 8
         - 十
       - - 14
-        - 10
+        - 9
         - 五
       - - 14
-        - 11
+        - 10
         - 年
       - - 14
-        - 12
+        - 11
         - 卑
       - - 14
-        - 13
+        - 12
         - 禮
       - - 14
-        - 14
+        - 13
         - 厚
       - - 14
-        - 15
+        - 14
         - 幣
       - - 15
         - 2
@@ -2106,130 +2106,130 @@ pages:
   - n: 12
     cells:
       - - 1
-        - 2
+        - 1
         - 時
       - - 1
-        - 3
+        - 2
         - 天
       - - 1
-        - 4
+        - 3
         - 下
       - - 1
-        - 5
+        - 4
         - 之
       - - 1
-        - 6
+        - 5
         - 人
       - - 1
-        - 7
+        - 6
         - 惟
       - - 1
-        - 8
+        - 7
         - 利
       - - 1
-        - 9
+        - 8
         - 是
       - - 1
-        - 10
+        - 9
         - 求
       - - 1
-        - 11
+        - 10
         - 而
       - - 1
-        - 12
+        - 11
         - 不
       - - 1
-        - 13
+        - 12
         - 復
       - - 1
-        - 14
+        - 13
         - 知
       - - 1
-        - 15
+        - 14
         - 有
       - - 2
-        - 2
+        - 1
         - 仁
       - - 2
-        - 3
+        - 2
         - 義
       - - 2
-        - 4
+        - 3
         - 故
       - - 2
-        - 5
+        - 4
         - 孟
       - - 2
-        - 6
+        - 5
         - 子
       - - 2
-        - 7
+        - 6
         - 言
       - - 2
-        - 8
+        - 7
         - 仁
       - - 2
-        - 9
+        - 8
         - 義
       - - 2
-        - 10
+        - 9
         - 而
       - - 2
-        - 11
+        - 10
         - 不
       - - 2
-        - 12
+        - 11
         - 言
       - - 2
-        - 13
+        - 12
         - 利
       - - 2
-        - 14
+        - 13
         - 所
       - - 2
-        - 15
+        - 14
         - 以
       - - 3
-        - 2
+        - 1
         - 拔
       - - 3
-        - 3
+        - 2
         - 本
       - - 3
-        - 4
+        - 3
         - 塞
       - - 3
-        - 5
+        - 4
         - 源
       - - 3
-        - 6
+        - 5
         - 而
       - - 3
-        - 7
+        - 6
         - 救
       - - 3
-        - 8
+        - 7
         - 其
       - - 3
-        - 9
+        - 8
         - 弊
       - - 3
-        - 10
+        - 9
         - 此
       - - 3
-        - 11
+        - 10
         - 聖
       - - 3
-        - 12
+        - 11
         - 賢
       - - 3
-        - 13
+        - 12
         - 之
       - - 3
-        - 14
+        - 13
         - 心
       - - 3
-        - 15
+        - 14
         - 也
       - - 4
         - 1
@@ -2482,7 +2482,7 @@ pages:
         - 不
       - - 12
         - 1
-        - 日
+        - 曰
       - - 12
         - 2
         - 成
@@ -2898,7 +2898,7 @@ pages:
         - 不
       - - 6
         - 5
-        - 日
+        - 曰
       - - 6
         - 6
         - 不
@@ -2907,7 +2907,7 @@ pages:
         - 終
       - - 6
         - 8
-        - 日
+        - 曰
       - - 6
         - 9
         - 也
@@ -3569,21 +3569,18 @@ pages:
         - 此
       - - 6
         - 10
-        - 日
-      - - 6
-        - 11
         - 何
       - - 6
-        - 12
+        - 11
         - 時
       - - 6
-        - 13
+        - 12
         - 亡
       - - 6
-        - 14
+        - 13
         - 乎
       - - 6
-        - 15
+        - 14
         - 若
       - - 7
         - 2
@@ -9227,7 +9224,7 @@ pages:
         - 暇
       - - 4
         - 7
-        - 日
+        - 曰
       - - 4
         - 8
         - 修
@@ -12273,7 +12270,7 @@ pages:
         - 鑄
       - - 7
         - 13
-        - 鍾
+        - 鐘
       - - 7
         - 14
         - 成
@@ -14082,7 +14079,7 @@ pages:
         - 前
       - - 6
         - 12
-        - 日
+        - 曰
       - - 6
         - 13
         - 之
@@ -22666,7 +22663,7 @@ fixes:
     from: 平
     to: 乎
     evidence: oldOcr=∅; modern=乎; human=modern
-    decidedAt: 2026-08-21T06:26:08.320Z
+    decidedAt: 2026-08-21T01:57:53.714Z
   - kind: sub
     page: 8
     col: 14
@@ -22674,25 +22671,63 @@ fixes:
     from: 王
     to: ""
     evidence: oldOcr=∅; modern=∅; human=oldocr
-    decidedAt: 2026-08-21T06:26:08.320Z
-colShifts:
-  - page: 8
-    col: 13
-    shift: 1
-  - page: 8
-    col: 14
-    shift: 1
-  - page: 12
-    col: 1
-    shift: 1
-  - page: 12
-    col: 2
-    shift: 1
-  - page: 12
-    col: 3
-    shift: 1
-colDels:
-  - page: 8
-    col: 14
-    row: 3
+    decidedAt: 2026-08-21T01:57:53.714Z
+  - kind: sub
+    page: 14
+    col: 6
+    row: 10
+    from: 日
+    to: ""
+    evidence: oldOcr=曰; modern=∅; human=modern
+    decidedAt: 2026-08-21T01:57:53.714Z
+  - kind: sub
+    page: 12
+    col: 12
+    row: 1
+    from: 日
+    to: 曰
+    evidence: oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 13
+    col: 6
+    row: 5
+    from: 日
+    to: 曰
+    evidence: oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 13
+    col: 6
+    row: 8
+    from: 日
+    to: 曰
+    evidence: oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 23
+    col: 4
+    row: 7
+    from: 日
+    to: 曰
+    evidence: oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 31
+    col: 6
+    row: 12
+    from: 日
+    to: 曰
+    evidence: oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 28
+    col: 7
+    row: 13
+    from: 鍾
+    to: 鐘
+    evidence: oldOcr=∅; modern=鐘; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+colShifts: []
+colDels: []
 marks: []

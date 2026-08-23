@@ -4483,6 +4483,67 @@
       "to": "",
       "evidence": "oldOcr=曰; modern=∅; human=modern",
       "decidedAt": "2026-08-21T01:57:53.714Z"
+    },
+    {
+      "kind": "sub",
+      "page": 12,
+      "col": 12,
+      "row": 1,
+      "from": "日",
+      "to": "曰",
+      "evidence": "oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 13,
+      "col": 6,
+      "row": 5,
+      "from": "日",
+      "to": "曰",
+      "evidence": "oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 13,
+      "col": 6,
+      "row": 8,
+      "from": "日",
+      "to": "曰",
+      "evidence": "oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 23,
+      "col": 4,
+      "row": 7,
+      "from": "日",
+      "to": "曰",
+      "evidence": "oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 31,
+      "col": 6,
+      "row": 12,
+      "from": "日",
+      "to": "曰",
+      "evidence": "oldOcr=曰; modern=曰; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 28,
+      "col": 7,
+      "row": 13,
+      "from": "鍾",
+      "to": "鐘",
+      "evidence": "oldOcr=∅; modern=鐘; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
     }
-  ]
+  ],
+  "colDels": []
 }
