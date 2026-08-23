@@ -1,103 +1,111 @@
-# 宋版版心刻工统一 + 页码汉字生效 + 书库合并 + 底本标记修正
+# 4 项修正：shuku 底本 + 目录页卷次 + 字体双轨 + 换页键
 
 ## Context
 
-三个关联问题：
-1. **版心 gong（刻工位）+ 页码**：上一轮已改 numCn 百千位（songke-facsimile/songke/aggregate 三处源码）+ 孟子 14 卷 gong→蘭木，但 **viewer JS 内联进 HTML（`html-songke.js:16`/`html-songke-facsimile.js:14` readFileSync），须 rebuild 才生效**。且 gong 只改了孟子 14 卷，其余 380+ songke 作品仍是「牛山/某/空」占位。
-2. **书库组织**：论语/孟子每卷 book.id 各异（`lunyu-songben-volN`）→ aggregate.js 按 book.id 分桶，每卷独立一条书影（共 24 条）。真实逻辑应只列书名，卷在目录页引用。
-3. **底本标记**：B 类「善本底」系列（daxue-songben 等）subtitle 误标「当涂郡斋刊递修本」但 colophon 自承「通行本為據」；C 类 facsimile（真宋当涂郡斋本）title 含「（影刻直出）」须去，底本须标【宋当涂郡斋本】。
+用户反映 4 个显示/交互问题（http://111.229.37.224:8125/shuku/）：
+1. **shuku 底本**：A 类仍显当涂郡本（dev server 旧进程）、C 类未显示【宋当涂郡斋本】。
+2. **目录页卷次**：C 类（论语/孟子）目录页全显统一"論語/集注"，无"第几卷"。
+3. **字体双轨**：songke/songke-facsimile 单轨 faces，切简体仍用繁体字体（TC 适配差）；应照 scroll 双轨（faces 繁 + facesSc 简，独立三套）。
+4. **换页键**：右键应往下页（后叶）、左键往上页（前叶），现相反。
 
-用户已确认范围：① gong **全部 songke（380+，含注疏「某」）统一蘭木**；② A 类排版本底本保持「宋刻本式樣」不改；③ 「书签」title 去后缀 + slip 核（已无）；④ 中庸 facsimile 待后新建，本次不涉及。
+## 问题1：shuku 底本（home.js BOOK_META）
 
-## 作品分类（已查证）
+shuku 卡片底本 = `BOOK_META[book.id].diben`（`aggregate.js:104` 按 book.id 查 + `render.js:77` 渲 `<span class="bi">`）。
+- A 类（daxue/zhongyong/lunyu/mengzi）已改现代通行本，dist 静态已正确（4×现代通行本 0 当涂）。**dev server serve.js 旧进程 require cache 缓存旧 BOOK_META**——重启 serve.js 即刷新。
+- **C/B 类 book.id 在 BOOK_META 无 key** → diben undefined 不显示底本（默认 collation AI整理）。
 
-| 类 | 引擎 | 作品 | 底本 | 本次处理 |
-|---|---|---|---|---|
-| A 排版本 | songke | daxue/zhongyong/lunyu/mengzi + lunyu2-10/mengzi2-14 + daxuexu/zhongyongxu/lunyuxu/lunyudu/mengzixu | 现代通行本（subtitle「宋刻本式樣」是版式描述；底本 badge 在 home.js diben 误标当涂） | gong→蘭木；home.js diben→现代通行本 |
-| B 善本底 | songke | daxue-songben/zhongyong-songben/daxue-songben-g5/zhongyong-songben-g5/zhongyongxu-songben | 真当涂郡本（songke 引擎非 facsimile，试验性） | gong→蘭木；title 善本底→【当涂试验】；subtitle 保留当涂 |
-| C 影刻直出 | songke-facsimile | daxue-facsimile/lunyu-songben-vol{1,2,3,4,7,8,9,10}/mengzi-songben-vol{1..14}/mengzi-xushu | 真宋当涂郡斋本 | gong→蘭木（孟子14已改，余10待）；title 去「（影刻直出）」；subtitle→宋当涂郡斋本；book.id 统一 |
-| D 注疏 | songke | lunyu-juan1-20/mengzi-juan1-15/liji-juan*/zuozhuan-juan*/zhouyi*/shangshu* 等 | 邢昺/孙奭等注疏 | gong「某/空」→蘭木；底本不改 |
+**修复**：`src/site/home.js` BOOK_META 加 key（仿 daxue 行）：
+```js
+'lunyu-songben':     { collation: '精校', diben: '宋当涂郡斋本' },
+'mengzi-songben':    { collation: '精校', diben: '宋当涂郡斋本' },
+'daxue-facsimile':   { collation: '精校', diben: '宋当涂郡斋本' },
+'daxue-songben':     { collation: '初校', diben: '宋当涂郡斋本' },  // B类当涂试验
+'zhongyong-songben':{ collation: '初校', diben: '宋当涂郡斋本' },
+```
 
-## 任务 1：gong 全部统一蘭木 + numCn rebuild
+## 问题2：目录页卷次（改 24 C 类 meta entry）
 
-### 1a. gong → 蘭木（node 批量脚本）
-扫所有 `works/*/meta.yaml`，对 `layout: songke` 改 `meta.songke.gong` 数组首元素→蘭木（空数组 push 蘭木）；对 `layout: songke-facsimile` 改 `meta.facsimile.gong`。孟子 14 卷已改（脚本幂等跳过）。
-- 字体：蘭木二字已在 `mark: 蘭木` 收入子集（`src/fonts/subset.js:62` metaChars 含 mark）。
+`render.js` tocCols（L425-436）entry big=`v.entry.big` sub=`v.entry.sub`，不用 order。A 类 entry 已手写（`big:卷之一 sub:梁惠王章句上` / `學而第一　為政第二`）。C 类 entry 固定（big:孟子/論語 sub:集注）无卷次无篇名。
 
-### 1b. numCn rebuild 生效
-源码已改三处（songke-facsimile.js:17 / songke.js:40 / aggregate.js:15）。rebuild：
-- 全部 songke + facsimile 作品 `--only=html`（约 404 个）。脚本批量循环 `node tools/cli.js build --work=<id> --only=html`。
-- 站点页 `node tools/gen-index.js` 重建（numCn + gong + 书目合并一并生效）。
+**修复**（用户确认改 meta entry，与 A 类一致）：脚本批量改 24 C 类 meta 的 `book.entry`：
+- `big: 卷之{numCn(order)}`（order 1→卷之一，14→卷之十四；xushu order 0 → `big: 序`）
+- `sub: 篇名`（从 subtitle 提：去前两段"宋当涂郡斋本·逐格还原·"，剩篇名段；多篇的 `·` → `　`全角空格，与 A 类 lunyu 一致）
+  - mengzi-vol1: `big: 卷之一, sub: 梁惠王章句上`
+  - lunyu-vol1: `big: 卷之一, sub: 學而第一　爲政第二`
+  - daxue-facsimile: `big: 卷之一, sub: 大學章句`（单卷，从 subtitle 提）
+  - mengzi-xushu: `big: 序, sub: 孟子集注序說`
+- renderer 不动（tocCols 仍读 v.entry.big/sub，现在 C 类 entry 有卷次篇名）。
 
-## 任务 2：书库书目合并（25 个 meta book.id 统一）
+## 问题3：字体双轨（433 meta + 2 渲染器 + 2 viewer）
 
-`src/site/aggregate.js:72` 按 `meta.book.id` 分桶合并同书各卷。改 25 个 facsimile meta 的 book.id：
-- `lunyu-songben-vol{1..10}` → `book.id: lunyu-songben`，`title: 論語集注`（去「（影刻直出）」与 work title 一致），order/entry 保持
-- `mengzi-songben-vol{1..14}` + `mengzi-xushu` → `book.id: mengzi-songben`，`title: 孟子集注`，xushu `order: 0`（<1 自动「並序」caption）
+`load.js`/`fonts.js`/`subset.js` **已支持双轨**（`scRolesOf`/`resolveScFaces`/`scFallbackOf` 通用，不检查 layout；subset:79-82 已用 scRolesOf）。无需改。
 
-合并后：`/shuku/` 各一条书影（凡十卷 / 凡十四卷並序）；`/books/lunyu-songben/`、`/books/mengzi-songben/` 目录页列各卷 entry。
+### 3a. 批量补 433 meta facesSc + fallbackStacksSc + defaultSc
+用户确认批量补（各作品独立三套，与 scroll 一致）。统一三套（kai/song/xing → SC 字体）：
+```yaml
+facesSc:
+  kai: { label: 楷體 }                              # 系统 SC 楷回退
+  song: { label: 宋體 }                             # 系统 SC 宋回退
+  xing: { font: liushang-xingyi, label: 行書 }      # A级嵌入（fonts.yaml 已登记）
+defaultSc: kai
+fallbackStacksSc:
+  kai: '"Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","TW-Kai","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif SC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti SC","STKaiti","楷体","KaiTi","Noto Serif CJK SC",serif'
+```
+脚本在 433 meta 的 `faces:` 块后插 `facesSc:`+`defaultSc:`，`fallbackStacks:` 后插 `fallbackStacksSc:`。
 
-配套：
-- `src/site/home.js` BOOK_META 若按旧 id（`lunyu-songben-vol1`）配须更新为新 id（待查）。
-- 清理旧 dist：`rm -rf dist/books/lunyu-songben-vol* dist/books/mengzi-songben-vol* dist/books/mengzi-xushu`。
-- 首页 panel `BOOK_ORDER` 只含 `lunyu/mengzi`（旧排版本），影刻本是否上首页本次可选（用户未要求）。
+### 3b. html-songke.js + html-songke-facsimile.js 加双轨（仿 scroll html.js:96-115）
+- require 加 `resolveScFaces`（`src/fonts/fonts.js`）
+- 简体轨解析：`const sc = resolveScFaces(meta, registry, distWorkDir);`
+- CSS：`--fsc-{id}` 变量 + `.fsc-{id}{--face:var(--fsc-{id})}` 切换规则（注入 faceCss）
+- `:root` 加 `--fsc-*` 变量
+- payload 加 `facesSc: sc.roles.map(r=>({role:r.id,label:r.label}))`, `defaultSc: sc.def`, `defaultScript: meta.defaultScript||'tc'`
+- `<script>` 烘焙 `FACES={tc:[...],sc:[...],def:defaultSc,defScript:defaultScript}`（仿 scroll html.js:232）
 
-## 任务 3：底本标记
+### 3c. songke.js + songke-facsimile.js viewer 双轨（仿 scroll viewer.js:32-76）
+- state 加 `tcFace:0, scFace:FACES.def||0, simpOn:FACES.defScript==='sc'`（替代单一 face）
+- `applyFace()`：`simpOn ? --fsc-{scRole} : --{tcRole}` 设 `--face`
+- `rebuildSel()`：按 simpOn 从 FACES.sc/tc 重建字面下拉
+- `btnZh.onclick`：切 simpOn + rebuildSel + applyFace + render
+- `faceSel.onchange`：区分 simpOn 存 scFace/tcFace
+- CSS 无需改（`--face` 变量机制，渲染器注入 `--fsc-*`+`.fsc-*` 自动生效）
 
-### 3a. home.js BOOK_META（A 类首页四书 panel 底本 badge）
-`src/site/home.js:44` BOOK_META 的 daxue/zhongyong/lunyu/mengzi（A 类排版本）`diben: '當塗郡本'`→`'现代通行本'`（A 类底本实为现代通行本，误标当涂——badge 显示 [精校]【当涂郡本】→[精校]【现代通行本】）。collation 保持。
-facsimile（真宋当涂郡斋本）不在 BOOK_META（首页 panel `books:['daxue','zhongyong','lunyu','mengzi']` 列 A 类旧排版本），其底本【宋当涂郡斋本】标在 meta subtitle/sources（见 3c）。若要首页改展示影刻本须加 BOOK_META facsimile 条目 + 改 panel books——本次可选，用户未要求。
+## 问题4：换页键（对调 ArrowLeft/Right）
 
-### 3b. B 类善本底（5 个：底本真当涂郡本，songke 引擎非 facsimile，标【当涂试验】）
-- `title: 大學章句（善本底）` → `大學章句【当涂试验】`（标当涂试验，示底本当涂但用 songke 引擎非影刻直出）；book.title 同步
-- `subtitle: 当涂郡斋刊递修本 · 经注分栏` **保留**（B 类底本真当涂郡本，不改）
-- `colophon` 措辞「文本以朱熹《四書章句集注》通行本為據，校錄重排，與宋本原刻容有出入」与当涂底矛盾，建议改「以当涂郡斋刊递修本为底，校录重排」（执行时定，或保留体现试验性）
-- gong 牛山→蘭木（任务 1a）
-
-### 3c. C 类 facsimile（24 个：真宋当涂郡斋本）
-- `title: 大學章句（影刻直出）` → `大學章句`；`論語集注·卷一（影刻直出）` → `論語集注·卷一`；`孟子集注·序說（影刻直出）` → `孟子集注·序說`（去后缀）
-- `subtitle: 当涂郡斋刊递修本 · 逐格还原` → `宋当涂郡斋本 · 逐格还原`
-- `spec`/`colophon`/`aboutHtml` 的「當塗郡齋刊遞修本」→「宋当涂郡斋本」（统一简称）
-- `sources.label` 统一为 `宋当涂郡斋本《四书章句集注》（中国国家图书馆藏）`（daxue-facsimile 当前是「朱熹《四書章句集注》」wikisource，须改；mengzi 已近，简化）
-- `slip: 宋本XXX` 确认无「影刻直出」（已确认，不改）
-- gong 牛山→蘭木（任务 1a，论语 8+大学 1+序 1 待改）
-- book.title 去后缀与 work title 一致（任务 2）
-
-### 3d. A 类排版本：保持「宋刻本式樣」不改
+agent 确认：两 viewer 无鼠标换页（仅键盘+按钮），ArrowLeft/Right 映射反了（古书右→左读直觉，但用户要顺序轴）。
+- `songke.js:308-309`：`ArrowLeft→go(-1)` 前叶，`ArrowRight→go(1)` 后叶（原 ArrowLeft→go(1)/ArrowRight→go(-1)）
+- `songke-facsimile.js:285-286`：`ArrowLeft→btnPrev.click()`，`ArrowRight→btnNext.click()`（原反）
+- 删/改注释"左箭头=向更左（阅读前进）"
 
 ## 改动文件清单
 
-**meta.yaml（批量）**：
-- B 类 5 个：daxue-songben / zhongyong-songben / daxue-songben-g5 / zhongyong-songben-g5 / zhongyongxu-songben
-- C 类 24 个：daxue-facsimile / lunyu-songben-vol{1,2,3,4,7,8,9,10} / mengzi-songben-vol{1..14} / mengzi-xushu
-- A 类约 20 个 + D 类约 360 个：仅 gong→蘭木（node 脚本批量）
-
-**源码**：src/viewer/songke-facsimile.js / songke.js / site/aggregate.js（numCn 已改）+ src/site/home.js（BOOK_META.diben 四书 当涂→当代流行本）
-
-**重建**：全部 songke+facsimile HTML（--only=html）+ gen-index 站点页 + dist 旧 books 清理
+- `src/site/home.js`（BOOK_META 加 5 key）
+- 24 C 类 meta（entry 卷次篇名 + facesSc/fallbackStacksSc/defaultSc）
+- 409 A/B/D meta（仅 facesSc/fallbackStacksSc/defaultSc）
+- `src/render/html-songke.js` + `src/render/html-songke-facsimile.js`（双轨注入）
+- `src/viewer/songke.js` + `src/viewer/songke-facsimile.js`（双轨切换 + 换页键对调）
 
 ## 执行顺序
 
-1. node 脚本批量改 gong（全部 songke+facsimile → 蘭木）
-2. node 脚本改 C 类 24 个 title 去后缀 + subtitle/sources→宋当涂郡斋本 + book.id 统一
-3. node 脚本改 B 类 5 个 title→【当涂试验】（subtitle 保留当涂）；改 home.js BOOK_META.diben 四书 当涂→现代通行本
-4. 批量 rebuild：四书相关（A+B+C+D 注疏四书）先 `--only=html`，再其他（zhouyi/shangshu/liji/zuozhuan/changwuzhi/zunshengbajian）
-5. `node tools/gen-index.js` 重建站点页
-6. 清理旧 dist/books
-7. 验证
+1. home.js BOOK_META 加 key（问题1）
+2. 脚本改 24 C 类 meta entry（问题2）+ 脚本补 433 meta facesSc（问题3a，24 C 类一并）
+3. html-songke.js/html-songke-facsimile.js 双轨（问题3b）
+4. songke.js/songke-facsimile.js 双轨+换页键（问题3c+问题4）
+5. 批量 rebuild songke+facsimile HTML（--only=html）+ gen-index
+6. 验证 + 提交
 
 ## 验证
 
-1. **gong**：DOM 验证 facsimile（论语/大学/孟子）+ songke（注疏一卷）版心显示「蘭木」
-2. **页码**：DOM 验证 numCn 百位（论语/孟子 p100+ → 汉字，如 p507→五百零七）
-3. **书库**：`/shuku/` 论语/孟子影刻本各一条书影（凡十卷/凡十四卷並序）；`/books/lunyu-songben/` 目录页列 10 卷 entry
-4. **底本**：facsimile title 无「（影刻直出）」，subtitle「宋当涂郡斋本」；B 类 subtitle「当代流行本」title「（通行本）」
-5. `npm run validate` 全作品通过 + `npm run verify` 幽兰保真（改 songke viewer 不影响手卷）
-6. pre-commit hook 自动跑 validate+verify（改 src/viewer 触发 verify）
+1. **shuku**：C 类书影显示"宋当涂郡斋本"badge（gen-index 后 grep dist/shuku）
+2. **目录页**：`/books/mengzi-songben/` 各卷"卷之一/梁惠王章句上"…（grep dist/books）
+3. **字体双轨**：DOM 切简体→ `--face` 切 `--fsc-*`，字面下拉重建为 SC 列表；繁简独立记忆
+4. **换页键**：ArrowLeft→前叶(leaf-1)、ArrowRight→后叶(leaf+1)
+5. `npm run validate` + `npm run verify`（改 src/viewer 触发 verify，numCn/双轨不影响手卷）
+6. pre-commit validate+verify
 
 ## 风险
 
-- **工作量大**：380+ 作品 rebuild HTML 耗时（每卷 ~10s，约 1 小时+）。分批执行，四书先验证。
-- **dist 不入 git**（.gitignore）：只提交源码 meta 改动 + 源码 numCn；dist 由生产 CI 重建。但本地预览需 rebuild。
-- **home.js BOOK_META**：若按旧 book.id 配置须同步（待执行时查 home.js 确认）。
-- **注疏 gong「某」→蘭木**：注疏（邢昺/孙奭）非朱熹集注、非兰木主轴，用户确认全改蘭木（统一版心制者署名）。
+- **433 meta facesSc 批量**：脚本幂等插入，统一三套（个别作品可后补覆盖）；liushang-xingyi A 级子集覆盖率需验证（songke 用字比 scroll 多）。
+- **dev server 缓存**：home.js 改后 serve.js 旧进程 require cache 旧 BOOK_META，需重启 serve.js（或用户硬刷新无效，因 module cache 在进程）。
+- **双轨 viewer 改动大**：songke/songke-facsimile viewer 仿 scroll，需测试繁简切换+字面选择独立记忆。

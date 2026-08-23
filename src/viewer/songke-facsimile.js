@@ -65,7 +65,8 @@
   const FISH = '<svg viewBox="0 0 40 22" preserveAspectRatio="none" aria-hidden="true">' +
     '<path d="M0 0 H40 L34.5 22 L20 12.2 L5.5 22 Z" fill="rgba(36,28,20,.88)"/></svg>';
 
-  const state = { simp: false, jie: true, zhu: 0, face: 0, leaf: 0, showFix: true };
+  const FACES = window.FACES || { tc: SK.faces || [], sc: SK.faces || [], def: 0, defScript: 'tc' };
+  const state = { simp: (FACES.defScript === 'sc'), jie: true, zhu: 0, tcFace: 0, scFace: FACES.def || 0, leaf: 0, showFix: true };
   const $ = (id) => document.getElementById(id);
 
   /* 校勘 fixes 索引："page:col:row" -> fix */
@@ -183,18 +184,28 @@
     document.documentElement.style.setProperty('--z-scale', SK.zScale || .80);
 
     const sel = $('faceSel');
-    sel.innerHTML = SK.faces.map((f, i) => `<option value="${i}">${convUi(f.label)}</option>`).join('');
-    sel.value = '0';
+    const rebuildSel = () => {
+      const list = state.simp ? FACES.sc : FACES.tc;
+      sel.innerHTML = list.map((f, i) => `<option value="${i}">${convUi(f.label)}</option>`).join('');
+      sel.value = String(state.simp ? state.scFace : state.tcFace);
+    };
+    const applyFace = () => {
+      const list = state.simp ? FACES.sc : FACES.tc;
+      const idx = state.simp ? state.scFace : state.tcFace;
+      const role = (list[idx] && list[idx].role) || 'kai';
+      const varName = state.simp ? `--fsc-${role}` : `--${role}`;
+      document.documentElement.style.setProperty('--face', `var(${varName})`);
+    };
+    rebuildSel();
     sel.onchange = () => {
-      state.face = +sel.value;
-      const role = SK.faces[state.face] && SK.faces[state.face].role;
-      document.documentElement.style.setProperty('--face', `var(--${role || 'kai'})`);
+      if (state.simp) state.scFace = +sel.value; else state.tcFace = +sel.value;
+      applyFace();
     };
 
     $('btnPrev').onclick = () => { if (state.leaf > 0) { state.leaf--; renderLeaf(); } };
     $('btnNext').onclick = () => { if (state.leaf < SK.pages.length - 1) { state.leaf++; renderLeaf(); } };
 
-    $('btnZh').onclick = () => { state.simp = !state.simp; renderLeaf(); sync(); };
+    $('btnZh').onclick = () => { state.simp = !state.simp; rebuildSel(); applyFace(); renderLeaf(); sync(); };
     $('btnJie').onclick = () => { state.jie = !state.jie; sync(); };
     $('btnDu').onclick = () => { state.zhu = (state.zhu + 1) % ZHU.length; sync(); };
     $('btnJiao').onclick = () => { state.showFix = !state.showFix; sync(); };
@@ -282,11 +293,11 @@
         rail.classList.remove('open');
         railTgl.setAttribute('aria-expanded', 'false');
       }
-      if (e.key === 'ArrowLeft') $('btnNext').click();          // 左箭头 = 向更左（阅读前进）
-      else if (e.key === 'ArrowRight') $('btnPrev').click();    // 右箭头 = 回退
+      if (e.key === 'ArrowLeft') $('btnPrev').click();          // 左箭头 = 前叶（往上页）
+      else if (e.key === 'ArrowRight') $('btnNext').click();    // 右箭头 = 后叶（往下页）
     });
 
-    document.documentElement.style.setProperty('--face', `var(--${SK.faces[0] ? SK.faces[0].role : 'kai'})`);
+    applyFace();
     renderLeaf();
     sync();
   }
