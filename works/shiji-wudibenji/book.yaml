@@ -1,0 +1,13 @@
+pages:
+  - type: cover
+    side: front
+  - type: flyleaf
+  - type: colophon
+  - type: leaves
+  - type: flyleaf
+    end: true
+  - type: cover
+    side: back
+colophon:
+  text: 此書相傳為元人所抄故又謂姜立綱筆予反覆展視自勞詫尾十數萬言無一訛字無一落字無一補綴字其字之點畫波磔以不昜為宗至小變處更見銖兩悉稱如搆淩雲臺一一衡劑而成者其為善書無疑此近代藏書家所罕有歲乙未偶得之於庶古士趙大洲館中共計二十有四本吾子孫真當以法物珍藏勿僅目為書籍已也嘉靖丁酉二月鼎臣記
+  charsPerRow: 17

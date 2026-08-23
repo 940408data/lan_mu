@@ -65,9 +65,12 @@ async function buildSubsets(work, registry, distWorkDir) {
     ? '繁體簡體界行楷體宋體經注並朱惟施白文無點單葉披覽通前後字號第半下載卷之一二三目錄藏書'
     : work.meta.layout === 'songke-facsimile'
       ? '繁體簡體上一葉下一第共校勘記字面縮放目錄藏書楷體宋體行楷'
-      : '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
+      : work.meta.layout === 'manuscript'
+        ? '繁體簡體楷體行書上一葉下一第共葉封面扉題跋寫本疊紙邊中縫無界格朱筆句讀目錄藏書'
+        : '宋體寫經行楷摹本原貌界行縮小放大卷軸說明全卷行文摹錄處夾注厘米關於本製作取材操作 ·—0123456789';
   const colophonChars = work.meta.songke ? ((work.meta.songke.colophon || '') + (work.meta.songke.spec || '') + (work.meta.songke.banxinTitle || '') + ((work.meta.songke.gong || []).join('')) + (work.sections || []).map((s) => s.volume || '').join(''))
-    : work.meta.facsimile ? ((work.meta.facsimile.colophon || '') + (work.meta.facsimile.spec || '') + (work.meta.facsimile.banxinTitle || '') + ((work.meta.facsimile.gong || []).join(''))) : '';
+    : work.meta.facsimile ? ((work.meta.facsimile.colophon || '') + (work.meta.facsimile.spec || '') + (work.meta.facsimile.banxinTitle || '') + ((work.meta.facsimile.gong || []).join('')))
+    : work.meta.manuscript ? ((work.meta.manuscript.colophon || '') + (work.meta.manuscript.spec || '')) : '';
   const text = [...new Set(chars.join('') + metaChars + uiExtra + colophonChars)].join('');
   /* 简体用字集：简体切换（T2S）后实际呈现的字形，供 sc 字体子集与缺字校验 */
   const scText = [...new Set(_t2s(text))].join('');
