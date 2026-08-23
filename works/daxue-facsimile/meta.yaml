@@ -1,6 +1,6 @@
 id: daxue-facsimile
-title: 大學章句（影刻直出）
-subtitle: 当涂郡斋刊递修本 · 逐格还原
+title: 大學章句
+subtitle: 宋当涂郡斋本 · 逐格还原
 docTitle: 大學章句 — 宋版影刻
 mark: 蘭木
 ariaLabel: 大學章句，宋刻本逐格影刻还原，自右向左讀
@@ -9,7 +9,7 @@ era: 宋
 layout: songke-facsimile
 book:
   id: daxue-facsimile
-  title: 大學章句（影刻直出）
+  title: 大學章句
   order: 1
   entry:
     big: 大學
@@ -21,11 +21,11 @@ facsimile:
   jSize: 0.84      # 经/题字号系数（相对格宽 --u，可调）
   zSize: 0.80      # 注字号系数——接近经字（原刻注列密，此处等宽格内以字号别之）
   gong:
-    - 牛山
+    - 蘭木
   cover:
     slip: 宋本大學章句   # 首開右半書衣題簽（HTML 復刻神韻；若設 image 則用實圖，二期）
-  spec: 當塗郡齋刊遞修本　逐格影刻還原　半葉八行　行十六字　注文雙行　白口　左右雙邊　單黑魚尾
-  colophon: 此卷為逐格影刻還原：逐字坐標直出，版式悉依當塗郡齋刊遞修本原刻列陣，頁界、列界、半葉餘白、敬空闕字皆從原刻，不加重排、不作拼合。<br>文本經 AI 多智能體校勘：視覺逐格轉寫為基礎層，舊刻 OCR 與現代點校本旁掛參校，四校書官審議、人工精校裁決。凡經裁決改字之格，字下施朱記，懸停可見證據鏈。<br>原刻葉次與書影一一對應，可與底本影像逐葉互核。
+  spec: 宋當塗郡齋本　逐格影刻還原　半葉八行　行十六字　注文雙行　白口　左右雙邊　單黑魚尾
+  colophon: 此卷為逐格影刻還原：逐字坐標直出，版式悉依宋當塗郡齋本原刻列陣，頁界、列界、半葉餘白、敬空闕字皆從原刻，不加重排、不作拼合。<br>文本經 AI 多智能體校勘：視覺逐格轉寫為基礎層，舊刻 OCR 與現代點校本旁掛參校，四校書官審議、人工精校裁決。凡經裁決改字之格，字下施朱記，懸停可見證據鏈。<br>原刻葉次與書影一一對應，可與底本影像逐葉互核。
 faces:
   kai:
     font: lxgw-wenkai-tc
@@ -41,8 +41,8 @@ fallbackStacks:
   song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
   xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
 sources:
-  - label: 朱熹《四書章句集注》
+  - label: 宋當塗郡齋本《四書章句集注》（中國國家圖書館藏）
     url: https://zh.wikisource.org/zh-hant/大學章句
 aboutHtml: |-
   <h2>關於此卷</h2>
-  <p>《大學章句》為朱熹《四書章句集注》之一。此卷以當塗郡齋刊遞修本為底，經網格基校勘流水線（視覺逐格 → 參校掛格 → 四官審議 → 人工精校）產出逐格全數據，由影刻直出引擎零重排渲染：版面悉還原刻，校勘證據鏈掛格可查。</p>
+  <p>《大學章句》為朱熹《四書章句集注》之一。此卷以宋當塗郡齋本為底，經網格基校勘流水線（視覺逐格 → 參校掛格 → 四官審議 → 人工精校）產出逐格全數據，由影刻直出引擎零重排渲染：版面悉還原刻，校勘證據鏈掛格可查。</p>

@@ -1,5 +1,5 @@
 id: zhongyong-songben
-title: 中庸章句（善本底）
+title: 中庸章句【当涂试验】
 subtitle: 当涂郡斋刊递修本 · 经注分栏
 docTitle: 中庸章句 — 宋版善刻
 mark: 蘭木
@@ -9,7 +9,7 @@ era: 宋
 layout: songke
 book:
   id: zhongyong-songben
-  title: 中庸章句（善本底）
+  title: 中庸章句【当涂试验】
   order: 1
   entry:
     big: 中庸
@@ -25,7 +25,7 @@ songke:
   colsPerHalf: 8
   banxinTitle: 中庸
   gong:
-    - 牛山
+    - 蘭木
   spec: 半葉八行　行十六字　注文雙行二十五字　白口　左右雙邊　單黑魚尾
   colophon: 依<b>宋刻本</b>版式排比：一版兩個半葉，中縫為版心。經文大字單行，朱子章句小字雙行；遇章別行；注隨經而下，與純注列網格對齊，本列不敷乃另起列；雙行並進，長短相差不過一字。<br>此卷錄《中庸章句》全帙：朱子分三十三章，章旨繫於章末；朱子之序另成一卷。<br>句讀以朱筆點之，附於字之右下，不占字位，點之斜正輕重因字而變，以仿手批氣韻。<br>文本以朱熹《四書章句集注》通行本為據，校錄重排，與宋本原刻容有出入。
 faces:

@@ -42,10 +42,10 @@ const NETDISK_FOLDER = 'https://pan.baidu.com/s/1i3e4N9SLcnwJBhRD0LbQAw?pwd=6666
  * bookId = songke 的 book.id（多卷聚合）或 scroll 單卷 work id。
  * netdisk：全量 PDF 網盤鏈接（一書一鏈）；留空/缺省則走 NETDISK_FOLDER 共享文件夾。 */
 const BOOK_META = {
-  daxue:      { collation: '精校', diben: '當塗郡本', netdisk: '' },
-  zhongyong:  { collation: '精校', diben: '當塗郡本', netdisk: '' },
-  lunyu:      { collation: '初校', diben: '當塗郡本' },
-  mengzi:     { collation: '初校', diben: '當塗郡本' },
+  daxue:      { collation: '精校', diben: '现代通行本', netdisk: '' },
+  zhongyong:  { collation: '精校', diben: '现代通行本', netdisk: '' },
+  lunyu:      { collation: '初校', diben: '现代通行本' },
+  mengzi:     { collation: '初校', diben: '现代通行本' },
   xinjing:    { collation: '初校', diben: '乾隆本' },
   lanting:    { collation: '精校', diben: '神龍本' },
   chibifu:    { collation: 'AI整理', diben: '四庫本' },
