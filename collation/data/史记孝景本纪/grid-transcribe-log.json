@@ -1,0 +1,147 @@
+{
+  "work": "史记孝景本纪",
+  "model": null,
+  "endpoint": null,
+  "base": {
+    "file": "shanben-v2.json",
+    "sha256": "af4d2383ca428c1731f58cc6de8afddbcb2e8840afe962837bb5645096c87437",
+    "pendingVerify": 0
+  },
+  "logs": [
+    {
+      "page": 239,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 6656,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4326,
+          "text_tokens": 2330
+        },
+        "prompt_tokens": 2330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2144,
+          "text_tokens": 186
+        },
+        "total_tokens": 8986
+      },
+      "cost": 0.267576,
+      "currency": "CNY",
+      "filled": 111,
+      "empty": 49,
+      "cells": 160,
+      "renderTime": 12,
+      "apiTime": 126942,
+      "totalTime": 126954
+    },
+    {
+      "page": 240,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 7555,
+        "completion_tokens_details": {
+          "reasoning_tokens": 5172,
+          "text_tokens": 2383
+        },
+        "prompt_tokens": 2330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2144,
+          "text_tokens": 186
+        },
+        "total_tokens": 9885
+      },
+      "cost": 0.29994,
+      "currency": "CNY",
+      "filled": 159,
+      "empty": 1,
+      "cells": 160,
+      "renderTime": 13,
+      "apiTime": 140978,
+      "totalTime": 140991
+    },
+    {
+      "page": 241,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 5846,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3483,
+          "text_tokens": 2363
+        },
+        "prompt_tokens": 2330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2144,
+          "text_tokens": 186
+        },
+        "total_tokens": 8176
+      },
+      "cost": 0.23841599999999996,
+      "currency": "CNY",
+      "filled": 147,
+      "empty": 13,
+      "cells": 160,
+      "renderTime": 8,
+      "apiTime": 110441,
+      "totalTime": 110449
+    },
+    {
+      "page": 242,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 6789,
+        "completion_tokens_details": {
+          "reasoning_tokens": 4432,
+          "text_tokens": 2357
+        },
+        "prompt_tokens": 2330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2144,
+          "text_tokens": 186
+        },
+        "total_tokens": 9119
+      },
+      "cost": 0.272364,
+      "currency": "CNY",
+      "filled": 141,
+      "empty": 19,
+      "cells": 160,
+      "renderTime": 10,
+      "apiTime": 126474,
+      "totalTime": 126484
+    },
+    {
+      "page": 243,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 9290,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6927,
+          "text_tokens": 2363
+        },
+        "prompt_tokens": 2330,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2144,
+          "text_tokens": 186
+        },
+        "total_tokens": 11620
+      },
+      "cost": 0.36239999999999994,
+      "currency": "CNY",
+      "filled": 144,
+      "empty": 16,
+      "cells": 160,
+      "renderTime": 2,
+      "apiTime": 171916,
+      "totalTime": 171918
+    }
+  ]
+}

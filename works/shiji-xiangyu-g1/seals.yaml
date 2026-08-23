@@ -1,0 +1,15 @@
+seals:
+  - shape: square
+    chars: 鼎臣珍藏
+    x: 41
+    y: 69
+    w: 4.6
+    h: 4.6
+    rotate: -2.5
+  - shape: oval
+    chars: 金樓
+    x: 41.5
+    y: 75.5
+    w: 4.2
+    h: 8.2
+    rotate: 1

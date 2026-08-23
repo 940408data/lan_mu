@@ -8,11 +8,11 @@ category: 史
 era: 明
 layout: manuscript
 book:
-  id: shiji-xia-g1
+  id: shiji
   title: 史記（姜立綱寫本）
   order: 2
   entry:
-    big: 史記
+    big: 夏本紀
     sub: 寫本
 seed: 31002
 expect:

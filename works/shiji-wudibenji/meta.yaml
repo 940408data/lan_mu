@@ -7,13 +7,7 @@ ariaLabel: 史記五帝本紀，明人寫本雙葉，自右向左讀
 category: 史
 era: 明
 layout: manuscript
-book:
-  id: shiji-wudibenji
-  title: 史記（姜立綱寫本）
-  order: 1
-  entry:
-    big: 史記
-    sub: 寫本
+# book 块已移除（被 shiji-wudi-g1 取代，统一归入 shiji 一书）
 seed: 31001
 expect:
   chars: 768

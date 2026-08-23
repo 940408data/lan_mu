@@ -8,11 +8,11 @@ category: 史
 era: 明
 layout: manuscript
 book:
-  id: shiji-wudi-g1
+  id: shiji
   title: 史記（姜立綱寫本）
   order: 1
   entry:
-    big: 史記
+    big: 五帝本紀
     sub: 寫本
 seed: 31001
 expect:

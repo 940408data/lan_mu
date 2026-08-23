@@ -363,3 +363,63 @@ works:
       pianNames: [殷本紀]
     structure:
       - { type: 篇, name: 殷本紀 }
+
+  - id: 史记周本纪
+    title: 史記·周本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [周本紀]
+    structure:
+      - { type: 篇, name: 周本紀 }
+
+  - id: 史记秦始皇本纪
+    title: 史記·秦始皇本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [秦始皇本紀]
+    structure:
+      - { type: 篇, name: 秦始皇本紀 }
+
+  - id: 史记项羽本纪
+    title: 史記·項羽本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [項羽本紀]
+    structure:
+      - { type: 篇, name: 項羽本紀 }
+
+  - id: 史记高祖本纪
+    title: 史記·高祖本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [高祖本紀]
+    structure:
+      - { type: 篇, name: 高祖本紀 }
+
+  - id: 史记孝文本纪
+    title: 史記·孝文本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [孝文本紀]
+    structure:
+      - { type: 篇, name: 孝文本紀 }
+
+  - id: 史记孝景本纪
+    title: 史記·孝景本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [孝景本紀]
+    structure:
+      - { type: 篇, name: 孝景本紀 }

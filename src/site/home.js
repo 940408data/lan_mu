@@ -56,6 +56,7 @@ const BOOK_META = {
   chibifu:    { collation: 'AI整理', diben: '四庫本' },
   dushanjing: { collation: 'AI整理', diben: '四庫本' },
   huxinting:  { collation: 'AI整理' },
+  shiji:      { collation: 'G1逐格', diben: '傳姜立綱寫本' },
 };
 
 /* 固定文案（校書官招募 / 敬請期待頁），構建期一併入小字庫 */
