@@ -1,0 +1,16 @@
+{
+  "work": "史记夏本纪",
+  "edition": "史记·传姜立纲抄本（新加坡国立大学藏）",
+  "cols": 8,
+  "rows": 20,
+  "charPerCell": 1,
+  "hasDoubleSmall": false,
+  "jingStart": "顶格",
+  "zhuStart": null,
+  "rules": "明人写本，无界格竖行大字，半叶八行×行二十字，朱笔句读。左半叶有文字，右半叶空白（跨页格式）。",
+  "textPages": [18, 28],
+  "specialPages": [],
+  "sampledPages": [18, 22, 26],
+  "probedBy": "manual（基于书影 + OCR 结构分析）",
+  "note": "每 PDF 页 = 一个跨页（1080×1008），裁切左半叶（文字区）为 540×1008 @2x = 1080×2016 PNG。8列×20行网格对应半叶八行×行二十字。"
+}

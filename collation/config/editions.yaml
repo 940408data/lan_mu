@@ -30,6 +30,20 @@ editions:
     lang: chi_tra
     punctuated: true         # 已有标点 + 脚注 + 校记
 
+  # ── 史记·姜立纲本（明人写本，单版本，无现代对校本）──
+  - id: shiji-jiang
+    role: shanben
+    level: A
+    title: 史记·传姜立纲抄本（新加坡国立大学藏）
+    era: 明
+    holder: 新加坡国立大学
+    note: 明人写本，无界格，半叶八行行二十字，朱笔句读。全书 94 篇 1591 页（跨页）。
+    pagesRoot: 史记_姜立纲本/史记整理目录
+    ocrDir: 史记_姜立纲本ocr
+    pdfDir: 史记_姜立纲本pdf
+    lang: chi_tra
+    punctuated: true             # 原书有朱笔句读
+
 # 作品清单（实证案例）
 works:
   - id: 大学章句
@@ -318,3 +332,34 @@ works:
       pianNames: [盡心章句下]
     structure:
       - { type: 篇, name: 盡心章句下 }
+
+  # ── 史记·姜立纲本（明人写本）──
+  - id: 史记五帝本纪
+    title: 史記·五帝本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [五帝本紀]
+    structure:
+      - { type: 篇, name: 五帝本紀 }
+
+  - id: 史记夏本纪
+    title: 史記·夏本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [夏本紀]
+    structure:
+      - { type: 篇, name: 夏本紀 }
+
+  - id: 史记殷本纪
+    title: 史記·殷本紀
+    inputBook: 史记_姜立纲本
+    shanben: shiji-jiang
+    anchors:
+      mode: pian
+      pianNames: [殷本紀]
+    structure:
+      - { type: 篇, name: 殷本紀 }

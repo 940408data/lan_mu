@@ -1,0 +1,51 @@
+id: shiji-wudi-g1
+title: 史記·五帝本紀
+subtitle: 传姜立纲写本 · 明（G1 逐格直出）
+docTitle: 史記五帝本紀 — 姜立綱寫本（G1）
+mark: 蘭木
+ariaLabel: 史記五帝本紀，明人寫本雙葉，自右向左讀
+category: 史
+era: 明
+layout: manuscript
+book:
+  id: shiji-wudi-g1
+  title: 史記（姜立綱寫本）
+  order: 1
+  entry:
+    big: 史記
+    sub: 寫本
+seed: 31001
+expect:
+  chars: 1880
+  rows: 94
+  leaves: 7
+manuscript:
+  rowsPerHalf: 8
+  charsPerRow: 20
+  titleDrop: 2
+  openBlank: true
+  foreEdge: right
+  spec: 半葉八行 行二十字 大字單行 無界格 朱筆句讀
+  colophon: 傳姜立綱抄本。台閣體楷書，行疏字密，無界格；朱筆句讀點於字之右下。紙色逐葉微異，水漬、蟲蛀、霉斑、透背皆以種子程序化復現；書口見疊層紙邊，中縫作折葉陰影，以存寫本神韻。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  xing:
+    font: ac-gyosyo
+    label: 行書
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","STKaiti","楷体","KaiTi","Noto Serif CJK TC",serif'
+export:
+  base: Shiji-Manuscript
+  faces:
+    kai: Kai
+  scale: 1.6
+  quality: 88
+sources:
+  - label: 新加坡國立大學藏傳姜立綱抄本（數字化書影）
+    url: https://www.nus.edu.sg/
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《史記》傳姜立綱抄本，明人台閣體楷書精抄，現藏新加坡國立大學。此卷以 G1 視覺逐格轉寫直出（qwen3.8-max），無界格、行疏字密、朱筆句讀之寫本神韻。</p>
