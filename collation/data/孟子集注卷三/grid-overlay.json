@@ -5600,5 +5600,37 @@
       }
     }
   ],
-  "fixes": []
+  "fixes": [
+    {
+      "kind": "sub",
+      "page": 93,
+      "col": 13,
+      "row": 9,
+      "from": "愽",
+      "to": "博",
+      "evidence": "oldOcr=慱; modern=博; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 101,
+      "col": 3,
+      "row": 4,
+      "from": "簟",
+      "to": "簞",
+      "evidence": "oldOcr=簞; modern=簞; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    },
+    {
+      "kind": "sub",
+      "page": 109,
+      "col": 3,
+      "row": 10,
+      "from": "汗",
+      "to": "汙",
+      "evidence": "oldOcr=汙; modern=汙; human=modern; note=四官代裁决:resolved/xiandai",
+      "decidedAt": "2026-08-23T00:00:00Z"
+    }
+  ],
+  "colDels": []
 }

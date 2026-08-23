@@ -2,7 +2,7 @@ work: 孟子集注卷三
 base:
   file: grid-transcribe.json
   sha256: d80c38a8aa1f3cebb42b10a05a0ab67253dd29fd74e96a6f2ab83f5a64398b94
-exportedAt: 2026-08-21T11:34:15.671Z
+exportedAt: 2026-08-23T00:26:14.501Z
 layout:
   cols: 16
   rows: 15
@@ -4396,7 +4396,7 @@ pages:
         - 寬
       - - 13
         - 9
-        - 愽
+        - 博
       - - 13
         - 10
         - 寬
@@ -9062,7 +9062,7 @@ pages:
         - 口
       - - 3
         - 4
-        - 簟
+        - 簞
       - - 3
         - 5
         - 反
@@ -14172,7 +14172,7 @@ pages:
         - 使
       - - 3
         - 10
-        - 汗
+        - 汙
       - - 3
         - 11
         - 下
@@ -27346,5 +27346,31 @@ sections:
       page: 126
       col: 14
       row: 5
-fixes: []
+fixes:
+  - kind: sub
+    page: 93
+    col: 13
+    row: 9
+    from: 愽
+    to: 博
+    evidence: oldOcr=慱; modern=博; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 101
+    col: 3
+    row: 4
+    from: 簟
+    to: 簞
+    evidence: oldOcr=簞; modern=簞; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+  - kind: sub
+    page: 109
+    col: 3
+    row: 10
+    from: 汗
+    to: 汙
+    evidence: oldOcr=汙; modern=汙; human=modern; note=四官代裁决:resolved/xiandai
+    decidedAt: 2026-08-23T00:00:00Z
+colShifts: []
+colDels: []
 marks: []
