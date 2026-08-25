@@ -1,0 +1,57 @@
+id: zhongyong-facsimile
+title: 中庸章句
+subtitle: 宋当涂郡斋本 · 逐格还原
+docTitle: 中庸章句 — 宋版影刻
+mark: 蘭木
+ariaLabel: 中庸章句，宋刻本逐格影刻还原，自右向左讀
+category: 經
+era: 宋
+layout: songke-facsimile
+book:
+  id: zhongyong-facsimile
+  title: 中庸章句
+  order: 1
+  entry:
+    big: 中庸
+    sub: 章句
+seed: 63247
+expect: null
+facsimile:
+  banxinTitle: 中庸
+  jSize: 0.84      # 经/题字号系数（相对格宽 --u，可调）
+  zSize: 0.80      # 注字号系数——接近经字（原刻注列密，此处等宽格内以字号别之）
+  gong:
+    - 蘭木
+  cover:
+    slip: 宋本中庸章句   # 首開右半書衣題簽（HTML 復刻神韻；若設 image 則用實圖，二期）
+  spec: 宋當塗郡齋本　逐格影刻還原　半葉八行　行十六字　注文雙行　白口　左右雙邊　單黑魚尾
+  colophon: 此卷為逐格影刻還原：逐字坐標直出，版式悉依宋當塗郡齋本原刻列陣，頁界、列界、半葉餘白、敬空闕字皆從原刻，不加重排、不作拼合。<br>文本經網格基校勘管線（G1 視覺逐格轉寫 → G2/G3 參校掛格 → G4 裁決 → G5 單源出口）自善本影印派生，異文經四校書官審議與人工精校。凡經裁決改字之格，字下施朱記，懸停可見證據鏈。<br>此卷錄《中庸章句》全帙：朱子分三十三章，章旨繫於章末；朱子《中庸章句序》冠於卷首。原刻葉次與書影一一對應，可與底本影像逐葉互核。
+faces:
+  kai:
+    font: lxgw-wenkai-tc
+    label: 楷體
+  song:
+    font: zhuque-fangsong
+    label: 宋體
+  xing:
+    font: ac-gyosyo
+    label: 英雄行楷
+fallbackStacks:
+  kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
+  song: '"Songti TC","Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif TC","Noto Serif CJK TC","Noto Serif CJK SC","Noto Serif TC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","Noto Serif CJK TC",serif'
+facesSc:
+  kai: { label: 楷體 }
+  song: { label: 宋體 }
+  xing: { font: liushang-xingyi, label: 行書 }
+defaultSc: kai
+fallbackStacksSc:
+  kai: '"Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","TW-Kai","Noto Serif CJK SC",serif'
+  song: '"Songti SC","STSong","SimSun","宋体","NSimSun","Source Han Serif SC","Noto Serif CJK SC",serif'
+  xing: '"Xingkai SC","STXingkai","华文行楷","Kaiti SC","STKaiti","楷体","KaiTi","Noto Serif CJK SC",serif'
+sources:
+  - label: 宋當塗郡齋本《四書章句集注》（中國國家圖書館藏）
+    url: https://zh.wikisource.org/zh-hant/中庸章句
+aboutHtml: |-
+  <h2>關於此卷</h2>
+  <p>《中庸章句》為朱熹《四書章句集注》之一，朱子分三十三章，章旨繫於章末，《中庸章句序》冠於卷首。此卷以宋當塗郡齋本為底，經網格基校勘流水線（視覺逐格 → 參校掛格 → 四官審議 → 人工精校）產出逐格全數據，由影刻直出引擎零重排渲染：版面悉還原刻，校勘證據鏈掛格可查。</p>
