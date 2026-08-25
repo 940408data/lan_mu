@@ -30,7 +30,7 @@ const TOPICS = [
   {
     id: 'sishu', title: '四書涵泳',
     desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，底本宋當塗郡齋本',
-    books: ['daxue-facsimile', 'zhongyong-songben', 'lunyu-songben', 'mengzi-songben'],
+    books: ['daxue-facsimile', 'zhongyong-facsimile', 'lunyu-songben', 'mengzi-songben'],
     /* 版本源流:按時代列四書版本。status: kept=在庋(本站已有,不鏈——書影即在上方)、
      * soon=待訪(鏈「敬請期待」,後續填充時改 kept 並去 href)、lost=亡佚(靜態)。 */
     editions: [
@@ -69,6 +69,7 @@ const BOOK_META = {
   'mengzi-songben':    { collation: '精校', diben: '宋当涂郡斋本' },
   'daxue-facsimile':   { collation: '精校', diben: '宋当涂郡斋本' },
   'daxue-songben':     { collation: '初校', diben: '宋当涂郡斋本' },
+  'zhongyong-facsimile': { collation: '精校', diben: '宋当涂郡斋本' },
   'zhongyong-songben': { collation: '初校', diben: '宋当涂郡斋本' },
   xinjing:    { collation: '初校', diben: '乾隆本' },
   lanting:    { collation: '精校', diben: '神龍本' },
