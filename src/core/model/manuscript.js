@@ -39,16 +39,20 @@ function buildManuscript(work) {
   return buildFromText(work, meta, mc);
 }
 
-/** 坐标直出：grid.pages[].cells[]=[col,row,char] → 每半葉 cols 列，每列 chars 按 row 定位（空行留白）。 */
+/** 坐标直出：grid.pages[].cells[]=[col,row,char]。
+ *  半叶式（cols=rowsPerHalf，旧）：每页一个半叶，两两配对成叶（右先左后）；
+ *  跨页式（cols=2×rowsPerHalf，史记五帝本纪 16 列）：每页即一整叶，
+ *  右半叶=列 1..H、左半叶=列 H+1..cols（卷首叶右半空白全真保留）。 */
 function buildFromGrid(work, meta, mc) {
   const grid = work.grid;
   const COLS = (grid.layout && grid.layout.cols) || 8;
   const ROWS = (grid.layout && grid.layout.rows) || 20;
-  const halves = [];
-  let totalChars = 0, totalCols = 0;
-  for (const pg of grid.pages) {
+  const H = mc.rowsPerHalf || 8;
+  const spread = COLS === H * 2;
+  let totalChars = 0, totalCols = 0, ri = 0;
+  const mkHalf = (pg, c0, c1) => {
     const cols = [];
-    for (let c = 1; c <= COLS; c++) {
+    for (let c = c0; c <= c1; c++) {
       const chars = new Array(ROWS).fill('');
       for (const cell of pg.cells || []) {
         if (cell[0] === c) {
@@ -60,15 +64,23 @@ function buildFromGrid(work, meta, mc) {
       if (!real) { cols.push({ chars, marks: [], doudu: [], drop: 0 }); continue; } // 空列占位（保列序）
       totalChars += real;
       totalCols++;
-      const ri = halves.length * COLS + c; // 稳定行号（笔墨/句读种子）
       cols.push({ chars, marks: glyphMarks(meta.seed, ri + 1, ROWS), doudu: douduOf(meta.seed, ri, chars), drop: 0 });
+      ri++;
     }
-    halves.push(cols);
-  }
-  if (!halves.length) throw new Error(`作品 ${work.id} 无坐标页（grid.yaml）`);
-  if (halves.length % 2) halves.push([]); // 奇数半葉：末葉左半留白
+    return cols;
+  };
+  const halves = [];
   const leaves = [];
-  for (let L = 0; L < halves.length / 2; L++) leaves.push({ right: halves[L * 2] || [], left: halves[L * 2 + 1] || [] });
+  for (const pg of grid.pages) {
+    if (spread) leaves.push({ right: mkHalf(pg, 1, H), left: mkHalf(pg, H + 1, COLS) });
+    else halves.push(mkHalf(pg, 1, COLS));
+  }
+  if (!spread) {
+    if (!halves.length) throw new Error(`作品 ${work.id} 无坐标页（grid.yaml）`);
+    if (halves.length % 2) halves.push([]); // 奇数半葉：末葉左半留白
+    for (let L = 0; L < halves.length / 2; L++) leaves.push({ right: halves[L * 2] || [], left: halves[L * 2 + 1] || [] });
+  }
+  if (!leaves.length) throw new Error(`作品 ${work.id} 无坐标页（grid.yaml）`);
   const stats = { chars: totalChars, rows: totalCols, leaves: leaves.length };
   return {
     kind: 'manuscript', meta, conf: mc, leaves,
