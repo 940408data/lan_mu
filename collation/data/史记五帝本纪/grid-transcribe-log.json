@@ -9,328 +9,328 @@
   },
   "logs": [
     {
-      "page": 6,
-      "engine": "覆校(qwen3.8-max)",
-      "model": "qwen3.8-max",
-      "usage": {
-        "completion_tokens": 12747,
-        "completion_tokens_details": {
-          "reasoning_tokens": 10375,
-          "text_tokens": 2372
-        },
-        "prompt_tokens": 2330,
-        "prompt_tokens_details": {
-          "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
-        },
-        "total_tokens": 15077
-      },
-      "cost": 0.48685199999999995,
-      "currency": "CNY",
-      "filled": 144,
-      "empty": 16,
-      "cells": 160,
-      "renderTime": 3,
-      "apiTime": 236600,
-      "totalTime": 236603
-    },
-    {
       "page": 7,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 9011,
+        "completion_tokens": 15827,
         "completion_tokens_details": {
-          "reasoning_tokens": 6631,
-          "text_tokens": 2380
+          "reasoning_tokens": 10929,
+          "text_tokens": 4898
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
-          "cached_tokens": 2048,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "cached_tokens": 0,
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 11341
+        "total_tokens": 18512
       },
-      "cost": 0.352356,
+      "cost": 0.6019920000000001,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 4,
-      "apiTime": 168761,
-      "totalTime": 168765
+      "cells": 320,
+      "renderTime": 6,
+      "apiTime": 287772,
+      "totalTime": 287778
+    },
+    {
+      "page": 6,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 17153,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13085,
+          "text_tokens": 4068
+        },
+        "prompt_tokens": 2685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2498,
+          "text_tokens": 187
+        },
+        "total_tokens": 19838
+      },
+      "cost": 0.6497280000000001,
+      "currency": "CNY",
+      "filled": 143,
+      "empty": 177,
+      "cells": 320,
+      "renderTime": 5,
+      "apiTime": 314225,
+      "totalTime": 314230
     },
     {
       "page": 8,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 6855,
+        "completion_tokens": 11362,
         "completion_tokens_details": {
-          "reasoning_tokens": 4466,
-          "text_tokens": 2389
+          "reasoning_tokens": 6469,
+          "text_tokens": 4893
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
-          "cached_tokens": 2048,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "cached_tokens": 0,
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 9185
+        "total_tokens": 14047
       },
-      "cost": 0.27474,
+      "cost": 0.441252,
       "currency": "CNY",
-      "filled": 160,
-      "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 129495,
-      "totalTime": 129497
+      "filled": 304,
+      "empty": 16,
+      "cells": 320,
+      "renderTime": 7,
+      "apiTime": 207395,
+      "totalTime": 207402
     },
     {
       "page": 10,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 5966,
+        "completion_tokens": 11301,
         "completion_tokens_details": {
-          "reasoning_tokens": 3574,
-          "text_tokens": 2392
+          "reasoning_tokens": 6379,
+          "text_tokens": 4922
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 8296
+        "total_tokens": 13986
       },
-      "cost": 0.242736,
+      "cost": 0.439056,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 113520,
-      "totalTime": 113522
+      "cells": 320,
+      "renderTime": 6,
+      "apiTime": 207295,
+      "totalTime": 207301
     },
     {
       "page": 9,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 8906,
+        "completion_tokens": 15135,
         "completion_tokens_details": {
-          "reasoning_tokens": 6839,
-          "text_tokens": 2067
+          "reasoning_tokens": 10241,
+          "text_tokens": 4894
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 11236
+        "total_tokens": 17820
       },
-      "cost": 0.348576,
+      "cost": 0.57708,
       "currency": "CNY",
-      "filled": 160,
-      "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 165983,
-      "totalTime": 165985
-    },
-    {
-      "page": 11,
-      "engine": "覆校(qwen3.8-max)",
-      "model": "qwen3.8-max",
-      "usage": {
-        "completion_tokens": 11668,
-        "completion_tokens_details": {
-          "reasoning_tokens": 9276,
-          "text_tokens": 2392
-        },
-        "prompt_tokens": 2330,
-        "prompt_tokens_details": {
-          "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
-        },
-        "total_tokens": 13998
-      },
-      "cost": 0.44800799999999996,
-      "currency": "CNY",
-      "filled": 160,
-      "empty": 0,
-      "cells": 160,
-      "renderTime": 3,
-      "apiTime": 214114,
-      "totalTime": 214117
+      "filled": 306,
+      "empty": 14,
+      "cells": 320,
+      "renderTime": 6,
+      "apiTime": 278326,
+      "totalTime": 278332
     },
     {
       "page": 12,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 19456,
+        "completion_tokens": 10877,
         "completion_tokens_details": {
-          "reasoning_tokens": 17061,
-          "text_tokens": 2395
+          "reasoning_tokens": 5972,
+          "text_tokens": 4905
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 21786
+        "total_tokens": 13562
       },
-      "cost": 0.728376,
+      "cost": 0.42379199999999995,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 317,
+      "empty": 3,
+      "cells": 320,
+      "renderTime": 8,
+      "apiTime": 198540,
+      "totalTime": 198548
+    },
+    {
+      "page": 11,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 19967,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15052,
+          "text_tokens": 4915
+        },
+        "prompt_tokens": 2685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2498,
+          "text_tokens": 187
+        },
+        "total_tokens": 22652
+      },
+      "cost": 0.751032,
+      "currency": "CNY",
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 355608,
-      "totalTime": 355610
+      "cells": 320,
+      "renderTime": 7,
+      "apiTime": 362424,
+      "totalTime": 362431
     },
     {
       "page": 13,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 12463,
+        "completion_tokens": 9854,
         "completion_tokens_details": {
-          "reasoning_tokens": 10069,
-          "text_tokens": 2394
+          "reasoning_tokens": 5580,
+          "text_tokens": 4274
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 14793
+        "total_tokens": 12539
       },
-      "cost": 0.476628,
+      "cost": 0.386964,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 230133,
-      "totalTime": 230135
+      "cells": 320,
+      "renderTime": 10,
+      "apiTime": 179847,
+      "totalTime": 179857
     },
     {
       "page": 14,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 5733,
+        "completion_tokens": 11217,
         "completion_tokens_details": {
-          "reasoning_tokens": 3660,
-          "text_tokens": 2073
+          "reasoning_tokens": 6303,
+          "text_tokens": 4914
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 8063
+        "total_tokens": 13902
       },
-      "cost": 0.234348,
+      "cost": 0.436032,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 2,
-      "apiTime": 106283,
-      "totalTime": 106285
-    },
-    {
-      "page": 16,
-      "engine": "覆校(qwen3.8-max)",
-      "model": "qwen3.8-max",
-      "usage": {
-        "completion_tokens": 6074,
-        "completion_tokens_details": {
-          "reasoning_tokens": 3690,
-          "text_tokens": 2384
-        },
-        "prompt_tokens": 2330,
-        "prompt_tokens_details": {
-          "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
-        },
-        "total_tokens": 8404
-      },
-      "cost": 0.246624,
-      "currency": "CNY",
-      "filled": 160,
-      "empty": 0,
-      "cells": 160,
-      "renderTime": 3,
-      "apiTime": 112289,
-      "totalTime": 112292
+      "cells": 320,
+      "renderTime": 11,
+      "apiTime": 204866,
+      "totalTime": 204877
     },
     {
       "page": 15,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 12068,
+        "completion_tokens": 12610,
         "completion_tokens_details": {
-          "reasoning_tokens": 10005,
-          "text_tokens": 2063
+          "reasoning_tokens": 7710,
+          "text_tokens": 4900
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 14398
+        "total_tokens": 15295
       },
-      "cost": 0.462408,
+      "cost": 0.48617999999999995,
       "currency": "CNY",
-      "filled": 160,
+      "filled": 320,
       "empty": 0,
-      "cells": 160,
-      "renderTime": 4,
-      "apiTime": 219797,
-      "totalTime": 219801
+      "cells": 320,
+      "renderTime": 12,
+      "apiTime": 229547,
+      "totalTime": 229559
+    },
+    {
+      "page": 16,
+      "engine": "覆校(qwen3.8-max)",
+      "model": "qwen3.8-max",
+      "usage": {
+        "completion_tokens": 15763,
+        "completion_tokens_details": {
+          "reasoning_tokens": 10859,
+          "text_tokens": 4904
+        },
+        "prompt_tokens": 2685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 2498,
+          "text_tokens": 187
+        },
+        "total_tokens": 18448
+      },
+      "cost": 0.599688,
+      "currency": "CNY",
+      "filled": 320,
+      "empty": 0,
+      "cells": 320,
+      "renderTime": 8,
+      "apiTime": 286440,
+      "totalTime": 286448
     },
     {
       "page": 17,
       "engine": "覆校(qwen3.8-max)",
       "model": "qwen3.8-max",
       "usage": {
-        "completion_tokens": 8157,
+        "completion_tokens": 11781,
         "completion_tokens_details": {
-          "reasoning_tokens": 5794,
-          "text_tokens": 2363
+          "reasoning_tokens": 6900,
+          "text_tokens": 4881
         },
-        "prompt_tokens": 2330,
+        "prompt_tokens": 2685,
         "prompt_tokens_details": {
           "cached_tokens": 0,
-          "image_tokens": 2144,
-          "text_tokens": 186
+          "image_tokens": 2498,
+          "text_tokens": 187
         },
-        "total_tokens": 10487
+        "total_tokens": 14466
       },
-      "cost": 0.32161199999999995,
+      "cost": 0.45633599999999996,
       "currency": "CNY",
-      "filled": 144,
+      "filled": 304,
       "empty": 16,
-      "cells": 160,
-      "renderTime": 3,
-      "apiTime": 151331,
-      "totalTime": 151334
+      "cells": 320,
+      "renderTime": 13,
+      "apiTime": 214946,
+      "totalTime": 214959
     }
   ]
 }
