@@ -48,6 +48,8 @@ const TOPICS = [
       { era: '現代', items: [{ name: '儒藏點校本', note: '《儒藏》精華編所收，當世點校整理之本', status: 'soon' }] },
       { era: '其他', items: [{ name: '姜立綱手書四書白文', note: '明館閣體書家手錄白文，無注，別具一格', status: 'soon' }] },
     ],
+    /* extras：專題附屬獨立頁入口（自包含頁，不經模板/子集字庫；置於版本源流區段之下） */
+    extras: [{ label: '版本源流圖', href: '/topics/sishu/lineage.html', note: '據徐德明《四書章句集注版本考略》' }],
   },
 ];
 

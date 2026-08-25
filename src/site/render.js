@@ -384,6 +384,9 @@ function renderTopic(topic, site, faces) {
     ...(topic.virtual || []).map(virtTome),
   ].join('\n');
   const editions = topic.editions ? renderEditions(topic.editions) : '';
+  const extras = (topic.extras || []).map((x) =>
+    `<a href="${x.href}"><b>${esc(x.label)}</b>${x.note ? `<span>${esc(x.note)}</span>` : ''}</a>`).join('');
+  const extrasHtml = extras ? `<p class="xextras">${extras}</p>` : '';
   return `${head(`${topic.title} · ${COPY.topicLabel} — 蘭木藏書`, faces)}
 <body class="idx">
 
@@ -399,6 +402,7 @@ ${tomes}
 </main>
 
 ${editions}
+${extrasHtml}
 
 ${backHome}
 ${FOOT}

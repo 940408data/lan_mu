@@ -117,6 +117,16 @@ const server = http.createServer((req, res) => {
     html(renderTopic(topic, aggregateSite(), siteFaces()));
     return;
   }
+  // 靜態特頁 dev 路由：免構建直讀 src 源（生產走 dist 靜態託管）
+  if (p === '/topics/sishu/lineage' || p === '/topics/sishu/lineage/' || p === '/topics/sishu/lineage.html') {
+    const lf = path.join(__dirname, '..', 'src', 'site', 'topics', 'sishu-lineage.html');
+    fs.readFile(lf, (err, buf) => {
+      if (err) { res.writeHead(404); res.end('not found: ' + p); return; }
+      res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
+      res.end(buf);
+    });
+    return;
+  }
   const bm = p.match(/^\/books\/([a-z0-9-]+)(?:\/index\.html)?\/?$/);
   if (bm) {
     const site = aggregateSite();

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《四书章句集注》版本源流图</title>
+<style>
+:root{
+  --paper:#D7DCD2;
+  --paper-2:#E5E8E0;
+  --paper-3:#CBD1C6;
+  --ink:#1A1D1A;
+  --ink-2:#4C5350;
+  --ink-3:#98A199;
+  --zhu:#A5312A;
+  --dian:#2B4A5E;
+  --lv:#3E5C48;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif CJK SC","Source Han Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 96px}
+
+/* ── 版心式书名页 ───────────────────────── */
+.masthead{
+  padding:64px 0 40px;
+  text-align:center;
+  position:relative;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 46px,
+      rgba(26,29,26,.055) 46px 47px);
+  border-bottom:1px solid var(--ink-3);
+}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.55em;
+  color:var(--ink-2);margin:0 0 22px 2.2em;
+}
+.masthead h1{
+  font-size:clamp(32px,6.2vw,60px);
+  margin:0;font-weight:600;letter-spacing:.14em;
+  text-indent:.14em;
+}
+.masthead h1 .light{color:var(--ink-2);font-weight:400}
+.thesis{
+  max-width:640px;margin:26px auto 0;
+  font-size:15.5px;color:var(--ink-2);letter-spacing:.03em;
+}
+.seal{
+  position:absolute;right:18px;top:52px;
+  width:74px;height:74px;
+  border:2.5px solid var(--zhu);border-radius:3px;
+  color:var(--zhu);
+  display:grid;grid-template-columns:1fr 1fr;
+  place-content:center;gap:0;
+  font-size:20px;line-height:1.15;letter-spacing:0;
+  transform:rotate(-4deg);
+  opacity:.9;
+}
+.seal span{display:block;text-align:center;padding:3px 4px}
+
+/* ── 图例 ───────────────────────── */
+.legend{
+  display:flex;flex-wrap:wrap;gap:10px 26px;
+  padding:20px 0;border-bottom:1px solid var(--ink-3);
+  font-family:var(--sans);font-size:12.5px;color:var(--ink-2);
+}
+.lane{
+  display:inline-block;width:1.55em;height:1.55em;line-height:1.55em;
+  text-align:center;font-family:var(--serif);font-size:12px;
+  color:#fff;border-radius:2px;margin-right:.5em;vertical-align:1px;
+}
+.lane.jia{background:var(--dian)}
+.lane.yi{background:var(--zhu)}
+.lane.bing{background:var(--lv)}
+.lane.jian{background:var(--ink-2)}
+
+/* ── 版面：左半叶・版心・右半叶 ───────── */
+.sheet{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 74px minmax(0,1fr);
+}
+.center{
+  grid-column:2;grid-row:var(--r);
+  border-left:3px double var(--ink-2);
+  border-right:3px double var(--ink-2);
+  background:var(--paper-3);
+  display:flex;flex-direction:column;align-items:center;
+  padding:14px 0 22px;
+}
+.center .yuwei{
+  width:0;height:0;flex:none;
+  border-left:11px solid transparent;
+  border-right:11px solid transparent;
+  border-top:17px solid var(--ink);
+  margin-bottom:14px;
+}
+.center .dyn{
+  writing-mode:vertical-rl;text-orientation:upright;
+  font-size:26px;letter-spacing:.3em;font-weight:600;
+}
+.center .yr{
+  writing-mode:vertical-rl;text-orientation:upright;
+  font-family:var(--sans);font-size:11px;letter-spacing:.24em;
+  color:var(--ink-2);margin-top:14px;
+}
+.half{grid-row:var(--r);position:relative;padding:26px 0 6px}
+.half.left{grid-column:1;padding-right:30px}
+.half.right{grid-column:3;padding-left:30px}
+.half::before{
+  content:"";position:absolute;top:0;bottom:0;width:0;
+  border-left:1px solid var(--ink-3);
+}
+.half.left::before{left:15px}
+.half.right::before{left:45px}
+
+.colhead{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.3em;
+  color:var(--ink-2);padding:26px 0 8px;
+  border-bottom:1px solid var(--ink);
+}
+.colhead.left{grid-column:1;grid-row:1;text-align:left;padding-right:30px}
+.colhead.right{grid-column:3;grid-row:1;padding-left:30px}
+.colhead b{font-family:var(--serif);font-size:17px;letter-spacing:.16em;color:var(--ink);font-weight:600}
+.colhead em{font-style:normal;display:block;margin-top:6px;letter-spacing:.06em}
+.headgap{grid-column:2;grid-row:1;border-left:3px double var(--ink-2);border-right:3px double var(--ink-2);background:var(--paper-3)}
+
+/* ── 节点 ───────────────────────── */
+.node{
+  position:relative;
+  background:var(--paper-2);
+  border:1px solid var(--ink-3);
+  border-left:3px double var(--ink-2);
+  padding:12px 15px 13px;
+  margin:0 0 16px 40px;
+  animation:rise .5s ease-out both;
+}
+.half.left .node{margin-left:38px}
+.half.right .node{margin-left:38px}
+.node::before{
+  content:"";position:absolute;top:17px;left:-24px;width:24px;
+  border-top:1px solid var(--ink-3);
+}
+.half.left .node::before{left:-23px;width:23px}
+.node::after{
+  content:"";position:absolute;top:12px;left:-28px;
+  width:0;height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:9px solid var(--zhu);
+}
+.half.left .node::after{left:-27px}
+.node h4{
+  margin:0;font-size:17.5px;font-weight:600;letter-spacing:.05em;
+}
+.node .lane{margin-right:.55em}
+.node .meta{margin:5px 0 0;font-size:13.5px;color:var(--ink-2)}
+.node .form{
+  margin:7px 0 0;font-family:var(--sans);font-size:11.5px;
+  letter-spacing:.08em;color:var(--ink-3);
+}
+.node .zhu{color:var(--zhu)}
+.node.key{border-color:var(--zhu);border-left-color:var(--zhu);background:#EAE6DA}
+.node.key h4{color:var(--zhu)}
+.node.lost{opacity:.62;border-style:dashed;border-left-style:dashed}
+.node.leaf{margin-left:74px;background:transparent;border:none;border-left:1px solid var(--ink-3);padding:4px 0 4px 13px}
+.node.leaf::before,.node.leaf::after{display:none}
+.node.leaf h4{font-size:14.5px;font-weight:400}
+.node.leaf .meta{font-size:12.5px}
+.branchnote{
+  margin:-6px 0 14px 40px;font-family:var(--sans);font-size:11.5px;
+  letter-spacing:.16em;color:var(--zhu);
+}
+
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.node{animation:none}}
+
+/* ── 结论 ───────────────────────── */
+.notes{margin-top:64px;border-top:1px solid var(--ink);padding-top:34px}
+.notes h2{font-size:21px;letter-spacing:.12em;margin:0 0 18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.card{background:var(--paper-2);border:1px solid var(--ink-3);padding:20px 22px}
+.card h3{margin:0 0 10px;font-size:16px;letter-spacing:.08em}
+.card p{margin:0 0 10px;font-size:14.5px;color:var(--ink-2)}
+.card p:last-child{margin-bottom:0}
+.card strong{color:var(--ink)}
+details{margin-top:30px;border:1px solid var(--ink-3);background:var(--paper-2)}
+summary{
+  cursor:pointer;padding:13px 18px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.2em;color:var(--ink-2);
+}
+pre{
+  margin:0;padding:0 18px 18px;overflow-x:auto;
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:12px;line-height:1.65;color:var(--ink-2);
+}
+footer{margin-top:40px;font-family:var(--sans);font-size:11.5px;letter-spacing:.12em;color:var(--ink-3)}
+
+@media (max-width:820px){
+  .sheet{grid-template-columns:1fr}
+  .center,.half,.colhead,.headgap{grid-column:1 !important;grid-row:auto !important}
+  .headgap{display:none}
+  .center{
+    flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;
+    border:none;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink-3);
+    padding:10px 12px;margin-top:26px;
+  }
+  .center .yuwei{margin:0;border-left-width:8px;border-right-width:8px;border-top-width:13px}
+  .center .dyn,.center .yr{writing-mode:horizontal-tb;margin:0}
+  .center .dyn{font-size:20px}
+  .half.left,.half.right{padding:18px 0 0}
+  .colhead{padding-right:0;padding-left:0}
+  .grid2{grid-template-columns:1fr}
+  .seal{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">徐德明《四书章句集注版本考略》图解</p>
+  <h1>四书章句集注<span class="light">・版本源流</span></h1>
+  <div class="seal"><span>二</span><span>系</span><span>并</span><span>行</span></div>
+  <p class="thesis">现存诸本实出两源：一为朱熹生前<strong>未定本</strong>，经祝洙、倪陈之学而成明《大全》、正统监本，为六百年功令所宗；一为庆元<strong>晚年定本</strong>，赖宣城吴柔胜大字本一脉仅传，止于藏书家与校勘家之手。</p>
+</header>
+
+<div class="legend">
+  <span><i class="lane jian">監</i>监本系统（未定本）</span>
+  <span><i class="lane jia">甲</i>宋本系统・当涂郡斋本支</span>
+  <span><i class="lane yi">乙</i>宋本系统・淳祐六年翻刻本支</span>
+  <span><i class="lane bing">丙</i>宋本系统・残宋本支（注文改小字）</span>
+  <span style="color:var(--zhu)">◤ 朱框＝关键节点　　◌ 虚框＝亡佚未见</span>
+</div>
+
+<div class="sheet">
+
+  <div class="colhead left"><b>監本系統</b><em>未定本之流 ・ 功令所宗 ・ 注文小字</em></div>
+  <div class="headgap"></div>
+  <div class="colhead right"><b>宋本系統</b><em>晚年定本之流 ・ 经注大字 ・ 善本所在</em></div>
+
+  <!-- 宋 -->
+  <div class="center" style="--r:2"><div class="yuwei"></div><div class="dyn">宋</div><div class="yr">一一八二―一二七九</div></div>
+  <div class="half left" style="--r:2">
+    <article class="node key">
+      <h4>宝婺本</h4>
+      <p class="meta">淳熙九年（1182）朱熹提举浙东任上首刻，四书之名始立。淳熙十一年潘畤、詹仪之翻刻于广东德庆</p>
+      <p class="form">生前初本・旋即自否</p>
+    </article>
+    <article class="node">
+      <h4>静江本・成都本</h4>
+      <p class="meta">淳熙十三年（1186）两经大修后，詹仪之刻于广西静江，赵汝愚刻于四川成都</p>
+    </article>
+    <article class="node">
+      <h4>南康本</h4>
+      <p class="meta">淳熙十六年序定，绍熙三年（1192）南康守曾集刻板。生前流传最广、影响最大，庆元党禁中遭毁板</p>
+      <p class="form">通行未定本之祖</p>
+    </article>
+    <article class="node">
+      <h4>建安祝洙《四书附录》</h4>
+      <p class="meta">宋末坊刻附录本，元人陈栎、倪士毅之学所自出</p>
+    </article>
+  </div>
+  <div class="half right" style="--r:2">
+    <article class="node key">
+      <h4>庆元建阳本</h4>
+      <p class="meta">庆元五年（1199）刻于建阳，朱熹最后之晚年定本。数月后朱子卒，其书行世已在身后</p>
+      <p class="form">晚年定本・原刻不存</p>
+    </article>
+    <article class="node lost">
+      <h4>兴国本</h4>
+      <p class="meta">元陈栎《四书发明》引朱鉴语，谓定本尝刊于江西兴国县。今不可见</p>
+    </article>
+    <article class="node key">
+      <h4>宣城本（吴柔胜刻大字本）</h4>
+      <p class="meta">吴柔胜（1154—1224），字胜之，宣城人，谥正肃，太学博士，始以朱子《四书》授诸生。所刊经注皆大字，宋人谓之善本</p>
+      <p class="form">現存宋本共同祖本</p>
+    </article>
+    <p class="branchnote">↓ 由宣城本分出三支</p>
+    <article class="node">
+      <h4><i class="lane jia">甲</i>当涂郡斋本</h4>
+      <p class="meta">《语》《孟》嘉定十年（1217）当涂郡斋刻，嘉熙四年、淳祐八年、十二年递修；淳祐十二年（1252）守臣马光祖依放规制补刻《学》《庸》各一卷，足成四书，二十八卷</p>
+      <p class="form">半葉八行 行十五字・鱼尾上记字数下记刻工・铁琴铜剑楼旧藏，今归北图</p>
+    </article>
+    <article class="node leaf"><h4>今存孤本，校刻最精，误字最少</h4><p class="meta">翟灝《四书考异》所称宋本作“裹囊”“市也”者，此本仍作“裹粮”“市者”，知翟氏未见此本</p></article>
+    <article class="node">
+      <h4><i class="lane yi">乙</i>淳祐六年翻刻本</h4>
+      <p class="meta">1246年，得燕山嘉氏所刻宣城旧本于京师，补其残阙，置诸泳泽书院。原刻今未见</p>
+      <p class="form">经注字等・便于观读</p>
+    </article>
+    <article class="node">
+      <h4><i class="lane bing">丙</i>残宋本</h4>
+      <p class="meta">北图存《论语集注》《孟子集注》，台湾中研院存《大学章句》一卷（邓邦述群碧楼旧藏），徐氏核定二者实为一书；《中庸》半部闻已他归</p>
+      <p class="form">半葉七行 行十二字・<span class="zhu">注文始作小字</span>，后世小字注之滥觞</p>
+    </article>
+    <article class="node lost">
+      <h4>咸淳本</h4>
+      <p class="meta">《天禄琳琅书目》卷一著录，原本未见，源流不详</p>
+    </article>
+  </div>
+
+  <!-- 元 -->
+  <div class="center" style="--r:3"><div class="yuwei"></div><div class="dyn">元</div><div class="yr">一二七九―一三六八</div></div>
+  <div class="half left" style="--r:3">
+    <article class="node">
+      <h4>陈栎《四书发明》・倪士毅《四书辑释》</h4>
+      <p class="meta">延祐间以朱注悬为功令，新安之学大行，师徒二书皆源出祝洙《四书附录》</p>
+    </article>
+    <article class="node">
+      <h4>至正本</h4>
+      <p class="meta">至正二十二年（1362）沈氏尚德堂刻十九卷本，山东省博物馆藏。元代通行本之代表</p>
+    </article>
+  </div>
+  <div class="half right" style="--r:3">
+    <article class="node">
+      <h4><i class="lane bing">丙</i>元甲本</h4>
+      <p class="meta">三十卷，明魏校批、袁克文跋，上图藏。封面旧题“宋椠四书”，袁跋以为宋刻，徐氏定为元刻</p>
+      <p class="form">半葉十一行 行二十字・注小字双行</p>
+    </article>
+    <article class="node">
+      <h4><i class="lane bing">丙</i>元乙本</h4>
+      <p class="meta">二十八卷，袁又恺、蒋介青、丁丙递藏，南图。每卷后附《音考》。徐氏据校，定为残宋本之翻刻</p>
+      <p class="form">半葉七行 行十五字・行款袭残宋本</p>
+    </article>
+  </div>
+
+  <!-- 明 -->
+  <div class="center" style="--r:4"><div class="yuwei"></div><div class="dyn">明</div><div class="yr">一三六八―一六四四</div></div>
+  <div class="half left" style="--r:4">
+    <article class="node key">
+      <h4>永乐《四书集注大全》</h4>
+      <p class="meta">胡广等奉敕编修，朱注之外兼采倪士毅《辑释》、陈栎《发明》诸说</p>
+    </article>
+    <article class="node key">
+      <h4><i class="lane jian">監</i>正统司礼监本《四书集注》</h4>
+      <p class="meta">正统十二年（1447）司礼监据《大全》删汰他注、唯朱注是从，三十卷。钦定教本，六百年通行之祖</p>
+      <p class="form">半葉八行 行十四字・注小字双行行十七字・黑口双鱼尾颜体</p>
+    </article>
+    <article class="node leaf"><h4>经厂本・仿经厂本</h4><p class="meta">行格同监本而字句间有异同</p></article>
+    <article class="node leaf"><h4>藩府本</h4><p class="meta">成化十六年吉府本（附许衡《直说大学要略》）、嘉靖二十七年伊藩本、隆庆四年衡府本</p></article>
+    <article class="node leaf"><h4>家刻本</h4><p class="meta">嘉靖吉澄本、嘉靖应槚四十卷本、万历金绩本、万历休阳黄氏本（附《四书字辨》）</p></article>
+    <article class="node leaf"><h4>坊刻本</h4><p class="meta">书林种德堂熊冲宇《颜字四书》、闽山阮仲猷种德书堂本、吴勉学本、豹变斋本及黑口大字诸本</p></article>
+  </div>
+  <div class="half right" style="--r:4">
+    <article class="node lost">
+      <h4>明代阙如</h4>
+      <p class="meta">有明一代未见大字本重刊。宋本一系隐没于藏书家箧笥，士林所诵皆监本系统</p>
+    </article>
+  </div>
+
+  <!-- 清 -->
+  <div class="center" style="--r:5"><div class="yuwei"></div><div class="dyn">清</div><div class="yr">一六四四―一九一一</div></div>
+  <div class="half left" style="--r:5">
+    <article class="node">
+      <h4>内府本・《四库全书》本・《荟要》本</h4>
+      <p class="meta">清承明制，官修官刻仍沿通行本。另有乾隆怡府本</p>
+    </article>
+    <article class="node">
+      <h4>各省官书局本</h4>
+      <p class="meta">同治浙江府署、湖北崇文书局、山东书局；光绪山西濬文、浙江书局、淮南书局、金陵书局校定重刊等</p>
+    </article>
+    <article class="node">
+      <h4>坊刻读本・批点套印本</h4>
+      <p class="meta">崇道堂、三益斋、勉行堂、恺元堂朱墨套印、李光明庄、扫叶山房、状元阁、会文堂之属，为举业士子案头常本</p>
+      <p class="form">清代刻本十之八九属此系</p>
+    </article>
+  </div>
+  <div class="half right" style="--r:5">
+    <article class="node key">
+      <h4><i class="lane yi">乙</i>康熙内府影宋刻本（殿本）</h4>
+      <p class="meta">仿刻淳祐六年本，二十八卷，经注皆大字。版式仿当涂郡斋本而鱼尾上下不记字数刻工。刻时曾有挖改（注文“威”改“桓”、“逊”改“让”）</p>
+      <p class="form">内府精椠・印数无多・陈鳣、江标所见皆此本</p>
+    </article>
+    <article class="node leaf"><h4>光绪寿春孙多献小墨妙亭复刻本</h4><p class="meta">影宋本之再影</p></article>
+    <article class="node key">
+      <h4><i class="lane yi">乙</i>嘉庆十六年璜川吴志忠校刊本</h4>
+      <p class="meta">1811年吴志忠据其父吴英《四书章句附考》所辨定本校刻，乾嘉考据学之结晶，为清代学人所重</p>
+    </article>
+    <article class="node leaf"><h4>道光以下诸翻刻本</h4><p class="meta">晚清书局校刊亦间取吴本参校，宋本系统始稍稍下行</p></article>
+  </div>
+
+</div>
+
+<section class="notes">
+  <h2>两点结论</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>一、旧图当并为两条</h3>
+      <p>旧图列元甲本、元乙本于影宋本之上，误。<strong>影宋本非出元本，而出淳祐六年翻刻本</strong>；元甲、元乙自残宋本一支下传。三支同祖<strong>宣城吴柔胜大字本</strong>，故当涂郡斋本与武英殿影宋本本是兄弟，非父子。</p>
+      <p>严格言之，“两个源头”是就<strong>现存刻本之祖本</strong>而言。二系同出朱子之手，所别者在所据修订阶段——监本系统承南康未定本之绪，宋本系统传庆元晚年定本之真；版式上则一为注文小字，一为经注皆大字。</p>
+    </div>
+    <div class="card">
+      <h3>二、清人所读何本</h3>
+      <p>元、明士子读监本系统，无误。<strong>清代绝大多数读书人所读，仍是监本系统。</strong>科举功令承明之旧，书局本、坊刻批点读本皆自《大全》—监本而来。</p>
+      <p>影宋本是内府精椠，非流通读物。乾嘉之际陈鳣所见已非宋刻而是影宋本，翟灝作《四书考异》且未睹当涂郡斋本——可知宋本一系在清代属藏书家、校勘家的“善本”，而非案头“读本”。</p>
+      <p>惟嘉庆十六年吴志忠本行世后，宋本系统始在学人与部分书院间流通，晚清遂成<strong>“举业用监本、考据用宋本”</strong>的分层格局，不复元明之一元。</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>附：Mermaid 源码</summary>
+<pre>flowchart TB
+  ZX["朱熹《四书章句集注》<br/>淳熙九年（1182）宝婺本首刻"]
+
+  subgraph JIAN["監本系統 ── 未定本之流（功令所宗・注文小字）"]
+    direction TB
+    B1["宝婺本 1182 → 德庆本 1184"]
+    B2["静江本・成都本 1186"]
+    B3["南康本 1192<br/>生前最通行・庆元党禁毁板"]
+    B4["建安祝洙《四书附录》"]
+    B5["元 陈栎《四书发明》<br/>倪士毅《四书辑释》"]
+    B6["元至正二十二年 沈氏尚德堂本 1362"]
+    B7["明永乐《四书集注大全》 胡广等"]
+    B8["明正统十二年 司礼监本 1447<br/>★ 監本・三十卷・钦定"]
+    B9["经厂本／仿经厂本"]
+    B10["藩府本：成化吉府・嘉靖伊藩・隆庆衡府"]
+    B11["家刻：吉澄・应槚・金绩・休阳黄氏"]
+    B12["坊刻：种德堂・种德书堂・吴勉学・豹变斋"]
+    B13["清内府本・四库本・荟要本・怡府本"]
+    B14["各省官书局本：浙江・崇文・山东・濬文・淮南・金陵"]
+    B15["坊刻读本・朱墨套印批点本<br/>扫叶山房・李光明庄・会文堂等"]
+    B1 --> B2 --> B3 --> B4 --> B5 --> B6 --> B7 --> B8
+    B8 --> B9
+    B8 --> B10
+    B8 --> B11
+    B8 --> B12
+    B8 --> B13
+    B8 --> B14
+    B8 --> B15
+  end
+
+  subgraph SONG["宋本系統 ── 晚年定本之流（善本所在・经注大字）"]
+    direction TB
+    S1["庆元五年 建阳本 1199<br/>★ 晚年定本・原刻不存"]
+    S2["兴国本（朱鉴刊，佚）"]
+    S3["宣城本 ── 吴柔胜刻大字本<br/>★ 現存宋本共同祖本"]
+    S4["甲支：当涂郡斋本<br/>嘉定十年刻《语》《孟》，嘉熙四年・淳祐八年・十二年递修<br/>淳祐十二年马光祖补刻《学》《庸》・八行十五字<br/>铁琴铜剑楼旧藏 → 北京图书馆"]
+    S5["乙支：淳祐六年翻刻本 1246<br/>燕山嘉氏宣城旧本，置泳泽书院（原刻未见）"]
+    S6["丙支：残宋本 七行十二字<br/>注文始作小字・北图存《语》《孟》＋台湾存《大学》"]
+    S7["咸淳本（《天禄琳琅书目》著录，源流不详）"]
+    S8["元甲本 三十卷（上图，旧误题宋椠）"]
+    S9["元乙本 二十八卷（南图，残宋本翻刻）"]
+    S10["康熙内府影宋刻本（殿本）<br/>仿刻淳祐六年本・刻时有挖改"]
+    S11["光绪 孙多献 小墨妙亭复刻本"]
+    S12["嘉庆十六年 璜川吴志忠校刊本 1811<br/>据吴英《四书章句附考》校定"]
+    S13["道光以下诸翻刻本"]
+    S1 --> S2 --> S3
+    S3 --> S4
+    S3 --> S5
+    S3 --> S6
+    S5 --> S10
+    S6 --> S8
+    S6 --> S9
+    S10 --> S11
+    S10 --> S12
+    S12 --> S13
+  end
+
+  ZX -- "生前未定本" --> B1
+  ZX -- "庆元晚年定本" --> S1
+  S4 -.->|兄弟本，非父子| S5
+  S6 -.->|注文小字之式为后世通行本所袭| B8
+  S3 -.->|存疑| S7
+
+  classDef key fill:#EAE6DA,stroke:#A5312A,stroke-width:2px;
+  classDef lost fill:#E5E8E0,stroke:#98A199,stroke-dasharray:4 3;
+  class B8,S1,S3,S4,S10,S12 key;
+  class S2,S7 lost;</pre>
+  </details>
+
+  <footer>据徐德明《四书章句集注版本考略》绘制　　甲＝当涂郡斋本支　乙＝淳祐六年翻刻本支　丙＝残宋本支</footer>
+</section>
+
+</div>
+</body>
+</html>

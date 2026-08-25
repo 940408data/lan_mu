@@ -11,6 +11,11 @@ const {
 const { NAV, TABS, TOPICS, COPY } = require('./home');
 const { buildPanels } = require('./panels');
 
+/* 靜態特頁清單：[dist 相對路徑, 源文件] */
+const STATIC_PAGES = [
+  ['topics/sishu/lineage.html', path.join(__dirname, 'topics', 'sishu-lineage.html')],
+];
+
 /* 站點固定文案用字（頁面框架/落款/導航/簽條/專題/招募/版本源流三態），與數據用字一併入子集 */
 const UI_CHARS = '蘭木藏書目錄一次校錄多態呈現書法古籍音樂之現代數字文創凡卷並序單手幅需點校回經史子集禮樂畫第葉前後半右其他檢索名篇聲微志遠此弄宜緩種全帙覽，·—→ 入專題推薦涵泳幽賞四時書三釋編版本源流在庋待訪亡佚';
 
@@ -33,6 +38,7 @@ function collectSiteChars(site) {
       add(e.era); add(e.blurb);
       for (const it of e.items || []) { add(it.name); add(it.note); }
     }
+    (t.extras || []).forEach((x) => { add(x.label); add(x.note); });
   }
   add(COPY.soon.title); add(COPY.soon.sub); add(COPY.back); add(COPY.topicLabel); add(COPY.topicHead); add(COPY.enterSanzang); add(COPY.sanzangSub); add(COPY.enterShuku); add(COPY.shukuSub);
   add(COPY.jiaoshu.title); add(COPY.jiaoshu.sub); COPY.jiaoshu.lines.forEach(add);
@@ -71,6 +77,8 @@ async function buildSitePages(distRoot) {
   put('coming-soon/index.html', renderComingSoon(faces));
   put('jiaoshu/index.html', renderJiaoshu(faces));
   for (const t of TOPICS) put(`topics/${t.id}/index.html`, renderTopic(t, site, faces));
+  // 靜態特頁：自包含頁不經模板/子集字庫，源在 src/site/topics/，原樣入 dist
+  for (const [rel, src] of STATIC_PAGES) if (fs.existsSync(src)) put(rel, fs.readFileSync(src, 'utf8'));
   let n = 0;
   for (const b of site.books) {
     if (b.standalone) continue;

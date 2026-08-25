@@ -376,6 +376,17 @@ a.tentry:focus-visible{outline:1.5px solid rgba(166,49,37,.7);outline-offset:-1.
 }
 .back a:hover{color:#f3e8d0;border-color:rgba(216,198,160,.7)}
 
+/* ───── 專題附屬入口：獨立特頁（版本源流圖等）───── */
+.xextras{text-align:center;margin:2.2rem 0 0}
+.xextras a{
+  display:inline-flex;flex-direction:column;gap:.35em;padding:.7em 1.8em;
+  border:1px solid rgba(184,64,44,.55);text-decoration:none;
+  font-family:var(--kai);letter-spacing:.22em;
+}
+.xextras a b{font-weight:600;color:var(--zhu);font-size:.95rem}
+.xextras a span{font-family:var(--song);font-size:.68rem;letter-spacing:.12em;color:rgba(214,198,166,.6)}
+.xextras a:hover{border-color:var(--zhu);background:rgba(184,64,44,.08)}
+
 @media (max-width:820px){
   :root{--u:15px}
   .masthead .zhu{font-size:1.35rem}
