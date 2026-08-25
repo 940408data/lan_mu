@@ -39,8 +39,19 @@ function numCn(n) {
  * @returns {{books:Array, warnings:string[], catOrder:string[]}}
  * book: {id,title,category,caption,href,draft,standalone?,layout?,gong?,volumes:[{workId,title,order,entry,draft,href,gong}]}
  */
-/* mtime 指紋失效快取：命中時零 parse（僅 stat 101 meta.yaml）；改 meta/增刪作品自動失效。 */
+/* mtime 指紋失效快取：命中時零 parse（僅 stat 全部 meta.yaml）；改 meta/增刪作品自動失效。
+ * 增量解析：逐文件記錄 mtime，指紋失效時僅重 parse 變更的 meta.yaml（dev 改一文件秒刷）。 */
 let _cache = { fp: null, result: null };
+const _metaCache = new Map(); // workId -> { mtimeMs, w }
+function loadMetaIncr(workId) {
+  const fp = path.join(ROOT, 'works', workId, 'meta.yaml');
+  const mt = fs.statSync(fp).mtimeMs;
+  const hit = _metaCache.get(workId);
+  if (hit && hit.mtimeMs === mt) return hit.w;
+  const w = loadMeta(workId);
+  _metaCache.set(workId, { mtimeMs: mt, w });
+  return w;
+}
 function fingerprint() {
   const ids = listWorks();
   const mt = ids.map((id) => fs.statSync(path.join(ROOT, 'works', id, 'meta.yaml')).mtimeMs);
@@ -53,7 +64,7 @@ function aggregateSite() {
   const byBook = new Map();
   for (const workId of listWorks()) {
     let w;
-    try { w = loadMeta(workId); } catch (e) { warnings.push(`裝載失敗 ${workId}: ${e.message}`); continue; }
+    try { w = loadMetaIncr(workId); } catch (e) { warnings.push(`裝載失敗 ${workId}: ${e.message}`); continue; }
     if (!w.hasSrc) warnings.push(`作品 ${workId} 缺數據源（text.yaml 或 grid.yaml 至少其一）`);
     const m = w.meta || {};
     const draft = m.stage === 'draft';

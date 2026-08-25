@@ -5,6 +5,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
 const { aggregateSite } = require('../src/site/aggregate');
 const {
@@ -32,23 +33,64 @@ for (const [id, e] of Object.entries(loadRegistry())) {
   bCss += `@font-face{font-family:"${e.family}";src:${locals.join(',')},url("/b-fonts/${id}") format("truetype");font-display:swap;}`;
 }
 
+/* gzip：文本類（html/css/js/json/svg）且客戶端支持時壓縮；字體/圖已壓不再壓 */
+const GZIP_RE = /text\/|javascript|json|svg/;
+function respond(req, res, status, headers, buf) {
+  if (buf.length > 1024 && GZIP_RE.test(headers['Content-Type'] || '') && (req.headers['accept-encoding'] || '').includes('gzip')) {
+    zlib.gzip(buf, (err, gz) => {
+      if (err) { res.writeHead(status, headers); res.end(buf); return; }
+      res.writeHead(status, { ...headers, 'Content-Encoding': 'gzip' });
+      res.end(gz);
+    });
+    return;
+  }
+  res.writeHead(status, headers);
+  res.end(buf);
+}
+
+/* 靜態文件：協商緩存（mtime+size 指紋；未變 304 零傳輸，重建後 mtime 變自動 200）。
+ * no-cache = 每次驗證、不變不傳——dev 重建即見新，刷新僅傳變更者（字體/卷影不再全量重傳）。 */
+function serveFile(req, res, f, forceType) {
+  fs.stat(f, (err, st) => {
+    if (err || !st.isFile()) { res.writeHead(404); res.end('not found: ' + req.url); return; }
+    const etag = `W/"${st.size}-${Math.floor(st.mtimeMs)}"`;
+    const headers = {
+      'Content-Type': forceType || MIME[path.extname(f)] || 'application/octet-stream',
+      'Cache-Control': 'no-cache',
+      ETag: etag,
+      'Last-Modified': st.mtime.toUTCString(),
+    };
+    const inm = req.headers['if-none-match'];
+    const ims = req.headers['if-modified-since'];
+    if ((inm && inm === etag) || (ims && Date.parse(ims) >= Math.floor(st.mtimeMs / 1000) * 1000)) {
+      res.writeHead(304, headers);
+      res.end();
+      return;
+    }
+    fs.readFile(f, (err2, buf) => {
+      if (err2) { res.writeHead(500); res.end('read err'); return; }
+      if (path.extname(f) === '.html' && bCss) {
+        buf = Buffer.from(buf.toString('utf8').replace('</head>', `<style>${bCss}</style></head>`));
+      }
+      respond(req, res, 200, headers, buf);
+    });
+  });
+}
+
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
-  // B 级字体路由
+  // B 级字体路由：協商緩存（ttf 動輒數 MB，未變 304 零傳輸）
   if (p.startsWith('/b-fonts/')) {
     const id = p.slice(9);
     const f = bRoutes[id];
     if (!f) { res.writeHead(404); res.end('no font: ' + id); return; }
-    fs.readFile(f, (err, buf) => {
-      if (err) { res.writeHead(500); res.end('read err'); return; }
-      res.writeHead(200, { 'Content-Type': 'font/ttf', 'Cache-Control': 'no-store' });
-      res.end(buf);
-    });
+    serveFile(req, res, f, 'font/ttf');
     return;
   }
   // 站點頁動態生成：改 YAML/配置免重建即預覽；
   // 字體引用 /assets/fonts/ 小字庫（未構建時 404 落系統回退鏈，不礙預覽）
-  const html = (s) => { res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' }); res.end(s); };
+  // 動態頁 no-store（改動即見）+ gzip；聚合/索引有快取，刷新零重 parse
+  const html = (s) => respond(req, res, 200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' }, Buffer.from(s, 'utf8'));
   if (p === '/') {
     const site = aggregateSite();
     for (const w of site.warnings) console.warn('[站點]', w);
@@ -80,20 +122,12 @@ const server = http.createServer((req, res) => {
     const site = aggregateSite();
     const book = site.books.find((b) => b.id === bm[1] && !b.standalone);
     if (!book) { res.writeHead(404); res.end('not found: ' + p); return; }
-    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-store' });
-    res.end(renderToc(book, siteFaces()));
+    html(renderToc(book, siteFaces()));
     return;
   }
   const f = path.join(ROOT, p);
   if (!f.startsWith(ROOT)) { res.writeHead(403); res.end('forbidden'); return; }
-  fs.readFile(f, (err, buf) => {
-    if (err) { res.writeHead(404); res.end('not found: ' + p); return; }
-    if (path.extname(f) === '.html' && bCss) {
-      buf = Buffer.from(buf.toString('utf8').replace('</head>', `<style>${bCss}</style></head>`));
-    }
-    res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-store, no-cache, must-revalidate' });
-    res.end(buf);
-  });
+  serveFile(req, res, f);
 });
 // dev 預覽：拷卷影源資產到 dist（免構建可預覽圖）
 try { require('../src/site/panels').buildPanels(ROOT, ((TOPICS.find((t) => t.id === 'sishi-youshang')) || {}).books || []); } catch (e) {}

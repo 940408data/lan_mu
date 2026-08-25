@@ -94,8 +94,11 @@ const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文�
 
 /* ───── 首頁：門戶（檢索 + 簽條切換主視覺 + 專題推薦） ───── */
 /* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
-   虛擬典籍亦入索引，命中即示「敬請期待」 */
+   虛擬典籍亦入索引，命中即示「敬請期待」。
+   隨 site 對象快取：aggregateSite 指紋命中時同一引用，dev 每次請求免重跑 opencc。 */
+let _idxCache = { site: null, idx: null };
 function searchIndex(site) {
+  if (_idxCache.site === site) return _idxCache.idx;
   const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
   const real = site.books.map((b) => ({
     t: b.title, t2: conv(b.title), sub: `${b.caption} · 目錄`, href: b.href, draft: !!b.draft,
@@ -110,6 +113,7 @@ function searchIndex(site) {
       real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false, vols: [] });
     }
   }
+  _idxCache = { site, idx: real };
   return real;
 }
 
@@ -187,10 +191,11 @@ const seekHtml = `<div class="seek">
 </div>`;
 
 /* 四時卷影屏：立式畫板——四時圖像（128×179，no-red），尺寸/座同四書書影，
- *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴季節朱字 + 題名。 */
+ *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴季節朱字 + 題名。
+ *  首屏面板即視口內容，不用 lazy（延遲調度反致「圖慢」感知）。 */
 function panelFan(b, mark) {
   return `    <a class="slot fan-jb" href="${b.href}">
-      <span class="tome jb-canvas"><img class="jb" src="/assets/topics/${b.id}.png" alt="${esc(b.title)}" loading="lazy"></span>
+      <span class="tome jb-canvas"><img class="jb" src="/assets/topics/${b.id}.png" alt="${esc(b.title)}" decoding="async"></span>
       <span class="plinth"></span>
       <span class="n"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(b.title)}</em></span>
     </a>`;
