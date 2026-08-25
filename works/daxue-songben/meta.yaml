@@ -1,6 +1,6 @@
 id: daxue-songben
-title: 大學章句【当涂试验】
-subtitle: 当涂郡斋刊递修本 · 经注分栏
+title: 大學章句
+subtitle: 宋当涂郡斋本 · 经注分栏
 docTitle: 大學章句 — 宋版善刻
 mark: 蘭木
 ariaLabel: 大學章句，宋刻本版式，自右向左讀
@@ -9,7 +9,7 @@ era: 宋
 layout: songke
 book:
   id: daxue-songben
-  title: 大學章句【当涂试验】
+  title: 大學章句
   order: 1
   entry:
     big: 大學

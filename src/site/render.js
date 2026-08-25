@@ -347,12 +347,38 @@ ${FOOT}
 }
 
 /* 專題頁：專題內書影（真書 + 虛擬典籍） */
+const ED_ST = { kept: '在庋', soon: '待訪', lost: '亡佚' };
+/* 版本源流（四書涵泳等專題配置 editions 時渲染）：
+ * 豎排時代簽 + 版本條目三態（在庋朱印/待訪鏈敬請期待/亡佚淡墨靜態） */
+function renderEditions(eds) {
+  const rows = eds.map((e) => {
+    const items = (e.items || []).map((it) => {
+      const inner = `<span class="ed-name">${esc(it.name)}</span>` +
+        `<span class="ed-note">${esc(it.note)}</span>` +
+        `<span class="ed-st st-${it.status}">${ED_ST[it.status] || ''}</span>`;
+      if (it.status === 'soon') return `<a class="ed-item st-${it.status}" href="/coming-soon/?t=${encodeURIComponent(it.name)}">${inner}</a>`;
+      if (it.href) return `<a class="ed-item st-${it.status}" href="${it.href}">${inner}</a>`;
+      return `<div class="ed-item st-${it.status}">${inner}</div>`;
+    }).join('');
+    return `  <div class="ed">
+    <span class="ed-era">${esc(e.era)}</span>
+    <div class="ed-body">${e.blurb ? `<p class="ed-blurb">${esc(e.blurb)}</p>` : ''}${items}
+    </div>
+  </div>`;
+  }).join('\n');
+  return `<section class="editions">
+  <h2><span>版本源流</span></h2>
+${rows}
+</section>`;
+}
+
 function renderTopic(topic, site, faces) {
   const byId = new Map(site.books.map((b) => [b.id, b]));
   const tomes = [
     ...(topic.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome),
     ...(topic.virtual || []).map(virtTome),
   ].join('\n');
+  const editions = topic.editions ? renderEditions(topic.editions) : '';
   return `${head(`${topic.title} · ${COPY.topicLabel} — 蘭木藏書`, faces)}
 <body class="idx">
 
@@ -366,6 +392,8 @@ ${masthead(topic.title, COPY.topicLabel)}
 ${tomes}
   </div>
 </main>
+
+${editions}
 
 ${backHome}
 ${FOOT}

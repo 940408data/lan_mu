@@ -252,6 +252,40 @@ body{
 }
 .recruit .dim{color:rgba(214,198,166,.45);font-size:.8rem}
 
+/* ───── 版本源流（專題頁 editions）：豎排時代簽 + 版本三態 ───── */
+/* 克制立骨：暗案底上不施卡片底色，唯細線、留白、朱記。 */
+.editions{max-width:38rem;margin:3.4rem auto 0;padding:0 1.4rem}
+.editions h2{margin:0 0 .4rem;display:flex;align-items:center;gap:.9rem}
+.editions h2 span{font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;color:rgba(224,208,178,.78)}
+.editions h2::after{content:"";flex:1;height:1px;background:rgba(216,198,160,.16)}
+.ed{display:flex;align-items:stretch;gap:1.05rem;padding:1.2rem 0 1.15rem;border-top:1px solid rgba(216,198,160,.10)}
+.ed:first-of-type{border-top:none}
+/* 時代簽：豎排小楷，右緣細線，如書函題簽 */
+.ed-era{
+  writing-mode:vertical-rl;font-family:var(--kai);font-size:.8rem;letter-spacing:.32em;
+  color:rgba(224,208,178,.5);padding:.15rem .55rem .15rem 0;border-right:1px solid rgba(216,198,160,.16);
+  flex:0 0 auto;
+}
+.ed-body{flex:1;min-width:0}
+.ed-blurb{margin:0;font-size:.84rem;line-height:2.05;letter-spacing:.04em;color:rgba(224,208,178,.66)}
+.ed-item{
+  display:flex;align-items:baseline;gap:.7rem;margin-top:.62rem;
+  text-decoration:none;border-radius:1px;transition:background .2s;
+}
+a.ed-item{padding:.1rem .3rem;margin-left:-.3rem}
+a.ed-item:hover{background:rgba(216,198,160,.06)}
+.ed-name{font-family:var(--kai);font-size:.9rem;letter-spacing:.1em;color:rgba(238,224,196,.92);flex:0 0 auto}
+.ed-note{font-size:.76rem;letter-spacing:.03em;line-height:1.95;color:rgba(214,198,166,.52)}
+.ed-st{flex:0 0 auto;margin-left:auto;font-size:.66rem;letter-spacing:.18em;text-indent:.18em}
+/* 在庋：朱印小章（與卷首 .yin 同式）；待訪：淡墨；亡佚：更淡且條目微隱 */
+.ed-st.st-kept{
+  writing-mode:vertical-rl;padding:.3em .18em .3em .3em;border:1.5px solid var(--seal);
+  color:var(--seal);border-radius:1px;font-weight:600;font-size:.58rem;letter-spacing:.1em;opacity:.85;
+}
+.ed-st.st-soon{color:rgba(214,198,166,.38)}
+.ed-st.st-lost{color:rgba(214,198,166,.4)}
+.ed-item.st-lost .ed-name,.ed-item.st-lost .ed-note{color:rgba(214,198,166,.42)}
+
 /* ───── 目錄葉：書葉原語（與 songke.css 同式） ───── */
 .book{display:flex;flex-direction:column;align-items:center;gap:2.4rem;padding:0 .8rem;overflow-x:auto}
 .leafwrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}

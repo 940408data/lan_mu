@@ -1,6 +1,6 @@
 id: zhongyongxu-songben
-title: 中庸章句序【当涂试验】
-subtitle: 当涂郡斋刊递修本 · 序文纯经
+title: 中庸章句序
+subtitle: 宋当涂郡斋本 · 序文纯经
 docTitle: 中庸章句序 — 宋版善刻
 mark: 蘭木
 ariaLabel: 中庸章句序，宋刻本版式，自右向左讀
@@ -9,7 +9,7 @@ era: 宋
 layout: songke
 book:
   id: zhongyong-songben
-  title: 中庸章句【当涂试验】
+  title: 中庸章句
   order: 0.1
   entry:
     big: 序
