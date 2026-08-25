@@ -29,24 +29,24 @@ const TOPICS = [
   },
   {
     id: 'sishu', title: '四書涵泳',
-    desc: '大學 中庸 論語 孟子 —— 朱熹章句集注,底本宋當塗郡齋本',
+    desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，底本宋當塗郡齋本',
     books: ['daxue-facsimile', 'zhongyong-songben', 'lunyu-songben', 'mengzi-songben'],
     /* 版本源流:按時代列四書版本。status: kept=在庋(本站已有,不鏈——書影即在上方)、
      * soon=待訪(鏈「敬請期待」,後續填充時改 kept 並去 href)、lost=亡佚(靜態)。 */
     editions: [
-      { era: '漢唐', blurb: '大學、中庸,《禮記》之篇;論語,傳記之屬;孟子,廁於諸子——四書之名未立,皆在五經羽翼之間。' },
+      { era: '漢唐', blurb: '大學、中庸，《禮記》之篇；論語，傳記之屬；孟子，廁於諸子——四書之名未立，皆在五經羽翼之間。' },
       {
-        era: '宋', blurb: '二程表章於前,朱熹畢生章句集注於後——四書遂為一體,越五經而行於世。',
+        era: '宋', blurb: '二程表章於前，朱熹畢生章句集注於後——四書遂為一體，越五經而行於世。',
         items: [
-          { name: '寶婺本', note: '朱熹在世時婺州所刻,四書最早之本,今已亡佚', status: 'lost' },
-          { name: '宋當塗郡齋本', note: '現存最要之本,中國國家圖書館藏一級古籍。本站四書,悉據此本', status: 'kept' },
+          { name: '寶婺本', note: '朱熹在世時婺州所刻，四書最早之本，今已亡佚', status: 'lost' },
+          { name: '宋當塗郡齋本', note: '現存最要之本，中國國家圖書館藏一級古籍。本站四書，悉據此本', status: 'kept' },
         ],
       },
-      { era: '元', items: [{ name: '書院本', note: '書院刻書盛於一代,四書課士,遂為常經', status: 'soon' }] },
-      { era: '明', items: [{ name: '經廠本', note: '內府經廠刊刻,大字疏行,官學定本', status: 'soon' }] },
-      { era: '清', items: [{ name: '武英殿本', note: '殿版精鐫,紙墨精良,內府之藏', status: 'soon' }] },
-      { era: '現代', items: [{ name: '儒藏點校本', note: '《儒藏》精華編所收,當世點校整理之本', status: 'soon' }] },
-      { era: '其他', items: [{ name: '姜立綱手書四書白文', note: '明館閣體書家手錄白文,無注,別具一格', status: 'soon' }] },
+      { era: '元', items: [{ name: '書院本', note: '書院刻書盛於一代，四書課士，遂為常經', status: 'soon' }] },
+      { era: '明', items: [{ name: '經廠本', note: '內府經廠刊刻，大字疏行，官學定本', status: 'soon' }] },
+      { era: '清', items: [{ name: '武英殿本', note: '殿版精鐫，紙墨精良，內府之藏', status: 'soon' }] },
+      { era: '現代', items: [{ name: '儒藏點校本', note: '《儒藏》精華編所收，當世點校整理之本', status: 'soon' }] },
+      { era: '其他', items: [{ name: '姜立綱手書四書白文', note: '明館閣體書家手錄白文，無注，別具一格', status: 'soon' }] },
     ],
   },
 ];
