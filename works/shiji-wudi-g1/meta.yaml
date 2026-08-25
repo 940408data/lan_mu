@@ -16,9 +16,9 @@ book:
     sub: 寫本
 seed: 31001
 expect:
-  chars: 1880
-  rows: 94
-  leaves: 7
+  chars: 3614
+  rows: 184
+  leaves: 12
 manuscript:
   rowsPerHalf: 8
   charsPerRow: 20
