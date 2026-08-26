@@ -93,11 +93,14 @@ function renderHtml(tree, opts = {}) {
   const warnings = [];
   const stacks = {};
   let faceCss = '';
+  const preloadHrefs = new Set();
+  const addPreload = (files) => { for (const f of files) preloadHrefs.add('fonts/' + path.basename(f)); };
   for (const role of ['song', 'jing', 'xing']) {
     const r = resolveFace(role, meta, registry, distWorkDir);
     stacks[role] = r.stack;
     faceCss += r.faceCss;
     warnings.push(...r.warnings);
+    addPreload(r.files);
   }
   // 简体轨（独立字面列表）：--fsc-<id> 变量 + .fsc-* 切换规则；
   // 笔毫归一（浓淡拉平/位移归零/不叠加旋转）——简体字面自身笔势优先
@@ -113,6 +116,9 @@ function renderHtml(tree, opts = {}) {
       `.paper.fsc-${n} .t i{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased}`;
   }).join('\n');
   faceCss += sc.roles.map((r) => r.faceCss).join('') + '\n' + scCss;
+  sc.roles.forEach((r) => addPreload(r.files));
+  // 预取字面子集：切换字面时字体已就绪，消除 font-display:swap 的首次 fetch 延迟
+  const preloadLinks = [...preloadHrefs].map((h) => `<link rel="preload" as="font" type="font/woff2" href="${h}" crossorigin>`).join('\n');
 
   const rootVars = `:root{
   --ch:${dims.ch}px; --pitch:${dims.pitch}px; --glyph:${dims.glyph}px; --text-h:${dims.textH}px;
@@ -171,6 +177,7 @@ ${scVars}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#14120f">
 <title>${esc(docTitle)}</title>
+${preloadLinks}
 <style>
 ${rootVars}
 ${faceCss}

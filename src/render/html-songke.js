@@ -69,17 +69,23 @@ function renderSongkeHtml(tree, opts = {}) {
   const warnings = [];
   const stacks = {};
   let faceCss = '';
+  const preloadHrefs = new Set();
+  const addPreload = (files) => { for (const f of files) preloadHrefs.add('fonts/' + path.basename(f)); };
   for (const role of Object.keys(meta.faces || {})) {
     const r = resolveFace(role, meta, registry, distWorkDir);
     stacks[role] = r.stack;
     faceCss += r.faceCss;
     warnings.push(...r.warnings);
+    addPreload(r.files);
   }
   // 简体轨（独立字面列表）：--fsc-<id> 变量 + .fsc-* 切换规则
   const sc = resolveScFaces(meta, registry, distWorkDir);
   warnings.push(...sc.warnings);
   const scVars = sc.roles.map((r) => `--fsc-${r.id}:${r.stack};`).join('');
   faceCss += sc.roles.map((r) => `.fsc-${r.id}{--face:var(--fsc-${r.id})}`).join('\n');
+  sc.roles.forEach((r) => addPreload(r.files));
+  // 预取字面子集：切换字面时字体已就绪，消除 font-display:swap 的首次 fetch 延迟
+  const preloadLinks = [...preloadHrefs].map((h) => `<link rel="preload" as="font" type="font/woff2" href="${h}" crossorigin>`).join('\n');
 
   const payload = {
     colsPerHalf: tree.conf.colsPerHalf,
@@ -159,6 +165,7 @@ function renderSongkeHtml(tree, opts = {}) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#221d18">
 <title>${esc(docTitle)}</title>
+${preloadLinks}
 <style>
 :root{${Object.entries(stacks).map(([role, s]) => `--${role}:${s || 'serif'};`).join('')}${scVars}}
 ${faceCss}
