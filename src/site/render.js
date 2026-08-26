@@ -204,6 +204,15 @@ function panelFan(b, mark) {
     </a>`;
 }
 
+/* 文質面板引導：書影之下，引導語 + 「進入專題」之鏈（引人知所往、知所為） */
+function panelLead(t) {
+  if (!t.intro) return '';
+  return `  <div class="hlead">
+    <p class="hl-t">${esc(t.intro)}</p>
+    <a class="hl-go" href="/topics/${t.id}/index.html">${esc(COPY.topicEnter)}<i>→</i></a>
+  </div>`;
+}
+
 /* 共用：蘭木卷首（首頁與三藏頁同式）與專題推薦卡區 */
 const HOME_MASTHEAD = `<div class="masthead">
   <div class="zhu">蘭 木<span class="yin">蘭木</span></div>
@@ -250,11 +259,13 @@ function renderHome(site, faces, panels) {
   <div class="shelf center">
 ${fans}
   </div>
+${panelLead(wen)}
   </div>
   <div class="tabpanel hpanel" id="tp-1" role="tabpanel" aria-labelledby="tab-1">
   <div class="shelf center">
 ${sishuTomes}
   </div>
+${panelLead(zhi)}
   </div>`;
 
   return `${head('蘭木 · 藏書', faces)}

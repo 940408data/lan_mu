@@ -18,11 +18,13 @@ const TABS = [
 
 /* 專題：首頁主/次視覺板塊與專題頁（/topics/<id>/）共用此配置。
  * 順序即首頁展示序：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質。
- * marks：四時各部季節冠字（春蘭亭/夏山海/秋赤壁/冬湖心），首頁書影上方綴之。 */
+ * marks：四時各部季節冠字（春蘭亭/夏山海/秋赤壁/冬湖心），首頁書影上方綴之。
+ * intro：首頁文質頁簽面板之引導語（板塊書影之下，引人知所往、知所為）。 */
 const TOPICS = [
   {
     id: 'sishi-youshang', title: '四時幽賞',
     desc: '暮春蘭亭，仲夏山海，秋夜赤壁，雪夜湖心 —— 古人四時之樂',
+    intro: '春有百花秋有月，夏有涼風冬有雪。古人四時之樂，令人嚮往。讓我們一起進入他們的春夏秋冬。',
     books: ['lanting', 'dushanjing', 'chibifu', 'huxinting'],
     marks: { lanting: '春', dushanjing: '夏', chibifu: '秋', huxinting: '冬' },
     virtual: [],
@@ -30,6 +32,7 @@ const TOPICS = [
   {
     id: 'sishu', title: '四書涵泳',
     desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，底本宋當塗郡齋本',
+    intro: '大學中庸論語孟子，四書為古人科舉之書，但也許可能裡面也有一些相對簡單和溫暖的東西，讓我們一起走進他們的四書。',
     books: ['daxue-facsimile', 'zhongyong-facsimile', 'lunyu-songben', 'mengzi-songben'],
     /* 版本源流:按時代列四書版本。status: kept=在庋(本站已有,不鏈——書影即在上方)、
      * soon=待訪(鏈「敬請期待」,後續填充時改 kept 並去 href)、lost=亡佚(靜態)。 */
@@ -93,6 +96,7 @@ const COPY = {
   back: '回蘭木藏書',
   topicLabel: '專題',
   topicHead: '專題推薦',
+  topicEnter: '進入專題',
   enterSanzang: '古典',
   sanzangSub: '經史子集選編',
 };

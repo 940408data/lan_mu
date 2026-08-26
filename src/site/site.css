@@ -212,6 +212,22 @@ body{
 .fan-jb .n .fan-m{font-style:normal;font-size:.92rem;letter-spacing:.08em;color:var(--zhu)}
 .fan-jb .n .fan-n{font-style:normal}
 
+/* 文質面板引導：書影之下，引導語 + 「進入專題」之鏈（引人知所往、知所為） */
+.hlead{margin-top:2rem;text-align:center;padding:0 1rem}
+.hlead .hl-t{
+  margin:0 auto;font-family:var(--kai);font-size:.85rem;letter-spacing:.08em;
+  line-height:2.1;color:rgba(214,198,166,.62);max-width:36rem;
+}
+.hlead .hl-go{
+  display:inline-block;margin-top:.9rem;font-family:var(--kai);font-size:.8rem;
+  letter-spacing:.28em;text-indent:.28em;color:rgba(224,208,178,.78);text-decoration:none;
+  padding:.38rem 1rem;border:1px solid rgba(216,198,160,.22);border-radius:1px;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.hlead .hl-go:hover{border-color:rgba(216,198,160,.55);color:#f3e8d0;background:rgba(216,198,160,.05)}
+.hlead .hl-go:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
+.hlead .hl-go i{font-style:normal;color:rgba(216,198,160,.4);margin-left:.35em;letter-spacing:0;text-indent:0}
+
 /* 專題推薦（v0 樣式撈回） */
 .topics{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
 .topics h2{margin:0 0 1.1rem;display:flex;align-items:center;gap:.9rem}
