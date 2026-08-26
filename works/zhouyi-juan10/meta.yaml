@@ -39,7 +39,7 @@ faces:
     font: zhuque-fangsong
     label: "宋體"
   xing:
-    font: ac-gyosyo
+    font: liushang-xingyi-xingkai-tc
     label: "英雄行楷"
 fallbackStacks:
   kai: '"Kaiti TC","Kaiti SC","STKaiti","楷体","KaiTi","BiauKai","標楷體","TW-Kai","AR PL UKai TW","Noto Serif CJK TC",serif'
