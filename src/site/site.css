@@ -146,6 +146,13 @@ body{
 }
 .foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.5);line-height:2.2}
 .foot2{font-size:.68rem;color:rgba(214,198,166,.42)}
+/* 備案信息：落款之下居中一行。號含拉丁字母與簡體字，子集小字庫必缺失而落回退，
+   不如逕用系統宋體棧（繞開 --song 首部子集字），系統字渲染清晰不糊；
+   字號略大於落款、對比略升 */
+.beian{text-align:center;margin:.4rem 0 0;font-family:"Songti SC","STSong","SimSun","宋体","Noto Serif CJK SC",serif;font-size:.82rem;letter-spacing:.1em;line-height:1.8}
+.beian a{color:rgba(214,198,166,.6);text-decoration:none;border-bottom:1px solid rgba(216,198,160,.22);padding-bottom:.12em;transition:color .2s,border-color .2s}
+.beian a:hover{color:#e8dcc0;border-bottom-color:rgba(216,198,160,.5)}
+.beian a:focus-visible{outline:1px solid #d9c79a;outline-offset:3px}
 
 /* ───── 頂部導航 ───── */
 .topnav{

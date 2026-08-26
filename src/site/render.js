@@ -91,6 +91,9 @@ const masthead = (title, ke) => `<div class="masthead">
 </div>`;
 const backHome = `<p class="back"><a href="/index.html">${COPY.back}</a></p>`;
 const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文創<br><span class="foot2">一次校錄 · 多態呈現</span></p>`;
+/* 備案信息：首頁頁腳落款之下。號從工信部原文（簡體），字面走系統宋體棧——
+   備案號含拉丁字母與數字，不入站點子集小字庫，系統字渲染清晰不糊。 */
+const BEIAN = `<p class="beian"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备2026049633号</a></p>`;
 
 /* ───── 首頁：門戶（檢索 + 簽條切換主視覺 + 專題推薦） ───── */
 /* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
@@ -273,6 +276,7 @@ ${topicsSec()}
 <p class="shukulink"><a href="/sanzang/">${esc(COPY.enterSanzang)} <i>·</i> ${esc(COPY.sanzangSub)} →</a></p>
 
 ${FOOT}
+${BEIAN}
 
 <script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
 <script>${SEEK_JS}</script>
