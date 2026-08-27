@@ -168,6 +168,16 @@ show(0);
 for(var i=0;i<tabs.length;i++)(function(n){tabs[n].addEventListener('click',function(){show(n)})})(i);
 })();`;
 
+/* 當季點亮：按訪問者系統月份定季（3-5 春 / 6-8 夏 / 9-11 秋 / 12-2 冬），
+   冠 .season-on 於當季卷影屏——封面亮一成、畫板離座微懸，四扇見層次。
+   客戶端取月，靜態構建亦隨訪者之時自遷，不繫構建日。 */
+const SEASON_FAN_JS = `(function(){
+var m=new Date().getMonth()+1;
+var s=m>=3&&m<=5?'春':m>=6&&m<=8?'夏':m>=9&&m<=11?'秋':'冬';
+var el=document.querySelector('.fan-jb[data-season="'+s+'"]');
+if(el)el.classList.add('season-on');
+})();`;
+
 /* 經史子集頁部類頁簽（0327 版行為）：無 JS 時僅見首部（經選），與「不放全帙」一致 */
 const SANZANG_TAB_JS = `(function(){
 var tabs=document.querySelectorAll('.tabs button'),panels=document.querySelectorAll('.tabpanel');
@@ -199,9 +209,10 @@ const seekHtml = `<div class="seek">
 
 /* 四時卷影屏：立式畫板——四時圖像（128×179，no-red），尺寸/座同四書書影，
  *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴季節朱字 + 題名。
- *  首屏面板即視口內容，不用 lazy（延遲調度反致「圖慢」感知）。 */
+ *  首屏面板即視口內容，不用 lazy（延遲調度反致「圖慢」感知）。
+ *  data-season 供當季點亮（SEASON_FAN_JS）——隨訪問者系統月份冠 .season-on。 */
 function panelFan(b, mark) {
-  return `    <a class="slot fan-jb" href="${b.href}">
+  return `    <a class="slot fan-jb" href="${b.href}"${mark ? ` data-season="${esc(mark)}"` : ''}>
       <span class="tome jb-canvas"><img class="jb" src="/assets/topics/${b.id}.png" alt="${esc(b.title)}" decoding="async"></span>
       <span class="plinth"></span>
       <span class="n"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(b.title)}</em></span>
@@ -296,6 +307,7 @@ ${BEIAN}
 <script>window.SITE_INDEX=${JSON.stringify(searchIndex(site))};</script>
 <script>${SEEK_JS}</script>
 <script>${TAB_JS}</script>
+<script>${SEASON_FAN_JS}</script>
 </body></html>`;
 }
 

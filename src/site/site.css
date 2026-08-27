@@ -212,6 +212,19 @@ body{
 .fan-jb .n .fan-m{font-style:normal;font-size:.92rem;letter-spacing:.08em;color:var(--zhu)}
 .fan-jb .n .fan-n{font-style:normal}
 
+/* 當季書（.season-on，隨訪問者月份冠之）：封面較鄰扇亮一成（基線 .96 ×1.1），
+   畫板離座微懸——座留原地，影自浮起，四扇之間見高低層次 */
+.fan-jb.season-on .jb{filter:brightness(1.056)}
+.fan-jb.season-on .jb-canvas{
+  transform:translateY(-.62rem);
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 20px 30px -12px rgba(0,0,0,.9);
+}
+.fan-jb.season-on:hover .jb{filter:brightness(1.12)}
+.fan-jb.season-on:hover .jb-canvas{
+  transform:translateY(-.9rem) scale(1.03);
+  box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 24px 36px -14px rgba(0,0,0,.94);
+}
+
 /* 文質面板引導：書影之下，引導語 + 「進入專題」之鏈（引人知所往、知所為） */
 .hlead{margin-top:2rem;text-align:center;padding:0 1rem}
 .hlead .hl-t{
