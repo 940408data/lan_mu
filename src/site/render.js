@@ -100,7 +100,7 @@ const FOOT = `<p class="foot">蘭木 · 書法 古籍 音樂之現代數字文�
 const BEIAN = `<p class="beian"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备2026049633号</a></p>`;
 
 /* ───── 首頁：門戶（檢索 + 簽條切換主視覺 + 專題推薦） ───── */
-/* 檢索索引：書名/卷次/篇名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
+/* 檢索索引：書名，繁簡雙軌（簡體串由構建期 opencc 預轉，運行時零依賴）；
    虛擬典籍亦入索引，命中即示「敬請期待」。
    隨 site 對象快取：aggregateSite 指紋命中時同一引用，dev 每次請求免重跑 opencc。 */
 let _idxCache = { site: null, idx: null };
@@ -109,15 +109,10 @@ function searchIndex(site) {
   const conv = OpenCC.Converter({ from: 'tw', to: 'cn' });
   const real = site.books.map((b) => ({
     t: b.title, t2: conv(b.title), sub: `${b.caption} · 目錄`, href: b.href, draft: !!b.draft,
-    vols: b.standalone ? [] : b.volumes.map((v) => {
-      const big = (v.entry && v.entry.big) || v.title;
-      const sub = (v.entry && v.entry.sub) || '';
-      return { b: big, s: sub, b2: conv(big), s2: conv(sub), href: v.href, draft: v.draft };
-    }),
   }));
   for (const t of TABS) {
     for (const title of t.virtual || []) {
-      real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false, vols: [] });
+      real.push({ t: title, t2: conv(title), sub: COPY.soon.title, href: `/coming-soon/?t=${encodeURIComponent(title)}`, draft: false });
     }
   }
   _idxCache = { site, idx: real };
@@ -129,13 +124,10 @@ const SEEK_JS = `(function(){
 var D=window.SITE_INDEX||[],inp=document.getElementById('seekIn'),list=document.getElementById('seekList'),go=document.getElementById('seekGo');
 var cur=[],sel=-1;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function find(q){var out=[],vol=[],i,j,b,v;
+function find(q){var out=[],i,b;
   for(i=0;i<D.length;i++){b=D[i];
-    if(b.t.indexOf(q)>-1||b.t2.indexOf(q)>-1)out.push({t:b.t,s:b.sub,href:b.href,draft:b.draft});
-    for(j=0;j<b.vols.length;j++){v=b.vols[j];
-      if(v.b.indexOf(q)>-1||v.s.indexOf(q)>-1||v.b2.indexOf(q)>-1||v.s2.indexOf(q)>-1)
-        vol.push({t:b.t+' · '+v.b,s:v.s,href:v.href,draft:v.draft});}}
-  return out.concat(vol).slice(0,9);}
+    if(b.t.indexOf(q)>-1||b.t2.indexOf(q)>-1)out.push({t:b.t,s:b.sub,href:b.href,draft:b.draft});}
+  return out.slice(0,9);}
 function render(){
   if(!cur.length){list.style.display='none';list.innerHTML='';return;}
   list.innerHTML=cur.map(function(r,i){
@@ -202,7 +194,7 @@ function groupByCat(site) {
 }
 
 const seekHtml = `<div class="seek">
-  <input id="seekIn" type="search" placeholder="檢書名 · 篇名" autocomplete="off" aria-label="檢索書名篇名">
+  <input id="seekIn" type="search" placeholder="檢書名" autocomplete="off" aria-label="檢索書名">
   <button id="seekGo" type="button">檢索</button>
   <ul class="seek-list" id="seekList" role="listbox" aria-label="檢索結果"></ul>
 </div>`;
