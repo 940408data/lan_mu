@@ -22,7 +22,10 @@ const FALLBACK = {
 };
 
 /** 站點字體棧與 @font-face（子集文件就位與否不影響生成：缺失則瀏覽器落回退鏈） */
-function siteFaces() {
+/* versions：{fontId: 版本戳}，注入 @font-face url 查詢串——內容變則戳變、URL 變，
+   瀏覽器必重下（破 immutable 長緩存與 Chrome 字體緩存頑固）；構建期用內容 hash、dev 用 mtime。
+   無 versions 時不帶戳（兼容未構建/舊調用）。 */
+function siteFaces(versions = {}) {
   const registry = loadRegistry();
   const stacks = {};
   let faceCss = '';
@@ -31,7 +34,8 @@ function siteFaces() {
     const entry = registry[fontId];
     const file = entry && fontFileOf(entry);
     if (entry && file && entry.license === 'A' && entry.allowEmbed) {
-      faceCss += `@font-face{font-family:"${entry.family}";src:url("/assets/fonts/${fontId}.woff2") format("woff2");font-display:swap;}`;
+      const v = versions[fontId] ? `?v=${versions[fontId]}` : '';
+      faceCss += `@font-face{font-family:"${entry.family}";src:url("/assets/fonts/${fontId}.woff2${v}") format("woff2");font-display:swap;}`;
       stacks[role] = `"${entry.family}",${FALLBACK[role]}`;
       subsettable.push({ role, fontId, entry, file });
     } else {

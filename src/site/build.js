@@ -2,6 +2,7 @@
  *  由 tools/gen-index.js（生產預生成）與 tools/cli.js cmdBuild（全量構建末尾）調用；
  *  dev 預覽由 serve.js 動態生成同式頁面（不構子集，字體落回退鏈）。 */
 const fs = require('fs');
+const crypto = require('crypto');
 const path = require('path');
 const subsetFont = require('subset-font');
 const { aggregateSite } = require('./aggregate');
@@ -48,7 +49,8 @@ function collectSiteChars(site) {
 async function buildSitePages(distRoot) {
   const site = aggregateSite();
   for (const w of site.warnings) console.warn('  [站點]', w);
-  const faces = siteFaces();
+  // 先取字面（stacks/可子集列表；faceCss 此時無版本戳——子集化產出 hash 後重算注入）
+  const base = siteFaces();
 
   // 卷影：四時四部手卷右緣裁切（寫站點頁之前，渲染側讀产物）
   const sishi = TOPICS.find((t) => t.id === 'sishi-youshang');
@@ -56,15 +58,19 @@ async function buildSitePages(distRoot) {
 
   // 小字庫子集：固定文案 + 門戶配置 + 全部書名/卷次/篇名/部類/刻工
   const text = collectSiteChars(site);
-  if (faces.subsettable.length) {
+  const versions = {};
+  if (base.subsettable.length) {
     const fontDir = path.join(distRoot, 'assets', 'fonts');
     fs.mkdirSync(fontDir, { recursive: true });
-    for (const f of faces.subsettable) {
+    for (const f of base.subsettable) {
       const buf = await subsetFont(fs.readFileSync(f.file), text, { targetFormat: 'woff2' });
       fs.writeFileSync(path.join(fontDir, f.fontId + '.woff2'), buf);
-      console.log(`  站點字庫: ${f.fontId}.woff2（${Math.round(buf.length / 1024)}KB，${[...text].length} 字）`);
+      versions[f.fontId] = crypto.createHash('sha1').update(buf).digest('hex').slice(0, 8);
+      console.log(`  站點字庫: ${f.fontId}.woff2?v=${versions[f.fontId]}（${Math.round(buf.length / 1024)}KB，${[...text].length} 字）`);
     }
   }
+  // 帶版本戳的最終字面：@font-face url 注入 ?v=<內容 hash>，內容變則戳變、URL 變即破緩存
+  const faces = siteFaces(versions);
 
   const put = (rel, html) => {
     const fp = path.join(distRoot, rel);

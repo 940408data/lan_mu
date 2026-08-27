@@ -9,7 +9,7 @@ const zlib = require('zlib');
 const { loadRegistry, fontFileOf } = require('../src/fonts/fonts');
 const { aggregateSite } = require('../src/site/aggregate');
 const {
-  siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc,
+  siteFaces, renderHome, renderSanzang, renderShuku, renderTopic, renderComingSoon, renderJiaoshu, renderToc, SITE_FONTS,
 } = require('../src/site/render');
 const { TOPICS } = require('../src/site/home');
 
@@ -31,6 +31,17 @@ for (const [id, e] of Object.entries(loadRegistry())) {
   const locals = [`local("${e.family}")`];
   if (e.familyLocal) locals.push(`local("${e.familyLocal}")`);
   bCss += `@font-face{font-family:"${e.family}";src:${locals.join(',')},url("/b-fonts/${id}") format("truetype");font-display:swap;}`;
+}
+
+/* 站點字庫版本戳：讀 dist/assets/fonts/*.woff2 的 mtime——重建後 mtime 變、?v= 變、
+   URL 變即破瀏覽器字體緩存（dev 免重啟即生效；每請求 stat 兩文件開銷可忽略）。
+   文件不存在（未構建）時返回空對象，siteFaces 不帶戳、字體落回退鏈，不礙預覽。 */
+function siteVersions() {
+  const v = {};
+  for (const { fontId } of SITE_FONTS) {
+    try { v[fontId] = String(Math.floor(fs.statSync(path.join(ROOT, 'assets', 'fonts', fontId + '.woff2')).mtimeMs)); } catch (e) {}
+  }
+  return v;
 }
 
 /* gzip：文本類（html/css/js/json/svg）且客戶端支持時壓縮；字體/圖已壓不再壓 */
@@ -79,6 +90,8 @@ function serveFile(req, res, f, forceType) {
 
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
+  // 站點字庫版本戳（每請求重算：重建後 mtime 變即破緩存，dev 免重啟生效）
+  const versions = siteVersions();
   // B 级字体路由：協商緩存（ttf 動輒數 MB，未變 304 零傳輸）
   if (p.startsWith('/b-fonts/')) {
     const id = p.slice(9);
@@ -103,18 +116,18 @@ const server = http.createServer((req, res) => {
         if (fs.existsSync(fp)) panels[id] = fp;
       }
     }
-    html(renderHome(site, siteFaces(), panels));
+    html(renderHome(site, siteFaces(versions), panels));
     return;
   }
-  if (p === '/sanzang/' || p === '/sanzang/index.html') { html(renderSanzang(aggregateSite(), siteFaces())); return; }
-  if (p === '/shuku/' || p === '/shuku/index.html') { html(renderShuku(aggregateSite(), siteFaces())); return; }
-  if (p === '/coming-soon/' || p === '/coming-soon/index.html') { html(renderComingSoon(siteFaces())); return; }
-  if (p === '/jiaoshu/' || p === '/jiaoshu/index.html') { html(renderJiaoshu(siteFaces())); return; }
+  if (p === '/sanzang/' || p === '/sanzang/index.html') { html(renderSanzang(aggregateSite(), siteFaces(versions))); return; }
+  if (p === '/shuku/' || p === '/shuku/index.html') { html(renderShuku(aggregateSite(), siteFaces(versions))); return; }
+  if (p === '/coming-soon/' || p === '/coming-soon/index.html') { html(renderComingSoon(siteFaces(versions))); return; }
+  if (p === '/jiaoshu/' || p === '/jiaoshu/index.html') { html(renderJiaoshu(siteFaces(versions))); return; }
   const tm = p.match(/^\/topics\/([a-z0-9-]+)(?:\/index\.html)?\/?$/);
   if (tm) {
     const topic = TOPICS.find((t) => t.id === tm[1]);
     if (!topic) { res.writeHead(404); res.end('not found: ' + p); return; }
-    html(renderTopic(topic, aggregateSite(), siteFaces()));
+    html(renderTopic(topic, aggregateSite(), siteFaces(versions)));
     return;
   }
   // 靜態特頁 dev 路由：免構建直讀 src 源（生產走 dist 靜態託管）
@@ -132,7 +145,7 @@ const server = http.createServer((req, res) => {
     const site = aggregateSite();
     const book = site.books.find((b) => b.id === bm[1] && !b.standalone);
     if (!book) { res.writeHead(404); res.end('not found: ' + p); return; }
-    html(renderToc(book, siteFaces()));
+    html(renderToc(book, siteFaces(versions)));
     return;
   }
   const f = path.join(ROOT, p);
