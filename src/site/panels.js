@@ -1,5 +1,5 @@
-/** 卷影管線：四時四部圖像源資產 → dist/assets/topics/<id>.png。
- *  源：src/site/assets/topics/<id>.png（進 git，手工備圖 128×179）。
+/** 卷影管線：四時/四書圖像源資產 → dist/assets/topics/<id>.png。
+ *  源：src/site/assets/topics/<id>.png（進 git；四時為手工備圖 128×179，四書為封面素材轉 PNG）。
  *  接線：build.js buildSitePages 內（寫站點頁之前）調用；缺源 → 告警跳過不報錯。
  *  panelFan 直連 /assets/topics/<id>.png，故此處僅負責產物到位（返回 {id: absPath} 供渲染側探測）。 */
 const fs = require('fs');
@@ -9,7 +9,7 @@ const SRC_DIR = path.join(__dirname, 'assets', 'topics');
 
 /** 構建期調用：拷 src/site/assets/topics/<id>.png → dist/assets/topics/<id>.png。返回 { id: absPath }。
  *  @param {string} distRoot dist 根目錄
- *  @param {string[]} bookIds 四時專題的 book id 列表 */
+ *  @param {string[]} bookIds 卷影專題（四時/四書）的 book id 列表 */
 function buildPanels(distRoot, bookIds) {
   const results = {};
   const missing = [];

@@ -18,8 +18,8 @@ const TABS = [
 
 /* 專題：首頁主/次視覺板塊與專題頁（/topics/<id>/）共用此配置。
  * 順序即首頁展示序：四時幽賞（文）置前、四書涵泳（質）次之 —— 先文後質。
- * marks：四時各部季節冠字（春蘭亭/夏山海/秋赤壁/冬湖心），首頁書影上方綴之。
- * intro：首頁文質頁簽面板之引導語（板塊書影之下，引人知所往、知所為）。 */
+ * marks：首頁卷影屏座下朱字冠字（四時=季節冠字 春蘭亭/夏山海/秋赤壁/冬湖心；
+ * 四書=書名冠字 大/中/論/孟）；intro：首頁文質頁簽面板之引導語（板塊書影之下，引人知所往、知所為）。 */
 const TOPICS = [
   {
     id: 'sishi-youshang', title: '四時幽賞',
@@ -34,6 +34,7 @@ const TOPICS = [
     desc: '大學 中庸 論語 孟子 —— 朱熹章句集注，底本宋當塗郡齋本',
     intro: '大學中庸論語孟子，四書為古人科舉之書，但也許可能裡面也有一些相對簡單和溫暖的東西，讓我們一起走進他們的四書。',
     books: ['daxue-facsimile', 'zhongyong-facsimile', 'lunyu-songben', 'mengzi-songben'],
+    marks: { 'daxue-facsimile': '学', 'zhongyong-facsimile': '庸', 'lunyu-songben': '论', 'mengzi-songben': '孟' },
     /* 版本源流:按時代列四書版本。status: kept=在庋(本站已有,不鏈——書影即在上方)、
      * soon=待訪(鏈「敬請期待」,後續填充時改 kept 並去 href)、lost=亡佚(靜態)。 */
     editions: [

@@ -52,9 +52,8 @@ async function buildSitePages(distRoot) {
   // 先取字面（stacks/可子集列表；faceCss 此時無版本戳——子集化產出 hash 後重算注入）
   const base = siteFaces();
 
-  // 卷影：四時四部手卷右緣裁切（寫站點頁之前，渲染側讀产物）
-  const sishi = TOPICS.find((t) => t.id === 'sishi-youshang');
-  const panelResults = sishi ? buildPanels(distRoot, sishi.books) : {};
+  // 卷影：四時/四書圖像封面（寫站點頁之前，渲染側讀产物）
+  const panelResults = buildPanels(distRoot, TOPICS.flatMap((t) => t.books || []));
 
   // 小字庫子集：固定文案 + 門戶配置 + 全部書名/卷次/篇名/部類/刻工
   const text = collectSiteChars(site);

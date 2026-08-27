@@ -109,12 +109,9 @@ const server = http.createServer((req, res) => {
     for (const w of site.warnings) console.warn('[站點]', w);
     /* 檢測卷影产物：有則傳入渲染，無則渲染側自動落佔位 */
     const panels = {};
-    const sishi = TOPICS.find((t) => t.id === 'sishi-youshang');
-    if (sishi) {
-      for (const id of sishi.books) {
-        const fp = path.join(ROOT, 'assets', 'topics', `${id}.png`);
-        if (fs.existsSync(fp)) panels[id] = fp;
-      }
+    for (const id of TOPICS.flatMap((t) => t.books || [])) {
+      const fp = path.join(ROOT, 'assets', 'topics', `${id}.png`);
+      if (fs.existsSync(fp)) panels[id] = fp;
     }
     html(renderHome(site, siteFaces(versions), panels));
     return;
@@ -153,7 +150,7 @@ const server = http.createServer((req, res) => {
   serveFile(req, res, f);
 });
 // dev 預覽：拷卷影源資產到 dist（免構建可預覽圖）
-try { require('../src/site/panels').buildPanels(ROOT, ((TOPICS.find((t) => t.id === 'sishi-youshang')) || {}).books || []); } catch (e) {}
+try { require('../src/site/panels').buildPanels(ROOT, TOPICS.flatMap((t) => t.books || [])); } catch (e) {}
 
 // 端口自动顺延（旧进程未退出时换下一个端口）
 const tryListen = (port) => {

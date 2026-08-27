@@ -200,11 +200,12 @@ const seekHtml = `<div class="seek">
 </div>`;
 
 /* 四時卷影屏：立式畫板——四時圖像（128×179，no-red），尺寸/座同四書書影，
- *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴季節朱字 + 題名。
+ *  圖源 /assets/topics/<id>.png（serve 靜態託管 dist/）；座下綴朱字冠字 + 題名。
  *  首屏面板即視口內容，不用 lazy（延遲調度反致「圖慢」感知）。
- *  data-season 供當季點亮（SEASON_FAN_JS）——隨訪問者系統月份冠 .season-on。 */
+ *  四時/四書兩面板共用；data-season 僅季節冠字綴之，供當季點亮（SEASON_FAN_JS）。 */
 function panelFan(b, mark) {
-  return `    <a class="slot fan-jb" href="${b.href}"${mark ? ` data-season="${esc(mark)}"` : ''}>
+  const seasonAttr = mark && '春夏秋冬'.includes(mark) ? ` data-season="${esc(mark)}"` : '';
+  return `    <a class="slot fan-jb" href="${b.href}"${seasonAttr}>
       <span class="tome jb-canvas"><img class="jb" src="/assets/topics/${b.id}.png" alt="${esc(b.title)}" decoding="async"></span>
       <span class="plinth"></span>
       <span class="n"><i class="fan-m">${esc(mark || '')}</i><em class="fan-n">${esc(b.title)}</em></span>
@@ -259,8 +260,12 @@ function renderHome(site, faces, panels) {
     return panelFan(b, wen.marks && wen.marks[id]);
   }).join('\n');
 
-  /* 四書面板：瓷青書影四部（鏈 /books/<id>/） */
-  const sishuTomes = (zhi.books || []).map((id) => byId.get(id)).filter(Boolean).map(bookTome).join('\n');
+  /* 四書面板：四扇卷影屏（與四時同式，圖像封面代瓷青書影） */
+  const sishuFans = (zhi.books || []).map((id) => {
+    const b = byId.get(id);
+    if (!b) return '';
+    return panelFan(b, zhi.marks && zhi.marks[id]);
+  }).join('\n');
 
   const twoPanels = `  <div class="tabpanel hpanel" id="tp-0" role="tabpanel" aria-labelledby="tab-0">
   <div class="shelf center">
@@ -270,7 +275,7 @@ ${panelLead(wen)}
   </div>
   <div class="tabpanel hpanel" id="tp-1" role="tabpanel" aria-labelledby="tab-1">
   <div class="shelf center">
-${sishuTomes}
+${sishuFans}
   </div>
 ${panelLead(zhi)}
   </div>`;
