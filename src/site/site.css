@@ -45,8 +45,8 @@ body{
   vertical-align:.9em;opacity:.85;
 }
 .masthead .ke{
-  margin:.8rem 0 0;font-family:var(--kai);font-size:.76rem;
-  letter-spacing:.26em;text-indent:.26em;color:rgba(214,198,166,.6);
+  margin:.8rem 0 0;font-family:var(--kai);font-size:.86rem;
+  letter-spacing:.26em;text-indent:.26em;color:rgba(214,198,166,.74);
 }
 
 /* ───── 首頁：藏書 ───── */
@@ -58,7 +58,7 @@ body{
   padding:.52rem .9rem;outline:none;transition:border-color .2s,background .2s;
 }
 .seek input:focus{border-color:rgba(216,198,160,.55);background:rgba(216,198,160,.14)}
-.seek input::placeholder{color:rgba(214,198,166,.5)}
+.seek input::placeholder{color:rgba(214,198,166,.62)}
 .seek button{
   background:rgba(166,49,37,.2);border:1px solid rgba(166,49,37,.65);color:#e2ab9b;
   font-family:var(--kai);font-size:.85rem;letter-spacing:.2em;text-indent:.2em;
@@ -73,7 +73,7 @@ body{
 .seek-list li a{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.42rem .6rem;text-decoration:none}
 .seek-list li.on a,.seek-list li a:hover{background:rgba(216,198,160,.12)}
 .seek-list .rt{font-family:var(--kai);font-size:.86rem;letter-spacing:.08em;color:rgba(238,224,196,.95)}
-.seek-list .rs{font-family:var(--kai);font-size:.76rem;letter-spacing:.06em;color:rgba(214,198,166,.55);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seek-list .rs{font-family:var(--kai);font-size:.76rem;letter-spacing:.06em;color:rgba(214,198,166,.66);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .seek-list .dzi{font-style:normal;font-size:.7rem;letter-spacing:.12em;color:#dfa08c;margin-left:.5em}
 
 /* 部類速達 */
@@ -132,20 +132,20 @@ body{
   background:linear-gradient(180deg,#54493a 0%,#3a3227 55%,#2b251c 100%);
   box-shadow:0 6px 12px -6px rgba(0,0,0,.7);
 }
-.slot .n{margin-top:.65rem;display:flex;align-items:center;justify-content:center;gap:.42em;font-family:var(--kai);font-size:.8rem;letter-spacing:.1em;color:rgba(228,212,182,.92);text-align:center}
+.slot .n{margin-top:.65rem;display:flex;align-items:center;justify-content:center;gap:.42em;font-family:var(--kai);font-size:.88rem;letter-spacing:.1em;color:rgba(236,223,196,.96);text-align:center}
 .slot .n .ico{display:inline-flex;align-items:center;gap:.18em;font-family:var(--song);font-style:normal;font-size:.6rem;letter-spacing:.04em}
 .slot .n .ico svg{width:11px;height:11px;flex:0 0 auto}
 .slot .n .ico em{font-style:normal}
 .slot .n .ico-精校{color:rgba(226,210,182,.5)}
 .slot .n .ico-初校{color:rgba(226,210,182,.5)}
 .slot .n .ico-AI整理{color:rgba(214,198,166,.35)}
-.slot .bi{display:block;margin-top:.18rem;font-family:var(--song);font-size:.6rem;letter-spacing:.06em;color:rgba(214,198,166,.55);text-align:center}
+.slot .bi{display:block;margin-top:.18rem;font-family:var(--song);font-size:.68rem;letter-spacing:.06em;color:rgba(214,198,166,.66);text-align:center}
 .slot .dz{
   margin-top:.35rem;font-family:var(--kai);font-size:.66rem;letter-spacing:.2em;color:#dfa08c;
   border:1px solid rgba(196,60,44,.6);border-radius:1px;padding:.14em .42em .14em .62em;
 }
-.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.74rem;letter-spacing:.24em;color:rgba(214,198,166,.5);line-height:2.2}
-.foot2{font-size:.68rem;color:rgba(214,198,166,.42)}
+.foot{text-align:center;margin-top:3.6rem;font-family:var(--kai);font-size:.82rem;letter-spacing:.24em;color:rgba(214,198,166,.62);line-height:2.2}
+.foot2{font-size:.74rem;color:rgba(214,198,166,.52)}
 /* 備案信息：落款之下居中一行。號含拉丁字母與簡體字，子集小字庫必缺失而落回退，
    不如逕用系統宋體棧（繞開 --song 首部子集字），系統字渲染清晰不糊；
    字號略大於落款、對比略升 */
@@ -162,7 +162,7 @@ body{
 .topnav .mk{font-family:var(--kai);font-size:1.1rem;letter-spacing:.32em;color:#f3e7cd;text-decoration:none}
 .topnav .sp{flex:1}
 .topnav .item{
-  font-family:var(--kai);font-size:.92rem;letter-spacing:.12em;color:rgba(224,208,178,.85);
+  font-family:var(--kai);font-size:.96rem;letter-spacing:.12em;color:rgba(224,208,178,.92);
   text-decoration:none;padding:.15rem .1rem;border-bottom:1px solid transparent;
   transition:color .2s,border-color .2s;
 }
@@ -172,11 +172,11 @@ body{
 .tabs{display:flex;justify-content:center;gap:2.2rem;margin:2.6rem 0 0;padding:0 1rem}
 .tabs button{
   background:none;border:0;border-bottom:2px solid transparent;border-radius:0;
-  font-family:var(--kai);font-size:1rem;letter-spacing:.34em;text-indent:.34em;
-  color:rgba(214,198,166,.55);padding:.35rem .2rem;cursor:pointer;
+  font-family:var(--kai);font-size:1.06rem;letter-spacing:.34em;text-indent:.34em;
+  color:rgba(214,198,166,.68);padding:.35rem .2rem;cursor:pointer;
   transition:color .2s,border-color .2s;
 }
-.tabs button:hover{color:rgba(238,224,196,.85)}
+.tabs button:hover{color:rgba(238,224,196,.95)}
 .tabs button.on{color:#f3e8d0;font-weight:600;border-bottom-color:var(--zhu)}
 .tabs button:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
 .tabwrap{max-width:1060px;margin:0 auto;padding:0 1.2rem}
@@ -215,47 +215,54 @@ body{
 /* 文質面板引導：書影之下，引導語 + 「進入專題」之鏈（引人知所往、知所為） */
 .hlead{margin-top:2rem;text-align:center;padding:0 1rem}
 .hlead .hl-t{
-  margin:0 auto;font-family:var(--kai);font-size:.85rem;letter-spacing:.08em;
-  line-height:2.1;color:rgba(214,198,166,.62);max-width:36rem;
+  position:relative;margin:0 auto;max-width:35rem;padding:1.5rem 2rem;
+  font-family:var(--kai);font-size:.94rem;letter-spacing:.04em;
+  line-height:2.05;color:#e6dabe;
+  /* 「不同區域不同閱讀亮度」：此處不鋪紙板——紙板會成為全頁最亮之物，
+     壓過書影這一主體。改施一圈燈光：橢圓漸層，中心微提，四緣自行隱去，
+     無邊無影。氛圍不破，而讀區自明。 */
+  background:radial-gradient(58% 96% at 50% 50%,
+             rgba(232,222,200,.055) 0%, rgba(232,222,200,.038) 34%,
+             rgba(232,222,200,.016) 62%, rgba(232,222,200,0) 88%);
 }
 .hlead .hl-go{
   display:inline-block;margin-top:.9rem;font-family:var(--kai);font-size:.8rem;
-  letter-spacing:.28em;text-indent:.28em;color:rgba(224,208,178,.78);text-decoration:none;
+  letter-spacing:.28em;text-indent:.28em;color:#e6dabe;text-decoration:none;
   padding:.38rem 1rem;border:1px solid rgba(216,198,160,.22);border-radius:1px;
   transition:border-color .2s,color .2s,background .2s;
 }
 .hlead .hl-go:hover{border-color:rgba(216,198,160,.55);color:#f3e8d0;background:rgba(216,198,160,.05)}
 .hlead .hl-go:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
-.hlead .hl-go i{font-style:normal;color:rgba(216,198,160,.4);margin-left:.35em;letter-spacing:0;text-indent:0}
+.hlead .hl-go i{font-style:normal;color:#b0a389;margin-left:.35em;letter-spacing:0;text-indent:0}
 
 /* 專題推薦（v0 樣式撈回） */
 .topics{max-width:1060px;margin:2.8rem auto 0;padding:0 1.2rem}
 .topics h2{margin:0 0 1.1rem;display:flex;align-items:center;gap:.9rem}
-.topics h2 span{font-family:var(--kai);font-weight:400;font-size:.9rem;letter-spacing:.5em;color:rgba(224,208,178,.78)}
+.topics h2 span{font-family:var(--kai);font-weight:400;font-size:.96rem;letter-spacing:.5em;color:rgba(224,208,178,.88)}
 .topics h2::after{content:"";flex:1;height:1px;background:rgba(216,198,160,.16)}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
 .topic{
   display:flex;gap:1.1rem;align-items:stretch;text-decoration:none;border-radius:1px;
-  border:1px solid rgba(216,198,160,.22);background:rgba(216,198,160,.03);
+  border:1px solid rgba(216,198,160,.26);background:rgba(216,198,160,.05);
   padding:1.15rem 1.3rem;transition:border-color .2s,background .2s;
 }
-.topic:hover{border-color:rgba(216,198,160,.45);background:rgba(216,198,160,.07)}
+.topic:hover{border-color:rgba(216,198,160,.5);background:rgba(216,198,160,.1)}
 .topic:focus-visible{outline:1px solid #d9c79a;outline-offset:2px}
 .topic .tt{
   writing-mode:vertical-rl;font-family:var(--kai);font-size:1.22rem;letter-spacing:.3em;
   color:#e9ddc1;border-right:1px solid rgba(216,198,160,.18);padding-right:1rem;
 }
 .topic .td{display:flex;flex-direction:column;justify-content:center;gap:.55rem;min-width:0}
-.topic .tdd{font-family:var(--kai);font-size:.85rem;letter-spacing:.1em;color:rgba(224,208,178,.8);line-height:1.9}
-.topic .tn{font-family:var(--kai);font-size:.72rem;letter-spacing:.16em;color:rgba(214,198,166,.5)}
+.topic .tdd{font-family:var(--kai);font-size:.92rem;letter-spacing:.1em;color:rgba(232,220,192,.9);line-height:1.9}
+.topic .tn{font-family:var(--kai);font-size:.76rem;letter-spacing:.16em;color:rgba(214,198,166,.62)}
 
 /* 入書庫鏈 */
 .shukulink{
   text-align:center;margin:2.4rem auto 0;padding:0 1rem;
 }
 .shukulink a{
-  display:inline-block;font-family:var(--kai);font-size:.92rem;letter-spacing:.28em;
-  color:rgba(224,208,178,.78);text-decoration:none;padding:.45rem 1rem;
+  display:inline-block;font-family:var(--kai);font-size:.98rem;letter-spacing:.28em;
+  color:rgba(224,208,178,.88);text-decoration:none;padding:.45rem 1rem;
   border:1px solid rgba(216,198,160,.22);border-radius:1px;
   transition:border-color .2s,color .2s,background .2s;
 }
@@ -265,13 +272,13 @@ body{
 
 /* ───── 專題頁引 / 招募頁 ───── */
 .tintro{
-  text-align:center;font-family:var(--kai);font-size:.85rem;letter-spacing:.12em;
-  color:rgba(214,198,166,.6);margin:-.2rem auto 2rem;padding:0 1.4rem;max-width:44rem;line-height:2;
+  text-align:center;font-family:var(--kai);font-size:.96rem;letter-spacing:.12em;
+  color:rgba(214,198,166,.78);margin:-.2rem auto 2rem;padding:0 1.4rem;max-width:44rem;line-height:2;
 }
 .recruit{
   max-width:38rem;margin:2.4rem auto 0;padding:0 1.4rem;text-align:center;
-  font-family:var(--kai);font-size:.92rem;line-height:2.5;letter-spacing:.06em;
-  color:rgba(228,214,186,.85);
+  font-family:var(--kai);font-size:1rem;line-height:2.5;letter-spacing:.06em;
+  color:rgba(228,214,186,.93);
 }
 .recruit .dim{color:rgba(214,198,166,.45);font-size:.8rem}
 
@@ -290,7 +297,7 @@ body{
   flex:0 0 auto;
 }
 .ed-body{flex:1;min-width:0}
-.ed-blurb{margin:0;font-size:.84rem;line-height:2.05;letter-spacing:.04em;color:rgba(224,208,178,.66)}
+.ed-blurb{margin:0;font-size:.88rem;line-height:2.05;letter-spacing:.04em;color:rgba(224,208,178,.78)}
 .ed-item{
   display:flex;align-items:baseline;gap:.7rem;margin-top:.62rem;
   text-decoration:none;border-radius:1px;transition:background .2s;
@@ -298,7 +305,7 @@ body{
 a.ed-item{padding:.1rem .3rem;margin-left:-.3rem}
 a.ed-item:hover{background:rgba(216,198,160,.06)}
 .ed-name{font-family:var(--kai);font-size:.9rem;letter-spacing:.1em;color:rgba(238,224,196,.92);flex:0 0 auto}
-.ed-note{font-size:.76rem;letter-spacing:.03em;line-height:1.95;color:rgba(214,198,166,.52)}
+.ed-note{font-size:.78rem;letter-spacing:.03em;line-height:1.95;color:rgba(214,198,166,.64)}
 .ed-st{flex:0 0 auto;margin-left:auto;font-size:.66rem;letter-spacing:.18em;text-indent:.18em}
 /* 在庋：朱印小章（與卷首 .yin 同式）；待訪：淡墨；亡佚：更淡且條目微隱 */
 .ed-st.st-kept{
@@ -421,6 +428,7 @@ a.tentry:focus-visible{outline:1.5px solid rgba(166,49,37,.7);outline-offset:-1.
   .seek-list .rs{display:none}
   .fans{height:12rem;flex-wrap:wrap}
   .fan{flex:1 1 calc(50% - .4rem);min-width:calc(50% - .4rem)}
+  .hlead .hl-t{padding:1rem 1.1rem;text-align:justify}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
